@@ -8,13 +8,52 @@ const inter = Inter({
   display: "swap",
 });
 
+const defaultTitle = "My Landlord Certificate — UK Property Compliance";
+const defaultDescription =
+  "Book EICR, Gas Safety, EPC, Fire Risk Assessment and PAT testing online. NICEIC & Gas Safe accredited engineers. Same-week appointments across London. Fixed prices, no surprises.";
+const siteUrl = "https://mylandlordcertificate.co.uk";
+
 export const metadata: Metadata = {
   title: {
-    default: "My Landlord Certificate — UK Property Compliance",
+    default: defaultTitle,
     template: "%s | My Landlord Certificate",
   },
-  description:
-    "Fast, reliable UK property compliance certificates. Gas safety, EPCs, EICRs, PAT testing and more — booked online in minutes.",
+  description: defaultDescription,
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: siteUrl,
+    siteName: "My Landlord Certificate",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "My Landlord Certificate — UK Property Compliance",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ["/og-default.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
 };
 
 export default function RootLayout({

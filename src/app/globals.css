@@ -61,6 +61,14 @@
   --color-brand-grey: var(--brand-grey);
   --color-brand-warm-white: var(--brand-warm-white);
   --color-brand-amber: var(--brand-amber);
+
+  /* Playbook semantic aliases — bg-compliance-blue, text-action-green, etc. */
+  --color-compliance-blue: var(--brand-blue);
+  --color-action-green: var(--brand-green);
+  --color-charcoal: var(--brand-charcoal);
+  --color-soft-grey: var(--brand-grey);
+  --color-warm-white: var(--brand-warm-white);
+  --color-alert-amber: var(--brand-amber);
 }
 
 :root {
