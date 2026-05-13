@@ -1,0 +1,143 @@
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+interface FooterColumn {
+  heading: string;
+  links: { href: string; label: string }[];
+}
+
+interface FooterProps {
+  className?: string;
+}
+
+const columns: FooterColumn[] = [
+  {
+    heading: "Services",
+    links: [
+      { href: "/services/eicr", label: "EICR Certificate" },
+      { href: "/services/gas-safety", label: "Gas Safety Certificate" },
+      { href: "/services/epc", label: "EPC Certificate" },
+      { href: "/services/fire-risk-assessment", label: "Fire Risk Assessment" },
+      { href: "/services/pat-testing", label: "PAT Testing" },
+      { href: "/services/bundle", label: "Bundle & Save" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { href: "/about", label: "About Us" },
+      { href: "/how-it-works", label: "How It Works" },
+      { href: "/pricing", label: "Pricing" },
+      { href: "/blog", label: "Blog" },
+      { href: "/careers", label: "Careers" },
+    ],
+  },
+  {
+    heading: "Resources",
+    links: [
+      { href: "/landlord-guide", label: "Landlord Guide" },
+      { href: "/compliance-checker", label: "Compliance Checker" },
+      { href: "/blog/eicr-guide", label: "EICR Explained" },
+      { href: "/blog/gas-safety-guide", label: "Gas Safety Guide" },
+      { href: "/faq", label: "FAQ" },
+    ],
+  },
+  {
+    heading: "Contact",
+    links: [
+      { href: "tel:+443301330066", label: "0330 133 0066" },
+      { href: "mailto:hello@mylandlordcertificate.co.uk", label: "Email Us" },
+      { href: "/contact", label: "Contact Form" },
+      { href: "/book", label: "Book Online" },
+    ],
+  },
+];
+
+/**
+ * Site-wide footer on a charcoal background.
+ * 4-column grid (Services / Company / Resources / Contact) that collapses to 2 cols on small screens.
+ */
+export function Footer({ className }: FooterProps) {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer
+      className={cn("bg-brand-charcoal text-white", className)}
+      aria-label="Site footer"
+    >
+      {/* Main grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          {columns.map((col) => (
+            <div key={col.heading}>
+              <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest mb-4">
+                {col.heading}
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Brand blurb */}
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-md">
+            <p className="font-bold text-white text-base mb-1">
+              My Landlord Certificate
+            </p>
+            <p className="text-sm text-white/50 leading-relaxed">
+              NICEIC & Gas Safe accredited property compliance across London and
+              the Home Counties. Fixed prices, same-week appointments, no
+              hidden fees.
+            </p>
+          </div>
+
+          {/* Accreditation badges */}
+          <div className="flex items-center gap-4 shrink-0">
+            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-compliance-blue text-white font-bold text-sm">
+              NICEIC
+            </span>
+            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-green text-brand-charcoal font-bold text-xs text-center leading-tight">
+              Gas Safe
+            </span>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+          <p>© {year} My Landlord Certificate Ltd. All rights reserved.</p>
+          <nav className="flex gap-4" aria-label="Legal links">
+            <Link
+              href="/privacy"
+              className="hover:text-white/70 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="hover:text-white/70 transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/cookies"
+              className="hover:text-white/70 transition-colors"
+            >
+              Cookie Policy
+            </Link>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  );
+}
