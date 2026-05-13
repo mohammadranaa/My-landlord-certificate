@@ -25,12 +25,12 @@ import {
 export const metadata: Metadata = {
   title: "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate",
   description:
-    "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices from £50. Same-week appointments across London.",
+    "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. From £50 — no hidden charges. Next-day appointments available across London.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk" },
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Fixed-price landlord compliance certificates. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Same-week appointments across London. Certificate emailed same day.",
+      "Landlord compliance certificates from £50 — no hidden charges. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Next-day appointments across London. Certificate emailed same day.",
     url: "https://mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Fixed-price landlord compliance certificates for UK landlords. NICEIC approved. Gas Safe registered. Same-week appointments. Certificate emailed same day.",
+      "Landlord compliance certificates for UK landlords — no hidden charges. NICEIC approved. Gas Safe registered. Next-day appointments. Certificate emailed same day.",
   },
 };
 
@@ -68,7 +68,7 @@ const localBusinessSchema = {
   telephone: "+443301330066",
   email: "hello@mylandlordcertificate.co.uk",
   description:
-    "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. Fixed prices, same-week appointments across London.",
+    "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. No hidden charges, next-day appointments across London.",
   areaServed: ["London", "South East England"],
   currenciesAccepted: "GBP",
   paymentAccepted: "Credit Card, Debit Card",
@@ -265,7 +265,7 @@ const faqItems = [
   {
     question: "How quickly can I get my landlord certificate?",
     answer:
-      "Most appointments are available within 3–5 working days across London and the South East. Emergency same-day or next-day slots are available in many areas — call us on 0330 133 0066 to check availability.",
+      "Most appointments are available the next day across London and the South East, with nearly all confirmed within 1–3 days. Same-day slots are available in many areas — call us on 0330 133 0066 to check availability.",
   },
   {
     question: "Do I need to be at the property during the inspection?",
@@ -273,9 +273,9 @@ const faqItems = [
       "No. You just need to ensure the engineer can access the property — a tenant, keyholder or letting agent can provide access. We confirm the engineer's arrival window by text in advance.",
   },
   {
-    question: "Are your prices really fixed — no hidden fees?",
+    question: "Are there any hidden charges?",
     answer:
-      "Yes. The price shown for each certificate is the price you pay. No call-out charges, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £5 for parking (where no free on-site parking is available) and £18 for properties in the London Congestion Charge Zone.",
+      "No. The price shown for each certificate is what you pay. No call-out fees, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £5 for parking (where no free on-site parking is available) and £18 for properties in the London Congestion Charge Zone.",
   },
   {
     question: "Which areas of London and the South East do you cover?",
@@ -319,13 +319,13 @@ export default function HomePage() {
               <strong className="text-white font-semibold">EICR</strong>,{" "}
               <strong className="text-white font-semibold">Gas Safety Certificate (CP12)</strong>,{" "}
               <strong className="text-white font-semibold">EPC</strong>, Fire Risk
-              Assessment or PAT testing online in minutes. Fixed pricing, same-week
-              appointments across London — certificate emailed the same day.
+              Assessment or PAT testing online in minutes. Next-day appointments
+              available across London — no hidden charges, certificate emailed the same day.
             </p>
 
             <p className="text-blue-200 text-base mb-10 max-w-2xl">
               Landlord compliance doesn&apos;t have to be complicated. Every property
-              certificate your rental property needs, under one roof, at a fixed price.
+              certificate your rental property needs, under one roof, with no surprises on the invoice.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -359,8 +359,8 @@ export default function HomePage() {
               Every landlord certificate UK law requires
             </Heading>
             <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              All your landlord compliance certificates in one place. Fixed prices,
-              same-week appointments, digital certificate emailed on the day of the
+              All your landlord compliance certificates in one place. No hidden charges,
+              next-day appointments available, digital certificate emailed on the day of the
               inspection — no waiting, no chasing.
             </p>
           </div>
@@ -401,7 +401,7 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your landlord certificate, pick a date and pay securely online. Same-week slots available across all 32 London boroughs and the South East. No phone calls, no waiting on hold, no call-out charges to confirm.",
+                body: "Choose your landlord certificate, pick a date and pay securely online. Next-day slots available across all 32 London boroughs and the South East — most inspections confirmed within 1–3 days. No phone calls, no waiting on hold.",
               },
               {
                 step: "02",
@@ -457,8 +457,8 @@ export default function HomePage() {
             {[
               {
                 icon: "£",
-                title: "Fixed pricing — no surprises",
-                body: "Every price you see on our website is the price you pay. No call-out charges, no surcharges for older properties, no pressure to buy unnecessary remedial work. See every price up front on our pricing page before you book.",
+                title: "No hidden charges",
+                body: "The price shown is what you pay — no call-out fees, no surcharges for older properties, no pressure to buy unnecessary remedial work. You'll always see the exact amount before you confirm your booking.",
               },
               {
                 icon: "✓",
@@ -467,8 +467,8 @@ export default function HomePage() {
               },
               {
                 icon: "⚡",
-                title: "Same-week appointments across London",
-                body: "We carry open appointment slots across all 32 London boroughs seven days a week. In most cases you can book today and have your rental property inspected within 3–5 working days. Emergency slots available — call 0330 133 0066.",
+                title: "Next-day appointments across London",
+                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 32 London boroughs, seven days a week. Same-day slots available in many areas — call 0330 133 0066.",
               },
               {
                 icon: "📄",
@@ -557,7 +557,7 @@ export default function HomePage() {
               </Heading>
               <p className="text-blue-100 text-base leading-relaxed">
                 My Landlord Certificate works with letting agencies and HMO landlords
-                managing 10–50 properties. A dedicated account manager, volume
+                managing multiple properties. A dedicated account manager, volume
                 pricing, a renewal reminder dashboard and coordinated multi-property
                 scheduling keeps every property compliant — with far less admin.{" "}
                 <Link
@@ -612,7 +612,7 @@ export default function HomePage() {
         <Container>
           <CTABanner
             heading="Ready to get your landlord certificates sorted?"
-            subheading="Book online in under 3 minutes. Fixed pricing. Same-week appointments across London and the South East. All certificates emailed same day."
+            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the South East. All certificates emailed same day."
             primaryHref="/book"
             primaryLabel="Book your certificate now"
             secondaryHref="/pricing"
