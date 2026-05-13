@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/faq" },
+  openGraph: {
+    title: "FAQ — Landlord Certificates Explained | My Landlord Certificate",
+    description:
+      "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
+    url: "https://mylandlordcertificate.co.uk/faq",
+  },
+  twitter: {
+    title: "FAQ — Landlord Certificates Explained",
+    description:
+      "37 questions covering EICR, Gas Safety, EPC, Fire Risk Assessment, PAT Testing, booking and pricing.",
+  },
 };
 
 // ── FAQ data ──────────────────────────────────────────────────────────────────

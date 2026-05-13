@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/about" },
+  openGraph: {
+    title: "About Us — My Landlord Certificate",
+    description:
+      "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
+    url: "https://mylandlordcertificate.co.uk/about",
+  },
+  twitter: {
+    title: "About Us — My Landlord Certificate",
+    description:
+      "Fixed prices. Accredited engineers. Same-day certificates. Landlord compliance made straightforward.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

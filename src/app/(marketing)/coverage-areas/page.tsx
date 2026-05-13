@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/coverage-areas" },
+  openGraph: {
+    title: "Coverage Areas — All 32 London Boroughs & South East | My Landlord Certificate",
+    description:
+      "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
+    url: "https://mylandlordcertificate.co.uk/coverage-areas",
+  },
+  twitter: {
+    title: "Coverage Areas — All 32 London Boroughs & South East",
+    description:
+      "All 32 London boroughs and South East counties. Next-day appointments. Same-day certificate delivery.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

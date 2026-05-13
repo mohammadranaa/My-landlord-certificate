@@ -11,6 +11,16 @@ export const metadata: Metadata = {
     "How My Landlord Certificate collects, uses and protects your personal data. UK GDPR compliant privacy policy.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/privacy" },
   robots: { index: false },
+  openGraph: {
+    title: "Privacy Policy — My Landlord Certificate",
+    description:
+      "How My Landlord Certificate collects, uses and protects your personal data. UK GDPR compliant.",
+    url: "https://mylandlordcertificate.co.uk/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy — My Landlord Certificate",
+    description: "UK GDPR compliant privacy policy for My Landlord Certificate.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

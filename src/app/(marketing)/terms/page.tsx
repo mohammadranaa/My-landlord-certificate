@@ -11,6 +11,17 @@ export const metadata: Metadata = {
     "Terms and conditions for using My Landlord Certificate booking services. Covers booking, pricing, cancellation, certificate delivery, liability and governing law.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/terms" },
   robots: { index: false },
+  openGraph: {
+    title: "Terms of Service — My Landlord Certificate",
+    description:
+      "Terms and conditions for using My Landlord Certificate. Covers booking, pricing, cancellation, certificates and liability.",
+    url: "https://mylandlordcertificate.co.uk/terms",
+  },
+  twitter: {
+    title: "Terms of Service — My Landlord Certificate",
+    description:
+      "Terms covering booking, fixed pricing, cancellation policy, certificate delivery and governing law.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

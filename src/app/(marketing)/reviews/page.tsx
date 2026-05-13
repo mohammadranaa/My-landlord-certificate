@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "Read genuine reviews from London landlords. Rated 4.9 out of 5 on Trustpilot. EICR, Gas Safety, EPC and Fire Risk Assessment reviews from landlords across all 32 London boroughs.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/reviews" },
+  openGraph: {
+    title: "Customer Reviews — My Landlord Certificate",
+    description:
+      "Read genuine reviews from London landlords. Rated 4.9 out of 5 on Trustpilot. EICR, Gas Safety, EPC and Fire Risk Assessment reviews from landlords across all 32 London boroughs.",
+    url: "https://mylandlordcertificate.co.uk/reviews",
+  },
+  twitter: {
+    title: "Customer Reviews — My Landlord Certificate",
+    description:
+      "Rated 4.9/5 on Trustpilot. 312 reviews from London landlords across EICR, Gas Safety, EPC and FRA.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

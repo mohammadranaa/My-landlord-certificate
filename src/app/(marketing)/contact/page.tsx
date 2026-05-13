@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   description:
     "Get in touch with the My Landlord Certificate team. Call, email, WhatsApp or use our contact form. We respond to all enquiries within one working day.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/contact" },
+  openGraph: {
+    title: "Contact Us — My Landlord Certificate",
+    description:
+      "Get in touch with the My Landlord Certificate team. Call, email, WhatsApp or use our contact form. We respond to all enquiries within one working day.",
+    url: "https://mylandlordcertificate.co.uk/contact",
+  },
+  twitter: {
+    title: "Contact Us — My Landlord Certificate",
+    description:
+      "Call, email, WhatsApp or use our contact form. Mon–Fri 8am–7pm, Sat 9am–5pm.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

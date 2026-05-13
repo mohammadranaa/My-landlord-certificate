@@ -15,6 +15,17 @@ export const metadata: Metadata = {
   description:
     "Book your EICR, Gas Safety Certificate, EPC or Fire Risk Assessment in under 3 minutes. An accredited engineer visits your property. Certificate emailed the same day.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/how-it-works" },
+  openGraph: {
+    title: "How It Works — Book a Landlord Certificate in 3 Steps | My Landlord Certificate",
+    description:
+      "Book your EICR, Gas Safety Certificate, EPC or Fire Risk Assessment in under 3 minutes. An accredited engineer visits your property. Certificate emailed the same day.",
+    url: "https://mylandlordcertificate.co.uk/how-it-works",
+  },
+  twitter: {
+    title: "How It Works — Book a Landlord Certificate in 3 Steps",
+    description:
+      "Book online in under 3 minutes. Engineer visits. Certificate emailed same day. No hidden charges.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────

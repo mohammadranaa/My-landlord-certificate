@@ -14,6 +14,17 @@ export const metadata: Metadata = {
   description:
     "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/letting-agents" },
+  openGraph: {
+    title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
+    description:
+      "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
+    url: "https://mylandlordcertificate.co.uk/letting-agents",
+  },
+  twitter: {
+    title: "Letting Agents — Landlord Certificate Partner",
+    description:
+      "One provider for every certificate type. Fixed prices. Same-day delivery. Accredited engineers only.",
+  },
 };
 
 // ── Schema ────────────────────────────────────────────────────────────────────
