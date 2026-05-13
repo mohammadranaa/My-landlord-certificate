@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Link from "next/link";
-import { CTABanner } from "@/components/ui/cta-banner";
+import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { CTABanner } from "@/components/ui/cta-banner";
 import { FAQAccordion } from "@/components/ui/faq-accordion";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
@@ -9,33 +11,38 @@ import { ServiceCard } from "@/components/ui/service-card";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { JsonLd } from "@/components/shared/json-ld";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  getPriceForEICR,
+  getPriceForEPC,
+  getPriceForFRA,
+  getPriceForGasSafety,
+  getPriceForPAT,
+} from "@/lib/pricing";
 
-// ── Page metadata ─────────────────────────────────────────────────────────────
+// ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:
-    "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate",
+  title: "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate",
   description:
-    "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices. Same-week appointments across London.",
+    "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices from £50. Same-week appointments across London.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk" },
   openGraph: {
-    title: "Your Landlord Certificates. Sorted. | My Landlord Certificate",
+    title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Fixed-price property compliance certificates for UK landlords. EICR from £99. Gas Safety from £59. EPC from £69. Same-week appointments. Certificate emailed same day.",
+      "Fixed-price landlord compliance certificates. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Same-week appointments across London. Certificate emailed same day.",
     url: "https://mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
   twitter: {
-    title: "Your Landlord Certificates. Sorted. | My Landlord Certificate",
+    card: "summary_large_image",
+    title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Fixed-price property compliance certificates for UK landlords. Same-week appointments. Certificate emailed same day.",
+      "Fixed-price landlord compliance certificates for UK landlords. NICEIC approved. Gas Safe registered. Same-week appointments. Certificate emailed same day.",
   },
 };
 
-// ── Schema markup ─────────────────────────────────────────────────────────────
+// ── Schema data ───────────────────────────────────────────────────────────────
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -61,7 +68,7 @@ const localBusinessSchema = {
   telephone: "+443301330066",
   email: "hello@mylandlordcertificate.co.uk",
   description:
-    "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers.",
+    "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. Fixed prices, same-week appointments across London.",
   areaServed: ["London", "South East England"],
   currenciesAccepted: "GBP",
   paymentAccepted: "Credit Card, Debit Card",
@@ -108,13 +115,7 @@ const breadcrumbSchema = {
 function EicrIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -122,13 +123,7 @@ function EicrIcon() {
 function FlameIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 2c0 0-6 5-6 11a6 6 0 0 0 12 0c0-3-2-6-2-6s-1 3-3 4c0 0 1-6-1-9z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M12 2c0 0-6 5-6 11a6 6 0 0 0 12 0c0-3-2-6-2-6s-1 3-3 4c0 0 1-6-1-9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -136,13 +131,7 @@ function FlameIcon() {
 function LeafIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M20 2c0 0-8 1-12 8s-2 12-2 12 5-3 9-7c0 0-1 4-5 6 0 0 10-1 13-10s-3-9-3-9z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M20 2c0 0-8 1-12 8s-2 12-2 12 5-3 9-7c0 0-1 4-5 6 0 0 10-1 13-10s-3-9-3-9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -150,13 +139,7 @@ function LeafIcon() {
 function ShieldIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 2l8 3v6c0 5-4 9-8 11C8 20 4 16 4 11V5l8-3z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M12 2l8 3v6c0 5-4 9-8 11C8 20 4 16 4 11V5l8-3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -164,19 +147,7 @@ function ShieldIcon() {
 function PlugIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M7 2v4M17 2v4M5 10h14M5 10a2 2 0 0 0-2 2v2a7 7 0 0 0 14 0v-2a2 2 0 0 0-2-2"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 18v4"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <path d="M7 2v4M17 2v4M5 10h14M5 10a2 2 0 0 0-2 2v2a7 7 0 0 0 14 0v-2a2 2 0 0 0-2-2M12 18v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -184,25 +155,22 @@ function PlugIcon() {
 function PackageIcon() {
   return (
     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 22V12h6v10"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ── Prices from module ────────────────────────────────────────────────────────
+
+const EICR_FROM   = getPriceForEICR("studio");       // 67.99
+const GAS_FROM    = getPriceForGasSafety(1);          // 50
+const EPC_FROM    = getPriceForEPC("studio");         // 89.99
+const FRA_FROM    = getPriceForFRA("studio");         // 74
+const PAT_FROM    = getPriceForPAT(1);                // 59.99
+const BUNDLE_FROM = 130;
+
+// ── Static data ───────────────────────────────────────────────────────────────
 
 const services = [
   {
@@ -210,17 +178,17 @@ const services = [
     icon: <EicrIcon />,
     name: "EICR Certificate",
     description:
-      "Electrical Installation Condition Report — legally required for all rental properties in England since 2020. Valid for 5 years. NICEIC approved engineer.",
-    price: 99,
+      "Electrical Installation Condition Report — legally required for all private rental properties in England since 2020. Valid 5 years. NICEIC approved engineer.",
+    price: EICR_FROM,
     turnaroundDays: 2,
   },
   {
     href: "/gas-safety-certificate",
     icon: <FlameIcon />,
-    name: "Gas Safety Certificate",
+    name: "Gas Safety Certificate (CP12)",
     description:
       "Annual CP12 inspection of all gas appliances, flues and pipework by a Gas Safe registered engineer. Certificate issued same day.",
-    price: 59,
+    price: GAS_FROM,
     turnaroundDays: 1,
   },
   {
@@ -228,8 +196,8 @@ const services = [
     icon: <LeafIcon />,
     name: "EPC Certificate",
     description:
-      "Energy Performance Certificate — required before marketing any rental property. A–G rating by an accredited DEA assessor. Valid for 10 years.",
-    price: 69,
+      "Energy Performance Certificate — required before marketing any rental property. A–G rating by an accredited DEA assessor. Valid 10 years.",
+    price: EPC_FROM,
     turnaroundDays: 2,
   },
   {
@@ -237,8 +205,8 @@ const services = [
     icon: <ShieldIcon />,
     name: "Fire Risk Assessment",
     description:
-      "Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. Written report with prioritised action plan included.",
-    price: 89,
+      "Compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. Written report with prioritised action plan included.",
+    price: FRA_FROM,
     turnaroundDays: 2,
   },
   {
@@ -247,7 +215,7 @@ const services = [
     name: "PAT Testing",
     description:
       "Portable Appliance Testing for furnished rental properties. Pass/fail label on every appliance, full asset register emailed same day.",
-    price: 79,
+    price: PAT_FROM,
     turnaroundDays: 1,
   },
   {
@@ -255,8 +223,8 @@ const services = [
     icon: <PackageIcon />,
     name: "Bundle & Save",
     description:
-      "Combine your EICR, Gas Safety Certificate and EPC in one visit. One appointment, one fixed price, one digital folder of all certificates.",
-    price: 199,
+      "Combine your EICR, Gas Safety Certificate and EPC in one engineer visit. One fixed price, all certificates emailed the same day. Save up to £44.97.",
+    price: BUNDLE_FROM,
     turnaroundDays: 2,
   },
 ];
@@ -264,7 +232,7 @@ const services = [
 const reviews = [
   {
     content:
-      "Booked my EICR online at 9pm. Engineer arrived the next morning, certificate in my inbox by 1pm. Exactly what a landlord needs — fast, professional, no fuss.",
+      "Booked my EICR online at 9pm on a Sunday. Engineer arrived Monday morning, certificate in my inbox by 1pm. Exactly what a busy landlord needs — fast, fixed price, no fuss.",
     author: "James T.",
     location: "Islington, London",
     service: "EICR Certificate",
@@ -272,7 +240,7 @@ const reviews = [
   },
   {
     content:
-      "I manage 12 properties and use My Landlord Certificate for all of them. The renewal reminders mean I've never missed a gas safety check. Wouldn't use anyone else.",
+      "I manage 12 rental properties and use My Landlord Certificate for every gas safety check and EICR. The renewal reminders mean I've never missed a deadline. Wouldn't use anyone else.",
     author: "Sandra K.",
     location: "Manchester",
     service: "Gas Safety Certificate",
@@ -280,7 +248,7 @@ const reviews = [
   },
   {
     content:
-      "The engineer explained everything clearly. Fixed price as advertised — no hidden charges. Certificate arrived within a few hours of the inspection. Genuinely impressed.",
+      "The engineer explained every C3 code clearly and the price was exactly as quoted. No pressure for unnecessary work. Certificate arrived within hours. Genuinely impressed.",
     author: "David M.",
     location: "Bristol",
     service: "EPC Certificate",
@@ -290,9 +258,9 @@ const reviews = [
 
 const faqItems = [
   {
-    question: "What landlord certificates do I legally need in the UK?",
+    question: "Which landlord certificates do I legally need in the UK?",
     answer:
-      "Most rental properties need at minimum an EICR (every 5 years), a Gas Safety Certificate (every 12 months) and a valid EPC (every 10 years, minimum E rating). HMOs also require a Fire Risk Assessment under the Regulatory Reform (Fire Safety) Order 2005. PAT testing is required for any electrical appliances supplied with a furnished let.",
+      "Most rental properties in England need at minimum an EICR (every 5 years), a Gas Safety Certificate — CP12 — (every 12 months) and a valid EPC (every 10 years, minimum E rating). HMOs also require a Fire Risk Assessment under the Regulatory Reform (Fire Safety) Order 2005. PAT testing is required for all electrical appliances supplied with a furnished tenancy.",
   },
   {
     question: "How quickly can I get my landlord certificate?",
@@ -302,17 +270,17 @@ const faqItems = [
   {
     question: "Do I need to be at the property during the inspection?",
     answer:
-      "No. You just need to make sure the engineer can access the property. A tenant, keyholder or your letting agent can let them in. We'll confirm arrival time by text in advance.",
+      "No. You just need to ensure the engineer can access the property — a tenant, keyholder or letting agent can provide access. We confirm the engineer's arrival window by text in advance.",
   },
   {
-    question: "Is your pricing really fixed — no hidden fees?",
+    question: "Are your prices really fixed — no hidden fees?",
     answer:
-      "Yes. The price shown on our website is the price you pay. No call-out charges, no surcharges for older properties, no pressure to buy unnecessary remedial work. Fixed pricing is our guarantee to every landlord.",
+      "Yes. The price shown for each certificate is the price you pay. No call-out charges, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £5 for parking (where no free on-site parking is available) and £18 for properties in the London Congestion Charge Zone.",
   },
   {
-    question: "Which areas do you cover?",
+    question: "Which areas of London and the South East do you cover?",
     answer:
-      "We cover all 32 London boroughs and the wider South East — including Surrey, Kent, Essex and Hertfordshire. Check our coverage areas page for a full list of areas and postcodes served.",
+      "We cover all 32 London boroughs and the wider South East, including Surrey, Kent, Essex and Hertfordshire. Our NICEIC approved and Gas Safe registered engineers operate seven days a week across all areas.",
   },
 ];
 
@@ -321,18 +289,19 @@ const faqItems = [
 export default function HomePage() {
   return (
     <>
-      {/* Schema markup */}
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={localBusinessSchema} />
-      <JsonLd data={aggregateRatingSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      {/* Schema markup — using next/script as required */}
+      <Script id="schema-organization" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <Script id="schema-local-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <Script id="schema-aggregate-rating" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }} />
+      <Script id="schema-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* ── 1. Hero ── */}
+      {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section
         aria-labelledby="hero-heading"
         className="relative overflow-hidden bg-compliance-blue"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-compliance-blue via-compliance-blue to-brand-blue-dark pointer-events-none" />
+        {/* Gradient layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-compliance-blue via-compliance-blue to-brand-blue-dark pointer-events-none" aria-hidden="true" />
 
         <Container className="relative py-20 md:py-28 lg:py-32">
           <div className="max-w-3xl">
@@ -341,21 +310,22 @@ export default function HomePage() {
             </p>
 
             <Heading level={1} id="hero-heading" inverted className="mb-6">
-              Your landlord certificates.{" "}
+              Your property certificates.{" "}
               <span className="text-action-green">Sorted.</span>
             </Heading>
 
-            <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-4 max-w-2xl">
               Book your{" "}
               <strong className="text-white font-semibold">EICR</strong>,{" "}
-              <strong className="text-white font-semibold">
-                Gas Safety Certificate
-              </strong>
-              ,{" "}
-              <strong className="text-white font-semibold">EPC</strong>, Fire
-              Risk Assessment or PAT testing online in minutes. Fixed pricing,
-              same-week appointments across London, certificate emailed the same
-              day. Property compliance made simple.
+              <strong className="text-white font-semibold">Gas Safety Certificate (CP12)</strong>,{" "}
+              <strong className="text-white font-semibold">EPC</strong>, Fire Risk
+              Assessment or PAT testing online in minutes. Fixed pricing, same-week
+              appointments across London — certificate emailed the same day.
+            </p>
+
+            <p className="text-blue-200 text-base mb-10 max-w-2xl">
+              Landlord compliance doesn&apos;t have to be complicated. Every property
+              certificate your rental property needs, under one roof, at a fixed price.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -372,7 +342,7 @@ export default function HomePage() {
                   "bg-white/10 border border-white/30 text-white hover:bg-white/20",
                 )}
               >
-                See our pricing
+                See all prices
               </Link>
             </div>
 
@@ -381,17 +351,17 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── 2. Services grid ── */}
+      {/* ── 2. Services grid ─────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
           <div className="text-center mb-14">
             <Heading level={2} className="mb-4">
-              Every certificate every UK landlord needs
+              Every landlord certificate UK law requires
             </Heading>
             <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              All six property compliance certificates under one roof. Fixed
-              prices. Same-week appointments. Digital certificate emailed on the
-              day.
+              All your landlord compliance certificates in one place. Fixed prices,
+              same-week appointments, digital certificate emailed on the day of the
+              inspection — no waiting, no chasing.
             </p>
           </div>
 
@@ -404,25 +374,25 @@ export default function HomePage() {
           <p className="text-center mt-10 text-brand-grey text-sm">
             Not sure which certificates your rental property needs?{" "}
             <Link
-              href="/landlord-certificates"
+              href="/pricing"
               className="text-compliance-blue hover:underline font-medium"
             >
-              Read our complete UK landlord certificates guide →
+              View our full pricing →
             </Link>
           </p>
         </Container>
       </Section>
 
-      {/* ── 3. How it works ── */}
+      {/* ── 3. How it works ──────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-white">
         <Container>
           <div className="text-center mb-14">
             <Heading level={2} className="mb-4">
-              How it works — 3 simple steps
+              Book your landlord certificate in 3 steps
             </Heading>
             <p className="text-brand-grey text-lg max-w-xl mx-auto">
-              Getting your landlord certificate has never been easier. Most
-              bookings take under 3 minutes.
+              Getting your property compliance certificate has never been easier.
+              Most bookings take under 3 minutes.
             </p>
           </div>
 
@@ -431,17 +401,17 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your property compliance certificate, pick a date that suits you, and pay securely online. Same-week slots available across London and the South East. No phone calls, no waiting on hold.",
+                body: "Choose your landlord certificate, pick a date and pay securely online. Same-week slots available across all 32 London boroughs and the South East. No phone calls, no waiting on hold, no call-out charges to confirm.",
               },
               {
                 step: "02",
                 title: "Engineer visits your property",
-                body: "A NICEIC approved or Gas Safe registered engineer arrives at your agreed time. You don't need to be there — a tenant, keyholder or letting agent can provide access. Professional, punctual, ID-verified.",
+                body: "A NICEIC approved or Gas Safe registered engineer arrives at your agreed time. You don't need to be present — a tenant, keyholder or letting agent can provide access. Every engineer is ID-verified, fully accredited and insured.",
               },
               {
                 step: "03",
                 title: "Certificate emailed same day",
-                body: "Once the inspection is complete, your landlord certificate is processed and emailed within a few hours. Download it, forward it to your tenant, or share it with your local authority — it's ready immediately.",
+                body: "Your landlord certificate is processed and emailed within a few hours of the inspection completing. Download it, forward it to your tenant, share it with your local authority — it arrives before you've left for your next appointment.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex flex-col gap-4">
@@ -452,9 +422,7 @@ export default function HomePage() {
                   <h3 className="text-lg font-semibold text-brand-charcoal mb-2">
                     {title}
                   </h3>
-                  <p className="text-brand-grey leading-relaxed text-sm">
-                    {body}
-                  </p>
+                  <p className="text-brand-grey leading-relaxed text-sm">{body}</p>
                 </div>
               </li>
             ))}
@@ -465,13 +433,13 @@ export default function HomePage() {
               href="/how-it-works"
               className="text-compliance-blue hover:underline font-medium text-sm"
             >
-              Learn more about how My Landlord Certificate works →
+              Learn more about how it works →
             </Link>
           </div>
         </Container>
       </Section>
 
-      {/* ── 4. Why us ── */}
+      {/* ── 4. Why us ────────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
           <div className="text-center mb-14">
@@ -479,9 +447,9 @@ export default function HomePage() {
               Why landlords choose My Landlord Certificate
             </Heading>
             <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              UK landlord compliance is non-negotiable. We make staying on top
-              of every certificate simple, affordable and genuinely fast — no
-              chasing, no surprises.
+              Property compliance is non-negotiable. We make staying on top of
+              every landlord certificate simple, affordable and fast — so you can
+              get on with managing your rental portfolio.
             </p>
           </div>
 
@@ -490,22 +458,22 @@ export default function HomePage() {
               {
                 icon: "£",
                 title: "Fixed pricing — no surprises",
-                body: "Every price you see is the price you pay. No call-out charges, no hidden fees, no pressure to buy unnecessary remedial work. Your EICR is £99. Your gas safety check is £59. That's it. Transparent fixed pricing on every certificate.",
+                body: "Every price you see on our website is the price you pay. No call-out charges, no surcharges for older properties, no pressure to buy unnecessary remedial work. See every price up front on our pricing page before you book.",
               },
               {
                 icon: "✓",
                 title: "NICEIC approved and Gas Safe registered engineers",
-                body: "Every engineer holds the correct accreditation for the job. Your landlord certificate is signed by a qualified professional and stands up to scrutiny from tenants, letting agents and local authority inspectors.",
+                body: "Every engineer holds the correct accreditation for the job. Your EICR is carried out by a NICEIC approved electrician. Your Gas Safety Certificate is issued by a Gas Safe registered engineer. Every certificate stands up to scrutiny from tenants, letting agents and local authority inspectors.",
               },
               {
                 icon: "⚡",
                 title: "Same-week appointments across London",
-                body: "We carry open slots across all 32 London boroughs seven days a week. In most cases you can book today and have your rental property inspection completed within 3–5 working days.",
+                body: "We carry open appointment slots across all 32 London boroughs seven days a week. In most cases you can book today and have your rental property inspected within 3–5 working days. Emergency slots available — call 0330 133 0066.",
               },
               {
                 icon: "📄",
-                title: "Digital certificate emailed same day",
-                body: "No waiting weeks for paperwork. Your property compliance certificate is processed and emailed on the day of the inspection. Store it digitally, forward it, share it — it arrives before you've even made a cup of tea.",
+                title: "Certificate emailed the same day",
+                body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
               },
             ].map(({ icon, title, body }) => (
               <div
@@ -519,9 +487,7 @@ export default function HomePage() {
                   <dt className="font-semibold text-brand-charcoal mb-2 text-base">
                     {title}
                   </dt>
-                  <dd className="text-sm text-brand-grey leading-relaxed">
-                    {body}
-                  </dd>
+                  <dd className="text-sm text-brand-grey leading-relaxed">{body}</dd>
                 </div>
               </div>
             ))}
@@ -538,7 +504,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 5. Reviews ── */}
+      {/* ── 5. Reviews ───────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-white">
         <Container>
           <div className="text-center mb-14">
@@ -549,9 +515,8 @@ export default function HomePage() {
               What UK landlords say about us
             </Heading>
             <p className="text-brand-grey text-lg max-w-xl mx-auto">
-              Real reviews from real landlords and letting agents. We
-              don&apos;t cherry-pick — every Trustpilot review is independently
-              verified.
+              Real reviews from real landlords and letting agents. Independently
+              verified on Trustpilot — we don&apos;t cherry-pick.
             </p>
           </div>
 
@@ -579,37 +544,33 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 6. Letting agents teaser ── */}
+      {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
       <Section spacing="md" className="bg-compliance-blue">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
             <div className="max-w-xl">
               <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-3">
-                For letting agents
+                For letting agents &amp; portfolio landlords
               </p>
               <Heading level={2} inverted className="mb-4">
                 Managing multiple rental properties?
               </Heading>
               <p className="text-blue-100 text-base leading-relaxed">
-                My Landlord Certificate works with letting agencies managing
-                10–50 properties. A single account manager, volume pricing, a
-                renewal reminder dashboard and coordinated multi-property
-                scheduling. Less admin. Every property always compliant.{" "}
+                My Landlord Certificate works with letting agencies and HMO landlords
+                managing 10–50 properties. A dedicated account manager, volume
+                pricing, a renewal reminder dashboard and coordinated multi-property
+                scheduling keeps every property compliant — with far less admin.{" "}
                 <Link
                   href="/about"
                   className="text-white underline underline-offset-2 hover:text-blue-100 transition-colors"
                 >
-                  Learn more about us
+                  Learn more about us.
                 </Link>
-                .
               </p>
             </div>
             <Link
               href="/letting-agents"
-              className={cn(
-                buttonVariants({ variant: "cta", size: "lg" }),
-                "shrink-0",
-              )}
+              className={cn(buttonVariants({ variant: "cta", size: "lg" }), "shrink-0")}
             >
               Request a portfolio quote
             </Link>
@@ -617,7 +578,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 7. FAQ preview ── */}
+      {/* ── 7. FAQ preview ───────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
           <div className="max-w-3xl mx-auto">
@@ -626,7 +587,8 @@ export default function HomePage() {
                 Common landlord compliance questions
               </Heading>
               <p className="text-brand-grey text-lg">
-                Plain English answers to the questions every UK landlord asks.
+                Plain-English answers to the questions every UK landlord asks
+                about their property certificates.
               </p>
             </div>
 
@@ -645,12 +607,12 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 8. Final CTA ── */}
+      {/* ── 8. Final CTA ─────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-white">
         <Container>
           <CTABanner
-            heading="Ready to get your landlord certificate sorted?"
-            subheading="Book online in under 3 minutes. Same-week appointments. Fixed pricing. Certificate emailed same day."
+            heading="Ready to get your landlord certificates sorted?"
+            subheading="Book online in under 3 minutes. Fixed pricing. Same-week appointments across London and the South East. All certificates emailed same day."
             primaryHref="/book"
             primaryLabel="Book your certificate now"
             secondaryHref="/pricing"
@@ -665,7 +627,7 @@ export default function HomePage() {
       <StickyMobileCTA
         href="/book"
         label="Book Now"
-        price={59}
+        price={GAS_FROM}
         serviceName="Certificates from"
       />
     </>

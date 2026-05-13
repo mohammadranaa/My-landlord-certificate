@@ -133,6 +133,33 @@ src/
 
 > **PRICING RULE:** All pricing must reference `src/lib/pricing.ts`. Never hardcode prices in page content — always import from the pricing module. Use the exported constants, helper functions and `FROM_PRICES` map directly in page files.
 
+---
+
+### PAGE: Homepage (/)
+
+- **H1:** "Your property certificates. Sorted."
+- **Meta title:** "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate"
+- **Meta description:** "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices from £50. Same-week appointments across London."
+- **Word count target:** 800–1,200 words (visible body text)
+- **Sections (in order):** Hero → Services grid → How it works → Why us → Reviews → Letting agents teaser → FAQ preview → Final CTA
+- **Schema:** Organization, LocalBusiness, AggregateRating, BreadcrumbList
+- **Target keywords** (use naturally, not stuffed):
+  - Primary: `landlord certificates`, `property certificates`, `landlord compliance`
+  - Service: `EICR certificate`, `gas safety certificate`, `CP12`, `EPC certificate`, `fire risk assessment`, `PAT testing`, `HMO certificates`
+  - Qualifier: `London landlord`, `rental property`, `private rented sector`, `NICEIC approved`, `Gas Safe Registered`
+  - Transactional: `fixed price`, `same-day certificate`, `book online`
+- **Service card prices:** Import from `src/lib/pricing.ts`:
+  - EICR: `getPriceForEICR('studio')` → £67.99
+  - Gas Safety: `getPriceForGasSafety(1)` → £50
+  - EPC: `getPriceForEPC('studio')` → £89.99
+  - Fire Risk Assessment: `getPriceForFRA('studio')` → £74
+  - PAT Testing: `getPriceForPAT(1)` → £59.99
+  - Bundle: £130 (fixed marketing price)
+- **Hero:** Compliance Blue gradient background. No real photo yet — gradient + tagline only.
+- **Do not hardcode any prices in body copy** — reference the pricing page or use `from £X` pulled from the module.
+
+---
+
 ### Standard structure for every service page
 
 Every service page must include:
