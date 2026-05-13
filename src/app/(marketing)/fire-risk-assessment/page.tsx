@@ -19,16 +19,16 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Fire Risk Assessment from £74 | My Landlord Certificate",
+  title: "Fire Risk Assessment from £74 | NEBOSH Qualified | My Landlord Certificate",
   description:
-    "Book a Fire Risk Assessment from £74. Compulsory for HMOs, recommended for all rentals. Qualified assessors, written report with prioritised action plan, same-day delivery.",
+    "Book a Fire Risk Assessment from £74. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. NEBOSH qualified assessors. Written report with prioritised action plan, same-day delivery.",
   alternates: {
     canonical: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
-    title: "Fire Risk Assessment from £74 | My Landlord Certificate",
+    title: "Fire Risk Assessment from £74 | NEBOSH Qualified Assessors",
     description:
-      "Fire Risk Assessment from £74. Qualified assessors, written report with action plan, same-day delivery. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005.",
+      "Fire Risk Assessment from £74. Compulsory for HMOs. NEBOSH qualified assessors, written report with prioritised action plan, same-day delivery. Book online in under 3 minutes.",
     url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
@@ -41,19 +41,80 @@ const serviceSchema = {
   name: "Fire Risk Assessment",
   url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
   description:
-    "A Fire Risk Assessment identifies fire hazards, evaluates who is at risk, and records what actions are needed to remove or reduce that risk. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005.",
+    "A Fire Risk Assessment (FRA) identifies fire hazards, evaluates who is at risk, and records what actions are needed to reduce that risk. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. Carried out by NEBOSH qualified assessors.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://mylandlordcertificate.co.uk",
   },
   areaServed: ["London", "South East England"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Fire Risk Assessment pricing",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Studio apartment FRA",
+        price: "74",
+        priceCurrency: "GBP",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "1–3 bedroom FRA",
+        price: "139.99",
+        priceCurrency: "GBP",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Up to 4 bedroom FRA",
+        price: "179.99",
+        priceCurrency: "GBP",
+        availability: "https://schema.org/InStock",
+      },
+    ],
+  },
   offers: {
     "@type": "Offer",
     price: "74",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "147",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Fire Risk Assessment",
+  description:
+    "Residential and HMO Fire Risk Assessment by NEBOSH qualified assessors. Written report with prioritised action plan delivered same day.",
+  brand: {
+    "@type": "Brand",
+    name: "My Landlord Certificate",
+  },
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: "74",
+    highPrice: "349.99",
+    priceCurrency: "GBP",
+    offerCount: "9",
+    availability: "https://schema.org/InStock",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "147",
+    bestRating: "5",
+    worstRating: "1",
   },
 };
 
@@ -82,18 +143,18 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "How much does a Fire Risk Assessment cost?",
+      name: "Is a Fire Risk Assessment legally required for landlords?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A Fire Risk Assessment starts from £74 for a studio apartment. A 1–3 bedroom property costs £139.99, up to 4 bedrooms costs £179.99, and prices scale up to £349.99 for up to 8 bedrooms.",
+        text: "A written Fire Risk Assessment is compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended and may be required by your landlord insurance policy. The Building Safety Act 2022 introduced additional obligations for buildings over 18 metres.",
       },
     },
     {
       "@type": "Question",
-      name: "Is a Fire Risk Assessment legally required?",
+      name: "How much does a Fire Risk Assessment cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A written Fire Risk Assessment is compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended and may become a legal requirement under the Renters' Rights Bill 2025.",
+        text: "A Fire Risk Assessment starts from £74 for a studio apartment. A 1–3 bedroom property costs £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99.",
       },
     },
     {
@@ -101,7 +162,23 @@ const faqSchema = {
       name: "How often should a Fire Risk Assessment be reviewed?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Annually, or whenever there is a significant change to the property, its use, or the number of occupants. A change of tenancy is a good trigger point for a review.",
+        text: "Annually, or whenever there is a significant change to the property, its use, or the number of occupants. A change of tenancy is also a sensible trigger point for a review.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What qualifications should a fire risk assessor hold?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The government recommends using a competent, trained fire risk assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications — particularly the NEBOSH National Certificate in Fire Safety and Risk Management — are the industry-recognised standard for residential fire risk assessors.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does the Building Safety Act 2022 mean for landlords?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The Building Safety Act 2022 introduced new duties for higher-risk buildings (18 metres or 7+ storeys with two or more residential units). If your property falls within scope, you will have Accountable Person duties and must ensure an up-to-date Fire Risk Assessment is in place. The Building Safety Regulator can inspect and enforce compliance.",
       },
     },
   ],
@@ -111,9 +188,9 @@ const faqSchema = {
 
 const faqItems = [
   {
-    question: "Is a Fire Risk Assessment legally required?",
+    question: "Is a Fire Risk Assessment legally required for landlords?",
     answer:
-      "A written Fire Risk Assessment is compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended and may become a legal requirement under the Renters' Rights Bill 2025. We recommend all landlords have one regardless of property type.",
+      "A written Fire Risk Assessment is compulsory for all HMOs (Houses in Multiple Occupation) under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended — and most landlord insurance policies require it. The Building Safety Act 2022 introduced further duties for buildings over 18 metres or 7+ storeys. We recommend all landlords have an FRA regardless of property type.",
   },
   {
     question: "How much does a Fire Risk Assessment cost?",
@@ -121,31 +198,52 @@ const faqItems = [
       "Prices start from £74 for a studio apartment. A 1–3 bedroom property is £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99. See the full pricing table above.",
   },
   {
-    question: "How often should a Fire Risk Assessment be reviewed?",
+    question: "What qualifications should my fire risk assessor hold?",
     answer:
-      "Annually, or whenever there is a significant change to the property, its use, or the number of occupants. A change of tenancy is also a sensible trigger point for a review.",
+      "The government recommends using a competent, trained assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications — specifically the NEBOSH National Certificate in Fire Safety and Risk Management — are the industry-recognised standard. All our assessors hold NEBOSH certification and carry professional indemnity insurance.",
   },
   {
-    question: "What does a Fire Risk Assessment cover?",
+    question: "What does the Building Safety Act 2022 mean for me?",
     answer:
-      "Our assessors inspect all escape routes, fire doors, detection equipment (smoke and heat alarms), ignition sources, combustible materials and general fire safety management. You receive a written report with a prioritised action plan and a recommended reassessment date.",
+      "The Building Safety Act 2022 introduced new 'Accountable Person' duties for higher-risk buildings (18 metres or more, or 7+ storeys, with two or more residential units). If your building falls within scope, you must keep an up-to-date Fire Risk Assessment and engage with the Building Safety Regulator. Our assessors are trained on the Act's requirements and will flag if your property falls within its scope.",
+  },
+  {
+    question: "How often should a Fire Risk Assessment be reviewed?",
+    answer:
+      "Annually, or whenever there is a significant change to the property — structural alterations, change of use, change in number of occupants, or a new tenancy. For HMOs, your local authority may inspect and require evidence of a current assessment.",
+  },
+  {
+    question: "What does the assessment actually cover?",
+    answer:
+      "Our assessors inspect all escape routes, fire doors and self-closing mechanisms, smoke and heat detection equipment, ignition sources, combustible and flammable materials, fire-fighting equipment (extinguishers and blankets), means of giving warning, and general fire safety management. You receive a written report with findings graded by priority and a recommended reassessment date.",
   },
   {
     question: "What is the difference between an FRA for a single let and an HMO?",
     answer:
-      "For single lets, the assessment focuses on the main living areas and escape routes. For HMOs, the assessment is more detailed — covering communal areas, individual rooms, fire compartmentation, and the higher risk posed by multiple unrelated occupants sharing a property.",
+      "For single lets, the assessment focuses on the main living areas and escape routes. For HMOs, the assessment is more detailed — covering communal areas, individual rooms, fire compartmentation, and the significantly higher risk posed by multiple unrelated occupants sharing a property. HMO assessments typically also cover the requirements imposed by the HMO licence conditions.",
   },
   {
     question: "Do I need a separate assessment for communal areas?",
     answer:
-      "Yes — if your property has shared communal areas (hallways, staircases, landings), these require a separate FRA from the individual dwelling. We offer communal area assessments from £129.99 for buildings up to 3 floors.",
+      "Yes — if your property has shared communal areas (hallways, staircases, landings), these require a separate FRA from the individual dwelling. We offer communal area assessments from £129.99 for buildings up to 3 floors, scaling to £149.99 for 3–6 floors.",
+  },
+  {
+    question: "What happens if the assessment identifies problems?",
+    answer:
+      "Every issue is graded by priority in the written report — immediate action, short-term action, and ongoing maintenance. Immediate risks (such as a faulty smoke alarm or a blocked escape route) must be addressed before tenants can occupy the property. Our assessors will walk you through the findings and advise on next steps.",
+  },
+  {
+    question: "Can I do my own Fire Risk Assessment?",
+    answer:
+      "Legally yes, but only if you are competent to do so. For HMOs and larger buildings, local authorities and insurers will want evidence of a professionally conducted assessment by a qualified assessor. A NEBOSH qualified assessor provides a report that stands up to scrutiny if your compliance is ever challenged.",
   },
 ];
 
 const lowestPrice = getPriceForFRA("studio");
+const popularPrice = getPriceForFRA("1-3bed");
 
 const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
-  i === 3 ? { ...row, badge: "most-popular" as const } : row
+  i === 3 ? { ...row, badge: "most-popular" as const } : row,
 );
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -154,6 +252,7 @@ export default function FireRiskAssessmentPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={productSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 
@@ -176,20 +275,26 @@ export default function FireRiskAssessmentPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Qualified Assessors · Compulsory for HMOs
+            NEBOSH Qualified Assessors · Compulsory for HMOs · Building Safety Act 2022
           </p>
 
           <Heading level={1} id="fra-heading" inverted className="mb-4 max-w-2xl">
-            Fire Risk Assessment from £74
+            Fire Risk Assessment from £{lowestPrice}
           </Heading>
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             Compulsory for all HMOs under the Regulatory Reform (Fire Safety)
             Order 2005 and strongly recommended for all rental properties.
-            Written report with prioritised action plan delivered the same day.
+            NEBOSH qualified assessors. Written report with prioritised action
+            plan delivered the same day.
           </p>
 
-          <PriceDisplay price={lowestPrice} from size="lg" className="mb-8 [&>span:last-child]:text-white" />
+          <PriceDisplay
+            price={lowestPrice}
+            from
+            size="lg"
+            className="mb-8 [&>span:last-child]:text-white"
+          />
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
@@ -230,8 +335,8 @@ export default function FireRiskAssessmentPage() {
               <dd className="text-white font-semibold">delivered same day</dd>
             </div>
             <div className="flex gap-1.5">
-              <dt>Required</dt>
-              <dd className="text-white font-semibold">all HMOs</dd>
+              <dt>Assessors</dt>
+              <dd className="text-white font-semibold">NEBOSH qualified</dd>
             </div>
           </dl>
         </Container>
@@ -249,21 +354,79 @@ export default function FireRiskAssessmentPage() {
             to identify fire hazards, evaluate who is at risk, and record what
             actions are required to remove or reduce that risk to an acceptable
             level. A qualified assessor inspects escape routes, fire doors, smoke
-            and heat detection equipment, ignition sources and combustible
+            and heat detection equipment, ignition sources, and combustible
             materials throughout the property.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             At the end of the inspection you receive a written report detailing
-            every finding, a prioritised action plan (immediate, short-term and
-            ongoing actions), and a recommended date for reassessment.
+            every finding, a prioritised action plan — graded into immediate,
+            short-term, and ongoing actions — and a recommended date for
+            reassessment. The report is emailed to you on the same day as the
+            visit.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">Legal requirement: </strong>
             The Regulatory Reform (Fire Safety) Order 2005 requires a written
-            Fire Risk Assessment for all HMOs. The Renters&apos; Rights Bill 2025
-            is expected to extend this obligation further to all rented properties.
-            Even where not yet legally required, having a current FRA is strongly
-            recommended and may be required by your landlord insurance policy.
+            Fire Risk Assessment for all HMOs and any premises with communal
+            areas shared by multiple occupants. The Renters&apos; Rights Bill
+            2025 is expected to extend written FRA obligations further. Even
+            where not yet a named legal requirement, your landlord insurance
+            policy is likely to require it — and an FRA is the only recognised
+            way to demonstrate you have met your duty of care.
+          </div>
+        </section>
+
+        {/* ── Legal requirements ── */}
+        <section aria-labelledby="legal-heading">
+          <Heading level={2} id="legal-heading" className="mb-4">
+            Legal framework for landlords
+          </Heading>
+          <div className="grid sm:grid-cols-2 gap-5">
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Regulatory Reform (Fire Safety) Order 2005
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Requires the &quot;Responsible Person&quot; (the landlord or their agent)
+                to carry out a suitable and sufficient Fire Risk Assessment for
+                all HMOs and properties with communal areas. Failure to comply
+                can result in an unlimited fine or up to two years&apos; imprisonment.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Building Safety Act 2022
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Introduced for higher-risk buildings (18 metres or 7+ storeys
+                with two or more residential units). Creates new
+                &quot;Accountable Person&quot; duties, a Building Safety Case, and
+                oversight by the Building Safety Regulator. An up-to-date FRA
+                is a core requirement under the Act.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                HMO Licence Conditions
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Most local authorities include a current Fire Risk Assessment as
+                an explicit condition of the HMO licence. Your licence can be
+                revoked if you cannot produce an up-to-date FRA on inspection.
+                Unlicensed HMO operation carries a fine of up to £30,000.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Smoke and CO Alarm Regulations 2022
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Require at least one smoke alarm on every floor and a carbon
+                monoxide alarm in any room with a fixed combustion appliance.
+                Our FRA checks compliance and flags any missing or faulty
+                alarms in the written report.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -273,8 +436,8 @@ export default function FireRiskAssessmentPage() {
             Fire Risk Assessment pricing
           </Heading>
           <p className="text-brand-grey mb-6">
-            Fixed pricing by property type and size. The price you see is the
-            price you pay — no call-out charges, no hidden fees.
+            Fixed pricing by property type and size. No call-out charges, no
+            hidden fees — the price you see is the price you pay.
           </p>
 
           <PriceTable
@@ -282,18 +445,24 @@ export default function FireRiskAssessmentPage() {
             rows={fraTableWithBadge}
           />
 
-          {/* Additional charges */}
           <div className="mt-4 rounded-xl border border-border bg-warm-white p-4 text-sm text-brand-charcoal/70">
-            <p className="font-medium text-brand-charcoal mb-1">Additional charges (where applicable)</p>
+            <p className="font-medium text-brand-charcoal mb-1">
+              Additional charges (where applicable)
+            </p>
             <ul className="list-disc list-inside space-y-1">
-              <li>Parking charge if no free parking is available on site: <strong>£{ADDITIONAL_CHARGES.parking}</strong></li>
-              <li>Congestion Charge Zone: <strong>£{ADDITIONAL_CHARGES.congestionZone}</strong></li>
+              <li>
+                Parking charge if no free parking is available on site:{" "}
+                <strong>£{ADDITIONAL_CHARGES.parking}</strong>
+              </li>
+              <li>
+                Congestion Charge Zone:{" "}
+                <strong>£{ADDITIONAL_CHARGES.congestionZone}</strong>
+              </li>
             </ul>
           </div>
 
-          {/* Commercial note */}
           <p className="mt-5 text-sm text-brand-grey">
-            Need a Fire Risk Assessment for a commercial property?{" "}
+            Need an FRA for a commercial property, office, or retail unit?{" "}
             <Link
               href="/commercial-fire-risk-assessment"
               className="text-compliance-blue hover:underline font-medium"
@@ -312,23 +481,240 @@ export default function FireRiskAssessmentPage() {
             {[
               "Inspection of all escape routes, corridors and stairways",
               "Assessment of all fire doors and self-closing mechanisms",
-              "Check of smoke and heat detection equipment",
-              "Identification of ignition sources and combustible materials",
-              "Evaluation of fire-fighting equipment (extinguishers, blankets)",
-              "Written report with findings graded by priority",
-              "Prioritised action plan (immediate, short-term, ongoing)",
-              "Recommended reassessment date",
+              "Check of smoke and heat detection equipment and carbon monoxide alarms",
+              "Identification of ignition sources and combustible or flammable materials",
+              "Evaluation of fire-fighting equipment (extinguishers, fire blankets)",
+              "Assessment of emergency lighting where fitted",
+              "Written report with findings graded by risk priority",
+              "Prioritised action plan — immediate, short-term, and ongoing actions",
+              "Recommended reassessment date included in the report",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
-                  <svg className="w-3 h-3 text-action-green" fill="none" viewBox="0 0 12 12" aria-hidden="true">
-                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    className="w-3 h-3 text-action-green"
+                    fill="none"
+                    viewBox="0 0 12 12"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 6l3 3 5-5"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </span>
                 <span className="text-brand-charcoal/80">{item}</span>
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* ── Who needs an FRA ── */}
+        <section aria-labelledby="who-needs-heading">
+          <Heading level={2} id="who-needs-heading" className="mb-4">
+            Who needs a Fire Risk Assessment?
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            While HMOs face the strictest legal obligations, any landlord who
+            supplies a rental property has a duty of care to ensure it is
+            fire-safe. Here is how the requirement applies across different
+            property types.
+          </p>
+          <div className="space-y-4">
+            <div className="rounded-xl border border-border p-5">
+              <p className="font-semibold text-brand-charcoal mb-1">
+                HMOs (Houses in Multiple Occupation)
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                A written FRA is legally compulsory under the Regulatory Reform
+                (Fire Safety) Order 2005. It is also a condition of the HMO
+                licence in every London borough. Assessments for HMOs cover
+                communal areas, individual rooms, fire compartmentation between
+                units, and the higher risk posed by multiple unrelated occupants.
+                An{" "}
+                <Link
+                  href="/eicr"
+                  className="text-compliance-blue hover:underline"
+                >
+                  EICR
+                </Link>{" "}
+                is also required for all HMOs.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border p-5">
+              <p className="font-semibold text-brand-charcoal mb-1">
+                Larger flats and converted buildings
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Any building with communal areas — shared hallways, staircases,
+                or landings — falls under the Fire Safety Order. This includes
+                converted Victorian terraces split into flats and any building
+                where two or more tenants share common parts. A separate
+                communal area assessment is required in addition to any
+                individual flat assessment.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border p-5">
+              <p className="font-semibold text-brand-charcoal mb-1">
+                Higher-risk buildings (Building Safety Act 2022)
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Buildings 18 metres or taller, or with 7 or more storeys and
+                two or more residential units, are now regulated by the Building
+                Safety Regulator. Accountable Persons must maintain a Building
+                Safety Case including an up-to-date FRA, and must engage with
+                residents on building safety matters.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border p-5">
+              <p className="font-semibold text-brand-charcoal mb-1">
+                Standard single lets
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                A written FRA is not yet a named legal requirement for single
+                occupancy properties, but it is strongly recommended — and
+                increasingly required by landlord insurance policies. The
+                Renters&apos; Rights Bill 2025 is expected to bring single lets
+                within the scope of mandatory FRA requirements.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── How it works ── */}
+        <section aria-labelledby="how-it-works-heading">
+          <Heading level={2} id="how-it-works-heading" className="mb-6">
+            How it works
+          </Heading>
+          <ol className="space-y-6" role="list">
+            {[
+              {
+                step: "1",
+                title: "Book online",
+                body: "Choose your property type, select a date, and pay securely online. The whole process takes under 3 minutes. You will receive a confirmation email immediately.",
+              },
+              {
+                step: "2",
+                title: "Assessor visits the property",
+                body: "A NEBOSH qualified fire risk assessor carries out the inspection. You or your tenant can provide access — you do not need to be present. The assessor inspects every relevant area methodically and notes all findings.",
+              },
+              {
+                step: "3",
+                title: "Report emailed the same day",
+                body: "You receive a written Fire Risk Assessment report by email on the day of the visit. The report details every finding, grades each issue by priority, sets out a recommended action plan, and gives a reassessment date.",
+              },
+            ].map(({ step, title, body }) => (
+              <li key={step} className="flex gap-5">
+                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-compliance-blue text-white flex items-center justify-center font-bold text-sm">
+                  {step}
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{title}</p>
+                  <p className="text-brand-charcoal/80 text-sm leading-relaxed">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ── NEBOSH accreditation ── */}
+        <section aria-labelledby="nebosh-heading">
+          <Heading level={2} id="nebosh-heading" className="mb-4">
+            NEBOSH qualified fire risk assessors
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            The government does not approve individual fire risk assessors in the
+            same way it approves electricians or gas engineers, but it strongly
+            recommends using a &quot;competent&quot; assessor with appropriate training
+            and experience. NEBOSH — the National Examination Board in
+            Occupational Safety and Health — provides the industry-recognised
+            qualification for fire risk assessors: the NEBOSH National
+            Certificate in Fire Safety and Risk Management.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            <div className="rounded-xl border border-border bg-warm-white p-4 text-center">
+              <p className="text-2xl font-bold text-compliance-blue mb-1">NEBOSH</p>
+              <p className="text-xs text-brand-grey">National Certificate in Fire Safety &amp; Risk Management</p>
+            </div>
+            <div className="rounded-xl border border-border bg-warm-white p-4 text-center">
+              <p className="text-2xl font-bold text-compliance-blue mb-1">PI Insured</p>
+              <p className="text-xs text-brand-grey">Professional indemnity cover on every assessment</p>
+            </div>
+            <div className="rounded-xl border border-border bg-warm-white p-4 text-center">
+              <p className="text-2xl font-bold text-compliance-blue mb-1">4.9 ★</p>
+              <p className="text-xs text-brand-grey">Average rating from 147 verified reviews</p>
+            </div>
+          </div>
+          <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
+            NEBOSH qualifications are recognised by the Health and Safety
+            Executive (HSE), local authorities, letting agents, and landlord
+            insurers as evidence of competence. A NEBOSH qualified assessor
+            produces a report that stands up to scrutiny if your fire safety
+            compliance is ever challenged.
+          </p>
+          <p className="text-sm text-brand-charcoal/80">
+            You can verify NEBOSH qualifications via{" "}
+            <a
+              href="https://www.nebosh.org.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-compliance-blue hover:underline"
+            >
+              nebosh.org.uk
+            </a>
+            . Read what our landlords say about our assessors on our{" "}
+            <Link href="/reviews" className="text-compliance-blue hover:underline">
+              reviews page
+            </Link>
+            .
+          </p>
+        </section>
+
+        {/* ── Cross-sell ── */}
+        <section aria-labelledby="related-heading">
+          <Heading level={2} id="related-heading" className="mb-4">
+            Other compliance certificates you may need
+          </Heading>
+          <p className="text-brand-charcoal/80 mb-5 text-sm leading-relaxed">
+            Most landlords who need a Fire Risk Assessment also need an{" "}
+            <Link href="/eicr" className="text-compliance-blue hover:underline font-medium">
+              EICR
+            </Link>{" "}
+            and a{" "}
+            <Link
+              href="/gas-safety-certificate"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              Gas Safety Certificate (CP12)
+            </Link>
+            . Book all three together and save with our{" "}
+            <Link
+              href="/landlord-certificates-bundle"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              HMO Complete bundle
+            </Link>
+            .
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
+              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £50" },
+              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: "from £130" },
+            ].map(({ label, href, price }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-xl border border-border bg-warm-white p-4 hover:border-compliance-blue transition-colors block"
+              >
+                <p className="font-semibold text-brand-charcoal text-sm mb-1">{label}</p>
+                <p className="text-compliance-blue text-sm font-medium">{price}</p>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* ── FAQs ── */}
@@ -348,8 +734,9 @@ export default function FireRiskAssessmentPage() {
             Ready to book your Fire Risk Assessment?
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
-            Book online in under 3 minutes. A qualified fire risk assessor will
-            contact you to confirm your appointment.
+            Book online in under 3 minutes. A NEBOSH qualified assessor will
+            contact you to confirm your appointment. Written report emailed the
+            same day — from £{popularPrice} for a 1–3 bedroom property.
           </p>
           <Link
             href="/book?service=fire-risk-assessment"
@@ -358,7 +745,7 @@ export default function FireRiskAssessmentPage() {
             Book my FRA — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            Fixed pricing. Written report delivered same day. No hidden fees.
+            No hidden charges. NEBOSH qualified assessors. Report emailed same day.
           </p>
         </section>
       </div>
@@ -367,7 +754,7 @@ export default function FireRiskAssessmentPage() {
         href="/book?service=fire-risk-assessment"
         label="Book FRA"
         price={lowestPrice}
-        serviceName="FRA from"
+        serviceName="Fire Risk Assessment from"
       />
     </>
   );
