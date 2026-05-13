@@ -21,12 +21,12 @@ import {
 export const metadata: Metadata = {
   title: "EICR Certificate from £67.99 | My Landlord Certificate",
   description:
-    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved electricians, next-day appointments, certificate emailed same day.",
+    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed same day.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/eicr" },
   openGraph: {
     title: "EICR Certificate from £67.99 | My Landlord Certificate",
     description:
-      "Electrical Installation Condition Report from £67.99. NICEIC approved engineers, next-day appointments across London and the South East, certificate emailed same day.",
+      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the South East, certificate emailed same day.",
     url: "https://mylandlordcertificate.co.uk/eicr",
   },
 };
@@ -39,7 +39,7 @@ const serviceSchema = {
   name: "EICR — Electrical Installation Condition Report",
   url: "https://mylandlordcertificate.co.uk/eicr",
   description:
-    "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved electricians, certificate emailed same day.",
+    "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved and NAPIT certified electricians, certificate emailed same day.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -76,7 +76,7 @@ const productSchema = {
   "@type": "Product",
   name: "EICR Certificate — Electrical Installation Condition Report",
   description:
-    "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed same day.",
+    "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved and NAPIT certified electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed same day.",
   brand: {
     "@type": "Brand",
     name: "My Landlord Certificate",
@@ -181,10 +181,10 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "What does NICEIC approved mean?",
+      name: "What accreditations do your electricians hold?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "NICEIC is the UK's leading electrical safety body. NICEIC approved contractors are assessed annually against BS 7671 (the IET Wiring Regulations). An EICR carried out by a NICEIC approved electrician is accepted by all UK local authorities, letting agents and mortgage lenders.",
+        text: "Our electricians are either NICEIC approved or NAPIT certified — both are government-recognised competent person schemes assessed against BS 7671 (the IET Wiring Regulations). An EICR carried out by a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders.",
       },
     },
   ],
@@ -229,9 +229,9 @@ const faqItems = [
       "No. An EICR covers only the fixed electrical installation — wiring, consumer unit, sockets, switches and light fittings. Portable appliances supplied with a furnished tenancy (white goods, TVs, lamps) are covered separately by PAT Testing. If you supply appliances, you may need both.",
   },
   {
-    question: "What does NICEIC approved mean?",
+    question: "What accreditations do your electricians hold?",
     answer:
-      "NICEIC is the UK's leading electrical safety certification body. Approved contractors are assessed annually against BS 7671 — the IET Wiring Regulations. An EICR from a NICEIC approved electrician is accepted by all UK local authorities, letting agents and mortgage lenders. Some local councils specifically require NICEIC or equivalent accreditation when reviewing compliance evidence.",
+      "Our electricians are either NICEIC approved or NAPIT certified — both are government-recognised competent person schemes assessed annually against BS 7671 (the IET Wiring Regulations). An EICR from a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders. You can verify any engineer's registration on the NICEIC contractor search or the NAPIT member finder.",
   },
 ];
 
@@ -267,7 +267,7 @@ export default function EicrPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC Approved · Electrical Safety Certificate · London &amp; South East
+            NICEIC Approved · NAPIT Certified · Electrical Safety Certificate
           </p>
 
           <Heading level={1} id="eicr-heading" inverted className="mb-4 max-w-2xl">
@@ -276,8 +276,8 @@ export default function EicrPage() {
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Electrical Installation Condition Report — a legal requirement for all
-            private rented properties in England since 2020. NICEIC approved
-            electricians, no hidden charges, certificate emailed the same day.
+            private rented properties in England since 2020. NICEIC approved and
+            NAPIT certified electricians, no hidden charges, certificate emailed the same day.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -336,7 +336,7 @@ export default function EicrPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
-              <dd className="text-white font-semibold">NICEIC approved</dd>
+              <dd className="text-white font-semibold">NICEIC &amp; NAPIT</dd>
             </div>
           </dl>
         </Container>
@@ -352,11 +352,11 @@ export default function EicrPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             An EICR (Electrical Installation Condition Report) is a formal
             assessment of all fixed electrical wiring, consumer units and
-            installations within a property. A qualified NICEIC approved
-            electrician tests every circuit from the fuse board, checks all
-            sockets, light fittings, bonding and earthing arrangements, and
-            assigns a condition code to anything that falls below the current
-            British Standard BS 7671 — the IET Wiring Regulations.
+            installations within a property. A qualified NICEIC approved or
+            NAPIT certified electrician tests every circuit from the fuse board,
+            checks all sockets, light fittings, bonding and earthing
+            arrangements, and assigns a condition code to anything that falls
+            below the current British Standard BS 7671 — the IET Wiring Regulations.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             The result is a written report that tells you exactly what state the
@@ -410,8 +410,9 @@ export default function EicrPage() {
             Your EICR must be carried out by a qualified electrician — one who
             is competent to test and assess electrical installations. In
             practice this means a registered electrician, and NICEIC approval
-            is widely recognised as the benchmark accreditation by councils,
-            letting agents and mortgage lenders across England.
+            or NAPIT certification are both widely recognised as the benchmark
+            accreditations by councils, letting agents and mortgage lenders
+            across England.
           </p>
 
           <div className="rounded-xl bg-warm-white border border-border p-5 mb-5">
@@ -421,7 +422,7 @@ export default function EicrPage() {
             <ul className="space-y-2 text-sm text-brand-charcoal/80">
               {[
                 "Commission an EICR at least every 5 years (or at each change of tenancy if sooner)",
-                "Use a qualified and competent electrician — ideally NICEIC approved",
+                "Use a qualified and competent electrician — ideally NICEIC approved or NAPIT certified",
                 "Provide a copy of the EICR to every tenant before or at the start of their tenancy",
                 "Provide a copy to your local housing authority within 7 days of a written request",
                 "Arrange and evidence completion of remedial works within 28 days of a C1 or C2 finding",
@@ -638,7 +639,7 @@ export default function EicrPage() {
 
           <p className="mt-5 text-sm text-brand-grey">
             If your EICR comes back unsatisfactory, we can arrange remedial
-            works through our network of NICEIC approved electricians. Contact
+            works through our network of NICEIC approved and NAPIT certified electricians. Contact
             us on{" "}
             <a
               href="tel:03301330066"
@@ -676,8 +677,8 @@ export default function EicrPage() {
               },
               {
                 step: "02",
-                title: "NICEIC approved electrician visits",
-                body: "A NICEIC approved electrician arrives at your agreed time and carries out the full EICR inspection. You don't need to be present — a tenant, keyholder or letting agent can provide access. The inspection typically takes 2–4 hours.",
+                title: "Accredited electrician visits",
+                body: "A NICEIC approved or NAPIT certified electrician arrives at your agreed time and carries out the full EICR inspection. You don't need to be present — a tenant, keyholder or letting agent can provide access. The inspection typically takes 2–4 hours.",
               },
               {
                 step: "03",
@@ -715,18 +716,21 @@ export default function EicrPage() {
         {/* ── 9. NICEIC & why choose us ───────────────────────────────────── */}
         <section aria-labelledby="niceic-heading">
           <Heading level={2} id="niceic-heading" className="mb-4">
-            Why NICEIC approved matters for your EICR
+            NICEIC approved and NAPIT certified electricians
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            NICEIC is the UK&apos;s leading electrical safety certification body.
-            NICEIC approved contractors are assessed and monitored annually
-            against BS 7671 — the IET Wiring Regulations — by independent
-            assessors. Only contractors who consistently meet the standard
-            retain approval.
+            Every EICR we carry out is performed by an electrician holding
+            either NICEIC approval or NAPIT certification — both
+            government-recognised competent person schemes, assessed annually
+            against BS 7671 (the IET Wiring Regulations) by independent
+            technical auditors. NICEIC is the UK&apos;s largest electrical
+            certification body; NAPIT (National Association of Professional
+            Inspectors and Testers) is its established counterpart, covering
+            the same scope under the same regulatory framework.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            When your EICR is carried out by a NICEIC approved electrician, it
-            is accepted without question by local housing authorities,{" "}
+            An EICR from a NICEIC approved or NAPIT certified electrician is
+            accepted without question by local housing authorities,{" "}
             <Link
               href="/eicr-london"
               className="text-compliance-blue hover:underline font-medium"
@@ -734,16 +738,17 @@ export default function EicrPage() {
               London borough councils
             </Link>
             , letting agents, property management companies and mortgage
-            lenders. Some local authorities specifically require NICEIC or
-            equivalent approved contractor status when reviewing compliance
-            evidence from landlords.
+            lenders. Both schemes are listed on the government&apos;s competent
+            person register, and local authorities recognise either as
+            satisfying the requirement for a qualified inspector under the
+            Electrical Safety Standards in the Private Rented Sector (England)
+            Regulations 2020.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            A non-accredited electrician can technically perform an EICR, but
-            the certificate may be challenged. Choosing a NICEIC approved
-            engineer eliminates that risk. Every EICR booked through My
-            Landlord Certificate is carried out by a NICEIC registered
-            electrician — you can verify your engineer&apos;s credentials on the{" "}
+            A non-registered electrician can technically perform an EICR, but
+            the certificate may be challenged by a local authority or letting
+            agent. Choosing an accredited engineer eliminates that risk. You
+            can verify your engineer&apos;s registration on the{" "}
             <a
               href="https://www.niceic.com/find-a-contractor"
               target="_blank"
@@ -751,6 +756,15 @@ export default function EicrPage() {
               className="text-compliance-blue hover:underline font-medium"
             >
               NICEIC contractor search
+            </a>{" "}
+            or the{" "}
+            <a
+              href="https://www.napit.org.uk/find-a-contractor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              NAPIT member finder
             </a>
             .
           </p>
@@ -826,8 +840,8 @@ export default function EicrPage() {
             Ready to book your EICR?
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
-            Book online in under 3 minutes. A NICEIC approved electrician will
-            confirm your appointment. Certificate emailed the same day.
+            Book online in under 3 minutes. A NICEIC approved or NAPIT certified
+            electrician will confirm your appointment. Certificate emailed the same day.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Next-day appointments available across London and the South East —
@@ -847,7 +861,7 @@ export default function EicrPage() {
             Book my EICR — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. NICEIC approved. Certificate emailed same day.
+            No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed same day.
           </p>
         </section>
       </div>
