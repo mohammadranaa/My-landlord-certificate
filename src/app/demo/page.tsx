@@ -5,12 +5,20 @@ import { FAQAccordion } from "@/components/ui/faq-accordion";
 import { Footer } from "@/components/ui/footer";
 import { Heading } from "@/components/ui/heading";
 import { NavBar } from "@/components/ui/nav-bar";
+import { PriceDisplay } from "@/components/ui/price-display";
+import { PriceTable } from "@/components/ui/price-table";
 import { PriceTag } from "@/components/ui/price-tag";
 import { Section } from "@/components/ui/section";
 import { ServiceCard } from "@/components/ui/service-card";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import {
+  DOMESTIC_EICR_TABLE,
+  DOMESTIC_EPC_TABLE,
+  GAS_SAFETY_CP12_TABLE,
+  PAT_TABLE,
+} from "@/lib/pricing";
 
 export const metadata = {
   title: "Design System Demo",
@@ -266,6 +274,77 @@ export default function DemoPage() {
                 primaryHref="/services/bundle"
                 primaryLabel="See bundle pricing"
                 variant="white"
+              />
+            </div>
+          </Container>
+        </Section>
+
+        {/* ── PriceDisplay ─────────────────────────────────── */}
+        <Section spacing="md">
+          <Container>
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-grey mb-8">
+              PriceDisplay Component
+            </p>
+            <div className="flex flex-wrap gap-10 items-end">
+              <div>
+                <p className="text-xs text-brand-grey mb-3">size="sm" from</p>
+                <PriceDisplay price={67.99} from size="sm" />
+              </div>
+              <div>
+                <p className="text-xs text-brand-grey mb-3">size="md" from</p>
+                <PriceDisplay price={94.99} from size="md" />
+              </div>
+              <div>
+                <p className="text-xs text-brand-grey mb-3">size="lg" from</p>
+                <PriceDisplay price={50} from size="lg" />
+              </div>
+              <div>
+                <p className="text-xs text-brand-grey mb-3">size="md" no prefix</p>
+                <PriceDisplay price={104.99} size="md" />
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* ── PriceTable ───────────────────────────────────── */}
+        <Section spacing="md" className="bg-white">
+          <Container>
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-grey mb-8">
+              PriceTable Component
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* EICR — with highlightCheapest */}
+              <PriceTable
+                title="Domestic EICR Pricing"
+                rows={DOMESTIC_EICR_TABLE}
+                highlightCheapest
+              />
+
+              {/* Gas Safety — with manual badge */}
+              <PriceTable
+                title="Gas Safety Certificate (CP12)"
+                rows={[
+                  ...GAS_SAFETY_CP12_TABLE.map((r, i) =>
+                    i === 2 ? { ...r, badge: "most-popular" as const } : r
+                  ),
+                ]}
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mt-8">
+              {/* EPC */}
+              <PriceTable
+                title="Domestic EPC Pricing"
+                rows={DOMESTIC_EPC_TABLE}
+                highlightCheapest
+              />
+
+              {/* PAT — longer list */}
+              <PriceTable
+                title="PAT Testing"
+                rows={PAT_TABLE}
+                highlightCheapest
               />
             </div>
           </Container>
