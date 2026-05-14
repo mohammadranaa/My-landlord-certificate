@@ -22,6 +22,7 @@ const topLinks = [
   { href: "/pricing", label: "Pricing" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/reviews", label: "Reviews" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/letting-agents", label: "Letting Agents" },
 ] as const;

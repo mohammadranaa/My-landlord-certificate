@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 const BASE = "https://mylandlordcertificate.co.uk";
 
@@ -58,6 +59,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
+  // ── Blog pages ─────────────────────────────────────────────────────────────
+  const blogPosts = getAllPosts();
+  const blogPages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/blog`, priority: 0.8, changeFrequency: "weekly" as const },
+    ...blogPosts.map((post) => ({
+      url: `${BASE}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      priority: 0.7 as number,
+      changeFrequency: "monthly" as const,
+    })),
+  ];
+
   return [
     // Homepage
     {
@@ -69,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages.map((p) => ({ ...p, lastModified: now })),
     ...seoPages.map((p) => ({ ...p, lastModified: now })),
     ...infoPages.map((p) => ({ ...p, lastModified: now })),
+    ...blogPages.map((p) => ({ ...p, lastModified: p.lastModified ?? now })),
     ...locationPages.map((p) => ({ ...p, lastModified: now })),
     // Note: /privacy and /terms are robots: noindex and are intentionally
     // excluded from the sitemap.
