@@ -568,6 +568,16 @@ export default function EpcPage() {
           </div>
 
           <p className="mt-5 text-sm text-brand-grey">
+            Want a breakdown of what affects EPC costs?{" "}
+            <Link
+              href="/epc-cost"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              See our full EPC pricing guide →
+            </Link>
+          </p>
+
+          <p className="mt-3 text-sm text-brand-grey">
             Need an EPC for a commercial property?{" "}
             <Link
               href="/commercial-epc"

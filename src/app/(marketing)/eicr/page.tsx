@@ -489,6 +489,16 @@ export default function EicrPage() {
           </div>
 
           <p className="mt-5 text-sm text-brand-grey">
+            Want a detailed breakdown of what drives EICR costs?{" "}
+            <Link
+              href="/eicr-cost"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              See our full EICR pricing guide →
+            </Link>
+          </p>
+
+          <p className="mt-3 text-sm text-brand-grey">
             Need an EICR for a commercial property?{" "}
             <Link
               href="/commercial-eicr"

@@ -191,9 +191,14 @@ export default function PricingPage() {
                 <h3 className="text-base font-semibold text-brand-charcoal">
                   Domestic EICR
                 </h3>
-                <Link href="/eicr" className="text-sm text-compliance-blue hover:underline">
-                  Service page →
-                </Link>
+                <div className="flex items-center gap-4">
+                  <Link href="/eicr-cost" className="text-sm text-brand-grey hover:text-compliance-blue hover:underline">
+                    Cost guide →
+                  </Link>
+                  <Link href="/eicr" className="text-sm text-compliance-blue hover:underline">
+                    Service page →
+                  </Link>
+                </div>
               </div>
               <PriceTable
                 title="Domestic EICR — by property size"
@@ -307,9 +312,14 @@ export default function PricingPage() {
                 <h3 className="text-base font-semibold text-brand-charcoal">
                   Gas Safety Certificate (CP12 — Domestic)
                 </h3>
-                <Link href="/gas-safety-certificate" className="text-sm text-compliance-blue hover:underline">
-                  Service page →
-                </Link>
+                <div className="flex items-center gap-4">
+                  <Link href="/gas-safety-certificate-cost" className="text-sm text-brand-grey hover:text-compliance-blue hover:underline">
+                    Cost guide →
+                  </Link>
+                  <Link href="/gas-safety-certificate" className="text-sm text-compliance-blue hover:underline">
+                    Service page →
+                  </Link>
+                </div>
               </div>
               <PriceTable
                 title="Gas Safety Certificate CP12 — domestic"
@@ -384,9 +394,14 @@ export default function PricingPage() {
                 <h3 className="text-base font-semibold text-brand-charcoal">
                   Domestic EPC
                 </h3>
-                <Link href="/epc" className="text-sm text-compliance-blue hover:underline">
-                  Service page →
-                </Link>
+                <div className="flex items-center gap-4">
+                  <Link href="/epc-cost" className="text-sm text-brand-grey hover:text-compliance-blue hover:underline">
+                    Cost guide →
+                  </Link>
+                  <Link href="/epc" className="text-sm text-compliance-blue hover:underline">
+                    Service page →
+                  </Link>
+                </div>
               </div>
               <PriceTable
                 title="Domestic EPC — by property size"

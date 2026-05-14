@@ -507,6 +507,16 @@ export default function GasSafetyPage() {
           </div>
 
           <p className="mt-5 text-sm text-brand-grey">
+            Want a detailed breakdown of Gas Safety Certificate costs?{" "}
+            <Link
+              href="/gas-safety-certificate-cost"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              See our full Gas Safety pricing guide →
+            </Link>
+          </p>
+
+          <p className="mt-3 text-sm text-brand-grey">
             Need a commercial gas safety certificate for a business premises?{" "}
             <Link
               href="/commercial-gas-safety-certificate"
