@@ -506,7 +506,7 @@ export default function EicrLondonPage() {
                 key={author}
                 className="rounded-xl border border-border bg-white p-5 flex flex-col"
               >
-                <div className="flex gap-0.5 mb-3" aria-label={`${rating} out of 5 stars`}>
+                <div className="flex gap-0.5 mb-3" role="img" aria-label={`${rating} out of 5 stars`}>
                   {Array.from({ length: rating }).map((_, i) => (
                     <svg
                       key={i}

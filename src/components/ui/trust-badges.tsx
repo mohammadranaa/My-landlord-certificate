@@ -66,7 +66,7 @@ export function TrustBadges({
 
       {/* Trustpilot */}
       <div className="flex items-center gap-2">
-        <div className="flex gap-0.5" aria-label={`${rating} stars on Trustpilot`}>
+        <div className="flex gap-0.5" role="img" aria-label={`${rating} stars on Trustpilot`}>
           {[1, 2, 3, 4, 5].map((i) => (
             <svg
               key={i}

@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CTABanner } from "@/components/ui/cta-banner";
-import { FAQAccordion } from "@/components/ui/faq-accordion";
 import { Heading } from "@/components/ui/heading";
+import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
 import { ServiceCard } from "@/components/ui/service-card";
-import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
+
+const FAQAccordion = dynamic(
+  () => import("@/components/ui/faq-accordion").then((m) => m.FAQAccordion),
+  { ssr: true },
+);
+const StickyMobileCTA = dynamic(
+  () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
+  { ssr: false },
+);
 import {
   getPriceForEICR,
   getPriceForEPC,
@@ -289,11 +297,10 @@ const faqItems = [
 export default function HomePage() {
   return (
     <>
-      {/* Schema markup — using next/script as required */}
-      <Script id="schema-organization" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <Script id="schema-local-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-      <Script id="schema-aggregate-rating" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }} />
-      <Script id="schema-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={aggregateRatingSchema} />
+      <JsonLd data={breadcrumbSchema} />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section
@@ -453,7 +460,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <dl className="grid sm:grid-cols-2 gap-8">
+          <ul className="grid sm:grid-cols-2 gap-8" role="list">
             {[
               {
                 icon: "£",
@@ -476,22 +483,22 @@ export default function HomePage() {
                 body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
               },
             ].map(({ icon, title, body }) => (
-              <div
+              <li
                 key={title}
                 className="flex gap-5 p-6 bg-white rounded-2xl border border-border"
               >
-                <div className="w-12 h-12 rounded-xl bg-compliance-blue/10 text-compliance-blue font-bold text-xl flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-compliance-blue/10 text-compliance-blue font-bold text-xl flex items-center justify-center shrink-0" aria-hidden="true">
                   {icon}
                 </div>
                 <div>
-                  <dt className="font-semibold text-brand-charcoal mb-2 text-base">
+                  <p className="font-semibold text-brand-charcoal mb-2 text-base">
                     {title}
-                  </dt>
-                  <dd className="text-sm text-brand-grey leading-relaxed">{body}</dd>
+                  </p>
+                  <p className="text-sm text-brand-grey leading-relaxed">{body}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </dl>
+          </ul>
 
           <div className="text-center mt-10">
             <Link
