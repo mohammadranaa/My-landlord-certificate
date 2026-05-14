@@ -10,14 +10,13 @@ export default function BookingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-brand-warm-white">
-      {/* Booking-specific slim header */}
-      <header className="bg-brand-blue px-6 py-4">
+    <div className="min-h-screen bg-warm-white">
+      <header className="bg-compliance-blue px-6 py-4">
         <a href="/" className="text-white font-bold text-lg">
           My Landlord Certificate
         </a>
       </header>
-      <main className="max-w-2xl mx-auto px-6 py-10">{children}</main>
+      <main>{children}</main>
     </div>
   );
 }
