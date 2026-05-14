@@ -18,7 +18,6 @@ const FAQAccordion = dynamic(
 );
 const StickyMobileCTA = dynamic(
   () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
-  { ssr: false },
 );
 import {
   getPriceForEICR,
