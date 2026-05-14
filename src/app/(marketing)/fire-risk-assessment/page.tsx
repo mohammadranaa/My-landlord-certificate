@@ -470,6 +470,16 @@ export default function FireRiskAssessmentPage() {
               See commercial FRA pricing →
             </Link>
           </p>
+
+          <p className="mt-3 text-sm text-brand-grey">
+            Comparing all landlord certificate prices?{" "}
+            <Link
+              href="/pricing"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              View our complete pricing page →
+            </Link>
+          </p>
         </section>
 
         {/* ── What's included ── */}
@@ -699,10 +709,12 @@ export default function FireRiskAssessmentPage() {
             </Link>
             .
           </p>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
               { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £50" },
+              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
+              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
               { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: "from £130" },
             ].map(({ label, href, price }) => (
               <Link

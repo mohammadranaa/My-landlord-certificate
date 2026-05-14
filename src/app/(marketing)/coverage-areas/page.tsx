@@ -391,6 +391,38 @@ export default function CoverageAreasPage() {
         </Container>
       </section>
 
+      {/* ── Services & area pages ── */}
+      <section aria-labelledby="coverage-services-heading" className="py-14 bg-warm-white">
+        <Container>
+          <Heading level={2} id="coverage-services-heading" className="mb-3 text-center">
+            Our services — available across all areas
+          </Heading>
+          <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
+            The same fixed prices and accredited engineers wherever your property
+            is — London borough or South East county.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
+              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
+              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "EICR in London", href: "/eicr-london", price: "All London boroughs" },
+            ].map(({ label, href, price }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-xl border border-border bg-white p-4 hover:border-compliance-blue transition-colors block"
+              >
+                <p className="font-semibold text-brand-charcoal text-sm mb-1">{label}</p>
+                <p className="text-compliance-blue text-sm font-medium">{price}</p>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* ── CTA ── */}
       <section
         aria-labelledby="cta-heading"

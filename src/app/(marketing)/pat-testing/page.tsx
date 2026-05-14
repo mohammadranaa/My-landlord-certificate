@@ -442,6 +442,16 @@ export default function PatTestingPage() {
               </li>
             </ul>
           </div>
+
+          <p className="mt-4 text-sm text-brand-grey">
+            Comparing all landlord certificate prices?{" "}
+            <Link
+              href="/pricing"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              View our complete pricing page →
+            </Link>
+          </p>
         </section>
 
         {/* ── What's included ── */}
@@ -523,6 +533,42 @@ export default function PatTestingPage() {
               HMO Complete bundle
             </Link>
             .
+          </div>
+        </section>
+
+        {/* ── Cross-sell ── */}
+        <section aria-labelledby="related-pat-heading">
+          <Heading level={2} id="related-pat-heading" className="mb-4">
+            Other compliance certificates you may need
+          </Heading>
+          <p className="text-brand-charcoal/80 mb-5 text-sm leading-relaxed">
+            Most landlords who book PAT Testing also hold a current{" "}
+            <Link href="/eicr" className="text-compliance-blue hover:underline font-medium">EICR</Link>
+            {" "}and{" "}
+            <Link href="/gas-safety-certificate" className="text-compliance-blue hover:underline font-medium">Gas Safety Certificate</Link>
+            . HMO landlords also require a{" "}
+            <Link href="/fire-risk-assessment" className="text-compliance-blue hover:underline font-medium">Fire Risk Assessment</Link>
+            . Book all together with our{" "}
+            <Link href="/landlord-certificates-bundle" className="text-compliance-blue hover:underline font-medium">HMO Complete bundle</Link>
+            .
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
+              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £50" },
+              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
+              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: "from £130" },
+            ].map(({ label, href, price }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-xl border border-border bg-warm-white p-4 hover:border-compliance-blue transition-colors block"
+              >
+                <p className="font-semibold text-brand-charcoal text-sm mb-1">{label}</p>
+                <p className="text-compliance-blue text-sm font-medium">{price}</p>
+              </Link>
+            ))}
           </div>
         </section>
 

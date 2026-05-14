@@ -508,6 +508,16 @@ export default function EicrPage() {
             </Link>
           </p>
 
+          <p className="mt-3 text-sm text-brand-grey">
+            Comparing all landlord certificate prices?{" "}
+            <Link
+              href="/pricing"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              View our complete pricing page →
+            </Link>
+          </p>
+
           <div className="mt-5 rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-4 text-sm text-brand-charcoal/80">
             Booking an EICR alongside a{" "}
             <Link

@@ -697,6 +697,33 @@ export default function EpcCostPage() {
           </p>
         </section>
 
+        {/* ── Other cost guides ── */}
+        <section aria-labelledby="other-cost-guides-heading">
+          <Heading level={2} id="other-cost-guides-heading" className="mb-4">
+            Compare other landlord certificate costs
+          </Heading>
+          <p className="text-brand-charcoal/80 mb-5 text-sm leading-relaxed">
+            Most landlords who need an EPC also need an EICR and a Gas Safety
+            Certificate. See what each costs and compare all services on our pricing page.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { label: "EICR Certificate Cost", href: "/eicr-cost", price: "from £67.99" },
+              { label: "Gas Safety Certificate Cost", href: "/gas-safety-certificate-cost", price: "from £50" },
+              { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
+            ].map(({ label, href, price }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-xl border border-border bg-warm-white p-4 hover:border-compliance-blue transition-colors block"
+              >
+                <p className="font-semibold text-brand-charcoal text-sm mb-1">{label}</p>
+                <p className="text-compliance-blue text-sm font-medium">{price}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading">
           <Heading level={2} id="faq-heading" className="mb-6">

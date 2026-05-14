@@ -621,6 +621,37 @@ export default function BundlePage() {
           </p>
         </section>
 
+        {/* ── Individual service links ── */}
+        <section aria-labelledby="individual-services-heading">
+          <Heading level={2} id="individual-services-heading" className="mb-4">
+            Book certificates individually
+          </Heading>
+          <p className="text-brand-charcoal/80 mb-5 text-sm leading-relaxed">
+            Prefer to book one certificate at a time? Each service is available
+            separately at a fixed price with the same next-day appointments and
+            same-day certificate delivery.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
+              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
+              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
+            ].map(({ label, href, price }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-xl border border-border bg-warm-white p-4 hover:border-compliance-blue transition-colors block"
+              >
+                <p className="font-semibold text-brand-charcoal text-sm mb-1">{label}</p>
+                <p className="text-compliance-blue text-sm font-medium">{price}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading">
           <Heading level={2} id="faq-heading" className="mb-6">
