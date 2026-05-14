@@ -390,7 +390,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── 3. How it works ──────────────────────────────────────────────── */}
-      <Section spacing="lg" className="bg-white">
+      <Section id="how-it-works" spacing="lg" className="bg-white">
         <Container>
           <div className="text-center mb-14">
             <Heading level={2} className="mb-4">
@@ -407,39 +407,86 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your landlord certificate, pick a date and pay securely online. Next-day slots available across all 32 London boroughs and the South East — most inspections confirmed within 1–3 days. No phone calls, no waiting on hold.",
+                body: "Choose your certificate, select your property size, pick a date and pay securely. Next-day slots available across London and the South East.",
+                bullets: [
+                  "EICR, Gas Safety, EPC, FRA, PAT or a bundle",
+                  "Fixed price shown before you pay — no hidden extras",
+                  "Morning, afternoon and evening slots available",
+                  "Confirmation email sent immediately",
+                ],
+                icon: (
+                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" strokeWidth="1.75"/>
+                    <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    <path d="M7 13h4M7 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                ),
               },
               {
                 step: "02",
                 title: "Engineer visits your property",
-                body: "A NICEIC approved or Gas Safe registered engineer arrives at your agreed time. You don't need to be present — a tenant, keyholder or letting agent can provide access. Every engineer is ID-verified, fully accredited and insured.",
+                body: "A fully accredited engineer arrives at your agreed time. You don't need to be present — your tenant or a keyholder can provide access.",
+                bullets: [
+                  "NICEIC approved electricians for EICR",
+                  "Gas Safe registered engineers for CP12",
+                  "Accredited DEA assessors for EPC",
+                  "ID-verified, insured and background-checked",
+                ],
+                icon: (
+                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" stroke="currentColor" strokeWidth="1.75"/>
+                    <path d="M3 21c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    <path d="M16 10l1.5 1.5L21 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ),
               },
               {
                 step: "03",
                 title: "Certificate emailed same day",
-                body: "Your landlord certificate is processed and emailed within a few hours of the inspection completing. Download it, forward it to your tenant, share it with your local authority — it arrives before you've left for your next appointment.",
+                body: "Your certificate arrives by email on the day of the inspection — fully compliant, ready to forward to your tenant, letting agent or local authority.",
+                bullets: [
+                  "PDF certificate emailed same day as the visit",
+                  "Accepted by all local authorities and letting agents",
+                  "Forward to tenant within 28 days as required by law",
+                  "EPC lodged on the national register automatically",
+                ],
+                icon: (
+                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.75"/>
+                    <path d="M2 8l10 7 10-7" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                  </svg>
+                ),
               },
-            ].map(({ step, title, body }) => (
+            ].map(({ step, title, body, bullets, icon }) => (
               <li key={step} className="flex flex-col gap-4">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-compliance-blue/10 text-compliance-blue font-bold text-xl shrink-0">
-                  {step}
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-compliance-blue/10 shrink-0">
+                  {icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-brand-charcoal mb-2">
-                    {title}
-                  </h3>
-                  <p className="text-brand-grey leading-relaxed text-sm">{body}</p>
+                  <p className="text-xs font-bold text-compliance-blue uppercase tracking-wider mb-1">Step {step}</p>
+                  <h3 className="text-lg font-semibold text-brand-charcoal mb-2">{title}</h3>
+                  <p className="text-brand-grey leading-relaxed text-sm mb-4">{body}</p>
+                  <ul className="space-y-2">
+                    {bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-brand-charcoal/70">
+                        <svg className="w-4 h-4 text-action-green mt-0.5 shrink-0" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+                          <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </li>
             ))}
           </ol>
 
-          <div className="text-center mt-12">
-            <Link
-              href="/how-it-works"
-              className="text-compliance-blue hover:underline font-medium text-sm"
-            >
-              Learn more about how it works →
+          <div className="flex flex-wrap gap-4 justify-center mt-14">
+            <Link href="/book" className={cn(buttonVariants({ variant: "cta", size: "lg" }))}>
+              Book now
+            </Link>
+            <Link href="/pricing" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
+              See all prices
             </Link>
           </div>
         </Container>
@@ -544,7 +591,7 @@ export default function HomePage() {
               href="/reviews"
               className="text-compliance-blue hover:underline font-medium text-sm"
             >
-              See all 847 reviews on Trustpilot →
+              Read all reviews →
             </Link>
           </div>
         </Container>

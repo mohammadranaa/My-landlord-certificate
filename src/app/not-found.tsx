@@ -18,7 +18,7 @@ const helpLinks = [
   { label: "EPC Certificate", href: "/epc", sub: "From £89.99" },
   { label: "Fire Risk Assessment", href: "/fire-risk-assessment", sub: "From £74" },
   { label: "Pricing", href: "/pricing", sub: "All services & prices" },
-  { label: "How It Works", href: "/how-it-works", sub: "3-step process" },
+  { label: "How It Works", href: "/#how-it-works", sub: "3-step process" },
 ];
 
 export default function NotFound() {

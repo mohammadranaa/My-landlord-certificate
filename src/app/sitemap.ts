@@ -39,7 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Informational pages ─────────────────────────────────────────────────────
   const infoPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/how-it-works`,   priority: 0.7, changeFrequency: "yearly" },
     { url: `${BASE}/coverage-areas`, priority: 0.7, changeFrequency: "monthly" },
     { url: `${BASE}/faq`,            priority: 0.7, changeFrequency: "monthly" },
     { url: `${BASE}/about`,          priority: 0.6, changeFrequency: "yearly"  },

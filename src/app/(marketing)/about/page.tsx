@@ -281,7 +281,7 @@ export default function AboutPage() {
           </ol>
           <div className="mt-8 text-center">
             <Link
-              href="/how-it-works"
+              href="/#how-it-works"
               className="text-sm text-compliance-blue font-medium hover:underline"
             >
               Full how it works breakdown →

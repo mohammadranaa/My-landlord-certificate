@@ -5,25 +5,26 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { ReviewsByServiceFilter } from "@/components/marketing/reviews-filter";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Customer Reviews — My Landlord Certificate",
+  title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
   description:
-    "Read genuine reviews from London landlords. Rated 4.9 out of 5 on Trustpilot. EICR, Gas Safety, EPC and Fire Risk Assessment reviews from landlords across all 32 London boroughs.",
+    "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews. See what landlords say about our EICR, Gas Safety, EPC and Fire Risk Assessment services.",
   alternates: { canonical: "https://mylandlordcertificate.co.uk/reviews" },
   openGraph: {
-    title: "Customer Reviews — My Landlord Certificate",
+    title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
     description:
-      "Read genuine reviews from London landlords. Rated 4.9 out of 5 on Trustpilot. EICR, Gas Safety, EPC and Fire Risk Assessment reviews from landlords across all 32 London boroughs.",
+      "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews.",
     url: "https://mylandlordcertificate.co.uk/reviews",
   },
   twitter: {
-    title: "Customer Reviews — My Landlord Certificate",
+    title: "My Landlord Certificate Reviews — Rated 4.9/5",
     description:
-      "Rated 4.9/5 on Trustpilot. 312 reviews from London landlords across EICR, Gas Safety, EPC and FRA.",
+      "312 verified Trustpilot reviews from London landlords. EICR, Gas Safety, EPC and Fire Risk Assessment.",
   },
 };
 
@@ -190,35 +191,41 @@ export default function ReviewsPage() {
       >
         <Container className="py-16 md:py-20 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Customer Reviews
+            My Landlord Certificate Reviews
           </p>
-          <Heading level={1} id="reviews-heading" inverted className="mb-4 max-w-2xl mx-auto">
-            What London landlords say about us
+          <Heading level={1} id="reviews-heading" inverted className="mb-6 max-w-2xl mx-auto">
+            Rated 4.9 out of 5 by London landlords
           </Heading>
 
-          {/* Rating summary */}
-          <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-2xl px-6 py-4 mb-6">
-            <div className="flex gap-1" role="img" aria-label="4.9 out of 5 stars">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <svg
-                  key={i}
-                  className="w-5 h-5 text-[#00B67A]"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
+          {/* Prominent rating block */}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-white/10 border border-white/20 rounded-2xl px-8 py-6 mb-8">
+            <div className="text-center sm:text-left">
+              <p className="text-6xl font-bold text-white leading-none mb-1">4.9</p>
+              <div className="flex gap-1 justify-center sm:justify-start mb-1" role="img" aria-label="4.9 out of 5 stars">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg
+                    key={i}
+                    className="w-5 h-5 text-[#00B67A]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-blue-200 text-xs">out of 5 stars</p>
             </div>
-            <div className="text-left">
-              <p className="font-bold text-white text-lg leading-none">4.9 / 5</p>
-              <p className="text-blue-200 text-xs mt-0.5">Based on 312 reviews</p>
+            <div className="w-px h-14 bg-white/20 hidden sm:block" aria-hidden="true" />
+            <div className="text-center sm:text-left">
+              <p className="text-4xl font-bold text-white leading-none mb-1">312</p>
+              <p className="text-blue-200 text-sm">verified reviews</p>
+              <p className="text-blue-300 text-xs mt-0.5">independently verified on Trustpilot</p>
             </div>
           </div>
 
           <p className="text-blue-100 text-base leading-relaxed max-w-md mx-auto">
-            Verified reviews from landlords who have booked EICR, Gas Safety, EPC
+            Real reviews from landlords who have booked EICR, Gas Safety, EPC
             and Fire Risk Assessment services across London.
           </p>
         </Container>
@@ -261,44 +268,16 @@ export default function ReviewsPage() {
         </Container>
       </section>
 
-      {/* ── Reviews by service ── */}
+      {/* ── Reviews by service (filterable) ── */}
       <section aria-labelledby="by-service-heading" className="py-16 bg-white">
         <Container>
           <Heading level={2} id="by-service-heading" className="mb-2 text-center">
             Reviews by service
           </Heading>
-          <p className="text-brand-grey text-center mb-12">
+          <p className="text-brand-grey text-center mb-10">
             What landlords say about each certificate we offer.
           </p>
-
-          <div className="space-y-12">
-            {byService.map(({ service, href, reviews }) => (
-              <div key={service}>
-                <div className="flex items-center justify-between mb-5">
-                  <Heading level={3} className="!mb-0">
-                    {service}
-                  </Heading>
-                  <Link
-                    href={href}
-                    className="text-sm text-compliance-blue font-medium hover:underline shrink-0 ml-4"
-                  >
-                    Learn more →
-                  </Link>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-5">
-                  {reviews.map((r) => (
-                    <TestimonialCard
-                      key={r.author}
-                      content={r.content}
-                      author={r.author}
-                      location={r.location}
-                      service={service.replace(" Certificate", "").replace(" Assessment", "")}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewsByServiceFilter groups={byService} />
         </Container>
       </section>
 
