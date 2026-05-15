@@ -1,35 +1,62 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, Building2 } from "lucide-react";
+import { Bell, ClipboardList, Flame, Shield, Siren } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Energy Performance Certificates (EPC) | Domestic & Commercial | My Landlord Certificate",
+  title: "Fire Safety Certificates & Assessments | My Landlord Certificate",
   description:
-    "Domestic EPC from £89.99, commercial EPC from £249.99. Accredited DEA assessors across London. Required by law before letting or selling — 10-year validity.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/epc" },
+    "Fire safety certificates from £54.99, fire risk assessments from £74.99, fire alarm installation from £209.99/alarm. Accredited fire safety engineers across London.",
+  alternates: { canonical: "https://mylandlordcertificate.co.uk/fire-safety" },
 };
 
 const services = [
   {
-    href: "/epc/domestic-epc",
-    icon: <Home className="w-5 h-5" />,
-    title: "Domestic EPC",
-    price: FROM_PRICES.epc,
+    href: "/fire-safety/fire-safety-certificate",
+    icon: <Bell className="w-5 h-5" />,
+    title: "Fire Safety Certificate",
+    price: FROM_PRICES["fire-safety-cert"],
     description:
-      "Required by law before renting or selling a residential property. Assesses energy efficiency and provides an A–G rating. Valid for 10 years.",
-    badge: "10-year validity",
+      "Testing and certification of smoke and heat detectors in residential properties. Required for HMOs and recommended for all rentals.",
+    badge: "Annual recommendation",
   },
   {
-    href: "/epc/commercial-epc",
-    icon: <Building2 className="w-5 h-5" />,
-    title: "Commercial EPC",
-    price: FROM_PRICES["commercial-epc"],
+    href: "/fire-safety/fire-risk-assessment",
+    icon: <ClipboardList className="w-5 h-5" />,
+    title: "Fire Risk Assessment",
+    price: FROM_PRICES["fra-residential"],
     description:
-      "Mandatory for commercial properties before sale, letting, or major renovation. Priced by floor area. Includes recommendation report.",
-    badge: "By floor area",
+      "Legally required under the Regulatory Reform (Fire Safety) Order 2005 for HMOs, blocks of flats, and commercial properties.",
+    badge: "Legal requirement for HMOs",
+  },
+  {
+    href: "/fire-safety/fire-alarm-installation",
+    icon: <Siren className="w-5 h-5" />,
+    title: "Fire Alarm Installation",
+    price: FROM_PRICES["fire-alarm-installation"],
+    description:
+      "Supply and installation of Grade D mains-wired interlinked smoke and heat alarms. Meets BS 5839-6 requirements.",
+    badge: "Per alarm installed",
+  },
+  {
+    href: "/fire-safety/fire-door-certificate",
+    icon: <Shield className="w-5 h-5" />,
+    title: "Fire Door Certificate",
+    price: FROM_PRICES["fire-door-cert"],
+    description:
+      "Inspection and certification of fire doors in HMOs and blocks of flats. Checks gap tolerance, self-closing, and intumescent strips.",
+    badge: "HMO & flat requirement",
+  },
+  {
+    href: "/fire-safety/fire-extinguisher-testing",
+    icon: <Flame className="w-5 h-5" />,
+    title: "Fire Extinguisher Testing",
+    price: FROM_PRICES["fire-extinguisher"],
+    description:
+      "Annual service and inspection of portable fire extinguishers to BS 5306-3. Required for commercial properties and HMOs.",
+    badge: "Annual service",
   },
 ] as const;
 
@@ -38,11 +65,11 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
   ],
 };
 
-export default function EPCPage() {
+export default function FireSafetyPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
@@ -58,21 +85,21 @@ export default function EPCPage() {
                 </Link>
               </li>
               <li aria-hidden="true" className="text-white/30">/</li>
-              <li className="text-white">EPC</li>
+              <li className="text-white">Fire Safety</li>
             </ol>
           </nav>
 
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-3">
-              Accredited DEA Assessors
+              Accredited Fire Safety Engineers
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
-              Energy Performance Certificates
+              Fire Safety Certificates &amp; Assessments
             </h1>
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
-              Domestic and commercial EPCs are required by law before renting or selling any
-              property in the UK. Our accredited Domestic Energy Assessors (DEAs) cover all of
-              London, with certificates registered on the national EPC register within 24 hours.
+              From fire risk assessments and alarm installation to fire door inspections and
+              extinguisher servicing. We help landlords and HMO operators meet their obligations
+              under the Regulatory Reform (Fire Safety) Order 2005.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -97,9 +124,10 @@ export default function EPCPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-sm text-brand-charcoal">
             <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-            All landlords must have a valid EPC with a minimum E rating before letting a
-            property under the Minimum Energy Efficiency Standards (MEES). Properties rated
-            F or G cannot legally be let on a new tenancy.
+            The Regulatory Reform (Fire Safety) Order 2005 requires a written fire risk
+            assessment for all HMOs, blocks of flats, and commercial properties. Private
+            landlords must also install working smoke alarms under the Smoke and Carbon Monoxide
+            Alarm Regulations 2022.
           </p>
         </div>
       </div>
@@ -107,12 +135,12 @@ export default function EPCPage() {
       {/* ── Services grid ── */}
       <section className="py-16 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">EPC Services</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Fire Safety Services</h2>
           <p className="text-brand-grey mb-8">
-            Accredited DEA assessors. Certificates registered on the national EPC register within 24 hours.
+            Accredited engineers. Reports and certificates issued same day.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((svc) => (
               <Link
                 key={svc.href}
@@ -141,58 +169,29 @@ export default function EPCPage() {
         </div>
       </section>
 
-      {/* ── MEES explainer ── */}
-      <section className="py-14 bg-white border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-              What is MEES and why does it matter?
-            </h2>
-            <p className="text-brand-grey leading-relaxed mb-4">
-              The Minimum Energy Efficiency Standards (MEES) require all privately rented
-              properties in England and Wales to have an EPC rating of E or above. Letting a
-              property rated F or G on a new tenancy is unlawful and can result in a fine of
-              up to £5,000.
-            </p>
-            <p className="text-brand-grey leading-relaxed mb-6">
-              The government has proposed raising the minimum standard to C by 2028 for new
-              tenancies. If your property is currently rated D or E, it is worth acting now
-              — an EPC assessment identifies exactly which improvements will make the biggest
-              difference to your rating.
-            </p>
-            <Link
-              href="/epc/domestic-epc"
-              className="inline-flex items-center text-sm font-medium text-compliance-blue hover:underline"
-            >
-              Learn more about domestic EPC →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Why us ── */}
-      <section className="py-14 bg-warm-white border-t border-border">
+      <section className="py-14 bg-white border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
               <p className="text-3xl font-bold text-compliance-blue mb-2">Accredited</p>
               <p className="text-sm text-brand-grey">
-                All our assessors are accredited Domestic Energy Assessors (DEA) registered
-                with Elmhurst Energy or STROMA.
+                Fire risk assessors and engineers hold recognised qualifications under the
+                Institute of Fire Safety Managers (IFSM) framework.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">24 hours</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
               <p className="text-sm text-brand-grey">
-                EPC registered on the national EPC register within 24 hours of assessment.
-                Your certificate number immediately.
+                Fire risk assessment reports and safety certificates issued the same day.
+                No weeks-long wait.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">10 years</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Fixed price</p>
               <p className="text-sm text-brand-grey">
-                A valid EPC lasts 10 years. One assessment covers you for an entire decade
-                of lettings — no annual renewal needed.
+                Transparent pricing per property size or per appliance — you know the cost
+                before we arrive.
               </p>
             </div>
           </div>
@@ -200,11 +199,11 @@ export default function EPCPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-14 bg-white">
+      <section className="py-14 bg-warm-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
-            heading="Book your EPC assessment today"
-            subheading="Same-week appointments across London. Accredited DEA assessors, certificate registered within 24 hours."
+            heading="Book your fire safety inspection today"
+            subheading="Same-week appointments across London. Accredited fire safety engineers, written reports same day."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

@@ -1,35 +1,44 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, Building2 } from "lucide-react";
+import { Flame, Building2, Thermometer } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Energy Performance Certificates (EPC) | Domestic & Commercial | My Landlord Certificate",
+  title: "Gas Safety Certificates | CP12, CP42 & Boiler Installation | My Landlord Certificate",
   description:
-    "Domestic EPC from £89.99, commercial EPC from £249.99. Accredited DEA assessors across London. Required by law before letting or selling — 10-year validity.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/epc" },
+    "Gas Safe Registered engineers for domestic CP12 from £49.99, commercial CP42 from £159.99, and boiler installation from £2,499. Annual gas safety certificates for landlords across London.",
+  alternates: { canonical: "https://mylandlordcertificate.co.uk/gas-safety" },
 };
 
 const services = [
   {
-    href: "/epc/domestic-epc",
-    icon: <Home className="w-5 h-5" />,
-    title: "Domestic EPC",
-    price: FROM_PRICES.epc,
+    href: "/gas-safety/cp12",
+    icon: <Flame className="w-5 h-5" />,
+    title: "Gas Safety Certificate (CP12)",
+    price: FROM_PRICES["gas-safety-cp12"],
     description:
-      "Required by law before renting or selling a residential property. Assesses energy efficiency and provides an A–G rating. Valid for 10 years.",
-    badge: "10-year validity",
+      "Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers, certificate emailed same day.",
+    badge: "Annual legal requirement",
   },
   {
-    href: "/epc/commercial-epc",
+    href: "/gas-safety/cp42",
     icon: <Building2 className="w-5 h-5" />,
-    title: "Commercial EPC",
-    price: FROM_PRICES["commercial-epc"],
+    title: "Commercial Gas Safety (CP42)",
+    price: FROM_PRICES["gas-safety-cp42"],
     description:
-      "Mandatory for commercial properties before sale, letting, or major renovation. Priced by floor area. Includes recommendation report.",
-    badge: "By floor area",
+      "Inspection and certification for commercial gas installations, restaurants, and multi-appliance premises. Priced per appliance.",
+    badge: "Up to 8 appliances",
+  },
+  {
+    href: "/gas-safety/boiler-installation",
+    icon: <Thermometer className="w-5 h-5" />,
+    title: "Boiler Installation",
+    price: FROM_PRICES["boiler-installation"],
+    description:
+      "Full boiler replacement and installation by Gas Safe Registered engineers. Includes commissioning, flue check, and first-year gas safety certificate.",
+    badge: "Supply & install",
   },
 ] as const;
 
@@ -38,11 +47,11 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://mylandlordcertificate.co.uk/gas-safety" },
   ],
 };
 
-export default function EPCPage() {
+export default function GasSafetyPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
@@ -58,21 +67,21 @@ export default function EPCPage() {
                 </Link>
               </li>
               <li aria-hidden="true" className="text-white/30">/</li>
-              <li className="text-white">EPC</li>
+              <li className="text-white">Gas Safety</li>
             </ol>
           </nav>
 
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-3">
-              Accredited DEA Assessors
+              Gas Safe Registered Engineers
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
-              Energy Performance Certificates
+              Gas Safety Certificates &amp; Services
             </h1>
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
-              Domestic and commercial EPCs are required by law before renting or selling any
-              property in the UK. Our accredited Domestic Energy Assessors (DEAs) cover all of
-              London, with certificates registered on the national EPC register within 24 hours.
+              Annual gas safety inspections (CP12), commercial gas certification (CP42), and
+              full boiler installations. All work carried out by Gas Safe Registered engineers —
+              the legal requirement for working on gas appliances in the UK.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -97,9 +106,9 @@ export default function EPCPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-sm text-brand-charcoal">
             <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-            All landlords must have a valid EPC with a minimum E rating before letting a
-            property under the Minimum Energy Efficiency Standards (MEES). Properties rated
-            F or G cannot legally be let on a new tenancy.
+            Landlords must provide tenants with a valid Gas Safety Certificate (CP12) before they
+            move in and renew it every 12 months under the Gas Safety (Installation and Use)
+            Regulations 1998.
           </p>
         </div>
       </div>
@@ -107,12 +116,12 @@ export default function EPCPage() {
       {/* ── Services grid ── */}
       <section className="py-16 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">EPC Services</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Gas Safety Services</h2>
           <p className="text-brand-grey mb-8">
-            Accredited DEA assessors. Certificates registered on the national EPC register within 24 hours.
+            Gas Safe Registered engineers. Certificates emailed same day.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((svc) => (
               <Link
                 key={svc.href}
@@ -141,58 +150,29 @@ export default function EPCPage() {
         </div>
       </section>
 
-      {/* ── MEES explainer ── */}
-      <section className="py-14 bg-white border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-              What is MEES and why does it matter?
-            </h2>
-            <p className="text-brand-grey leading-relaxed mb-4">
-              The Minimum Energy Efficiency Standards (MEES) require all privately rented
-              properties in England and Wales to have an EPC rating of E or above. Letting a
-              property rated F or G on a new tenancy is unlawful and can result in a fine of
-              up to £5,000.
-            </p>
-            <p className="text-brand-grey leading-relaxed mb-6">
-              The government has proposed raising the minimum standard to C by 2028 for new
-              tenancies. If your property is currently rated D or E, it is worth acting now
-              — an EPC assessment identifies exactly which improvements will make the biggest
-              difference to your rating.
-            </p>
-            <Link
-              href="/epc/domestic-epc"
-              className="inline-flex items-center text-sm font-medium text-compliance-blue hover:underline"
-            >
-              Learn more about domestic EPC →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Why us ── */}
-      <section className="py-14 bg-warm-white border-t border-border">
+      <section className="py-14 bg-white border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Accredited</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Gas Safe</p>
               <p className="text-sm text-brand-grey">
-                All our assessors are accredited Domestic Energy Assessors (DEA) registered
-                with Elmhurst Energy or STROMA.
+                All engineers are on the Gas Safe Register — the only scheme legally permitted
+                to carry out gas work in the UK.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">24 hours</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
               <p className="text-sm text-brand-grey">
-                EPC registered on the national EPC register within 24 hours of assessment.
-                Your certificate number immediately.
+                CP12 certificates emailed the same day as the inspection. Your tenants can
+                see their copy immediately.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">10 years</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Fixed price</p>
               <p className="text-sm text-brand-grey">
-                A valid EPC lasts 10 years. One assessment covers you for an entire decade
-                of lettings — no annual renewal needed.
+                No call-out charge, no surprises. The price is agreed upfront — per appliance,
+                not per hour.
               </p>
             </div>
           </div>
@@ -200,11 +180,11 @@ export default function EPCPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-14 bg-white">
+      <section className="py-14 bg-warm-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
-            heading="Book your EPC assessment today"
-            subheading="Same-week appointments across London. Accredited DEA assessors, certificate registered within 24 hours."
+            heading="Book your gas safety inspection today"
+            subheading="Same-week appointments across London. Gas Safe Registered engineers, fixed prices, no call-out fees."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

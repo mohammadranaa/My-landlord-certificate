@@ -1,35 +1,71 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, Building2 } from "lucide-react";
+import { Zap, Building2, Search, Settings, Lightbulb, Plug } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Energy Performance Certificates (EPC) | Domestic & Commercial | My Landlord Certificate",
+  title: "Electrical Safety Certificates | EICR, PAT Testing & More | My Landlord Certificate",
   description:
-    "Domestic EPC from £89.99, commercial EPC from £249.99. Accredited DEA assessors across London. Required by law before letting or selling — 10-year validity.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/epc" },
+    "NICEIC approved electrical safety certificates across London. Domestic EICR from £67.99, PAT testing from £59.99, fuse box installation from £599.99. Fixed prices, same-week appointments.",
+  alternates: { canonical: "https://mylandlordcertificate.co.uk/electrical-safety" },
 };
 
 const services = [
   {
-    href: "/epc/domestic-epc",
-    icon: <Home className="w-5 h-5" />,
-    title: "Domestic EPC",
-    price: FROM_PRICES.epc,
+    href: "/electrical-safety/domestic-eicr",
+    icon: <Zap className="w-5 h-5" />,
+    title: "Domestic EICR",
+    price: FROM_PRICES.eicr,
     description:
-      "Required by law before renting or selling a residential property. Assesses energy efficiency and provides an A–G rating. Valid for 10 years.",
-    badge: "10-year validity",
+      "Legally required every 5 years for all rental properties in England. NICEIC approved electricians, certificate emailed same day.",
+    badge: "Required every 5 years",
   },
   {
-    href: "/epc/commercial-epc",
+    href: "/electrical-safety/commercial-eicr",
     icon: <Building2 className="w-5 h-5" />,
-    title: "Commercial EPC",
-    price: FROM_PRICES["commercial-epc"],
+    title: "Commercial EICR",
+    price: FROM_PRICES["commercial-eicr"],
     description:
-      "Mandatory for commercial properties before sale, letting, or major renovation. Priced by floor area. Includes recommendation report.",
-    badge: "By floor area",
+      "Full condition report for commercial premises, offices, and HMOs. Priced per consumer unit — transparent, no hidden extras.",
+    badge: "Up to 8 consumer units",
+  },
+  {
+    href: "/electrical-safety/electrical-diagnostic",
+    icon: <Search className="w-5 h-5" />,
+    title: "Electrical Diagnostic",
+    price: FROM_PRICES["electrical-diagnostic"],
+    description:
+      "Trace and resolve electrical faults, tripping circuits, and intermittent issues. Hourly rate with no call-out fees.",
+    badge: "Fault finding",
+  },
+  {
+    href: "/electrical-safety/fuse-box-installation",
+    icon: <Settings className="w-5 h-5" />,
+    title: "Fuse Box Installation",
+    price: FROM_PRICES["fuse-box"],
+    description:
+      "Upgrade to a modern consumer unit with RCD protection. Essential for older properties or failed EICRs.",
+    badge: "Full installation",
+  },
+  {
+    href: "/electrical-safety/emergency-lights-certificate",
+    icon: <Lightbulb className="w-5 h-5" />,
+    title: "Emergency Lights Certificate",
+    price: FROM_PRICES.elc,
+    description:
+      "Annual testing and certification of emergency lighting systems. Required for HMOs, blocks of flats, and commercial properties.",
+    badge: "Annual requirement",
+  },
+  {
+    href: "/electrical-safety/pat-testing",
+    icon: <Plug className="w-5 h-5" />,
+    title: "PAT Testing",
+    price: FROM_PRICES.pat,
+    description:
+      "Portable Appliance Testing for furnished rental properties. Fast on-site testing with full written report and labels.",
+    badge: "Up to 50 appliances",
   },
 ] as const;
 
@@ -38,11 +74,11 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
   ],
 };
 
-export default function EPCPage() {
+export default function ElectricalSafetyPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
@@ -58,21 +94,21 @@ export default function EPCPage() {
                 </Link>
               </li>
               <li aria-hidden="true" className="text-white/30">/</li>
-              <li className="text-white">EPC</li>
+              <li className="text-white">Electrical Safety</li>
             </ol>
           </nav>
 
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-3">
-              Accredited DEA Assessors
+              NICEIC Approved Engineers
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
-              Energy Performance Certificates
+              Electrical Safety Certificates
             </h1>
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
-              Domestic and commercial EPCs are required by law before renting or selling any
-              property in the UK. Our accredited Domestic Energy Assessors (DEAs) cover all of
-              London, with certificates registered on the national EPC register within 24 hours.
+              From mandatory EICR inspections to PAT testing and fuse box upgrades — our
+              NICEIC approved engineers cover every electrical compliance need for landlords
+              across London. Fixed prices, no call-out fees.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -92,27 +128,17 @@ export default function EPCPage() {
         </div>
       </section>
 
-      {/* ── Legal notice ── */}
-      <div className="bg-brand-amber/10 border-b border-brand-amber/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <p className="text-sm text-brand-charcoal">
-            <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-            All landlords must have a valid EPC with a minimum E rating before letting a
-            property under the Minimum Energy Efficiency Standards (MEES). Properties rated
-            F or G cannot legally be let on a new tenancy.
-          </p>
-        </div>
-      </div>
-
       {/* ── Services grid ── */}
       <section className="py-16 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">EPC Services</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
+            Electrical Safety Services
+          </h2>
           <p className="text-brand-grey mb-8">
-            Accredited DEA assessors. Certificates registered on the national EPC register within 24 hours.
+            All work carried out by NICEIC approved electricians. Certificates emailed same day.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((svc) => (
               <Link
                 key={svc.href}
@@ -141,58 +167,28 @@ export default function EPCPage() {
         </div>
       </section>
 
-      {/* ── MEES explainer ── */}
-      <section className="py-14 bg-white border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-              What is MEES and why does it matter?
-            </h2>
-            <p className="text-brand-grey leading-relaxed mb-4">
-              The Minimum Energy Efficiency Standards (MEES) require all privately rented
-              properties in England and Wales to have an EPC rating of E or above. Letting a
-              property rated F or G on a new tenancy is unlawful and can result in a fine of
-              up to £5,000.
-            </p>
-            <p className="text-brand-grey leading-relaxed mb-6">
-              The government has proposed raising the minimum standard to C by 2028 for new
-              tenancies. If your property is currently rated D or E, it is worth acting now
-              — an EPC assessment identifies exactly which improvements will make the biggest
-              difference to your rating.
-            </p>
-            <Link
-              href="/epc/domestic-epc"
-              className="inline-flex items-center text-sm font-medium text-compliance-blue hover:underline"
-            >
-              Learn more about domestic EPC →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Why us ── */}
-      <section className="py-14 bg-warm-white border-t border-border">
+      <section className="py-14 bg-white border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Accredited</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">NICEIC</p>
               <p className="text-sm text-brand-grey">
-                All our assessors are accredited Domestic Energy Assessors (DEA) registered
-                with Elmhurst Energy or STROMA.
+                All electricians are NICEIC approved — the UK&apos;s leading electrical
+                competency scheme.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">24 hours</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
               <p className="text-sm text-brand-grey">
-                EPC registered on the national EPC register within 24 hours of assessment.
-                Your certificate number immediately.
+                EICR certificates emailed the same day as the inspection — ready for your
+                tenants immediately.
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">10 years</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Fixed price</p>
               <p className="text-sm text-brand-grey">
-                A valid EPC lasts 10 years. One assessment covers you for an entire decade
-                of lettings — no annual renewal needed.
+                No call-out fees, no hidden extras. The price you see is the price you pay.
               </p>
             </div>
           </div>
@@ -200,11 +196,11 @@ export default function EPCPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-14 bg-white">
+      <section className="py-14 bg-warm-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
-            heading="Book your EPC assessment today"
-            subheading="Same-week appointments across London. Accredited DEA assessors, certificate registered within 24 hours."
+            heading="Book your electrical inspection today"
+            subheading="Same-week appointments available across all 32 London boroughs. NICEIC approved engineers, fixed prices."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"
