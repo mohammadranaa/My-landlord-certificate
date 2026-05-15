@@ -14,12 +14,12 @@ const columns: FooterColumn[] = [
   {
     heading: "Services",
     links: [
-      { href: "/eicr", label: "EICR Certificate" },
-      { href: "/gas-safety-certificate", label: "Gas Safety Certificate" },
-      { href: "/epc", label: "EPC Certificate" },
-      { href: "/fire-risk-assessment", label: "Fire Risk Assessment" },
-      { href: "/pat-testing", label: "PAT Testing" },
-      { href: "/landlord-certificates-bundle", label: "Bundle & Save" },
+      { href: "/electrical-safety", label: "Electrical Safety" },
+      { href: "/gas-safety", label: "Gas Safety" },
+      { href: "/fire-safety", label: "Fire Safety" },
+      { href: "/epc", label: "EPC Certificates" },
+      { href: "/asbestos-survey", label: "Asbestos Survey" },
+      { href: "/pricing", label: "All Services & Pricing" },
     ],
   },
   {
@@ -36,9 +36,9 @@ const columns: FooterColumn[] = [
   {
     heading: "Pricing Guides",
     links: [
-      { href: "/eicr-cost", label: "EICR Cost Guide" },
-      { href: "/gas-safety-certificate-cost", label: "Gas Safety Cost Guide" },
-      { href: "/epc-cost", label: "EPC Cost Guide" },
+      { href: "/electrical-safety/domestic-eicr", label: "EICR Cost Guide" },
+      { href: "/gas-safety/cp12", label: "Gas Safety Cost Guide" },
+      { href: "/epc/domestic-epc", label: "EPC Cost Guide" },
       { href: "/pricing", label: "All Service Prices" },
       { href: "/faq", label: "FAQs" },
       { href: "/coverage-areas", label: "Coverage Areas" },
