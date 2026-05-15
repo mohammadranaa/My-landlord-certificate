@@ -1,100 +1,30 @@
-/**
- * ServiceM8 REST API client.
- *
- * Base URL: https://api.servicem8.com/api_1.0
- * Auth:     OAuth 2.0 Bearer token (env SERVICEM8_ACCESS_TOKEN)
- *
- * Every function throws ServiceM8Error on non-2xx responses so callers
- * can distinguish API failures from network failures.
- */
+import { randomUUID } from "crypto";
+import type {
+  ServiceM8Company,
+  ServiceM8Job,
+  ServiceM8JobActivity,
+  ServiceM8Staff,
+  ServiceM8JobMaterial,
+  CreateCompanyInput,
+  CreateJobInput,
+  CreateJobActivityInput,
+  JobMaterial,
+  PaymentData,
+} from "@/types/servicem8";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
-
-export interface ServiceM8Company {
-  uuid?: string;
-  /** Trading / display name */
-  name: string;
-  email?: string;
-  phone?: string;
-  address?: string;
-  city?: string;
-  state?: string;
-  postcode?: string;
-  country?: string;
-  /** 1 = active, 0 = archived */
-  active?: 1 | 0;
-}
-
-export interface ServiceM8Job {
-  uuid?: string;
-  company_uuid: string;
-  /** Full address of the property being inspected */
-  job_address?: string;
-  job_city?: string;
-  job_state?: string;
-  job_postcode?: string;
-  job_country?: string;
-  description?: string;
-  /** "Quote" | "Work Order" | "Completed" | "Unsuccessful" | "Cancelled" */
-  status?: string;
-  category_uuid?: string;
-  /** On-site contact (may differ from billing client) */
-  contact_first?: string;
-  contact_last?: string;
-  contact_email?: string;
-  contact_phone?: string;
-  active?: 1 | 0;
-}
-
-export interface ServiceM8JobActivity {
-  uuid?: string;
-  job_uuid: string;
-  staff_uuid: string;
-  /** ISO 8601 date "YYYY-MM-DD HH:MM:SS" */
-  start_date?: string;
-  end_date?: string;
-  /** Free-text notes for the engineer */
-  notes?: string;
-  active?: 1 | 0;
-}
-
-export interface ServiceM8Staff {
-  uuid: string;
-  first?: string;
-  last?: string;
-  email?: string;
-  phone?: string;
-  active?: 1 | 0;
-}
-
-export interface ServiceM8JobMaterial {
-  uuid?: string;
-  job_uuid: string;
-  /** Certificate / service name shown on the invoice */
-  name: string;
-  quantity?: number;
-  unit_price?: number;
-  unit_cost?: number;
-  active?: 1 | 0;
-}
-
-export interface ServiceM8JobPayment {
-  uuid?: string;
-  job_uuid: string;
-  /** Amount in GBP (not pence) */
-  payment_amount: number;
-  /** e.g. "Stripe", "Card", "Bank Transfer" */
-  payment_method?: string;
-  /** ISO 8601 "YYYY-MM-DD" */
-  payment_date?: string;
-  /** Stripe charge ID or other reference */
-  payment_note?: string;
-}
-
-/** Minimal shape of a ServiceM8 POST success response */
-interface ServiceM8PostResult {
-  uuid: string;
-}
+// Re-export types so callers can use a single import path
+export type {
+  ServiceM8Company,
+  ServiceM8Job,
+  ServiceM8JobActivity,
+  ServiceM8Staff,
+  ServiceM8JobMaterial,
+  CreateCompanyInput,
+  CreateJobInput,
+  CreateJobActivityInput,
+  JobMaterial,
+  PaymentData,
+};
 
 // ── Error class ───────────────────────────────────────────────────────────────
 
@@ -108,31 +38,40 @@ export class ServiceM8Error extends Error {
   }
 }
 
-// ── Base fetch wrapper ────────────────────────────────────────────────────────
+// ── Mode detection ────────────────────────────────────────────────────────────
+
+function isMockMode(): boolean {
+  const token = process.env.SERVICEM8_ACCESS_TOKEN;
+  const mock = process.env.SERVICEM8_MOCK_MODE;
+  return (
+    mock === "true" ||
+    !token ||
+    token === "" ||
+    token === "your_token_here"
+  );
+}
+
+// ── Real-mode base fetch ──────────────────────────────────────────────────────
 
 const BASE_URL =
   process.env.SERVICEM8_API_URL ?? "https://api.servicem8.com/api_1.0";
 
-async function sm8Fetch<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const token = process.env.SERVICEM8_ACCESS_TOKEN;
-  if (!token || token === "your_token_here") {
-    throw new ServiceM8Error(
-      "SERVICEM8_ACCESS_TOKEN is not configured. Set it in .env.local.",
-      401,
-    );
-  }
-
-  const url = `${BASE_URL}/${path}`;
+async function sm8Fetch<T>(
+  endpoint: string,
+  method: "GET" | "POST" = "GET",
+  body?: unknown,
+): Promise<T> {
+  const token = process.env.SERVICEM8_ACCESS_TOKEN!;
+  const url = `${BASE_URL}/${endpoint}`;
 
   const res = await fetch(url, {
-    ...init,
+    method,
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
       Accept: "application/json",
-      ...init.headers,
     },
-    // Never cache ServiceM8 responses server-side
+    ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
     cache: "no-store",
   });
 
@@ -140,65 +79,136 @@ async function sm8Fetch<T>(path: string, init: RequestInit = {}): Promise<T> {
 
   if (!res.ok) {
     throw new ServiceM8Error(
-      `ServiceM8 ${res.status} ${res.statusText} — ${path}: ${text.slice(0, 300)}`,
+      `ServiceM8 ${res.status} ${res.statusText} — ${endpoint}: ${text.slice(0, 300)}`,
       res.status,
     );
   }
 
-  if (!text.trim()) return {} as T;
-  return JSON.parse(text) as T;
+  const parsed = text.trim() ? (JSON.parse(text) as T) : ({} as T);
+
+  const uuid =
+    parsed &&
+    typeof parsed === "object" &&
+    "uuid" in parsed
+      ? (parsed as { uuid: string }).uuid
+      : "";
+  // eslint-disable-next-line no-console
+  console.log(
+    `[ServiceM8 REAL] ${method} /${endpoint} → ${res.status} OK${uuid ? ` (uuid: ${uuid})` : ""}`,
+  );
+
+  return parsed;
 }
 
-// ── Company (client) helpers ──────────────────────────────────────────────────
+// ── Mock helpers ──────────────────────────────────────────────────────────────
+
+function mockLog(message: string) {
+  // eslint-disable-next-line no-console
+  console.log(`[ServiceM8 MOCK] ${message}`);
+}
+
+const MOCK_STAFF: ServiceM8Staff[] = [
+  {
+    uuid: "mock-staff-001",
+    first: "James",
+    last: "Mitchell",
+    email: "james.mitchell@mylandlordcert.co.uk",
+    mobile: "07700 900001",
+    active: 1,
+  },
+  {
+    uuid: "mock-staff-002",
+    first: "Sarah",
+    last: "Thompson",
+    email: "sarah.thompson@mylandlordcert.co.uk",
+    mobile: "07700 900002",
+    active: 1,
+  },
+  {
+    uuid: "mock-staff-003",
+    first: "David",
+    last: "Williams",
+    email: "david.williams@mylandlordcert.co.uk",
+    mobile: "07700 900003",
+    active: 1,
+  },
+];
+
+// ── Company helpers ───────────────────────────────────────────────────────────
 
 /**
  * Create a new client record in ServiceM8.
- * Returns the UUID of the created company.
+ * Returns the full company object including the assigned UUID.
  */
 export async function createCompany(
-  data: Omit<ServiceM8Company, "uuid">,
-): Promise<string> {
-  const result = await sm8Fetch<ServiceM8PostResult>("company.json", {
-    method: "POST",
-    body: JSON.stringify(data),
+  data: CreateCompanyInput,
+): Promise<ServiceM8Company> {
+  if (isMockMode()) {
+    const uuid = randomUUID();
+    mockLog(`Creating company: ${data.name} (${data.email})`);
+    return { uuid, ...data, active: 1 };
+  }
+
+  const result = await sm8Fetch<{ uuid: string }>("company.json", "POST", {
+    ...data,
+    active: 1,
   });
-  return result.uuid;
+  return { uuid: result.uuid, ...data, active: 1 };
 }
 
 /**
- * Look up an existing client by email address.
- * Returns the first match or null if not found.
- *
- * ServiceM8 supports OData-style $filter queries.
+ * Find an existing client by email address.
+ * Returns the first match or null. Use before createCompany to avoid duplicates.
  */
 export async function findCompanyByEmail(
   email: string,
 ): Promise<ServiceM8Company | null> {
+  if (isMockMode()) {
+    mockLog(`Looking up company by email: ${email} → not found (mock)`);
+    return null;
+  }
+
   const filter = encodeURIComponent(`email eq '${email}'`);
   const results = await sm8Fetch<ServiceM8Company[]>(
     `company.json?$filter=${filter}`,
   );
-  return results.length > 0 ? results[0] : null;
+  return results.length > 0 ? (results[0] ?? null) : null;
 }
 
 // ── Job helpers ───────────────────────────────────────────────────────────────
 
 /**
  * Create a job (booking) linked to a company.
- * Returns the UUID of the created job.
+ * Returns the full job object including the assigned UUID.
  */
-export async function createJob(
-  data: Omit<ServiceM8Job, "uuid">,
-): Promise<string> {
-  const result = await sm8Fetch<ServiceM8PostResult>("job.json", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
-  return result.uuid;
+export async function createJob(data: CreateJobInput): Promise<ServiceM8Job> {
+  if (isMockMode()) {
+    const uuid = randomUUID();
+    mockLog(
+      `Creating job for company ${data.company_uuid} at ${data.job_address ?? "TBC"}`,
+    );
+    return { uuid, ...data, status: data.status ?? "Work Order", active: 1 as const };
+  }
+
+  const payload = { ...data, status: data.status ?? "Work Order", active: 1 as const };
+  const result = await sm8Fetch<{ uuid: string }>("job.json", "POST", payload);
+  return { uuid: result.uuid, ...payload };
 }
 
 /** Fetch a single job by UUID. */
 export async function getJob(uuid: string): Promise<ServiceM8Job> {
+  if (isMockMode()) {
+    mockLog(`Fetching job ${uuid}`);
+    return {
+      uuid,
+      company_uuid: "mock-company-001",
+      status: "Work Order",
+      job_address: "12 Mock Street, London, E1 1AA",
+      job_description: "EICR Certificate",
+      active: 1,
+    };
+  }
+
   return sm8Fetch<ServiceM8Job>(`job/${uuid}.json`);
 }
 
@@ -206,63 +216,94 @@ export async function getJob(uuid: string): Promise<ServiceM8Job> {
 
 /**
  * Schedule an engineer to a job at a specific date/time.
- * Returns the UUID of the created activity.
+ * Returns the full activity object including the assigned UUID.
  */
 export async function createJobActivity(
-  data: Omit<ServiceM8JobActivity, "uuid">,
-): Promise<string> {
-  const result = await sm8Fetch<ServiceM8PostResult>("jobactivity.json", {
-    method: "POST",
-    body: JSON.stringify(data),
+  data: CreateJobActivityInput,
+): Promise<ServiceM8JobActivity> {
+  if (isMockMode()) {
+    const uuid = randomUUID();
+    mockLog(
+      `Creating job activity for job ${data.job_uuid} on ${data.start_date}`,
+    );
+    return { uuid, ...data, active: 1 };
+  }
+
+  const result = await sm8Fetch<{ uuid: string }>("jobactivity.json", "POST", {
+    ...data,
+    active: 1,
   });
-  return result.uuid;
+  return { uuid: result.uuid, ...data, active: 1 };
 }
 
 // ── Job materials (line items) helpers ───────────────────────────────────────
 
 /**
- * Add multiple line items (certificate services) to a job.
- * Returns an array of the created material UUIDs.
+ * Add certificate/service line items to a job.
+ * Each material becomes an invoice line item in ServiceM8.
  */
 export async function addJobMaterials(
   jobUuid: string,
-  materials: Omit<ServiceM8JobMaterial, "uuid" | "job_uuid">[],
-): Promise<string[]> {
-  const uuids = await Promise.all(
+  materials: JobMaterial[],
+): Promise<void> {
+  if (isMockMode()) {
+    mockLog(
+      `Adding ${materials.length} material(s) to job ${jobUuid}: ${materials.map((m) => `${m.name} × ${m.qty} @ £${m.unit_cost}`).join(", ")}`,
+    );
+    return;
+  }
+
+  await Promise.all(
     materials.map((m) =>
-      sm8Fetch<ServiceM8PostResult>("jobmaterial.json", {
-        method: "POST",
-        body: JSON.stringify({ ...m, job_uuid: jobUuid }),
-      }).then((r) => r.uuid),
+      sm8Fetch<{ uuid: string }>("jobmaterial.json", "POST", {
+        job_uuid: jobUuid,
+        name: m.name,
+        qty: m.qty,
+        unit_cost: m.unit_cost,
+        active: 1,
+      } satisfies ServiceM8JobMaterial),
     ),
   );
-  return uuids;
 }
 
 // ── Payment helpers ───────────────────────────────────────────────────────────
 
 /**
- * Record a Stripe (or other) payment against a job.
- * Returns the UUID of the created payment record.
+ * Record a payment (Stripe or other) against a job.
+ * Set reference to the Stripe charge ID for cross-referencing.
  */
 export async function recordJobPayment(
   jobUuid: string,
-  paymentData: Omit<ServiceM8JobPayment, "uuid" | "job_uuid">,
-): Promise<string> {
-  const result = await sm8Fetch<ServiceM8PostResult>("jobpayment.json", {
-    method: "POST",
-    body: JSON.stringify({ ...paymentData, job_uuid: jobUuid }),
+  payment: PaymentData,
+): Promise<void> {
+  if (isMockMode()) {
+    mockLog(
+      `Recording payment of £${payment.amount.toFixed(2)} via ${payment.payment_method} for job ${jobUuid}${payment.reference ? ` (ref: ${payment.reference})` : ""}`,
+    );
+    return;
+  }
+
+  await sm8Fetch<{ uuid: string }>("jobpayment.json", "POST", {
+    job_uuid: jobUuid,
+    payment_amount: payment.amount,
+    payment_method: payment.payment_method,
+    payment_date: new Date().toISOString().slice(0, 10),
+    payment_note: payment.reference ?? "",
   });
-  return result.uuid;
 }
 
 // ── Staff helpers ─────────────────────────────────────────────────────────────
 
 /**
  * Fetch all active staff (engineers) from ServiceM8.
- * Useful for verifying the connection and populating engineer assignment.
+ * In mock mode returns three placeholder engineers.
  */
 export async function getStaffList(): Promise<ServiceM8Staff[]> {
+  if (isMockMode()) {
+    mockLog("Returning mock staff list (3 engineers)");
+    return MOCK_STAFF;
+  }
+
   const all = await sm8Fetch<ServiceM8Staff[]>("staff.json");
   return all.filter((s) => s.active !== 0);
 }
