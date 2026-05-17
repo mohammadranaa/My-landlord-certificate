@@ -38,10 +38,11 @@ interface Step5Props {
   data: PartialBookingData;
   onBack: () => void;
   onGoToStep: (step: number) => void;
-  onSubmit: (termsAccepted: boolean) => void;
+  onSubmit: (termsAccepted: boolean) => Promise<void>;
+  isSubmitting?: boolean;
 }
 
-export function Step5Review({ data, onBack, onGoToStep, onSubmit }: Step5Props) {
+export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting = false }: Step5Props) {
   const {
     register,
     handleSubmit,
@@ -63,8 +64,8 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit }: Step5Props) 
     (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
   const grandTotal = total + charges;
 
-  function onFormSubmit(stepData: Step5Data) {
-    onSubmit(stepData.acceptedTerms);
+  async function onFormSubmit(stepData: Step5Data) {
+    await onSubmit(stepData.acceptedTerms);
   }
 
   const appointmentDate = data.preferredDate
@@ -83,7 +84,7 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit }: Step5Props) 
           Review your booking
         </h2>
         <p className="text-sm text-brand-grey mb-4">
-          Check everything looks correct before proceeding to payment.
+          Check everything looks correct before confirming your booking.
         </p>
       </div>
 
@@ -228,23 +229,41 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit }: Step5Props) 
         <button
           type="button"
           onClick={onBack}
+          disabled={isSubmitting}
           className={cn(
             "flex-1 rounded-xl border-2 border-border bg-white text-brand-charcoal font-semibold py-3 text-sm transition-colors",
             "hover:border-brand-grey/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2",
+            "disabled:opacity-50 disabled:pointer-events-none",
           )}
         >
           ← Back
         </button>
         <button
           type="submit"
+          disabled={isSubmitting}
           className={cn(
             "flex-[2] rounded-xl bg-action-green text-brand-charcoal font-bold py-3 text-sm transition-colors",
             "hover:bg-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-green focus-visible:ring-offset-2",
+            "disabled:opacity-70 disabled:pointer-events-none",
+            "flex items-center justify-center gap-2",
           )}
         >
-          Proceed to Payment — £{grandTotal.toFixed(2)}
+          {isSubmitting ? (
+            <>
+              <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+              </svg>
+              Sending…
+            </>
+          ) : (
+            <>Confirm Booking — £{grandTotal.toFixed(2)}</>
+          )}
         </button>
       </div>
+      <p className="text-xs text-center text-brand-grey pt-1">
+        Our team will contact you within 2 hours to confirm your booking and arrange payment.
+      </p>
     </form>
   );
 }

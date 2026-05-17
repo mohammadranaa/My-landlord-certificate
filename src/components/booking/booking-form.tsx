@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import type {
@@ -18,61 +19,12 @@ import { Step3Services } from "./step-3-services";
 import { Step4DateTime } from "./step-4-datetime";
 import { Step5Review } from "./step-5-review";
 
-function SuccessScreen({ data }: { data: PartialBookingData }) {
-  const services = data.services ?? [];
-  const { discount, total } = calculateBundlePrice(
-    services.map((s) => ({
-      service: s.serviceType as ServiceType,
-      price: s.price,
-    })),
-  );
-  const charges =
-    (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
-    (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
-  const grandTotal = total + charges;
-
-  return (
-    <div className="rounded-2xl border border-action-green/30 bg-action-green/5 px-8 py-12 text-center max-w-md mx-auto">
-      <div className="w-14 h-14 rounded-full bg-action-green/20 flex items-center justify-center mx-auto mb-4">
-        <svg className="w-7 h-7 text-action-green" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
-      <h2 className="text-xl font-bold text-brand-charcoal mb-2">
-        Booking received
-      </h2>
-      <p className="text-brand-grey text-sm mb-4">
-        Payment processing is coming soon. Your booking details have been logged
-        below (check the browser console).
-      </p>
-      <div className="rounded-xl bg-white border border-border px-4 py-3 text-left mb-4">
-        <p className="text-sm font-semibold text-brand-charcoal mb-1">
-          {data.name}
-        </p>
-        <p className="text-xs text-brand-grey">{data.addressLine1}, {data.postcode?.toUpperCase()}</p>
-        <p className="text-xs text-brand-grey mt-2">
-          {services.length} service{services.length !== 1 ? "s" : ""} —{" "}
-          <span className="font-semibold text-brand-charcoal">
-            £{grandTotal.toFixed(2)}
-          </span>
-          {discount > 0 && (
-            <span className="text-action-green ml-1">(10% discount applied)</span>
-          )}
-        </p>
-      </div>
-      <a
-        href="/"
-        className="inline-flex items-center gap-1 text-sm text-compliance-blue hover:underline font-medium"
-      >
-        ← Return to homepage
-      </a>
-    </div>
-  );
-}
 
 export function BookingForm() {
+  const router = useRouter();
   const [step, setStep] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [data, setData] = useState<PartialBookingData>({});
 
   function merge(partial: Partial<PartialBookingData>) {
@@ -99,11 +51,13 @@ export function BookingForm() {
     setStep(5);
   }
 
-  function handleSubmit(termsAccepted: boolean) {
+  async function handleSubmit(termsAccepted: boolean): Promise<void> {
     merge({ acceptedTerms: termsAccepted });
+    setIsSubmitting(true);
+    setSubmitError(null);
 
     const services = data.services ?? [];
-    const { subtotal, discount, total } = calculateBundlePrice(
+    const { discount, total } = calculateBundlePrice(
       services.map((s) => ({
         service: s.serviceType as ServiceType,
         price: s.price,
@@ -112,30 +66,74 @@ export function BookingForm() {
     const charges =
       (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
       (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
+    const grandTotal = total + charges;
 
-    const bookingObject = {
-      ...data,
-      acceptedTerms: termsAccepted,
-      pricing: {
-        subtotal,
-        discount,
-        servicesTotal: total,
-        additionalCharges: charges,
-        grandTotal: total + charges,
+    const payload = {
+      customer: {
+        name: data.name ?? "",
+        email: data.email ?? "",
+        phone: data.phone ?? "",
+        tenantPhone: data.tenantPhone ?? undefined,
       },
+      property: {
+        streetAddress: [data.addressLine1, data.addressLine2].filter(Boolean).join(", "),
+        city: data.city ?? "",
+        postcode: (data.postcode ?? "").toUpperCase(),
+      },
+      propertyType: data.propertyCategory ?? "",
+      propertySubType: data.propertySize ?? "",
+      services: services.map((s) => ({
+        type: s.serviceType,
+        variant: s.optionLabel,
+        price: s.price,
+      })),
+      additionalCharges: {
+        congestionCharge: data.congestionZone ?? false,
+        parkingCharge: data.parkingRestriction ?? false,
+      },
+      appointment: {
+        date: data.preferredDate ?? "",
+        timeSlot: data.timePreference === "morning" ? "Morning (8am–12pm)" : "Afternoon (12pm–6pm)",
+      },
+      totalPrice: grandTotal,
     };
 
-    // eslint-disable-next-line no-console
-    console.log("📋 Booking object:", bookingObject);
-    setSubmitted(true);
-  }
+    try {
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-  if (submitted) {
-    return (
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-        <SuccessScreen data={data} />
-      </div>
-    );
+      if (!res.ok) {
+        throw new Error(`Server error ${res.status}`);
+      }
+
+      try {
+        sessionStorage.setItem(
+          "mlc_booking_success",
+          JSON.stringify({
+            name: data.name,
+            email: data.email,
+            services: services.map((s) => ({
+              label: s.label,
+              optionLabel: s.optionLabel,
+              price: s.price,
+            })),
+            appointment: { date: data.preferredDate, timeSlot: data.timePreference },
+            totalPrice: grandTotal,
+            discount,
+          }),
+        );
+      } catch {
+        // sessionStorage unavailable — success page shows generic state
+      }
+
+      router.push("/book/success");
+    } catch {
+      setSubmitError("Something went wrong. Please try again or call us on 0330 133 0066.");
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -193,12 +191,18 @@ export function BookingForm() {
               />
             )}
             {step === 5 && (
-              <Step5Review
-                data={data}
-                onBack={() => setStep(4)}
-                onGoToStep={setStep}
-                onSubmit={handleSubmit}
-              />
+              <>
+                <Step5Review
+                  data={data}
+                  onBack={() => setStep(4)}
+                  onGoToStep={setStep}
+                  onSubmit={handleSubmit}
+                  isSubmitting={isSubmitting}
+                />
+                {submitError && (
+                  <p className="mt-3 text-sm text-red-600 text-center">{submitError}</p>
+                )}
+              </>
             )}
           </div>
         </div>
