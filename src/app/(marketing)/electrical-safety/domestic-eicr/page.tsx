@@ -6,6 +6,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
@@ -13,9 +14,9 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "EICR Certificate from £67.99 | My Landlord Certificate",
+  title: "EICR Certificate London from £67.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved electricians, same-week appointments across London, certificate emailed same day.",
+    "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 32 London boroughs. Certificate emailed same day.",
   alternates: {
     canonical: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
   },
@@ -38,7 +39,7 @@ const serviceSchema = {
   areaServed: ["London", "South East England"],
   offers: {
     "@type": "Offer",
-    price: "67.99",
+    price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
@@ -59,27 +60,52 @@ const faqs = [
   {
     question: "Is an EICR a legal requirement for landlords?",
     answer:
-      "Yes. Since 1 July 2020, all new private tenancies in England must have a valid EICR. From 1 April 2021, this applies to all existing tenancies too. Landlords who fail to comply can face fines of up to £30,000.",
+      "Yes. Since 1 July 2020, all new private tenancies in England must have a valid EICR. From 1 April 2021, this applies to all existing tenancies too. Landlords who fail to provide an EICR can face fines of up to £30,000 per property. You must provide a copy to your tenant within 28 days of the inspection.",
   },
   {
     question: "How often does a landlord EICR need to be renewed?",
     answer:
-      "An EICR is valid for 5 years. You must renew it every 5 years or at the start of a new tenancy, whichever comes first. You must provide a copy to your tenant within 28 days of the inspection.",
+      "An EICR is valid for 5 years or for the duration of the tenancy, whichever is shorter. You must have a new EICR carried out at least every 5 years. If your current tenancy is coming to an end and the certificate is older than 5 years, you must renew before re-letting.",
   },
   {
     question: "What happens if my property fails an EICR?",
     answer:
-      "If your EICR identifies code C1 or C2 faults (dangerous or potentially dangerous), you must carry out remedial work within 28 days. Once the work is complete, we provide a completion certificate confirming the installation is safe.",
+      "If the EICR finds C1 (danger present) or C2 (potentially dangerous) faults, you must carry out remedial work within 28 days of the inspection. Once the work is complete, your electrician issues a Minor Works Certificate or Electrical Installation Certificate as evidence of the repairs. The council may request to see this.",
   },
   {
-    question: "How long does an EICR inspection take?",
+    question: "What does an EICR inspection involve?",
     answer:
-      "Most domestic EICRs take 2–4 hours depending on property size and the age of the wiring. Our engineers will confirm the expected duration when booking.",
+      "The electrician inspects and tests all fixed wiring, the consumer unit (fuse box), earthing and bonding, all sockets and switches, ceiling roses and light fittings, and the main incoming supply. They also test the insulation resistance of wiring and verify that all RCD (residual current device) protection is functioning correctly.",
+  },
+  {
+    question: "How long does an EICR take?",
+    answer:
+      "A studio or one-bedroom flat typically takes 2–3 hours. Larger properties take longer — a 4–5 bedroom house may take 4–6 hours. Older wiring (pre-1960s rubber insulation) or complex installations may require additional time. We will confirm the estimated duration at booking.",
   },
   {
     question: "Do tenants need to be present during the EICR?",
     answer:
-      "Access to the property is required, but tenants don't need to stay. You can arrange access with your tenant or managing agent beforehand.",
+      "Access to the property is required but tenants do not need to remain present throughout the inspection. Many landlords arrange access with their tenant or managing agent for a mutually convenient time. Power will need to be off for part of the inspection.",
+  },
+  {
+    question: "What is a C1, C2, C3, or FI code on an EICR?",
+    answer:
+      "C1 means 'danger present — immediate action required'. C2 means 'potentially dangerous — remedial action required'. C3 means 'improvement recommended but not required for compliance'. FI means 'further investigation required' — for example, where wiring concealed in walls cannot be fully tested. Only C1 and C2 codes make the installation unsatisfactory; C3 and FI codes do not require the property to be taken off the rental market.",
+  },
+  {
+    question: "Can you carry out remedial work after the EICR?",
+    answer:
+      "Yes. Our electricians can quote for and complete any C1 or C2 remedial work identified during the EICR. Common remedial works include adding RCD protection, replacing old consumer units, repairing damaged sockets, and improving earthing and bonding. We provide a completion certificate once all work is done.",
+  },
+  {
+    question: "Is there a difference between an EICR and a PAT test?",
+    answer:
+      "Yes. An EICR covers fixed electrical installations — the wiring inside the walls, the consumer unit, sockets, switches, and light fittings. A PAT test covers portable electrical appliances — anything with a plug. Both are recommended for furnished rental properties. See our PAT testing page for more information.",
+  },
+  {
+    question: "Which areas of London do you cover?",
+    answer:
+      "We cover all 32 London boroughs, including Central London, East London, South London, North London, and West London. Same-week appointments are available across the whole of Greater London. Call us on 0330 133 0066 or book online.",
   },
 ];
 
@@ -92,6 +118,27 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
+
+const steps = [
+  {
+    step: "1",
+    title: "Book online in 60 seconds",
+    description:
+      "Select your property size, pick a date that works for you, and confirm. We cover all 32 London boroughs with same-week slots available.",
+  },
+  {
+    step: "2",
+    title: "NICEIC approved electrician visits",
+    description:
+      "Our qualified electrician carries out a full inspection and test of all fixed wiring, the consumer unit, sockets, switches, and earthing. The visit takes 2–6 hours depending on property size.",
+  },
+  {
+    step: "3",
+    title: "Certificate emailed same day",
+    description:
+      "Your EICR is emailed to you the same day. You can forward it directly to your tenant or local authority. If remedial work is needed, we'll quote immediately.",
+  },
+];
 
 export default function DomesticEICRPage() {
   return (
@@ -106,15 +153,11 @@ export default function DomesticEICRPage() {
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
               <li>
-                <Link href="/" className="hover:text-compliance-blue transition-colors">
-                  Home
-                </Link>
+                <Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link>
               </li>
               <li aria-hidden="true">/</li>
               <li>
-                <Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">
-                  Electrical Safety
-                </Link>
+                <Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link>
               </li>
               <li aria-hidden="true">/</li>
               <li className="text-brand-charcoal font-medium">Domestic EICR</li>
@@ -122,11 +165,11 @@ export default function DomesticEICRPage() {
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            EICR Certificate from £{entryPrice}
+            EICR Certificate from £{entryPrice} — NICEIC Approved
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Same-week appointments · Certificate emailed same day
+            NICEIC approved · Same-week appointments · Certificate emailed same day · All 32 London boroughs
           </p>
           <TrustBadges variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -175,39 +218,45 @@ export default function DomesticEICRPage() {
 
         {/* What is an EICR */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What is an EICR?</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What is an EICR and why does every landlord need one?</h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            An EICR (Electrical Installation Condition Report) is a formal written assessment of all
-            fixed electrical wiring and installations in a property. A qualified electrician inspects
-            the consumer unit, wiring, sockets, light fittings, and earthing to check for defects,
-            deterioration, or anything that doesn&apos;t meet current safety standards.
+            An EICR — Electrical Installation Condition Report — is a formal written inspection of all
+            the fixed electrical wiring and installations in your rental property. A NICEIC approved
+            electrician tests the consumer unit (fuse box), all wiring circuits, sockets, switches,
+            light fittings, earthing, and bonding to check whether everything meets current safety
+            standards set by BS 7671 (the 18th Edition Wiring Regulations).
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Any issues found are classified by code: C1 (danger present — immediate action required),
-            C2 (potentially dangerous), C3 (improvement recommended), or FI (further investigation
-            required). The report must be acted upon within 28 days for C1 and C2 codes.
+            Any faults or deficiencies are classified by code. A <strong>C1</strong> (danger present)
+            or <strong>C2</strong> (potentially dangerous) code means the installation is unsatisfactory
+            and remedial work must be completed within 28 days. A <strong>C3</strong> code is an
+            improvement recommendation — the installation is satisfactory, but the work would be
+            advisable. A <strong>FI</strong> code means further investigation is needed. Most EICR
+            inspections result in a few C3 codes and an overall satisfactory outcome.
           </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Our NICEIC approved electricians carry out EICRs to the latest 18th Edition Wiring
-            Regulations (BS 7671:2018+A2:2022). The certificate is emailed to you on the same day
-            as the inspection.
+            Regulations (BS 7671:2018+A2:2022). We cover all property types — Victorian terraces
+            with original wiring, purpose-built flats, HMOs, and new builds. The EICR certificate
+            is emailed to you the same day as the inspection.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              Under the Electrical Safety Standards in the Private Rented Sector (England)
-              Regulations 2020, all landlords must have a valid EICR carried out by a qualified
-              person before any new tenancy begins, and renew it every 5 years.
+              The Electrical Safety Standards in the Private Rented Sector (England) Regulations
+              2020 require all landlords to have a valid EICR carried out before any new tenancy
+              begins, and to renew it every 5 years. Fines for non-compliance can reach{" "}
+              <strong>£30,000 per property</strong>.
             </p>
           </div>
         </section>
 
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">EICR Pricing</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">EICR Cost — Fixed Prices, No Surprises</h2>
           <p className="text-brand-grey mb-6">
-            Fixed prices by property size. No call-out fees, no hidden extras.
+            Fixed prices by property size. No call-out fees, no hidden extras. The price you see is the price you pay.
           </p>
           <PriceTable
             title="Domestic EICR"
@@ -225,7 +274,7 @@ export default function DomesticEICRPage() {
             </span>
           </p>
           <p className="text-sm text-brand-grey mt-2">
-            Need a commercial EICR?{" "}
+            Need a commercial EICR for offices, retail, or HMOs with multiple consumer units?{" "}
             <Link href="/electrical-safety/commercial-eicr" className="text-compliance-blue hover:underline">
               View commercial EICR pricing →
             </Link>
@@ -239,14 +288,14 @@ export default function DomesticEICRPage() {
           </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Full inspection of consumer unit and circuits",
+              "Full inspection of consumer unit and all circuits",
               "Testing of all fixed wiring and earth connections",
-              "Inspection of all sockets, switches, and fittings",
-              "Written EICR with coded fault classification",
-              "NICEIC approved electrician",
-              "Certificate emailed same day",
-              "Copy for tenant and copy for your records",
-              "Compliant with 18th Edition Wiring Regulations",
+              "Inspection of every socket, switch, and light fitting",
+              "RCD protection verification and trip-time testing",
+              "Earthing and bonding checks",
+              "Coded fault classification (C1, C2, C3, FI)",
+              "Written EICR compliant with BS 7671 18th Edition",
+              "Certificate emailed same day — ready for your tenant",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -258,30 +307,88 @@ export default function DomesticEICRPage() {
           </ul>
         </section>
 
+        {/* How it works */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">How it works</h2>
+          <div className="flex flex-col gap-6">
+            {steps.map((s) => (
+              <div key={s.step} className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-compliance-blue text-white flex items-center justify-center shrink-0 font-bold text-sm">
+                  {s.step}
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{s.title}</p>
+                  <p className="text-sm text-brand-grey leading-relaxed">{s.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Related services */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Related services</h2>
+          <p className="text-brand-grey mb-5 text-sm">Most landlords book these alongside their EICR.</p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { href: "/gas-safety/cp12", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From £49.99." },
+              { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace old fuse wire boards with modern RCD protection. From £599.99." },
+              { href: "/electrical-safety/pat-testing", label: "PAT Testing", desc: "Test portable appliances in furnished lets. From £59.99." },
+            ].map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="group bg-warm-white border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors"
+              >
+                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm mb-1">
+                  {s.label}
+                </p>
+                <p className="text-xs text-brand-grey">{s.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* FAQs */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-            Frequently Asked Questions
+            Frequently Asked Questions about EICR certificates
           </h2>
           <FAQAccordion items={faqs} />
+        </section>
+
+        {/* Trustpilot micro strip */}
+        <section aria-label="Trustpilot rating" className="py-6 border-b border-border flex justify-center">
+          <TrustpilotWidget
+            businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
+            variant="micro"
+          />
         </section>
 
         {/* CTA block */}
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Ready to book your EICR?
+              Book your landlord EICR today
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. No call-out fees. Certificate emailed same day.
-              Same-week appointments across all 32 London boroughs.
+              Fixed price from £{entryPrice}. No call-out fees. NICEIC approved electricians.
+              Certificate emailed same day. Same-week appointments across all 32 London boroughs.
             </p>
-            <Link
-              href="/book?service=eicr"
-              className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
-            >
-              Book Now — from £{entryPrice}
-            </Link>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Link
+                href="/book?service=eicr"
+                className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
+              >
+                Book Now — from £{entryPrice}
+              </Link>
+              <a
+                href="tel:03301330066"
+                className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
+              >
+                0330 133 0066
+              </a>
+            </div>
           </div>
         </section>
       </div>

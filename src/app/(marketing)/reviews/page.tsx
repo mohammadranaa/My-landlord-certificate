@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import { ReviewsByServiceFilter } from "@/components/marketing/reviews-filter";
 import { cn } from "@/lib/utils";
 
@@ -231,16 +232,13 @@ export default function ReviewsPage() {
         </Container>
       </section>
 
-      {/* ── Trustpilot embed placeholder ── */}
-      <section aria-label="Trustpilot widget" className="bg-white border-b border-border">
-        <Container className="py-8 text-center">
-          <div className="rounded-2xl border-2 border-dashed border-border bg-warm-white px-8 py-10 max-w-xl mx-auto">
-            <p className="font-bold text-[#00B67A] text-xl mb-1">Trustpilot</p>
-            <p className="text-brand-grey text-sm">
-              Trustpilot widget will be embedded here once the business profile is
-              verified. Reviews are imported automatically and update in real time.
-            </p>
-          </div>
+      {/* ── Trustpilot carousel ── */}
+      <section aria-label="Trustpilot reviews" className="bg-white border-b border-border">
+        <Container className="py-10">
+          <TrustpilotWidget
+            businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
+            variant="carousel"
+          />
         </Container>
       </section>
 
@@ -278,6 +276,29 @@ export default function ReviewsPage() {
             What landlords say about each certificate we offer.
           </p>
           <ReviewsByServiceFilter groups={byService} />
+        </Container>
+      </section>
+
+      {/* ── Leave a review CTA ── */}
+      <section aria-label="Leave a Trustpilot review" className="py-10 bg-warm-white border-b border-border">
+        <Container className="text-center max-w-xl">
+          <p className="font-bold text-brand-charcoal mb-2">Had a good experience?</p>
+          <p className="text-brand-grey text-sm mb-5">
+            Reviews help other London landlords find a trusted compliance provider.
+            It takes under 60 seconds.
+          </p>
+          <Link
+            href={process.env.NEXT_PUBLIC_TRUSTPILOT_PROFILE_URL || "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#00B67A] hover:bg-[#009a68] text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+            aria-label="Leave a review on Trustpilot — opens in new tab"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            Leave us a review on Trustpilot
+          </Link>
         </Container>
       </section>
 

@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/section";
 import { ServiceCard } from "@/components/ui/service-card";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import { cn } from "@/lib/utils";
 
 const FAQAccordion = dynamic(
@@ -560,17 +561,19 @@ export default function HomePage() {
       {/* ── 5. Reviews ───────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-white">
         <Container>
-          <div className="text-center mb-14">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-grey mb-3">
-              Trustpilot · 4.8 out of 5 · 847 reviews
-            </p>
+          <div className="text-center mb-10">
             <Heading level={2} className="mb-4">
               What UK landlords say about us
             </Heading>
-            <p className="text-brand-grey text-lg max-w-xl mx-auto">
+            <p className="text-brand-grey text-lg max-w-xl mx-auto mb-8">
               Real reviews from real landlords and letting agents. Independently
               verified on Trustpilot — we don&apos;t cherry-pick.
             </p>
+            <TrustpilotWidget
+              businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
+              variant="mini"
+              className="flex justify-center"
+            />
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
