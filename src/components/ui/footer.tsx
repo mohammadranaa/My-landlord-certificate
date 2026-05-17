@@ -51,6 +51,8 @@ const columns: FooterColumn[] = [
       { href: "mailto:info@mylandlordcertificate.co.uk", label: "Email Us" },
       { href: "/contact", label: "Contact Form" },
       { href: "/book", label: "Book Online" },
+      { href: "#", label: "Find us on Google" },
+      { href: "#", label: "Leave a Google Review" },
     ],
   },
 ];
