@@ -136,10 +136,10 @@ export function NavBar({ className }: { className?: string }) {
           <Image
             src="/Logo.jpg"
             alt="My Landlord Certificate"
-            width={180}
-            height={48}
+            width={220}
+            height={60}
             priority
-            className="h-10 w-auto object-contain"
+            className="h-14 w-auto object-contain"
           />
         </Link>
 
@@ -230,9 +230,9 @@ export function NavBar({ className }: { className?: string }) {
                     <Image
                       src="/Logo.jpg"
                       alt="My Landlord Certificate"
-                      width={144}
-                      height={38}
-                      className="h-8 w-auto object-contain"
+                      width={180}
+                      height={48}
+                      className="h-12 w-auto object-contain"
                     />
                   </Link>
                   <Dialog.Close

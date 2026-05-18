@@ -100,9 +100,9 @@ export function Footer({ className }: FooterProps) {
             <Image
               src="/Logo.jpg"
               alt="My Landlord Certificate"
-              width={160}
-              height={44}
-              className="h-10 w-auto object-contain brightness-0 invert mb-2"
+              width={200}
+              height={56}
+              className="h-14 w-auto object-contain brightness-0 invert mb-2"
             />
             <p className="text-blue-200 text-sm mb-2">Compliant. Sorted.</p>
             <p className="text-sm text-white/50 leading-relaxed">
