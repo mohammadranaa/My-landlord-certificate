@@ -1,4 +1,5 @@
 import posthog from "posthog-js";
+import type { PostHogInterface } from "posthog-js";
 
 export { posthog };
 
@@ -11,9 +12,9 @@ export function initPostHog() {
     capture_pageview: false,
     capture_pageleave: true,
     session_recording: {
-      sample_rate: 0.05,
+      sampleRate: 0.05,
     },
-    loaded(ph: typeof posthog) {
+    loaded(ph: PostHogInterface) {
       if (process.env.NODE_ENV !== "production") ph.opt_out_capturing();
     },
   });
