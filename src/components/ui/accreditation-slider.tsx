@@ -58,9 +58,9 @@ export function AccreditationSlider({
               aria-hidden={index >= logos.length ? true : undefined}
               tabIndex={index >= logos.length ? -1 : 0}
               className={cn(
-                "flex items-center justify-center shrink-0 rounded-xl px-5 py-3",
+                "flex items-center justify-center shrink-0 rounded-xl",
                 "border transition-all duration-200",
-                "h-[72px] min-w-[120px]",
+                "w-[160px] h-[80px]",
                 isDark
                   ? "bg-white/10 border-white/20 hover:bg-white/20"
                   : "bg-white border-border hover:border-compliance-blue hover:shadow-sm"
@@ -69,9 +69,9 @@ export function AccreditationSlider({
               <Image
                 src={logo.logoPath}
                 alt={logo.name}
-                width={logo.logoWidth}
-                height={logo.logoHeight}
-                className="object-contain max-h-10 w-auto"
+                width={120}
+                height={48}
+                className="w-[120px] h-[48px] object-contain"
                 unoptimized={logo.logoPath.endsWith(".gif")}
               />
             </Link>
