@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface FooterColumn {
@@ -96,9 +97,14 @@ export function Footer({ className }: FooterProps) {
         {/* Brand blurb */}
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-md">
-            <p className="font-bold text-white text-base mb-1">
-              My Landlord Certificate
-            </p>
+            <Image
+              src="/Logo.jpg"
+              alt="My Landlord Certificate"
+              width={160}
+              height={44}
+              className="h-10 w-auto object-contain brightness-0 invert mb-2"
+            />
+            <p className="text-blue-200 text-sm mb-2">Compliant. Sorted.</p>
             <p className="text-sm text-white/50 leading-relaxed">
               NICEIC & Gas Safe accredited property compliance across London and
               the Home Counties. Fixed prices, same-week appointments, no

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@base-ui/react/dialog";
 import { cn } from "@/lib/utils";
@@ -130,9 +131,16 @@ export function NavBar({ className }: { className?: string }) {
         {/* ── Logo ── */}
         <Link
           href="/"
-          className="font-bold text-lg text-compliance-blue shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
+          className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
         >
-          My Landlord Certificate
+          <Image
+            src="/Logo.jpg"
+            alt="My Landlord Certificate"
+            width={180}
+            height={48}
+            priority
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         {/* ── Desktop nav ── */}
@@ -217,9 +225,15 @@ export function NavBar({ className }: { className?: string }) {
                 <div className="flex items-center justify-between px-5 py-4 border-b border-border">
                   <Link
                     href="/"
-                    className="font-bold text-compliance-blue text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
+                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
                   >
-                    My Landlord Certificate
+                    <Image
+                      src="/Logo.jpg"
+                      alt="My Landlord Certificate"
+                      width={144}
+                      height={38}
+                      className="h-8 w-auto object-contain"
+                    />
                   </Link>
                   <Dialog.Close
                     aria-label="Close navigation menu"
