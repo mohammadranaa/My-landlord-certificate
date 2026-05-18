@@ -302,3 +302,47 @@ For high-traffic scenarios (e.g., a bulk import), use `Promise.all()` with batch
 | JobPayment | `jobpayment.json` | `uuid`, `job_uuid`, `payment_amount`, `payment_method`, `payment_note` |
 
 All UUIDs are assigned by ServiceM8 on POST. Include `active: 1` on all records created.
+
+---
+
+## Webhook receiver — `/api/webhooks/servicem8`
+
+The webhook endpoint lives at `src/app/api/webhooks/servicem8/route.ts`. It accepts POST requests from ServiceM8 whenever a job record changes.
+
+### What it does
+
+| Job status | Action |
+|---|---|
+| `Completed` | Logs `Job {uuid} completed`. ServiceM8 handles certificate email + review request automatically via its own automation rules. |
+| `Unsuccessful` | Logs `Job {uuid} marked unsuccessful`. Future: admin notification. |
+| Any other status | Logs the transition at debug level. |
+
+In mock mode the payload is logged but no processing runs. In real mode the handler processes every entry.
+
+### Registering the webhook in ServiceM8
+
+Do this **after** deploying to Vercel with a real domain:
+
+1. Log in to ServiceM8 → **Settings → Webhooks → Add Webhook**
+2. Set:
+   - **URL:** `https://mylandlordcertificate.co.uk/api/webhooks/servicem8`
+   - **Events:** `job.updated`
+3. Save — ServiceM8 will POST the updated job object to the URL on every job change.
+
+> Do not register the webhook pointing at `localhost` — ServiceM8 cannot reach your local machine. Use a tool like ngrok for local testing if needed.
+
+### Payload format
+
+ServiceM8 POSTs the updated job object as JSON. Fields the handler reads:
+
+```json
+{
+  "uuid": "abc-123",
+  "status": "Completed",
+  "company_uuid": "...",
+  "contact_email": "customer@example.com",
+  "job_address": "12 Example Street, London"
+}
+```
+
+Multiple records may be batched into an array — the handler normalises both shapes automatically.
