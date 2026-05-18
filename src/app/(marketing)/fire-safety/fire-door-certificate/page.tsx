@@ -130,7 +130,7 @@ export default function FireDoorCertificatePage() {
           <p className="text-brand-grey mb-4">
             Qualified inspectors · BS 9999 compliant · Certificate issued same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-door-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fire-door-certificate"

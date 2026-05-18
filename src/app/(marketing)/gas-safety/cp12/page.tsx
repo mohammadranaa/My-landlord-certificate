@@ -162,7 +162,7 @@ export default function CP12Page() {
           <p className="text-brand-grey mb-4">
             Gas Safe Registered · Annual legal requirement · Certificate emailed same day · All 32 London boroughs
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="gas-safety" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=gas-safety-cp12"

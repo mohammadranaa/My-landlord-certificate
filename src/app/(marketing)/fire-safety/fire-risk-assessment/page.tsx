@@ -138,7 +138,7 @@ export default function FireRiskAssessmentPage() {
           <p className="text-brand-grey mb-4">
             IFSM-qualified assessors · Written report same day · Suitable for HMO licensing
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-risk-assessment" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fra-residential"

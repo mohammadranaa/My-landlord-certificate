@@ -148,7 +148,7 @@ export default function ElectricalDiagnosticPage() {
           <p className="text-brand-grey mb-4">
             NICEIC approved · No call-out fee · Fault traced same visit · Minor repairs included
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="electrical-diagnostic" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=electrical-diagnostic"

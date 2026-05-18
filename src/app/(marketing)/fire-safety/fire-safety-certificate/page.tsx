@@ -132,7 +132,7 @@ export default function FireSafetyCertificatePage() {
           <p className="text-brand-grey mb-4">
             Accredited engineers · Annual testing to BS 5839-6 · Certificate issued same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-safety-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fire-safety-cert"

@@ -347,7 +347,7 @@ export default function GasSafetyPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="gas-safety" variant="dark" />
         </Container>
       </section>
 

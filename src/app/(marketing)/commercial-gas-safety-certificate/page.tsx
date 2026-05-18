@@ -247,7 +247,7 @@ export default function CommercialGasSafetyCertificatePage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="gas-safety-cp42" variant="dark" />
         </Container>
       </section>
 

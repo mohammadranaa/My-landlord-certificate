@@ -157,7 +157,7 @@ export default function DomesticEPCPage() {
           <p className="text-brand-grey mb-4">
             Accredited DEA assessors · Certificate on national register within 24 hours · Valid 10 years
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="epc" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=domestic-epc"

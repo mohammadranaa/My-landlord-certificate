@@ -195,7 +195,7 @@ export default function CommercialEPCPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="commercial-epc" variant="dark" />
         </Container>
       </section>
 

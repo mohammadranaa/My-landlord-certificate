@@ -125,7 +125,7 @@ export default function BoilerInstallationPage() {
           <p className="text-brand-grey mb-4">
             Gas Safe Registered · Supply &amp; install · CP12 included · 10-year warranty
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="boiler-installation" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <a
               href="tel:03301330066"

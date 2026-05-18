@@ -128,7 +128,7 @@ export default function FireAlarmPanelsPage() {
           <p className="text-brand-grey mb-4">
             Conventional &amp; addressable panels · BS 5839-1 compliant · Certificate same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-alarm-installation" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fire-alarm-panels"

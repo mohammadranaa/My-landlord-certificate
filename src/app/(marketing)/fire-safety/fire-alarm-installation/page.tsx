@@ -125,7 +125,7 @@ export default function FireAlarmInstallationPage() {
           <p className="text-brand-grey mb-4">
             Mains-wired interlinked · BS 5839-6 compliant · Free survey · Commissioning certificate included
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-alarm-installation" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fire-alarm-installation"

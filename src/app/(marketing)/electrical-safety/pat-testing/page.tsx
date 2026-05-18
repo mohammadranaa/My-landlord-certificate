@@ -134,7 +134,7 @@ export default function PATTestingPage() {
           <p className="text-brand-grey mb-4">
             Fast on-site testing · Pass/fail labels on every appliance · Written report same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="pat-testing" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=pat"

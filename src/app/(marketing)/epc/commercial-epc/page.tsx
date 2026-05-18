@@ -128,7 +128,7 @@ export default function CommercialEPCPage() {
           <p className="text-brand-grey mb-4">
             Accredited DEA assessors · SBEM methodology · Registered on national database
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="commercial-epc" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=commercial-epc"

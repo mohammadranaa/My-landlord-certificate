@@ -107,7 +107,7 @@ export default function CommercialFireRiskAssessmentPage() {
           <p className="text-brand-grey mb-4">
             IFSM-qualified assessors · Written report same day · All building types
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-risk-assessment" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fra-commercial"

@@ -260,7 +260,7 @@ export default function EpcCostPage() {
             </Link>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="epc" variant="dark" />
         </Container>
       </section>
 

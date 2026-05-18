@@ -310,7 +310,7 @@ export default function EicrPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="eicr" variant="dark" />
         </Container>
       </section>
 

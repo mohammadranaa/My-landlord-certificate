@@ -133,7 +133,7 @@ export default function FuseBoxInstallationPage() {
           <p className="text-brand-grey mb-4">
             NICEIC approved · Supply &amp; install · Part P self-certified · EICR included
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fuse-box" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fuse-box"

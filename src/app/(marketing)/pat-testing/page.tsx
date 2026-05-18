@@ -298,7 +298,7 @@ export default function PatTestingPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="pat-testing" variant="dark" />
         </Container>
       </section>
 

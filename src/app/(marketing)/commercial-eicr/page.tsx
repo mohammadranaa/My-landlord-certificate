@@ -255,7 +255,7 @@ export default function CommercialEicrPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="commercial-eicr" variant="dark" />
         </Container>
       </section>
 

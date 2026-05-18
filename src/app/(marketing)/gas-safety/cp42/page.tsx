@@ -128,7 +128,7 @@ export default function CP42Page() {
           <p className="text-brand-grey mb-4">
             Gas Safe Registered · COMCAT &amp; COCN1 competencies · Certificate same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="gas-safety-cp42" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=gas-safety-cp42"

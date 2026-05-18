@@ -314,7 +314,7 @@ export default function FireRiskAssessmentPage() {
             </a>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="fire-risk-assessment" variant="dark" />
         </Container>
       </section>
 

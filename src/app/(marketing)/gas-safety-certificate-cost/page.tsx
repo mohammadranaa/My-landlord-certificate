@@ -269,7 +269,7 @@ export default function GasSafetyCertificateCostPage() {
             </Link>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="gas-safety" variant="dark" />
         </Container>
       </section>
 

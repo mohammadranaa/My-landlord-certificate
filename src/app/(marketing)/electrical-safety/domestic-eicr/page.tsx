@@ -171,7 +171,7 @@ export default function DomesticEICRPage() {
           <p className="text-brand-grey mb-4">
             NICEIC approved · Same-week appointments · Certificate emailed same day · All 32 London boroughs
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=eicr"

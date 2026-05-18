@@ -149,7 +149,7 @@ export default function AsbestosSurveyPage() {
           <p className="text-brand-grey mb-4">
             UKAS-accredited laboratory · Management &amp; refurbishment surveys · Report in 5–7 days
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="asbestos-survey" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=asbestos-survey"

@@ -155,7 +155,7 @@ export default function CommercialEICRPage() {
           <p className="text-brand-grey mb-4">
             NICEIC approved · Priced per consumer unit · No hidden circuit charges · Certificate same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="commercial-eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=commercial-eicr"

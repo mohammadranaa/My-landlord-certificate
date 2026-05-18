@@ -7,9 +7,11 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
+import { AccreditationSlider } from "@/components/ui/accreditation-slider";
 import { ServicesSection } from "@/components/marketing/services-section";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HOMEPAGE_ACCREDITATIONS } from "@/lib/accreditations";
 import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import { cn } from "@/lib/utils";
 
@@ -237,7 +239,21 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── 2. Services grid ─────────────────────────────────────────────── */}
+      {/* ── 2. Accreditation slider ──────────────────────────────────────── */}
+      <section
+        aria-label="Professional accreditations and memberships"
+        className="py-10 bg-white border-y border-border"
+      >
+        <Container>
+          <AccreditationSlider
+            logos={HOMEPAGE_ACCREDITATIONS}
+            variant="light"
+            heading="Accredited by the UK's leading professional bodies"
+          />
+        </Container>
+      </section>
+
+      {/* ── 3. Services grid ─────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
           <div className="text-center mb-10">
@@ -254,7 +270,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 3. How it works ──────────────────────────────────────────────── */}
+      {/* ── 4. How it works ──────────────────────────────────────────────── */}
       <Section id="how-it-works" spacing="lg" className="bg-white">
         <Container>
           <div className="text-center mb-14">

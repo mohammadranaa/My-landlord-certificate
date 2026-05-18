@@ -261,7 +261,7 @@ export default function EicrCostPage() {
             </Link>
           </div>
 
-          <TrustBadges variant="dark" />
+          <TrustBadges serviceKey="eicr" variant="dark" />
         </Container>
       </section>
 

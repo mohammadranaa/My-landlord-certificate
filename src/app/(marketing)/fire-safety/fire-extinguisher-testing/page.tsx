@@ -128,7 +128,7 @@ export default function FireExtinguisherTestingPage() {
           <p className="text-brand-grey mb-4">
             All extinguisher types · BS 5306-3 compliant · Service label issued same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-extinguisher-testing" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fire-extinguisher-testing"

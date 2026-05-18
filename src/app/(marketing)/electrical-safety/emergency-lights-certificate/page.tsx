@@ -128,7 +128,7 @@ export default function EmergencyLightsCertificatePage() {
           <p className="text-brand-grey mb-4">
             NICEIC approved · Annual testing to BS 5266-1 · Certificate issued same day
           </p>
-          <TrustBadges variant="light" className="mb-6" />
+          <TrustBadges serviceKey="emergency-lights" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=elc"
