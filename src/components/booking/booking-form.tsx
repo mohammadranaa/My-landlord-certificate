@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { usePostHog } from "posthog-js/react";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import type {
@@ -22,10 +23,16 @@ import { Step5Review } from "./step-5-review";
 
 export function BookingForm() {
   const router = useRouter();
+  const posthog = usePostHog();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [data, setData] = useState<PartialBookingData>({});
+
+  useEffect(() => {
+    posthog?.capture("booking_started");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function merge(partial: Partial<PartialBookingData>) {
     setData((prev) => ({ ...prev, ...partial }));
@@ -33,21 +40,34 @@ export function BookingForm() {
 
   function handleStep1Complete(stepData: Step1Data) {
     merge(stepData);
+    posthog?.capture("property_entered", {
+      property_type: stepData.propertyCategory,
+      property_size: stepData.propertySize,
+    });
     setStep(2);
   }
 
   function handleStep2Complete(stepData: Step2Data) {
     merge(stepData);
+    posthog?.capture("contact_entered");
     setStep(3);
   }
 
   function handleStep3Complete(services: ServiceEntry[]) {
     merge({ services });
+    posthog?.capture("service_selected", {
+      services: services.map((s) => s.serviceType),
+      service_count: services.length,
+    });
     setStep(4);
   }
 
   function handleStep4Complete(stepData: Step4Data) {
     merge(stepData);
+    posthog?.capture("slot_selected", {
+      preferred_date: stepData.preferredDate,
+      time_preference: stepData.timePreference,
+    });
     setStep(5);
   }
 
@@ -55,6 +75,10 @@ export function BookingForm() {
     merge({ acceptedTerms: termsAccepted });
     setIsSubmitting(true);
     setSubmitError(null);
+    posthog?.capture("payment_initiated", {
+      total_price: data.services?.reduce((sum, s) => sum + s.price, 0) ?? 0,
+      service_count: data.services?.length ?? 0,
+    });
 
     const services = data.services ?? [];
     const { discount, total } = calculateBundlePrice(
@@ -129,8 +153,14 @@ export function BookingForm() {
         // sessionStorage unavailable — success page shows generic state
       }
 
+      posthog?.capture("booking_confirmed", {
+        total_price: grandTotal,
+        services: (data.services ?? []).map((s) => s.serviceType),
+        discount,
+      });
       router.push("/book/success");
     } catch {
+      posthog?.capture("booking_error");
       setSubmitError("Something went wrong. Please try again or call us on 0330 133 0066.");
       setIsSubmitting(false);
     }
