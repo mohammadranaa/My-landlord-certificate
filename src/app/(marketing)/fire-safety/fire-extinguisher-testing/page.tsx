@@ -6,24 +6,24 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial Gas Safety Certificate (CP42) London from £159.99 | My Landlord Certificate",
+  title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service | My Landlord Certificate",
   description:
-    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 32 London boroughs. Same-day certificate.",
+    "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label same day. All London boroughs.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/gas-safety/cp42",
+    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
   },
 };
 
-const entryPrice = GAS_SAFETY_CP42_TABLE[0].price;
+const entryPrice = FIRE_EXTINGUISHER_TABLE[0].price;
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Commercial Gas Safety Certificate (CP42)",
-  url: "https://mylandlordcertificate.co.uk/gas-safety/cp42",
+  name: "Fire Extinguisher Testing & Annual Service",
+  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,51 +43,51 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://mylandlordcertificate.co.uk/gas-safety" },
-    { "@type": "ListItem", position: 3, name: "Commercial Gas Safety (CP42)", item: "https://mylandlordcertificate.co.uk/gas-safety/cp42" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Extinguisher Testing", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing" },
   ],
 };
 
 const faqs = [
   {
-    question: "What is a CP42 and who needs one?",
+    question: "How often do fire extinguishers need to be serviced?",
     answer:
-      "A CP42 is the commercial equivalent of a domestic CP12 gas safety certificate. It is required for commercial properties including offices, restaurants, hotels, and any commercial premises where gas appliances are used. It is also required for communal boiler rooms in blocks of flats and HMOs classed as commercial buildings.",
+      "BS 5306-3 requires fire extinguishers to be inspected at least annually by a competent person. In addition, the responsible person should carry out a monthly visual check to ensure extinguishers are in their designated position, have not been discharged, and show no obvious damage.",
   },
   {
-    question: "What is the difference between CP12 and CP42?",
+    question: "What types of extinguisher do you service?",
     answer:
-      "CP12 is for domestic gas appliances (boilers, fires, cookers in residential properties). CP42 is for commercial gas appliances, including commercial catering equipment, commercial boilers, and industrial gas installations. CP42 engineers hold additional commercial gas competency certifications including COMCAT, COCN1, and CORT1.",
+      "We service all common types of portable fire extinguisher: water, water mist, foam, CO₂, dry powder, and wet chemical. Our engineers carry replacement parts for all main types, so minor servicing can usually be completed on the same visit.",
   },
   {
-    question: "How often is a CP42 required?",
+    question: "Do fire extinguishers need to be replaced?",
     answer:
-      "CP42 inspections are required annually under the Gas Safety (Installation and Use) Regulations 1998 and the Health and Safety at Work Act 1974. Commercial landlords and employers must maintain a current gas safety record and make it available to their local authority or Health and Safety Executive on request.",
+      "Disposable extinguishers (typically powder and CO₂) must be replaced every 5 years or after discharge. Rechargeable extinguishers can be refilled and extended-tested every 5 years. Our engineer will advise on the appropriate action for each extinguisher based on its age, type, and condition.",
   },
   {
-    question: "Do you cover restaurants and catering kitchens?",
+    question: "Is fire extinguisher servicing a legal requirement?",
     answer:
-      "Yes. Our engineers hold commercial catering gas competencies (COMCAT) and can inspect and certify commercial catering equipment including ranges, grills, fryers, and hot cupboards. Call us to discuss your specific appliance inventory before booking.",
+      "The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person to ensure fire-fighting equipment is maintained in efficient working order. Annual servicing to BS 5306-3 is the accepted method of meeting this obligation. HMO licence conditions in all London boroughs typically require an up-to-date service record.",
   },
   {
-    question: "How long does a CP42 inspection take?",
+    question: "What is the service label?",
     answer:
-      "A typical CP42 inspection with 1–3 appliances takes 1.5–2.5 hours. Large commercial kitchens with many appliances can take a full day. We will confirm the expected duration based on your appliance inventory when you book.",
+      "After each annual service, a dated label is attached to the extinguisher recording the service date, engineer's name and company, and next service due date. The label is the primary evidence that the extinguisher has been serviced and is suitable for inspection by the fire authority or HMO licensing officer.",
   },
   {
-    question: "Does the CP42 cover gas pipework as well as appliances?",
+    question: "How many fire extinguishers does my property need?",
     answer:
-      "Yes. Our inspection includes a gas tightness test on the supply pipework to each appliance and an inspection of the emergency control valve and isolation points. Any issues with pipework are recorded on the certificate with the appropriate advisory or unsafe-situation notice.",
+      "The minimum requirement for an HMO is one water or foam extinguisher per 200m² of floor area, and one CO₂ extinguisher in areas with electrical equipment. A typical 4–6 bedroom HMO will have 2–4 extinguishers. Our engineer can advise on whether your current provision is adequate for your property size and risk.",
   },
   {
-    question: "Can you do a CP12 and CP42 at the same visit?",
+    question: "Can you supply new extinguishers as well as service existing ones?",
     answer:
-      "Yes. If your property has both domestic and commercial gas appliances — for example a mixed-use building with residential flats above commercial premises — we can inspect all appliances on the same visit and issue the appropriate certificates for each section.",
+      "Yes. If any extinguishers fail inspection or are beyond their service life, we can supply and fit replacements during the same visit. New extinguishers are quoted separately — ask when booking and we will include a supply price alongside the service quote.",
   },
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 32 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -101,7 +101,7 @@ const faqSchema = {
   })),
 };
 
-export default function CP42Page() {
+export default function FireExtinguisherTestingPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -115,23 +115,23 @@ export default function CP42Page() {
             <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
               <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/gas-safety" className="hover:text-compliance-blue transition-colors">Gas Safety</Link></li>
+              <li><Link href="/fire-safety" className="hover:text-compliance-blue transition-colors">Fire Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Commercial Gas Safety (CP42)</li>
+              <li className="text-brand-charcoal font-medium">Fire Extinguisher Testing</li>
             </ol>
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Commercial Gas Safety (CP42) London from £{entryPrice}
+            Fire Extinguisher Testing London from £{entryPrice}
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Gas Safe Registered · COMCAT &amp; COCN1 competencies · Certificate same day
+            All extinguisher types · BS 5306-3 compliant · Service label issued same day
           </p>
           <TrustBadges variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=gas-safety-cp42"
+              href="/book?service=fire-extinguisher-testing"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -155,16 +155,16 @@ export default function CP42Page() {
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Valid for</p>
-              <p className="font-bold text-white">12 months</p>
+              <p className="text-xs text-white/50 mb-0.5">Frequency</p>
+              <p className="font-bold text-white">Annually</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Certificate</p>
+              <p className="text-xs text-white/50 mb-0.5">Service label</p>
               <p className="font-bold text-white">Same day</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
-              <p className="font-bold text-white">Gas Safe</p>
+              <p className="text-xs text-white/50 mb-0.5">Standard</p>
+              <p className="font-bold text-white">BS 5306-3</p>
             </div>
           </div>
         </div>
@@ -176,30 +176,35 @@ export default function CP42Page() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Commercial gas safety inspection explained
+            Annual fire extinguisher servicing for London landlords and businesses
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            A CP42 inspection covers all gas appliances in commercial premises across London —
-            commercial boilers, catering equipment, gas fires in common areas, and industrial
-            gas installations. It is the commercial equivalent of the domestic CP12 and is
-            required annually under the Gas Safety (Installation and Use) Regulations 1998
-            and the Health and Safety at Work Act 1974.
+            Fire extinguishers are only effective in an emergency if they are properly
+            maintained. BS 5306-3 requires annual inspection by a competent person to
+            check the extinguisher&apos;s pressure, condition, and operating mechanism —
+            and to confirm it is suitable for the fire risk in its location. All London HMO
+            licence conditions require fire extinguishers to be serviced annually.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Our trained engineers service all types of portable fire extinguisher: water,
+            water mist, foam, CO₂, dry powder, and wet chemical. Extinguishers are inspected
+            in-situ — no need to bring them to us. A dated service label is applied to each
+            extinguisher after passing inspection, and a written service record is issued the
+            same day.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Our engineers hold commercial gas competencies including COMCAT (commercial catering),
-            COCN1 (commercial natural gas), and CORT1 (commercial natural gas tightness testing).
-            They are fully qualified to inspect all types of commercial gas equipment and issue
-            the written certificate the same day. The certificate identifies each appliance
-            inspected and records any advisory notices or unsafe situations.
+            Where an extinguisher fails inspection or is beyond its service life, we can
+            supply replacement units and quote for extended testing (refill) for rechargeable
+            types. Ask when booking.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              Commercial landlords and employers have a duty of care under the Gas Safety
-              (Installation and Use) Regulations 1998 and the Health and Safety at Work Act
-              1974 to maintain all gas appliances in a safe condition. Annual CP42 inspection
-              is the accepted method of demonstrating compliance.
+              The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person
+              to ensure fire-fighting equipment is maintained in efficient working order.
+              Annual servicing to BS 5306-3 is the accepted method of meeting this obligation.
+              HMO licence conditions typically require an up-to-date service record.
             </p>
           </div>
         </section>
@@ -211,18 +216,18 @@ export default function CP42Page() {
             {[
               {
                 step: "1",
-                title: "Book and confirm your appliance list",
-                body: "Tell us the number and type of gas appliances (boilers, catering equipment, gas fires). We confirm the price and book a Gas Safe engineer with the right commercial competencies.",
+                title: "Book with your extinguisher count",
+                body: "Tell us the number and types of extinguishers. We confirm the price and book an engineer. Most visits take under an hour — minimal disruption to your tenants.",
               },
               {
                 step: "2",
                 title: "On-site inspection",
-                body: "Our engineer inspects each appliance, carries out gas tightness testing on all pipework, checks ventilation and flues, and verifies emergency control valves. Any issues are recorded immediately.",
+                body: "Our engineer inspects each extinguisher in-situ: pressure gauge, operating pin, hose, and weight check. A dated service label is applied to each extinguisher that passes. Failed units are recorded with a recommended action.",
               },
               {
                 step: "3",
-                title: "CP42 certificate emailed same day",
-                body: "You receive the written CP42 certificate listing every appliance with its inspection result. Keep it on-site and make it available to your local authority or HSE inspector on request.",
+                title: "Service record issued same day",
+                body: "You receive a written service record listing each extinguisher with its inspection result and next service date. Keep it with your HMO licence documents and compliance file.",
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex flex-col gap-3">
@@ -238,15 +243,13 @@ export default function CP42Page() {
 
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
-            CP42 Pricing
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
           <p className="text-brand-grey mb-6">
-            Priced by number of gas appliances. Includes inspection, testing, and written certificate.
+            Fixed price by number of extinguishers. Includes inspection, service label, and written record.
           </p>
           <PriceTable
-            title="Commercial Gas Safety (CP42)"
-            rows={GAS_SAFETY_CP42_TABLE}
+            title="Fire Extinguisher Testing"
+            rows={FIRE_EXTINGUISHER_TABLE}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">
@@ -260,26 +263,25 @@ export default function CP42Page() {
             </span>
           </p>
           <p className="text-sm text-brand-grey mt-2">
-            For domestic gas safety (CP12)?{" "}
-            <Link href="/gas-safety/cp12" className="text-compliance-blue hover:underline">
-              View domestic gas safety pricing →
-            </Link>
+            Replacement extinguisher supply quoted separately — ask us when booking.
           </p>
         </section>
 
         {/* What's included */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            What&apos;s included from £{entryPrice}
+          </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Inspection of all commercial gas appliances",
-              "Gas tightness test on all pipework",
-              "Flue and ventilation checks",
-              "Emergency control valve verification",
-              "Written CP42 certificate",
-              "Advisory notices for remediation",
-              "Gas Safe Registered engineer",
-              "COMCAT / COCN1 commercial competency",
+              "Visual condition inspection",
+              "Pressure gauge check",
+              "Operating pin and safety clip check",
+              "Hose and nozzle inspection",
+              "Weight check (CO₂ and powder)",
+              "Correct extinguisher type for risk check",
+              "Dated service label applied",
+              "Written service record issued",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -293,9 +295,7 @@ export default function CP42Page() {
 
         {/* FAQs */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>
 
@@ -305,19 +305,19 @@ export default function CP42Page() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               {
-                name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety/cp12",
-                desc: "Domestic gas safety inspection from £49.99. Required annually for residential landlords.",
+                name: "Fire Risk Assessment",
+                href: "/fire-safety/fire-risk-assessment",
+                desc: "Written fire risk assessment from £74.99. Identifies whether your extinguisher provision is adequate.",
               },
               {
-                name: "Commercial EICR",
-                href: "/electrical-safety/commercial-eicr",
-                desc: "Electrical condition report for commercial premises from £149.99.",
+                name: "Fire Door Certificate",
+                href: "/fire-safety/fire-door-certificate",
+                desc: "Fire door inspection from £119.99/door. Annual HMO requirement under BS 9999.",
               },
               {
-                name: "Boiler Installation",
-                href: "/gas-safety/boiler-installation",
-                desc: "Gas Safe boiler replacement from £2,499. CP12 and 10-year warranty included.",
+                name: "Fire Safety Certificate",
+                href: "/fire-safety/fire-safety-certificate",
+                desc: "Smoke and CO alarm testing from £54.99. Required for all London rental properties.",
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -338,15 +338,15 @@ export default function CP42Page() {
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Book your commercial gas safety inspection
+              Book your fire extinguisher service
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Gas Safe Registered engineers with commercial
-              competencies. Certificate emailed same day across all London boroughs.
+              Fixed price from £{entryPrice}. All extinguisher types. Service label
+              issued same day. Same-week appointments across all 32 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=gas-safety-cp42"
+                href="/book?service=fire-extinguisher-testing"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -363,10 +363,10 @@ export default function CP42Page() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=gas-safety-cp42"
+        href="/book?service=fire-extinguisher-testing"
         label="Book Now"
         price={entryPrice}
-        serviceName="Commercial Gas Safety (CP42)"
+        serviceName="Fire Extinguisher Testing"
       />
     </>
   );

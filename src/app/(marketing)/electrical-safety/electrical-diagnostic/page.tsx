@@ -8,9 +8,9 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, ELECTRICAL_DIAGNOSTIC_HOURLY_RATE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Electrical Diagnostic from £89.99/hr | My Landlord Certificate",
+  title: "Electrical Diagnostic London — £89.99/hr, No Call-Out Fee | My Landlord Certificate",
   description:
-    "Electrical fault finding from £89.99/hr. Trace tripping circuits, intermittent faults, and wiring issues. NICEIC approved electricians across London. No call-out fee.",
+    "Electrical fault finding from £89.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 32 London boroughs. Minor repairs same visit.",
   alternates: {
     canonical: "https://mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
   },
@@ -21,6 +21,14 @@ const serviceSchema = {
   "@type": "Service",
   name: "Electrical Diagnostic & Fault Finding",
   url: "https://mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
+  description:
+    "NICEIC approved electricians trace and identify electrical faults in rental properties. Hourly rate, no call-out fee. Minor repairs completed same visit.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "My Landlord Certificate",
+    url: "https://mylandlordcertificate.co.uk",
+  },
+  areaServed: ["London", "South East England"],
   offers: {
     "@type": "Offer",
     price: `${ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}`,
@@ -41,23 +49,44 @@ const breadcrumbSchema = {
 
 const faqs = [
   {
+    question: "When do I need an electrical diagnostic rather than an EICR?",
+    answer:
+      "An EICR is a scheduled periodic inspection of the whole installation. An electrical diagnostic is what you need when a specific fault develops between inspections — a circuit breaker that keeps tripping, an RCD that won't reset, lights that flicker or go dead, a socket that has stopped working, or any unusual electrical behaviour. A diagnostic traces the exact cause so you know what needs to be repaired.",
+  },
+  {
     question: "What faults can an electrical diagnostic identify?",
     answer:
-      "Our electricians can trace a wide range of issues including: circuit breakers tripping repeatedly, RCDs failing without obvious cause, intermittent power loss, flickering lights, overloaded circuits, earth faults, and wiring defects not visible during an EICR.",
+      "Our electricians can trace: MCB or RCD tripping without apparent cause, intermittent power loss to circuits or sockets, flickering or dim lights, dead sockets or lighting circuits, earth faults, insulation breakdown, overloaded circuits, loose connections at junction boxes or accessories, and faults in the consumer unit itself.",
   },
   {
-    question: "How is electrical diagnostic charged?",
-    answer: `The diagnostic service is charged at £${ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} per hour with no call-out fee. We will provide an estimated duration when you describe the issue at booking. Any remedial work identified is quoted separately.`,
-  },
-  {
-    question: "Will I need an EICR after a diagnostic?",
+    question: "How is the service charged?",
     answer:
-      "If the fault indicates wider issues with the electrical installation, we may recommend a full EICR. However, a diagnostic does not replace an EICR and vice versa — they serve different purposes.",
+      `The diagnostic service is charged at £${ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} per hour with no call-out fee. Most diagnostic visits take 1–2 hours. When you describe the issue at booking, we'll estimate the likely duration. Any remedial work identified beyond minor repairs is quoted separately before any work is carried out.`,
   },
   {
-    question: "Can you repair the fault during the diagnostic visit?",
+    question: "Can you carry out repairs during the diagnostic visit?",
     answer:
-      "Minor repairs can often be completed during the same visit. For more complex work (such as rewiring a circuit or replacing a consumer unit), we will provide a separate fixed quote.",
+      "Yes. Minor repairs — such as replacing a faulty socket, tightening connections, replacing a failed MCB, or resetting and testing an RCD — can often be completed during the same visit at no additional charge beyond the hourly rate. For larger work (rewiring a circuit, replacing a consumer unit, resolving widespread insulation failure), we will provide a separate fixed quote.",
+  },
+  {
+    question: "Will I need an EICR after the diagnostic?",
+    answer:
+      "Not necessarily. If the fault is isolated and the wider installation is satisfactory, a diagnostic and repair is sufficient. However, if the fault indicates wider problems with the installation — such as deteriorating wiring or lack of RCD protection — we may recommend a full EICR. We'll advise you honestly after the visit.",
+  },
+  {
+    question: "What if the fault can't be found during the visit?",
+    answer:
+      "Intermittent faults can sometimes be difficult to replicate during a visit. If this happens, we'll document what we tested and ruled out, and discuss next steps — which may include leaving test equipment in place, returning at a different time of day, or investigating further with an EICR.",
+  },
+  {
+    question: "Is electrical fault finding covered by landlord insurance?",
+    answer:
+      "Some landlord building insurance policies cover emergency electrical call-outs. Check your policy before booking — if you have cover, your insurer may require you to use their approved contractor. However, if the fault is causing a safety risk to your tenants (a tripping RCD, a spark from a socket), you have a duty to act promptly regardless of insurance.",
+  },
+  {
+    question: "Which areas of London do you cover?",
+    answer:
+      "We cover all 32 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Call 0330 133 0066 or book online.",
   },
 ];
 
@@ -70,6 +99,27 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: faq.answer },
   })),
 };
+
+const steps = [
+  {
+    step: "1",
+    title: "Describe the fault — book online or call",
+    description:
+      "Tell us what's happening: which circuit, how often it trips, any smells or visible damage. We'll estimate the likely duration and book the nearest available slot.",
+  },
+  {
+    step: "2",
+    title: "NICEIC electrician traces the fault",
+    description:
+      "Using specialist test equipment, our electrician systematically isolates the fault. Minor repairs are completed on the spot. Larger work is quoted before anything is touched.",
+  },
+  {
+    step: "3",
+    title: "Written fault report same visit",
+    description:
+      "You receive a written summary of the fault found, the cause, the action taken, and any recommended follow-up. Useful for your records and insurance.",
+  },
+];
 
 export default function ElectricalDiagnosticPage() {
   return (
@@ -92,11 +142,11 @@ export default function ElectricalDiagnosticPage() {
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Electrical Diagnostic from £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr
+            Electrical Diagnostic — £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr, No Call-Out Fee
           </h1>
-          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from size="lg" className="mb-4" />
+          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from={false} size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · No call-out fee · Fault traced and reported same visit
+            NICEIC approved · No call-out fee · Fault traced same visit · Minor repairs included
           </p>
           <TrustBadges variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -146,59 +196,43 @@ export default function ElectricalDiagnosticPage() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Electrical fault finding for landlords
+            Electrical fault finding for landlords — what it covers
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            An EICR tells you the condition of your electrical installation — but if a specific
-            fault develops between inspections (a breaker that keeps tripping, a socket that
-            stops working, or lights that flicker intermittently), you need a diagnostic rather
-            than a full inspection.
+            An EICR tells you the condition of your electrical installation at a point in
+            time — but electrical faults can develop at any point between inspections.
+            A circuit breaker that keeps tripping, an RCD that trips and won&apos;t reset,
+            lights that flicker or go dead, or a socket that sparks — these need immediate
+            investigation, not a full 5-year inspection.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Our NICEIC approved electricians use specialist test equipment to isolate and identify
-            the fault, explain the cause in plain English, and advise on the most cost-effective
-            remedy. Minor repairs can often be completed during the same visit.
+            Our NICEIC approved electricians use specialist test equipment — insulation
+            resistance testers, loop impedance meters, and RCD testers — to systematically
+            isolate the fault without guesswork. We explain the cause in plain English and
+            complete any minor repairs during the same visit. If larger remedial work is
+            needed, we quote before starting.
           </p>
-          <p className="text-brand-charcoal/80 leading-relaxed">
-            Charged at £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr with no call-out fee. We will
-            estimate the likely duration when you describe the issue at booking — most diagnostic
-            visits take 1–2 hours.
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            As a landlord, you have a duty under the Housing Act 2004 and the Landlord and
+            Tenant Act 1985 to keep electrical installations in safe working order. Acting
+            quickly on tenant reports of electrical faults protects both your tenants and
+            your legal position.
           </p>
         </section>
 
-        {/* Pricing */}
-        <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Pricing</h2>
-          <div className="bg-warm-white border border-border rounded-xl p-6">
-            <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-3xl font-bold text-compliance-blue">
-                £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}
-              </span>
-              <span className="text-brand-grey">per hour</span>
-            </div>
-            <ul className="text-sm text-brand-grey flex flex-col gap-1 mt-3">
-              <li>· No call-out fee</li>
-              <li>· Most visits 1–2 hours</li>
-              <li>· Remedial work quoted separately</li>
-              <li>
-                · Congestion Zone +£{ADDITIONAL_CHARGES.congestionZone} ·
-                Parking restrictions +£{ADDITIONAL_CHARGES.parking}
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        {/* What's included */}
+        {/* Common faults we find */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Common faults we trace and fix</h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Systematic fault tracing by NICEIC approved electrician",
-              "Testing of affected circuits and connections",
-              "Written summary of fault and recommended action",
-              "Minor repairs where possible in same visit",
-              "No call-out fee — hourly rate only",
-              "Advice on preventing recurrence",
+              "MCB (circuit breaker) tripping repeatedly",
+              "RCD failing to reset or nuisance tripping",
+              "Dead sockets or socket circuits",
+              "Flickering or intermittently dead lights",
+              "Burning smell from sockets or consumer unit",
+              "Partial power loss after a fault or surge",
+              "Earth fault on a specific circuit",
+              "Overloaded circuits causing nuisance trips",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -210,11 +244,74 @@ export default function ElectricalDiagnosticPage() {
           </ul>
         </section>
 
+        {/* Pricing */}
+        <section id="pricing" className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Pricing</h2>
+          <div className="bg-warm-white border border-border rounded-xl p-6">
+            <div className="flex items-baseline gap-2 mb-2">
+              <span className="text-3xl font-bold text-compliance-blue">
+                £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}
+              </span>
+              <span className="text-brand-grey">per hour (no call-out fee)</span>
+            </div>
+            <ul className="text-sm text-brand-grey flex flex-col gap-1 mt-3">
+              <li>· Most visits 1–2 hours</li>
+              <li>· Minor repairs included in hourly rate</li>
+              <li>· Larger remedial work quoted separately before starting</li>
+              <li>· Written fault report included</li>
+              <li>
+                · Congestion Zone +£{ADDITIONAL_CHARGES.congestionZone} ·
+                Parking +£{ADDITIONAL_CHARGES.parking}
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">How it works</h2>
+          <div className="flex flex-col gap-6">
+            {steps.map((s) => (
+              <div key={s.step} className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-compliance-blue text-white flex items-center justify-center shrink-0 font-bold text-sm">
+                  {s.step}
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{s.title}</p>
+                  <p className="text-sm text-brand-grey leading-relaxed">{s.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Related services */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Related services</h2>
+          <p className="text-brand-grey mb-5 text-sm">The diagnostic may reveal a need for these.</p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { href: "/electrical-safety/domestic-eicr", label: "Domestic EICR", desc: "Full 5-yearly inspection of the entire installation. From £67.99." },
+              { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace an old consumer unit with modern RCD protection. From £599.99." },
+              { href: "/electrical-safety/commercial-eicr", label: "Commercial EICR", desc: "For offices, HMOs, and multi-unit premises. From £149.99." },
+            ].map((s) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="group bg-warm-white border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors"
+              >
+                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm mb-1">
+                  {s.label}
+                </p>
+                <p className="text-xs text-brand-grey">{s.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* FAQs */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>
 
@@ -226,7 +323,7 @@ export default function ElectricalDiagnosticPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr, no call-out fee. NICEIC approved
-              electricians available same week across London.
+              electricians. Fault traced and minor repairs completed same visit.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

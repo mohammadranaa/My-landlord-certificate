@@ -6,24 +6,24 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_PANELS_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial Gas Safety Certificate (CP42) London from £159.99 | My Landlord Certificate",
+  title: "Fire Alarm Panel Servicing London from £74.99 — BS 5839-1 | My Landlord Certificate",
   description:
-    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 32 London boroughs. Same-day certificate.",
+    "Fire alarm panel inspection, testing and servicing from £74.99. Conventional and addressable panels. BS 5839-1 compliant. Written certificate same day. All 32 London boroughs.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/gas-safety/cp42",
+    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-panels",
   },
 };
 
-const entryPrice = GAS_SAFETY_CP42_TABLE[0].price;
+const entryPrice = FIRE_ALARM_PANELS_TABLE[0].price;
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Commercial Gas Safety Certificate (CP42)",
-  url: "https://mylandlordcertificate.co.uk/gas-safety/cp42",
+  name: "Fire Alarm Panel Servicing & Inspection",
+  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-panels",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,51 +43,51 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://mylandlordcertificate.co.uk/gas-safety" },
-    { "@type": "ListItem", position: 3, name: "Commercial Gas Safety (CP42)", item: "https://mylandlordcertificate.co.uk/gas-safety/cp42" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Alarm Panels", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-panels" },
   ],
 };
 
 const faqs = [
   {
-    question: "What is a CP42 and who needs one?",
+    question: "How often should a fire alarm panel be serviced?",
     answer:
-      "A CP42 is the commercial equivalent of a domestic CP12 gas safety certificate. It is required for commercial properties including offices, restaurants, hotels, and any commercial premises where gas appliances are used. It is also required for communal boiler rooms in blocks of flats and HMOs classed as commercial buildings.",
+      "BS 5839-1 requires fire alarm systems in commercial and multi-occupancy premises to be inspected and tested at least every six months. HMO licence conditions across London typically require annual servicing as a minimum. We recommend six-monthly inspections for all premises with a panel-based system to catch developing faults early.",
   },
   {
-    question: "What is the difference between CP12 and CP42?",
+    question: "What types of panel do you service?",
     answer:
-      "CP12 is for domestic gas appliances (boilers, fires, cookers in residential properties). CP42 is for commercial gas appliances, including commercial catering equipment, commercial boilers, and industrial gas installations. CP42 engineers hold additional commercial gas competency certifications including COMCAT, COCN1, and CORT1.",
+      "We service conventional (zone-based) and addressable panels from all major manufacturers including Kentec, Advanced, Hochiki, Napco, and Morley. If you have a less common panel, call us to confirm compatibility before booking.",
   },
   {
-    question: "How often is a CP42 required?",
+    question: "Is fire alarm panel servicing a legal requirement?",
     answer:
-      "CP42 inspections are required annually under the Gas Safety (Installation and Use) Regulations 1998 and the Health and Safety at Work Act 1974. Commercial landlords and employers must maintain a current gas safety record and make it available to their local authority or Health and Safety Executive on request.",
+      "The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person to ensure the fire detection and alarm system is maintained in efficient working order. BS 5839-1 is the accepted standard — regular servicing and an up-to-date service record are the expected method of demonstrating compliance. Many insurance policies also require a current service certificate.",
   },
   {
-    question: "Do you cover restaurants and catering kitchens?",
+    question: "What is the difference between a panel service and a fire safety certificate?",
     answer:
-      "Yes. Our engineers hold commercial catering gas competencies (COMCAT) and can inspect and certify commercial catering equipment including ranges, grills, fryers, and hot cupboards. Call us to discuss your specific appliance inventory before booking.",
+      "A panel service (this service) covers the full fire alarm system — the control panel, all detectors, call points, sounders, and backup power. A fire safety certificate covers standalone battery or mains-wired detectors in residential properties not connected to a panel. If your property has a central fire alarm control panel, you need a panel service.",
   },
   {
-    question: "How long does a CP42 inspection take?",
+    question: "What happens during a six-monthly and annual service?",
     answer:
-      "A typical CP42 inspection with 1–3 appliances takes 1.5–2.5 hours. Large commercial kitchens with many appliances can take a full day. We will confirm the expected duration based on your appliance inventory when you book.",
+      "A six-monthly service tests a sample of devices (typically 25% of detectors and all call points). An annual (full) service tests every detection device, call point, sounder, and the panel backup battery. Both services include a written certificate. We recommend booking the annual full service so every device is verified.",
   },
   {
-    question: "Does the CP42 cover gas pipework as well as appliances?",
+    question: "What is included in the written service certificate?",
     answer:
-      "Yes. Our inspection includes a gas tightness test on the supply pipework to each appliance and an inspection of the emergency control valve and isolation points. Any issues with pipework are recorded on the certificate with the appropriate advisory or unsafe-situation notice.",
+      "The BS 5839-1 service certificate records the panel type and location, all devices tested and their results, any faults found and their status (remediated or outstanding), and the next service due date. It is suitable for submission to your local authority, HMO licensing body, or insurer.",
   },
   {
-    question: "Can you do a CP12 and CP42 at the same visit?",
+    question: "Can you repair faults found during the service?",
     answer:
-      "Yes. If your property has both domestic and commercial gas appliances — for example a mixed-use building with residential flats above commercial premises — we can inspect all appliances on the same visit and issue the appropriate certificates for each section.",
+      "Yes. Our engineers carry common spare parts for the panels and devices they service most frequently. Minor faults — such as failed detectors, damaged call points, or faulty sounders — can often be remediated during the same visit. Major faults and panel replacements are quoted separately.",
   },
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 32 London boroughs including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Camden, Barnet, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -101,7 +101,7 @@ const faqSchema = {
   })),
 };
 
-export default function CP42Page() {
+export default function FireAlarmPanelsPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -115,23 +115,23 @@ export default function CP42Page() {
             <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
               <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/gas-safety" className="hover:text-compliance-blue transition-colors">Gas Safety</Link></li>
+              <li><Link href="/fire-safety" className="hover:text-compliance-blue transition-colors">Fire Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Commercial Gas Safety (CP42)</li>
+              <li className="text-brand-charcoal font-medium">Fire Alarm Panels</li>
             </ol>
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Commercial Gas Safety (CP42) London from £{entryPrice}
+            Fire Alarm Panel Servicing London from £{entryPrice}
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Gas Safe Registered · COMCAT &amp; COCN1 competencies · Certificate same day
+            Conventional &amp; addressable panels · BS 5839-1 compliant · Certificate same day
           </p>
           <TrustBadges variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=gas-safety-cp42"
+              href="/book?service=fire-alarm-panels"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -155,16 +155,16 @@ export default function CP42Page() {
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Valid for</p>
-              <p className="font-bold text-white">12 months</p>
+              <p className="text-xs text-white/50 mb-0.5">Frequency</p>
+              <p className="font-bold text-white">6-monthly</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
               <p className="font-bold text-white">Same day</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
-              <p className="font-bold text-white">Gas Safe</p>
+              <p className="text-xs text-white/50 mb-0.5">Standard</p>
+              <p className="font-bold text-white">BS 5839-1</p>
             </div>
           </div>
         </div>
@@ -176,30 +176,34 @@ export default function CP42Page() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Commercial gas safety inspection explained
+            Fire alarm panel servicing for London HMOs and commercial premises
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            A CP42 inspection covers all gas appliances in commercial premises across London —
-            commercial boilers, catering equipment, gas fires in common areas, and industrial
-            gas installations. It is the commercial equivalent of the domestic CP12 and is
-            required annually under the Gas Safety (Installation and Use) Regulations 1998
-            and the Health and Safety at Work Act 1974.
+            Properties with a central fire alarm control panel — including HMOs with communal
+            areas, blocks of flats, and commercial buildings across London — require regular
+            panel servicing to BS 5839-1. This goes beyond a simple alarm test: our engineers
+            inspect the control panel itself, all detection devices (smoke, heat, CO), manual
+            call points, sounders, and the backup power supply.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            We service conventional (zone-based) and addressable panels from all major
+            manufacturers including Kentec, Advanced, Hochiki, Napco, and Morley. Our
+            engineers carry out a full functional test of every zone, check log entries and
+            fault history, test the backup battery, and issue a written BS 5839-1 service
+            certificate confirming the system&apos;s condition.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Our engineers hold commercial gas competencies including COMCAT (commercial catering),
-            COCN1 (commercial natural gas), and CORT1 (commercial natural gas tightness testing).
-            They are fully qualified to inspect all types of commercial gas equipment and issue
-            the written certificate the same day. The certificate identifies each appliance
-            inspected and records any advisory notices or unsafe situations.
+            Pricing is by number of detection devices on the system. Call us for tailored
+            quotes on large or complex multi-zone systems.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              Commercial landlords and employers have a duty of care under the Gas Safety
-              (Installation and Use) Regulations 1998 and the Health and Safety at Work Act
-              1974 to maintain all gas appliances in a safe condition. Annual CP42 inspection
-              is the accepted method of demonstrating compliance.
+              The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person
+              to maintain the fire detection and alarm system in efficient working order.
+              BS 5839-1 recommends six-monthly servicing — many London HMO licences and
+              insurance policies require an up-to-date service record.
             </p>
           </div>
         </section>
@@ -211,18 +215,18 @@ export default function CP42Page() {
             {[
               {
                 step: "1",
-                title: "Book and confirm your appliance list",
-                body: "Tell us the number and type of gas appliances (boilers, catering equipment, gas fires). We confirm the price and book a Gas Safe engineer with the right commercial competencies.",
+                title: "Book with your detector count",
+                body: "Tell us the panel manufacturer and the number of detection devices on your system. We confirm the price and book an engineer with the right expertise for your panel type.",
               },
               {
                 step: "2",
-                title: "On-site inspection",
-                body: "Our engineer inspects each appliance, carries out gas tightness testing on all pipework, checks ventilation and flues, and verifies emergency control valves. Any issues are recorded immediately.",
+                title: "Full system inspection",
+                body: "Our engineer inspects the control panel, tests every detector zone, tests all call points and sounders, checks the backup battery, and reviews the fault log. Any issues are documented immediately.",
               },
               {
                 step: "3",
-                title: "CP42 certificate emailed same day",
-                body: "You receive the written CP42 certificate listing every appliance with its inspection result. Keep it on-site and make it available to your local authority or HSE inspector on request.",
+                title: "BS 5839-1 certificate issued same day",
+                body: "You receive a written service certificate recording every device tested, any faults found, and the next service due date. Suitable for your HMO licence, local authority, or insurance renewal.",
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex flex-col gap-3">
@@ -238,15 +242,13 @@ export default function CP42Page() {
 
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
-            CP42 Pricing
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
           <p className="text-brand-grey mb-6">
-            Priced by number of gas appliances. Includes inspection, testing, and written certificate.
+            Priced by number of detectors on the system. Includes full inspection, testing, and written certificate.
           </p>
           <PriceTable
-            title="Commercial Gas Safety (CP42)"
-            rows={GAS_SAFETY_CP42_TABLE}
+            title="Fire Alarm Panel Servicing"
+            rows={FIRE_ALARM_PANELS_TABLE}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">
@@ -260,10 +262,11 @@ export default function CP42Page() {
             </span>
           </p>
           <p className="text-sm text-brand-grey mt-2">
-            For domestic gas safety (CP12)?{" "}
-            <Link href="/gas-safety/cp12" className="text-compliance-blue hover:underline">
-              View domestic gas safety pricing →
-            </Link>
+            For large commercial systems, call{" "}
+            <a href="tel:03301330066" className="text-compliance-blue hover:underline">
+              0330 133 0066
+            </a>{" "}
+            for a tailored quote.
           </p>
         </section>
 
@@ -272,14 +275,14 @@ export default function CP42Page() {
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included</h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Inspection of all commercial gas appliances",
-              "Gas tightness test on all pipework",
-              "Flue and ventilation checks",
-              "Emergency control valve verification",
-              "Written CP42 certificate",
-              "Advisory notices for remediation",
-              "Gas Safe Registered engineer",
-              "COMCAT / COCN1 commercial competency",
+              "Control panel inspection and log review",
+              "Functional test of all detection zones",
+              "Manual call point test",
+              "Sounder and strobe test",
+              "Backup battery condition check",
+              "Detection device visual inspection",
+              "Fault investigation and advisory report",
+              "Written BS 5839-1 service certificate",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -293,9 +296,7 @@ export default function CP42Page() {
 
         {/* FAQs */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>
 
@@ -305,19 +306,19 @@ export default function CP42Page() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               {
-                name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety/cp12",
-                desc: "Domestic gas safety inspection from £49.99. Required annually for residential landlords.",
+                name: "Fire Risk Assessment",
+                href: "/fire-safety/fire-risk-assessment",
+                desc: "Written fire risk assessment from £74.99. Identifies fire detection deficiencies.",
               },
               {
-                name: "Commercial EICR",
-                href: "/electrical-safety/commercial-eicr",
-                desc: "Electrical condition report for commercial premises from £149.99.",
+                name: "Fire Alarm Installation",
+                href: "/fire-safety/fire-alarm-installation",
+                desc: "Mains-wired interlinked alarms from £209.99/alarm. For properties without a panel system.",
               },
               {
-                name: "Boiler Installation",
-                href: "/gas-safety/boiler-installation",
-                desc: "Gas Safe boiler replacement from £2,499. CP12 and 10-year warranty included.",
+                name: "Emergency Lights Certificate",
+                href: "/electrical-safety/emergency-lights-certificate",
+                desc: "Annual emergency lighting test from £54.99. BS 5266-1 compliant.",
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -338,15 +339,15 @@ export default function CP42Page() {
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Book your commercial gas safety inspection
+              Book your fire alarm panel service
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Gas Safe Registered engineers with commercial
-              competencies. Certificate emailed same day across all London boroughs.
+              Fixed price from £{entryPrice}. Written BS 5839-1 certificate same day.
+              Same-week appointments across all 32 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=gas-safety-cp42"
+                href="/book?service=fire-alarm-panels"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -363,10 +364,10 @@ export default function CP42Page() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=gas-safety-cp42"
+        href="/book?service=fire-alarm-panels"
         label="Book Now"
         price={entryPrice}
-        serviceName="Commercial Gas Safety (CP42)"
+        serviceName="Fire Alarm Panel Servicing"
       />
     </>
   );

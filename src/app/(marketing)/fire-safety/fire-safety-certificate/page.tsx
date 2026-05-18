@@ -6,24 +6,28 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, ELC_TABLE } from "@/lib/pricing";
+import {
+  ADDITIONAL_CHARGES,
+  FIRE_SAFETY_CERT_TABLE,
+  getPriceForFireSafetyCert,
+} from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved | My Landlord Certificate",
+  title: "Fire Safety Certificate London from £54.99 — Smoke Alarm Testing | My Landlord Certificate",
   description:
-    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 32 London boroughs. Certificate same day.",
+    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 32 London boroughs. Same-day certificate.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
   },
 };
 
-const entryPrice = ELC_TABLE[0].price;
+const entryPrice = getPriceForFireSafetyCert(1);
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Emergency Lights Certificate — Annual Testing",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+  name: "Fire Safety Certificate — Smoke and Heat Alarm Testing",
+  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,51 +47,51 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Emergency Lights Certificate", item: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Safety Certificate", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate" },
   ],
 };
 
 const faqs = [
   {
-    question: "Who needs an Emergency Lights Certificate?",
+    question: "Is a Fire Safety Certificate required by law?",
     answer:
-      "Any property with emergency lighting is required to have it tested and certified annually. This includes HMOs, blocks of flats with communal areas, commercial properties, offices, and hotels. The Regulatory Reform (Fire Safety) Order 2005 and BS EN 62034 require functional emergency lighting in all non-domestic escape routes.",
+      "The Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022 require landlords to install working smoke alarms on every floor and carbon monoxide alarms in every room with a fixed combustion appliance. Annual testing and certification is required for HMO licences and strongly recommended for all rental properties as evidence of compliance.",
   },
   {
-    question: "What does the annual test involve?",
+    question: "What is tested during the inspection?",
     answer:
-      "The annual test includes a full 3-hour discharge test of each emergency luminaire to confirm it operates for the minimum required duration. We also carry out a visual inspection of each fitting, check central battery systems if applicable, and confirm exit signs are illuminated correctly.",
+      "Our engineers test each smoke and heat alarm using a calibrated aerosol test spray — not just a button press — which confirms the sensor chamber is actually responding to particles. We also check the battery condition, inspect for damage, check the manufacture date, and confirm the alarm is correctly positioned per BS 5839-6.",
   },
   {
-    question: "How often should emergency lights be tested?",
+    question: "Does this cover carbon monoxide detectors?",
     answer:
-      "Annual full testing is the minimum requirement under BS 5266-1. Additionally, monthly brief functional tests should be carried out by the building manager or responsible person — we can train you or your staff to do this during our annual visit.",
+      "Yes. If you have carbon monoxide detectors, we test them during the same visit at no extra charge. CO detectors are required in all rooms with a fixed combustion appliance (gas boiler, gas fire, solid fuel burning appliance) under the Smoke and Carbon Monoxide Alarm Regulations 2022.",
   },
   {
-    question: "What happens if a light fails the test?",
+    question: "What if an alarm fails the test?",
     answer:
-      "Failed luminaires are identified in the certificate and must be repaired or replaced. We carry common replacement parts and can often remediate minor failures during the same visit. Replacement luminaires are quoted separately.",
+      "Failed alarms are recorded in the certificate and must be replaced. Alarms that are over 10 years old (smoke) or 5 years old (CO) should typically be replaced regardless of test result. We can supply and fit replacement alarms during the same visit — mention this when booking.",
   },
   {
-    question: "Can I carry out monthly tests myself?",
+    question: "How many alarms does my rental property need?",
     answer:
-      "Yes. Monthly functional tests — a brief activation test to confirm each luminaire illuminates — can be performed by the responsible person. You should record the result in a logbook. We recommend our engineer demonstrates the correct procedure during the annual visit.",
+      "The Smoke and Carbon Monoxide Alarm Regulations 2022 require at least one smoke alarm on every storey of a residential property used as living accommodation. A CO alarm is required in every room with a combustion appliance. HMOs have additional requirements under BS 5839-6, including alarms in sleeping rooms and all corridors on escape routes.",
   },
   {
-    question: "Do you test central battery systems?",
+    question: "Can you install new alarms as well as test existing ones?",
     answer:
-      "Yes. We test self-contained emergency luminaires (with individual batteries) and central battery systems. For central battery systems, we test the battery capacity, charger output, and the end-of-line load. We document the results for each circuit on the written certificate.",
+      "Yes. If your property is missing alarms or existing alarms need replacing, we can supply and install them during the same visit. Battery alarms are typically £35–£55 per alarm installed. Mains-wired interlinked alarms are quoted separately — see our Fire Alarm Installation page.",
   },
   {
-    question: "What documentation will I receive?",
+    question: "Do you test wireless interconnected alarms?",
     answer:
-      "You will receive a written Emergency Lights Certificate recording each luminaire tested, the duration achieved, pass/fail status, and any remediation required. The certificate is suitable for submission to your local authority, fire authority, or HMO licensing body.",
+      "Yes. We test both hard-wired interlinked and wireless RF-interlinked alarm systems. For wireless systems, we test that triggering one alarm activates all linked alarms in the system and record the result for each alarm on the certificate.",
   },
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Westminster, Camden, Islington, Hackney, Southwark, Lambeth, Tower Hamlets, Wandsworth, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 32 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -101,7 +105,7 @@ const faqSchema = {
   })),
 };
 
-export default function EmergencyLightsCertificatePage() {
+export default function FireSafetyCertificatePage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -115,23 +119,23 @@ export default function EmergencyLightsCertificatePage() {
             <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
               <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link></li>
+              <li><Link href="/fire-safety" className="hover:text-compliance-blue transition-colors">Fire Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Emergency Lights Certificate</li>
+              <li className="text-brand-charcoal font-medium">Fire Safety Certificate</li>
             </ol>
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Emergency Lights Certificate London from £{entryPrice}
+            Fire Safety Certificate London from £{entryPrice}
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Annual testing to BS 5266-1 · Certificate issued same day
+            Accredited engineers · Annual testing to BS 5839-6 · Certificate issued same day
           </p>
           <TrustBadges variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=elc"
+              href="/book?service=fire-safety-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -155,7 +159,7 @@ export default function EmergencyLightsCertificatePage() {
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Required</p>
+              <p className="text-xs text-white/50 mb-0.5">Recommended</p>
               <p className="font-bold text-white">Annually</p>
             </div>
             <div className="pl-4">
@@ -164,7 +168,7 @@ export default function EmergencyLightsCertificatePage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
-              <p className="font-bold text-white">BS 5266-1</p>
+              <p className="font-bold text-white">BS 5839-6</p>
             </div>
           </div>
         </div>
@@ -176,28 +180,29 @@ export default function EmergencyLightsCertificatePage() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Emergency lighting testing for London landlords
+            Smoke and heat alarm testing for London landlords
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Emergency lighting provides illumination of escape routes when the normal power
-            supply fails. In HMOs, communal areas of blocks of flats, and any commercial
-            premises across London, it is a legal requirement under the Regulatory Reform
-            (Fire Safety) Order 2005. Annual testing and certification to BS 5266-1
-            demonstrates compliance to your local authority and HMO licensing body.
+            A Fire Safety Certificate confirms that all smoke alarms, heat alarms, and carbon
+            monoxide detectors in your London rental property have been tested and are functioning
+            correctly. It is required as part of HMO licence conditions across all London boroughs,
+            and strongly recommended for all landlords as evidence of ongoing compliance.
           </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Our NICEIC approved engineers carry out a full 3-hour discharge test of each
-            emergency luminaire, visually inspect all fittings and exit signage, and issue
-            a written certificate the same day. The certificate records each fitting&apos;s
-            pass/fail status and any remediation required.
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Our accredited engineers test every alarm using a calibrated aerosol test spray —
+            not just a button press — which confirms the optical or ionisation sensor is
+            responding correctly to simulated smoke particles. We check battery condition,
+            manufacture dates, and positioning compliance against BS 5839-6. The written
+            certificate lists every alarm with its test result.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              The Regulatory Reform (Fire Safety) Order 2005 requires responsible persons
-              to maintain and test emergency lighting in all non-domestic premises. Annual
-              full testing to BS 5266-1 is the accepted method of compliance.
+              The Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022 require all
+              private landlords to install smoke alarms on every storey and CO alarms in every
+              room with a combustion appliance. Annual testing is required for HMO licences
+              and as evidence of due diligence.
             </p>
           </div>
         </section>
@@ -209,18 +214,18 @@ export default function EmergencyLightsCertificatePage() {
             {[
               {
                 step: "1",
-                title: "Book with your luminaire count",
-                body: "Tell us how many emergency lights and exit signs are installed. We confirm the price, agree a date, and arrive with the correct equipment for your system.",
+                title: "Book with your alarm count",
+                body: "Tell us how many smoke, heat, and CO alarms you have. We confirm the price, book your appointment, and arrive at the agreed time — no need for you to be present if a tenant can provide access.",
               },
               {
                 step: "2",
-                title: "Full 3-hour discharge test",
-                body: "Our engineer activates each luminaire in turn, recording the duration it remains lit. Exit signs and central battery systems are also checked. Any failed fittings are documented.",
+                title: "Aerosol test of every alarm",
+                body: "Our engineer tests each alarm using calibrated aerosol spray, checks battery condition and manufacture date, and confirms correct positioning per BS 5839-6. CO detectors are also tested at no extra charge.",
               },
               {
                 step: "3",
                 title: "Certificate emailed same day",
-                body: "You receive a written Emergency Lights Certificate listing every luminaire with its test result. Suitable for your HMO licence, local authority, or fire authority inspection.",
+                body: "You receive the written Fire Safety Certificate listing every alarm with its test result. Keep it with your compliance file and submit it to your local authority or HMO licensing body if requested.",
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex flex-col gap-3">
@@ -238,11 +243,11 @@ export default function EmergencyLightsCertificatePage() {
         <section id="pricing" className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
           <p className="text-brand-grey mb-6">
-            Fixed price by number of emergency lights. Includes testing and written certificate.
+            Fixed price by number of smoke and heat alarms. CO detectors included in same visit.
           </p>
           <PriceTable
-            title="Emergency Lights Certificate"
-            rows={ELC_TABLE}
+            title="Fire Safety Certificate"
+            rows={FIRE_SAFETY_CERT_TABLE}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">
@@ -259,17 +264,19 @@ export default function EmergencyLightsCertificatePage() {
 
         {/* What's included */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            What&apos;s included for £{entryPrice}
+          </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Full 3-hour discharge test of each luminaire",
-              "Visual inspection of all fittings and exit signs",
-              "Pass/fail recorded for each individual light",
-              "Written certificate issued same day",
-              "Monthly test guidance for your records",
-              "Fault reporting with recommended action",
-              "NICEIC approved electrician",
-              "Compliant with BS 5266-1",
+              "Aerosol test of each smoke and heat alarm",
+              "Battery condition check",
+              "Manufacture date and replacement advice",
+              "Positioning check per BS 5839-6",
+              "CO detector testing if present",
+              "Written Fire Safety Certificate",
+              "Pass/fail for each individual alarm",
+              "Certificate emailed same day",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -283,9 +290,7 @@ export default function EmergencyLightsCertificatePage() {
 
         {/* FAQs */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>
 
@@ -295,19 +300,19 @@ export default function EmergencyLightsCertificatePage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               {
-                name: "Fire Alarm Installation",
-                href: "/fire-safety/fire-alarm-installation",
-                desc: "Mains-wired interlinked smoke and heat alarms from £209.99/alarm.",
-              },
-              {
                 name: "Fire Risk Assessment",
                 href: "/fire-safety/fire-risk-assessment",
-                desc: "Written fire risk assessment from £74.99. Required for all HMOs.",
+                desc: "Written fire risk assessment from £74.99. Required for HMOs and blocks of flats.",
               },
               {
-                name: "Fire Safety Certificate",
-                href: "/fire-safety/fire-safety-certificate",
-                desc: "Smoke and CO alarm testing and certification from £54.99.",
+                name: "Fire Alarm Installation",
+                href: "/fire-safety/fire-alarm-installation",
+                desc: "Mains-wired interlinked alarms from £209.99/alarm. Required for new HMO licences.",
+              },
+              {
+                name: "Emergency Lights Certificate",
+                href: "/electrical-safety/emergency-lights-certificate",
+                desc: "Annual emergency lighting test from £54.99. BS 5266-1 compliant.",
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -328,14 +333,14 @@ export default function EmergencyLightsCertificatePage() {
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Book your emergency lights certificate
+              Book your Fire Safety Certificate
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Same-week appointments across all 32 London boroughs.
-              Certificate issued same day.
+              Fixed price from £{entryPrice}. Accredited engineers, certificate same day.
+              Same-week appointments across all 32 London boroughs.
             </p>
             <Link
-              href="/book?service=elc"
+              href="/book?service=fire-safety-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -345,10 +350,10 @@ export default function EmergencyLightsCertificatePage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=elc"
+        href="/book?service=fire-safety-cert"
         label="Book Now"
         price={entryPrice}
-        serviceName="Emergency Lights Certificate"
+        serviceName="Fire Safety Certificate"
       />
     </>
   );

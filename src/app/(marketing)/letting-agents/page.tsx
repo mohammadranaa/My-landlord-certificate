@@ -400,7 +400,7 @@ export default function LettingAgentsPage() {
                 "bg-white/10 border border-white/30 text-white hover:bg-white/20",
               )}
             >
-              Request agency account
+              Request a Portfolio Quote
             </a>
           </div>
         </Container>
