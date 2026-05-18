@@ -261,7 +261,7 @@ export default function CP42Page() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For domestic gas safety (CP12)?{" "}
-            <Link href="/gas-safety/cp12" className="text-compliance-blue hover:underline">
+            <Link href="/gas-safety-certificate" className="text-compliance-blue hover:underline">
               View domestic gas safety pricing →
             </Link>
           </p>
@@ -306,12 +306,12 @@ export default function CP42Page() {
             {[
               {
                 name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety/cp12",
+                href: "/gas-safety-certificate",
                 desc: "Domestic gas safety inspection from £49.99. Required annually for residential landlords.",
               },
               {
                 name: "Commercial EICR",
-                href: "/electrical-safety/commercial-eicr",
+                href: "/commercial-eicr",
                 desc: "Electrical condition report for commercial premises from £149.99.",
               },
               {

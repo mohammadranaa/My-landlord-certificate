@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    href: "/epc/domestic-epc",
+    href: "/epc",
     icon: <Home className="w-5 h-5" />,
     title: "Domestic EPC",
     price: FROM_PRICES.epc,
@@ -23,7 +23,7 @@ const services = [
     badge: "10-year validity",
   },
   {
-    href: "/epc/commercial-epc",
+    href: "/commercial-epc",
     icon: <Building2 className="w-5 h-5" />,
     title: "Commercial EPC",
     price: FROM_PRICES["commercial-epc"],
@@ -161,7 +161,7 @@ export default function EPCPage() {
               difference to your rating.
             </p>
             <Link
-              href="/epc/domestic-epc"
+              href="/epc-cost"
               className="inline-flex items-center text-sm font-medium text-compliance-blue hover:underline"
             >
               Learn more about domestic EPC →

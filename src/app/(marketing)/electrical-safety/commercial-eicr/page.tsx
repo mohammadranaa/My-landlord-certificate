@@ -261,7 +261,7 @@ export default function CommercialEICRPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For domestic residential EICRs?{" "}
-            <Link href="/electrical-safety/domestic-eicr" className="text-compliance-blue hover:underline">
+            <Link href="/eicr" className="text-compliance-blue hover:underline">
               View domestic EICR pricing →
             </Link>
           </p>
@@ -315,8 +315,8 @@ export default function CommercialEICRPage() {
           <p className="text-brand-grey mb-5 text-sm">Often required alongside a commercial EICR.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/gas-safety/cp42", label: "Commercial Gas (CP42)", desc: "Annual gas safety inspection for commercial premises. From £159.99." },
-              { href: "/epc/commercial-epc", label: "Commercial EPC", desc: "Required before selling or letting commercial property. From £249.99." },
+              { href: "/commercial-gas-safety-certificate", label: "Commercial Gas (CP42)", desc: "Annual gas safety inspection for commercial premises. From £159.99." },
+              { href: "/commercial-epc", label: "Commercial EPC", desc: "Required before selling or letting commercial property. From £249.99." },
               { href: "/fire-safety/fire-risk-assessment", label: "Fire Risk Assessment", desc: "Legally required for HMOs and commercial buildings. From £74.99." },
             ].map((s) => (
               <Link

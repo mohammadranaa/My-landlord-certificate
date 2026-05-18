@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const helpLinks = [
   { label: "EICR Certificate", href: "/eicr", sub: "From £67.99" },
-  { label: "Gas Safety Certificate", href: "/gas-safety-certificate", sub: "From £50" },
+  { label: "Gas Safety Certificate", href: "/gas-safety-certificate", sub: "From £49.99" },
   { label: "EPC Certificate", href: "/epc", sub: "From £89.99" },
   { label: "Fire Risk Assessment", href: "/fire-risk-assessment", sub: "From £74" },
   { label: "Pricing", href: "/pricing", sub: "All services & prices" },

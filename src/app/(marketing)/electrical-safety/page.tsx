@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    href: "/electrical-safety/domestic-eicr",
+    href: "/eicr",
     icon: <Zap className="w-5 h-5" />,
     title: "Domestic EICR",
     price: FROM_PRICES.eicr,
@@ -23,7 +23,7 @@ const services = [
     badge: "Required every 5 years",
   },
   {
-    href: "/electrical-safety/commercial-eicr",
+    href: "/commercial-eicr",
     icon: <Building2 className="w-5 h-5" />,
     title: "Commercial EICR",
     price: FROM_PRICES["commercial-eicr"],

@@ -267,7 +267,7 @@ export default function CommercialEPCPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For domestic EPCs, see{" "}
-            <Link href="/epc/domestic-epc" className="text-compliance-blue hover:underline">
+            <Link href="/epc" className="text-compliance-blue hover:underline">
               residential EPC pricing →
             </Link>
           </p>
@@ -312,17 +312,17 @@ export default function CommercialEPCPage() {
             {[
               {
                 name: "Domestic EPC",
-                href: "/epc/domestic-epc",
+                href: "/epc",
                 desc: "Residential Energy Performance Certificate from £89.99. Valid for 10 years.",
               },
               {
                 name: "Commercial EICR",
-                href: "/electrical-safety/commercial-eicr",
+                href: "/commercial-eicr",
                 desc: "Commercial electrical condition report from £149.99. Required for commercial premises.",
               },
               {
                 name: "Commercial Gas Safety (CP42)",
-                href: "/gas-safety/cp42",
+                href: "/commercial-gas-safety-certificate",
                 desc: "Annual commercial gas safety inspection from £159.99. Gas Safe certified engineers.",
               },
             ].map(({ name, href, desc }) => (

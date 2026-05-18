@@ -304,7 +304,7 @@ export default function DomesticEPCPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For commercial properties, see{" "}
-            <Link href="/epc/commercial-epc" className="text-compliance-blue hover:underline">
+            <Link href="/commercial-epc" className="text-compliance-blue hover:underline">
               commercial EPC pricing →
             </Link>
           </p>
@@ -359,9 +359,9 @@ export default function DomesticEPCPage() {
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Related services</h2>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/electrical-safety/domestic-eicr", label: "Domestic EICR", desc: "Legally required every 5 years." },
-              { href: "/gas-safety/cp12", label: "Gas Safety (CP12)", desc: "Required annually for gas properties." },
-              { href: "/epc/commercial-epc", label: "Commercial EPC", desc: "For offices, retail, and commercial lets." },
+              { href: "/eicr", label: "Domestic EICR", desc: "Legally required every 5 years." },
+              { href: "/gas-safety-certificate", label: "Gas Safety (CP12)", desc: "Required annually for gas properties." },
+              { href: "/commercial-epc", label: "Commercial EPC", desc: "For offices, retail, and commercial lets." },
             ].map((s) => (
               <Link
                 key={s.href}

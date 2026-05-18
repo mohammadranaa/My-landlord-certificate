@@ -263,7 +263,7 @@ export default function CP12Page() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For commercial premises?{" "}
-            <Link href="/gas-safety/cp42" className="text-compliance-blue hover:underline">
+            <Link href="/commercial-gas-safety-certificate" className="text-compliance-blue hover:underline">
               View commercial gas safety (CP42) pricing →
             </Link>
           </p>
@@ -319,9 +319,9 @@ export default function CP12Page() {
           <p className="text-brand-grey mb-5 text-sm">Most landlords book these at the same time to consolidate visits.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/electrical-safety/domestic-eicr", label: "EICR Certificate", desc: "Electrical safety — required every 5 years. From £67.99." },
+              { href: "/eicr", label: "EICR Certificate", desc: "Electrical safety — required every 5 years. From £67.99." },
               { href: "/gas-safety/boiler-installation", label: "Boiler Installation", desc: "Replace an old or unsafe boiler. From £2,499." },
-              { href: "/gas-safety/cp42", label: "Commercial Gas (CP42)", desc: "Gas safety for commercial premises. From £159.99." },
+              { href: "/commercial-gas-safety-certificate", label: "Commercial Gas (CP42)", desc: "Gas safety for commercial premises. From £159.99." },
             ].map((s) => (
               <Link
                 key={s.href}

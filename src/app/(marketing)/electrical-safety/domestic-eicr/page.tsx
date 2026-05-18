@@ -275,7 +275,7 @@ export default function DomesticEICRPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             Need a commercial EICR for offices, retail, or HMOs with multiple consumer units?{" "}
-            <Link href="/electrical-safety/commercial-eicr" className="text-compliance-blue hover:underline">
+            <Link href="/commercial-eicr" className="text-compliance-blue hover:underline">
               View commercial EICR pricing →
             </Link>
           </p>
@@ -331,7 +331,7 @@ export default function DomesticEICRPage() {
           <p className="text-brand-grey mb-5 text-sm">Most landlords book these alongside their EICR.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/gas-safety/cp12", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From £49.99." },
+              { href: "/gas-safety-certificate", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From £49.99." },
               { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace old fuse wire boards with modern RCD protection. From £599.99." },
               { href: "/electrical-safety/pat-testing", label: "PAT Testing", desc: "Test portable appliances in furnished lets. From £59.99." },
             ].map((s) => (

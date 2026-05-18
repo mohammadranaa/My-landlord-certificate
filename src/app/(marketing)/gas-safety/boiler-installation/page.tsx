@@ -298,17 +298,17 @@ export default function BoilerInstallationPage() {
             {[
               {
                 name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety/cp12",
+                href: "/gas-safety-certificate",
                 desc: "Annual domestic gas safety inspection from £49.99. Required by law for all rental properties.",
               },
               {
                 name: "Commercial Gas Safety (CP42)",
-                href: "/gas-safety/cp42",
+                href: "/commercial-gas-safety-certificate",
                 desc: "Commercial gas safety inspection from £159.99. For offices, restaurants, and HMOs.",
               },
               {
                 name: "Domestic EICR",
-                href: "/electrical-safety/domestic-eicr",
+                href: "/eicr",
                 desc: "Electrical condition report from £67.99. Combine with your gas safety for a single visit.",
               },
             ].map(({ name, href, desc }) => (

@@ -291,9 +291,9 @@ export default function ElectricalDiagnosticPage() {
           <p className="text-brand-grey mb-5 text-sm">The diagnostic may reveal a need for these.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/electrical-safety/domestic-eicr", label: "Domestic EICR", desc: "Full 5-yearly inspection of the entire installation. From £67.99." },
+              { href: "/eicr", label: "Domestic EICR", desc: "Full 5-yearly inspection of the entire installation. From £67.99." },
               { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace an old consumer unit with modern RCD protection. From £599.99." },
-              { href: "/electrical-safety/commercial-eicr", label: "Commercial EICR", desc: "For offices, HMOs, and multi-unit premises. From £149.99." },
+              { href: "/commercial-eicr", label: "Commercial EICR", desc: "For offices, HMOs, and multi-unit premises. From £149.99." },
             ].map((s) => (
               <Link
                 key={s.href}

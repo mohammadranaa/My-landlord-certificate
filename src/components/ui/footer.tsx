@@ -36,9 +36,9 @@ const columns: FooterColumn[] = [
   {
     heading: "Pricing Guides",
     links: [
-      { href: "/electrical-safety/domestic-eicr", label: "EICR Cost Guide" },
-      { href: "/gas-safety/cp12", label: "Gas Safety Cost Guide" },
-      { href: "/epc/domestic-epc", label: "EPC Cost Guide" },
+      { href: "/eicr-cost", label: "EICR Cost Guide" },
+      { href: "/gas-safety-certificate-cost", label: "Gas Safety Cost Guide" },
+      { href: "/epc-cost", label: "EPC Cost Guide" },
       { href: "/pricing", label: "All Service Prices" },
       { href: "/faq", label: "FAQs" },
       { href: "/coverage-areas", label: "Coverage Areas" },

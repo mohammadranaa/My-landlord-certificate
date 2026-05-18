@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    href: "/gas-safety/cp12",
+    href: "/gas-safety-certificate",
     icon: <Flame className="w-5 h-5" />,
     title: "Gas Safety Certificate (CP12)",
     price: FROM_PRICES["gas-safety-cp12"],
@@ -23,7 +23,7 @@ const services = [
     badge: "Annual legal requirement",
   },
   {
-    href: "/gas-safety/cp42",
+    href: "/commercial-gas-safety-certificate",
     icon: <Building2 className="w-5 h-5" />,
     title: "Commercial Gas Safety (CP42)",
     price: FROM_PRICES["gas-safety-cp42"],

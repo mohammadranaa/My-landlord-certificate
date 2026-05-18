@@ -19,16 +19,16 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate (CP12) from £50 | My Landlord Certificate",
+  title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
   description:
-    "Book a Gas Safety Certificate (CP12) from £50. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed same day.",
+    "Book a Gas Safety Certificate (CP12) from £49.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed same day.",
   alternates: {
     canonical: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
   },
   openGraph: {
-    title: "Gas Safety Certificate (CP12) from £50 | My Landlord Certificate",
+    title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
     description:
-      "Annual CP12 landlord gas safety certificate from £50. Gas Safe Registered engineers, next-day appointments across London and the South East, certificate emailed same day.",
+      "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the South East, certificate emailed same day.",
     url: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
@@ -138,7 +138,7 @@ const faqSchema = {
       name: "How much does a Gas Safety Certificate cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A Gas Safety Certificate (CP12) starts from £50 for 1 gas appliance. 2 appliances costs £60, 3 appliances costs £70. A combined gas safety check and boiler service costs £84.99.",
+        text: "A Gas Safety Certificate (CP12) starts from £49.99 for 1 gas appliance. 2 appliances costs £60, 3 appliances costs £70. A combined gas safety check and boiler service costs £84.99.",
       },
     },
     {
@@ -219,7 +219,7 @@ const faqItems = [
   {
     question: "How much does a Gas Safety Certificate cost?",
     answer:
-      "A CP12 starts from £50 for 1 gas appliance. 2 appliances costs £60, 3 appliances costs £70. A combined gas safety check and boiler service is £84.99. See the full pricing table above for all tiers.",
+      "A CP12 starts from £49.99 for 1 gas appliance. 2 appliances costs £60, 3 appliances costs £70. A combined gas safety check and boiler service is £84.99. See the full pricing table above for all tiers.",
   },
   {
     question: "What appliances are covered by a CP12?",

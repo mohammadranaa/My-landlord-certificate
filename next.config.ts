@@ -7,15 +7,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Core service page moves (old flat URLs → new category URLs)
-      { source: "/eicr", destination: "/electrical-safety/domestic-eicr", permanent: true },
-      { source: "/pat-testing", destination: "/electrical-safety/pat-testing", permanent: true },
-      { source: "/gas-safety-certificate", destination: "/gas-safety/cp12", permanent: true },
-      { source: "/fire-risk-assessment", destination: "/fire-safety/fire-risk-assessment", permanent: true },
-      // Cost guide redirects (old SEO pages → canonical service pages)
-      { source: "/eicr-cost", destination: "/electrical-safety/domestic-eicr", permanent: true },
-      { source: "/gas-safety-certificate-cost", destination: "/gas-safety/cp12", permanent: true },
-      { source: "/epc-cost", destination: "/epc/domestic-epc", permanent: true },
+      // Nested commercial URLs → canonical top-level URLs
+      { source: "/electrical-safety/commercial-eicr", destination: "/commercial-eicr", permanent: true },
+      { source: "/gas-safety/cp42", destination: "/commercial-gas-safety-certificate", permanent: true },
+      { source: "/epc/commercial-epc", destination: "/commercial-epc", permanent: true },
+      // Old nested domestic URLs → canonical top-level URLs
+      { source: "/electrical-safety/domestic-eicr", destination: "/eicr", permanent: true },
+      { source: "/gas-safety/cp12", destination: "/gas-safety-certificate", permanent: true },
+      { source: "/epc/domestic-epc", destination: "/epc", permanent: true },
       // Misplaced pages from prior build pass
       { source: "/fire-safety/asbestos-survey", destination: "/asbestos-survey", permanent: true },
       { source: "/fire-safety/commercial-fire-risk-assessment", destination: "/fire-safety/fire-risk-assessment", permanent: true },

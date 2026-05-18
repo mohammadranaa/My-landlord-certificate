@@ -301,7 +301,7 @@ export default function FuseBoxInstallationPage() {
             {[
               {
                 name: "Domestic EICR",
-                href: "/electrical-safety/domestic-eicr",
+                href: "/eicr",
                 desc: "Electrical installation condition report from £67.99. Required every 5 years.",
               },
               {
