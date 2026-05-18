@@ -7,7 +7,7 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
-import { ServiceCard } from "@/components/ui/service-card";
+import { ServicesSection } from "@/components/marketing/services-section";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
@@ -20,13 +20,7 @@ const FAQAccordion = dynamic(
 const StickyMobileCTA = dynamic(
   () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
 );
-import {
-  getPriceForEICR,
-  getPriceForEPC,
-  getPriceForFRA,
-  getPriceForGasSafety,
-  getPriceForPAT,
-} from "@/lib/pricing";
+import { getPriceForGasSafety } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -118,124 +112,9 @@ const breadcrumbSchema = {
   ],
 };
 
-// ── Service icons ─────────────────────────────────────────────────────────────
-
-function EicrIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function FlameIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2c0 0-6 5-6 11a6 6 0 0 0 12 0c0-3-2-6-2-6s-1 3-3 4c0 0 1-6-1-9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function LeafIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M20 2c0 0-8 1-12 8s-2 12-2 12 5-3 9-7c0 0-1 4-5 6 0 0 10-1 13-10s-3-9-3-9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2l8 3v6c0 5-4 9-8 11C8 20 4 16 4 11V5l8-3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function PlugIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 2v4M17 2v4M5 10h14M5 10a2 2 0 0 0-2 2v2a7 7 0 0 0 14 0v-2a2 2 0 0 0-2-2M12 18v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function PackageIcon() {
-  return (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 // ── Prices from module ────────────────────────────────────────────────────────
 
-const EICR_FROM   = getPriceForEICR("studio");       // 67.99
-const GAS_FROM    = getPriceForGasSafety(1);          // 50
-const EPC_FROM    = getPriceForEPC("studio");         // 89.99
-const FRA_FROM    = getPriceForFRA("studio");         // 74
-const PAT_FROM    = getPriceForPAT(1);                // 59.99
-const BUNDLE_FROM = 130;
-
-// ── Static data ───────────────────────────────────────────────────────────────
-
-const services = [
-  {
-    href: "/eicr",
-    icon: <EicrIcon />,
-    name: "EICR Certificate",
-    description:
-      "Electrical Installation Condition Report — legally required for all private rental properties in England since 2020. Valid 5 years. NICEIC approved engineer.",
-    price: EICR_FROM,
-    turnaroundDays: 2,
-  },
-  {
-    href: "/gas-safety-certificate",
-    icon: <FlameIcon />,
-    name: "Gas Safety Certificate (CP12)",
-    description:
-      "Annual CP12 inspection of all gas appliances, flues and pipework by a Gas Safe registered engineer. Certificate issued same day.",
-    price: GAS_FROM,
-    turnaroundDays: 1,
-  },
-  {
-    href: "/epc",
-    icon: <LeafIcon />,
-    name: "EPC Certificate",
-    description:
-      "Energy Performance Certificate — required before marketing any rental property. A–G rating by an accredited DEA assessor. Valid 10 years.",
-    price: EPC_FROM,
-    turnaroundDays: 2,
-  },
-  {
-    href: "/fire-risk-assessment",
-    icon: <ShieldIcon />,
-    name: "Fire Risk Assessment",
-    description:
-      "Compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. Written report with prioritised action plan included.",
-    price: FRA_FROM,
-    turnaroundDays: 2,
-  },
-  {
-    href: "/pat-testing",
-    icon: <PlugIcon />,
-    name: "PAT Testing",
-    description:
-      "Portable Appliance Testing for furnished rental properties. Pass/fail label on every appliance, full asset register emailed same day.",
-    price: PAT_FROM,
-    turnaroundDays: 1,
-  },
-  {
-    href: "/landlord-certificates-bundle",
-    icon: <PackageIcon />,
-    name: "Bundle & Save",
-    description:
-      "Combine your EICR, Gas Safety Certificate and EPC in one engineer visit. One fixed price, all certificates emailed the same day. Save up to £44.97.",
-    price: BUNDLE_FROM,
-    turnaroundDays: 2,
-  },
-];
+const GAS_FROM = getPriceForGasSafety(1);
 
 const reviews = [
   {
@@ -361,32 +240,17 @@ export default function HomePage() {
       {/* ── 2. Services grid ─────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <Heading level={2} className="mb-4">
-              Every landlord certificate UK law requires
+              Every certificate you need, residential or commercial
             </Heading>
             <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              All your landlord compliance certificates in one place. No hidden charges,
-              next-day appointments available, digital certificate emailed on the day of the
-              inspection — no waiting, no chasing.
+              Fixed prices, no hidden charges, next-day appointments — digital certificate
+              emailed on the day of the inspection.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard key={service.href} {...service} />
-            ))}
-          </div>
-
-          <p className="text-center mt-10 text-brand-grey text-sm">
-            Not sure which certificates your rental property needs?{" "}
-            <Link
-              href="/pricing"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              View our full pricing →
-            </Link>
-          </p>
+          <ServicesSection />
         </Container>
       </Section>
 
