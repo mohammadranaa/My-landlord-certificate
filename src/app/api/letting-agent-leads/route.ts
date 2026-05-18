@@ -1,16 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { createServiceRoleClient } from "@/lib/supabase/server";
-import type { Database } from "@/types/database";
-
-type LeadInsert = Database["public"]["Tables"]["letting_agent_leads"]["Insert"];
-
-const PORTFOLIO_TO_COUNT: Record<string, number> = {
-  "10-20": 10,
-  "20-50": 20,
-  "50-100": 50,
-  "100+": 100,
-};
 
 const leadSchema = z.object({
   name: z.string().min(2),
@@ -37,28 +26,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { name, email, phone, businessName, businessWebsite, propertiesManaged } = parsed.data;
+  const lead = parsed.data;
 
-  console.log("[letting-agent-lead]", { name, businessName, email, propertiesManaged });
+  console.log("[letting-agent-lead]", JSON.stringify(lead));
 
-  try {
-    const supabase = createServiceRoleClient();
-    const insertData: LeadInsert = {
-      agency_name: businessName,
-      contact_name: name,
-      email,
-      phone,
-      properties_count: PORTFOLIO_TO_COUNT[propertiesManaged],
-      areas: businessWebsite?.trim() || null,
-      notes: null,
-      status: "new",
-    };
-    const { error } = await supabase.from("letting_agent_leads").insert(insertData as never);
-    if (error) {
-      console.error("[letting-agent-lead] Supabase error:", error.message);
+  const sheetUrl = process.env.LETTING_AGENT_LEADS_SHEET_URL;
+  if (sheetUrl) {
+    try {
+      await fetch(sheetUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(lead),
+      });
+    } catch (err) {
+      console.error("[letting-agent-lead] Google Sheet submission failed:", err);
     }
-  } catch (err) {
-    console.error("[letting-agent-lead] Supabase unavailable:", err);
+  } else {
+    console.warn("[letting-agent-lead] LETTING_AGENT_LEADS_SHEET_URL not set — lead logged above only");
   }
 
   return NextResponse.json({ success: true });
