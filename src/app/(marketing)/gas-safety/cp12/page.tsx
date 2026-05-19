@@ -320,7 +320,7 @@ export default function CP12Page() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/eicr", label: "EICR Certificate", desc: "Electrical safety — required every 5 years. From £67.99." },
-              { href: "/gas-safety/boiler-installation", label: "Boiler Installation", desc: "Replace an old or unsafe boiler. From £2,499." },
+              { href: "/boiler-installation", label: "Boiler Installation", desc: "Replace an old or unsafe boiler. From £2,499." },
               { href: "/commercial-gas-safety-certificate", label: "Commercial Gas (CP42)", desc: "Gas safety for commercial premises. From £159.99." },
             ].map((s) => (
               <Link

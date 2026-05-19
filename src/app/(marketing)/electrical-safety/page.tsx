@@ -32,7 +32,7 @@ const services = [
     badge: "Up to 8 consumer units",
   },
   {
-    href: "/electrical-safety/electrical-diagnostic",
+    href: "/electrical-diagnostic",
     icon: <Search className="w-5 h-5" />,
     title: "Electrical Diagnostic",
     price: FROM_PRICES["electrical-diagnostic"],
@@ -41,7 +41,7 @@ const services = [
     badge: "Fault finding",
   },
   {
-    href: "/electrical-safety/fuse-box-installation",
+    href: "/fuse-box-installation",
     icon: <Settings className="w-5 h-5" />,
     title: "Fuse Box Installation",
     price: FROM_PRICES["fuse-box"],
@@ -50,7 +50,7 @@ const services = [
     badge: "Full installation",
   },
   {
-    href: "/electrical-safety/emergency-lights-certificate",
+    href: "/emergency-lights-certificate",
     icon: <Lightbulb className="w-5 h-5" />,
     title: "Emergency Lights Certificate",
     price: FROM_PRICES.elc,
@@ -59,7 +59,7 @@ const services = [
     badge: "Annual requirement",
   },
   {
-    href: "/electrical-safety/pat-testing",
+    href: "/pat-testing",
     icon: <Plug className="w-5 h-5" />,
     title: "PAT Testing",
     price: FROM_PRICES.pat,

@@ -18,10 +18,10 @@ const categories = [
     services: [
       { href: "/electrical-safety/domestic-eicr", label: "Domestic EICR", price: FROM_PRICES.eicr },
       { href: "/electrical-safety/commercial-eicr", label: "Commercial EICR", price: FROM_PRICES["commercial-eicr"] },
-      { href: "/electrical-safety/electrical-diagnostic", label: "Electrical Diagnostic", price: FROM_PRICES["electrical-diagnostic"] },
-      { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", price: FROM_PRICES["fuse-box"] },
-      { href: "/electrical-safety/emergency-lights-certificate", label: "Emergency Lights Cert", price: FROM_PRICES.elc },
-      { href: "/electrical-safety/pat-testing", label: "PAT Testing", price: FROM_PRICES.pat },
+      { href: "/electrical-diagnostic", label: "Electrical Diagnostic", price: FROM_PRICES["electrical-diagnostic"] },
+      { href: "/fuse-box-installation", label: "Fuse Box Installation", price: FROM_PRICES["fuse-box"] },
+      { href: "/emergency-lights-certificate", label: "Emergency Lights Cert", price: FROM_PRICES.elc },
+      { href: "/pat-testing", label: "PAT Testing", price: FROM_PRICES.pat },
     ],
   },
   {
@@ -31,7 +31,7 @@ const categories = [
     services: [
       { href: "/gas-safety/cp12", label: "Gas Safety (CP12)", price: FROM_PRICES["gas-safety-cp12"] },
       { href: "/gas-safety/cp42", label: "Commercial Gas (CP42)", price: FROM_PRICES["gas-safety-cp42"] },
-      { href: "/gas-safety/boiler-installation", label: "Boiler Installation", price: FROM_PRICES["boiler-installation"] },
+      { href: "/boiler-installation", label: "Boiler Installation", price: FROM_PRICES["boiler-installation"] },
     ],
   },
   {
@@ -39,11 +39,11 @@ const categories = [
     label: "Fire Safety",
     href: "/fire-safety",
     services: [
-      { href: "/fire-safety/fire-safety-certificate", label: "Fire Safety Certificate", price: FROM_PRICES["fire-safety-cert"] },
-      { href: "/fire-safety/fire-risk-assessment", label: "Fire Risk Assessment", price: FROM_PRICES["fra-residential"] },
-      { href: "/fire-safety/fire-alarm-installation", label: "Fire Alarm Installation", price: FROM_PRICES["fire-alarm-installation"] },
-      { href: "/fire-safety/fire-door-certificate", label: "Fire Door Certificate", price: FROM_PRICES["fire-door-cert"] },
-      { href: "/fire-safety/fire-extinguisher-testing", label: "Fire Extinguisher Testing", price: FROM_PRICES["fire-extinguisher"] },
+      { href: "/fire-safety-certificate", label: "Fire Safety Certificate", price: FROM_PRICES["fire-safety-cert"] },
+      { href: "/fire-risk-assessment", label: "Fire Risk Assessment", price: FROM_PRICES["fra-residential"] },
+      { href: "/fire-alarm-installation", label: "Fire Alarm Installation", price: FROM_PRICES["fire-alarm-installation"] },
+      { href: "/fire-door-certificate", label: "Fire Door Certificate", price: FROM_PRICES["fire-door-cert"] },
+      { href: "/fire-extinguisher-testing", label: "Fire Extinguisher Testing", price: FROM_PRICES["fire-extinguisher"] },
     ],
   },
   {

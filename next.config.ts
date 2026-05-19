@@ -20,7 +20,20 @@ const nextConfig: NextConfig = {
       { source: "/epc/domestic-epc", destination: "/epc", permanent: true },
       // Misplaced pages from prior build pass
       { source: "/fire-safety/asbestos-survey", destination: "/asbestos-survey", permanent: true },
-      { source: "/fire-safety/commercial-fire-risk-assessment", destination: "/fire-safety/fire-risk-assessment", permanent: true },
+      { source: "/fire-safety/commercial-fire-risk-assessment", destination: "/fire-risk-assessment", permanent: true },
+      // Flatten electrical sub-pages
+      { source: "/electrical-safety/electrical-diagnostic", destination: "/electrical-diagnostic", permanent: true },
+      { source: "/electrical-safety/fuse-box-installation", destination: "/fuse-box-installation", permanent: true },
+      { source: "/electrical-safety/emergency-lights-certificate", destination: "/emergency-lights-certificate", permanent: true },
+      { source: "/electrical-safety/pat-testing", destination: "/pat-testing", permanent: true },
+      // Flatten gas sub-pages
+      { source: "/gas-safety/boiler-installation", destination: "/boiler-installation", permanent: true },
+      // Flatten fire sub-pages
+      { source: "/fire-safety/fire-safety-certificate", destination: "/fire-safety-certificate", permanent: true },
+      { source: "/fire-safety/fire-risk-assessment", destination: "/fire-risk-assessment", permanent: true },
+      { source: "/fire-safety/fire-alarm-installation", destination: "/fire-alarm-installation", permanent: true },
+      { source: "/fire-safety/fire-door-certificate", destination: "/fire-door-certificate", permanent: true },
+      { source: "/fire-safety/fire-extinguisher-testing", destination: "/fire-extinguisher-testing", permanent: true },
     ];
   },
 };

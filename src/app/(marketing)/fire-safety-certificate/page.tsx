@@ -6,24 +6,28 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
+import {
+  ADDITIONAL_CHARGES,
+  FIRE_SAFETY_CERT_TABLE,
+  getPriceForFireSafetyCert,
+} from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service | My Landlord Certificate",
+  title: "Fire Safety Certificate London from £54.99 — Smoke Alarm Testing | My Landlord Certificate",
   description:
-    "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label same day. All London boroughs.",
+    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 32 London boroughs. Same-day certificate.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate",
   },
 };
 
-const entryPrice = FIRE_EXTINGUISHER_TABLE[0].price;
+const entryPrice = getPriceForFireSafetyCert(1);
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Fire Extinguisher Testing & Annual Service",
-  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
+  name: "Fire Safety Certificate — Smoke and Heat Alarm Testing",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -44,45 +48,45 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Extinguisher Testing", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing" },
+    { "@type": "ListItem", position: 3, name: "Fire Safety Certificate", item: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate" },
   ],
 };
 
 const faqs = [
   {
-    question: "How often do fire extinguishers need to be serviced?",
+    question: "Is a Fire Safety Certificate required by law?",
     answer:
-      "BS 5306-3 requires fire extinguishers to be inspected at least annually by a competent person. In addition, the responsible person should carry out a monthly visual check to ensure extinguishers are in their designated position, have not been discharged, and show no obvious damage.",
+      "The Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022 require landlords to install working smoke alarms on every floor and carbon monoxide alarms in every room with a fixed combustion appliance. Annual testing and certification is required for HMO licences and strongly recommended for all rental properties as evidence of compliance.",
   },
   {
-    question: "What types of extinguisher do you service?",
+    question: "What is tested during the inspection?",
     answer:
-      "We service all common types of portable fire extinguisher: water, water mist, foam, CO₂, dry powder, and wet chemical. Our engineers carry replacement parts for all main types, so minor servicing can usually be completed on the same visit.",
+      "Our engineers test each smoke and heat alarm using a calibrated aerosol test spray — not just a button press — which confirms the sensor chamber is actually responding to particles. We also check the battery condition, inspect for damage, check the manufacture date, and confirm the alarm is correctly positioned per BS 5839-6.",
   },
   {
-    question: "Do fire extinguishers need to be replaced?",
+    question: "Does this cover carbon monoxide detectors?",
     answer:
-      "Disposable extinguishers (typically powder and CO₂) must be replaced every 5 years or after discharge. Rechargeable extinguishers can be refilled and extended-tested every 5 years. Our engineer will advise on the appropriate action for each extinguisher based on its age, type, and condition.",
+      "Yes. If you have carbon monoxide detectors, we test them during the same visit at no extra charge. CO detectors are required in all rooms with a fixed combustion appliance (gas boiler, gas fire, solid fuel burning appliance) under the Smoke and Carbon Monoxide Alarm Regulations 2022.",
   },
   {
-    question: "Is fire extinguisher servicing a legal requirement?",
+    question: "What if an alarm fails the test?",
     answer:
-      "The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person to ensure fire-fighting equipment is maintained in efficient working order. Annual servicing to BS 5306-3 is the accepted method of meeting this obligation. HMO licence conditions in all London boroughs typically require an up-to-date service record.",
+      "Failed alarms are recorded in the certificate and must be replaced. Alarms that are over 10 years old (smoke) or 5 years old (CO) should typically be replaced regardless of test result. We can supply and fit replacement alarms during the same visit — mention this when booking.",
   },
   {
-    question: "What is the service label?",
+    question: "How many alarms does my rental property need?",
     answer:
-      "After each annual service, a dated label is attached to the extinguisher recording the service date, engineer's name and company, and next service due date. The label is the primary evidence that the extinguisher has been serviced and is suitable for inspection by the fire authority or HMO licensing officer.",
+      "The Smoke and Carbon Monoxide Alarm Regulations 2022 require at least one smoke alarm on every storey of a residential property used as living accommodation. A CO alarm is required in every room with a combustion appliance. HMOs have additional requirements under BS 5839-6, including alarms in sleeping rooms and all corridors on escape routes.",
   },
   {
-    question: "How many fire extinguishers does my property need?",
+    question: "Can you install new alarms as well as test existing ones?",
     answer:
-      "The minimum requirement for an HMO is one water or foam extinguisher per 200m² of floor area, and one CO₂ extinguisher in areas with electrical equipment. A typical 4–6 bedroom HMO will have 2–4 extinguishers. Our engineer can advise on whether your current provision is adequate for your property size and risk.",
+      "Yes. If your property is missing alarms or existing alarms need replacing, we can supply and install them during the same visit. Battery alarms are typically £35–£55 per alarm installed. Mains-wired interlinked alarms are quoted separately — see our Fire Alarm Installation page.",
   },
   {
-    question: "Can you supply new extinguishers as well as service existing ones?",
+    question: "Do you test wireless interconnected alarms?",
     answer:
-      "Yes. If any extinguishers fail inspection or are beyond their service life, we can supply and fit replacements during the same visit. New extinguishers are quoted separately — ask when booking and we will include a supply price alongside the service quote.",
+      "Yes. We test both hard-wired interlinked and wireless RF-interlinked alarm systems. For wireless systems, we test that triggering one alarm activates all linked alarms in the system and record the result for each alarm on the certificate.",
   },
   {
     question: "Which areas of London do you cover?",
@@ -101,7 +105,7 @@ const faqSchema = {
   })),
 };
 
-export default function FireExtinguisherTestingPage() {
+export default function FireSafetyCertificatePage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -117,21 +121,21 @@ export default function FireExtinguisherTestingPage() {
               <li aria-hidden="true">/</li>
               <li><Link href="/fire-safety" className="hover:text-compliance-blue transition-colors">Fire Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Fire Extinguisher Testing</li>
+              <li className="text-brand-charcoal font-medium">Fire Safety Certificate</li>
             </ol>
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Fire Extinguisher Testing London from £{entryPrice}
+            Fire Safety Certificate London from £{entryPrice}
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            All extinguisher types · BS 5306-3 compliant · Service label issued same day
+            Accredited engineers · Annual testing to BS 5839-6 · Certificate issued same day
           </p>
-          <TrustBadges serviceKey="fire-extinguisher-testing" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fire-safety-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=fire-extinguisher-testing"
+              href="/book?service=fire-safety-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -155,16 +159,16 @@ export default function FireExtinguisherTestingPage() {
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Frequency</p>
+              <p className="text-xs text-white/50 mb-0.5">Recommended</p>
               <p className="font-bold text-white">Annually</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Service label</p>
+              <p className="text-xs text-white/50 mb-0.5">Certificate</p>
               <p className="font-bold text-white">Same day</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
-              <p className="font-bold text-white">BS 5306-3</p>
+              <p className="font-bold text-white">BS 5839-6</p>
             </div>
           </div>
         </div>
@@ -176,35 +180,29 @@ export default function FireExtinguisherTestingPage() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Annual fire extinguisher servicing for London landlords and businesses
+            Smoke and heat alarm testing for London landlords
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Fire extinguishers are only effective in an emergency if they are properly
-            maintained. BS 5306-3 requires annual inspection by a competent person to
-            check the extinguisher&apos;s pressure, condition, and operating mechanism —
-            and to confirm it is suitable for the fire risk in its location. All London HMO
-            licence conditions require fire extinguishers to be serviced annually.
-          </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Our trained engineers service all types of portable fire extinguisher: water,
-            water mist, foam, CO₂, dry powder, and wet chemical. Extinguishers are inspected
-            in-situ — no need to bring them to us. A dated service label is applied to each
-            extinguisher after passing inspection, and a written service record is issued the
-            same day.
+            A Fire Safety Certificate confirms that all smoke alarms, heat alarms, and carbon
+            monoxide detectors in your London rental property have been tested and are functioning
+            correctly. It is required as part of HMO licence conditions across all London boroughs,
+            and strongly recommended for all landlords as evidence of ongoing compliance.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Where an extinguisher fails inspection or is beyond its service life, we can
-            supply replacement units and quote for extended testing (refill) for rechargeable
-            types. Ask when booking.
+            Our accredited engineers test every alarm using a calibrated aerosol test spray —
+            not just a button press — which confirms the optical or ionisation sensor is
+            responding correctly to simulated smoke particles. We check battery condition,
+            manufacture dates, and positioning compliance against BS 5839-6. The written
+            certificate lists every alarm with its test result.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              The Regulatory Reform (Fire Safety) Order 2005 requires the responsible person
-              to ensure fire-fighting equipment is maintained in efficient working order.
-              Annual servicing to BS 5306-3 is the accepted method of meeting this obligation.
-              HMO licence conditions typically require an up-to-date service record.
+              The Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022 require all
+              private landlords to install smoke alarms on every storey and CO alarms in every
+              room with a combustion appliance. Annual testing is required for HMO licences
+              and as evidence of due diligence.
             </p>
           </div>
         </section>
@@ -216,18 +214,18 @@ export default function FireExtinguisherTestingPage() {
             {[
               {
                 step: "1",
-                title: "Book with your extinguisher count",
-                body: "Tell us the number and types of extinguishers. We confirm the price and book an engineer. Most visits take under an hour — minimal disruption to your tenants.",
+                title: "Book with your alarm count",
+                body: "Tell us how many smoke, heat, and CO alarms you have. We confirm the price, book your appointment, and arrive at the agreed time — no need for you to be present if a tenant can provide access.",
               },
               {
                 step: "2",
-                title: "On-site inspection",
-                body: "Our engineer inspects each extinguisher in-situ: pressure gauge, operating pin, hose, and weight check. A dated service label is applied to each extinguisher that passes. Failed units are recorded with a recommended action.",
+                title: "Aerosol test of every alarm",
+                body: "Our engineer tests each alarm using calibrated aerosol spray, checks battery condition and manufacture date, and confirms correct positioning per BS 5839-6. CO detectors are also tested at no extra charge.",
               },
               {
                 step: "3",
-                title: "Service record issued same day",
-                body: "You receive a written service record listing each extinguisher with its inspection result and next service date. Keep it with your HMO licence documents and compliance file.",
+                title: "Certificate emailed same day",
+                body: "You receive the written Fire Safety Certificate listing every alarm with its test result. Keep it with your compliance file and submit it to your local authority or HMO licensing body if requested.",
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex flex-col gap-3">
@@ -245,11 +243,11 @@ export default function FireExtinguisherTestingPage() {
         <section id="pricing" className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
           <p className="text-brand-grey mb-6">
-            Fixed price by number of extinguishers. Includes inspection, service label, and written record.
+            Fixed price by number of smoke and heat alarms. CO detectors included in same visit.
           </p>
           <PriceTable
-            title="Fire Extinguisher Testing"
-            rows={FIRE_EXTINGUISHER_TABLE}
+            title="Fire Safety Certificate"
+            rows={FIRE_SAFETY_CERT_TABLE}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">
@@ -262,26 +260,23 @@ export default function FireExtinguisherTestingPage() {
               Parking restrictions +£{ADDITIONAL_CHARGES.parking}
             </span>
           </p>
-          <p className="text-sm text-brand-grey mt-2">
-            Replacement extinguisher supply quoted separately — ask us when booking.
-          </p>
         </section>
 
         {/* What's included */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            What&apos;s included from £{entryPrice}
+            What&apos;s included for £{entryPrice}
           </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Visual condition inspection",
-              "Pressure gauge check",
-              "Operating pin and safety clip check",
-              "Hose and nozzle inspection",
-              "Weight check (CO₂ and powder)",
-              "Correct extinguisher type for risk check",
-              "Dated service label applied",
-              "Written service record issued",
+              "Aerosol test of each smoke and heat alarm",
+              "Battery condition check",
+              "Manufacture date and replacement advice",
+              "Positioning check per BS 5839-6",
+              "CO detector testing if present",
+              "Written Fire Safety Certificate",
+              "Pass/fail for each individual alarm",
+              "Certificate emailed same day",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -306,18 +301,18 @@ export default function FireExtinguisherTestingPage() {
             {[
               {
                 name: "Fire Risk Assessment",
-                href: "/fire-safety/fire-risk-assessment",
-                desc: "Written fire risk assessment from £74.99. Identifies whether your extinguisher provision is adequate.",
+                href: "/fire-risk-assessment",
+                desc: "Written fire risk assessment from £74.99. Required for HMOs and blocks of flats.",
               },
               {
-                name: "Fire Door Certificate",
-                href: "/fire-safety/fire-door-certificate",
-                desc: "Fire door inspection from £119.99/door. Annual HMO requirement under BS 9999.",
+                name: "Fire Alarm Installation",
+                href: "/fire-alarm-installation",
+                desc: "Mains-wired interlinked alarms from £209.99/alarm. Required for new HMO licences.",
               },
               {
-                name: "Fire Safety Certificate",
-                href: "/fire-safety/fire-safety-certificate",
-                desc: "Smoke and CO alarm testing from £54.99. Required for all London rental properties.",
+                name: "Emergency Lights Certificate",
+                href: "/emergency-lights-certificate",
+                desc: "Annual emergency lighting test from £54.99. BS 5266-1 compliant.",
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -338,35 +333,27 @@ export default function FireExtinguisherTestingPage() {
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Book your fire extinguisher service
+              Book your Fire Safety Certificate
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. All extinguisher types. Service label
-              issued same day. Same-week appointments across all 32 London boroughs.
+              Fixed price from £{entryPrice}. Accredited engineers, certificate same day.
+              Same-week appointments across all 32 London boroughs.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Link
-                href="/book?service=fire-extinguisher-testing"
-                className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
-              >
-                Book Online
-              </Link>
-              <a
-                href="tel:03301330066"
-                className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
-              >
-                0330 133 0066
-              </a>
-            </div>
+            <Link
+              href="/book?service=fire-safety-cert"
+              className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
+            >
+              Book Now — from £{entryPrice}
+            </Link>
           </div>
         </section>
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fire-extinguisher-testing"
+        href="/book?service=fire-safety-cert"
         label="Book Now"
         price={entryPrice}
-        serviceName="Fire Extinguisher Testing"
+        serviceName="Fire Safety Certificate"
       />
     </>
   );

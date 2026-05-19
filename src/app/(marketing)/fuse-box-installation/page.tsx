@@ -6,24 +6,24 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, ELC_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved | My Landlord Certificate",
+  title: "Fuse Box Installation London from £599.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 32 London boroughs. Certificate same day.",
+    "Consumer unit replacement from £599.99. NICEIC approved electricians across all 32 London boroughs. Dual-RCD or RCBO protection, Part P self-certified, EICR included on completion.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+    canonical: "https://www.mylandlordcertificate.co.uk/fuse-box-installation",
   },
 };
 
-const entryPrice = ELC_TABLE[0].price;
+const entryPrice = FUSE_BOX_TABLE[0].price;
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Emergency Lights Certificate — Annual Testing",
-  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+  name: "Fuse Box Installation — Consumer Unit Replacement",
+  url: "https://www.mylandlordcertificate.co.uk/fuse-box-installation",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -44,50 +44,55 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Emergency Lights Certificate", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate" },
+    { "@type": "ListItem", position: 3, name: "Fuse Box Installation", item: "https://www.mylandlordcertificate.co.uk/fuse-box-installation" },
   ],
 };
 
 const faqs = [
   {
-    question: "Who needs an Emergency Lights Certificate?",
+    question: "Why might I need a new consumer unit?",
     answer:
-      "Any property with emergency lighting is required to have it tested and certified annually. This includes HMOs, blocks of flats with communal areas, commercial properties, offices, and hotels. The Regulatory Reform (Fire Safety) Order 2005 and BS EN 62034 require functional emergency lighting in all non-domestic escape routes.",
+      "Older fuse boxes (particularly rewirable fuse boards) lack RCD protection, which is now required under the 18th Edition Wiring Regulations (BS 7671:2018+A2:2022). An EICR that returns a C2 code for the consumer unit means it must be replaced within 28 days. A new consumer unit adds RCD and RCBO protection, significantly reducing the risk of electric shock and fire.",
   },
   {
-    question: "What does the annual test involve?",
+    question: "How long does a fuse box installation take?",
     answer:
-      "The annual test includes a full 3-hour discharge test of each emergency luminaire to confirm it operates for the minimum required duration. We also carry out a visual inspection of each fitting, check central battery systems if applicable, and confirm exit signs are illuminated correctly.",
+      "A standard consumer unit replacement typically takes 4–6 hours. During the installation, power will be off to all circuits in the property — we advise tenants of this in advance. We carry out a full test of all circuits after installation and issue the completion EICR before leaving.",
   },
   {
-    question: "How often should emergency lights be tested?",
+    question: "Will I get an EICR after installation?",
     answer:
-      "Annual full testing is the minimum requirement under BS 5266-1. Additionally, monthly brief functional tests should be carried out by the building manager or responsible person — we can train you or your staff to do this during our annual visit.",
+      "Yes. Every consumer unit installation includes a full electrical test and EICR on completion. The certificate confirms the installation is safe and compliant with BS 7671 — useful for insurance and future tenancy purposes.",
   },
   {
-    question: "What happens if a light fails the test?",
+    question: "What type of consumer unit do you install?",
     answer:
-      "Failed luminaires are identified in the certificate and must be repaired or replaced. We carry common replacement parts and can often remediate minor failures during the same visit. Replacement luminaires are quoted separately.",
+      "We install high-quality metal consumer units with dual RCD protection (split-load) or individual RCBOs per circuit for maximum protection. We use Hager, Legrand, and Crabtree boards as standard. The exact specification is agreed with you at the time of booking based on your property's circuits.",
   },
   {
-    question: "Can I carry out monthly tests myself?",
+    question: "Will you notify Building Control (Part P)?",
     answer:
-      "Yes. Monthly functional tests — a brief activation test to confirm each luminaire illuminates — can be performed by the responsible person. You should record the result in a logbook. We recommend our engineer demonstrates the correct procedure during the annual visit.",
+      "Yes. As NICEIC approved contractors, we are registered to self-certify our electrical installation work under Part P of the Building Regulations. We notify NICEIC on your behalf — you will receive a Building Regulations compliance certificate within a few weeks of installation, at no extra charge.",
   },
   {
-    question: "Do you test central battery systems?",
+    question: "Does my tenant need to be present during the installation?",
     answer:
-      "Yes. We test self-contained emergency luminaires (with individual batteries) and central battery systems. For central battery systems, we test the battery capacity, charger output, and the end-of-line load. We document the results for each circuit on the written certificate.",
+      "Someone needs to provide access to the property, but your tenant does not need to be present throughout. We recommend advising tenants in advance that power will be off for approximately 4–6 hours. We can arrange an early-morning start to minimise disruption.",
   },
   {
-    question: "What documentation will I receive?",
+    question: "Can you move the fuse box to a different location?",
     answer:
-      "You will receive a written Emergency Lights Certificate recording each luminaire tested, the duration achieved, pass/fail status, and any remediation required. The certificate is suitable for submission to your local authority, fire authority, or HMO licensing body.",
+      "Yes. We can relocate a consumer unit to a more accessible or more suitable position. This typically adds 2–4 hours to the installation time and requires additional cable runs. We will quote for this separately after surveying the property.",
+  },
+  {
+    question: "How many ways (circuit positions) will I need?",
+    answer:
+      "Most 1–3 bedroom properties require a 10 or 12-way consumer unit. Larger properties and HMOs often need 16 or more ways. Our pricing is based on the size of the consumer unit — our engineer will confirm the exact specification at the time of booking.",
   },
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Westminster, Camden, Islington, Hackney, Southwark, Lambeth, Tower Hamlets, Wandsworth, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 32 London boroughs, including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Hammersmith & Fulham, Ealing, Brent, Camden, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -101,7 +106,7 @@ const faqSchema = {
   })),
 };
 
-export default function EmergencyLightsCertificatePage() {
+export default function FuseBoxInstallationPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -117,21 +122,21 @@ export default function EmergencyLightsCertificatePage() {
               <li aria-hidden="true">/</li>
               <li><Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Emergency Lights Certificate</li>
+              <li className="text-brand-charcoal font-medium">Fuse Box Installation</li>
             </ol>
           </nav>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Emergency Lights Certificate London from £{entryPrice}
+            Fuse Box Installation London from £{entryPrice}
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Annual testing to BS 5266-1 · Certificate issued same day
+            NICEIC approved · Supply &amp; install · Part P self-certified · EICR included
           </p>
-          <TrustBadges serviceKey="emergency-lights" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fuse-box" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=elc"
+              href="/book?service=fuse-box"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -155,16 +160,16 @@ export default function EmergencyLightsCertificatePage() {
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Required</p>
-              <p className="font-bold text-white">Annually</p>
+              <p className="text-xs text-white/50 mb-0.5">Duration</p>
+              <p className="font-bold text-white">4–6 hours</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="text-xs text-white/50 mb-0.5">Includes</p>
+              <p className="font-bold text-white">EICR + Part P</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Standard</p>
-              <p className="font-bold text-white">BS 5266-1</p>
+              <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
+              <p className="font-bold text-white">NICEIC</p>
             </div>
           </div>
         </div>
@@ -176,30 +181,26 @@ export default function EmergencyLightsCertificatePage() {
         {/* What is it */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Emergency lighting testing for London landlords
+            Consumer unit replacement for London landlords
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Emergency lighting provides illumination of escape routes when the normal power
-            supply fails. In HMOs, communal areas of blocks of flats, and any commercial
-            premises across London, it is a legal requirement under the Regulatory Reform
-            (Fire Safety) Order 2005. Annual testing and certification to BS 5266-1
-            demonstrates compliance to your local authority and HMO licensing body.
+            Many older rental properties across London still have rewirable fuse boards that
+            lack the RCD (Residual Current Device) protection required by the 18th Edition
+            Wiring Regulations (BS 7671:2018+A2:2022). A failed EICR that codes the consumer
+            unit as C2 (potentially dangerous) triggers a 28-day remediation deadline —
+            replacing the consumer unit is typically the fastest resolution.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Our NICEIC approved engineers carry out a full 3-hour discharge test of each
-            emergency luminaire, visually inspect all fittings and exit signage, and issue
-            a written certificate the same day. The certificate records each fitting&apos;s
-            pass/fail status and any remediation required.
+            We supply and install high-quality metal consumer units from Hager, Legrand, and
+            Crabtree — brands trusted by electricians for their reliability and longevity.
+            Every installation includes a full circuit test and completion EICR to confirm
+            the work is safe and compliant.
           </p>
-
-          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
-            <p className="text-sm text-brand-charcoal">
-              <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              The Regulatory Reform (Fire Safety) Order 2005 requires responsible persons
-              to maintain and test emergency lighting in all non-domestic premises. Annual
-              full testing to BS 5266-1 is the accepted method of compliance.
-            </p>
-          </div>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            As NICEIC approved contractors, we self-certify all installations under Part P of
+            the Building Regulations. You receive a Building Regulations compliance certificate
+            automatically, with no need to separately notify your local authority.
+          </p>
         </section>
 
         {/* How it works */}
@@ -209,18 +210,18 @@ export default function EmergencyLightsCertificatePage() {
             {[
               {
                 step: "1",
-                title: "Book with your luminaire count",
-                body: "Tell us how many emergency lights and exit signs are installed. We confirm the price, agree a date, and arrive with the correct equipment for your system.",
+                title: "Book and confirm specification",
+                body: "Book online or call us. We confirm the number of circuits in your property and agree the consumer unit specification (split-load dual RCD or individual RCBOs).",
               },
               {
                 step: "2",
-                title: "Full 3-hour discharge test",
-                body: "Our engineer activates each luminaire in turn, recording the duration it remains lit. Exit signs and central battery systems are also checked. Any failed fittings are documented.",
+                title: "Installation day (4–6 hours)",
+                body: "Our NICEIC approved electrician arrives, isolates the supply, removes the old board, installs and connects the new consumer unit, then tests every circuit before restoring power.",
               },
               {
                 step: "3",
-                title: "Certificate emailed same day",
-                body: "You receive a written Emergency Lights Certificate listing every luminaire with its test result. Suitable for your HMO licence, local authority, or fire authority inspection.",
+                title: "EICR and Part P certificate",
+                body: "We issue the completion EICR on the day. Your Part P Building Regulations certificate follows within a few weeks, notified to NICEIC on your behalf at no extra cost.",
               },
             ].map(({ step, title, body }) => (
               <div key={step} className="flex flex-col gap-3">
@@ -236,13 +237,15 @@ export default function EmergencyLightsCertificatePage() {
 
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
+            Fuse Box Installation Pricing
+          </h2>
           <p className="text-brand-grey mb-6">
-            Fixed price by number of emergency lights. Includes testing and written certificate.
+            Fixed price by consumer unit type. Includes supply, installation, Part P notification, and completion EICR.
           </p>
           <PriceTable
-            title="Emergency Lights Certificate"
-            rows={ELC_TABLE}
+            title="Fuse Box Installation"
+            rows={FUSE_BOX_TABLE}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">
@@ -259,17 +262,19 @@ export default function EmergencyLightsCertificatePage() {
 
         {/* What's included */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            What&apos;s included
+          </h2>
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
-              "Full 3-hour discharge test of each luminaire",
-              "Visual inspection of all fittings and exit signs",
-              "Pass/fail recorded for each individual light",
-              "Written certificate issued same day",
-              "Monthly test guidance for your records",
-              "Fault reporting with recommended action",
+              "Supply and installation of new metal consumer unit",
+              "Dual RCD (split-load) or individual RCBO protection",
+              "Full circuit isolation and reconnection",
+              "Testing of all circuits after installation",
+              "Completion EICR certificate included",
+              "Part P Building Regulations self-certification",
               "NICEIC approved electrician",
-              "Compliant with BS 5266-1",
+              "Installed in one day (4–6 hours)",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -295,19 +300,19 @@ export default function EmergencyLightsCertificatePage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               {
-                name: "Fire Alarm Installation",
-                href: "/fire-safety/fire-alarm-installation",
-                desc: "Mains-wired interlinked smoke and heat alarms from £209.99/alarm.",
+                name: "Domestic EICR",
+                href: "/eicr",
+                desc: "Electrical installation condition report from £67.99. Required every 5 years.",
               },
               {
-                name: "Fire Risk Assessment",
-                href: "/fire-safety/fire-risk-assessment",
-                desc: "Written fire risk assessment from £74.99. Required for all HMOs.",
+                name: "Electrical Diagnostic",
+                href: "/electrical-diagnostic",
+                desc: "Fault finding from £89.99/hr. Identify the root cause of recurring faults.",
               },
               {
-                name: "Fire Safety Certificate",
-                href: "/fire-safety/fire-safety-certificate",
-                desc: "Smoke and CO alarm testing and certification from £54.99.",
+                name: "PAT Testing",
+                href: "/pat-testing",
+                desc: "Portable appliance testing from £59.99. For furnished rental properties.",
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -328,14 +333,14 @@ export default function EmergencyLightsCertificatePage() {
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
             <h2 className="text-2xl font-bold text-white mb-3">
-              Book your emergency lights certificate
+              Book your fuse box installation
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Same-week appointments across all 32 London boroughs.
-              Certificate issued same day.
+              Fixed price from £{entryPrice}, EICR and Part P included. Same-week appointments
+              across all 32 London boroughs.
             </p>
             <Link
-              href="/book?service=elc"
+              href="/book?service=fuse-box"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -345,10 +350,10 @@ export default function EmergencyLightsCertificatePage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=elc"
+        href="/book?service=fuse-box"
         label="Book Now"
         price={entryPrice}
-        serviceName="Emergency Lights Certificate"
+        serviceName="Fuse Box Installation"
       />
     </>
   );

@@ -316,7 +316,7 @@ export default function CP42Page() {
               },
               {
                 name: "Boiler Installation",
-                href: "/gas-safety/boiler-installation",
+                href: "/boiler-installation",
                 desc: "Gas Safe boiler replacement from £2,499. CP12 and 10-year warranty included.",
               },
             ].map(({ name, href, desc }) => (

@@ -307,17 +307,17 @@ export default function FireAlarmPanelsPage() {
             {[
               {
                 name: "Fire Risk Assessment",
-                href: "/fire-safety/fire-risk-assessment",
+                href: "/fire-risk-assessment",
                 desc: "Written fire risk assessment from £74.99. Identifies fire detection deficiencies.",
               },
               {
                 name: "Fire Alarm Installation",
-                href: "/fire-safety/fire-alarm-installation",
+                href: "/fire-alarm-installation",
                 desc: "Mains-wired interlinked alarms from £209.99/alarm. For properties without a panel system.",
               },
               {
                 name: "Emergency Lights Certificate",
-                href: "/electrical-safety/emergency-lights-certificate",
+                href: "/emergency-lights-certificate",
                 desc: "Annual emergency lighting test from £54.99. BS 5266-1 compliant.",
               },
             ].map(({ name, href, desc }) => (

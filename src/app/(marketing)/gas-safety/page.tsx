@@ -32,7 +32,7 @@ const services = [
     badge: "Up to 8 appliances",
   },
   {
-    href: "/gas-safety/boiler-installation",
+    href: "/boiler-installation",
     icon: <Thermometer className="w-5 h-5" />,
     title: "Boiler Installation",
     price: FROM_PRICES["boiler-installation"],

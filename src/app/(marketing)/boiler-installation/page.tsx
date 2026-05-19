@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Boiler replacement from £2,499. Worcester Bosch and Vaillant A-rated combi and system boilers. Gas Safe Registered engineers across all London boroughs. CP12 and 10-year warranty included.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety/boiler-installation",
+    canonical: "https://www.mylandlordcertificate.co.uk/boiler-installation",
   },
 };
 
@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Boiler Installation & Replacement",
-  url: "https://www.mylandlordcertificate.co.uk/gas-safety/boiler-installation",
+  url: "https://www.mylandlordcertificate.co.uk/boiler-installation",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -41,7 +41,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://www.mylandlordcertificate.co.uk/gas-safety" },
-    { "@type": "ListItem", position: 3, name: "Boiler Installation", item: "https://www.mylandlordcertificate.co.uk/gas-safety/boiler-installation" },
+    { "@type": "ListItem", position: 3, name: "Boiler Installation", item: "https://www.mylandlordcertificate.co.uk/boiler-installation" },
   ],
 };
 

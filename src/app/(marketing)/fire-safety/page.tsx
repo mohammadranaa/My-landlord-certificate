@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    href: "/fire-safety/fire-safety-certificate",
+    href: "/fire-safety-certificate",
     icon: <Bell className="w-5 h-5" />,
     title: "Fire Safety Certificate",
     price: FROM_PRICES["fire-safety-cert"],
@@ -23,7 +23,7 @@ const services = [
     badge: "Annual recommendation",
   },
   {
-    href: "/fire-safety/fire-risk-assessment",
+    href: "/fire-risk-assessment",
     icon: <ClipboardList className="w-5 h-5" />,
     title: "Fire Risk Assessment",
     price: FROM_PRICES["fra-residential"],
@@ -32,7 +32,7 @@ const services = [
     badge: "Legal requirement for HMOs",
   },
   {
-    href: "/fire-safety/fire-alarm-installation",
+    href: "/fire-alarm-installation",
     icon: <Siren className="w-5 h-5" />,
     title: "Fire Alarm Installation",
     price: FROM_PRICES["fire-alarm-installation"],
@@ -41,7 +41,7 @@ const services = [
     badge: "Per alarm installed",
   },
   {
-    href: "/fire-safety/fire-door-certificate",
+    href: "/fire-door-certificate",
     icon: <Shield className="w-5 h-5" />,
     title: "Fire Door Certificate",
     price: FROM_PRICES["fire-door-cert"],
@@ -50,7 +50,7 @@ const services = [
     badge: "HMO & flat requirement",
   },
   {
-    href: "/fire-safety/fire-extinguisher-testing",
+    href: "/fire-extinguisher-testing",
     icon: <Flame className="w-5 h-5" />,
     title: "Fire Extinguisher Testing",
     price: FROM_PRICES["fire-extinguisher"],

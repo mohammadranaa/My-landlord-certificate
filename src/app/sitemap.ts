@@ -50,27 +50,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/fire-safety`,        priority: 0.75, changeFrequency: "monthly" },
   ];
 
-  // ── Electrical Safety sub-pages (non-canonical, lower priority) ─────────────
+  // ── Electrical Safety sub-pages ───────────────────────────────────────────────
   const electricalSubPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/electrical-safety/electrical-diagnostic`,       priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/electrical-safety/fuse-box-installation`,       priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/electrical-safety/emergency-lights-certificate`, priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/electrical-safety/pat-testing`,                 priority: 0.60, changeFrequency: "monthly" },
+    { url: `${BASE}/electrical-diagnostic`,        priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/fuse-box-installation`,        priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/emergency-lights-certificate`, priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/pat-testing`,                  priority: 0.90, changeFrequency: "monthly" },
   ];
 
   // ── Gas Safety sub-pages ─────────────────────────────────────────────────────
   const gasSubPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/gas-safety/boiler-installation`, priority: 0.75, changeFrequency: "monthly" },
+    { url: `${BASE}/boiler-installation`, priority: 0.80, changeFrequency: "monthly" },
   ];
 
   // ── Fire Safety sub-pages ─────────────────────────────────────────────────────
   const fireSubPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/fire-safety/fire-safety-certificate`,   priority: 0.80, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety/fire-risk-assessment`,      priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety/fire-alarm-installation`,   priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety/fire-alarm-panels`,         priority: 0.72, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety/fire-door-certificate`,     priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety/fire-extinguisher-testing`, priority: 0.75, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-safety-certificate`,   priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-risk-assessment`,      priority: 0.90, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-alarm-installation`,   priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-alarm-panels`,         priority: 0.72, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-door-certificate`,     priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-extinguisher-testing`, priority: 0.80, changeFrequency: "monthly" },
   ];
 
   // ── Location hub and borough pages ────────────────────────────────────────────

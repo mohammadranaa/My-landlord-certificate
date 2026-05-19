@@ -313,8 +313,8 @@ export default function AsbestosSurveyPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/eicr", label: "Domestic EICR", desc: "Required before or after renovation work." },
-              { href: "/fire-safety/fire-risk-assessment", label: "Fire Risk Assessment", desc: "Often required alongside asbestos surveys for HMOs." },
-              { href: "/fire-safety/fire-safety-certificate", label: "Fire Safety Certificate", desc: "Annual smoke alarm testing for rental properties." },
+              { href: "/fire-risk-assessment", label: "Fire Risk Assessment", desc: "Often required alongside asbestos surveys for HMOs." },
+              { href: "/fire-safety-certificate", label: "Fire Safety Certificate", desc: "Annual smoke alarm testing for rental properties." },
             ].map((s) => (
               <Link
                 key={s.href}

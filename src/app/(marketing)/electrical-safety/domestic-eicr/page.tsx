@@ -332,8 +332,8 @@ export default function DomesticEICRPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/gas-safety-certificate", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From £49.99." },
-              { href: "/electrical-safety/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace old fuse wire boards with modern RCD protection. From £599.99." },
-              { href: "/electrical-safety/pat-testing", label: "PAT Testing", desc: "Test portable appliances in furnished lets. From £59.99." },
+              { href: "/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace old fuse wire boards with modern RCD protection. From £599.99." },
+              { href: "/pat-testing", label: "PAT Testing", desc: "Test portable appliances in furnished lets. From £59.99." },
             ].map((s) => (
               <Link
                 key={s.href}

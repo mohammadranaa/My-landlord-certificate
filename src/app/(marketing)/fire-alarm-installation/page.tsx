@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. Grade D LD2, BS 5839-6 compliant. Free survey. All 32 London boroughs. Commissioning certificate included.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-alarm-installation",
   },
 };
 
@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Alarm Installation — Mains-Wired Interlinked Alarms",
-  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
+  url: "https://www.mylandlordcertificate.co.uk/fire-alarm-installation",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -41,7 +41,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Alarm Installation", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation" },
+    { "@type": "ListItem", position: 3, name: "Fire Alarm Installation", item: "https://www.mylandlordcertificate.co.uk/fire-alarm-installation" },
   ],
 };
 
@@ -290,17 +290,17 @@ export default function FireAlarmInstallationPage() {
             {[
               {
                 name: "Fire Safety Certificate",
-                href: "/fire-safety/fire-safety-certificate",
+                href: "/fire-safety-certificate",
                 desc: "Annual smoke alarm testing and certification from £54.99. Required for HMO licences.",
               },
               {
                 name: "Fire Risk Assessment",
-                href: "/fire-safety/fire-risk-assessment",
+                href: "/fire-risk-assessment",
                 desc: "Written fire risk assessment from £74.99. Compulsory for all HMOs.",
               },
               {
                 name: "Emergency Lights Certificate",
-                href: "/electrical-safety/emergency-lights-certificate",
+                href: "/emergency-lights-certificate",
                 desc: "Annual emergency lighting test from £54.99. BS 5266-1 compliant.",
               },
             ].map(({ name, href, desc }) => (

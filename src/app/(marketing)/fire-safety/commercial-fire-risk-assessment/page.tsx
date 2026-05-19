@@ -173,7 +173,7 @@ export default function CommercialFireRiskAssessmentPage() {
             We cover communal areas in blocks of flats and HMOs, commercial offices and
             retail premises, restaurants and hospitality venues, and large mixed-use
             buildings. For residential-only fire risk assessments, see our{" "}
-            <Link href="/fire-safety/fire-risk-assessment" className="text-compliance-blue hover:underline">
+            <Link href="/fire-risk-assessment" className="text-compliance-blue hover:underline">
               residential fire risk assessment
             </Link>{" "}
             page.
@@ -215,7 +215,7 @@ export default function CommercialFireRiskAssessmentPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For residential properties, see{" "}
-            <Link href="/fire-safety/fire-risk-assessment" className="text-compliance-blue hover:underline">
+            <Link href="/fire-risk-assessment" className="text-compliance-blue hover:underline">
               residential fire risk assessment pricing →
             </Link>
           </p>

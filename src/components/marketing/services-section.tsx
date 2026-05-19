@@ -240,7 +240,7 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 2,
   },
   {
-    href: "/electrical-safety/electrical-diagnostic",
+    href: "/electrical-diagnostic",
     icon: <WrenchIcon />,
     name: "Electrical Diagnostic",
     description:
@@ -248,7 +248,7 @@ const RESIDENTIAL: ServiceDef[] = [
     price: ELECTRICAL_DIAGNOSTIC_HOURLY_RATE,
   },
   {
-    href: "/electrical-safety/fuse-box-installation",
+    href: "/fuse-box-installation",
     icon: <BoxIcon />,
     name: "Fuse Box Installation",
     description:
@@ -256,7 +256,7 @@ const RESIDENTIAL: ServiceDef[] = [
     price: FUSE_BOX_TABLE[0].price,
   },
   {
-    href: "/electrical-safety/emergency-lights-certificate",
+    href: "/emergency-lights-certificate",
     icon: <LightIcon />,
     name: "Emergency Lights Certificate",
     description:
@@ -265,7 +265,7 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 1,
   },
   {
-    href: "/fire-safety/fire-safety-certificate",
+    href: "/fire-safety-certificate",
     icon: <BellIcon />,
     name: "Fire Safety Certificate",
     description:
@@ -283,7 +283,7 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 1,
   },
   {
-    href: "/fire-safety/fire-alarm-installation",
+    href: "/fire-alarm-installation",
     icon: <BellIcon />,
     name: "Fire Alarm Installation",
     description:
@@ -291,7 +291,7 @@ const RESIDENTIAL: ServiceDef[] = [
     price: FIRE_ALARM_INSTALLATION_PER_ALARM,
   },
   {
-    href: "/fire-safety/fire-door-certificate",
+    href: "/fire-door-certificate",
     icon: <DoorIcon />,
     name: "Fire Door Certificate",
     description:
@@ -300,7 +300,7 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 2,
   },
   {
-    href: "/fire-safety/fire-extinguisher-testing",
+    href: "/fire-extinguisher-testing",
     icon: <ExtinguisherIcon />,
     name: "Fire Extinguisher Testing",
     description:
@@ -318,7 +318,7 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 2,
   },
   {
-    href: "/gas-safety/boiler-installation",
+    href: "/boiler-installation",
     icon: <BoilerIcon />,
     name: "Boiler Installation",
     description:
@@ -356,7 +356,7 @@ const COMMERCIAL: ServiceDef[] = [
     turnaroundDays: 2,
   },
   {
-    href: "/fire-safety/fire-risk-assessment",
+    href: "/fire-risk-assessment",
     icon: <BuildingIcon />,
     name: "Commercial Fire Risk Assessment",
     description:

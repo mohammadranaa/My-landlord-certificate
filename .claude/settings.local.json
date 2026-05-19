@@ -43,7 +43,8 @@
       "Bash(identify /Users/mohammadrana/Desktop/my-landlord-certificate/public/Logo.jpg)",
       "Bash(cp \"public/Logo SVG.svg\" public/logo.svg)",
       "Bash(cp \"public/White Logo SVG.svg\" public/logo-white.svg)",
-      "Bash(cp \"public/Black Logo SVG.svg\" public/logo-black.svg)"
+      "Bash(cp \"public/Black Logo SVG.svg\" public/logo-black.svg)",
+      "Bash(xargs sed -i '' 's|https://mylandlordcertificate\\\\.co\\\\.uk|https://www.mylandlordcertificate.co.uk|g')"
     ]
   }
 }
