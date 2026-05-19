@@ -33,11 +33,15 @@ export async function POST(request: NextRequest) {
   const sheetUrl = process.env.LETTING_AGENT_LEADS_SHEET_URL;
   if (sheetUrl) {
     try {
-      await fetch(sheetUrl, {
+      const sheetRes = await fetch(sheetUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead),
+        redirect: "follow",
       });
+      console.log("[letting-agent-lead] Sheet response status:", sheetRes.status);
+      const sheetText = await sheetRes.text();
+      console.log("[letting-agent-lead] Sheet response body:", sheetText);
     } catch (err) {
       console.error("[letting-agent-lead] Google Sheet submission failed:", err);
     }

@@ -57,13 +57,16 @@ export async function POST(request: NextRequest) {
   const sheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
   if (sheetUrl) {
     try {
-      await fetch(sheetUrl, {
+      const sheetRes = await fetch(sheetUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(booking),
+        redirect: "follow",
       });
+      console.log("[booking] Sheet response status:", sheetRes.status);
+      const sheetText = await sheetRes.text();
+      console.log("[booking] Sheet response body:", sheetText);
     } catch (err) {
-      // Sheet submission failed — booking is still logged above
       console.error("[booking] Google Sheet submission failed:", err);
     }
   } else {
