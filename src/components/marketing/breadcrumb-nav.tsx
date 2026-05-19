@@ -19,7 +19,7 @@ export function BreadcrumbNav({ items }: BreadcrumbNavProps) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://mylandlordcertificate.co.uk",
+        item: "https://www.mylandlordcertificate.co.uk",
       },
       ...items.map((item, i) => ({
         "@type": "ListItem",

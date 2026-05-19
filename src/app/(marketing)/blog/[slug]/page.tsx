@@ -23,7 +23,7 @@ import {
   ADDITIONAL_CHARGES,
 } from "@/lib/pricing";
 
-const BASE = "https://mylandlordcertificate.co.uk";
+const BASE = "https://www.mylandlordcertificate.co.uk";
 
 // ── Static params ─────────────────────────────────────────────────────────────
 

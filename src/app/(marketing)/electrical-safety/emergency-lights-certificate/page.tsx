@@ -27,7 +27,7 @@ const serviceSchema = {
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
-    url: "https://mylandlordcertificate.co.uk",
+    url: "https://www.mylandlordcertificate.co.uk",
   },
   areaServed: { "@type": "City", name: "London" },
   offers: {
@@ -42,7 +42,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
     { "@type": "ListItem", position: 3, name: "Emergency Lights Certificate", item: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate" },
   ],

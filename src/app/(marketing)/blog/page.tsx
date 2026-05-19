@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 const POSTS_PER_PAGE = 9;
-const BASE = "https://mylandlordcertificate.co.uk";
+const BASE = "https://www.mylandlordcertificate.co.uk";
 
 // ── Post card ─────────────────────────────────────────────────────────────────
 

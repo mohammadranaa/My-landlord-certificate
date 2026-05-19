@@ -34,12 +34,12 @@ export const metadata: Metadata = {
   title: "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate",
   description:
     "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. From £50 — no hidden charges. Next-day appointments available across London.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk" },
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
       "Landlord compliance certificates from £50 — no hidden charges. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Next-day appointments across London. Certificate emailed same day.",
-    url: "https://mylandlordcertificate.co.uk",
+    url: "https://www.mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
   twitter: {
@@ -56,7 +56,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "My Landlord Certificate",
-  url: "https://mylandlordcertificate.co.uk",
+  url: "https://www.mylandlordcertificate.co.uk",
   logo: "https://mylandlordcertificate.co.uk/logo.svg",
   telephone: "+443301330066",
   email: "hello@mylandlordcertificate.co.uk",
@@ -72,7 +72,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
-  url: "https://mylandlordcertificate.co.uk",
+  url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   email: "hello@mylandlordcertificate.co.uk",
   description:
@@ -96,7 +96,7 @@ const aggregateRatingSchema = {
   itemReviewed: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
-    url: "https://mylandlordcertificate.co.uk",
+    url: "https://www.mylandlordcertificate.co.uk",
   },
   ratingValue: "4.8",
   bestRating: "5",
@@ -113,7 +113,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://mylandlordcertificate.co.uk",
+      item: "https://www.mylandlordcertificate.co.uk",
     },
   ],
 };

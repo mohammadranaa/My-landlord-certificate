@@ -36,7 +36,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
     { "@type": "ListItem", position: 3, name: "Commercial Fire Risk Assessment", item: "https://mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment" },
   ],

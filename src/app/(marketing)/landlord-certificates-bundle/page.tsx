@@ -45,7 +45,7 @@ const serviceSchema = {
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
-    url: "https://mylandlordcertificate.co.uk",
+    url: "https://www.mylandlordcertificate.co.uk",
   },
   areaServed: ["London", "South East England"],
   hasOfferCatalog: {
@@ -126,7 +126,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://mylandlordcertificate.co.uk",
+      item: "https://www.mylandlordcertificate.co.uk",
     },
     {
       "@type": "ListItem",

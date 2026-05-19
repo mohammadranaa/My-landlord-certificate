@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 
-const BASE = "https://mylandlordcertificate.co.uk";
+const BASE = "https://www.mylandlordcertificate.co.uk";
 
 // All 33 London borough slugs — must match keys in eicr-[slug]/page.tsx
 const boroughSlugs = [

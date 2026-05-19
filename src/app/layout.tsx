@@ -16,7 +16,7 @@ const inter = Inter({
 const defaultTitle = "My Landlord Certificate — UK Property Compliance";
 const defaultDescription =
   "Book EICR, Gas Safety, EPC, Fire Risk Assessment and PAT testing online. NICEIC & Gas Safe accredited engineers. Next-day appointments across London. Fixed prices, no surprises.";
-const siteUrl = "https://mylandlordcertificate.co.uk";
+const siteUrl = "https://www.mylandlordcertificate.co.uk";
 
 export const metadata: Metadata = {
   title: {

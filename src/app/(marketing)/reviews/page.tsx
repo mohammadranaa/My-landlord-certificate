@@ -35,7 +35,7 @@ const aggregateRatingSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
-  url: "https://mylandlordcertificate.co.uk",
+  url: "https://www.mylandlordcertificate.co.uk",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
@@ -49,7 +49,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Reviews", item: "https://mylandlordcertificate.co.uk/reviews" },
   ],
 };

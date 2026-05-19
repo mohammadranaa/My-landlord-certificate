@@ -33,7 +33,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "My Landlord Certificate",
-  url: "https://mylandlordcertificate.co.uk",
+  url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   description:
     "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the South East. Fixed prices, accredited engineers, same-day certificates.",
@@ -52,7 +52,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "About", item: "https://mylandlordcertificate.co.uk/about" },
   ],
 };

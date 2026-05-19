@@ -57,7 +57,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://mylandlordcertificate.co.uk",
+      item: "https://www.mylandlordcertificate.co.uk",
     },
     {
       "@type": "ListItem",

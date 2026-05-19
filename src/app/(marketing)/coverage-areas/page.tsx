@@ -33,7 +33,7 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
-  url: "https://mylandlordcertificate.co.uk",
+  url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   areaServed: [
     // London boroughs
@@ -53,7 +53,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://mylandlordcertificate.co.uk" },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
     { "@type": "ListItem", position: 2, name: "Coverage Areas", item: "https://mylandlordcertificate.co.uk/coverage-areas" },
   ],
 };

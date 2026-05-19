@@ -39,7 +39,11 @@
       "Bash(sed -i '' 's/<TrustBadges variant=\"dark\" \\\\/>/<TrustBadges serviceKey=\"commercial-eicr\" variant=\"dark\" \\\\/>/' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/commercial-eicr/page.tsx' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/electrical-safety/commercial-eicr/page.tsx')",
       "Bash(sed -i '' 's/<TrustBadges variant=\"dark\" \\\\/>/<TrustBadges serviceKey=\"pat-testing\" variant=\"dark\" \\\\/>/' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/pat-testing/page.tsx' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/electrical-safety/pat-testing/page.tsx')",
       "Bash(sed -i '' 's/<TrustBadges variant=\"dark\" \\\\/>/<TrustBadges serviceKey=\"emergency-lights\" variant=\"dark\" \\\\/>/' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/electrical-safety/emergency-lights-certificate/page.tsx')",
-      "Bash(sed -i '' 's/<TrustBadges variant=\"dark\" \\\\/>/<TrustBadges serviceKey=\"fuse-box\" variant=\"dark\" \\\\/>/' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/electrical-safety/fuse-box-installation/page.tsx')"
+      "Bash(sed -i '' 's/<TrustBadges variant=\"dark\" \\\\/>/<TrustBadges serviceKey=\"fuse-box\" variant=\"dark\" \\\\/>/' '/Users/mohammadrana/Desktop/my-landlord-certificate/src/app/\\(marketing\\)/electrical-safety/fuse-box-installation/page.tsx')",
+      "Bash(identify /Users/mohammadrana/Desktop/my-landlord-certificate/public/Logo.jpg)",
+      "Bash(cp \"public/Logo SVG.svg\" public/logo.svg)",
+      "Bash(cp \"public/White Logo SVG.svg\" public/logo-white.svg)",
+      "Bash(cp \"public/Black Logo SVG.svg\" public/logo-black.svg)"
     ]
   }
 }
