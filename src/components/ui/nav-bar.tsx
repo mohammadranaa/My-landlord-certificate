@@ -125,7 +125,7 @@ export function NavBar({ className }: { className?: string }) {
       className={cn("sticky top-0 z-50 bg-white border-b border-border shadow-sm", className)}
     >
       <nav
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-6"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6"
         aria-label="Main navigation"
       >
         {/* ── Logo ── */}
@@ -136,7 +136,7 @@ export function NavBar({ className }: { className?: string }) {
           <Image
             src="/logo.svg"
             alt="My Landlord Certificate"
-            width={64}
+            width={160}
             height={64}
             priority
             unoptimized
@@ -231,10 +231,10 @@ export function NavBar({ className }: { className?: string }) {
                     <Image
                       src="/logo.svg"
                       alt="My Landlord Certificate"
-                      width={64}
-                      height={64}
+                      width={140}
+                      height={56}
                       unoptimized
-                      className="h-16 w-auto object-contain"
+                      className="h-14 w-auto object-contain"
                     />
                   </Link>
                   <Dialog.Close
