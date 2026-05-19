@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Privacy Policy — My Landlord Certificate",
   description:
     "How My Landlord Certificate collects, uses and protects your personal data. UK GDPR compliant privacy policy.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/privacy" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/privacy" },
   robots: { index: false },
   openGraph: {
     title: "Privacy Policy — My Landlord Certificate",
     description:
       "How My Landlord Certificate collects, uses and protects your personal data. UK GDPR compliant.",
-    url: "https://mylandlordcertificate.co.uk/privacy",
+    url: "https://www.mylandlordcertificate.co.uk/privacy",
   },
   twitter: {
     title: "Privacy Policy — My Landlord Certificate",
@@ -30,7 +30,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://mylandlordcertificate.co.uk/privacy" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://www.mylandlordcertificate.co.uk/privacy" },
   ],
 };
 

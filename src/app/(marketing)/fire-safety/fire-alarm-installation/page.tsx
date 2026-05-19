@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. Grade D LD2, BS 5839-6 compliant. Free survey. All 32 London boroughs. Commissioning certificate included.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
   },
 };
 
@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Alarm Installation — Mains-Wired Interlinked Alarms",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -40,8 +40,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Alarm Installation", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Alarm Installation", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-installation" },
   ],
 };
 

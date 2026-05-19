@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: "PAT Testing from £59.99 | Digital Certificate Same Day | My Landlord Certificate",
   description:
     "PAT Testing from £59.99 for up to 10 appliances. Portable Appliance Testing for furnished rental properties and HMOs. Pass/fail labels on every appliance, digital asset register, certificate emailed same day.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/pat-testing" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pat-testing" },
   openGraph: {
     title: "PAT Testing from £59.99 | Digital Certificate Same Day",
     description:
       "PAT Testing from £59.99 for up to 10 appliances. Pass/fail label on every appliance, full digital asset register, certificate emailed same day. Book online in under 3 minutes.",
-    url: "https://mylandlordcertificate.co.uk/pat-testing",
+    url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   },
 };
 
@@ -33,7 +33,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "PAT Testing — Portable Appliance Testing",
-  url: "https://mylandlordcertificate.co.uk/pat-testing",
+  url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   description:
     "Portable Appliance Testing (PAT) checks that all plug-in electrical appliances supplied with a furnished tenancy are safe. Visual inspection and electrical tests on every appliance. Pass/fail label applied, full digital asset register and certificate emailed same day.",
   provider: {
@@ -74,14 +74,7 @@ const serviceSchema = {
     price: "59.99",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/pat-testing",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "118",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   },
 };
 
@@ -126,7 +119,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "PAT Testing",
-      item: "https://mylandlordcertificate.co.uk/pat-testing",
+      item: "https://www.mylandlordcertificate.co.uk/pat-testing",
     },
   ],
 };

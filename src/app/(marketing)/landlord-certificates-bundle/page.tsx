@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   description:
     "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit and save. Essential Bundle from £130. Full Compliance £230. HMO Complete £450. All certificates emailed same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/landlord-certificates-bundle",
+    canonical: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
   openGraph: {
     title: "Landlord Certificate Bundle — Save up to £44.97",
     description:
       "Combine your landlord compliance certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. No hidden charges. Certificates emailed same day.",
-    url: "https://mylandlordcertificate.co.uk/landlord-certificates-bundle",
+    url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
 
@@ -39,7 +39,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Landlord Certificate Bundle",
-  url: "https://mylandlordcertificate.co.uk/landlord-certificates-bundle",
+  url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   description:
     "Bundle your landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC and Fire Risk Assessment — into a single engineer visit. Save up to £44.97 versus booking each certificate separately.",
   provider: {
@@ -80,14 +80,7 @@ const serviceSchema = {
     price: "130",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/landlord-certificates-bundle",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "203",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
 
@@ -132,7 +125,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Landlord Certificate Bundle",
-      item: "https://mylandlordcertificate.co.uk/landlord-certificates-bundle",
+      item: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
     },
   ],
 };

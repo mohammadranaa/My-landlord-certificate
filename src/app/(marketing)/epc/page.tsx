@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Energy Performance Certificates (EPC) | Domestic & Commercial | My Landlord Certificate",
   description:
     "Domestic EPC from £89.99, commercial EPC from £249.99. Accredited DEA assessors across London. Required by law before letting or selling — 10-year validity.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/epc" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/epc" },
 };
 
 const services = [
@@ -38,7 +38,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 2, name: "EPC", item: "https://www.mylandlordcertificate.co.uk/epc" },
   ],
 };
 

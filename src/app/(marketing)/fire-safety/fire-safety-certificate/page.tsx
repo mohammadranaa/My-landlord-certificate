@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 32 London boroughs. Same-day certificate.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
   },
 };
 
@@ -27,7 +27,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Safety Certificate — Smoke and Heat Alarm Testing",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -47,8 +47,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Safety Certificate", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Safety Certificate", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-safety-certificate" },
   ],
 };
 

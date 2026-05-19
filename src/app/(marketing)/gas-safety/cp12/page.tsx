@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 32 London boroughs. Certificate emailed same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/gas-safety/cp12",
+    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12",
   },
 };
 
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Gas Safety Certificate (CP12) — Domestic Landlord",
-  url: "https://mylandlordcertificate.co.uk/gas-safety/cp12",
+  url: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12",
   description:
     "Annual legal requirement for all rental properties with gas appliances. Gas Safe Registered engineers inspect boilers, fires, and cookers. Certificate emailed same day.",
   provider: {
@@ -42,7 +42,7 @@ const serviceSchema = {
     price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/gas-safety/cp12",
+    url: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12",
   },
 };
 
@@ -51,8 +51,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://mylandlordcertificate.co.uk/gas-safety" },
-    { "@type": "ListItem", position: 3, name: "Gas Safety Certificate (CP12)", item: "https://mylandlordcertificate.co.uk/gas-safety/cp12" },
+    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://www.mylandlordcertificate.co.uk/gas-safety" },
+    { "@type": "ListItem", position: 3, name: "Gas Safety Certificate (CP12)", item: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12" },
   ],
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Portable Appliance Testing from £59.99 (up to 10 appliances). Pass/fail labels on every appliance, written report emailed same day. Covers all 32 London boroughs. Furnished rentals and HMOs.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/pat-testing",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/pat-testing",
   },
 };
 
@@ -24,7 +24,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "PAT Testing — Portable Appliance Testing",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/pat-testing",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/pat-testing",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -44,8 +44,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "PAT Testing", item: "https://mylandlordcertificate.co.uk/electrical-safety/pat-testing" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "PAT Testing", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/pat-testing" },
   ],
 };
 

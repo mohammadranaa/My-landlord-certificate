@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Electrical fault finding from £89.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 32 London boroughs. Minor repairs same visit.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
   },
 };
 
@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Electrical Diagnostic & Fault Finding",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic",
   description:
     "NICEIC approved electricians trace and identify electrical faults in rental properties. Hourly rate, no call-out fee. Minor repairs completed same visit.",
   provider: {
@@ -42,8 +42,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Electrical Diagnostic", item: "https://mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "Electrical Diagnostic", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/electrical-diagnostic" },
   ],
 };
 

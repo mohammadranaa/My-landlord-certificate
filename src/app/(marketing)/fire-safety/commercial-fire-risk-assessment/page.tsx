@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Commercial fire risk assessment from £149.99 for communal areas up to 3 floors. Required under the Regulatory Reform (Fire Safety) Order 2005. IFSM-qualified assessors. London-wide.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Commercial Fire Risk Assessment",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment",
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,
@@ -37,8 +37,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Commercial Fire Risk Assessment", item: "https://mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Commercial Fire Risk Assessment", item: "https://www.mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment" },
   ],
 };
 

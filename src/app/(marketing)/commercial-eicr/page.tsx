@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   description:
     "Commercial EICR from £149.99. NICEIC approved electricians covering all London boroughs. Required every 3–5 years. Written report same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/commercial-eicr",
+    canonical: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
   openGraph: {
     title: "Commercial EICR from £149.99 | London | My Landlord Certificate",
     description:
       "Commercial Electrical Installation Condition Report from £149.99. NICEIC approved electricians. Written report issued same day. All London boroughs covered.",
-    url: "https://mylandlordcertificate.co.uk/commercial-eicr",
+    url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
 };
 
@@ -43,7 +43,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Commercial EICR — Electrical Installation Condition Report",
-  url: "https://mylandlordcertificate.co.uk/commercial-eicr",
+  url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   description:
     "Commercial Electrical Installation Condition Report (EICR) for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued the same day.",
   provider: {
@@ -57,14 +57,7 @@ const serviceSchema = {
     price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/commercial-eicr",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "94",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
 };
 
@@ -82,13 +75,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "EICR",
-      item: "https://mylandlordcertificate.co.uk/eicr",
+      item: "https://www.mylandlordcertificate.co.uk/eicr",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Commercial EICR",
-      item: "https://mylandlordcertificate.co.uk/commercial-eicr",
+      item: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
     },
   ],
 };

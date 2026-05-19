@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Electrical Safety Certificates | EICR, PAT Testing & More | My Landlord Certificate",
   description:
     "NICEIC approved electrical safety certificates across London. Domestic EICR from £67.99, PAT testing from £59.99, fuse box installation from £599.99. Fixed prices, same-week appointments.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/electrical-safety" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
 };
 
 const services = [
@@ -74,7 +74,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
   ],
 };
 

@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   description:
     "Book a Gas Safety Certificate (CP12) from £49.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
   openGraph: {
     title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
     description:
       "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the South East, certificate emailed same day.",
-    url: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+    url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
 
@@ -39,7 +39,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Gas Safety Certificate (CP12)",
-  url: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+  url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   description:
     "Annual landlord gas safety certificate (CP12) confirming all gas appliances, flues and pipework in a rental property are safe. Legally required under the Gas Safety (Installation and Use) Regulations 1998. Gas Safe Registered engineers, certificate emailed same day.",
   provider: {
@@ -62,14 +62,7 @@ const serviceSchema = {
     price: "50",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "284",
+    url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
 
@@ -90,7 +83,7 @@ const productSchema = {
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     offerCount: 6,
-    url: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+    url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -116,7 +109,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Gas Safety Certificate",
-      item: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+      item: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
     },
   ],
 };

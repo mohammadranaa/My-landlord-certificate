@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   title: "Landlord Compliance Blog — Guides, Tips & Updates",
   description:
     "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance. Plain-English advice to help you stay legal and protect your rental property.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/blog" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/blog" },
   openGraph: {
     title: "Landlord Compliance Blog — Guides, Tips & Updates",
     description:
       "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance.",
-    url: "https://mylandlordcertificate.co.uk/blog",
+    url: "https://www.mylandlordcertificate.co.uk/blog",
   },
   twitter: {
     title: "Landlord Compliance Blog — Guides, Tips & Updates",

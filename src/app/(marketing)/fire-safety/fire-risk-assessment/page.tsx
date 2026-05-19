@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Written Fire Risk Assessment from £74.99. IFSM-qualified assessors covering all 32 London boroughs. Required for HMOs and blocks of flats under the RRO 2005. Same-day written report.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment",
   },
 };
 
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Risk Assessment — Residential",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -48,8 +48,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Risk Assessment", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Risk Assessment", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-risk-assessment" },
   ],
 };
 

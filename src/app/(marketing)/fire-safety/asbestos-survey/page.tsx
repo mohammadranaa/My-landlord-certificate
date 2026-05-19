@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Asbestos management survey from £239.99 including 1 sample. Required before renovation or demolition work in pre-2000 properties. UKAS-accredited laboratory analysis. London-wide.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/asbestos-survey",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/asbestos-survey",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Asbestos Management Survey",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/asbestos-survey",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/asbestos-survey",
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,
@@ -37,8 +37,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Asbestos Survey", item: "https://mylandlordcertificate.co.uk/fire-safety/asbestos-survey" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Asbestos Survey", item: "https://www.mylandlordcertificate.co.uk/fire-safety/asbestos-survey" },
   ],
 };
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Fire door inspection and certification from £119.99 per door. Gap tolerance, intumescent strips, self-closing checks to BS 9999. All 32 London boroughs. Same-day certificate. HMO requirement.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-door-certificate",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-door-certificate",
   },
 };
 
@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Door Inspection & Certificate",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-door-certificate",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-door-certificate",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -40,8 +40,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Door Certificate", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-door-certificate" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Door Certificate", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-door-certificate" },
   ],
 };
 

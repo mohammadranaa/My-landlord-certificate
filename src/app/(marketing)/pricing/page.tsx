@@ -38,12 +38,12 @@ export const metadata: Metadata = {
   title: "Pricing — All Landlord Compliance Certificates | My Landlord Certificate",
   description:
     "Full pricing for EICR, Gas Safety Certificate, EPC, Fire Risk Assessment, PAT Testing, ELC, Asbestos Survey and more. Fixed prices, no hidden fees. From £50.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/pricing" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pricing" },
   openGraph: {
     title: "Pricing — All Landlord Compliance Certificates",
     description:
       "Transparent, fixed pricing for every landlord compliance certificate. EICR from £67.99, Gas Safety from £50, EPC from £89.99 and more. No hidden fees.",
-    url: "https://mylandlordcertificate.co.uk/pricing",
+    url: "https://www.mylandlordcertificate.co.uk/pricing",
   },
 };
 
@@ -63,7 +63,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Pricing",
-      item: "https://mylandlordcertificate.co.uk/pricing",
+      item: "https://www.mylandlordcertificate.co.uk/pricing",
     },
   ],
 };

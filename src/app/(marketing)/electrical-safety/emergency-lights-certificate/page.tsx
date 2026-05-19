@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 32 London boroughs. Certificate same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Emergency Lights Certificate — Annual Testing",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,8 +43,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Emergency Lights Certificate", item: "https://mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "Emergency Lights Certificate", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/emergency-lights-certificate" },
   ],
 };
 

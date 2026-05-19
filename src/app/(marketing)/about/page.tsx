@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "About Us — My Landlord Certificate",
   description:
     "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/about" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/about" },
   openGraph: {
     title: "About Us — My Landlord Certificate",
     description:
       "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
-    url: "https://mylandlordcertificate.co.uk/about",
+    url: "https://www.mylandlordcertificate.co.uk/about",
   },
   twitter: {
     title: "About Us — My Landlord Certificate",
@@ -53,7 +53,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "About", item: "https://mylandlordcertificate.co.uk/about" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://www.mylandlordcertificate.co.uk/about" },
   ],
 };
 

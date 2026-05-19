@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 32 London boroughs. Certificate emailed same day.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
   },
 };
 
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Domestic EICR — Electrical Installation Condition Report",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
   description:
     "Legally required for all private rental properties in England. NICEIC approved electricians inspect all fixed wiring, consumer units, sockets, and light fittings. Certificate emailed same day.",
   provider: {
@@ -42,7 +42,7 @@ const serviceSchema = {
     price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
+    url: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
   },
 };
 
@@ -51,8 +51,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Domestic EICR", item: "https://mylandlordcertificate.co.uk/electrical-safety/domestic-eicr" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "Domestic EICR", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr" },
   ],
 };
 

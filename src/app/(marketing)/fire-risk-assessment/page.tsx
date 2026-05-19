@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   description:
     "Book a Fire Risk Assessment from £74. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. NEBOSH qualified assessors. Written report with prioritised action plan, same-day delivery.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
     title: "Fire Risk Assessment from £74 | NEBOSH Qualified Assessors",
     description:
       "Fire Risk Assessment from £74. Compulsory for HMOs. NEBOSH qualified assessors, written report with prioritised action plan, same-day delivery. Book online in under 3 minutes.",
-    url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
+    url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
 
@@ -39,7 +39,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Risk Assessment",
-  url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
+  url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   description:
     "A Fire Risk Assessment (FRA) identifies fire hazards, evaluates who is at risk, and records what actions are needed to reduce that risk. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. Carried out by NEBOSH qualified assessors.",
   provider: {
@@ -80,14 +80,7 @@ const serviceSchema = {
     price: "74",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "147",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
 
@@ -132,7 +125,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Fire Risk Assessment",
-      item: "https://mylandlordcertificate.co.uk/fire-risk-assessment",
+      item: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
     },
   ],
 };

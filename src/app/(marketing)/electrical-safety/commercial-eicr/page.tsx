@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Commercial EICR (Electrical Installation Condition Report) from £149.99 per consumer unit. Required under the Electricity at Work Regulations 1989. NICEIC approved electricians for offices, HMOs, retail, and mixed-use premises across London.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/commercial-eicr",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/commercial-eicr",
   },
 };
 
@@ -27,7 +27,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Commercial EICR — Electrical Installation Condition Report",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/commercial-eicr",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/commercial-eicr",
   description:
     "Commercial electrical installation inspection for offices, HMOs, retail, and mixed-use premises. NICEIC approved, priced per consumer unit.",
   provider: {
@@ -49,8 +49,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Commercial EICR", item: "https://mylandlordcertificate.co.uk/electrical-safety/commercial-eicr" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "Commercial EICR", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/commercial-eicr" },
   ],
 };
 

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/", "/api/", "/engineer/", "/demo/"],
       },
     ],
-    sitemap: "https://mylandlordcertificate.co.uk/sitemap.xml",
+    sitemap: "https://www.mylandlordcertificate.co.uk/sitemap.xml",
   };
 }

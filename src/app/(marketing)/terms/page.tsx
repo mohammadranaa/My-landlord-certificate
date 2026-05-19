@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: "Terms of Service — My Landlord Certificate",
   description:
     "Terms and conditions for using My Landlord Certificate booking services. Covers booking, pricing, cancellation, certificate delivery, liability and governing law.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/terms" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/terms" },
   robots: { index: false },
   openGraph: {
     title: "Terms of Service — My Landlord Certificate",
     description:
       "Terms and conditions for using My Landlord Certificate. Covers booking, pricing, cancellation, certificates and liability.",
-    url: "https://mylandlordcertificate.co.uk/terms",
+    url: "https://www.mylandlordcertificate.co.uk/terms",
   },
   twitter: {
     title: "Terms of Service — My Landlord Certificate",
@@ -31,7 +31,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Terms of Service", item: "https://mylandlordcertificate.co.uk/terms" },
+    { "@type": "ListItem", position: 2, name: "Terms of Service", item: "https://www.mylandlordcertificate.co.uk/terms" },
   ],
 };
 

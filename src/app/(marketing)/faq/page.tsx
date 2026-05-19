@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "FAQ — Landlord Certificates Explained | My Landlord Certificate",
   description:
     "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/faq" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/faq" },
   openGraph: {
     title: "FAQ — Landlord Certificates Explained | My Landlord Certificate",
     description:
       "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
-    url: "https://mylandlordcertificate.co.uk/faq",
+    url: "https://www.mylandlordcertificate.co.uk/faq",
   },
   twitter: {
     title: "FAQ — Landlord Certificates Explained",
@@ -293,7 +293,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "FAQ", item: "https://mylandlordcertificate.co.uk/faq" },
+    { "@type": "ListItem", position: 2, name: "FAQ", item: "https://www.mylandlordcertificate.co.uk/faq" },
   ],
 };
 

@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     "Commercial Gas Safety Certificate (CP42) from £159.99. Gas Safe registered engineers. Annual certification for commercial premises across London.",
   alternates: {
     canonical:
-      "https://mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
+      "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
   openGraph: {
     title:
       "Commercial Gas Safety Certificate CP42 from £159.99 | My Landlord Certificate",
     description:
       "Commercial Gas Safety Certificate (CP42) from £159.99. Gas Safe registered engineers covering all London boroughs. Annual certification for commercial premises.",
-    url: "https://mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
+    url: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
 };
 
@@ -45,7 +45,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Commercial Gas Safety Certificate (CP42)",
-  url: "https://mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
+  url: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   description:
     "Commercial Gas Safety Certificate (CP42) for non-domestic premises including commercial landlords, offices, restaurants, and care homes. Gas Safe registered engineers. Annual inspection and certificate issued the same day.",
   provider: {
@@ -59,14 +59,7 @@ const serviceSchema = {
     price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "76",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
 };
 
@@ -84,13 +77,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Gas Safety Certificate",
-      item: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+      item: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Commercial Gas Safety (CP42)",
-      item: "https://mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
+      item: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
     },
   ],
 };

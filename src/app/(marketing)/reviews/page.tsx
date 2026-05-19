@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
   description:
     "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews. See what landlords say about our EICR, Gas Safety, EPC and Fire Risk Assessment services.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/reviews" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/reviews" },
   openGraph: {
     title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
     description:
       "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews.",
-    url: "https://mylandlordcertificate.co.uk/reviews",
+    url: "https://www.mylandlordcertificate.co.uk/reviews",
   },
   twitter: {
     title: "My Landlord Certificate Reviews — Rated 4.9/5",
@@ -50,7 +50,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Reviews", item: "https://mylandlordcertificate.co.uk/reviews" },
+    { "@type": "ListItem", position: 2, name: "Reviews", item: "https://www.mylandlordcertificate.co.uk/reviews" },
   ],
 };
 

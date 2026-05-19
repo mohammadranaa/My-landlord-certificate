@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "Coverage Areas — All 32 London Boroughs & South East | My Landlord Certificate",
   description:
     "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/coverage-areas" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/coverage-areas" },
   openGraph: {
     title: "Coverage Areas — All 32 London Boroughs & South East | My Landlord Certificate",
     description:
       "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
-    url: "https://mylandlordcertificate.co.uk/coverage-areas",
+    url: "https://www.mylandlordcertificate.co.uk/coverage-areas",
   },
   twitter: {
     title: "Coverage Areas — All 32 London Boroughs & South East",
@@ -54,7 +54,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Coverage Areas", item: "https://mylandlordcertificate.co.uk/coverage-areas" },
+    { "@type": "ListItem", position: 2, name: "Coverage Areas", item: "https://www.mylandlordcertificate.co.uk/coverage-areas" },
   ],
 };
 

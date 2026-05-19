@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
   description:
     "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/letting-agents" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/letting-agents" },
   openGraph: {
     title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
     description:
       "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
-    url: "https://mylandlordcertificate.co.uk/letting-agents",
+    url: "https://www.mylandlordcertificate.co.uk/letting-agents",
   },
   twitter: {
     title: "Letting Agents — Landlord Certificate Partner",
@@ -34,7 +34,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Letting Agents", item: "https://mylandlordcertificate.co.uk/letting-agents" },
+    { "@type": "ListItem", position: 2, name: "Letting Agents", item: "https://www.mylandlordcertificate.co.uk/letting-agents" },
   ],
 };
 

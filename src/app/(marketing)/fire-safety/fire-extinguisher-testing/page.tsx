@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label same day. All London boroughs.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fire Extinguisher Testing & Annual Service",
-  url: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
+  url: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,8 +43,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
-    { "@type": "ListItem", position: 3, name: "Fire Extinguisher Testing", item: "https://mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 3, name: "Fire Extinguisher Testing", item: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-extinguisher-testing" },
   ],
 };
 

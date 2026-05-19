@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Fire Safety Certificates & Assessments | My Landlord Certificate",
   description:
     "Fire safety certificates from £54.99, fire risk assessments from £74.99, fire alarm installation from £209.99/alarm. Accredited fire safety engineers across London.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/fire-safety" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-safety" },
 };
 
 const services = [
@@ -65,7 +65,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://mylandlordcertificate.co.uk/fire-safety" },
+    { "@type": "ListItem", position: 2, name: "Fire Safety", item: "https://www.mylandlordcertificate.co.uk/fire-safety" },
   ],
 };
 

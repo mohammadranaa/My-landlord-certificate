@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 32 London boroughs. Registered on national database.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/epc/commercial-epc",
+    canonical: "https://www.mylandlordcertificate.co.uk/epc/commercial-epc",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Commercial Energy Performance Certificate (EPC)",
-  url: "https://mylandlordcertificate.co.uk/epc/commercial-epc",
+  url: "https://www.mylandlordcertificate.co.uk/epc/commercial-epc",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,8 +43,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
-    { "@type": "ListItem", position: 3, name: "Commercial EPC", item: "https://mylandlordcertificate.co.uk/epc/commercial-epc" },
+    { "@type": "ListItem", position: 2, name: "EPC", item: "https://www.mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 3, name: "Commercial EPC", item: "https://www.mylandlordcertificate.co.uk/epc/commercial-epc" },
   ],
 };
 

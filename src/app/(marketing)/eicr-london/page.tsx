@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   title: "EICR London — from £67.99 — All 32 Boroughs | My Landlord Certificate",
   description:
     "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 32 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed same day.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/eicr-london" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-london" },
   openGraph: {
     title: "EICR London — from £67.99 — All 32 Boroughs Covered",
     description:
       "EICR London from £67.99. All 32 London boroughs covered. NICEIC approved and NAPIT certified engineers. Same-day certificate. Book online in under 3 minutes.",
-    url: "https://mylandlordcertificate.co.uk/eicr-london",
+    url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   },
 };
 
@@ -74,7 +74,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "EICR London — Electrical Installation Condition Report",
-  url: "https://mylandlordcertificate.co.uk/eicr-london",
+  url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   description:
     "EICR (Electrical Installation Condition Report) for London landlords. NICEIC approved and NAPIT certified electricians covering all 32 London boroughs. Fixed pricing from £67.99, certificate emailed same day.",
   provider: {
@@ -89,14 +89,7 @@ const serviceSchema = {
     price: "67.99",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/eicr-london",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "312",
-    bestRating: "5",
-    worstRating: "1",
+    url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   },
 };
 
@@ -114,13 +107,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "EICR Certificate",
-      item: "https://mylandlordcertificate.co.uk/eicr",
+      item: "https://www.mylandlordcertificate.co.uk/eicr",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "EICR London",
-      item: "https://mylandlordcertificate.co.uk/eicr-london",
+      item: "https://www.mylandlordcertificate.co.uk/eicr-london",
     },
   ],
 };

@@ -57,7 +57,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
-  logo: "https://mylandlordcertificate.co.uk/logo.svg",
+  logo: "https://www.mylandlordcertificate.co.uk/logo.svg",
   telephone: "+443301330066",
   email: "hello@mylandlordcertificate.co.uk",
   sameAs: ["https://uk.trustpilot.com/review/mylandlordcertificate.co.uk"],

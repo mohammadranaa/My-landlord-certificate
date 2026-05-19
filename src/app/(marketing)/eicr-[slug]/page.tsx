@@ -245,12 +245,12 @@ export async function generateMetadata({
     title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
     alternates: {
-      canonical: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+      canonical: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
     },
     openGraph: {
       title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
       description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
-      url: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+      url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
     },
   };
 }
@@ -268,7 +268,7 @@ export default async function EICRBoroughPage({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: `My Landlord Certificate — ${borough.name}`,
-    url: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+    url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
     areaServed: { "@type": "City", name: borough.name },
     priceRange: `from £${entryPrice}`,
   };
@@ -277,7 +277,7 @@ export default async function EICRBoroughPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: `EICR ${borough.name} — Electrical Installation Condition Report`,
-    url: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+    url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day.`,
     provider: {
       "@type": "LocalBusiness",
@@ -290,7 +290,7 @@ export default async function EICRBoroughPage({
       price: `${entryPrice}`,
       priceCurrency: "GBP",
       availability: "https://schema.org/InStock",
-      url: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+      url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
     },
   };
 
@@ -308,13 +308,13 @@ export default async function EICRBoroughPage({
         "@type": "ListItem",
         position: 2,
         name: "EICR London",
-        item: "https://mylandlordcertificate.co.uk/eicr-london",
+        item: "https://www.mylandlordcertificate.co.uk/eicr-london",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: `EICR ${borough.name}`,
-        item: `https://mylandlordcertificate.co.uk/eicr-${slug}`,
+        item: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
       },
     ],
   };

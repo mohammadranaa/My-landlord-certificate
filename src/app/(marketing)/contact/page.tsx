@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Contact Us — My Landlord Certificate",
   description:
     "Get in touch with the My Landlord Certificate team. Call, email, WhatsApp or use our contact form. We respond to all enquiries within one working day.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/contact" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/contact" },
   openGraph: {
     title: "Contact Us — My Landlord Certificate",
     description:
       "Get in touch with the My Landlord Certificate team. Call, email, WhatsApp or use our contact form. We respond to all enquiries within one working day.",
-    url: "https://mylandlordcertificate.co.uk/contact",
+    url: "https://www.mylandlordcertificate.co.uk/contact",
   },
   twitter: {
     title: "Contact Us — My Landlord Certificate",
@@ -55,7 +55,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://mylandlordcertificate.co.uk/contact" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.mylandlordcertificate.co.uk/contact" },
   ],
 };
 

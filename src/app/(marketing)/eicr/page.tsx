@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   title: "EICR Certificate from £67.99 | My Landlord Certificate",
   description:
     "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed same day.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/eicr" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr" },
   openGraph: {
     title: "EICR Certificate from £67.99 | My Landlord Certificate",
     description:
       "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the South East, certificate emailed same day.",
-    url: "https://mylandlordcertificate.co.uk/eicr",
+    url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
 
@@ -37,7 +37,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "EICR — Electrical Installation Condition Report",
-  url: "https://mylandlordcertificate.co.uk/eicr",
+  url: "https://www.mylandlordcertificate.co.uk/eicr",
   description:
     "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved and NAPIT certified electricians, certificate emailed same day.",
   provider: {
@@ -60,14 +60,7 @@ const serviceSchema = {
     price: "67.99",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/eicr",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "312",
+    url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
 
@@ -88,7 +81,7 @@ const productSchema = {
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     offerCount: 7,
-    url: "https://mylandlordcertificate.co.uk/eicr",
+    url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -114,7 +107,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "EICR Certificate",
-      item: "https://mylandlordcertificate.co.uk/eicr",
+      item: "https://www.mylandlordcertificate.co.uk/eicr",
     },
   ],
 };

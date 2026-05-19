@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Gas Safety Certificates | CP12, CP42 & Boiler Installation | My Landlord Certificate",
   description:
     "Gas Safe Registered engineers for domestic CP12 from £49.99, commercial CP42 from £159.99, and boiler installation from £2,499. Annual gas safety certificates for landlords across London.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/gas-safety" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/gas-safety" },
 };
 
 const services = [
@@ -47,7 +47,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://mylandlordcertificate.co.uk/gas-safety" },
+    { "@type": "ListItem", position: 2, name: "Gas Safety", item: "https://www.mylandlordcertificate.co.uk/gas-safety" },
   ],
 };
 

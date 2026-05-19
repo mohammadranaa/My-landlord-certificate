@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   title: "EPC Cost Guide 2025 — How Much Does an EPC Cost? | My Landlord Certificate",
   description:
     "EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. Full domestic and commercial EPC price breakdown, what drives the cost, and how to get a fixed price with no hidden charges.",
-  alternates: { canonical: "https://mylandlordcertificate.co.uk/epc-cost" },
+  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/epc-cost" },
   openGraph: {
     title: "EPC Cost Guide 2025 — How Much Does an EPC Cost?",
     description:
       "EPC prices start from £89.99. Full domestic and commercial price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
-    url: "https://mylandlordcertificate.co.uk/epc-cost",
+    url: "https://www.mylandlordcertificate.co.uk/epc-cost",
   },
 };
 
@@ -40,7 +40,7 @@ const articleSchema = {
   headline: "How Much Does an EPC Cost? Full 2025 Price Guide",
   description:
     "A complete guide to Energy Performance Certificate (EPC) costs for landlords — domestic and commercial pricing, what affects the cost, MEES implications, and how to get a fixed price.",
-  url: "https://mylandlordcertificate.co.uk/epc-cost",
+  url: "https://www.mylandlordcertificate.co.uk/epc-cost",
   datePublished: "2025-01-01",
   dateModified: "2025-05-01",
   publisher: {
@@ -68,13 +68,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "EPC Certificate",
-      item: "https://mylandlordcertificate.co.uk/epc",
+      item: "https://www.mylandlordcertificate.co.uk/epc",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "EPC Cost",
-      item: "https://mylandlordcertificate.co.uk/epc-cost",
+      item: "https://www.mylandlordcertificate.co.uk/epc-cost",
     },
   ],
 };

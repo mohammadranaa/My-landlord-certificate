@@ -24,13 +24,13 @@ export const metadata: Metadata = {
   description:
     "Gas Safety Certificate (CP12) costs from £50 for 1 appliance. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/gas-safety-certificate-cost",
+    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
   openGraph: {
     title: "Gas Safety Certificate Cost 2025 — How Much Does a CP12 Cost?",
     description:
       "CP12 prices start from £50 for 1 appliance. Full domestic price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
-    url: "https://mylandlordcertificate.co.uk/gas-safety-certificate-cost",
+    url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
 };
 
@@ -42,7 +42,7 @@ const articleSchema = {
   headline: "How Much Does a Gas Safety Certificate Cost? Full 2025 Price Guide",
   description:
     "A complete guide to Gas Safety Certificate (CP12) costs for landlords — domestic and commercial pricing, what affects the cost, how our prices compare to the national average, and how to get a fixed price.",
-  url: "https://mylandlordcertificate.co.uk/gas-safety-certificate-cost",
+  url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   datePublished: "2025-01-01",
   dateModified: "2025-05-01",
   publisher: {
@@ -70,13 +70,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 2,
       name: "Gas Safety Certificate",
-      item: "https://mylandlordcertificate.co.uk/gas-safety-certificate",
+      item: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Gas Safety Certificate Cost",
-      item: "https://mylandlordcertificate.co.uk/gas-safety-certificate-cost",
+      item: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
     },
   ],
 };

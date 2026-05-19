@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Consumer unit replacement from £599.99. NICEIC approved electricians across all 32 London boroughs. Dual-RCD or RCBO protection, Part P self-certified, EICR included on completion.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation",
+    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation",
   },
 };
 
@@ -23,7 +23,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Fuse Box Installation — Consumer Unit Replacement",
-  url: "https://mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation",
+  url: "https://www.mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -43,8 +43,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://mylandlordcertificate.co.uk/electrical-safety" },
-    { "@type": "ListItem", position: 3, name: "Fuse Box Installation", item: "https://mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation" },
+    { "@type": "ListItem", position: 2, name: "Electrical Safety", item: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
+    { "@type": "ListItem", position: 3, name: "Fuse Box Installation", item: "https://www.mylandlordcertificate.co.uk/electrical-safety/fuse-box-installation" },
   ],
 };
 

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Domestic Energy Performance Certificate from £89.99. Required by law before renting or selling. Accredited DEA assessors, certificate on national register within 24 hours. London-wide.",
   alternates: {
-    canonical: "https://mylandlordcertificate.co.uk/epc/domestic-epc",
+    canonical: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc",
   },
 };
 
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Domestic Energy Performance Certificate (EPC)",
-  url: "https://mylandlordcertificate.co.uk/epc/domestic-epc",
+  url: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc",
   description:
     "Legally required for all residential properties before renting or selling. Accredited DEA assessors provide an A–G energy efficiency rating valid for 10 years.",
   provider: {
@@ -42,7 +42,7 @@ const serviceSchema = {
     price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    url: "https://mylandlordcertificate.co.uk/epc/domestic-epc",
+    url: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc",
   },
 };
 
@@ -51,8 +51,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://www.mylandlordcertificate.co.uk" },
-    { "@type": "ListItem", position: 2, name: "EPC", item: "https://mylandlordcertificate.co.uk/epc" },
-    { "@type": "ListItem", position: 3, name: "Domestic EPC", item: "https://mylandlordcertificate.co.uk/epc/domestic-epc" },
+    { "@type": "ListItem", position: 2, name: "EPC", item: "https://www.mylandlordcertificate.co.uk/epc" },
+    { "@type": "ListItem", position: 3, name: "Domestic EPC", item: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc" },
   ],
 };
 
