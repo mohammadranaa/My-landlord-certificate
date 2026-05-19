@@ -7,8 +7,6 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
-import { AccreditationSlider } from "@/components/ui/accreditation-slider";
-import { ServicesSection } from "@/components/marketing/services-section";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HOMEPAGE_ACCREDITATIONS } from "@/lib/accreditations";
@@ -21,6 +19,14 @@ const FAQAccordion = dynamic(
 );
 const StickyMobileCTA = dynamic(
   () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
+);
+const AccreditationSlider = dynamic(
+  () => import("@/components/ui/accreditation-slider").then((m) => m.AccreditationSlider),
+  { ssr: false },
+);
+const ServicesSection = dynamic(
+  () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
+  { ssr: false },
 );
 import { getPriceForGasSafety } from "@/lib/pricing";
 

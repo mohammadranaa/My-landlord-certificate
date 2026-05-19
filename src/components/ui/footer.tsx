@@ -98,11 +98,12 @@ export function Footer({ className }: FooterProps) {
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-md">
             <Image
-              src="/Logo.jpg"
+              src="/logo-white.svg"
               alt="My Landlord Certificate"
               width={64}
               height={64}
-              className="h-16 w-auto object-contain brightness-0 invert mb-2"
+              unoptimized
+              className="h-16 w-auto object-contain mb-2"
             />
             <p className="text-blue-200 text-sm mb-2">Compliant. Sorted.</p>
             <p className="text-sm text-white/50 leading-relaxed">

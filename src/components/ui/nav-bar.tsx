@@ -134,11 +134,12 @@ export function NavBar({ className }: { className?: string }) {
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
         >
           <Image
-            src="/Logo.jpg"
+            src="/logo.svg"
             alt="My Landlord Certificate"
             width={64}
             height={64}
             priority
+            unoptimized
             className="h-16 w-auto object-contain"
           />
         </Link>
@@ -228,10 +229,11 @@ export function NavBar({ className }: { className?: string }) {
                     className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
                   >
                     <Image
-                      src="/Logo.jpg"
+                      src="/logo.svg"
                       alt="My Landlord Certificate"
                       width={64}
                       height={64}
+                      unoptimized
                       className="h-16 w-auto object-contain"
                     />
                   </Link>
