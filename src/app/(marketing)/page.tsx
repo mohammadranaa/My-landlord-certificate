@@ -22,11 +22,9 @@ const StickyMobileCTA = dynamic(
 );
 const AccreditationSlider = dynamic(
   () => import("@/components/ui/accreditation-slider").then((m) => m.AccreditationSlider),
-  { ssr: false },
 );
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
-  { ssr: false },
 );
 import { getPriceForGasSafety } from "@/lib/pricing";
 
