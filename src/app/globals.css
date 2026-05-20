@@ -201,5 +201,5 @@
 /* Defers rendering of off-screen sections */
 .below-fold {
   content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
+  contain-intrinsic-size: 0 500px;
 }

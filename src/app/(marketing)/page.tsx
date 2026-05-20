@@ -12,37 +12,16 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { HOMEPAGE_ACCREDITATIONS } from "@/lib/accreditations";
 import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import { cn } from "@/lib/utils";
+import {
+  LazyFAQAccordion as FAQAccordion,
+  LazyStickyMobileCTA as StickyMobileCTA,
+  LazyAccreditationSlider as AccreditationSlider,
+} from "@/components/lazy";
+import { getPriceForGasSafety } from "@/lib/pricing";
 
-const FAQAccordion = dynamic(
-  () => import("@/components/ui/faq-accordion").then((m) => m.FAQAccordion),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="space-y-3 mt-8">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="h-14 rounded-xl bg-border/30 animate-pulse" />
-        ))}
-      </div>
-    ),
-  }
-);
-const StickyMobileCTA = dynamic(
-  () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
-  { ssr: true }
-);
-const AccreditationSlider = dynamic(
-  () => import("@/components/ui/accreditation-slider").then((m) => m.AccreditationSlider),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="h-24 rounded-xl bg-border/20 animate-pulse mx-auto max-w-4xl" />
-    ),
-  }
-);
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
 );
-import { getPriceForGasSafety } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -501,7 +480,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
-      <Section spacing="md" className="bg-compliance-blue">
+      <Section spacing="md" className="below-fold bg-compliance-blue">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
             <div className="max-w-xl">

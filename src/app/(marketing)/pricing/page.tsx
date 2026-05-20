@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
+import { LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
-import dynamic from "next/dynamic";
-const StickyMobileCTA = dynamic(
-  () => import("@/components/ui/sticky-mobile-cta").then(m => m.StickyMobileCTA),
-  { ssr: true }
-)
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,

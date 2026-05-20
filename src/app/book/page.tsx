@@ -1,15 +1,5 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-
-const BookingForm = dynamic(
-  () => import("@/components/booking/booking-form").then(m => m.BookingForm),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="h-[500px] rounded-2xl bg-border/20 animate-pulse" />
-    ),
-  }
-);
+import { LazyBookingForm as BookingForm } from "@/components/lazy";
 
 export const metadata: Metadata = {
   title: "Book a Certificate | My Landlord Certificate",

@@ -1,26 +1,9 @@
 import type { Metadata } from "next";
+import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
-import dynamic from "next/dynamic";
-const FAQAccordion = dynamic(
-  () => import("@/components/ui/faq-accordion").then(m => m.FAQAccordion),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="space-y-3 mt-8">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="h-14 rounded-xl bg-border/30 animate-pulse" />
-        ))}
-      </div>
-    ),
-  }
-)
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
-const StickyMobileCTA = dynamic(
-  () => import("@/components/ui/sticky-mobile-cta").then(m => m.StickyMobileCTA),
-  { ssr: true }
-)
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
 
