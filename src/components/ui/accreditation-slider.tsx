@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { cn } from "@/lib/utils"
 import type { Accreditation } from "@/lib/accreditations"
 
@@ -22,6 +21,7 @@ export function AccreditationSlider({
   const [paused, setPaused] = useState(false)
   const isDark = variant === "dark"
 
+  // Duplicate for seamless loop
   const doubled = [...logos, ...logos]
 
   return (
@@ -49,32 +49,29 @@ export function AccreditationSlider({
           )}
         >
           {doubled.map((logo, index) => (
-            <Link
+            <div
               key={`${logo.id}-${index}`}
-              href={logo.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${logo.name} — opens in new tab`}
               aria-hidden={index >= logos.length ? true : undefined}
-              tabIndex={index >= logos.length ? -1 : 0}
               className={cn(
                 "flex items-center justify-center shrink-0 rounded-xl",
-                "border transition-all duration-200",
-                "w-[160px] h-[80px]",
+                "border",
+                // Fixed uniform size for every card
+                "w-[160px] h-[88px]",
                 isDark
-                  ? "bg-white/10 border-white/20 hover:bg-white/20"
-                  : "bg-white border-border hover:border-compliance-blue hover:shadow-sm"
+                  ? "bg-white/10 border-white/20"
+                  : "bg-white border-border"
               )}
             >
               <Image
                 src={logo.logoPath}
                 alt={logo.name}
-                width={120}
-                height={48}
-                className="w-[120px] h-[48px] object-contain"
+                width={160}
+                height={64}
+                // Consistent display box — object-contain handles any aspect ratio
+                className="w-[128px] h-[56px] object-contain"
                 unoptimized={logo.logoPath.endsWith(".gif")}
               />
-            </Link>
+            </div>
           ))}
         </div>
       </div>

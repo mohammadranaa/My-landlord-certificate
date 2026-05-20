@@ -32,14 +32,11 @@ export function TrustBadges({
   return (
     <div className={cn("flex flex-wrap items-center gap-x-5 gap-y-3", className)}>
 
+      {/* Accreditation logos — plain display, no external links */}
       {accreditations.map((acc) => (
-        <Link
+        <div
           key={acc.id}
-          href={acc.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`${acc.name} accredited — opens in new tab`}
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2"
         >
           <div className={cn(
             "flex items-center justify-center rounded-lg px-2 py-1",
@@ -51,16 +48,15 @@ export function TrustBadges({
               width={acc.logoWidth}
               height={acc.logoHeight}
               className="object-contain h-6 w-auto"
-              unoptimized={acc.logoPath.endsWith(".gif")}
             />
           </div>
           <span className={cn("text-sm font-medium", textPrimary)}>
             {acc.shortName}
           </span>
-        </Link>
+        </div>
       ))}
 
-      {/* Trustpilot — always shown */}
+      {/* Trustpilot — review platform link is intentional */}
       <Link
         href={
           process.env.NEXT_PUBLIC_TRUSTPILOT_PROFILE_URL ||
@@ -88,7 +84,7 @@ export function TrustBadges({
         </span>
       </Link>
 
-      {/* Google Reviews — always shown */}
+      {/* Google Reviews — review platform link is intentional */}
       <Link
         href={process.env.NEXT_PUBLIC_GOOGLE_REVIEWS_URL || "#"}
         target="_blank"

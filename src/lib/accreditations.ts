@@ -4,16 +4,14 @@
  * service-to-accreditation mappings.
  *
  * TO REPLACE OR UPDATE A LOGO:
- * 1. Drop the new file into public/accreditations/
+ * 1. Drop the new PNG into public/accreditations/ (lowercase, hyphenated)
  * 2. Update logoPath here if the filename changes
  * 3. No other changes needed — all components auto-update
  *
- * LOGO FILE SPECS (for future additions):
- * - SVG preferred | PNG/WebP acceptable | JPG last resort
- * - Transparent background preferred (JPGs have white bg —
- *   handled via bg-white card in the slider)
- * - Minimum 240px wide at natural size
- * - Max file size: 100KB
+ * LOGO FILE SPECS:
+ * - PNG preferred (transparent background)
+ * - Minimum 300px wide at natural size
+ * - Max file size: 150KB
  */
 
 export interface Accreditation {
@@ -35,7 +33,7 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     website: "https://www.niceic.com",
     logoPath: "/accreditations/niceic.png",
     logoWidth: 160,
-    logoHeight: 48,
+    logoHeight: 64,
     description: "National Inspection Council for Electrical Installation Contracting — UK's leading electrical contractor approval body",
   },
   napit: {
@@ -43,9 +41,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "NAPIT",
     shortName: "NAPIT",
     website: "https://www.napit.org.uk",
-    logoPath: "/accreditations/napit.webp",
+    logoPath: "/accreditations/napit.png",
     logoWidth: 160,
-    logoHeight: 48,
+    logoHeight: 64,
     description: "National Association of Professional Inspectors and Testers",
   },
   elecsa: {
@@ -55,7 +53,7 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     website: "https://www.elecsa.co.uk",
     logoPath: "/accreditations/elecsa.png",
     logoWidth: 160,
-    logoHeight: 48,
+    logoHeight: 64,
     description: "Electrical contractor certification and approval scheme",
   },
   elmhurst: {
@@ -63,9 +61,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "Elmhurst Energy",
     shortName: "Elmhurst",
     website: "https://www.elmhurstenergy.co.uk",
-    logoPath: "/accreditations/elmhurst.jpg",
-    logoWidth: 180,
-    logoHeight: 48,
+    logoPath: "/accreditations/elmhurst.png",
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Leading accreditation scheme for EPC and energy assessors",
   },
   stroma: {
@@ -73,9 +71,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "Stroma Certification",
     shortName: "Stroma",
     website: "https://www.stroma.com",
-    logoPath: "/accreditations/stroma.jpg",
+    logoPath: "/accreditations/stroma.png",
     logoWidth: 160,
-    logoHeight: 48,
+    logoHeight: 64,
     description: "UK certification body for energy assessors and inspectors",
   },
   cibse: {
@@ -84,8 +82,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "CIBSE",
     website: "https://www.cibse.org",
     logoPath: "/accreditations/cibse.png",
-    logoWidth: 140,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Chartered Institution of Building Services Engineers",
   },
   gas_safe: {
@@ -94,8 +92,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "Gas Safe",
     website: "https://www.gassaferegister.co.uk",
     logoPath: "/accreditations/gas-safe.png",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "UK's official gas registration body — legally required for all gas work",
   },
   bafe: {
@@ -104,8 +102,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "BAFE",
     website: "https://www.bafe.org.uk",
     logoPath: "/accreditations/bafe.png",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "British Approvals for Fire Equipment — SP205, SP203-1 and SP101 schemes",
   },
   ife: {
@@ -113,9 +111,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "IFE",
     shortName: "IFE",
     website: "https://www.ife.org.uk",
-    logoPath: "/accreditations/ife.webp",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoPath: "/accreditations/ife.png",
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Institution of Fire Engineers — professional membership body",
   },
   ifsm: {
@@ -123,9 +121,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "IFSM",
     shortName: "IFSM",
     website: "https://www.ifsm.org.uk",
-    logoPath: "/accreditations/ifsm.webp",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoPath: "/accreditations/ifsm.png",
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Institute of Fire Safety Managers",
   },
   wmsoc: {
@@ -133,9 +131,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "WMSoc",
     shortName: "WMSoc",
     website: "https://www.wmsoc.org.uk",
-    logoPath: "/accreditations/wmsoc.gif",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoPath: "/accreditations/wmsoc.png",
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Water Management Society — water safety and Legionella guidance",
   },
   bohs: {
@@ -144,8 +142,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "BOHS",
     website: "https://www.bohs.org",
     logoPath: "/accreditations/bohs.png",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "British Occupational Hygiene Society — asbestos and hazardous substance qualifications",
   },
   iet: {
@@ -154,8 +152,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "IET",
     website: "https://www.theiet.org",
     logoPath: "/accreditations/iet.png",
-    logoWidth: 100,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Institution of Engineering and Technology — publishes the Code of Practice for PAT Testing",
   },
   arca: {
@@ -163,9 +161,9 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     name: "ARCA",
     shortName: "ARCA",
     website: "https://www.arca.org.uk",
-    logoPath: "/accreditations/arca.jpg",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoPath: "/accreditations/arca.png",
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Asbestos Removal Contractors Association",
   },
   acad: {
@@ -174,8 +172,8 @@ export const ALL_ACCREDITATIONS: Record<string, Accreditation> = {
     shortName: "ACAD",
     website: "https://www.arca.org.uk/acad",
     logoPath: "/accreditations/acad.png",
-    logoWidth: 120,
-    logoHeight: 48,
+    logoWidth: 160,
+    logoHeight: 64,
     description: "Asbestos Control and Abatement Division of ARCA",
   },
 }
@@ -261,7 +259,7 @@ export const SERVICE_ACCREDITATIONS: Record<string, Accreditation[]> = {
   ],
 }
 
-// ── Homepage slider — all accreditations, most prominent first ───────────────
+// ── Homepage slider — all accreditations with available logos ────────────────
 export const HOMEPAGE_ACCREDITATIONS: Accreditation[] = [
   ALL_ACCREDITATIONS.niceic,
   ALL_ACCREDITATIONS.gas_safe,
@@ -276,6 +274,5 @@ export const HOMEPAGE_ACCREDITATIONS: Accreditation[] = [
   ALL_ACCREDITATIONS.cibse,
   ALL_ACCREDITATIONS.arca,
   ALL_ACCREDITATIONS.ifsm,
-  ALL_ACCREDITATIONS.wmsoc,
   ALL_ACCREDITATIONS.acad,
 ]
