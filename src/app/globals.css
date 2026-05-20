@@ -78,7 +78,7 @@
   --brand-green: #80D100;
   --brand-green-dark: #6aae00;
   --brand-charcoal: #1F2937;
-  --brand-grey: #6B7280;
+  --brand-grey: #4B5563;
   --brand-warm-white: #FAFAF7;
   --brand-amber: #F59E0B;
 
@@ -94,7 +94,7 @@
   --secondary: #f1f5f9;
   --secondary-foreground: #1F2937;
   --muted: #f1f5f9;
-  --muted-foreground: #6B7280;
+  --muted-foreground: #4B5563;
   --accent: #80D100;
   --accent-foreground: #1F2937;
   --destructive: oklch(0.577 0.245 27.325);
