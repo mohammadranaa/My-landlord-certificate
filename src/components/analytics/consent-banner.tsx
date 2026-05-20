@@ -5,7 +5,7 @@ import { useConsent } from "./consent-provider";
 export function ConsentBanner() {
   const { consent, accept, decline } = useConsent();
 
-  if (consent !== null) return null;
+  if (consent !== "pending") return null;
 
   return (
     <div

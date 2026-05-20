@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ConsentProvider } from "@/components/analytics/consent-provider";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
-import { PostHogSideEffect } from "@/components/analytics/posthog-side-effect";
+import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -79,7 +79,7 @@ export default function RootLayout({
           {children}
           <ConsentBanner />
           <AnalyticsScripts />
-          <PostHogSideEffect />
+          <PostHogProvider />
         </ConsentProvider>
         {/* Vercel Analytics — cookieless, no consent required */}
         <Analytics />

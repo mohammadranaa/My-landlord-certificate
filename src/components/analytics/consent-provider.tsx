@@ -2,7 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
-type ConsentValue = "granted" | "denied" | null;
+type ConsentValue = "granted" | "denied" | "pending" | null;
 
 interface ConsentCtx {
   consent: ConsentValue;
@@ -20,10 +20,10 @@ const COOKIE = "mlc_cookie_consent";
 const MAX_AGE = 60 * 60 * 24 * 365; // 12 months
 
 function readCookie(): ConsentValue {
-  if (typeof document === "undefined") return null;
+  if (typeof document === "undefined") return "pending";
   const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${COOKIE}=([^;]+)`));
   const val = match?.[1];
-  return val === "granted" || val === "denied" ? val : null;
+  return val === "granted" || val === "denied" ? val : "pending";
 }
 
 function writeCookie(value: "granted" | "denied") {
@@ -31,7 +31,7 @@ function writeCookie(value: "granted" | "denied") {
 }
 
 export function ConsentProvider({ children }: { children: React.ReactNode }) {
-  const [consent, setConsent] = useState<ConsentValue>(null);
+  const [consent, setConsent] = useState<ConsentValue>("pending");
 
   useEffect(() => {
     setConsent(readCookie());
