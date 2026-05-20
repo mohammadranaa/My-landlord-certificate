@@ -15,13 +15,29 @@ import { cn } from "@/lib/utils";
 
 const FAQAccordion = dynamic(
   () => import("@/components/ui/faq-accordion").then((m) => m.FAQAccordion),
-  { ssr: true },
+  {
+    ssr: true,
+    loading: () => (
+      <div className="space-y-3 mt-8">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-14 rounded-xl bg-border/30 animate-pulse" />
+        ))}
+      </div>
+    ),
+  }
 );
 const StickyMobileCTA = dynamic(
   () => import("@/components/ui/sticky-mobile-cta").then((m) => m.StickyMobileCTA),
+  { ssr: true }
 );
 const AccreditationSlider = dynamic(
   () => import("@/components/ui/accreditation-slider").then((m) => m.AccreditationSlider),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="h-24 rounded-xl bg-border/20 animate-pulse mx-auto max-w-4xl" />
+    ),
+  }
 );
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
@@ -443,7 +459,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── 5. Reviews ───────────────────────────────────────────────────── */}
-      <Section spacing="lg" className="bg-white">
+      <Section spacing="lg" className="below-fold bg-white">
         <Container>
           <div className="text-center mb-10">
             <Heading level={2} className="mb-4">
@@ -519,7 +535,7 @@ export default function HomePage() {
       </Section>
 
       {/* ── 7. FAQ preview ───────────────────────────────────────────────── */}
-      <Section spacing="lg" className="bg-warm-white">
+      <Section spacing="lg" className="below-fold bg-warm-white">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">

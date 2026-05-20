@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
-import { FAQAccordion } from "@/components/ui/faq-accordion";
+import dynamic from "next/dynamic";
+const FAQAccordion = dynamic(
+  () => import("@/components/ui/faq-accordion").then(m => m.FAQAccordion),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="space-y-3 mt-8">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-14 rounded-xl bg-border/30 animate-pulse" />
+        ))}
+      </div>
+    ),
+  }
+)
 import { PriceDisplay } from "@/components/ui/price-display";
-import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
+const StickyMobileCTA = dynamic(
+  () => import("@/components/ui/sticky-mobile-cta").then(m => m.StickyMobileCTA),
+  { ssr: true }
+)
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, FIRE_DOOR_CERT_PRICE } from "@/lib/pricing";
 
@@ -301,7 +317,7 @@ export default function FireDoorCertificatePage() {
         </section>
 
         {/* FAQs */}
-        <section className="py-10 border-b border-border">
+        <section className="below-fold py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>

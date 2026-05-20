@@ -196,3 +196,10 @@
     transparent 100%
   );
 }
+
+
+/* Defers rendering of off-screen sections */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}

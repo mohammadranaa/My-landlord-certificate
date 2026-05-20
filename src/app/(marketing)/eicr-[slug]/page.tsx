@@ -4,11 +4,27 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { FAQAccordion } from "@/components/ui/faq-accordion";
+import dynamic from "next/dynamic";
+const FAQAccordion = dynamic(
+  () => import("@/components/ui/faq-accordion").then(m => m.FAQAccordion),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="space-y-3 mt-8">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-14 rounded-xl bg-border/30 animate-pulse" />
+        ))}
+      </div>
+    ),
+  }
+)
 import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
-import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
+const StickyMobileCTA = dynamic(
+  () => import("@/components/ui/sticky-mobile-cta").then(m => m.StickyMobileCTA),
+  { ssr: true }
+)
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
 import {
@@ -630,7 +646,7 @@ export default async function EICRBoroughPage({
         </section>
 
         {/* ── FAQs ─────────────────────────────────────────────────────────── */}
-        <section aria-labelledby="faq-heading">
+        <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
             EICR {borough.name} — frequently asked questions
           </Heading>

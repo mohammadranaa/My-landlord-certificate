@@ -5,7 +5,11 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
-import { StickyMobileCTA } from "@/components/ui/sticky-mobile-cta";
+import dynamic from "next/dynamic";
+const StickyMobileCTA = dynamic(
+  () => import("@/components/ui/sticky-mobile-cta").then(m => m.StickyMobileCTA),
+  { ssr: true }
+)
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
