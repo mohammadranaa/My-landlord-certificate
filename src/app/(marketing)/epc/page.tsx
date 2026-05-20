@@ -136,24 +136,30 @@ export default function EPCPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-white border-b border-border py-10 lg:py-14">
+      <section className="bg-compliance-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
-              <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
-              <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">EPC</li>
+            <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-blue-400">›</li>
+              <li className="text-white font-medium">EPC Certificate</li>
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
+          <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
+            Accredited DEA Assessors · National EPC Register · Valid 10 Years
+          </p>
+
+          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             EPC Certificate from £{entryPrice}
           </h1>
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
-            Accredited DEA assessors · Certificate on national register within 24 hours · Valid 10 years
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <p className="text-blue-100 text-lg leading-relaxed mb-6">
+            Energy Performance Certificate — required by law before renting or selling any
+            residential property. Accredited DEA assessors across London, certificate registered
+            on the national EPC register within 24 hours.
           </p>
-          <TrustBadges serviceKey="epc" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="epc" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=domestic-epc"
@@ -163,7 +169,7 @@ export default function EPCPage() {
             </Link>
             <a
               href="#pricing"
-              className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               View All Prices
             </a>
