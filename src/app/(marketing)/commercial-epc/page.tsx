@@ -178,7 +178,7 @@ export default function CommercialEPCPage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=commercial-epc"
+              href="/book?service=commercial-epc&type=commercial"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book Commercial EPC — from £{entryPrice}
@@ -615,7 +615,7 @@ export default function CommercialEPCPage() {
             for large or complex premises.
           </p>
           <Link
-            href="/book?service=commercial-epc"
+            href="/book?service=commercial-epc&type=commercial"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book Commercial EPC — from £{entryPrice}
@@ -627,7 +627,7 @@ export default function CommercialEPCPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=commercial-epc"
+        href="/book?service=commercial-epc&type=commercial"
         label="Book Now"
         price={entryPrice}
         serviceName="Commercial EPC"

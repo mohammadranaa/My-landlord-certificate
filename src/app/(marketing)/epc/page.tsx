@@ -162,7 +162,7 @@ export default function EPCPage() {
           <TrustBadges serviceKey="epc" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=domestic-epc"
+              href="/book?service=epc"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -405,7 +405,7 @@ export default function EPCPage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=domestic-epc"
+                href="/book?service=epc"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online — from £{entryPrice}
@@ -422,7 +422,7 @@ export default function EPCPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=domestic-epc"
+        href="/book?service=epc"
         label="Book Now"
         price={entryPrice}
         serviceName="Domestic EPC"

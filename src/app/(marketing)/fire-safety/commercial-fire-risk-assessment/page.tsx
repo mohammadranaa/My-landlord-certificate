@@ -109,7 +109,7 @@ export default function CommercialFireRiskAssessmentPage() {
           <TrustBadges serviceKey="fire-risk-assessment" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=fra-commercial"
+              href="/book?service=fra-commercial&type=commercial"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -264,7 +264,7 @@ export default function CommercialFireRiskAssessmentPage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=fra-commercial"
+                href="/book?service=fra-commercial&type=commercial"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -281,7 +281,7 @@ export default function CommercialFireRiskAssessmentPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fra-commercial"
+        href="/book?service=fra-commercial&type=commercial"
         label="Book Now"
         price={entryPrice}
         serviceName="Commercial Fire Risk Assessment"

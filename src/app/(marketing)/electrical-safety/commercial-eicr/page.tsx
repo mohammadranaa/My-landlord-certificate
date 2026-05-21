@@ -157,7 +157,7 @@ export default function CommercialEICRPage() {
           <TrustBadges serviceKey="commercial-eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=commercial-eicr"
+              href="/book?service=commercial-eicr&type=commercial"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -350,7 +350,7 @@ export default function CommercialEICRPage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=commercial-eicr"
+                href="/book?service=commercial-eicr&type=commercial"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -367,7 +367,7 @@ export default function CommercialEICRPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=commercial-eicr"
+        href="/book?service=commercial-eicr&type=commercial"
         label="Book Now"
         price={entryPrice}
         serviceName="Commercial EICR"

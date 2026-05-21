@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
@@ -24,10 +24,16 @@ import { Step5Review } from "./step-5-review";
 export function BookingForm() {
   const router = useRouter();
   const posthog = usePostHog();
+  const searchParams = useSearchParams();
+  const preselectedService = searchParams.get("service") ?? undefined;
+  const preselectedType = (searchParams.get("type") as "residential" | "commercial") ?? undefined;
+
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [data, setData] = useState<PartialBookingData>({});
+  const [data, setData] = useState<PartialBookingData>({
+    propertyCategory: preselectedType ?? undefined,
+  });
 
   useEffect(() => {
     posthog?.capture("booking_started");
@@ -204,6 +210,7 @@ export function BookingForm() {
               <Step3Services
                 propertyCategory={data.propertyCategory ?? "residential"}
                 defaultServices={data.services ?? []}
+                preselectedServiceId={data.services?.length ? undefined : preselectedService}
                 onBack={() => setStep(2)}
                 onComplete={handleStep3Complete}
               />

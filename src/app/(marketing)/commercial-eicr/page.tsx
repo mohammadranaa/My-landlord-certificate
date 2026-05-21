@@ -239,7 +239,7 @@ export default function CommercialEicrPage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=commercial-eicr"
+              href="/book?service=commercial-eicr&type=commercial"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book Commercial EICR — from £{entryPrice}
@@ -631,7 +631,7 @@ export default function CommercialEicrPage() {
             single consumer unit — written report issued the same day.
           </p>
           <Link
-            href="/book?service=commercial-eicr"
+            href="/book?service=commercial-eicr&type=commercial"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book Commercial EICR — from £{entryPrice}
@@ -643,7 +643,7 @@ export default function CommercialEicrPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=commercial-eicr"
+        href="/book?service=commercial-eicr&type=commercial"
         label="Book Now"
         price={entryPrice}
         serviceName="Commercial EICR from"

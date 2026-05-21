@@ -323,7 +323,7 @@ export default function GasSafetyPage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=gas-safety-certificate"
+              href="/book?service=gas-safety-cp12"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book my CP12 — from £{lowestPrice}
@@ -838,7 +838,7 @@ export default function GasSafetyPage() {
             for same-day slots.
           </p>
           <Link
-            href="/book?service=gas-safety-certificate"
+            href="/book?service=gas-safety-cp12"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book my CP12 — from £{lowestPrice}
@@ -850,7 +850,7 @@ export default function GasSafetyPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=gas-safety-certificate"
+        href="/book?service=gas-safety-cp12"
         label="Book CP12"
         price={lowestPrice}
         serviceName="Gas Safety from"

@@ -132,7 +132,7 @@ export default function FireDoorCertificatePage() {
           <TrustBadges serviceKey="fire-door-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=fire-door-certificate"
+              href="/book?service=fire-door-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — £{FIRE_DOOR_CERT_PRICE}/door
@@ -352,7 +352,7 @@ export default function FireDoorCertificatePage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=fire-door-certificate"
+                href="/book?service=fire-door-cert"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -369,7 +369,7 @@ export default function FireDoorCertificatePage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fire-door-certificate"
+        href="/book?service=fire-door-cert"
         label="Book Now"
         price={FIRE_DOOR_CERT_PRICE}
         serviceName="Fire Door Certificate"

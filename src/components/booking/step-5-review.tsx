@@ -143,17 +143,11 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
             </div>
           ))}
           {services.length > 1 && (
-            <div className="border-t border-border pt-2 mt-1 space-y-1 text-sm">
+            <div className="border-t border-border pt-2 mt-1 text-sm">
               <div className="flex justify-between text-brand-grey">
                 <span>Subtotal</span>
                 <span className="tabular-nums">£{subtotal.toFixed(2)}</span>
               </div>
-              {discount > 0 && (
-                <div className="flex justify-between text-action-green font-medium">
-                  <span>10% multi-service discount</span>
-                  <span className="tabular-nums">−£{discount.toFixed(2)}</span>
-                </div>
-              )}
             </div>
           )}
         </div>
@@ -195,11 +189,6 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
             £{grandTotal.toFixed(2)}
           </p>
         </div>
-        {discount > 0 && (
-          <p className="text-xs text-action-green mt-1">
-            Includes £{discount.toFixed(2)} multi-service discount
-          </p>
-        )}
       </div>
 
       <label className="flex items-start gap-3 cursor-pointer">

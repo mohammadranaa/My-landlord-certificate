@@ -62,12 +62,6 @@ function SummaryContent({ data }: { data: PartialBookingData }) {
             <span className="tabular-nums">£{subtotal.toFixed(2)}</span>
           </div>
         )}
-        {discount > 0 && (
-          <div className="flex justify-between text-sm text-action-green font-medium">
-            <span>Multi-service discount (10%)</span>
-            <span className="tabular-nums">−£{discount.toFixed(2)}</span>
-          </div>
-        )}
         {data.congestionZone && (
           <div className="flex justify-between text-sm text-brand-grey">
             <span>Congestion zone</span>
@@ -86,7 +80,7 @@ function SummaryContent({ data }: { data: PartialBookingData }) {
         )}
         {charges > 0 && (
           <div className="flex justify-between text-sm text-brand-grey">
-            <span>Additional charges</span>
+            <span>Total Additional Charges</span>
             <span className="tabular-nums">£{charges.toFixed(2)}</span>
           </div>
         )}
@@ -95,12 +89,6 @@ function SummaryContent({ data }: { data: PartialBookingData }) {
           <span className="tabular-nums">£{grandTotal.toFixed(2)}</span>
         </div>
       </div>
-
-      {services.length >= 2 && (
-        <p className="text-xs text-action-green bg-action-green/10 rounded-lg px-3 py-2 mt-2">
-          10% multi-service discount applied — you save £{discount.toFixed(2)}
-        </p>
-      )}
 
       {data.preferredDate && (
         <div className="border-t border-border pt-2 mt-1 space-y-0.5">

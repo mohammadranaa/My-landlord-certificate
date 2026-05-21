@@ -369,25 +369,13 @@ export function getPriceForAsbestosSurvey(sampleCount: number): number {
   return 405.99;
 }
 
-/**
- * Calculates the bundle price for a combination of services.
- * Applies a 10% discount when 2 or more services are booked together.
- */
 export function calculateBundlePrice(services: ServiceSelection[]): {
   subtotal: number;
   discount: number;
   total: number;
 } {
   const subtotal = round2(services.reduce((sum, s) => sum + s.price, 0));
-
-  if (services.length < 2) {
-    return { subtotal, discount: 0, total: subtotal };
-  }
-
-  const discount = round2(subtotal * 0.1);
-  const total = round2(subtotal - discount);
-
-  return { subtotal, discount, total };
+  return { subtotal, discount: 0, total: subtotal };
 }
 
 export function getEntryPrice(service: ServiceType): string {

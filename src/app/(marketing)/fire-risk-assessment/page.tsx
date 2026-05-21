@@ -291,7 +291,7 @@ export default function FireRiskAssessmentPage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=fire-risk-assessment"
+              href="/book?service=fra-residential"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book my FRA — from £{lowestPrice}
@@ -744,7 +744,7 @@ export default function FireRiskAssessmentPage() {
             same day — from £{popularPrice} for a 1–3 bedroom property.
           </p>
           <Link
-            href="/book?service=fire-risk-assessment"
+            href="/book?service=fra-residential"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book my FRA — from £{lowestPrice}
@@ -756,7 +756,7 @@ export default function FireRiskAssessmentPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fire-risk-assessment"
+        href="/book?service=fra-residential"
         label="Book FRA"
         price={lowestPrice}
         serviceName="Fire Risk Assessment from"

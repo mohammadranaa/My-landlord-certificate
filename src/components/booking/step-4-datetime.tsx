@@ -9,7 +9,6 @@ import {
   endOfMonth,
   eachDayOfInterval,
   isSunday,
-  isPast,
   isToday,
   isSameDay,
   isSameMonth,
@@ -41,9 +40,15 @@ function Calendar({ value, onChange }: CalendarProps) {
   const calendarEnd = endOfWeek(endOfMonth(viewMonth), { weekStartsOn: 1 });
   const days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
 
+  function getEarliestBookingDate(): Date {
+    const earliest = new Date();
+    earliest.setHours(earliest.getHours() + 36);
+    return new Date(earliest.getFullYear(), earliest.getMonth(), earliest.getDate());
+  }
+
   function isDisabled(day: Date) {
     if (isSunday(day)) return true;
-    if (isPast(day) && !isToday(day)) return true;
+    if (day < getEarliestBookingDate()) return true;
     return false;
   }
 

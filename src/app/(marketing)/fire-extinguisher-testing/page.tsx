@@ -130,7 +130,7 @@ export default function FireExtinguisherTestingPage() {
           <TrustBadges serviceKey="fire-extinguisher-testing" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=fire-extinguisher-testing"
+              href="/book?service=fire-extinguisher"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Book Now — from £{entryPrice}
@@ -345,7 +345,7 @@ export default function FireExtinguisherTestingPage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=fire-extinguisher-testing"
+                href="/book?service=fire-extinguisher"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
@@ -362,7 +362,7 @@ export default function FireExtinguisherTestingPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fire-extinguisher-testing"
+        href="/book?service=fire-extinguisher"
         label="Book Now"
         price={entryPrice}
         serviceName="Fire Extinguisher Testing"

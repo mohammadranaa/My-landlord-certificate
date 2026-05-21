@@ -275,7 +275,7 @@ export default function PatTestingPage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=pat-testing"
+              href="/book?service=pat"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book PAT Testing — from £{lowestPrice}
@@ -626,7 +626,7 @@ export default function PatTestingPage() {
             digital certificate and asset register emailed the same day.
           </p>
           <Link
-            href="/book?service=pat-testing"
+            href="/book?service=pat"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book PAT Testing — from £{lowestPrice}
@@ -638,7 +638,7 @@ export default function PatTestingPage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=pat-testing"
+        href="/book?service=pat"
         label="Book PAT Test"
         price={lowestPrice}
         serviceName="PAT Testing from"

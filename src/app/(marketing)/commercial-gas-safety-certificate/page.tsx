@@ -231,7 +231,7 @@ export default function CommercialGasSafetyCertificatePage() {
 
           <div className="flex flex-wrap gap-4 mb-10">
             <Link
-              href="/book?service=commercial-gas-safety"
+              href="/book?service=gas-safety-cp42&type=commercial"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book CP42 Certificate — from £{entryPrice}
@@ -634,7 +634,7 @@ export default function CommercialGasSafetyCertificatePage() {
             one appliance — certificate emailed the same day.
           </p>
           <Link
-            href="/book?service=commercial-gas-safety"
+            href="/book?service=gas-safety-cp42&type=commercial"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
             Book CP42 Certificate — from £{entryPrice}
@@ -646,7 +646,7 @@ export default function CommercialGasSafetyCertificatePage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=commercial-gas-safety"
+        href="/book?service=gas-safety-cp42&type=commercial"
         label="Book Now"
         price={entryPrice}
         serviceName="Commercial Gas Safety (CP42) from"
