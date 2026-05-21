@@ -43,6 +43,14 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "312",
+      reviewCount: "312",
+    },
   },
   areaServed: ["London", "South East England"],
   hasOfferCatalog: {
@@ -81,14 +89,6 @@ const productSchema = {
     availability: "https://schema.org/InStock",
     offerCount: 7,
     url: "https://www.mylandlordcertificate.co.uk/eicr",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "312",
-    reviewCount: "312",
   },
 };
 
