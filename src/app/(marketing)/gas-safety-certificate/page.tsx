@@ -45,6 +45,14 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "284",
+      reviewCount: "284",
+    },
   },
   areaServed: ["London", "South East England"],
   hasOfferCatalog: {
@@ -83,14 +91,6 @@ const productSchema = {
     availability: "https://schema.org/InStock",
     offerCount: 6,
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "284",
-    reviewCount: "284",
   },
 };
 

@@ -45,6 +45,14 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "147",
+      reviewCount: "147",
+    },
   },
   areaServed: ["London", "South East England"],
   hasOfferCatalog: {
@@ -100,13 +108,6 @@ const productSchema = {
     priceCurrency: "GBP",
     offerCount: "9",
     availability: "https://schema.org/InStock",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "147",
-    bestRating: "5",
-    worstRating: "1",
   },
 };
 
