@@ -26,9 +26,7 @@ const columns: FooterColumn[] = [
   {
     heading: "Company",
     links: [
-      { href: "/about", label: "About Us" },
       { href: "/#how-it-works", label: "How It Works" },
-      { href: "/reviews", label: "Reviews" },
       { href: "/blog", label: "Blog" },
       { href: "/letting-agents", label: "Letting Agents" },
       { href: "/contact", label: "Contact" },
@@ -37,10 +35,12 @@ const columns: FooterColumn[] = [
   {
     heading: "Pricing Guides",
     links: [
-      { href: "/eicr-cost", label: "EICR Cost Guide" },
-      { href: "/gas-safety-certificate-cost", label: "Gas Safety Cost Guide" },
-      { href: "/epc-cost", label: "EPC Cost Guide" },
-      { href: "/pricing", label: "All Service Prices" },
+      { href: "/eicr", label: "EICR Cost Guide" },
+      { href: "/gas-safety-certificate", label: "Gas Safety Cost Guide" },
+      { href: "/epc", label: "EPC Cost Guide" },
+      { href: "/pat-testing", label: "PAT Testing" },
+      { href: "/fire-risk-assessment", label: "Fire Risk Assessment" },
+      { href: "/pricing", label: "All Prices" },
       { href: "/faq", label: "FAQs" },
       { href: "/coverage-areas", label: "Coverage Areas" },
     ],
@@ -48,12 +48,11 @@ const columns: FooterColumn[] = [
   {
     heading: "Contact",
     links: [
-      { href: "tel:+443301330066", label: "0330 133 0066" },
+      { href: "tel:03301330066", label: "0330 133 0066" },
       { href: "mailto:info@mylandlordcertificate.co.uk", label: "Email Us" },
+      { href: "https://wa.me/443301330066", label: "WhatsApp Us" },
       { href: "/contact", label: "Contact Form" },
       { href: "/book", label: "Book Online" },
-      { href: "#", label: "Find us on Google" },
-      { href: "#", label: "Leave a Google Review" },
     ],
   },
 ];
@@ -95,7 +94,7 @@ export function Footer({ className }: FooterProps) {
         </div>
 
         {/* Brand blurb */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="mt-14 pt-8 border-t border-white/10">
           <div className="max-w-md">
             <Image
               src="/logo-white.svg"
@@ -111,16 +110,6 @@ export function Footer({ className }: FooterProps) {
               the Home Counties. Fixed prices, same-week appointments, no
               hidden fees.
             </p>
-          </div>
-
-          {/* Accreditation badges */}
-          <div className="flex items-center gap-4 shrink-0">
-            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-compliance-blue text-white font-bold text-sm">
-              NICEIC
-            </span>
-            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-green text-brand-charcoal font-bold text-xs text-center leading-tight">
-              Gas Safe
-            </span>
           </div>
         </div>
 
