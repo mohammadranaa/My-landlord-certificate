@@ -231,15 +231,6 @@ const RESIDENTIAL: ServiceDef[] = [
     turnaroundDays: 1,
   },
   {
-    href: "/landlord-certificates-bundle",
-    icon: <PackageIcon />,
-    name: "Bundle & Save",
-    description:
-      "Combine your EICR, Gas Safety and EPC in one visit. All certificates emailed same day. Save up to £44.97.",
-    price: 130,
-    turnaroundDays: 2,
-  },
-  {
     href: "/electrical-diagnostic",
     icon: <WrenchIcon />,
     name: "Electrical Diagnostic",
@@ -356,12 +347,65 @@ const COMMERCIAL: ServiceDef[] = [
     turnaroundDays: 2,
   },
   {
+    href: "/pat-testing",
+    icon: <PlugIcon />,
+    name: "PAT Testing",
+    description:
+      "Portable Appliance Testing for commercial premises and furnished properties. Pass/fail label on every appliance, full asset register emailed same day.",
+    price: getPriceForPAT(1),
+    turnaroundDays: 1,
+  },
+  {
     href: "/fire-risk-assessment",
     icon: <BuildingIcon />,
-    name: "Commercial Fire Risk Assessment",
+    name: "Fire Risk Assessment",
     description:
-      "Statutory fire risk assessment for commercial buildings and communal areas under the Fire Safety Order 2005. Higher-tier pricing applies.",
-    price: FRA_COMMERCIAL_TABLE[0].price,
+      "Statutory fire risk assessment for commercial buildings and communal areas under the Fire Safety Order 2005.",
+    price: getPriceForFRA("studio"),
+    turnaroundDays: 2,
+  },
+  {
+    href: "/fire-safety-certificate",
+    icon: <BellIcon />,
+    name: "Fire Safety Certificate",
+    description:
+      "Inspection and certification of smoke and heat alarm systems. Required before many HMO licence applications and commercial lettings.",
+    price: FIRE_SAFETY_CERT_TABLE[0].price,
+    turnaroundDays: 1,
+  },
+  {
+    href: "/fire-alarm-installation",
+    icon: <BellIcon />,
+    name: "Fire Alarm Installation",
+    description:
+      "Supply and installation of fire alarm systems for commercial premises and HMOs. Priced per alarm point installed.",
+    price: FIRE_ALARM_INSTALLATION_PER_ALARM,
+  },
+  {
+    href: "/fire-door-certificate",
+    icon: <DoorIcon />,
+    name: "Fire Door Certificate",
+    description:
+      "Inspection and certification of fire doors to BS 8214 and BS EN 1634. Required for all HMOs and commercial premises.",
+    price: FIRE_DOOR_CERT_PRICE,
+    turnaroundDays: 2,
+  },
+  {
+    href: "/fire-extinguisher-testing",
+    icon: <ExtinguisherIcon />,
+    name: "Fire Extinguisher Testing",
+    description:
+      "Annual servicing and testing of portable fire extinguishers to BS 5306. Required for all HMOs and commercial premises.",
+    price: FIRE_EXTINGUISHER_TABLE[0].price,
+    turnaroundDays: 1,
+  },
+  {
+    href: "/asbestos-survey",
+    icon: <SearchIcon />,
+    name: "Asbestos Survey",
+    description:
+      "Management asbestos survey for properties built before 2000. Required before renovation work or re-letting older properties.",
+    price: getPriceForAsbestosSurvey(1),
     turnaroundDays: 2,
   },
 ];

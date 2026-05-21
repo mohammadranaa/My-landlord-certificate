@@ -7,15 +7,12 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
-import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { HOMEPAGE_ACCREDITATIONS } from "@/lib/accreditations";
-import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
+import { LondonCoverageMap } from "@/components/ui/london-coverage-map";
 import { cn } from "@/lib/utils";
 import {
   LazyFAQAccordion as FAQAccordion,
   LazyStickyMobileCTA as StickyMobileCTA,
-  LazyAccreditationSlider as AccreditationSlider,
 } from "@/components/lazy";
 import { getPriceForGasSafety } from "@/lib/pricing";
 
@@ -117,33 +114,6 @@ const breadcrumbSchema = {
 
 const GAS_FROM = getPriceForGasSafety(1);
 
-const reviews = [
-  {
-    content:
-      "Booked my EICR online at 9pm on a Sunday. Engineer arrived Monday morning, certificate in my inbox by 1pm. Exactly what a busy landlord needs — fast, fixed price, no fuss.",
-    author: "James T.",
-    location: "Islington, London",
-    service: "EICR Certificate",
-    showTrustpilot: true as const,
-  },
-  {
-    content:
-      "I manage 12 rental properties and use My Landlord Certificate for every gas safety check and EICR. The renewal reminders mean I've never missed a deadline. Wouldn't use anyone else.",
-    author: "Sandra K.",
-    location: "Manchester",
-    service: "Gas Safety Certificate",
-    showTrustpilot: false as const,
-  },
-  {
-    content:
-      "The engineer explained every C3 code clearly and the price was exactly as quoted. No pressure for unnecessary work. Certificate arrived within hours. Genuinely impressed.",
-    author: "David M.",
-    location: "Bristol",
-    service: "EPC Certificate",
-    showTrustpilot: true as const,
-  },
-];
-
 const faqItems = [
   {
     question: "Which landlord certificates do I legally need in the UK?",
@@ -203,11 +173,16 @@ export default function HomePage() {
 
             <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-4 max-w-2xl">
               Book your{" "}
-              <strong className="text-white font-semibold">EICR</strong>,{" "}
-              <strong className="text-white font-semibold">Gas Safety Certificate (CP12)</strong>,{" "}
-              <strong className="text-white font-semibold">EPC</strong>, Fire Risk
-              Assessment or PAT testing online in minutes. Next-day appointments
-              available across London — no hidden charges, certificate emailed the same day.
+              <strong>EICR</strong>,{" "}
+              <strong>Gas Safety Certificate (CP12)</strong>,{" "}
+              <strong>Gas Safety Certificate (CP42)</strong>,{" "}
+              <strong>EPC</strong>,{" "}
+              <strong>Fire Risk Assessment</strong>,{" "}
+              <strong>Fire Safety Certificate</strong>,{" "}
+              <strong>PAT Testing</strong>,{" "}
+              <strong>Emergency Lights Certificate</strong>,{" "}
+              <strong>Asbestos Survey</strong>{" "}
+              and more — online in minutes. Next-day appointments across London.
             </p>
 
             <p className="text-blue-200 text-base mb-10 max-w-2xl">
@@ -238,7 +213,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── 2. Accreditation slider ──────────────────────────────────────── */}
+      {/* HIDDEN — uncomment when accreditation registrations confirmed
       <section
         aria-label="Professional accreditations and memberships"
         className="py-10 bg-white border-y border-border"
@@ -251,6 +226,7 @@ export default function HomePage() {
           />
         </Container>
       </section>
+      */}
 
       {/* ── 3. Services grid ─────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
@@ -372,7 +348,28 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* ── 4. Why us ────────────────────────────────────────────────────── */}
+      {/* ── 4b. London coverage map ─────────────────────────────────────── */}
+      <section aria-labelledby="coverage-heading" className="py-16 bg-warm-white">
+        <Container>
+          <Heading level={2} id="coverage-heading" className="text-center mb-3">
+            Covering all 32 London boroughs
+          </Heading>
+          <p className="text-brand-grey text-center mb-10 max-w-xl mx-auto">
+            Our NICEIC-approved engineers cover every borough.
+            Click your area to see local EICR pricing.
+          </p>
+          <LondonCoverageMap />
+          <p className="text-center text-sm text-brand-grey mt-6">
+            Don&apos;t see your area?{" "}
+            <Link href="/contact" className="text-compliance-blue underline hover:no-underline">
+              Contact us
+            </Link>{" "}
+            — we&apos;re expanding coverage regularly.
+          </p>
+        </Container>
+      </section>
+
+      {/* ── 4c. Why us ───────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-warm-white">
         <Container>
           <div className="text-center mb-14">
@@ -428,56 +425,38 @@ export default function HomePage() {
 
           <div className="text-center mt-10">
             <Link
-              href="/about"
+              href="/letting-agents"
               className="text-compliance-blue hover:underline font-medium text-sm"
             >
-              About My Landlord Certificate →
+              For letting agents &amp; portfolio landlords →
             </Link>
           </div>
         </Container>
       </Section>
 
-      {/* ── 5. Reviews ───────────────────────────────────────────────────── */}
-      <Section spacing="lg" className="below-fold bg-white">
+      {/* ── 5. Trust indicators ──────────────────────────────────────────── */}
+      <section className="py-12 bg-white border-y border-border" aria-label="Trust indicators">
         <Container>
-          <div className="text-center mb-10">
-            <Heading level={2} className="mb-4">
-              What UK landlords say about us
-            </Heading>
-            <p className="text-brand-grey text-lg max-w-xl mx-auto mb-8">
-              Real reviews from real landlords and letting agents. Independently
-              verified on Trustpilot — we don&apos;t cherry-pick.
-            </p>
-            <TrustpilotWidget
-              businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
-              variant="mini"
-              className="flex justify-center"
-            />
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((review) => (
-              <TestimonialCard
-                key={review.author}
-                content={review.content}
-                author={review.author}
-                location={review.location}
-                service={review.service}
-                showTrustpilot={review.showTrustpilot}
-              />
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              href="/reviews"
-              className="text-compliance-blue hover:underline font-medium text-sm"
-            >
-              Read all reviews →
-            </Link>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl font-bold text-compliance-blue">500+</p>
+              <p className="text-sm text-brand-grey mt-1">Certificates issued</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-compliance-blue">Same day</p>
+              <p className="text-sm text-brand-grey mt-1">Certificate delivery</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-compliance-blue">Fixed</p>
+              <p className="text-sm text-brand-grey mt-1">No hidden charges</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-compliance-blue">32</p>
+              <p className="text-sm text-brand-grey mt-1">London boroughs covered</p>
+            </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
       <Section spacing="md" className="below-fold bg-compliance-blue">
@@ -496,10 +475,10 @@ export default function HomePage() {
                 pricing, a renewal reminder dashboard and coordinated multi-property
                 scheduling keeps every property compliant — with far less admin.{" "}
                 <Link
-                  href="/about"
+                  href="/contact"
                   className="text-white underline underline-offset-2 hover:text-blue-100 transition-colors"
                 >
-                  Learn more about us.
+                  Get in touch.
                 </Link>
               </p>
             </div>

@@ -8,6 +8,7 @@ import {
 
 interface TrustBadgesProps {
   serviceKey?: keyof typeof SERVICE_ACCREDITATIONS
+  showAccreditations?: boolean
   variant?: "dark" | "light"
   rating?: number
   reviewCount?: number
@@ -16,6 +17,7 @@ interface TrustBadgesProps {
 
 export function TrustBadges({
   serviceKey,
+  showAccreditations = false,
   variant = "dark",
   rating = 4.9,
   reviewCount = 1000,
@@ -25,14 +27,14 @@ export function TrustBadges({
   const textPrimary = isDark ? "text-white" : "text-brand-charcoal"
   const textSecondary = isDark ? "text-blue-200" : "text-brand-grey"
 
-  const accreditations: Accreditation[] = serviceKey
+  const accreditations: Accreditation[] = (showAccreditations && serviceKey)
     ? SERVICE_ACCREDITATIONS[serviceKey] ?? []
     : []
 
   return (
     <div className={cn("flex flex-wrap items-center gap-x-5 gap-y-3", className)}>
 
-      {/* Accreditation logos — plain display, no external links */}
+      {/* Accreditation logos — only shown when showAccreditations={true} */}
       {accreditations.map((acc) => (
         <div
           key={acc.id}
