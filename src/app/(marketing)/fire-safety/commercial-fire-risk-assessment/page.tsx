@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Commercial fire risk assessment from £149.99 for communal areas up to 3 floors. Required under the Regulatory Reform (Fire Safety) Order 2005. IFSM-qualified assessors. London-wide.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/commercial-fire-risk-assessment",
+    canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
 

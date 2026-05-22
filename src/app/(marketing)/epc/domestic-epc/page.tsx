@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Domestic Energy Performance Certificate from £89.99. Required by law before renting or selling. Accredited DEA assessors, certificate on national register within 24 hours. London-wide.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc",
+    canonical: "https://www.mylandlordcertificate.co.uk/epc",
   },
 };
 

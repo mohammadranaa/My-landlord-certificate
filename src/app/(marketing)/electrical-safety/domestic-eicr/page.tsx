@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 32 London boroughs. Certificate emailed same day.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
+    canonical: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
 

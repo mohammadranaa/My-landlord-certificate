@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 32 London boroughs. Same-day certificate.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety/cp42",
+    canonical: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
 };
 

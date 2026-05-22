@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 32 London boroughs. Certificate emailed same day.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12",
+    canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
 

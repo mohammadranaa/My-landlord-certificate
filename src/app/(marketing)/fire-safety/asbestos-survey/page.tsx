@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Asbestos management survey from £239.99 including 1 sample. Required before renovation or demolition work in pre-2000 properties. UKAS-accredited laboratory analysis. London-wide.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/asbestos-survey",
+    canonical: "https://www.mylandlordcertificate.co.uk/asbestos-survey",
   },
 };
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 32 London boroughs. Registered on national database.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/epc/commercial-epc",
+    canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
 };
 

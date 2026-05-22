@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Commercial EICR (Electrical Installation Condition Report) from £149.99 per consumer unit. Required under the Electricity at Work Regulations 1989. NICEIC approved electricians for offices, HMOs, retail, and mixed-use premises across London.",
   alternates: {
-    canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety/commercial-eicr",
+    canonical: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
 };
 

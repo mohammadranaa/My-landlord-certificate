@@ -1,3 +1,10 @@
+// Sitemap policy:
+// - Only canonical destination URLs are listed. Redirect-source URLs (e.g.
+//   /electrical-safety/domestic-eicr, /gas-safety/cp12) are intentionally
+//   excluded — they 301 to the canonical and must never appear here, as that
+//   causes Google Search Console to flag "Page with redirect" errors.
+// - /demo, /privacy, /terms are robots:noindex — excluded.
+// - /landlord-certificates-bundle is excluded until the page has enough content.
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 
@@ -21,11 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const primaryServices: MetadataRoute.Sitemap = [
     { url: `${BASE}/eicr`,                         priority: 0.98, changeFrequency: "monthly" },
     { url: `${BASE}/gas-safety-certificate`,        priority: 0.97, changeFrequency: "monthly" },
-    { url: `${BASE}/pat-testing`,                   priority: 0.90, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-risk-assessment`,          priority: 0.90, changeFrequency: "monthly" },
-    { url: `${BASE}/epc`,                           priority: 0.90, changeFrequency: "monthly" },
-    { url: `${BASE}/landlord-certificates-bundle`,  priority: 0.85, changeFrequency: "monthly" },
-    { url: `${BASE}/asbestos-survey`,               priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/pat-testing`,          priority: 0.90, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-risk-assessment`, priority: 0.90, changeFrequency: "monthly" },
+    { url: `${BASE}/epc`,                  priority: 0.90, changeFrequency: "monthly" },
+    { url: `${BASE}/asbestos-survey`,      priority: 0.80, changeFrequency: "monthly" },
   ];
 
   // ── Cost / pricing guide pages ──────────────────────────────────────────────
@@ -55,7 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/electrical-diagnostic`,        priority: 0.85, changeFrequency: "monthly" },
     { url: `${BASE}/fuse-box-installation`,        priority: 0.80, changeFrequency: "monthly" },
     { url: `${BASE}/emergency-lights-certificate`, priority: 0.80, changeFrequency: "monthly" },
-    { url: `${BASE}/pat-testing`,                  priority: 0.90, changeFrequency: "monthly" },
   ];
 
   // ── Gas Safety sub-pages ─────────────────────────────────────────────────────
@@ -65,12 +70,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Fire Safety sub-pages ─────────────────────────────────────────────────────
   const fireSubPages: MetadataRoute.Sitemap = [
-    { url: `${BASE}/fire-safety-certificate`,   priority: 0.85, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-risk-assessment`,      priority: 0.90, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-alarm-installation`,   priority: 0.80, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-alarm-panels`,         priority: 0.72, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-door-certificate`,     priority: 0.80, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-extinguisher-testing`, priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-safety-certificate`,        priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-alarm-installation`,        priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-safety/fire-alarm-panels`,  priority: 0.72, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-door-certificate`,          priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-extinguisher-testing`,      priority: 0.80, changeFrequency: "monthly" },
   ];
 
   // ── Location hub and borough pages ────────────────────────────────────────────
