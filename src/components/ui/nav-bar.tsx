@@ -64,6 +64,7 @@ const asbestos = {
 } as const;
 
 const topLinks = [
+  { href: "/blog",    label: "Blog"    },
   { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -162,13 +163,13 @@ export function NavBar({ className }: { className?: string }) {
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
         >
           <Image
-            src="/logo.svg"
+            src="/Header Logo.svg"
             alt="My Landlord Certificate"
-            width={160}
-            height={64}
+            width={56}
+            height={56}
             priority
             unoptimized
-            className="h-16 w-auto object-contain"
+            className="h-14 w-14 object-contain"
           />
         </Link>
 
@@ -295,12 +296,12 @@ export function NavBar({ className }: { className?: string }) {
                     className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
                   >
                     <Image
-                      src="/logo.svg"
+                      src="/Header Logo.svg"
                       alt="My Landlord Certificate"
-                      width={140}
-                      height={56}
+                      width={48}
+                      height={48}
                       unoptimized
-                      className="h-14 w-auto object-contain"
+                      className="h-12 w-12 object-contain"
                     />
                   </Link>
                   <Dialog.Close
