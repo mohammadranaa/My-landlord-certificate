@@ -8,7 +8,7 @@ import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { LondonCoverageMap } from "@/components/ui/london-coverage-map";
+import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
 import {
   LazyFAQAccordion as FAQAccordion,
@@ -352,19 +352,17 @@ export default function HomePage() {
       <section aria-labelledby="coverage-heading" className="py-16 bg-warm-white">
         <Container>
           <Heading level={2} id="coverage-heading" className="text-center mb-3">
-            Covering all 32 London boroughs
+            Covering all 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-10 max-w-xl mx-auto">
-            Our NICEIC-approved engineers cover every borough.
-            Click your area to see local EICR pricing.
+            Hover over your borough to see pricing. Click to book an EICR in your area.
           </p>
-          <LondonCoverageMap />
+          <MapSection />
           <p className="text-center text-sm text-brand-grey mt-6">
-            Don&apos;t see your area?{" "}
-            <Link href="/contact" className="text-compliance-blue underline hover:no-underline">
-              Contact us
-            </Link>{" "}
-            — we&apos;re expanding coverage regularly.
+            Gas Safety, EPC, Fire Risk Assessment and PAT Testing also available in every borough.{" "}
+            <Link href="/coverage-areas" className="text-compliance-blue underline hover:no-underline">
+              View all services by area →
+            </Link>
           </p>
         </Container>
       </section>

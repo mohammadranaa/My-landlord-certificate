@@ -7,6 +7,8 @@ import { Heading } from "@/components/ui/heading";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
 
+import { MapSection } from "@/components/ui/map-section";
+
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
@@ -164,30 +166,17 @@ export default function CoverageAreasPage() {
         </Container>
       </section>
 
-      {/* ── Google Maps coverage area ── */}
+      {/* ── Interactive borough map ── */}
       <section aria-labelledby="coverage-map-heading" className="py-16 bg-white">
         <Container>
           <Heading level={2} id="coverage-map-heading" className="mb-3 text-center">
-            Our coverage area
+            All 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-2xl mx-auto">
-            All 32 London boroughs plus Surrey, Kent, Essex and Hertfordshire —
-            next-day appointments across the entire shaded area below.
+            Hover over a borough to see EICR pricing. Click to book in your area.
           </p>
-          <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1234567890"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="My Landlord Certificate coverage area — London and South East England"
-              aria-label="Interactive map showing My Landlord Certificate coverage across London and the South East"
-            />
-          </div>
-          <p className="mt-4 text-center text-sm text-brand-grey">
+          <MapSection />
+          <p className="mt-6 text-center text-sm text-brand-grey">
             Not sure if we cover your postcode?{" "}
             <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
               Call 0330 133 0066
