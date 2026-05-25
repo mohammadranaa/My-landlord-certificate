@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -126,6 +126,7 @@ export function NavBar({ className }: { className?: string }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [openMobileCategory, setOpenMobileCategory] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const isActive = (href: string) =>
@@ -149,18 +150,32 @@ export function NavBar({ className }: { className?: string }) {
     setIsMegaOpen(false);
   }, []);
 
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const linkClass =
+    "text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors relative after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:bg-action-green after:scale-x-0 data-[active=true]:after:scale-x-100 after:transition-transform after:origin-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm whitespace-nowrap";
+
   return (
     <header
-      className={cn("sticky top-0 z-50 bg-white border-b border-border shadow-sm", className)}
+      className={cn("sticky top-0 z-50 px-4 sm:px-6 pt-4 pb-2 pointer-events-none", className)}
     >
       <nav
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6"
+        className={cn(
+          "relative max-w-6xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl h-14 px-4 sm:px-5 flex items-center justify-between gap-4 pointer-events-auto transition-all duration-300 border",
+          scrolled
+            ? "shadow-[0_4px_30px_rgba(0,0,0,0.12)] border-border"
+            : "shadow-[0_2px_20px_rgba(0,0,0,0.06)] border-transparent",
+        )}
         aria-label="Main navigation"
       >
         {/* ── Logo ── */}
         <Link
           href="/"
-          className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
+          className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-lg"
         >
           <Image
             src="/header-logo.svg"
@@ -169,7 +184,7 @@ export function NavBar({ className }: { className?: string }) {
             height={64}
             priority
             unoptimized
-            className="h-16 w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
         </Link>
 
@@ -183,11 +198,10 @@ export function NavBar({ className }: { className?: string }) {
             onFocus={openMega}
             onBlur={scheduledClose}
             onClick={() => setIsMegaOpen((o) => !o)}
+            data-active={anyServiceActive.toString()}
             className={cn(
-              "flex items-center gap-1 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm",
-              anyServiceActive
-                ? "text-compliance-blue"
-                : "text-brand-charcoal hover:text-compliance-blue",
+              "flex items-center gap-1",
+              linkClass,
             )}
           >
             Services
@@ -198,12 +212,8 @@ export function NavBar({ className }: { className?: string }) {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm whitespace-nowrap",
-                isActive(link.href)
-                  ? "text-compliance-blue"
-                  : "text-brand-charcoal hover:text-compliance-blue",
-              )}
+              data-active={isActive(link.href).toString()}
+              className={linkClass}
             >
               {link.label}
             </Link>
@@ -222,11 +232,12 @@ export function NavBar({ className }: { className?: string }) {
             <WhatsAppIcon />
           </a>
           <a
-            href="tel:03301330066"
+            href="tel:+443301330066"
             className="flex items-center gap-1.5 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
+            aria-label="Call us on 0330 133 0066"
           >
-            <PhoneIcon />
-            <span>0330 133 0066</span>
+            <span className="w-2 h-2 rounded-full bg-action-green animate-pulse shrink-0" aria-hidden="true" />
+            0330 133 0066
           </a>
           <a
             href="mailto:info@mylandlordcertificate.co.uk"
@@ -237,9 +248,18 @@ export function NavBar({ className }: { className?: string }) {
           </a>
           <Link
             href="/book"
-            className="inline-flex items-center bg-action-green text-brand-charcoal font-semibold px-5 py-2 rounded-lg text-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 shrink-0 bg-action-green hover:bg-[#6ab000] text-brand-charcoal font-semibold px-5 py-2 rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-green focus-visible:ring-offset-2"
           >
             Book Now
+            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </Link>
         </div>
 
@@ -263,7 +283,7 @@ export function NavBar({ className }: { className?: string }) {
           </a>
           <Link
             href="/book"
-            className="inline-flex items-center bg-action-green text-brand-charcoal font-semibold px-3 py-1.5 rounded-lg text-sm transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2"
+            className="inline-flex items-center bg-action-green hover:bg-[#6ab000] text-brand-charcoal font-semibold px-3 py-1.5 rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-green focus-visible:ring-offset-2"
           >
             Book Now
           </Link>
@@ -323,7 +343,7 @@ export function NavBar({ className }: { className?: string }) {
                 <div className="px-4 pt-4 pb-2">
                   <Link
                     href="/book"
-                    className="block text-center bg-action-green text-brand-charcoal font-semibold px-5 py-3 rounded-xl text-base transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2"
+                    className="block text-center bg-action-green hover:bg-[#6ab000] text-brand-charcoal font-semibold px-5 py-3 rounded-full text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-green focus-visible:ring-offset-2"
                   >
                     Book Now
                   </Link>
@@ -429,88 +449,88 @@ export function NavBar({ className }: { className?: string }) {
             </Dialog.Portal>
           </Dialog.Root>
         </div>
-      </nav>
 
-      {/* ── Desktop mega-menu panel ── */}
-      <div
-        onMouseEnter={openMega}
-        onMouseLeave={scheduledClose}
-        className={cn(
-          "absolute inset-x-0 top-full bg-white border-b border-border shadow-xl z-40 transition-all duration-150",
-          isMegaOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none",
-        )}
-        aria-hidden={!isMegaOpen}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-4 gap-8">
-            {categories.map((cat) => (
-              <div key={cat.slug}>
-                <Link
-                  href={cat.href}
-                  onClick={closeMega}
-                  className={cn(
-                    "block text-sm font-semibold pb-2.5 mb-3 border-b border-border transition-colors",
-                    isActive(cat.href)
-                      ? "text-compliance-blue"
-                      : "text-brand-charcoal hover:text-compliance-blue",
-                  )}
-                >
-                  {cat.label}
-                </Link>
-                <ul className="flex flex-col gap-0.5">
-                  {cat.services.map((svc) => (
-                    <li key={svc.href}>
-                      <Link
-                        href={svc.href}
-                        onClick={closeMega}
-                        className={cn(
-                          "flex items-center justify-between py-1.5 px-2 -mx-2 rounded-lg text-sm transition-colors",
-                          isActive(svc.href)
-                            ? "text-compliance-blue font-medium"
-                            : "text-brand-charcoal hover:text-compliance-blue hover:bg-compliance-blue/5",
-                        )}
-                      >
-                        <span>{svc.label}</span>
-                        <span className="text-xs text-brand-grey ml-3 shrink-0">{svc.price}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+        {/* ── Desktop mega-menu panel (positioned relative to nav island) ── */}
+        <div
+          onMouseEnter={openMega}
+          onMouseLeave={scheduledClose}
+          className={cn(
+            "absolute top-[calc(100%+8px)] left-0 right-0 rounded-2xl border border-border bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] overflow-hidden z-50 transition-all duration-150",
+            isMegaOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none",
+          )}
+          aria-hidden={!isMegaOpen}
+        >
+          <div className="px-6 lg:px-8 py-8">
+            <div className="grid grid-cols-4 gap-8">
+              {categories.map((cat) => (
+                <div key={cat.slug}>
+                  <Link
+                    href={cat.href}
+                    onClick={closeMega}
+                    className={cn(
+                      "block text-sm font-semibold pb-2.5 mb-3 border-b border-border transition-colors",
+                      isActive(cat.href)
+                        ? "text-compliance-blue"
+                        : "text-brand-charcoal hover:text-compliance-blue",
+                    )}
+                  >
+                    {cat.label}
+                  </Link>
+                  <ul className="flex flex-col gap-0.5">
+                    {cat.services.map((svc) => (
+                      <li key={svc.href}>
+                        <Link
+                          href={svc.href}
+                          onClick={closeMega}
+                          className={cn(
+                            "flex items-center justify-between py-1.5 px-2 -mx-2 rounded-lg text-sm transition-colors",
+                            isActive(svc.href)
+                              ? "text-compliance-blue font-medium"
+                              : "text-brand-charcoal hover:text-compliance-blue hover:bg-compliance-blue/5",
+                          )}
+                        >
+                          <span>{svc.label}</span>
+                          <span className="text-xs text-brand-grey ml-3 shrink-0">{svc.price}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
-          {/* Bottom bar: Asbestos + View All */}
-          <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
-            <Link
-              href={asbestos.href}
-              onClick={closeMega}
-              className="flex items-center gap-2 text-sm text-brand-charcoal hover:text-compliance-blue transition-colors"
-            >
-              <span className="font-medium">{asbestos.label}</span>
-              <span className="text-brand-grey">{asbestos.price}</span>
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={closeMega}
-              className="flex items-center gap-1 text-sm font-medium text-compliance-blue hover:underline"
-            >
-              View All Services &amp; Pricing
-              <svg className="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path
-                  d="M2 6h8M6 2l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Link>
+            {/* Bottom bar: Asbestos + View All */}
+            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
+              <Link
+                href={asbestos.href}
+                onClick={closeMega}
+                className="flex items-center gap-2 text-sm text-brand-charcoal hover:text-compliance-blue transition-colors"
+              >
+                <span className="font-medium">{asbestos.label}</span>
+                <span className="text-brand-grey">{asbestos.price}</span>
+              </Link>
+              <Link
+                href="/pricing"
+                onClick={closeMega}
+                className="flex items-center gap-1 text-sm font-medium text-compliance-blue hover:underline"
+              >
+                View All Services &amp; Pricing
+                <svg className="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 6h8M6 2l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
