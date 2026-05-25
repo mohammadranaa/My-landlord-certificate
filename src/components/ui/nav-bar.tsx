@@ -165,11 +165,11 @@ export function NavBar({ className }: { className?: string }) {
           <Image
             src="/header-logo.svg"
             alt="My Landlord Certificate"
-            width={56}
-            height={56}
+            width={80}
+            height={80}
             priority
             unoptimized
-            className="h-14 w-14 object-contain"
+            className="h-20 w-20 object-contain"
           />
         </Link>
 
