@@ -184,7 +184,7 @@ export function NavBar({ className }: { className?: string }) {
             height={64}
             priority
             unoptimized
-            className="h-8 w-auto object-contain"
+            className="h-11 w-auto object-contain"
           />
         </Link>
 
