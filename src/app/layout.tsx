@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConsentProvider } from "@/components/analytics/consent-provider";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logo.svg", type: "image/svg+xml" },
     ],
     apple: "/logo.svg",
   },
@@ -81,8 +82,9 @@ export default function RootLayout({
           <AnalyticsScripts />
           <PostHogProvider />
         </ConsentProvider>
-        {/* Vercel Analytics — cookieless, no consent required */}
+        {/* Vercel Analytics & Speed Insights — cookieless, no consent required */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
