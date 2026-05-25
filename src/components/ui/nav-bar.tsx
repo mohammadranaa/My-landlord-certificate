@@ -151,7 +151,7 @@ export function NavBar({ className }: { className?: string }) {
 
   return (
     <header
-      className={cn("sticky top-0 z-50 bg-white border-b border-border shadow-sm overflow-hidden", className)}
+      className={cn("sticky top-0 z-50 bg-white border-b border-border shadow-sm", className)}
     >
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6"
@@ -165,11 +165,11 @@ export function NavBar({ className }: { className?: string }) {
           <Image
             src="/header-logo.svg"
             alt="My Landlord Certificate"
-            width={220}
-            height={100}
+            width={160}
+            height={80}
             priority
             unoptimized
-            className="h-24 w-auto object-contain scale-110 origin-left"
+            className="h-20 w-auto object-contain"
           />
         </Link>
 
