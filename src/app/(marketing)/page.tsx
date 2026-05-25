@@ -355,7 +355,7 @@ export default function HomePage() {
             Covering all 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-10 max-w-xl mx-auto">
-            Hover over your borough to see pricing. Click to book an EICR in your area.
+            Our NICEIC-approved engineers cover every borough across Greater London.
           </p>
           <MapSection />
           <p className="text-center text-sm text-brand-grey mt-6">

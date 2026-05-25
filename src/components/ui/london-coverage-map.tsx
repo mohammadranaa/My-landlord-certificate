@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { BOROUGH_PATHS } from "@/data/london-borough-paths"
 import { BOROUGH_SLUG_MAP, BOROUGH_DISPLAY_NAME } from "@/data/borough-slug-map"
 import { getPriceForEICR } from "@/lib/pricing"
@@ -44,7 +42,6 @@ const entries = Object.entries(BOROUGH_PATHS)
   .filter((e) => e.slug)
 
 export function LondonCoverageMap() {
-  const router = useRouter()
   const [hovered, setHovered] = useState<string | null>(null)
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false, x: 0, y: 0, name: "",
@@ -79,10 +76,6 @@ export function LondonCoverageMap() {
     setTooltip((prev) => ({ ...prev, visible: false }))
   }, [])
 
-  const handleClick = useCallback((slug: string) => {
-    router.push(`/eicr-${slug}`)
-  }, [router])
-
   return (
     <div className="w-full">
       {/* SVG map — tablet and up */}
@@ -90,7 +83,7 @@ export function LondonCoverageMap() {
         <svg
           viewBox="0 0 800 600"
           className="w-full h-auto drop-shadow-sm"
-          aria-label="Interactive map of London boroughs — click a borough to book an EICR"
+          aria-label="Map of London boroughs covered by My Landlord Certificate"
           role="img"
         >
           <rect width="800" height="600" fill="#f0f7ff" rx="12" />
@@ -105,18 +98,11 @@ export function LondonCoverageMap() {
                 stroke="#ffffff"
                 strokeWidth={isHovered ? 1.5 : 0.8}
                 strokeLinejoin="round"
-                className="cursor-pointer"
                 style={{ transition: "fill 0.12s ease" }}
-                aria-label={`EICR in ${BOROUGH_DISPLAY_NAME[slug] ?? geoName} from £${ENTRY_PRICE}`}
-                role="button"
-                tabIndex={0}
+                aria-label={BOROUGH_DISPLAY_NAME[slug] ?? geoName}
                 onMouseEnter={(e) => handleEnter(geoName, slug, e)}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
-                onClick={() => handleClick(slug)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") handleClick(slug)
-                }}
               />
             )
           })}
@@ -166,29 +152,24 @@ export function LondonCoverageMap() {
             >
               <div className="bg-brand-charcoal text-white rounded-xl px-3 py-2 text-xs shadow-lg">
                 <p className="font-semibold leading-tight">{tooltip.name}</p>
-                <p className="text-blue-200 mt-0.5">EICR from £{ENTRY_PRICE} →</p>
+                <p className="text-blue-200 mt-0.5">EICR from £{ENTRY_PRICE}</p>
               </div>
             </foreignObject>
           )}
         </svg>
       </div>
 
-      {/* Mobile borough grid */}
+      {/* Mobile borough grid — display only, not linked yet */}
       <div className="sm:hidden">
-        <p className="text-sm text-brand-grey text-center mb-4">
-          Tap your borough to book:
-        </p>
         <div className="grid grid-cols-2 gap-2">
           {Object.entries(BOROUGH_DISPLAY_NAME).map(([slug, name]) => (
-            <Link
+            <div
               key={slug}
-              href={`/eicr-${slug}`}
               className="text-xs text-center py-2 px-2 rounded-lg border border-border
-                bg-white text-brand-charcoal hover:border-compliance-blue
-                hover:text-compliance-blue transition-colors"
+                bg-white text-brand-charcoal"
             >
               {name}
-            </Link>
+            </div>
           ))}
         </div>
       </div>

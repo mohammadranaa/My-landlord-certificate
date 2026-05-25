@@ -173,7 +173,7 @@ export default function CoverageAreasPage() {
             All 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-2xl mx-auto">
-            Hover over a borough to see EICR pricing. Click to book in your area.
+            Our accredited engineers cover every London borough — same-week appointments available.
           </p>
           <MapSection />
           <p className="mt-6 text-center text-sm text-brand-grey">
