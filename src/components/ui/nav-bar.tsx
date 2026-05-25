@@ -163,7 +163,7 @@ export function NavBar({ className }: { className?: string }) {
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-sm"
         >
           <Image
-            src="/Header Logo.svg"
+            src="/header-logo.svg"
             alt="My Landlord Certificate"
             width={56}
             height={56}
@@ -296,7 +296,7 @@ export function NavBar({ className }: { className?: string }) {
                     className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
                   >
                     <Image
-                      src="/Header Logo.svg"
+                      src="/header-logo.svg"
                       alt="My Landlord Certificate"
                       width={48}
                       height={48}
