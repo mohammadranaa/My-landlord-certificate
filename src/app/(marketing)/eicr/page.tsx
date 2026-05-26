@@ -781,13 +781,8 @@ export default function EicrPage() {
             .
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {[
-              {
-                stat: "4.8★",
-                label: "Trustpilot rating",
-                sub: "from 312 EICR reviews",
-              },
               {
                 stat: "Same day",
                 label: "Certificate delivery",

@@ -3,9 +3,6 @@
 import { useState, useCallback } from "react"
 import { BOROUGH_PATHS } from "@/data/london-borough-paths"
 import { BOROUGH_SLUG_MAP, BOROUGH_DISPLAY_NAME } from "@/data/borough-slug-map"
-import { getPriceForEICR } from "@/lib/pricing"
-
-const ENTRY_PRICE = getPriceForEICR("studio")
 
 interface TooltipState {
   visible: boolean
@@ -152,7 +149,7 @@ export function LondonCoverageMap() {
             >
               <div className="bg-brand-charcoal text-white rounded-xl px-3 py-2 text-xs shadow-lg">
                 <p className="font-semibold leading-tight">{tooltip.name}</p>
-                <p className="text-blue-200 mt-0.5">EICR from £{ENTRY_PRICE}</p>
+                <p className="text-blue-200 text-xs mt-0.5">All certificates from £49.99</p>
               </div>
             </foreignObject>
           )}

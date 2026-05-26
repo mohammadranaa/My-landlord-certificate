@@ -77,11 +77,6 @@ export function TestimonialCard({
             {service ? ` · ${service}` : ""}
           </p>
         </div>
-        {showTrustpilot && (
-          <span className="text-xs font-bold text-[#00B67A] shrink-0">
-            Trustpilot
-          </span>
-        )}
       </footer>
     </article>
   );

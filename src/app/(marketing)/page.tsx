@@ -163,7 +163,7 @@ export default function HomePage() {
         <Container className="relative py-20 md:py-28 lg:py-32">
           <div className="max-w-3xl">
             <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-              NICEIC Approved · Gas Safe Registered · Trustpilot 4.8★
+              Accredited Engineers · Gas Safe Registered · Same-Day Certificates
             </p>
 
             <Heading level={1} id="hero-heading" inverted className="mb-6">
@@ -354,8 +354,8 @@ export default function HomePage() {
           <Heading level={2} id="coverage-heading" className="text-center mb-3">
             Covering all 33 London boroughs
           </Heading>
-          <p className="text-brand-grey text-center mb-10 max-w-xl mx-auto">
-            Our NICEIC-approved engineers cover every borough across Greater London.
+          <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
+            Our fully accredited engineers cover every borough — NICEIC and NAPIT approved for electrical, Gas Safe registered for gas, and BAFE/IFE certified for fire safety.
           </p>
           <MapSection />
           <p className="text-center text-sm text-brand-grey mt-6">

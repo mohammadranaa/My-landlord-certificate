@@ -768,9 +768,8 @@ export default function GasSafetyPage() {
             record of compliance.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { stat: "4.9★", label: "Trustpilot rating", sub: "from 284 CP12 reviews" },
               { stat: "Same day", label: "Certificate delivery", sub: "emailed after inspection" },
               { stat: "12 months", label: "CP12 validity", sub: "annual renewal required" },
             ].map(({ stat, label, sub }) => (

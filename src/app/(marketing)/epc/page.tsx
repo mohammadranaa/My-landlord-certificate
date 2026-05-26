@@ -5,7 +5,6 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
@@ -385,13 +384,6 @@ export default function EPCPage() {
           <FAQAccordion items={faqs} />
         </section>
 
-        {/* Trustpilot micro strip */}
-        <section aria-label="Trustpilot rating" className="py-6 border-b border-border flex justify-center">
-          <TrustpilotWidget
-            businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
-            variant="micro"
-          />
-        </section>
 
         {/* CTA block */}
         <section className="py-10">

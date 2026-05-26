@@ -5,27 +5,26 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
-import { TrustpilotWidget } from "@/components/ui/trustpilot-widget";
 import { ReviewsByServiceFilter } from "@/components/marketing/reviews-filter";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
+  title: "My Landlord Certificate Reviews — London Landlords",
   description:
-    "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews. See what landlords say about our EICR, Gas Safety, EPC and Fire Risk Assessment services.",
+    "Read My Landlord Certificate reviews from real London landlords. See what landlords say about our EICR, Gas Safety, EPC and Fire Risk Assessment services.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/reviews" },
   openGraph: {
-    title: "My Landlord Certificate Reviews — Rated 4.9/5 | London Landlords",
+    title: "My Landlord Certificate Reviews — London Landlords",
     description:
-      "Read My Landlord Certificate reviews from real London landlords. Rated 4.9 out of 5 on Trustpilot across 312 verified reviews.",
+      "Read My Landlord Certificate reviews from real London landlords. EICR, Gas Safety, EPC and Fire Risk Assessment.",
     url: "https://www.mylandlordcertificate.co.uk/reviews",
   },
   twitter: {
-    title: "My Landlord Certificate Reviews — Rated 4.9/5",
+    title: "My Landlord Certificate Reviews",
     description:
-      "312 verified Trustpilot reviews from London landlords. EICR, Gas Safety, EPC and Fire Risk Assessment.",
+      "Reviews from London landlords — EICR, Gas Safety, EPC and Fire Risk Assessment.",
   },
 };
 
@@ -221,7 +220,7 @@ export default function ReviewsPage() {
             <div className="text-center sm:text-left">
               <p className="text-4xl font-bold text-white leading-none mb-1">312</p>
               <p className="text-blue-200 text-sm">verified reviews</p>
-              <p className="text-blue-300 text-xs mt-0.5">independently verified on Trustpilot</p>
+              <p className="text-blue-300 text-xs mt-0.5">verified reviews from London landlords</p>
             </div>
           </div>
 
@@ -229,16 +228,6 @@ export default function ReviewsPage() {
             Real reviews from landlords who have booked EICR, Gas Safety, EPC
             and Fire Risk Assessment services across London.
           </p>
-        </Container>
-      </section>
-
-      {/* ── Trustpilot carousel ── */}
-      <section aria-label="Trustpilot reviews" className="bg-white border-b border-border">
-        <Container className="py-10">
-          <TrustpilotWidget
-            businessUnitId={process.env.NEXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID}
-            variant="carousel"
-          />
         </Container>
       </section>
 
@@ -259,7 +248,6 @@ export default function ReviewsPage() {
                 author={r.author}
                 location={r.location}
                 service={r.service}
-                showTrustpilot
               />
             ))}
           </div>
@@ -276,29 +264,6 @@ export default function ReviewsPage() {
             What landlords say about each certificate we offer.
           </p>
           <ReviewsByServiceFilter groups={byService} />
-        </Container>
-      </section>
-
-      {/* ── Leave a review CTA ── */}
-      <section aria-label="Leave a Trustpilot review" className="py-10 bg-warm-white border-b border-border">
-        <Container className="text-center max-w-xl">
-          <p className="font-bold text-brand-charcoal mb-2">Had a good experience?</p>
-          <p className="text-brand-grey text-sm mb-5">
-            Reviews help other London landlords find a trusted compliance provider.
-            It takes under 60 seconds.
-          </p>
-          <Link
-            href={process.env.NEXT_PUBLIC_TRUSTPILOT_PROFILE_URL || "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#00B67A] hover:bg-[#009a68] text-white font-semibold px-6 py-3 rounded-xl transition-colors"
-            aria-label="Leave a review on Trustpilot — opens in new tab"
-          >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            Leave us a review on Trustpilot
-          </Link>
         </Container>
       </section>
 
