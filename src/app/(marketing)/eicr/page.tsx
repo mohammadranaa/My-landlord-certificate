@@ -820,7 +820,95 @@ export default function EicrPage() {
           </p>
         </section>
 
-        {/* ── 10. FAQs ────────────────────────────────────────────────────── */}
+        {/* ── 10. What the electrician tests ──────────────────────────────── */}
+        <section aria-labelledby="tests-heading">
+          <Heading level={2} id="tests-heading" className="mb-4">
+            What the electrician actually tests
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            An EICR is not a visual check — it involves specialist test equipment and a
+            series of electrical measurements on every circuit in your property. Here is
+            what each test checks and why it matters for your tenants&apos; safety.
+          </p>
+          <div className="space-y-3">
+            {[
+              {
+                title: "Continuity of protective conductors (the earth test)",
+                body: "Checks that the earth wire in every circuit is intact and has a low electrical resistance. The earth wire is your last line of defence — if a fault occurs, it carries fault current safely to earth and trips the circuit breaker before anyone receives a shock. A broken or high-resistance earth is typically a C2 observation.",
+              },
+              {
+                title: "Insulation resistance",
+                body: "Applies a high test voltage to the wiring insulation and measures how well it resists current leakage. Good insulation should show at least 1 Megaohm (MΩ) of resistance. Low insulation resistance indicates cable deterioration, moisture ingress, or damage — and is a common finding in older London properties.",
+              },
+              {
+                title: "Polarity",
+                body: "Confirms that live, neutral and earth wires are connected to the correct terminals everywhere in the installation. Reversed polarity — live and neutral swapped — is dangerous because a switch in the off position may still leave the appliance live. Polarity failures are typically C2.",
+              },
+              {
+                title: "Earth fault loop impedance (EFLI)",
+                body: "Measures the total electrical resistance of the fault current path — from the live conductor, through a fault, through earth, and back to the supply. This confirms that in a real fault, enough current will flow to trip the circuit breaker quickly enough to protect people.",
+              },
+              {
+                title: "RCD testing",
+                body: "Residual Current Devices (RCDs) are the safety devices that disconnect power within 40 milliseconds when they detect a fault current as small as 30mA — fast enough to prevent a fatal electric shock. The test confirms each RCD trips within this time. Missing RCDs on socket circuits is the single most common C2 observation on UK EICRs.",
+              },
+            ].map((item) => (
+              <details key={item.title} className="group rounded-xl border border-border bg-warm-white">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer px-5 py-4 font-semibold text-brand-charcoal text-sm select-none [&::-webkit-details-marker]:hidden">
+                  <span>{item.title}</span>
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-compliance-blue/10 text-compliance-blue flex items-center justify-center text-base font-bold leading-none group-open:rotate-45 transition-transform duration-150">
+                    +
+                  </span>
+                </summary>
+                <div className="px-5 pb-4 pt-3 text-sm text-brand-charcoal/80 leading-relaxed border-t border-border">
+                  {item.body}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* ── 11. Section 21 ──────────────────────────────────────────────── */}
+        <section aria-labelledby="section21-heading">
+          <Heading level={2} id="section21-heading" className="mb-4">
+            Why a missing EICR invalidates your Section 21
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Section 21 of the Housing Act 1988 allows landlords to regain possession of
+            their property without giving a reason — but only if they have met all their
+            legal obligations to the tenant. A missing or invalid EICR is one of several
+            compliance failures that makes a Section 21 notice legally invalid. If a tenant
+            challenges an invalid Section 21 in court, the landlord cannot regain possession
+            until compliance is achieved. Given that court proceedings can take 6–12 months,
+            the cost of not having a valid EICR extends far beyond the £30,000 fine.
+          </p>
+          <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-5">
+            <p className="font-semibold text-brand-charcoal mb-2">
+              Protect your possession rights
+            </p>
+            <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-4">
+              Keep your EICR, Gas Safety Certificate, and EPC on file and up to date at all
+              times. Serve copies on tenants before they move in. These three documents are
+              the minimum required to issue a valid Section 21 notice.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <Link
+                href="/gas-safety-certificate"
+                className="text-compliance-blue hover:underline font-medium"
+              >
+                Gas Safety Certificate →
+              </Link>
+              <Link
+                href="/epc"
+                className="text-compliance-blue hover:underline font-medium"
+              >
+                EPC Certificate →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 12. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
             EICR frequently asked questions
