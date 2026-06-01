@@ -795,7 +795,158 @@ export default function GasSafetyPage() {
           </p>
         </section>
 
-        {/* ── 10. FAQs ────────────────────────────────────────────────────── */}
+        {/* ── 10. The seven test checks ───────────────────────────────────── */}
+        <section aria-labelledby="test-detail-heading">
+          <Heading level={2} id="test-detail-heading" className="mb-4">
+            What each CP12 test actually involves
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            A CP12 is not a quick visual check. For every gas appliance in the
+            property — boiler, gas fire, hob, water heater — the engineer runs a
+            series of specific measurements. Here is what each check involves and
+            why it matters.
+          </p>
+          <div className="space-y-3">
+            {[
+              {
+                title: "Gas rate",
+                body: "The engineer measures how quickly each appliance is consuming gas using the gas meter. This confirms the appliance is burning at the designed rate — too high or too low indicates a fault with the gas valve or burner.",
+              },
+              {
+                title: "Working gas pressure",
+                body: "Measured at the appliance inlet. Incorrect pressure indicates a problem with the gas regulator or network supply, and can cause poor combustion or accelerated appliance wear.",
+              },
+              {
+                title: "Flue gas analysis (combustion analysis)",
+                body: "The engineer inserts a calibrated probe into the flue and measures CO₂ and CO (carbon monoxide) levels in the exhaust gases. This is the most critical test. A high CO reading means the appliance is burning incompletely — a potentially fatal finding that results in the appliance being declared unsafe and taken out of service.",
+              },
+              {
+                title: "Flue integrity and spillage test",
+                body: "Confirms that combustion gases are travelling up the flue and venting outside, not spilling back into the room. For open-flued appliances such as older gas fires and back boilers, a smoke pencil test near the air inlet confirms the draught is working correctly.",
+              },
+              {
+                title: "Ventilation adequacy",
+                body: "The engineer checks there is sufficient air supply for combustion. Sealed rooms, blocked air bricks, and draught exclusion can restrict airflow and cause incomplete combustion — which produces carbon monoxide.",
+              },
+              {
+                title: "Safety device testing",
+                body: "Flame failure devices (which cut off gas if the flame goes out), overheat thermostats, and pressure relief valves are each tested to confirm they activate correctly. A safety device that does not trip is typically a fail.",
+              },
+              {
+                title: "Visible pipework inspection",
+                body: "All accessible gas pipework is examined for corrosion, physical damage, and correct mechanical support. The engineer also checks the meter and emergency control valve are accessible and in working order.",
+              },
+            ].map((item) => (
+              <details key={item.title} className="group rounded-xl border border-border bg-warm-white">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer px-5 py-4 font-semibold text-brand-charcoal text-sm select-none [&::-webkit-details-marker]:hidden">
+                  <span>{item.title}</span>
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-compliance-blue/10 text-compliance-blue flex items-center justify-center text-base font-bold leading-none group-open:rotate-45 transition-transform duration-150">
+                    +
+                  </span>
+                </summary>
+                <div className="px-5 pb-4 pt-3 text-sm text-brand-charcoal/80 leading-relaxed border-t border-border">
+                  {item.body}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* ── 11. Carbon monoxide ─────────────────────────────────────────── */}
+        <section aria-labelledby="co-heading">
+          <Heading level={2} id="co-heading" className="mb-4">
+            Carbon monoxide — why the annual check matters
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Carbon monoxide (CO) is produced when gas appliances burn incompletely.
+            It is colourless, odourless, and tasteless — completely undetectable by
+            human senses. It binds to haemoglobin in the blood, preventing oxygen
+            from reaching cells. At low concentrations it causes headaches, nausea
+            and dizziness. At higher concentrations it causes loss of consciousness
+            and death.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Around 50 people die from accidental CO poisoning in the UK every year,
+            and over 4,000 are treated in A&amp;E. The majority of cases involve gas
+            appliances — boilers, gas fires, and back boilers in poorly maintained
+            or poorly ventilated properties.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            The annual CP12 is your primary defence. A flue gas analysis during
+            every annual check identifies developing combustion problems long before
+            CO levels in the room become dangerous.
+          </p>
+          <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
+            <strong className="text-brand-amber">CO alarm — legal requirement: </strong>
+            Since October 2022, landlords in England are legally required to fit a
+            carbon monoxide alarm in every room containing a fixed combustion
+            appliance — including rooms with boilers and gas fires. The alarm must
+            be in working order at the start of every new tenancy. Failure to comply
+            carries a fine of up to £5,000.{" "}
+            <strong className="text-brand-charcoal">
+              A CO alarm is not a substitute for the annual gas safety check.
+            </strong>{" "}
+            It is a last-resort warning device — not a replacement for the
+            preventive inspection that catches problems before they release CO into
+            your tenants&apos; home.
+          </div>
+        </section>
+
+        {/* ── 12. Reading the CP12 ────────────────────────────────────────── */}
+        <section aria-labelledby="reading-cp12-heading">
+          <Heading level={2} id="reading-cp12-heading" className="mb-4">
+            How to read a CP12 Gas Safety Certificate
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            A CP12 is typically one or two pages. Here is what each section
+            contains and what to look for when you receive yours.
+          </p>
+          <div className="space-y-3">
+            {[
+              {
+                label: "Property and landlord details",
+                detail: "Confirms the correct address and your name as the landlord. Check these match your tenancy agreement exactly.",
+              },
+              {
+                label: "Engineer details",
+                detail: "Full name, Gas Safe registration number, and employer. You can — and should — verify this number at gassaferegister.co.uk before work begins.",
+              },
+              {
+                label: "Appliance table",
+                detail: "One row per appliance showing the type (e.g. 'Worcester Bosch 30i combi boiler'), its location in the property, and the inspection date.",
+              },
+              {
+                label: "Results columns",
+                detail: "For each appliance: Gas rate (Pass/Fail), Gas pressure (Pass/Fail), Combustion analysis CO/CO₂ (recorded values), Flue test (Pass/Fail), Safety devices (Pass/Fail), and an overall appliance result of PASS or UNSAFE.",
+              },
+              {
+                label: "Defects section",
+                detail: "If any appliance is declared unsafe, the defect is described and the action taken is recorded — for example: 'Appliance isolated at inlet valve — Do Not Use until repaired'. An unsafe appliance will also have a red warning sticker attached to it.",
+              },
+              {
+                label: "Next service due",
+                detail: "12 months from the inspection date. Diarise this immediately. A compliance gap — even a single day — is a breach of the regulations. Book before the expiry date, not after.",
+              },
+            ].map((row) => (
+              <div key={row.label} className="flex gap-4 rounded-xl border border-border bg-warm-white p-4">
+                <span className="mt-0.5 w-5 h-5 rounded-full bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0 text-xs font-bold">
+                  ✓
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal text-sm mb-0.5">{row.label}</p>
+                  <p className="text-sm text-brand-charcoal/70 leading-relaxed">{row.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-brand-grey mt-4">
+            We email your CP12 as a PDF the same day as the inspection. It is
+            formatted to match exactly what local authorities and letting agents
+            expect to see. Forward it to your tenant straight away.
+          </p>
+        </section>
+
+        {/* ── 13. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
             Gas Safety Certificate — frequently asked questions
