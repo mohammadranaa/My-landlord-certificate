@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
+import { SITE_URL } from "@/lib/constants";
 
 export interface BreadcrumbItem {
   label: string;
@@ -19,14 +20,14 @@ export function BreadcrumbNav({ items }: BreadcrumbNavProps) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.mylandlordcertificate.co.uk",
+        item: SITE_URL,
       },
       ...items.map((item, i) => ({
         "@type": "ListItem",
         position: i + 2,
         name: item.label,
         ...(item.href
-          ? { item: `https://mylandlordcertificate.co.uk${item.href}` }
+          ? { item: `${SITE_URL}${item.href}` }
           : {}),
       })),
     ],
