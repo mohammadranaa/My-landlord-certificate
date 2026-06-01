@@ -1,10 +1,21 @@
-// Sitemap policy:
-// - Only canonical destination URLs are listed. Redirect-source URLs (e.g.
-//   /electrical-safety/domestic-eicr, /gas-safety/cp12) are intentionally
-//   excluded — they 301 to the canonical and must never appear here, as that
-//   causes Google Search Console to flag "Page with redirect" errors.
-// - /demo, /privacy, /terms are robots:noindex — excluded.
-// - /landlord-certificates-bundle is excluded until the page has enough content.
+/**
+ * SITEMAP POLICY — read before editing
+ *
+ * 1. Only list DESTINATION URLs — never redirect sources.
+ *    Redirect sources are in next.config.ts redirects().
+ *    If you add a redirect A→B, remove A from here.
+ *
+ * 2. All URLs must use www (BASE constant is www by default).
+ *
+ * 3. Do not include noindex pages (/privacy, /terms, /cookies,
+ *    /demo, /book, /admin, /api/*).
+ *
+ * 4. After any URL changes, re-submit sitemap in GSC:
+ *    https://search.google.com/search-console
+ *    → Sitemaps → delete old → submit new
+ *
+ * /landlord-certificates-bundle excluded until page has sufficient content.
+ */
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 
@@ -51,9 +62,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Category hub pages ───────────────────────────────────────────────────────
   const categoryHubs: MetadataRoute.Sitemap = [
-    { url: `${BASE}/electrical-safety`,  priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/gas-safety`,         priority: 0.75, changeFrequency: "monthly" },
-    { url: `${BASE}/fire-safety`,        priority: 0.75, changeFrequency: "monthly" },
+    { url: `${BASE}/electrical-safety`,  priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/gas-safety`,         priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/fire-safety`,        priority: 0.85, changeFrequency: "monthly" },
   ];
 
   // ── Electrical Safety sub-pages ───────────────────────────────────────────────
