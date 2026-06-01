@@ -155,10 +155,12 @@ export default function GasSafetyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Gas Safe</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Gas Safe ID</p>
               <p className="text-sm text-brand-grey">
-                All engineers are on the Gas Safe Register — the only scheme legally permitted
-                to carry out gas work in the UK.
+                Every engineer carries a Gas Safe Register ID card. By law, you can — and
+                should — ask to see it before any gas work begins. Our engineers expect this
+                and encourage it. Verify any engineer at gassaferegister.co.uk using their
+                licence number.
               </p>
             </div>
             <div>

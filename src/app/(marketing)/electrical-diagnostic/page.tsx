@@ -128,26 +128,26 @@ export default function ElectricalDiagnosticPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-white border-b border-border py-10 lg:py-14">
+      <section className="bg-compliance-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
-              <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
+            <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link></li>
+              <li><Link href="/electrical-safety" className="hover:text-white transition-colors">Electrical Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Electrical Diagnostic</li>
+              <li className="text-white font-medium">Electrical Diagnostic</li>
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Electrical Diagnostic — £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr, No Call-Out Fee
           </h1>
-          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from={false} size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
-            NICEIC approved · No call-out fee · Fault traced same visit · Minor repairs included
+          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from={false} size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <p className="text-blue-100 mb-4">
+            NICEIC & NAPIT approved · No call-out fee · Fault traced same visit · Minor repairs included
           </p>
-          <TrustBadges serviceKey="electrical-diagnostic" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="electrical-diagnostic" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=electrical-diagnostic"
@@ -157,7 +157,7 @@ export default function ElectricalDiagnosticPage() {
             </Link>
             <a
               href="tel:03301330066"
-              className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Call 0330 133 0066
             </a>
@@ -183,7 +183,7 @@ export default function ElectricalDiagnosticPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
-              <p className="font-bold text-white">NICEIC</p>
+              <p className="font-bold text-white">NICEIC & NAPIT</p>
             </div>
           </div>
         </div>
@@ -306,6 +306,57 @@ export default function ElectricalDiagnosticPage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        {/* What does an electrical diagnostic involve */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What does an electrical diagnostic involve?</h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            An electrical diagnostic is a targeted, test-driven process of identifying the specific cause
+            of an active fault in a rental property. Unlike a periodic EICR — which assesses the condition
+            of the whole installation — a diagnostic focuses on a known problem that has developed between
+            inspections.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Common reasons landlords call for a diagnostic</h3>
+          <ul className="grid sm:grid-cols-2 gap-2 mb-6">
+            {[
+              "RCD has tripped and won't reset",
+              "Circuit breaker keeps tripping with no apparent cause",
+              "Sockets on a ring main have gone dead after a surge",
+              "Lights flicker intermittently or fail entirely",
+              "Burning or melting smell from consumer unit or accessories",
+              "Power loss following damp ingress or a water leak near fittings",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
+                <span className="mt-0.5 w-4 h-4 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Diagnostic tools and methods</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Our electricians use professional-grade test instruments to trace faults systematically —
+            insulation resistance testers to identify degraded cable insulation, earth loop impedance
+            meters to check the fault path back to supply, RCD trip-time testers to identify delayed
+            or failed residual current devices, and clamp meters to measure live current across circuits.
+            Where useful, thermal imaging can detect hot spots in accessories or inside the consumer unit.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Electrical diagnostic vs EICR — which do you need?</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            An EICR is the right choice when you are approaching the 5-year periodic inspection cycle,
+            starting a new tenancy without a recent EICR, or complying with the Electrical Safety
+            Standards in the Private Rented Sector (England) Regulations 2020.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            An electrical diagnostic is the right choice when a specific fault has developed between
+            inspections. A full EICR records the condition of the whole installation but will not
+            pinpoint an active intermittent fault — a targeted diagnostic does that faster and at
+            lower cost. In some cases the diagnostic reveals that the underlying cause is widespread
+            deterioration, in which case the engineer will advise on a full EICR and remediation options.
+          </p>
         </section>
 
         {/* FAQs */}

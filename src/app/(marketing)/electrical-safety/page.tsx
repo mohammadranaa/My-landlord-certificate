@@ -100,15 +100,15 @@ export default function ElectricalSafetyPage() {
 
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-3">
-              NICEIC Approved Engineers
+              NICEIC &amp; NAPIT Approved Engineers
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
               Electrical Safety Certificates
             </h1>
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
               From mandatory EICR inspections to PAT testing and fuse box upgrades — our
-              NICEIC approved engineers cover every electrical compliance need for landlords
-              across London. Fixed prices, no call-out fees.
+              NICEIC and NAPIT approved engineers cover every electrical compliance need for
+              landlords across London. Fixed prices, no call-out fees.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -135,7 +135,7 @@ export default function ElectricalSafetyPage() {
             Electrical Safety Services
           </h2>
           <p className="text-brand-grey mb-8">
-            All work carried out by NICEIC approved electricians. Certificates emailed same day.
+            All work carried out by NICEIC &amp; NAPIT approved electricians. Certificates emailed same day.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -172,10 +172,11 @@ export default function ElectricalSafetyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">NICEIC</p>
+              <p className="text-2xl font-bold text-compliance-blue mb-2">18th Edition</p>
               <p className="text-sm text-brand-grey">
-                All electricians are NICEIC approved — the UK&apos;s leading electrical
-                competency scheme.
+                All electricians are trained and certified to BS 7671:2018 (18th Edition Wiring
+                Regulations) — the current UK standard referenced directly in every EICR report
+                we issue. NICEIC &amp; NAPIT approved.
               </p>
             </div>
             <div>
@@ -200,7 +201,7 @@ export default function ElectricalSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your electrical inspection today"
-            subheading="Same-week appointments available across all 32 London boroughs. NICEIC approved engineers, fixed prices."
+            subheading="Same-week appointments available across all 32 London boroughs. NICEIC & NAPIT approved engineers, fixed prices."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

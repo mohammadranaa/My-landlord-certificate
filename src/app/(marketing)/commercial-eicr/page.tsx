@@ -110,7 +110,7 @@ const faqSchema = {
       name: "How often is a commercial EICR required?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The IET Wiring Regulations (BS 7671) recommend a commercial EICR every 3–5 years, or whenever ownership changes. Some insurance policies and commercial leases specify a shorter interval. High-risk premises such as swimming pools and petrol stations require annual inspection. Always follow the interval recommended in the previous EICR report.",
+        text: "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops — 5 years; industrial premises — 3 years; HMO common parts — 5 years; swimming pools — 1 year; construction site temporary installations — 3 months. A change of occupancy or significant change of use also triggers a new EICR. Always follow the interval stated on the previous EICR report.",
       },
     },
     {
@@ -159,7 +159,7 @@ const faqItems = [
   {
     question: "How often is a commercial EICR required?",
     answer:
-      "The IET Wiring Regulations (BS 7671) recommend a commercial EICR every 3–5 years, or whenever there is a change of occupancy or significant change of use. Some commercial leases and insurance policies specify a shorter cycle. The maximum interval for most commercial premises is 5 years. High-risk environments — swimming pools, petrol stations, and premises with a high moisture content — require annual inspection. Always follow the interval stated in the previous EICR report.",
+      "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops — 5 years; industrial premises and factories — 3 years; HMO common parts — 5 years; swimming pools — 1 year; construction site temporary installations — 3 months. A change of occupancy or significant change of use also triggers a new EICR requirement, regardless of when the last one was issued. Some commercial leases and insurance policies specify a shorter cycle than the standard recommendation — always check your lease and policy. The safest rule is to follow the interval stated on the previous EICR report, which reflects the actual condition of that specific installation.",
   },
   {
     question: "What is included in a commercial EICR?",
@@ -169,7 +169,7 @@ const faqItems = [
   {
     question: "How does a commercial EICR differ from a domestic EICR?",
     answer:
-      "Both follow the same BS 7671 Wiring Regulations standard, but a commercial EICR covers larger, more complex installations. Commercial premises often have multiple consumer units or distribution boards, three-phase supplies, higher individual circuit counts, and specialised commercial equipment. Pricing is calculated per consumer unit rather than by bedroom count. The inspection takes longer and must be carried out by an engineer qualified and insured for non-domestic work — all our commercial EICR engineers hold the relevant NICEIC commercial approval.",
+      "Both follow BS 7671, but commercial installations are technically more complex in several important ways. Commercial premises frequently have three-phase supplies (400V between phases rather than 230V single-phase), which require different test equipment, higher-rated protective devices, and specific knowledge of three-phase distribution. Where a domestic property typically has one consumer unit with 10–16 circuits, a commercial premises may have multiple sub-distribution boards, main and sub-main switchgear, and hundreds of circuits across several floors. Commercial installations also include equipment not found domestically — motor starters, transformer supplies, specialist containment systems, and data infrastructure earthing. For these reasons, commercial EICR pricing is based on the number of consumer units and distribution boards rather than bedroom count. All our commercial EICR engineers hold NICEIC commercial approval and carry the appropriate test equipment for three-phase and large-scale installations.",
   },
   {
     question: "What happens if remedial work is needed after a commercial EICR?",
@@ -226,7 +226,7 @@ export default function CommercialEicrPage() {
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A full electrical installation condition report for commercial premises,
-            HMO blocks, and mixed-use buildings. Priced by consumer unit — from £{entryPrice}
+            HMO blocks, and mixed-use buildings. Priced by consumer unit — from £{entryPrice}{" "}
             for a single consumer unit with up to 10 circuits. Written report issued the same day.
           </p>
 
@@ -262,7 +262,7 @@ export default function CommercialEicrPage() {
       {/* ── Quick stats bar ── */}
       <div className="bg-brand-charcoal text-sm py-3">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
+          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-white/60">
             <div className="flex gap-1.5">
               <dt>Entry price</dt>
               <dd className="text-white font-semibold">£{entryPrice}</dd>
@@ -277,7 +277,7 @@ export default function CommercialEicrPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
-              <dd className="text-white font-semibold">NICEIC Approved</dd>
+              <dd className="text-white font-semibold">NICEIC & NAPIT</dd>
             </div>
           </dl>
         </Container>

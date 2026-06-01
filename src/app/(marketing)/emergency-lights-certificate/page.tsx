@@ -108,26 +108,26 @@ export default function EmergencyLightsCertificatePage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-white border-b border-border py-10 lg:py-14">
+      <section className="bg-compliance-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
-              <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
+            <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link></li>
+              <li><Link href="/electrical-safety" className="hover:text-white transition-colors">Electrical Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Emergency Lights Certificate</li>
+              <li className="text-white font-medium">Emergency Lights Certificate</li>
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Emergency Lights Certificate London from £{entryPrice}
           </h1>
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <p className="text-blue-100 mb-4">
             NICEIC approved · Annual testing to BS 5266-1 · Certificate issued same day
           </p>
-          <TrustBadges serviceKey="emergency-lights" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="emergency-lights" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=elc"
@@ -137,7 +137,7 @@ export default function EmergencyLightsCertificatePage() {
             </Link>
             <a
               href="#pricing"
-              className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               View All Prices
             </a>
@@ -278,6 +278,58 @@ export default function EmergencyLightsCertificatePage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* Where is emergency lighting required */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Where is emergency lighting required?
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Emergency lighting — luminaires that automatically switch on when the main power supply
+            fails — is required wherever an interruption to the normal supply creates a risk to
+            occupants. Under the Regulatory Reform (Fire Safety) Order 2005 and BS 5266-1:2016,
+            responsible persons must install, maintain, and test emergency lighting in all
+            non-domestic premises.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Properties that typically require emergency lighting</h3>
+          <ul className="grid sm:grid-cols-2 gap-2 mb-6">
+            {[
+              "HMOs — all escape routes, stairwells, and communal corridors",
+              "Blocks of flats — communal areas and shared escape routes",
+              "Commercial premises — offices, retail units, restaurants, warehouses",
+              "Hotels and guesthouses — corridors, stairwells, exit routes",
+              "Care homes and schools — all areas, with stricter maintenance requirements",
+              "Mixed-use buildings — non-domestic communal areas even where flats sit above",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
+                <span className="mt-0.5 w-4 h-4 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Types of emergency lighting</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            <strong className="text-brand-charcoal">Maintained luminaires</strong> remain lit
+            continuously during normal operation and switch to battery backup during a power failure —
+            typically used for escape route signage. <strong className="text-brand-charcoal">Non-maintained
+            luminaires</strong> only illuminate during a power failure, which is the standard for
+            stairwells and corridors. <strong className="text-brand-charcoal">Central battery
+            systems</strong> use a central battery bank to power all emergency luminaires, with
+            monitoring of each circuit from a single point.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Annual test vs monthly test</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            BS 5266-1 requires an annual full-duration discharge test — each luminaire is activated
+            for its full rated duration (typically 3 hours) to confirm the battery has retained
+            sufficient charge under a simulated mains failure. Monthly brief functional tests (15-second
+            activations) are the responsibility of the building manager or responsible person and
+            should be logged in the fire safety logbook. Our engineer can demonstrate the correct
+            monthly test procedure during the annual visit.
+          </p>
         </section>
 
         {/* FAQs */}

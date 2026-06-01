@@ -58,6 +58,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Non-www → www (canonical domain consolidation)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "mylandlordcertificate.co.uk" }],
+        destination: "https://www.mylandlordcertificate.co.uk/:path*",
+        permanent: true,
+      },
       // Nested commercial URLs → canonical top-level URLs
       { source: "/electrical-safety/commercial-eicr", destination: "/commercial-eicr", permanent: true },
       { source: "/gas-safety/cp42", destination: "/commercial-gas-safety-certificate", permanent: true },

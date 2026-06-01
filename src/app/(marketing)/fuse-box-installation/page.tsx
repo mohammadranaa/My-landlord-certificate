@@ -113,26 +113,26 @@ export default function FuseBoxInstallationPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-white border-b border-border py-10 lg:py-14">
+      <section className="bg-compliance-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
-              <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
+            <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/electrical-safety" className="hover:text-compliance-blue transition-colors">Electrical Safety</Link></li>
+              <li><Link href="/electrical-safety" className="hover:text-white transition-colors">Electrical Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Fuse Box Installation</li>
+              <li className="text-white font-medium">Fuse Box Installation</li>
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Fuse Box Installation London from £{entryPrice}
           </h1>
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
-            NICEIC approved · Supply &amp; install · Part P self-certified · EICR included
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <p className="text-blue-100 mb-4">
+            NICEIC & NAPIT approved · Supply &amp; install · Part P self-certified · EICR included
           </p>
-          <TrustBadges serviceKey="fuse-box" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="fuse-box" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
               href="/book?service=fuse-box"
@@ -142,7 +142,7 @@ export default function FuseBoxInstallationPage() {
             </Link>
             <a
               href="#pricing"
-              className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               View All Prices
             </a>
@@ -168,7 +168,7 @@ export default function FuseBoxInstallationPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
-              <p className="font-bold text-white">NICEIC</p>
+              <p className="font-bold text-white">NICEIC & NAPIT</p>
             </div>
           </div>
         </div>
@@ -283,6 +283,54 @@ export default function FuseBoxInstallationPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* Why old fuse boards need replacing */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Why older London properties need a new consumer unit
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Many pre-2000s rental properties across London still have rewirable fuse boards or early
+            consumer units that lack the RCD protection required by the 18th Edition Wiring Regulations
+            (BS 7671:2018+A2:2022). These boards were installed when standards were less stringent and
+            cannot be upgraded — replacement is the only compliant solution.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">The problem with old fuse boards</h3>
+          <ul className="space-y-2 mb-6">
+            {[
+              "Rewirable and cartridge fuse boards provide overcurrent protection only — they cannot detect earth faults or shock currents",
+              "No RCD protection means a fault to earth or a person contacting a live part may not be disconnected fast enough to prevent serious injury",
+              "The 18th Edition requires RCD protection on all socket outlets rated up to 32A in dwellings — old boards cannot be updated to meet this requirement without full replacement",
+              "An EICR that codes the consumer unit as C2 (potentially dangerous) triggers a 28-day remediation deadline — replacement is typically the only resolution",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 flex items-center justify-center shrink-0 text-xs font-bold text-brand-charcoal">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">What RCDs and RCBOs do</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            An RCD (Residual Current Device) monitors the current flowing in and out of a circuit.
+            If there is an imbalance of as little as 30mA — indicating current is flowing through a
+            person — it trips within 40ms, fast enough to prevent a fatal shock. RCBOs (Residual
+            Current Breakers with Overcurrent protection) provide both overcurrent and earth fault
+            protection per individual circuit, giving maximum protection and making faults much easier
+            to isolate without disrupting the whole property.
+          </p>
+
+          <h3 className="text-lg font-semibold text-brand-charcoal mb-3">Part P of the Building Regulations</h3>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            Consumer unit replacement is notifiable work under Part P of the Building Regulations
+            (England). Either a Building Control notice must be submitted before work starts, or the
+            work must be carried out by a registered competent person scheme member who can self-certify.
+            As NICEIC approved contractors, we self-certify on your behalf — you receive a Building
+            Regulations compliance certificate at no extra charge, automatically, without any contact
+            with your local authority.
+          </p>
         </section>
 
         {/* FAQs */}

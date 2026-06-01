@@ -174,10 +174,11 @@ export default function FireSafetyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Accredited</p>
+              <p className="text-2xl font-bold text-compliance-blue mb-2">BAFE · IFE · IFSM</p>
               <p className="text-sm text-brand-grey">
-                Fire risk assessors and engineers hold recognised qualifications under the
-                Institute of Fire Safety Managers (IFSM) framework.
+                Our fire safety engineers hold certifications across BAFE (SP205, SP203-1 &amp;
+                SP101 schemes), IFE (Institution of Fire Engineers), and IFSM — meeting the
+                strictest professional standards for insurers, local authorities, and managing agents.
               </p>
             </div>
             <div>
