@@ -676,6 +676,219 @@ export default function FireRiskAssessmentPage() {
           </p>
         </section>
 
+        {/* ── 5-step process ── */}
+        <section aria-labelledby="five-steps-heading">
+          <Heading level={2} id="five-steps-heading" className="mb-4">
+            How a fire risk assessment works — the 5 steps
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-8">
+            A Fire Risk Assessment is not a form — it is a structured process defined in
+            UK government guidance. Here are the five official steps and what each
+            involves in a residential setting.
+          </p>
+          <ol className="space-y-6" role="list">
+            {[
+              {
+                step: "1",
+                title: "Identify fire hazards",
+                body: "The assessor inspects every area of the property for: sources of ignition (electrical equipment, gas appliances, portable heaters, smoking areas); sources of fuel (furniture, bedding, curtains, paper, cooking materials, rubbish accumulations); and sources of oxygen (normal air, any oxidising chemicals stored on site).",
+              },
+              {
+                step: "2",
+                title: "Identify people at risk",
+                body: "The assessment considers all occupants — particularly those most vulnerable: sleeping occupants (slower to respond to alarms), people with disabilities or mobility impairments, HMO tenants who may not know each other or the building layout, and any children in the property.",
+              },
+              {
+                step: "3",
+                title: "Evaluate, remove or reduce risk",
+                body: "Based on the hazards and people identified, the assessor evaluates how likely a fire is and how serious the consequences would be. They then recommend: removing the hazard where possible; reducing the risk with fire doors, detection systems or emergency lighting; or documenting the residual risk where it cannot be eliminated.",
+              },
+              {
+                step: "4",
+                title: "Record, plan and communicate",
+                body: "Findings are written up in a formal report covering: all identified hazards, existing fire safety measures, a prioritised action plan (immediate, short-term, ongoing), a recommended evacuation procedure, and any Personal Emergency Evacuation Plans (PEEPs) required for disabled occupants.",
+              },
+              {
+                step: "5",
+                title: "Review and update",
+                body: "The assessment must be reviewed after any fire or near-miss, significant building changes, a change in number of occupants, new activities that introduce new risks — and as a minimum annually. An out-of-date FRA provides no legal protection.",
+              },
+            ].map(({ step, title, body }) => (
+              <li key={step} className="flex gap-5">
+                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-compliance-blue text-white flex items-center justify-center font-bold text-sm">
+                  {step}
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{title}</p>
+                  <p className="text-brand-charcoal/80 text-sm leading-relaxed">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ── What the assessor inspects ── */}
+        <section aria-labelledby="inspection-detail-heading">
+          <Heading level={2} id="inspection-detail-heading" className="mb-4">
+            What the assessor looks at in your property
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            During the site visit, the assessor systematically examines eight areas.
+            Each finding is recorded in the written report with a risk rating and a
+            recommended action.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3">
+            {[
+              {
+                label: "Escape routes",
+                detail: "Are all corridors, stairwells and final exits unobstructed, unlocked and clearly signed? A blocked corridor is an immediate risk.",
+              },
+              {
+                label: "Fire doors",
+                detail: "Are fire doors self-closing, undamaged, and fitted with intact intumescent seals and cold smoke seals? Propped fire doors are a common and serious finding.",
+              },
+              {
+                label: "Smoke and heat detection",
+                detail: "Are alarms fitted in appropriate locations? Are they interlinked? Have they been tested? Are they within their service life?",
+              },
+              {
+                label: "Emergency lighting",
+                detail: "Do escape routes have working emergency lights? Has the required 3-hour annual discharge test been carried out and recorded?",
+              },
+              {
+                label: "Fire extinguishers",
+                detail: "Are the correct types present — water for general areas, CO₂ near electrical equipment, wet chemical in kitchens? Are they within their annual service date?",
+              },
+              {
+                label: "Ignition sources",
+                detail: "Are electrical appliances maintained? Is there evidence of overloaded sockets, damaged cables, or unsafe DIY electrical work?",
+              },
+              {
+                label: "Combustible materials",
+                detail: "Is there excessive rubbish accumulation, furniture stored in corridors, or flammable materials stored near heat sources or electrical equipment?",
+              },
+              {
+                label: "Building fabric",
+                detail: "Are fire-separating walls and floors intact? Are there unsealed holes around pipes or cables that could allow fire or smoke to spread between floors or units?",
+              },
+            ].map((item) => (
+              <li
+                key={item.label}
+                className="flex items-start gap-3 rounded-xl border border-border bg-warm-white p-4"
+              >
+                <span className="mt-0.5 w-5 h-5 rounded-full bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0 text-xs font-bold">
+                  ✓
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal text-sm mb-0.5">{item.label}</p>
+                  <p className="text-xs text-brand-grey leading-relaxed">{item.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ── Fire extinguisher types ── */}
+        <section aria-labelledby="extinguisher-heading">
+          <Heading level={2} id="extinguisher-heading" className="mb-4">
+            Fire extinguisher types for landlords
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Using the wrong extinguisher can make a fire significantly worse. Every FRA
+            checks whether the correct types are present. Here is a plain-English guide.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {[
+              {
+                colour: "Red label",
+                label: "Water",
+                borderClass: "border-red-200",
+                badgeClass: "bg-red-100 text-red-700",
+                forFires: "Wood, paper, textiles (Class A fires)",
+                locations: "General areas, corridors, communal spaces",
+                caution: null,
+                neverUse: "Electrical equipment, cooking oil, gas fires",
+              },
+              {
+                colour: "Black label",
+                label: "CO₂",
+                borderClass: "border-gray-400",
+                badgeClass: "bg-gray-200 text-gray-800",
+                forFires: "Electrical equipment and flammable liquids (Class B)",
+                locations: "Near electrical panels, meter cupboards, IT equipment",
+                caution: "Very cold discharge — do not hold the horn directly",
+                neverUse: null,
+              },
+              {
+                colour: "Yellow label",
+                label: "Wet Chemical",
+                borderClass: "border-yellow-300",
+                badgeClass: "bg-yellow-100 text-yellow-800",
+                forFires: "Cooking oils and fats (Class F — chip pans, fryers)",
+                locations: "Any kitchen with a deep fat fryer or range",
+                caution: null,
+                neverUse: "Never substitute water on cooking oil — it causes a steam explosion",
+              },
+              {
+                colour: "Cream label",
+                label: "Foam",
+                borderClass: "border-amber-200",
+                badgeClass: "bg-amber-50 text-amber-800",
+                forFires: "Flammable liquids (Class B) and general Class A fires",
+                locations: "Garages, storage areas, plant rooms",
+                caution: null,
+                neverUse: "Electrical equipment (unless rated for electrical use)",
+              },
+            ].map((e) => (
+              <div
+                key={e.label}
+                className={`rounded-xl border ${e.borderClass} bg-warm-white p-4`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${e.badgeClass}`}>
+                    {e.colour}
+                  </span>
+                  <span className="font-bold text-brand-charcoal text-sm">{e.label}</span>
+                </div>
+                <dl className="space-y-2 text-xs">
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">For</dt>
+                    <dd className="text-brand-charcoal/80">{e.forFires}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">Common locations</dt>
+                    <dd className="text-brand-charcoal/80">{e.locations}</dd>
+                  </div>
+                  {e.caution && (
+                    <div>
+                      <dt className="text-brand-amber font-semibold uppercase tracking-wide mb-0.5">Caution</dt>
+                      <dd className="text-brand-charcoal/80">{e.caution}</dd>
+                    </div>
+                  )}
+                  {e.neverUse && (
+                    <div>
+                      <dt className="text-red-600 font-semibold uppercase tracking-wide mb-0.5">Never use on</dt>
+                      <dd className="text-brand-charcoal/80">{e.neverUse}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+            ))}
+          </div>
+          <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-4 text-sm text-brand-charcoal/80">
+            <strong className="text-brand-charcoal">HMOs and blocks of flats: </strong>
+            Most require at least one water extinguisher per floor and a CO₂ extinguisher
+            near any electrical distribution boards. Any kitchen with cooking equipment
+            requires a wet chemical extinguisher as a minimum.{" "}
+            <Link
+              href="/fire-extinguisher-testing"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              Book fire extinguisher servicing →
+            </Link>
+          </div>
+        </section>
+
         {/* ── Cross-sell ── */}
         <section aria-labelledby="related-heading">
           <Heading level={2} id="related-heading" className="mb-4">
