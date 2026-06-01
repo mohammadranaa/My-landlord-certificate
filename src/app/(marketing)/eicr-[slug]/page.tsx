@@ -18,218 +18,13 @@ import {
   getPriceForGasSafety,
   getPriceForPAT,
 } from "@/lib/pricing";
+import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
+import { SITE_URL } from "@/lib/constants";
 
 const entryPrice = getPriceForEICR("studio");
 
-type BoroughData = {
-  name: string;
-  postcodes: string;
-  context: string;
-};
-
-const BOROUGHS: Record<string, BoroughData> = {
-  "barking-dagenham": {
-    name: "Barking & Dagenham",
-    postcodes: "RM8, RM9, RM10, IG11",
-    context:
-      "Mix of post-war council-built and newer private rentals, high HMO density around Barking town centre",
-  },
-  barnet: {
-    name: "Barnet",
-    postcodes: "N2, N3, N11, N12, N20, EN4, EN5",
-    context:
-      "Largely Victorian and Edwardian semis, significant buy-to-let stock in East Barnet and New Barnet",
-  },
-  bexley: {
-    name: "Bexley",
-    postcodes: "DA1, DA5, DA6, DA7, DA14, DA15, DA16",
-    context:
-      "Predominantly suburban houses, growing private rental sector in Sidcup and Welling",
-  },
-  brent: {
-    name: "Brent",
-    postcodes: "HA0, HA9, NW2, NW6, NW10",
-    context:
-      "High HMO density, large Victorian terrace stock in Willesden and Kilburn, significant rental market",
-  },
-  bromley: {
-    name: "Bromley",
-    postcodes: "BR1, BR2, BR3, BR4, BR5, BR6, BR7",
-    context:
-      "Suburban mix of Victorian and post-war stock, active rental market in Beckenham and Bromley town",
-  },
-  camden: {
-    name: "Camden",
-    postcodes: "NW1, NW3, NW5, WC1",
-    context:
-      "High-value Victorian and Georgian properties, dense rental market in Kentish Town and Gospel Oak, many HMOs",
-  },
-  "city-of-london": {
-    name: "City of London",
-    postcodes: "EC1, EC2, EC3, EC4",
-    context:
-      "Predominantly commercial and serviced apartments, high-specification electrical installations",
-  },
-  croydon: {
-    name: "Croydon",
-    postcodes: "CR0, CR2, CR7",
-    context:
-      "Large Victorian terrace stock, one of London's busiest HMO markets, significant rental demand",
-  },
-  ealing: {
-    name: "Ealing",
-    postcodes: "W3, W5, W7, W13, UB1, UB2",
-    context:
-      "Victorian and Edwardian housing stock in Acton and Southall, diverse and active rental market",
-  },
-  enfield: {
-    name: "Enfield",
-    postcodes: "EN1, EN2, EN3",
-    context:
-      "Mix of Victorian and post-war properties, growing HMO market in Edmonton and Ponders End",
-  },
-  greenwich: {
-    name: "Greenwich",
-    postcodes: "SE3, SE7, SE9, SE10, SE18",
-    context:
-      "Mix of Victorian terraces and significant new-build developments at Greenwich Peninsula",
-  },
-  hackney: {
-    name: "Hackney",
-    postcodes: "E2, E5, E8, E9, N1, N16",
-    context:
-      "Dense Victorian terrace stock, one of London's highest rental densities, many HMOs in Stoke Newington",
-  },
-  "hammersmith-fulham": {
-    name: "Hammersmith & Fulham",
-    postcodes: "W6, W12, W14, SW6",
-    context:
-      "High-value Victorian and Edwardian stock, strong rental demand in Shepherd's Bush and Fulham",
-  },
-  haringey: {
-    name: "Haringey",
-    postcodes: "N4, N8, N15, N17, N22",
-    context:
-      "Victorian terraces dominant, high HMO concentration in Tottenham and Wood Green",
-  },
-  harrow: {
-    name: "Harrow",
-    postcodes: "HA1, HA2, HA3",
-    context:
-      "Edwardian and post-war suburban stock, growing rental market particularly in South Harrow",
-  },
-  havering: {
-    name: "Havering",
-    postcodes: "RM1, RM2, RM3, RM11, RM12",
-    context:
-      "Predominantly suburban houses, growing private rental sector in Romford and Hornchurch",
-  },
-  hillingdon: {
-    name: "Hillingdon",
-    postcodes: "UB3, UB4, UB7, UB8, UB10",
-    context:
-      "Mixed housing stock, strong rental demand near Heathrow and Uxbridge, diverse property types",
-  },
-  hounslow: {
-    name: "Hounslow",
-    postcodes: "TW3, TW4, TW5, TW7, TW8, TW14",
-    context:
-      "Diverse rental market boosted by Heathrow proximity, Victorian and post-war mix in Chiswick and Brentford",
-  },
-  islington: {
-    name: "Islington",
-    postcodes: "N1, N5, N7, EC1V",
-    context:
-      "Georgian and Victorian stock, among London's highest rental demand per square mile, many purpose-converted HMOs",
-  },
-  "kensington-chelsea": {
-    name: "Kensington & Chelsea",
-    postcodes: "W8, W10, W11, SW3, SW10",
-    context:
-      "London's highest-value housing stock, Victorian mansion conversions, significant rental market in North Kensington",
-  },
-  "kingston-upon-thames": {
-    name: "Kingston upon Thames",
-    postcodes: "KT1, KT2",
-    context:
-      "Mix of Victorian and inter-war properties, active rental market around Kingston town centre and Surbiton",
-  },
-  lambeth: {
-    name: "Lambeth",
-    postcodes: "SE1, SE5, SE11, SE24, SW2, SW4, SW8, SW9",
-    context:
-      "High rental density, Victorian terraces in Brixton and Stockwell, many purpose-converted flats",
-  },
-  lewisham: {
-    name: "Lewisham",
-    postcodes: "SE4, SE6, SE8, SE12, SE13, SE23",
-    context:
-      "Victorian terraces, active HMO market in Catford and Lewisham town, significant recent development",
-  },
-  merton: {
-    name: "Merton",
-    postcodes: "SW19, SW20, CR4",
-    context:
-      "Suburban mix of Victorian and 1930s stock, active rental market in Wimbledon and Mitcham",
-  },
-  newham: {
-    name: "Newham",
-    postcodes: "E6, E7, E12, E13, E15, E16",
-    context:
-      "High HMO density, significant regeneration in Stratford, mix of Victorian stock and new builds",
-  },
-  redbridge: {
-    name: "Redbridge",
-    postcodes: "IG1, IG2, IG3, IG4, IG6",
-    context:
-      "Suburban with growing private rental sector, Victorian and post-war mix in Ilford and Woodford",
-  },
-  "richmond-upon-thames": {
-    name: "Richmond upon Thames",
-    postcodes: "TW1, TW9, TW10, KT4",
-    context:
-      "High-value riverside properties, Victorian and Georgian stock, premium rental market",
-  },
-  southwark: {
-    name: "Southwark",
-    postcodes: "SE1, SE5, SE15, SE16, SE17, SE22",
-    context:
-      "Mix of Victorian terraces and significant new-build stock, high rental density in Bermondsey and Peckham",
-  },
-  sutton: {
-    name: "Sutton",
-    postcodes: "SM1, SM2, SM3, SM5, SM6",
-    context:
-      "Predominantly suburban, mix of Victorian, inter-war and post-war properties, steady rental demand",
-  },
-  "tower-hamlets": {
-    name: "Tower Hamlets",
-    postcodes: "E1, E2, E3, E14",
-    context:
-      "Highest rental density in London, mix of Victorian terraces and significant new-build Canary Wharf stock",
-  },
-  "waltham-forest": {
-    name: "Waltham Forest",
-    postcodes: "E4, E10, E11, E17",
-    context:
-      "Victorian terraces dominant in Walthamstow, rapidly growing rental market, many first-time landlord properties",
-  },
-  wandsworth: {
-    name: "Wandsworth",
-    postcodes: "SW11, SW12, SW17, SW18",
-    context:
-      "Active rental market, Victorian terraces in Battersea and Tooting, high landlord density",
-  },
-  westminster: {
-    name: "Westminster",
-    postcodes: "W1, W2, SW1",
-    context:
-      "Central London's highest-value rental market, Georgian and Victorian mansion conversions, many short-let and long-let properties",
-  },
-};
-
 export async function generateStaticParams() {
-  return Object.keys(BOROUGHS).map((slug) => ({ slug }));
+  return ALL_BOROUGHS.map((b) => ({ slug: b.slug }));
 }
 
 export async function generateMetadata({
@@ -238,18 +33,18 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const borough = BOROUGHS[slug];
+  const borough = getBoroughData(slug);
   if (!borough) return {};
   return {
     title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
     alternates: {
-      canonical: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+      canonical: `${SITE_URL}/eicr-${slug}`,
     },
     openGraph: {
       title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
       description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
-      url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+      url: `${SITE_URL}/eicr-${slug}`,
     },
   };
 }
@@ -260,14 +55,16 @@ export default async function EICRBoroughPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const borough = BOROUGHS[slug];
+  const borough = getBoroughData(slug);
   if (!borough) notFound();
+
+  const postcodeStr = borough.postcodes.join(", ");
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: `My Landlord Certificate — ${borough.name}`,
-    url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+    url: `${SITE_URL}/eicr-${slug}`,
     areaServed: { "@type": "City", name: borough.name },
     priceRange: `from £${entryPrice}`,
   };
@@ -276,12 +73,12 @@ export default async function EICRBoroughPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: `EICR ${borough.name} — Electrical Installation Condition Report`,
-    url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+    url: `${SITE_URL}/eicr-${slug}`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day.`,
     provider: {
       "@type": "LocalBusiness",
       name: "My Landlord Certificate",
-      url: "https://www.mylandlordcertificate.co.uk",
+      url: SITE_URL,
     },
     areaServed: { "@type": "City", name: borough.name },
     offers: {
@@ -289,7 +86,7 @@ export default async function EICRBoroughPage({
       price: `${entryPrice}`,
       priceCurrency: "GBP",
       availability: "https://schema.org/InStock",
-      url: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+      url: `${SITE_URL}/eicr-${slug}`,
     },
   };
 
@@ -301,19 +98,19 @@ export default async function EICRBoroughPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.mylandlordcertificate.co.uk",
+        item: SITE_URL,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "EICR London",
-        item: "https://www.mylandlordcertificate.co.uk/eicr-london",
+        item: `${SITE_URL}/eicr-london`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: `EICR ${borough.name}`,
-        item: `https://www.mylandlordcertificate.co.uk/eicr-${slug}`,
+        item: `${SITE_URL}/eicr-${slug}`,
       },
     ],
   };
@@ -340,7 +137,7 @@ export default async function EICRBoroughPage({
       question: "What happens if my EICR fails?",
       answer:
         "An EICR is classified as 'unsatisfactory' if the engineer finds a C1 (immediate danger) or C2 (potentially dangerous) code. C1 hazards must be made safe by the engineer before leaving the property. C2 observations must be remedied within 28 days and evidenced in writing to your local authority before the property can be legally let. C3 codes (improvement recommended) do not cause the EICR to fail — the property can still receive a satisfactory result. We can arrange remedial works through our network of NICEIC approved electricians.",
-  },
+    },
   ];
 
   const faqSchema = {
@@ -409,7 +206,7 @@ export default async function EICRBoroughPage({
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Postcodes covered: {borough.postcodes}. Same-week appointments
+            Postcodes covered: {postcodeStr}. Same-week appointments
             available — book online in under 3 minutes.
           </p>
 
@@ -511,21 +308,14 @@ export default async function EICRBoroughPage({
             EICR in {borough.name} — local property context
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            {borough.context}. Our NICEIC approved electricians are experienced
-            with the specific electrical characteristics common to properties in
-            the {borough.postcodes} postcode areas and regularly carry out EICR
-            inspections across {borough.name} for private landlords, letting
-            agents and HMO operators.
+            {borough.propertyContext}
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Properties in {borough.name} span a wide range of ages and construction
-            types. Older properties — particularly Victorian and Edwardian terraces
-            common in many parts of the borough — may require more careful
-            assessment of earthing arrangements, consumer unit condition, and
-            wiring insulation. Our engineers are trained to assess all installation
-            types accurately and to explain any observations clearly, so you
-            understand exactly what any C-codes mean and what action — if any —
-            is required.
+            {borough.landlordContext} Our NICEIC approved electricians are
+            experienced with the specific electrical characteristics common to
+            properties in the {postcodeStr} postcode areas and regularly carry out
+            EICR inspections across {borough.name} for private landlords, letting
+            agents and HMO operators.
           </p>
 
           <div className="rounded-xl bg-warm-white border border-border p-5">
@@ -533,7 +323,7 @@ export default async function EICRBoroughPage({
               Postcodes covered in {borough.name}
             </p>
             <p className="text-sm text-brand-grey">
-              {borough.postcodes} and surrounding areas. Enter your full postcode
+              {postcodeStr} and surrounding areas. Enter your full postcode
               during booking to confirm coverage and availability.
             </p>
           </div>
@@ -672,6 +462,40 @@ export default async function EICRBoroughPage({
             ))}
           </div>
         </section>
+
+        {/* ── Nearby borough pages ─────────────────────────────────────────── */}
+        {borough.nearbyBoroughs.length > 0 && (
+          <section aria-labelledby="nearby-boroughs-heading">
+            <Heading level={2} id="nearby-boroughs-heading" className="mb-4">
+              EICR in nearby boroughs
+            </Heading>
+            <p className="text-brand-grey mb-6">
+              We cover all 33 London boroughs. See EICR pricing and booking for
+              areas near {borough.name}:
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {borough.nearbyBoroughs.map((nearbySlug) => {
+                const nearby = getBoroughData(nearbySlug);
+                if (!nearby) return null;
+                return (
+                  <Link
+                    key={nearbySlug}
+                    href={`/eicr-${nearbySlug}`}
+                    className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
+                  >
+                    <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors">
+                      EICR {nearby.name}
+                    </p>
+                    <p className="text-sm text-brand-grey mt-1">
+                      from £{entryPrice} · {nearby.postcodes.slice(0, 3).join(", ")}
+                      {nearby.postcodes.length > 3 ? " …" : ""}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* ── CTA block ────────────────────────────────────────────────────── */}
         <section

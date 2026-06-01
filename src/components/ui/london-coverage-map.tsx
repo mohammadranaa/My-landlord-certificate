@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useCallback } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { BOROUGH_PATHS } from "@/data/london-borough-paths"
 import { BOROUGH_SLUG_MAP, BOROUGH_DISPLAY_NAME } from "@/data/borough-slug-map"
 
@@ -39,6 +41,7 @@ const entries = Object.entries(BOROUGH_PATHS)
   .filter((e) => e.slug)
 
 export function LondonCoverageMap() {
+  const router = useRouter()
   const [hovered, setHovered] = useState<string | null>(null)
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false, x: 0, y: 0, name: "",
@@ -95,11 +98,12 @@ export function LondonCoverageMap() {
                 stroke="#ffffff"
                 strokeWidth={isHovered ? 1.5 : 0.8}
                 strokeLinejoin="round"
-                style={{ transition: "fill 0.12s ease" }}
+                style={{ transition: "fill 0.12s ease", cursor: "pointer" }}
                 aria-label={BOROUGH_DISPLAY_NAME[slug] ?? geoName}
                 onMouseEnter={(e) => handleEnter(geoName, slug, e)}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
+                onClick={() => router.push(`/eicr-${slug}`)}
               />
             )
           })}
@@ -149,24 +153,25 @@ export function LondonCoverageMap() {
             >
               <div className="bg-brand-charcoal text-white rounded-xl px-3 py-2 text-xs shadow-lg">
                 <p className="font-semibold leading-tight">{tooltip.name}</p>
-                <p className="text-blue-200 text-xs mt-0.5">All certificates from £49.99</p>
+                <p className="text-blue-200 text-xs mt-0.5">Book EICR from £67.99 →</p>
               </div>
             </foreignObject>
           )}
         </svg>
       </div>
 
-      {/* Mobile borough grid — display only, not linked yet */}
+      {/* Mobile borough grid */}
       <div className="sm:hidden">
         <div className="grid grid-cols-2 gap-2">
           {Object.entries(BOROUGH_DISPLAY_NAME).map(([slug, name]) => (
-            <div
+            <Link
               key={slug}
+              href={`/eicr-${slug}`}
               className="text-xs text-center py-2 px-2 rounded-lg border border-border
-                bg-white text-brand-charcoal"
+                bg-white text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
             >
               {name}
-            </div>
+            </Link>
           ))}
         </div>
       </div>
