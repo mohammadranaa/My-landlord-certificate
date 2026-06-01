@@ -604,6 +604,212 @@ export default function PatTestingPage() {
           </ol>
         </section>
 
+        {/* ── Appliance classes ── */}
+        <section aria-labelledby="classes-heading">
+          <Heading level={2} id="classes-heading" className="mb-4">
+            Appliance classes — why they affect your test
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Not all electrical appliances are tested the same way. There are three
+            classes of electrical appliance, and the class determines which tests
+            are required. Your PAT engineer identifies the class of each item before
+            testing.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              {
+                cls: "Class I",
+                subtitle: "Earthed appliances",
+                borderClass: "border-compliance-blue/30",
+                badgeClass: "bg-compliance-blue/10 text-compliance-blue",
+                description:
+                  "Have a metal body and rely on an earth connection for protection. If insulation fails, the earth wire carries fault current safely away and trips the breaker before anyone receives a shock.",
+                examples: "Metal-bodied kettles, irons, tumble dryers, toasters, most power tools",
+                tests: "Earth bond test + insulation resistance test",
+                symbol: "No special marking — Class I is the default for most domestic appliances.",
+              },
+              {
+                cls: "Class II",
+                subtitle: "Double-insulated appliances",
+                borderClass: "border-action-green/30",
+                badgeClass: "bg-action-green/10 text-green-700",
+                description:
+                  "Have two layers of insulation, so no earth connection is needed. Even if the outer layer fails, the inner layer protects the user. Usually have a plastic body.",
+                examples: "Hairdryers, many electric drills, laptop chargers, vacuum cleaners",
+                tests: "Insulation resistance test only — there is no earth to bond",
+                symbol: "Look for a small double-square symbol on the casing or data plate.",
+              },
+              {
+                cls: "Class III",
+                subtitle: "Low-voltage appliances",
+                borderClass: "border-brand-amber/30",
+                badgeClass: "bg-brand-amber/10 text-brand-amber",
+                description:
+                  "Operate at less than 50V AC via a safety isolating transformer. The voltage is low enough that it cannot cause a dangerous electric shock under normal conditions.",
+                examples: "Some LED garden lights, battery charging systems",
+                tests: "Usually visual inspection only",
+                symbol: "Marked with the Roman numeral III or the relevant IEC symbol.",
+              },
+            ].map((c) => (
+              <div key={c.cls} className={`rounded-xl border ${c.borderClass} bg-warm-white p-4`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.badgeClass}`}>
+                    {c.cls}
+                  </span>
+                  <span className="text-sm font-bold text-brand-charcoal">{c.subtitle}</span>
+                </div>
+                <p className="text-xs text-brand-charcoal/80 leading-relaxed mb-3">{c.description}</p>
+                <dl className="space-y-2 text-xs">
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">Examples</dt>
+                    <dd className="text-brand-charcoal/80">{c.examples}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">Tests required</dt>
+                    <dd className="text-brand-charcoal/80 font-medium">{c.tests}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">How to identify</dt>
+                    <dd className="text-brand-charcoal/70">{c.symbol}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── What each test measures ── */}
+        <section aria-labelledby="test-detail-heading">
+          <Heading level={2} id="test-detail-heading" className="mb-4">
+            What happens during a PAT test
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            PAT testing is a two-part process — a visual inspection followed by
+            electronic testing. Both parts are required. Around 90% of faults
+            are caught visually.
+          </p>
+
+          <div className="rounded-xl border border-border bg-warm-white p-5 mb-4">
+            <p className="font-semibold text-brand-charcoal mb-3 text-sm">
+              Part 1: Visual inspection
+            </p>
+            <ul className="space-y-2">
+              {[
+                {
+                  label: "Cable condition",
+                  detail: "Checked for fraying, cuts, kinking near the plug, and damage where the cable enters the appliance.",
+                },
+                {
+                  label: "Plug condition",
+                  detail: "Cracked casing, bent or corroded pins, and missing or incorrect fuse are all fail conditions.",
+                },
+                {
+                  label: "Fuse rating",
+                  detail: "A 3A fuse for appliances under 700W; 13A for above 700W. A 13A fuse in a 200W lamp is dangerous — it will not blow before the cable overheats.",
+                },
+                {
+                  label: "Signs of overheating",
+                  detail: "Discolouration, burn marks, or melted plastic near the plug or cable entry point.",
+                },
+                {
+                  label: "Cable anchorage",
+                  detail: "The cable must be gripped at the plug body — not pulling directly on the internal terminals.",
+                },
+              ].map((item) => (
+                <li key={item.label} className="flex items-start gap-3 text-sm">
+                  <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-compliance-blue shrink-0 mt-2" />
+                  <span>
+                    <span className="font-medium text-brand-charcoal">{item.label} — </span>
+                    <span className="text-brand-charcoal/70">{item.detail}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-xl border border-border bg-warm-white p-5">
+            <p className="font-semibold text-brand-charcoal mb-3 text-sm">
+              Part 2: Electronic testing
+            </p>
+            <div className="space-y-3">
+              {[
+                {
+                  test: "Earth bond test",
+                  scope: "Class I appliances only",
+                  detail: "Confirms the earth conductor is intact and low-resistance (should be under 0.1 Ohms). A broken earth means the appliance cannot protect against electric shock if insulation fails.",
+                },
+                {
+                  test: "Insulation resistance test",
+                  scope: "All classes",
+                  detail: "Applies 500V to the wiring and measures resistance — should be above 1 Megaohm. Low readings indicate damaged or deteriorated cable insulation.",
+                },
+                {
+                  test: "Leakage current test",
+                  scope: "Where required",
+                  detail: "Measures current flowing from live parts to earth during normal operation. Kept below 0.75mA to prevent shock risk.",
+                },
+              ].map((item) => (
+                <div key={item.test} className="flex gap-3 text-sm">
+                  <span className="mt-0.5 w-2 h-2 rounded-full bg-compliance-blue shrink-0 mt-2" />
+                  <div>
+                    <span className="font-medium text-brand-charcoal">{item.test}</span>
+                    <span className="text-brand-grey text-xs ml-2">({item.scope})</span>
+                    <p className="text-brand-charcoal/70 mt-0.5 leading-relaxed">{item.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Testing frequency ── */}
+        <section aria-labelledby="frequency-heading">
+          <Heading level={2} id="frequency-heading" className="mb-4">
+            PAT testing frequency — how often is enough?
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            There is no single legal interval for PAT testing. The IET (Institution
+            of Engineering and Technology) and HSE provide guidance based on the
+            environment and equipment type. For landlords, the following intervals
+            apply:
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border mb-6">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-brand-charcoal text-white">
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Environment</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Recommended frequency</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {[
+                  { env: "HMO (shared house)", freq: "Annually" },
+                  { env: "Furnished single let", freq: "Every 2 years" },
+                  { env: "Commercial premises", freq: "Annually for most equipment" },
+                  { env: "Commercial kitchens", freq: "Every 6 months" },
+                  { env: "Construction sites", freq: "Every 3 months" },
+                  { env: "Schools", freq: "Annually (IT equipment: every 4 years)" },
+                ].map((row, i) => (
+                  <tr key={row.env} className={i % 2 === 0 ? "bg-white" : "bg-warm-white"}>
+                    <td className="px-4 py-3 text-brand-charcoal font-medium">{row.env}</td>
+                    <td className="px-4 py-3 text-brand-charcoal/80">{row.freq}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-4 text-sm text-brand-charcoal/80">
+            <strong className="text-brand-charcoal">The legal position: </strong>
+            These are recommended intervals, not legal minimums. The key obligation
+            for landlords is that any appliance you supply must be safe under the
+            Electrical Equipment (Safety) Regulations 2016. PAT testing is the
+            recognised way to demonstrate you have checked this. If a tenant is
+            injured by a faulty appliance you provided and you have no PAT records,
+            the absence of testing will be treated as evidence of negligence by
+            courts and insurers alike.
+          </div>
+        </section>
+
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
