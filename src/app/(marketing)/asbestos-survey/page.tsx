@@ -306,6 +306,268 @@ export default function AsbestosSurveyPage() {
           </div>
         </section>
 
+        {/* Types of asbestos */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            The three types of asbestos in UK buildings
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Not all asbestos is the same. UK buildings built before 2000 may contain one or
+            more of three regulated asbestos types, each with different fibre structures,
+            risk levels, and typical locations. Your survey report will identify exactly which
+            type was found.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            {[
+              {
+                colour: "White",
+                name: "Chrysotile",
+                banned: "1999",
+                fibre: "Curly, serpentine fibres",
+                risk: "Lower relative risk",
+                locations: "Roof sheets, floor tiles, cement products, pipe insulation",
+                borderClass: "border-gray-300",
+                badgeClass: "bg-gray-100 text-gray-700",
+              },
+              {
+                colour: "Brown",
+                name: "Amosite",
+                banned: "1986",
+                fibre: "Straight, brittle fibres",
+                risk: "High risk",
+                locations: "Asbestos insulating board (AIB), ceiling tiles, pipe lagging",
+                borderClass: "border-amber-300",
+                badgeClass: "bg-amber-100 text-amber-800",
+              },
+              {
+                colour: "Blue",
+                name: "Crocidolite",
+                banned: "1985",
+                fibre: "Fine, needle-like fibres",
+                risk: "Highest risk",
+                locations: "Pipe lagging, spray coatings, boiler insulation",
+                borderClass: "border-blue-300",
+                badgeClass: "bg-blue-100 text-blue-800",
+              },
+            ].map((a) => (
+              <div key={a.name} className={`rounded-xl border ${a.borderClass} bg-warm-white p-4`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${a.badgeClass}`}>
+                    {a.colour} Asbestos
+                  </span>
+                </div>
+                <p className="font-bold text-brand-charcoal mb-1">{a.name}</p>
+                <p className="text-xs text-brand-grey mb-2">Banned: {a.banned}</p>
+                <p className="text-xs text-brand-charcoal/70 mb-1">{a.fibre}</p>
+                <p className="text-xs font-medium text-brand-charcoal mb-2">{a.risk}</p>
+                <p className="text-xs text-brand-grey leading-relaxed">{a.locations}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
+            <p className="text-sm text-brand-charcoal">
+              <span className="font-semibold text-brand-amber">Important:</span>{" "}
+              You cannot identify asbestos type by looking at it — brown, blue, and white
+              asbestos are not reliably distinguished by colour in building materials. Only
+              UKAS-accredited laboratory analysis of a collected sample confirms the type.
+              Never disturb suspect materials before surveying.
+            </p>
+          </div>
+        </section>
+
+        {/* Where asbestos hides */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Where asbestos hides in London properties
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            London&apos;s housing stock is disproportionately old — around 38% of homes were
+            built before 1944, and a further 30% between 1945 and 1980. This means the vast
+            majority of the city&apos;s private rented sector falls within the pre-2000
+            risk window. These are the locations our surveyors check first:
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3">
+            {[
+              {
+                location: "Artex and textured coatings",
+                detail: "Applied to ceilings and walls until the 1990s. Chrysotile was commonly added to improve adhesion. Sanding, scraping, or drilling through artex releases fibres.",
+              },
+              {
+                location: "Floor tiles and adhesive",
+                detail: "Vinyl floor tiles from the 1960s–80s often contain chrysotile. The black bitumen adhesive beneath them frequently contains amosite. Both must be tested before removal.",
+              },
+              {
+                location: "Pipe lagging",
+                detail: "Older central heating systems used amosite or crocidolite insulation around pipes. Damaged lagging is among the highest-risk ACMs in residential properties.",
+              },
+              {
+                location: "Asbestos insulating board (AIB)",
+                detail: "Used as panels in airing cupboards, around boilers, and as fire protection around structural steelwork. Typically amosite — high risk if disturbed.",
+              },
+              {
+                location: "Roof sheets and soffits",
+                detail: "Older extensions and garages often used corrugated asbestos cement sheets. Chrysotile content is lower risk when intact, but degrades with weathering.",
+              },
+              {
+                location: "Loose-fill loft insulation",
+                detail: "A small number of 1960s–70s properties had loose amosite or crocidolite fibre blown into loft spaces. Rare but extremely hazardous — do not enter the loft if suspected.",
+              },
+              {
+                location: "Behind electrical panels",
+                detail: "Asbestos millboard was used as heat insulation behind fuse boxes and electrical panels in older properties. Electrical upgrades can disturb this without warning.",
+              },
+            ].map((item) => (
+              <li key={item.location} className="flex items-start gap-3 rounded-xl border border-border bg-warm-white p-4">
+                <span className="mt-0.5 w-5 h-5 rounded-full bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0 text-xs font-bold">
+                  ✓
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal text-sm mb-1">{item.location}</p>
+                  <p className="text-xs text-brand-grey leading-relaxed">{item.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Survey types comparison */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Which type of asbestos survey do you need?
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            CAR 2012 defines two main survey types with different legal triggers and scope.
+            Commissioning the wrong type is not just an administrative error — it can lead to
+            prosecution and invalidate your insurance.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {[
+              {
+                type: "Management Survey",
+                subtitle: "Type 2 — for occupied buildings",
+                purpose: "To locate and assess the condition of ACMs likely to be disturbed during normal occupation and low-risk maintenance.",
+                when: "Recommended before any planned maintenance or renovation in a pre-2000 building. Required for non-domestic duty holders under CAR 2012 Regulation 4.",
+                involves: "Full visual inspection of accessible areas. Minor disturbance of finishes where safe. Sample collection from suspect materials.",
+                limitations: "Does not access concealed or hidden areas. Cannot be used to clear a building before major refurbishment or demolition.",
+                recommended: true,
+              },
+              {
+                type: "Refurbishment & Demolition Survey",
+                subtitle: "Type 3 — before structural works",
+                purpose: "To locate ALL ACMs — including those in concealed, hidden, or inaccessible areas — before a building or part of it is refurbished or demolished.",
+                when: "Legally required under CAR 2012 before major refurbishment or demolition. Must be completed before principal contractor is appointed.",
+                involves: "Fully intrusive inspection. Opening up cavities, removing finishes, accessing roof voids and structural elements. Higher PPE and containment requirements.",
+                limitations: "The building or affected area must be unoccupied during the survey. Causes significant disturbance.",
+                recommended: false,
+              },
+            ].map((s) => (
+              <div
+                key={s.type}
+                className={`rounded-xl border p-5 ${s.recommended ? "border-compliance-blue bg-compliance-blue/5" : "border-border bg-warm-white"}`}
+              >
+                {s.recommended && (
+                  <span className="inline-block text-xs font-semibold text-white bg-compliance-blue px-2 py-0.5 rounded-full mb-3">
+                    We carry out this survey
+                  </span>
+                )}
+                <p className="font-bold text-brand-charcoal mb-0.5">{s.type}</p>
+                <p className="text-xs text-brand-grey mb-4">{s.subtitle}</p>
+                <dl className="space-y-3 text-sm">
+                  <div>
+                    <dt className="font-semibold text-brand-charcoal text-xs uppercase tracking-wide mb-0.5">Purpose</dt>
+                    <dd className="text-brand-charcoal/80 text-xs leading-relaxed">{s.purpose}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-brand-charcoal text-xs uppercase tracking-wide mb-0.5">When needed</dt>
+                    <dd className="text-brand-charcoal/80 text-xs leading-relaxed">{s.when}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-brand-charcoal text-xs uppercase tracking-wide mb-0.5">What it involves</dt>
+                    <dd className="text-brand-charcoal/80 text-xs leading-relaxed">{s.involves}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-brand-charcoal text-xs uppercase tracking-wide mb-0.5">Limitations</dt>
+                    <dd className="text-brand-charcoal/80 text-xs leading-relaxed">{s.limitations}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
+            <p className="text-sm text-brand-charcoal">
+              <span className="font-semibold text-brand-amber">Critical rule:</span>{" "}
+              Starting refurbishment or demolition on a pre-2000 building without a
+              Refurbishment &amp; Demolition Survey in place is a criminal offence under CAR
+              2012 Regulation 5. The Health &amp; Safety Executive actively prosecutes
+              principal contractors and building owners. A management survey does not satisfy
+              this requirement.
+            </p>
+          </div>
+        </section>
+
+        {/* Reading the report */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            How to read your asbestos survey report
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Your written report includes an Asbestos Register — a structured table of every
+            suspect material identified during the survey. Here is what each column means:
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-brand-charcoal text-white">
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Column</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">What it means</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {[
+                  {
+                    col: "Reference number",
+                    meaning: "A unique ID (e.g. S01, S02) linking the table row to the corresponding photograph and location diagram in the report.",
+                  },
+                  {
+                    col: "Location",
+                    meaning: "The room, floor, and specific position where the material was found or sampled (e.g. 'Ground floor kitchen — ceiling above boiler').",
+                  },
+                  {
+                    col: "Material description",
+                    meaning: "What the material is — e.g. 'Textured coating (artex)', 'Vinyl floor tile', 'Pipe lagging', 'Insulating board panel'.",
+                  },
+                  {
+                    col: "Asbestos type",
+                    meaning: "The fibre type confirmed by laboratory analysis: Chrysotile (white), Amosite (brown), Crocidolite (blue), or 'No asbestos detected (NAD)'.",
+                  },
+                  {
+                    col: "Condition rating (1–4)",
+                    meaning: "1 = Good / undamaged. 2 = Low damage, small area affected. 3 = Medium damage, significant deterioration. 4 = High damage, material friable or releasing fibres.",
+                  },
+                  {
+                    col: "Risk score (1–4)",
+                    meaning: "Combines condition, accessibility, and likelihood of disturbance. 1 = Very low risk. 2 = Low risk. 3 = Medium risk. 4 = High risk — immediate action recommended.",
+                  },
+                  {
+                    col: "Recommended action",
+                    meaning: "One of: Monitor in place (re-inspect in 12 months) · Repair / re-encapsulate · Encapsulate (seal surface) · Remove by licensed contractor.",
+                  },
+                ].map((row, i) => (
+                  <tr key={row.col} className={i % 2 === 0 ? "bg-white" : "bg-warm-white"}>
+                    <td className="px-4 py-3 font-semibold text-brand-charcoal align-top whitespace-nowrap">{row.col}</td>
+                    <td className="px-4 py-3 text-brand-charcoal/80 leading-relaxed">{row.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-brand-grey mt-4">
+            Any material with a risk score of 3 or 4 requires prompt action before further
+            works. Our surveyors are available to discuss report findings and recommend
+            accredited removal contractors where removal is required.
+          </p>
+        </section>
+
         {/* Cross-sell */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Related services</h2>
