@@ -287,6 +287,217 @@ export default function FireSafetyCertificatePage() {
           </ul>
         </section>
 
+        {/* Detector types */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Smoke detectors vs heat detectors — which does your property need?
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Not all detectors are the same. Using the wrong type in the wrong
+            location causes either missed fires or nuisance alarms — which leads
+            tenants to remove batteries. Here is what each type does and where
+            it belongs.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                type: "Optical (photoelectric) smoke detector",
+                best: "Slow, smouldering fires — burning furniture, overheating wiring",
+                how: "A light beam inside the chamber is scattered when smoke particles enter. The scattered light triggers the alarm.",
+                locations: "Living rooms, bedrooms, hallways",
+                avoid: "Kitchens and bathrooms — cooking steam and shower steam cause frequent false alarms",
+                borderClass: "border-orange-200",
+                badgeClass: "bg-orange-100 text-orange-700",
+              },
+              {
+                type: "Ionisation smoke detector",
+                best: "Fast, flaming fires — burning paper, fast-spreading fires",
+                how: "A tiny amount of radioactive material ionises air in the detector. Smoke disrupts this ionisation and triggers the alarm.",
+                locations: "Hallways (less common today — being replaced by optical and multi-sensor types)",
+                avoid: "Kitchens — more prone to false alarms from cooking than optical types",
+                borderClass: "border-yellow-200",
+                badgeClass: "bg-yellow-100 text-yellow-700",
+              },
+              {
+                type: "Heat detector — fixed temperature type",
+                best: "Kitchens, garages, and utility rooms where cooking smoke or steam is present",
+                how: "Triggers when air temperature reaches a preset level (typically 58°C or 90°C). Unaffected by cooking fumes.",
+                locations: "Kitchens, utility rooms, garages",
+                avoid: "Sleeping areas — slower to respond than smoke detectors and must not be the sole alarm on escape routes",
+                borderClass: "border-red-200",
+                badgeClass: "bg-red-100 text-red-700",
+              },
+              {
+                type: "Multi-sensor detector",
+                best: "General installation in modern systems — fewer false alarms, better detection",
+                how: "Combines optical smoke sensing, heat sensing, and sometimes CO sensing. Intelligent processing reduces false alarms while improving genuine fire detection.",
+                locations: "Any room — particularly useful near kitchens and in HMOs where false alarms are a persistent issue",
+                avoid: null,
+                borderClass: "border-compliance-blue/30",
+                badgeClass: "bg-compliance-blue/10 text-compliance-blue",
+              },
+            ].map((d) => (
+              <div key={d.type} className={`rounded-xl border ${d.borderClass} bg-warm-white p-4`}>
+                <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-3 ${d.badgeClass}`}>
+                  {d.type}
+                </span>
+                <dl className="space-y-2 text-xs">
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">How it works</dt>
+                    <dd className="text-brand-charcoal/80 leading-relaxed">{d.how}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">Best for</dt>
+                    <dd className="text-brand-charcoal/80 leading-relaxed">{d.best}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-brand-grey font-medium uppercase tracking-wide mb-0.5">Recommended in</dt>
+                    <dd className="text-brand-charcoal/80 leading-relaxed">{d.locations}</dd>
+                  </div>
+                  {d.avoid && (
+                    <div>
+                      <dt className="text-red-600 font-semibold uppercase tracking-wide mb-0.5">Avoid in</dt>
+                      <dd className="text-brand-charcoal/80 leading-relaxed">{d.avoid}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* BS 5839 categories */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Understanding fire alarm system categories (BS 5839)
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            All fire alarm systems in the UK must comply with BS 5839. The standard
+            defines system categories based on their purpose and coverage. The
+            category required for your property is specified by the fire risk
+            assessment — here is a plain-English reference:
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border mb-6">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-brand-charcoal text-white">
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Category</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Coverage</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-xs">Typical use</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {[
+                  {
+                    cat: "Category M",
+                    coverage: "Manual call points only — no automatic detection",
+                    use: "Small commercial premises",
+                  },
+                  {
+                    cat: "Category L3",
+                    coverage: "Automatic detection on escape routes only",
+                    use: "Basic HMO, block of flats communal areas",
+                  },
+                  {
+                    cat: "Category L2",
+                    coverage: "Escape routes plus high-risk areas (kitchens, plant rooms)",
+                    use: "Larger HMOs, offices, hotels",
+                  },
+                  {
+                    cat: "Category L1",
+                    coverage: "Full building detection in all areas",
+                    use: "Hospitals, care homes, high-risk buildings",
+                  },
+                  {
+                    cat: "Grade D (domestic)",
+                    coverage: "Mains-powered with battery backup — individual interlinked units. No central panel.",
+                    use: "Single-family homes, simple HMOs",
+                  },
+                ].map((row, i) => (
+                  <tr key={row.cat} className={i % 2 === 0 ? "bg-white" : "bg-warm-white"}>
+                    <td className="px-4 py-3 font-semibold text-brand-charcoal align-top whitespace-nowrap">{row.cat}</td>
+                    <td className="px-4 py-3 text-brand-charcoal/80 leading-relaxed">{row.coverage}</td>
+                    <td className="px-4 py-3 text-brand-charcoal/70">{row.use}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="bg-compliance-blue/5 border border-compliance-blue/20 rounded-xl p-4">
+            <p className="text-sm text-brand-charcoal/80">
+              <span className="font-semibold text-brand-charcoal">For most residential HMOs: </span>
+              A Grade D, Category LD2 or LD3 system (as defined in BS 5839 Part 6 for
+              domestic premises) is required as a minimum. The exact requirement depends
+              on the property layout and number of occupants — your{" "}
+              <Link
+                href="/fire-risk-assessment"
+                className="text-compliance-blue hover:underline font-medium"
+              >
+                fire risk assessment
+              </Link>{" "}
+              will specify what is needed for your specific building.
+            </p>
+          </div>
+        </section>
+
+        {/* Testing schedule */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            How to test and maintain your fire detection system
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            A fire detection system that is never tested gives false confidence. Here
+            are the required testing intervals and what each involves.
+          </p>
+          <div className="space-y-3 mb-6">
+            {[
+              {
+                period: "Weekly",
+                title: "Test button check",
+                body: "Trigger one call point or test button to confirm the alarm sounds correctly. Rotate around all devices over time so every alarm is tested periodically. Log every test in a fire log book — this record is inspected during HMO licence renewals.",
+                borderClass: "border-green-200",
+                badgeClass: "bg-green-100 text-green-700",
+              },
+              {
+                period: "Monthly",
+                title: "Panel inspection",
+                body: "Visually inspect the control panel (if fitted) for fault indicators. Confirm all status lights are normal and no battery warning lights are showing. Record in the fire log book.",
+                borderClass: "border-compliance-blue/30",
+                badgeClass: "bg-compliance-blue/10 text-compliance-blue",
+              },
+              {
+                period: "Annual",
+                title: "Full engineer service",
+                body: "A qualified fire alarm engineer must service the entire system once a year. The service covers: testing every detector individually, testing every call point, checking all sounders and visual alarms, inspecting cables and connections, checking battery charge levels, and updating the logbook. An Annual Fire Alarm Service Certificate is issued after this visit — this is separate from the Fire Safety Certificate issued after a fire risk assessment.",
+                borderClass: "border-brand-amber/30",
+                badgeClass: "bg-brand-amber/10 text-brand-amber",
+              },
+            ].map((item) => (
+              <div key={item.period} className={`rounded-xl border ${item.borderClass} bg-warm-white p-4`}>
+                <div className="flex items-start gap-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${item.badgeClass}`}>
+                    {item.period}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-brand-charcoal text-sm mb-1">{item.title}</p>
+                    <p className="text-sm text-brand-charcoal/70 leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
+            <p className="text-sm text-brand-charcoal">
+              <span className="font-semibold text-brand-amber">Insurance warning:</span>{" "}
+              Failure to service the system annually does not just create a compliance gap —
+              it can void your property insurance if a fire occurs. Many insurers require
+              evidence of annual fire alarm servicing as an explicit policy condition.
+              Keep your Annual Fire Alarm Service Certificate alongside your Fire Safety
+              Certificate and fire risk assessment.
+            </p>
+          </div>
+        </section>
+
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
