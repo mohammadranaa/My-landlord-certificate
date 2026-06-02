@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "EICR Certificate London from £67.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 32 London boroughs. Certificate emailed same day.",
+    "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 33 London boroughs. Certificate emailed same day.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/eicr",
   },
@@ -103,7 +103,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs, including Central London, East London, South London, North London, and West London. Same-week appointments are available across the whole of Greater London. Call us on 0330 133 0066 or book online.",
+      "We cover all 33 London boroughs, including Central London, East London, South London, North London, and West London. Same-week appointments are available across the whole of Greater London. Call us on 0330 133 0066 or book online.",
   },
 ];
 
@@ -122,7 +122,7 @@ const steps = [
     step: "1",
     title: "Book online in 60 seconds",
     description:
-      "Select your property size, pick a date that works for you, and confirm. We cover all 32 London boroughs with same-week slots available.",
+      "Select your property size, pick a date that works for you, and confirm. We cover all 33 London boroughs with same-week slots available.",
   },
   {
     step: "2",
@@ -167,7 +167,7 @@ export default function DomesticEICRPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Same-week appointments · Certificate emailed same day · All 32 London boroughs
+            NICEIC approved · Same-week appointments · Certificate emailed same day · All 33 London boroughs
           </p>
           <TrustBadges serviceKey="eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -364,7 +364,7 @@ export default function DomesticEICRPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. No call-out fees. NICEIC approved electricians.
-              Certificate emailed same day. Same-week appointments across all 32 London boroughs.
+              Certificate emailed same day. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

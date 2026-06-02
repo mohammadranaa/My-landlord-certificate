@@ -677,7 +677,7 @@ export default function EicrPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-8">
             Booking an EICR takes under 3 minutes. Next-day appointments are
-            available across all 32 London boroughs and the wider M25 area.
+            available across all 33 London boroughs and the wider M25 area.
           </p>
 
           <ol className="grid md:grid-cols-3 gap-8" role="list">

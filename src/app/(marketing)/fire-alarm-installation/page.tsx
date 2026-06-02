@@ -9,7 +9,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_PER_ALARM } from "@/lib/pri
 export const metadata: Metadata = {
   title: "Fire Alarm Installation London — £209.99/alarm, Mains-Wired | My Landlord Certificate",
   description:
-    "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. Grade D LD2, BS 5839-6 compliant. Free survey. All 32 London boroughs. Commissioning certificate included.",
+    "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. Grade D LD2, BS 5839-6 compliant. Free survey. All 33 London boroughs. Commissioning certificate included.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-alarm-installation",
   },
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, Barnet, Haringey, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, Barnet, Haringey, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -325,7 +325,7 @@ export default function FireAlarmInstallationPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm installed. Free survey to confirm
-              how many alarms you need. Certificate included. All 32 London boroughs covered.
+              how many alarms you need. Certificate included. All 33 London boroughs covered.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

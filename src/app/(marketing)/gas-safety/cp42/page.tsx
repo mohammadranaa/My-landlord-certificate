@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Commercial Gas Safety Certificate (CP42) London from £159.99 | My Landlord Certificate",
   description:
-    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 32 London boroughs. Same-day certificate.",
+    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 33 London boroughs. Same-day certificate.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 

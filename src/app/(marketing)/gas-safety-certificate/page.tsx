@@ -683,7 +683,7 @@ export default function GasSafetyPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-8">
             Booking a CP12 takes under 3 minutes. Next-day appointments available
-            across all 32 London boroughs and the wider M25 area.
+            across all 33 London boroughs and the wider M25 area.
           </p>
 
           <ol className="grid md:grid-cols-3 gap-8" role="list">
@@ -719,7 +719,7 @@ export default function GasSafetyPage() {
           </ol>
 
           <p className="mt-8 text-sm text-brand-grey">
-            We cover all 32 London boroughs and the wider M25 area.{" "}
+            We cover all 33 London boroughs and the wider M25 area.{" "}
             <Link
               href="/coverage-areas"
               className="text-compliance-blue hover:underline font-medium"

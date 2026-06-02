@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Fuse Box Installation London from £599.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Consumer unit replacement from £599.99. NICEIC approved electricians across all 32 London boroughs. Dual-RCD or RCBO protection, Part P self-certified, EICR included on completion.",
+    "Consumer unit replacement from £599.99. NICEIC approved electricians across all 33 London boroughs. Dual-RCD or RCBO protection, Part P self-certified, EICR included on completion.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fuse-box-installation",
   },
@@ -91,7 +91,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs, including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Hammersmith & Fulham, Ealing, Brent, Camden, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs, including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Hammersmith & Fulham, Ealing, Brent, Camden, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -384,7 +384,7 @@ export default function FuseBoxInstallationPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}, EICR and Part P included. Same-week appointments
-              across all 32 London boroughs.
+              across all 33 London boroughs.
             </p>
             <Link
               href="/book?service=fuse-box"

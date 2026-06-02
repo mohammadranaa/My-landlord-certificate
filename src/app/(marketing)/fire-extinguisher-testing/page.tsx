@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -341,7 +341,7 @@ export default function FireExtinguisherTestingPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. All extinguisher types. Service label
-              issued same day. Same-week appointments across all 32 London boroughs.
+              issued same day. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

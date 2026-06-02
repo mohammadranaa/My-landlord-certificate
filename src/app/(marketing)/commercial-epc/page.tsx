@@ -34,7 +34,7 @@ const serviceSchema = {
   name: "Commercial Energy Performance Certificate (EPC)",
   url: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   description:
-    "Commercial Energy Performance Certificate from £249.99. Required before selling or letting any commercial property. Accredited DEA assessors using SBEM methodology. MEES compliance advice included. All 32 London boroughs covered.",
+    "Commercial Energy Performance Certificate from £249.99. Required before selling or letting any commercial property. Accredited DEA assessors using SBEM methodology. MEES compliance advice included. All 33 London boroughs covered.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -165,7 +165,7 @@ export default function CommercialEPCPage() {
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Same-week appointments across all 32 London boroughs. Fixed pricing
+            Same-week appointments across all 33 London boroughs. Fixed pricing
             by gross internal floor area — no hidden charges.
           </p>
 
@@ -602,7 +602,7 @@ export default function CommercialEPCPage() {
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Fixed price from £{entryPrice}. Accredited DEA assessors, MEES
             compliance advice included, certificate lodged on the national
-            register. Same-week appointments across all 32 London boroughs.
+            register. Same-week appointments across all 33 London boroughs.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Book online or call{" "}

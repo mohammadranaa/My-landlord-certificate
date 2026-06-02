@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, ELC_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 32 London boroughs. Certificate same day.",
+    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 33 London boroughs. Certificate same day.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/emergency-lights-certificate",
   },
@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Westminster, Camden, Islington, Hackney, Southwark, Lambeth, Tower Hamlets, Wandsworth, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including Westminster, Camden, Islington, Hackney, Southwark, Lambeth, Tower Hamlets, Wandsworth, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -382,7 +382,7 @@ export default function EmergencyLightsCertificatePage() {
               Book your emergency lights certificate
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Same-week appointments across all 32 London boroughs.
+              Fixed price from £{entryPrice}. Same-week appointments across all 33 London boroughs.
               Certificate issued same day.
             </p>
             <Link

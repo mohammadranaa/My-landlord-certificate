@@ -18,14 +18,14 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EICR London — from £67.99 — All 32 Boroughs | My Landlord Certificate",
+  title: "EICR London — from £67.99 — All 33 Boroughs | My Landlord Certificate",
   description:
-    "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 32 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed same day.",
+    "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed same day.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-london" },
   openGraph: {
-    title: "EICR London — from £67.99 — All 32 Boroughs Covered",
+    title: "EICR London — from £67.99 — All 33 Boroughs Covered",
     description:
-      "EICR London from £67.99. All 32 London boroughs covered. NICEIC approved and NAPIT certified engineers. Same-day certificate. Book online in under 3 minutes.",
+      "EICR London from £67.99. All 33 London boroughs covered. NICEIC approved and NAPIT certified engineers. Same-day certificate. Book online in under 3 minutes.",
     url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   },
 };
@@ -75,7 +75,7 @@ const serviceSchema = {
   name: "EICR London — Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   description:
-    "EICR (Electrical Installation Condition Report) for London landlords. NICEIC approved and NAPIT certified electricians covering all 32 London boroughs. Fixed pricing from £67.99, certificate emailed same day.",
+    "EICR (Electrical Installation Condition Report) for London landlords. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Fixed pricing from £67.99, certificate emailed same day.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -126,7 +126,7 @@ const faqSchema = {
       name: "How much does an EICR cost in London?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An EICR in London costs from £67.99 for a studio apartment to £199.99 for an 8-bedroom property. London prices from some providers can be higher than the national average — our fixed pricing is the same across all 32 London boroughs with no London surcharge.",
+        text: "An EICR in London costs from £67.99 for a studio apartment to £199.99 for an 8-bedroom property. London prices from some providers can be higher than the national average — our fixed pricing is the same across all 33 London boroughs with no London surcharge.",
       },
     },
     {
@@ -134,7 +134,7 @@ const faqSchema = {
       name: "Do you cover all London boroughs?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — we cover all 32 London boroughs plus the City of London. This includes inner London boroughs such as Hackney, Islington, Lambeth and Tower Hamlets, and outer boroughs such as Croydon, Havering, Hillingdon and Sutton.",
+        text: "Yes — we cover all 33 London boroughs. This includes inner London boroughs such as Hackney, Islington, Lambeth and Tower Hamlets, and outer boroughs such as Croydon, Havering, Hillingdon and Sutton.",
       },
     },
     {
@@ -170,12 +170,12 @@ const faqItems = [
   {
     question: "How much does an EICR cost in London?",
     answer:
-      "An EICR in London costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Some London providers charge a premium over national rates — our fixed pricing applies equally across all 32 boroughs with no London surcharge. The only location-based addition is the £18 Congestion Charge Zone fee for central London properties.",
+      "An EICR in London costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Some London providers charge a premium over national rates — our fixed pricing applies equally across all 33 boroughs with no London surcharge. The only location-based addition is the £18 Congestion Charge Zone fee for central London properties.",
   },
   {
     question: "Do you cover all London boroughs?",
     answer:
-      "Yes — we cover all 32 London boroughs plus the City of London. Inner London (Hackney, Islington, Lambeth, Southwark, Tower Hamlets, Wandsworth, Westminster and others) and outer London (Bromley, Croydon, Ealing, Havering, Hillingdon, Sutton and others) are all covered. See the full borough list on this page.",
+      "Yes — we cover all 33 London boroughs. Inner London (Hackney, Islington, Lambeth, Southwark, Tower Hamlets, Wandsworth, Westminster and others) and outer London (Bromley, Croydon, Ealing, Havering, Hillingdon, Sutton and others) are all covered. See the full borough list on this page.",
   },
   {
     question: "How do London property types affect the EICR?",
@@ -241,11 +241,11 @@ export default function EicrLondonPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC Approved · NAPIT Certified · All 32 London Boroughs
+            NICEIC Approved · NAPIT Certified · All 33 London Boroughs
           </p>
 
           <Heading level={1} id="eicr-london-heading" inverted className="mb-4 max-w-2xl">
-            EICR London — from £{lowestPrice} — All 32 Boroughs Covered
+            EICR London — from £{lowestPrice} — All 33 Boroughs Covered
           </Heading>
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
@@ -294,7 +294,7 @@ export default function EicrLondonPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Boroughs</dt>
-              <dd className="text-white font-semibold">all 32 covered</dd>
+              <dd className="text-white font-semibold">all 33 covered</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
@@ -344,7 +344,7 @@ export default function EicrLondonPage() {
         {/* ── London boroughs ── */}
         <section aria-labelledby="boroughs-heading">
           <Heading level={2} id="boroughs-heading" className="mb-3">
-            All 32 London boroughs covered
+            All 33 London boroughs covered
           </Heading>
           <p className="text-brand-grey mb-6">
             We cover every London borough — inner and outer — at the same fixed
@@ -418,7 +418,7 @@ export default function EicrLondonPage() {
                 type: "HMOs (Houses in Multiple Occupation)",
                 boroughs: "All London boroughs — particularly high density in inner London",
                 detail:
-                  "HMOs are subject to stricter electrical requirements and are more likely to have been subject to ad-hoc alterations between tenancies. Our NICEIC and NAPIT certified engineers produce EICR reports specifically referencing HMO-relevant observations and are familiar with local authority HMO licence conditions across all 32 boroughs.",
+                  "HMOs are subject to stricter electrical requirements and are more likely to have been subject to ad-hoc alterations between tenancies. Our NICEIC and NAPIT certified engineers produce EICR reports specifically referencing HMO-relevant observations and are familiar with local authority HMO licence conditions across all 33 boroughs.",
               },
               {
                 type: "1960s–70s purpose-built flats",
@@ -547,7 +547,7 @@ export default function EicrLondonPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. Next-day appointments available
-            across all 32 London boroughs. Certificate emailed the same day —
+            across all 33 London boroughs. Certificate emailed the same day —
             from £{popularPrice} for a 1–3 bedroom London property.
           </p>
           <Link
@@ -557,7 +557,7 @@ export default function EicrLondonPage() {
             Book EICR in London — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. NICEIC approved &amp; NAPIT certified. All 32 London boroughs.
+            No hidden charges. NICEIC approved &amp; NAPIT certified. All 33 London boroughs.
           </p>
         </section>
       </div>

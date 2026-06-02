@@ -62,7 +62,7 @@ const categories = [
       {
         question: "What areas do you cover?",
         answer:
-          "We cover all 32 London boroughs plus the surrounding M25 corridor counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or call 0330 133 0066 and we will confirm availability.",
+          "We cover all 33 London boroughs plus the surrounding M25 corridor counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or call 0330 133 0066 and we will confirm availability.",
       },
       {
         question: "What happens if I need to rearrange my appointment?",

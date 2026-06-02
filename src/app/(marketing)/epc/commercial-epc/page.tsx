@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Commercial EPC London from £249.99 — Accredited DEA Assessors | My Landlord Certificate",
   description:
-    "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 32 London boroughs. Registered on national database.",
+    "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 33 London boroughs. Registered on national database.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
@@ -71,7 +71,7 @@ const faqs = [
   {
     question: "Do you cover all types of commercial premises?",
     answer:
-      "Yes. We cover offices, retail units, restaurants, warehouses, light industrial units, and mixed-use premises across all 32 London boroughs. For very large or technically complex buildings (above 2,000m²), contact us to discuss the scope and timeline of the assessment.",
+      "Yes. We cover offices, retail units, restaurants, warehouses, light industrial units, and mixed-use premises across all 33 London boroughs. For very large or technically complex buildings (above 2,000m²), contact us to discuss the scope and timeline of the assessment.",
   },
   {
     question: "How long does the assessment take?",
@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, Wandsworth, Hammersmith & Fulham, Ealing, Brent, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including the City of London, Westminster, Camden, Islington, Tower Hamlets, Southwark, Lambeth, Hackney, Wandsworth, Hammersmith & Fulham, Ealing, Brent, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -347,7 +347,7 @@ export default function CommercialEPCPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Accredited DEA assessors, certificate
-              lodged on the national register. Same-week appointments across all 32 London boroughs.
+              lodged on the national register. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

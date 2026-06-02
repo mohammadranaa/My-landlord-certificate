@@ -21,7 +21,7 @@ import { getAllPosts } from "@/lib/blog";
 
 const BASE = "https://www.mylandlordcertificate.co.uk";
 
-// All 33 London borough slugs — must match keys in eicr-[slug]/page.tsx
+// All 33 London borough slugs — must match keys in eicr/[slug]/page.tsx
 const boroughSlugs = [
   "barking-dagenham", "barnet", "bexley", "brent", "bromley",
   "camden", "city-of-london", "croydon", "ealing", "enfield",

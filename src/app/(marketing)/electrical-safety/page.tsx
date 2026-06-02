@@ -201,7 +201,7 @@ export default function ElectricalSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your electrical inspection today"
-            subheading="Same-week appointments available across all 32 London boroughs. NICEIC & NAPIT approved engineers, fixed prices."
+            subheading="Same-week appointments available across all 33 London boroughs. NICEIC & NAPIT approved engineers, fixed prices."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

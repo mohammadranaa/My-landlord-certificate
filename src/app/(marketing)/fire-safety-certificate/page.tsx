@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Fire Safety Certificate London from £54.99 — Smoke Alarm Testing | My Landlord Certificate",
   description:
-    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 32 London boroughs. Same-day certificate.",
+    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 33 London boroughs. Same-day certificate.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate",
   },
@@ -90,7 +90,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
 ];
 
@@ -547,7 +547,7 @@ export default function FireSafetyCertificatePage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Accredited engineers, certificate same day.
-              Same-week appointments across all 32 London boroughs.
+              Same-week appointments across all 33 London boroughs.
             </p>
             <Link
               href="/book?service=fire-safety-cert"

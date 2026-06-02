@@ -111,7 +111,7 @@ const steps = [
     step: "1",
     title: "Book online or call us",
     description:
-      "Select your property size, pick a date that suits you, and confirm. We cover all 32 London boroughs with same-week appointments.",
+      "Select your property size, pick a date that suits you, and confirm. We cover all 33 London boroughs with same-week appointments.",
   },
   {
     step: "2",

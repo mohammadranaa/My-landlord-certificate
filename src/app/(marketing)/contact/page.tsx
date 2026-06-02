@@ -267,7 +267,7 @@ export default function ContactPage() {
             Our service area
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            We cover all 32 London boroughs and the surrounding M25 corridor counties.
+            We cover all 33 London boroughs and the surrounding M25 corridor counties.
             Next-day appointments available across the entire area.
           </p>
           <div className="rounded-2xl overflow-hidden border border-border shadow-sm">

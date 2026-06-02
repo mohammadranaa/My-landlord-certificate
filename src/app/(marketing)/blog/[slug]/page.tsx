@@ -70,7 +70,7 @@ function MidArticleCTA() {
         Book from £{getPriceForEICR("studio")} — certificate emailed same day
       </p>
       <p className="text-blue-100 text-sm mb-5">
-        NICEIC approved engineers. Fixed price. All 32 London boroughs covered.
+        NICEIC approved engineers. Fixed price. All 33 London boroughs covered.
       </p>
       <Link
         href="/eicr"
@@ -339,7 +339,7 @@ export default async function BlogPostPage({
                 Book your landlord certificate online
               </p>
               <p className="text-brand-charcoal/70 text-sm mb-5">
-                Fixed prices. Next-day appointments. Certificate emailed same day. All 32
+                Fixed prices. Next-day appointments. Certificate emailed same day. All 33
                 London boroughs covered.
               </p>
               <div className="flex flex-wrap gap-3">

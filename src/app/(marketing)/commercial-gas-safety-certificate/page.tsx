@@ -300,7 +300,7 @@ export default function CommercialGasSafetyCertificatePage() {
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Our engineers hold Gas Safe registration with commercial gas and catering appliance
-            competencies and operate across all 32 London boroughs, including the City of London.
+            competencies and operate across all 33 London boroughs, including the City of London.
             Every CP42 certificate is produced digitally and emailed to you on the same day as
             the inspection.
           </p>

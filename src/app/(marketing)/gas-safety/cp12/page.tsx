@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate (CP12) London from £49.99 | My Landlord Certificate",
   description:
-    "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 32 London boroughs. Certificate emailed same day.",
+    "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 33 London boroughs. Certificate emailed same day.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
@@ -98,7 +98,7 @@ const faqs = [
   {
     question: "Which London boroughs do you cover?",
     answer:
-      "We cover all 32 London boroughs, including Central London, East London, North London, South London, and West London. Same-week appointments are available throughout Greater London. Call 0330 133 0066 or book online.",
+      "We cover all 33 London boroughs, including Central London, East London, North London, South London, and West London. Same-week appointments are available throughout Greater London. Call 0330 133 0066 or book online.",
   },
 ];
 
@@ -117,7 +117,7 @@ const steps = [
     step: "1",
     title: "Book online — takes 60 seconds",
     description:
-      "Select the number of gas appliances in your property, choose a date, and confirm. Same-week appointments across all 32 London boroughs.",
+      "Select the number of gas appliances in your property, choose a date, and confirm. Same-week appointments across all 33 London boroughs.",
   },
   {
     step: "2",
@@ -158,7 +158,7 @@ export default function CP12Page() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Gas Safe Registered · Annual legal requirement · Certificate emailed same day · All 32 London boroughs
+            Gas Safe Registered · Annual legal requirement · Certificate emailed same day · All 33 London boroughs
           </p>
           <TrustBadges serviceKey="gas-safety" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -352,7 +352,7 @@ export default function CP12Page() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Gas Safe Registered engineers. Certificate
-              emailed the same day. Same-week appointments across all 32 London boroughs.
+              emailed the same day. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

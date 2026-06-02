@@ -63,7 +63,7 @@ const benefits = [
   },
   {
     title: "Next-day appointments across London.",
-    body: "We cover all 32 London boroughs. Next-day slots are available subject to engineer availability. For agencies managing portfolios across multiple boroughs, a single booking flow works for every postcode we serve.",
+    body: "We cover all 33 London boroughs. Next-day slots are available subject to engineer availability. For agencies managing portfolios across multiple boroughs, a single booking flow works for every postcode we serve.",
   },
 ];
 
@@ -128,7 +128,7 @@ export default function LettingAgentsPage() {
         <Container>
           <dl className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {[
-              { label: "London boroughs covered", value: "All 32" },
+              { label: "London boroughs covered", value: "All 33" },
               { label: "Certificate types", value: "5 + bundles" },
               { label: "Appointment availability", value: "Next day" },
               { label: "Certificate delivery", value: "Same day" },

@@ -313,7 +313,7 @@ export default function CommercialEicrPage() {
             a single consumer unit — a commercial EICR is priced by the number of consumer
             units or distribution boards, reflecting the greater complexity of commercial
             installations. Our NICEIC approved engineers are qualified and insured for
-            non-domestic electrical work across all 32 London boroughs.
+            non-domestic electrical work across all 33 London boroughs.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">Legal requirement: </strong>

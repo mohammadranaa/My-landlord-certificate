@@ -9,7 +9,7 @@ import { ADDITIONAL_CHARGES, ELECTRICAL_DIAGNOSTIC_HOURLY_RATE } from "@/lib/pri
 export const metadata: Metadata = {
   title: "Electrical Diagnostic London — £89.99/hr, No Call-Out Fee | My Landlord Certificate",
   description:
-    "Electrical fault finding from £89.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 32 London boroughs. Minor repairs same visit.",
+    "Electrical fault finding from £89.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 33 London boroughs. Minor repairs same visit.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/electrical-diagnostic",
   },
@@ -85,7 +85,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 32 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Call 0330 133 0066 or book online.",
+      "We cover all 33 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Call 0330 133 0066 or book online.",
   },
 ];
 
