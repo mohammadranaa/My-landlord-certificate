@@ -54,7 +54,7 @@ const serviceSchema = {
       reviewCount: "203",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Landlord Certificate Bundles",

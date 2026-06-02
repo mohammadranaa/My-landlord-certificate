@@ -235,7 +235,7 @@ export function Step2PersonalInfo({
       </div>
 
       <p className="text-xs text-brand-grey">
-        We only serve London and the South East. If your property is outside our
+        We only serve London and the M25 area. If your property is outside our
         coverage area we'll let you know.
       </p>
 

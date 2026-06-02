@@ -9,8 +9,16 @@ Project context and conventions for Claude Code. Read this before making any cha
 **My Landlord Certificate** is a UK landlord compliance certificate booking platform. Landlords book EICR, Gas Safety (CP12), EPC, Fire Risk Assessment, PAT Testing and other compliance services online. Engineers are dispatched and certificates are emailed the same day.
 
 - **Target audience:** UK residential landlords, HMO operators, letting agents
-- **Geography:** London and South East England (all 32 London boroughs)
+- **Geography:** London and the M25 area (all 33 London boroughs)
 - **Business model:** Fixed-price certificates booked online, fulfilled by accredited engineers
+
+### COVERAGE LANGUAGE RULES
+
+- **Primary phrase:** "within the M25" or "across London and the M25 area"
+- **Secondary:** "all 33 London boroughs" (for borough map sections and borough-specific content)
+- **Never use:** "London and the South East" on service pages (South East implies areas outside M25 like Brighton, Southampton, which we don't cover)
+- The `/coverage-areas` page may explain the M25 coverage in full detail
+- Borough pages use borough-specific language only
 
 ---
 

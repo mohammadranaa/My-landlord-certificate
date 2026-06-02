@@ -431,7 +431,7 @@ export default function GasSafetyCertificateCostPage() {
           </div>
           <p className="mt-3 text-xs text-brand-grey">
             Market range figures are approximate, based on published price
-            comparison data for London and South East England (2025).
+            comparison data for London and the M25 area (2025).
           </p>
         </section>
 

@@ -58,7 +58,7 @@ const serviceSchema = {
       reviewCount: "94",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,
@@ -217,7 +217,7 @@ export default function CommercialEicrPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Commercial Electrical Installation Condition Report · NICEIC Approved · All London Boroughs
+            NICEIC &amp; NAPIT Approved · London &amp; M25 · Same-Day Certificate
           </p>
 
           <Heading level={1} id="commercial-eicr-heading" inverted className="mb-4 max-w-2xl">

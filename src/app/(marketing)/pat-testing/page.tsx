@@ -48,7 +48,7 @@ const serviceSchema = {
       reviewCount: "118",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "PAT Testing pricing by appliance count",
@@ -252,7 +252,7 @@ export default function PatTestingPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Portable Appliance Testing · Furnished Rentals &amp; HMOs · Digital Certificate Same Day
+            Fully Insured Engineers · London &amp; M25 · Same-Day Report
           </p>
 
           <Heading level={1} id="pat-heading" inverted className="mb-4 max-w-2xl">

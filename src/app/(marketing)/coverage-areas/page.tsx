@@ -12,20 +12,20 @@ import { MapSection } from "@/components/ui/map-section";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Coverage Areas — All 32 London Boroughs & South East | My Landlord Certificate",
+  title: "Coverage Areas — All London Boroughs & M25 Wide | My Landlord Certificate",
   description:
-    "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
+    "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed the same day.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/coverage-areas" },
   openGraph: {
-    title: "Coverage Areas — All 32 London Boroughs & South East | My Landlord Certificate",
+    title: "Coverage Areas — All London Boroughs & M25 Wide | My Landlord Certificate",
     description:
-      "EICR, Gas Safety, EPC and Fire Risk Assessment across all 32 London boroughs and the South East. Next-day appointments. Certificate emailed the same day.",
+      "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed the same day.",
     url: "https://www.mylandlordcertificate.co.uk/coverage-areas",
   },
   twitter: {
-    title: "Coverage Areas — All 32 London Boroughs & South East",
+    title: "Coverage Areas — All London Boroughs & M25 Wide",
     description:
-      "All 32 London boroughs and South East counties. Next-day appointments. Same-day certificate delivery.",
+      "All 33 London boroughs and the M25 area. Next-day appointments. Same-day certificate delivery.",
   },
 };
 
@@ -46,8 +46,12 @@ const localBusinessSchema = {
     "Kingston upon Thames", "Lambeth", "Lewisham", "Merton", "Newham",
     "Redbridge", "Richmond upon Thames", "Southwark", "Sutton",
     "Tower Hamlets", "Waltham Forest", "Wandsworth", "Westminster",
-    // South East counties
+    // M25 corridor counties
     "Surrey", "Kent", "Essex", "Hertfordshire",
+    // Key M25 towns outside London
+    "Watford", "Slough", "Dartford", "Woking",
+    "Guildford", "Staines-upon-Thames", "Weybridge",
+    "Brentwood", "Romford",
   ],
 };
 
@@ -132,16 +136,15 @@ export default function CoverageAreasPage() {
       >
         <Container className="py-16 md:py-20 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            All 32 London Boroughs · South East England
+            All 33 London Boroughs · M25 Wide Coverage
           </p>
           <Heading level={1} id="coverage-heading" inverted className="mb-4 max-w-3xl mx-auto">
-            Landlord certificates across London and the South East
+            Landlord certificates across London and the M25 area
           </Heading>
           <p className="text-blue-100 text-lg leading-relaxed max-w-xl mx-auto mb-10">
-            Our accredited engineers cover every London borough and the surrounding
-            South East counties. Next-day appointments available. Certificate
-            emailed the same day — no matter where in our coverage area your
-            property sits.
+            Our accredited engineers cover every London borough and the wider M25
+            corridor — including Surrey, Kent, Essex, and Hertfordshire. Next-day
+            appointments available. Certificate emailed the same day.
           </p>
           <TrustBadges variant="dark" className="justify-center" />
         </Container>
@@ -152,8 +155,8 @@ export default function CoverageAreasPage() {
         <Container>
           <dl className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {[
-              { label: "London boroughs", value: "All 32" },
-              { label: "South East counties", value: "4+" },
+              { label: "London boroughs", value: "All 33" },
+              { label: "M25 coverage", value: "Wide area" },
               { label: "Appointments", value: "Next day" },
               { label: "Certificate delivery", value: "Same day" },
             ].map(({ label, value }) => (
@@ -190,7 +193,7 @@ export default function CoverageAreasPage() {
       <section aria-labelledby="boroughs-heading" className="py-16 md:py-20 bg-warm-white">
         <Container>
           <Heading level={2} id="boroughs-heading" className="mb-3 text-center">
-            All 32 London boroughs
+            All 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
             We cover every London borough — from Zone 1 central London properties to
@@ -243,16 +246,17 @@ export default function CoverageAreasPage() {
         </Container>
       </section>
 
-      {/* ── South East ── */}
+      {/* ── M25 corridor ── */}
       <section aria-labelledby="southeast-heading" className="py-16 bg-white">
         <Container>
           <Heading level={2} id="southeast-heading" className="mb-3 text-center">
-            South East England
+            Beyond London — our M25 coverage area
           </Heading>
           <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
-            Our engineer network extends beyond Greater London into the counties
-            that border the capital. If your rental property sits in Surrey, Kent,
-            Essex or Hertfordshire, we can still book a next-day appointment.
+            Our engineer network covers the full M25 corridor, not just the 33 London
+            boroughs. If your rental property is in Surrey, Kent, Essex, or
+            Hertfordshire — anywhere within or bordering the M25 — we can book a
+            next-day appointment at the same fixed prices.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -288,8 +292,8 @@ export default function CoverageAreasPage() {
           </div>
 
           <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 max-w-2xl mx-auto text-sm text-brand-charcoal/80">
-            <strong className="text-brand-amber">South East coverage note:</strong>{" "}
-            Appointment availability in South East counties depends on engineer
+            <strong className="text-brand-amber">M25 coverage note:</strong>{" "}
+            Appointment availability in M25 corridor counties depends on engineer
             capacity. Book online and we'll confirm next-day availability for your
             postcode — or call{" "}
             <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
@@ -400,14 +404,13 @@ export default function CoverageAreasPage() {
               and know what to look for in each.
             </p>
             <p>
-              South East landlords face the same compliance requirements as their
-              London counterparts. The Electrical Safety Standards in the Private
-              Rented Sector (England) Regulations 2020 apply to all private
-              landlords in England, regardless of whether the property is in a
-              London borough or a Surrey market town. Our Gas Safe Registered
-              engineers and accredited energy assessors operate across county
-              borders — one booking system, the same fixed prices, the same same-day
-              certificate delivery.
+              Landlords in the M25 corridor face the same compliance requirements as
+              their London counterparts. The Electrical Safety Standards in the
+              Private Rented Sector (England) Regulations 2020 apply to all private
+              landlords in England, regardless of whether the property is in a London
+              borough or a Surrey market town. Our Gas Safe Registered engineers and
+              accredited energy assessors operate across county borders — one booking
+              system, the same fixed prices, the same same-day certificate delivery.
             </p>
           </div>
         </Container>
@@ -421,7 +424,7 @@ export default function CoverageAreasPage() {
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
             The same fixed prices and accredited engineers wherever your property
-            is — London borough or South East county.
+            is — London borough or M25 corridor location.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[

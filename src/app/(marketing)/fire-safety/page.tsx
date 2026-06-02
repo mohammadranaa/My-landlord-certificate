@@ -91,7 +91,7 @@ export default function FireSafetyPage() {
 
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-white/60 mb-3">
-              Accredited Fire Safety Engineers
+              BAFE · IFE · IFSM Certified · London &amp; M25
             </p>
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
               Fire Safety Certificates &amp; Assessments

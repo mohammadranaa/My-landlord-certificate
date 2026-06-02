@@ -33,7 +33,7 @@ const contactSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   email: "info@mylandlordcertificate.co.uk",
-  areaServed: "London and South East England",
+  areaServed: "London and the M25 area",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -267,12 +267,12 @@ export default function ContactPage() {
             Our service area
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            We cover all 32 London boroughs and the surrounding South East counties.
+            We cover all 32 London boroughs and the surrounding M25 corridor counties.
             Next-day appointments available across the entire area.
           </p>
           <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
             <iframe
-              title="My Landlord Certificate service area — Greater London and South East"
+              title="My Landlord Certificate service area — Greater London and the M25 area"
               src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d158857.71754584453!2d-0.24168154989423!3d51.52877184853843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1234567890"
               width="100%"
               height="400"

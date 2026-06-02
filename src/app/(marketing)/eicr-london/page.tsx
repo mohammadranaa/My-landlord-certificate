@@ -328,7 +328,7 @@ export default function EicrLondonPage() {
             in England — but London&apos;s older housing stock, high HMO concentration,
             and diverse property types make choosing an experienced local electrician
             more important. Our NICEIC approved and NAPIT certified engineers work
-            exclusively across London and South East England and are familiar with
+            exclusively across London and the M25 area and are familiar with
             the specific challenges London properties present.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">

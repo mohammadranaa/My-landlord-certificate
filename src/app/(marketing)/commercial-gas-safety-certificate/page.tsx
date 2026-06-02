@@ -60,7 +60,7 @@ const serviceSchema = {
       reviewCount: "76",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,

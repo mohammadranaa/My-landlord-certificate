@@ -36,8 +36,8 @@ const organizationSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   description:
-    "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the South East. Fixed prices, accredited engineers, same-day certificates.",
-  areaServed: "London and South East England",
+    "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the M25 area. Fixed prices, accredited engineers, same-day certificates.",
+  areaServed: "London and the M25 area",
   knowsAbout: [
     "EICR — Electrical Installation Condition Report",
     "Gas Safety Certificate (CP12)",
@@ -157,7 +157,7 @@ export default function AboutPage() {
               to complicate it.
             </p>
             <p>
-              We cover every London borough and the surrounding South East counties,
+              We cover every London borough and the surrounding M25 corridor counties,
               with fixed prices displayed before you pay. There are no call-out
               charges, no day-rate variations for tricky properties and no hidden
               administration fees. The price shown is the price charged.
@@ -337,7 +337,7 @@ export default function AboutPage() {
             Ready to book your certificate?
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
-            Fixed prices. Next-day appointments across London and the South East.
+            Fixed prices. Next-day appointments across London and the M25 area.
             Certificate emailed the same day.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

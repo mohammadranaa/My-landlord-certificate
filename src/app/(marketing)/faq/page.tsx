@@ -42,7 +42,7 @@ const categories = [
       {
         question: "How quickly can I get an appointment?",
         answer:
-          "Next-day appointments are available across London and the South East, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent same-day requirements, call 0330 133 0066 and we will do our best to accommodate you.",
+          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent same-day requirements, call 0330 133 0066 and we will do our best to accommodate you.",
       },
       {
         question: "Do I need to be present during the inspection?",
@@ -62,7 +62,7 @@ const categories = [
       {
         question: "What areas do you cover?",
         answer:
-          "We cover all 32 London boroughs plus the surrounding South East counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or call 0330 133 0066 and we will confirm availability.",
+          "We cover all 32 London boroughs plus the surrounding M25 corridor counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or call 0330 133 0066 and we will confirm availability.",
       },
       {
         question: "What happens if I need to rearrange my appointment?",

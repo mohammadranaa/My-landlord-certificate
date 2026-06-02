@@ -30,7 +30,7 @@ const serviceSchema = {
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,
@@ -146,7 +146,7 @@ export default function AsbestosSurveyPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            UKAS-accredited laboratory · Management &amp; refurbishment surveys · Report in 5–7 days
+            UKAS Accredited · London &amp; M25 · Report in 5–7 Days
           </p>
           <TrustBadges serviceKey="asbestos-survey" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">

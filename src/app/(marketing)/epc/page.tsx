@@ -34,7 +34,7 @@ const serviceSchema = {
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "Offer",
     price: `${entryPrice}`,
@@ -146,7 +146,7 @@ export default function EPCPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Accredited DEA Assessors · National EPC Register · Valid 10 Years
+            Elmhurst Accredited · London &amp; M25 · 10-Year Certificate
           </p>
 
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">

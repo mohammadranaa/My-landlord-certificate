@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "EICR Certificate from £67.99 | My Landlord Certificate",
     description:
-      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the South East, certificate emailed same day.",
+      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the M25 area, certificate emailed same day.",
     url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
@@ -52,7 +52,7 @@ const serviceSchema = {
       reviewCount: "312",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "EICR Pricing by Property Size",
@@ -259,7 +259,7 @@ export default function EicrPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC Approved · NAPIT Certified · Electrical Safety Certificate
+            NICEIC &amp; NAPIT Approved · London &amp; M25 · Same-Day Certificate
           </p>
 
           <Heading level={1} id="eicr-heading" inverted className="mb-4 max-w-2xl">
@@ -273,7 +273,7 @@ export default function EicrPage() {
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Next-day appointments available across London and the South East.
+            Next-day appointments available across London and the M25 area.
             Most inspections confirmed within 1–3 days.
           </p>
 
@@ -677,7 +677,7 @@ export default function EicrPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-8">
             Booking an EICR takes under 3 minutes. Next-day appointments are
-            available across all 32 London boroughs and the wider South East.
+            available across all 32 London boroughs and the wider M25 area.
           </p>
 
           <ol className="grid md:grid-cols-3 gap-8" role="list">
@@ -685,7 +685,7 @@ export default function EicrPage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Select your property size, choose a date and pay securely online. Next-day slots available across London and the South East — no phone calls required. You'll receive a booking confirmation immediately.",
+                body: "Select your property size, choose a date and pay securely online. Next-day slots available across London and the M25 area — no phone calls required. You'll receive a booking confirmation immediately.",
               },
               {
                 step: "02",
@@ -715,7 +715,7 @@ export default function EicrPage() {
           </ol>
 
           <p className="mt-8 text-sm text-brand-grey">
-            Coverage across London and the South East.{" "}
+            Coverage across London and the M25 area.{" "}
             <Link
               href="/coverage-areas"
               className="text-compliance-blue hover:underline font-medium"
@@ -939,7 +939,7 @@ export default function EicrPage() {
             electrician will confirm your appointment. Certificate emailed the same day.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
-            Next-day appointments available across London and the South East —
+            Next-day appointments available across London and the M25 area —
             or call{" "}
             <a
               href="tel:03301330066"

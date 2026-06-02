@@ -54,7 +54,7 @@ const serviceSchema = {
       reviewCount: "147",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Fire Risk Assessment pricing",
@@ -268,7 +268,7 @@ export default function FireRiskAssessmentPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NEBOSH Qualified Assessors · Compulsory for HMOs · Building Safety Act 2022
+            NEBOSH Qualified · London &amp; M25 · Same-Day Report
           </p>
 
           <Heading level={1} id="fra-heading" inverted className="mb-4 max-w-2xl">

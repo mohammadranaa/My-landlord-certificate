@@ -69,7 +69,7 @@ const localBusinessSchema = {
   email: "hello@mylandlordcertificate.co.uk",
   description:
     "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. No hidden charges, next-day appointments across London.",
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   currenciesAccepted: "GBP",
   paymentAccepted: "Credit Card, Debit Card",
   priceRange: "££",
@@ -123,7 +123,7 @@ const faqItems = [
   {
     question: "How quickly can I get my landlord certificate?",
     answer:
-      "Most appointments are available the next day across London and the South East, with nearly all confirmed within 1–3 days. Same-day slots are available in many areas — call us on 0330 133 0066 to check availability.",
+      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Same-day slots are available in many areas — call us on 0330 133 0066 to check availability.",
   },
   {
     question: "Do I need to be at the property during the inspection?",
@@ -136,9 +136,9 @@ const faqItems = [
       "No. The price shown for each certificate is what you pay. No call-out fees, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £5 for parking (where no free on-site parking is available) and £18 for properties in the London Congestion Charge Zone.",
   },
   {
-    question: "Which areas of London and the South East do you cover?",
+    question: "Which areas do you cover?",
     answer:
-      "We cover all 32 London boroughs and the wider South East, including Surrey, Kent, Essex and Hertfordshire. Our NICEIC approved and Gas Safe registered engineers operate seven days a week across all areas.",
+      "We cover all 33 London boroughs and the wider M25 area, including Surrey, Kent, Essex and Hertfordshire. Our NICEIC approved and Gas Safe registered engineers operate seven days a week across all areas.",
   },
 ];
 
@@ -263,7 +263,7 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your certificate, select your property size, pick a date and pay securely. Next-day slots available across London and the South East.",
+                body: "Choose your certificate, select your property size, pick a date and pay securely. Next-day slots available across London and the M25 area.",
                 bullets: [
                   "EICR, Gas Safety, EPC, FRA, PAT or a bundle",
                   "Fixed price shown before you pay — no hidden extras",
@@ -359,9 +359,9 @@ export default function HomePage() {
           </p>
           <MapSection />
           <p className="text-center text-sm text-brand-grey mt-6">
-            Gas Safety, EPC, Fire Risk Assessment and PAT Testing also available in every borough.{" "}
+            Our accredited engineers cover every London borough and the wider M25 area. Gas Safety, EPC, Fire Risk Assessment and PAT Testing available everywhere we serve.{" "}
             <Link href="/coverage-areas" className="text-compliance-blue underline hover:no-underline">
-              View all services by area →
+              View all coverage areas →
             </Link>
           </p>
         </Container>
@@ -396,7 +396,7 @@ export default function HomePage() {
               {
                 icon: "⚡",
                 title: "Next-day appointments across London",
-                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 32 London boroughs, seven days a week. Same-day slots available in many areas — call 0330 133 0066.",
+                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Same-day slots available in many areas — call 0330 133 0066.",
               },
               {
                 icon: "📄",
@@ -449,7 +449,7 @@ export default function HomePage() {
               <p className="text-sm text-brand-grey mt-1">No hidden charges</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue">32</p>
+              <p className="text-3xl font-bold text-compliance-blue">33</p>
               <p className="text-sm text-brand-grey mt-1">London boroughs covered</p>
             </div>
           </div>
@@ -524,7 +524,7 @@ export default function HomePage() {
         <Container>
           <CTABanner
             heading="Ready to get your landlord certificates sorted?"
-            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the South East. All certificates emailed same day."
+            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the M25 area. All certificates emailed same day."
             primaryHref="/book"
             primaryLabel="Book your certificate now"
             secondaryHref="/pricing"

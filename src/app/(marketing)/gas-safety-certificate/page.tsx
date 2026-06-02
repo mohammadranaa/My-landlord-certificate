@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
     description:
-      "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the South East, certificate emailed same day.",
+      "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the M25 area, certificate emailed same day.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
@@ -54,7 +54,7 @@ const serviceSchema = {
       reviewCount: "284",
     },
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Gas Safety Certificate Pricing",
@@ -296,7 +296,7 @@ export default function GasSafetyPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Gas Safe Registered · Annual Legal Requirement · London &amp; South East
+            Gas Safe Registered · London &amp; M25 · Annual Requirement
           </p>
 
           <Heading level={1} id="gas-heading" inverted className="mb-4 max-w-2xl">
@@ -310,7 +310,7 @@ export default function GasSafetyPage() {
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Next-day appointments available across London and the South East.
+            Next-day appointments available across London and the M25 area.
             Most inspections confirmed within 1–3 days.
           </p>
 
@@ -683,7 +683,7 @@ export default function GasSafetyPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-8">
             Booking a CP12 takes under 3 minutes. Next-day appointments available
-            across all 32 London boroughs and the wider South East.
+            across all 32 London boroughs and the wider M25 area.
           </p>
 
           <ol className="grid md:grid-cols-3 gap-8" role="list">
@@ -691,7 +691,7 @@ export default function GasSafetyPage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your appliance count, pick a date and pay securely online. Next-day slots available across London and the South East — no phone calls required. You'll receive a booking confirmation immediately.",
+                body: "Choose your appliance count, pick a date and pay securely online. Next-day slots available across London and the M25 area — no phone calls required. You'll receive a booking confirmation immediately.",
               },
               {
                 step: "02",
@@ -719,7 +719,7 @@ export default function GasSafetyPage() {
           </ol>
 
           <p className="mt-8 text-sm text-brand-grey">
-            We cover all 32 London boroughs and the wider South East.{" "}
+            We cover all 32 London boroughs and the wider M25 area.{" "}
             <Link
               href="/coverage-areas"
               className="text-compliance-blue hover:underline font-medium"
@@ -977,7 +977,7 @@ export default function GasSafetyPage() {
             confirm your appointment. CP12 certificate emailed the same day.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
-            Next-day appointments available across London and the South East —
+            Next-day appointments available across London and the M25 area —
             or call{" "}
             <a
               href="tel:03301330066"

@@ -27,7 +27,7 @@ const serviceSchema = {
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
   },
-  areaServed: ["London", "South East England"],
+  areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "Offer",
     price: `${ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}`,
