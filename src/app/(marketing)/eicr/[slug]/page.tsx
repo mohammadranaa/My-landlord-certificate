@@ -39,12 +39,12 @@ export async function generateMetadata({
     title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
     alternates: {
-      canonical: `${SITE_URL}/eicr-${slug}`,
+      canonical: `${SITE_URL}/eicr/${slug}`,
     },
     openGraph: {
       title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
       description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
-      url: `${SITE_URL}/eicr-${slug}`,
+      url: `${SITE_URL}/eicr/${slug}`,
     },
   };
 }
@@ -64,7 +64,7 @@ export default async function EICRBoroughPage({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: `My Landlord Certificate — ${borough.name}`,
-    url: `${SITE_URL}/eicr-${slug}`,
+    url: `${SITE_URL}/eicr/${slug}`,
     areaServed: { "@type": "City", name: borough.name },
     priceRange: `from £${entryPrice}`,
   };
@@ -73,7 +73,7 @@ export default async function EICRBoroughPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: `EICR ${borough.name} — Electrical Installation Condition Report`,
-    url: `${SITE_URL}/eicr-${slug}`,
+    url: `${SITE_URL}/eicr/${slug}`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day.`,
     provider: {
       "@type": "LocalBusiness",
@@ -86,7 +86,7 @@ export default async function EICRBoroughPage({
       price: `${entryPrice}`,
       priceCurrency: "GBP",
       availability: "https://schema.org/InStock",
-      url: `${SITE_URL}/eicr-${slug}`,
+      url: `${SITE_URL}/eicr/${slug}`,
     },
   };
 
@@ -110,7 +110,7 @@ export default async function EICRBoroughPage({
         "@type": "ListItem",
         position: 3,
         name: `EICR ${borough.name}`,
-        item: `${SITE_URL}/eicr-${slug}`,
+        item: `${SITE_URL}/eicr/${slug}`,
       },
     ],
   };
@@ -480,7 +480,7 @@ export default async function EICRBoroughPage({
                 return (
                   <Link
                     key={nearbySlug}
-                    href={`/eicr-${nearbySlug}`}
+                    href={`/eicr/${nearbySlug}`}
                     className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
                   >
                     <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors">
@@ -510,7 +510,7 @@ export default async function EICRBoroughPage({
             confirms your appointment. Certificate emailed the same day.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
-            Same-week appointments across {borough.name} and all 32 London
+            Same-week appointments across {borough.name} and all 33 London
             boroughs — or call{" "}
             <a
               href="tel:03301330066"

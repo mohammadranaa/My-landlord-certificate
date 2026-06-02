@@ -93,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/eicr-london`,    priority: 0.80, changeFrequency: "monthly" },
     { url: `${BASE}/coverage-areas`, priority: 0.70, changeFrequency: "monthly" },
     ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/eicr-${slug}`,
+      url: `${BASE}/eicr/${slug}`,
       priority: 0.72 as number,
       changeFrequency: "monthly" as const,
     })),

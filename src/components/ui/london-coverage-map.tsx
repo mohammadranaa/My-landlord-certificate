@@ -84,7 +84,6 @@ export function LondonCoverageMap() {
           viewBox="0 0 800 600"
           className="w-full h-auto drop-shadow-sm"
           aria-label="Map of London boroughs covered by My Landlord Certificate"
-          role="img"
         >
           <rect width="800" height="600" fill="#f0f7ff" rx="12" />
 
@@ -103,7 +102,7 @@ export function LondonCoverageMap() {
                 onMouseEnter={(e) => handleEnter(geoName, slug, e)}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
-                onClick={() => router.push(`/eicr-${slug}`)}
+                onClick={() => router.push(`/eicr/${slug}`)}
               />
             )
           })}
@@ -166,7 +165,7 @@ export function LondonCoverageMap() {
           {Object.entries(BOROUGH_DISPLAY_NAME).map(([slug, name]) => (
             <Link
               key={slug}
-              href={`/eicr-${slug}`}
+              href={`/eicr/${slug}`}
               className="text-xs text-center py-2 px-2 rounded-lg border border-border
                 bg-white text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
             >
