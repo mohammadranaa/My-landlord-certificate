@@ -114,7 +114,7 @@ export function Footer({ className }: FooterProps) {
             {/* Social links */}
             <div className="flex items-center gap-4 mt-4">
               <a
-                href="https://www.facebook.com/mylandlordcertificate"
+                href="https://www.facebook.com/profile.php?id=61589410869490"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="My Landlord Certificate on Facebook"
@@ -136,7 +136,7 @@ export function Footer({ className }: FooterProps) {
                 </svg>
               </a>
               <a
-                href="https://www.linkedin.com/company/mylandlordcertificate"
+                href="https://www.linkedin.com/company/my-landlord-certificate/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="My Landlord Certificate on LinkedIn"
