@@ -53,6 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/pricing`,                      priority: 0.85, changeFrequency: "monthly" },
   ];
 
+  // ── Bundle page ──────────────────────────────────────────────────────────────
+  const bundlePages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/landlord-certificates-bundle`, priority: 0.88, changeFrequency: "monthly" },
+  ];
+
   // ── Commercial service pages ─────────────────────────────────────────────────
   const commercialServices: MetadataRoute.Sitemap = [
     { url: `${BASE}/commercial-eicr`,                     priority: 0.85, changeFrequency: "monthly" },
@@ -123,6 +128,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE, lastModified: now, priority: 1.0, changeFrequency: "weekly" },
     ...primaryServices.map((p) => ({ ...p, lastModified: now })),
+    ...bundlePages.map((p) => ({ ...p, lastModified: now })),
     ...costGuides.map((p) => ({ ...p, lastModified: now })),
     ...commercialServices.map((p) => ({ ...p, lastModified: now })),
     ...categoryHubs.map((p) => ({ ...p, lastModified: now })),
