@@ -20,12 +20,12 @@ import {
 export const metadata: Metadata = {
   title: "EICR London — from £67.99 — All 33 Boroughs | My Landlord Certificate",
   description:
-    "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed same day.",
+    "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-london" },
   openGraph: {
     title: "EICR London — from £67.99 — All 33 Boroughs Covered",
     description:
-      "EICR London from £67.99. All 33 London boroughs covered. NICEIC approved and NAPIT certified engineers. Same-day certificate. Book online in under 3 minutes.",
+      "EICR London from £67.99. All 33 London boroughs covered. NICEIC approved and NAPIT certified engineers. Certificate within 24 hours. Book online in under 3 minutes.",
     url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   },
 };
@@ -75,7 +75,7 @@ const serviceSchema = {
   name: "EICR London — Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   description:
-    "EICR (Electrical Installation Condition Report) for London landlords. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Fixed pricing from £67.99, certificate emailed same day.",
+    "EICR (Electrical Installation Condition Report) for London landlords. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Fixed pricing from £67.99, certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -252,7 +252,7 @@ export default function EicrLondonPage() {
             Electrical Installation Condition Reports for London landlords.
             Fixed pricing from £{lowestPrice} — no London surcharge, no call-out
             charge. NICEIC approved and NAPIT certified engineers covering every
-            London borough. Certificate emailed same day.
+            London borough. Certificate emailed within 24 hours.
           </p>
 
           <PriceDisplay
@@ -298,7 +298,7 @@ export default function EicrLondonPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">emailed same day</dd>
+              <dd className="text-white font-semibold">emailed within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Appointments</dt>
@@ -547,7 +547,7 @@ export default function EicrLondonPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. Next-day appointments available
-            across all 33 London boroughs. Certificate emailed the same day —
+            across all 33 London boroughs. Certificate emailed within 24 hours —
             from £{popularPrice} for a 1–3 bedroom London property.
           </p>
           <Link

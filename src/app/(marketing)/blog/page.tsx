@@ -274,7 +274,7 @@ export default async function BlogPage({
             Book your landlord certificate
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            Fixed prices, next-day appointments, certificates emailed same day.
+            Fixed prices, next-day appointments, certificates emailed within 24 hours.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -306,7 +306,7 @@ export default async function BlogPage({
               Ready to book your landlord certificates?
             </Heading>
             <p className="text-blue-100 mb-8">
-              NICEIC approved engineers. Fixed prices. Certificates emailed the same day.
+              NICEIC approved engineers. Fixed prices. Certificates emailed within 24 hours.
             </p>
             <Link
               href="/book"

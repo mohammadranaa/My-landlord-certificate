@@ -9,7 +9,7 @@ import { ADDITIONAL_CHARGES, FIRE_DOOR_CERT_PRICE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Fire Door Certificate London — £119.99/door, BS 9999 Inspections | My Landlord Certificate",
   description:
-    "Fire door inspection and certification from £119.99 per door. Gap tolerance, intumescent strips, self-closing checks to BS 9999. All 33 London boroughs. Same-day certificate. HMO requirement.",
+    "Fire door inspection and certification from £119.99 per door. Gap tolerance, intumescent strips, self-closing checks to BS 9999. All 33 London boroughs. Certificate within 24 hours. HMO requirement.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-door-certificate",
   },
@@ -127,7 +127,7 @@ export default function FireDoorCertificatePage() {
           </h1>
           <PriceDisplay price={FIRE_DOOR_CERT_PRICE} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Qualified inspectors · BS 9999 compliant · Certificate issued same day
+            Qualified inspectors · BS 9999 compliant · Certificate issued within 24 hours
           </p>
           <TrustBadges serviceKey="fire-door-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -161,7 +161,7 @@ export default function FireDoorCertificatePage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
@@ -227,7 +227,7 @@ export default function FireDoorCertificatePage() {
               },
               {
                 step: "3",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "You receive a written certificate listing each door with its inspection result, any defects found, and a priority rating. Suitable for HMO licensing and local authority inspection.",
               },
             ].map(({ step, title, body }) => (
@@ -287,7 +287,7 @@ export default function FireDoorCertificatePage() {
               "Fire resistance rating verification",
               "Door furniture and signage check",
               "Pass/fail record per door",
-              "Written certificate same day",
+              "Written certificate within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -347,7 +347,7 @@ export default function FireDoorCertificatePage() {
               Book your fire door inspection
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              £{FIRE_DOOR_CERT_PRICE} per door. Qualified inspectors, certificate same day.
+              £{FIRE_DOOR_CERT_PRICE} per door. Qualified inspectors, certificate within 24 hours.
               Multi-door discounts for HMOs and blocks across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">

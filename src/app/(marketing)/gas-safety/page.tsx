@@ -19,7 +19,7 @@ const services = [
     title: "Gas Safety Certificate (CP12)",
     price: FROM_PRICES["gas-safety-cp12"],
     description:
-      "Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers, certificate emailed same day.",
+      "Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers, certificate emailed within 24 hours.",
     badge: "Annual legal requirement",
   },
   {
@@ -118,7 +118,7 @@ export default function GasSafetyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Gas Safety Services</h2>
           <p className="text-brand-grey mb-8">
-            Gas Safe Registered engineers. Certificates emailed same day.
+            Gas Safe Registered engineers. Certificates emailed within 24 hours.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -164,9 +164,9 @@ export default function GasSafetyPage() {
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Within 24 hours</p>
               <p className="text-sm text-brand-grey">
-                CP12 certificates emailed the same day as the inspection. Your tenants can
+                CP12 certificates emailed within 24 hours of the inspection. Your tenants can
                 see their copy immediately.
               </p>
             </div>

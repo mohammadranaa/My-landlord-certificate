@@ -19,7 +19,7 @@ const services = [
     title: "Domestic EICR",
     price: FROM_PRICES.eicr,
     description:
-      "Legally required every 5 years for all rental properties in England. NICEIC approved electricians, certificate emailed same day.",
+      "Legally required every 5 years for all rental properties in England. NICEIC approved electricians, certificate emailed within 24 hours.",
     badge: "Required every 5 years",
   },
   {
@@ -135,7 +135,7 @@ export default function ElectricalSafetyPage() {
             Electrical Safety Services
           </h2>
           <p className="text-brand-grey mb-8">
-            All work carried out by NICEIC &amp; NAPIT approved electricians. Certificates emailed same day.
+            All work carried out by NICEIC &amp; NAPIT approved electricians. Certificates emailed within 24 hours.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -180,9 +180,9 @@ export default function ElectricalSafetyPage() {
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Within 24 hours</p>
               <p className="text-sm text-brand-grey">
-                EICR certificates emailed the same day as the inspection — ready for your
+                EICR certificates emailed within 24 hours of the inspection — ready for your
                 tenants immediately.
               </p>
             </div>

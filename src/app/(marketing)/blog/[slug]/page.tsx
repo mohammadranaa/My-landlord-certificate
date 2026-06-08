@@ -67,7 +67,7 @@ function MidArticleCTA() {
         Need an EICR?
       </p>
       <p className="text-xl font-bold mb-1">
-        Book from £{getPriceForEICR("studio")} — certificate emailed same day
+        Book from £{getPriceForEICR("studio")} — certificate emailed within 24 hours
       </p>
       <p className="text-blue-100 text-sm mb-5">
         NICEIC approved engineers. Fixed price. All 33 London boroughs covered.
@@ -339,7 +339,7 @@ export default async function BlogPostPage({
                 Book your landlord certificate online
               </p>
               <p className="text-brand-charcoal/70 text-sm mb-5">
-                Fixed prices. Next-day appointments. Certificate emailed same day. All 33
+                Fixed prices. Next-day appointments. Certificate emailed within 24 hours. All 33
                 London boroughs covered.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -389,7 +389,7 @@ export default async function BlogPostPage({
               <div className="mt-5 rounded-2xl bg-compliance-blue p-5 text-white">
                 <p className="font-bold mb-1 text-sm">Book your EICR</p>
                 <p className="text-blue-100 text-xs mb-4 leading-relaxed">
-                  From £{getPriceForEICR("studio")} · Same-day certificate
+                  From £{getPriceForEICR("studio")} · Certificate within 24 hours
                 </p>
                 <Link
                   href="/book"

@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate (CP12) London from £49.99 | My Landlord Certificate",
   description:
-    "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 33 London boroughs. Certificate emailed same day.",
+    "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 33 London boroughs. Certificate emailed within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
@@ -28,7 +28,7 @@ const serviceSchema = {
   name: "Gas Safety Certificate (CP12) — Domestic Landlord",
   url: "https://www.mylandlordcertificate.co.uk/gas-safety/cp12",
   description:
-    "Annual legal requirement for all rental properties with gas appliances. Gas Safe Registered engineers inspect boilers, fires, and cookers. Certificate emailed same day.",
+    "Annual legal requirement for all rental properties with gas appliances. Gas Safe Registered engineers inspect boilers, fires, and cookers. Certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: "How long does a gas safety inspection take?",
     answer:
-      "A typical inspection for a property with 1 boiler and 1 gas hob takes 45–60 minutes. Properties with multiple appliances or a boiler that requires investigation may take up to 90 minutes. The certificate is emailed the same day.",
+      "A typical inspection for a property with 1 boiler and 1 gas hob takes 45–60 minutes. Properties with multiple appliances or a boiler that requires investigation may take up to 90 minutes. The certificate is emailed within 24 hours.",
   },
   {
     question: "Can tenants arrange the gas safety inspection themselves?",
@@ -127,9 +127,9 @@ const steps = [
   },
   {
     step: "3",
-    title: "Certificate emailed same day",
+    title: "Certificate emailed within 24 hours",
     description:
-      "Your Landlord's Gas Safety Record (CP12) is emailed to you the same day. Forward it directly to your tenant or send via your letting agent — your legal obligation is met.",
+      "Your Landlord's Gas Safety Record (CP12) is emailed to you within 24 hours. Forward it directly to your tenant or send via your letting agent — your legal obligation is met.",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function CP12Page() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Gas Safe Registered · Annual legal requirement · Certificate emailed same day · All 33 London boroughs
+            Gas Safe Registered · Annual legal requirement · Certificate emailed within 24 hours · All 33 London boroughs
           </p>
           <TrustBadges serviceKey="gas-safety" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -192,7 +192,7 @@ export default function CP12Page() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
@@ -281,7 +281,7 @@ export default function CP12Page() {
               "Emergency control valve verification",
               "Appliance-by-appliance pass/advisory record",
               "Landlord's Gas Safety Record (CP12) issued",
-              "Certificate emailed same day",
+              "Certificate emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -352,7 +352,7 @@ export default function CP12Page() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Gas Safe Registered engineers. Certificate
-              emailed the same day. Same-week appointments across all 33 London boroughs.
+              emailed within 24 hours. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

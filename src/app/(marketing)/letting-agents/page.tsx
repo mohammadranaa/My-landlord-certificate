@@ -12,18 +12,18 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
   description:
-    "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
+    "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, certificates within 24 hours for your landlords.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/letting-agents" },
   openGraph: {
     title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
     description:
-      "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, same-day certificates for your landlords.",
+      "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, certificates within 24 hours for your landlords.",
     url: "https://www.mylandlordcertificate.co.uk/letting-agents",
   },
   twitter: {
     title: "Letting Agents — Landlord Certificate Partner",
     description:
-      "One provider for every certificate type. Fixed prices. Same-day delivery. Accredited engineers only.",
+      "One provider for every certificate type. Fixed prices. Within 24 hours. Accredited engineers only.",
   },
 };
 
@@ -50,7 +50,7 @@ const benefits = [
     body: "Every engineer in our network holds the correct accreditation: NICEIC approved or NAPIT certified for electrical work, Gas Safe Registered for gas, accredited DEAs for EPC, NEBOSH qualified for fire. Your client's certificate will be accepted by any local authority, mortgage lender or insurance provider.",
   },
   {
-    title: "Same-day certificate delivery.",
+    title: "Certificate within 24 hours.",
     body: "Every certificate is emailed on the day of the inspection. You can forward it to your landlord client the same afternoon — no chasing, no delays to tenancy start dates, no awkward calls explaining why it hasn't arrived yet.",
   },
   {
@@ -99,7 +99,7 @@ export default function LettingAgentsPage() {
             <p className="text-blue-100 text-lg leading-relaxed mb-8">
               When a landlord asks you to arrange their EICR or Gas Safety Certificate,
               your reputation goes with it. We give you a partner you can recommend
-              confidently: accredited engineers, fixed prices, same-day certificates.
+              confidently: accredited engineers, fixed prices, certificates within 24 hours.
               Every time.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -131,7 +131,7 @@ export default function LettingAgentsPage() {
               { label: "London boroughs covered", value: "All 33" },
               { label: "Certificate types", value: "5 + bundles" },
               { label: "Appointment availability", value: "Next day" },
-              { label: "Certificate delivery", value: "Same day" },
+              { label: "Certificate delivery", value: "Within 24 hours" },
             ].map(({ label, value }) => (
               <div key={label} className="px-6 py-5 text-center">
                 <dt className="text-blue-200 text-xs font-medium uppercase tracking-wider mb-1">{label}</dt>
@@ -161,7 +161,7 @@ export default function LettingAgentsPage() {
             <p>
               The simplest way to manage compliance risk across a portfolio is to use
               one reliable partner for every certificate type — one booking flow, one
-              set of fixed prices, one source of same-day certificates that your team
+              set of fixed prices, one source of certificates within 24 hours that your team
               can forward on immediately. That is what My Landlord Certificate provides.
             </p>
             <p>
@@ -169,7 +169,7 @@ export default function LettingAgentsPage() {
               across London. Whether your team books on behalf of landlords or you
               direct landlords to book themselves using a dedicated agency code, we
               handle the inspection, the paperwork and the certificate — and it arrives
-              the same day, every time.
+              within 24 hours, every time.
             </p>
           </div>
         </Container>
@@ -266,7 +266,7 @@ export default function LettingAgentsPage() {
               },
               {
                 step: "3",
-                title: "Certificate emailed the same day",
+                title: "Certificate emailed within 24 hours",
                 body: "The certificate is emailed to the booking email address on the day of the inspection. If your agency email is used for the booking, you receive it directly and can forward to the landlord immediately — ahead of any new tenancy start date.",
               },
             ].map(({ step, title, body }) => (
@@ -299,7 +299,7 @@ export default function LettingAgentsPage() {
               &ldquo;We manage 140 properties across South London. Before switching, we were
               juggling four different contractors and certificates were sometimes arriving
               a week after the inspection. With My Landlord Certificate, everything
-              arrives the same day and the prices are the same every time. Our landlords
+              arrives within 24 hours and the prices are the same every time. Our landlords
               stopped asking questions about compliance costs because there's nothing
               to question.&rdquo;
             </blockquote>

@@ -140,7 +140,7 @@ const faqItems = [
   {
     question: "How much does an EICR cost in the UK?",
     answer:
-      "A domestic EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. The national average quoted by comparison sites is £150–£300 for a typical 3-bedroom home. Our 1–3 bedroom EICR is £94.99 — towards the lower end of the market for a fixed-price, same-day certificate. Commercial EICRs start from £149.99 for a single consumer unit.",
+      "A domestic EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. The national average quoted by comparison sites is £150–£300 for a typical 3-bedroom home. Our 1–3 bedroom EICR is £94.99 — towards the lower end of the market for a fixed-price, certificate within 24 hours. Commercial EICRs start from £149.99 for a single consumer unit.",
   },
   {
     question: "Why does an EICR cost more for larger properties?",
@@ -160,7 +160,7 @@ const faqItems = [
   {
     question: "Are there any extra charges on top of the EICR price?",
     answer:
-      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no day-rate add-ons, and no surcharge for same-day certificates — the price in the table is the price you pay.",
+      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no day-rate add-ons, and no surcharge for certificates within 24 hours — the price in the table is the price you pay.",
   },
   {
     question: "Can I save money by bundling my EICR with other certificates?",
@@ -659,7 +659,7 @@ export default function EicrCostPage() {
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed same day.
+            No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed within 24 hours.
           </p>
         </section>
       </div>

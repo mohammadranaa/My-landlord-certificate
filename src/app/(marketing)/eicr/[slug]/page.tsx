@@ -37,13 +37,13 @@ export async function generateMetadata({
   if (!borough) return {};
   return {
     title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
-    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
+    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours. Book online.`,
     alternates: {
       canonical: `${SITE_URL}/eicr/${slug}`,
     },
     openGraph: {
       title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
-      description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day. Book online.`,
+      description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours. Book online.`,
       url: `${SITE_URL}/eicr/${slug}`,
     },
   };
@@ -74,7 +74,7 @@ export default async function EICRBoroughPage({
     "@type": "Service",
     name: `EICR ${borough.name} — Electrical Installation Condition Report`,
     url: `${SITE_URL}/eicr/${slug}`,
-    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed same day.`,
+    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours.`,
     provider: {
       "@type": "LocalBusiness",
       name: "My Landlord Certificate",
@@ -126,7 +126,7 @@ export default async function EICRBoroughPage({
     },
     {
       question: `How long does an EICR take in ${borough.name}?`,
-      answer: `Most EICR inspections in ${borough.name} take 2–4 hours depending on the size and age of the property. Older Victorian and Edwardian properties — which are common across many parts of ${borough.name} — may take slightly longer due to the complexity of the installation. You do not need to be present; a tenant or keyholder can provide access and the certificate will be emailed directly to you the same day.`,
+      answer: `Most EICR inspections in ${borough.name} take 2–4 hours depending on the size and age of the property. Older Victorian and Edwardian properties — which are common across many parts of ${borough.name} — may take slightly longer due to the complexity of the installation. You do not need to be present; a tenant or keyholder can provide access and the certificate will be emailed directly to you within 24 hours.`,
     },
     {
       question: "How often do I need an EICR?",
@@ -187,7 +187,7 @@ export default async function EICRBoroughPage({
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC Approved · Certificate Same Day · {borough.name}
+            NICEIC Approved · Certificate Within 24 Hours · {borough.name}
           </p>
 
           <Heading
@@ -202,7 +202,7 @@ export default async function EICRBoroughPage({
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Electrical Installation Condition Report for landlords in{" "}
             {borough.name}. NICEIC approved electricians, fixed pricing, no
-            hidden charges — certificate emailed the same day.
+            hidden charges — certificate emailed within 24 hours.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -253,7 +253,7 @@ export default async function EICRBoroughPage({
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">same day</dd>
+              <dd className="text-white font-semibold">within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
@@ -392,7 +392,7 @@ export default async function EICRBoroughPage({
               "Consumer unit check — type, condition, labelling and protective devices",
               "Earthing and bonding arrangement check against BS 7671",
               "NICEIC approved engineer — fully qualified and independently assessed",
-              "Signed EICR certificate emailed same day",
+              "Signed EICR certificate emailed within 24 hours",
               "Prioritised remedial recommendations with C1/C2/C3 classification",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -507,7 +507,7 @@ export default async function EICRBoroughPage({
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Book online in under 3 minutes. A NICEIC approved electrician
-            confirms your appointment. Certificate emailed the same day.
+            confirms your appointment. Certificate emailed within 24 hours.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Same-week appointments across {borough.name} and all 33 London
@@ -527,7 +527,7 @@ export default async function EICRBoroughPage({
             Book EICR in {borough.name} — from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            Fixed pricing. No hidden charges. NICEIC approved. Certificate emailed same day.
+            Fixed pricing. No hidden charges. NICEIC approved. Certificate emailed within 24 hours.
           </p>
         </section>
       </div>

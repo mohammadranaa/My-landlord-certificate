@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Commercial Gas Safety Certificate (CP42) London from £159.99 | My Landlord Certificate",
   description:
-    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 33 London boroughs. Same-day certificate.",
+    "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 33 London boroughs. Certificate within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   },
@@ -125,7 +125,7 @@ export default function CP42Page() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Gas Safe Registered · COMCAT &amp; COCN1 competencies · Certificate same day
+            Gas Safe Registered · COMCAT &amp; COCN1 competencies · Certificate within 24 hours
           </p>
           <TrustBadges serviceKey="gas-safety-cp42" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -159,7 +159,7 @@ export default function CP42Page() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
@@ -188,7 +188,7 @@ export default function CP42Page() {
             Our engineers hold commercial gas competencies including COMCAT (commercial catering),
             COCN1 (commercial natural gas), and CORT1 (commercial natural gas tightness testing).
             They are fully qualified to inspect all types of commercial gas equipment and issue
-            the written certificate the same day. The certificate identifies each appliance
+            the written certificate within 24 hours. The certificate identifies each appliance
             inspected and records any advisory notices or unsafe situations.
           </p>
 
@@ -220,7 +220,7 @@ export default function CP42Page() {
               },
               {
                 step: "3",
-                title: "CP42 certificate emailed same day",
+                title: "CP42 certificate emailed within 24 hours",
                 body: "You receive the written CP42 certificate listing every appliance with its inspection result. Keep it on-site and make it available to your local authority or HSE inspector on request.",
               },
             ].map(({ step, title, body }) => (
@@ -341,7 +341,7 @@ export default function CP42Page() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Gas Safe Registered engineers with commercial
-              competencies. Certificate emailed same day across all London boroughs.
+              competencies. Certificate emailed within 24 hours across all London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

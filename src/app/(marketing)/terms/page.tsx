@@ -255,7 +255,7 @@ export default function TermsPage() {
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li>We will dispatch an engineer who holds the correct accreditation for the service booked.</li>
                 <li>We will use reasonable endeavours to ensure the engineer arrives at the agreed appointment time. We are not liable for delays caused by traffic, access issues or other circumstances beyond our control.</li>
-                <li>We will issue your certificate by email on the same day as the inspection, provided the inspection is completed without any impediment.</li>
+                <li>We will issue your certificate by email on within 24 hours of the inspection, provided the inspection is completed without any impediment.</li>
                 <li>We will ensure that certificates are issued in a format that is legally compliant and accepted by local authorities, letting agents and mortgage lenders.</li>
                 <li>For EPC certificates, we will ensure the certificate is lodged on the national EPC register (epcregister.com) on the day of issue.</li>
                 <li>Where an EICR is graded Unsatisfactory due to C1 (Danger present) observations, the engineer will make the installation safe before leaving the property.</li>

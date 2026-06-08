@@ -114,7 +114,7 @@ function PlaceholderCarousel({
 }) {
   const quotes = [
     {
-      text: "Booked Sunday night, engineer at the property by 9am Tuesday. Certificate arrived same day. Exactly what a busy landlord needs.",
+      text: "Booked Sunday night, engineer at the property by 9am Tuesday. Certificate arrived within 24 hours. Exactly what a busy landlord needs.",
       author: "Sarah M.",
       location: "Hackney",
     },

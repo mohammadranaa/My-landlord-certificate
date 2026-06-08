@@ -147,7 +147,7 @@ export default function BookingSuccessPage() {
             {
               n: "3",
               title: "Engineer visits",
-              body: "An accredited engineer attends at the agreed time. Most certificates are issued the same day.",
+              body: "An accredited engineer attends at the agreed time. Most certificates are issued within 24 hours.",
             },
           ].map(({ n, title, body }) => (
             <li key={n} className="flex gap-4">

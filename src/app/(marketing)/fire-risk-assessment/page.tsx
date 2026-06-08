@@ -20,14 +20,14 @@ import {
 export const metadata: Metadata = {
   title: "Fire Risk Assessment from £74 | NEBOSH Qualified | My Landlord Certificate",
   description:
-    "Book a Fire Risk Assessment from £74. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. NEBOSH qualified assessors. Written report with prioritised action plan, same-day delivery.",
+    "Book a Fire Risk Assessment from £74. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. NEBOSH qualified assessors. Written report with prioritised action plan, emailed within 48 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
     title: "Fire Risk Assessment from £74 | NEBOSH Qualified Assessors",
     description:
-      "Fire Risk Assessment from £74. Compulsory for HMOs. NEBOSH qualified assessors, written report with prioritised action plan, same-day delivery. Book online in under 3 minutes.",
+      "Fire Risk Assessment from £74. Compulsory for HMOs. NEBOSH qualified assessors, written report with prioritised action plan, emailed within 48 hours. Book online in under 3 minutes.",
     url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
@@ -96,7 +96,7 @@ const productSchema = {
   "@type": "Product",
   name: "Fire Risk Assessment",
   description:
-    "Residential and HMO Fire Risk Assessment by NEBOSH qualified assessors. Written report with prioritised action plan delivered same day.",
+    "Residential and HMO Fire Risk Assessment by NEBOSH qualified assessors. Written report with prioritised action plan emailed within 48 hours.",
   brand: {
     "@type": "Brand",
     name: "My Landlord Certificate",
@@ -268,7 +268,7 @@ export default function FireRiskAssessmentPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NEBOSH Qualified · London &amp; M25 · Same-Day Report
+            NEBOSH Qualified · London &amp; M25 · Report Within 48 Hours
           </p>
 
           <Heading level={1} id="fra-heading" inverted className="mb-4 max-w-2xl">
@@ -279,7 +279,7 @@ export default function FireRiskAssessmentPage() {
             Compulsory for all HMOs under the Regulatory Reform (Fire Safety)
             Order 2005 and strongly recommended for all rental properties.
             NEBOSH qualified assessors. Written report with prioritised action
-            plan delivered the same day.
+            plan emailed within 48 hours of the inspection.
           </p>
 
           <PriceDisplay
@@ -325,7 +325,7 @@ export default function FireRiskAssessmentPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Report</dt>
-              <dd className="text-white font-semibold">delivered same day</dd>
+              <dd className="text-white font-semibold">Within 48 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Assessors</dt>
@@ -354,7 +354,7 @@ export default function FireRiskAssessmentPage() {
             At the end of the inspection you receive a written report detailing
             every finding, a prioritised action plan — graded into immediate,
             short-term, and ongoing actions — and a recommended date for
-            reassessment. The report is emailed to you on the same day as the
+            reassessment. The report is emailed to you within 48 hours of the
             visit.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
@@ -606,8 +606,8 @@ export default function FireRiskAssessmentPage() {
               },
               {
                 step: "3",
-                title: "Report emailed the same day",
-                body: "You receive a written Fire Risk Assessment report by email on the day of the visit. The report details every finding, grades each issue by priority, sets out a recommended action plan, and gives a reassessment date.",
+                title: "Report emailed within 48 hours",
+                body: "You receive a written Fire Risk Assessment report by email within 48 hours of the visit. The report details every finding, grades each issue by priority, sets out a recommended action plan, and gives a reassessment date.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -953,8 +953,8 @@ export default function FireRiskAssessmentPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. A NEBOSH qualified assessor will
-            contact you to confirm your appointment. Written report emailed the
-            same day — from £{popularPrice} for a 1–3 bedroom property.
+            contact you to confirm your appointment. Written report emailed
+            within 48 hours of the inspection — from £{popularPrice} for a 1–3 bedroom property.
           </p>
           <Link
             href="/book?service=fra-residential"
@@ -963,7 +963,7 @@ export default function FireRiskAssessmentPage() {
             Book my FRA — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. NEBOSH qualified assessors. Report emailed same day.
+            No hidden charges. NEBOSH qualified assessors. Report emailed within 48 hours.
           </p>
         </section>
       </div>

@@ -20,14 +20,14 @@ import {
 export const metadata: Metadata = {
   title: "Commercial EICR from £149.99 | London | My Landlord Certificate",
   description:
-    "Commercial EICR from £149.99. NICEIC approved electricians covering all London boroughs. Required every 3–5 years. Written report same day.",
+    "Commercial EICR from £149.99. NICEIC approved electricians covering all London boroughs. Required every 3–5 years. Written report within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
   openGraph: {
     title: "Commercial EICR from £149.99 | London | My Landlord Certificate",
     description:
-      "Commercial Electrical Installation Condition Report from £149.99. NICEIC approved electricians. Written report issued same day. All London boroughs covered.",
+      "Commercial Electrical Installation Condition Report from £149.99. NICEIC approved electricians. Written report issued within 24 hours. All London boroughs covered.",
     url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
 };
@@ -44,7 +44,7 @@ const serviceSchema = {
   name: "Commercial EICR — Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   description:
-    "Commercial Electrical Installation Condition Report (EICR) for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued the same day.",
+    "Commercial Electrical Installation Condition Report (EICR) for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -118,7 +118,7 @@ const faqSchema = {
       name: "What is included in a commercial EICR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A commercial EICR covers: visual inspection of all consumer units and distribution boards, continuity and polarity testing on every circuit, earth loop impedance testing, RCD functionality tests, insulation resistance measurements, and verification of protective devices. Every defect is classified as C1 (danger present), C2 (potentially dangerous), C3 (improvement recommended) or FI (further investigation required). A full written report is issued the same day.",
+        text: "A commercial EICR covers: visual inspection of all consumer units and distribution boards, continuity and polarity testing on every circuit, earth loop impedance testing, RCD functionality tests, insulation resistance measurements, and verification of protective devices. Every defect is classified as C1 (danger present), C2 (potentially dangerous), C3 (improvement recommended) or FI (further investigation required). A full written report is issued within 24 hours.",
       },
     },
     {
@@ -164,7 +164,7 @@ const faqItems = [
   {
     question: "What is included in a commercial EICR?",
     answer:
-      "A commercial EICR covers a comprehensive programme of visual inspection and electrical testing: examination of all consumer units and distribution boards; continuity and polarity testing on every circuit; earth loop impedance measurements; insulation resistance tests; RCD trip-time tests; and verification of all protective devices. Every defect is coded and listed in the written report. The full report is emailed to you on the same day as the inspection.",
+      "A commercial EICR covers a comprehensive programme of visual inspection and electrical testing: examination of all consumer units and distribution boards; continuity and polarity testing on every circuit; earth loop impedance measurements; insulation resistance tests; RCD trip-time tests; and verification of all protective devices. Every defect is coded and listed in the written report. The full report is emailed to you within 24 hours of the inspection.",
   },
   {
     question: "How does a commercial EICR differ from a domestic EICR?",
@@ -217,7 +217,7 @@ export default function CommercialEicrPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC &amp; NAPIT Approved · London &amp; M25 · Same-Day Certificate
+            NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
           </p>
 
           <Heading level={1} id="commercial-eicr-heading" inverted className="mb-4 max-w-2xl">
@@ -227,7 +227,7 @@ export default function CommercialEicrPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A full electrical installation condition report for commercial premises,
             HMO blocks, and mixed-use buildings. Priced by consumer unit — from £{entryPrice}{" "}
-            for a single consumer unit with up to 10 circuits. Written report issued the same day.
+            for a single consumer unit with up to 10 circuits. Written report issued within 24 hours.
           </p>
 
           <PriceDisplay
@@ -273,7 +273,7 @@ export default function CommercialEicrPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Report</dt>
-              <dd className="text-white font-semibold">issued same day</dd>
+              <dd className="text-white font-semibold">issued within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
@@ -426,7 +426,7 @@ export default function CommercialEicrPage() {
           <p className="text-brand-charcoal/80 leading-relaxed">
             Every defect and observation is recorded on the EICR schedule of inspections and
             schedule of circuit details, which are provided to you alongside the condition
-            report. The report is issued in PDF format and emailed the same day.
+            report. The report is issued in PDF format and emailed within 24 hours.
           </p>
         </section>
 
@@ -495,7 +495,7 @@ export default function CommercialEicrPage() {
               "RCD trip-time testing at 1× and 5× rated tripping current",
               "Classification of every defect as C1, C2, C3 or FI",
               "Schedule of inspections and schedule of circuit details",
-              "Full written EICR in PDF format, emailed same day",
+              "Full written EICR in PDF format, emailed within 24 hours",
               "Covers 1 consumer unit with up to 10 circuits",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -540,8 +540,8 @@ export default function CommercialEicrPage() {
               },
               {
                 step: "3",
-                title: "Written EICR report issued same day",
-                body: "Your full commercial EICR, including the schedule of inspections and schedule of circuit details, is completed and emailed to you in PDF format on the same day as the inspection.",
+                title: "Written EICR report issued within 24 hours",
+                body: "Your full commercial EICR, including the schedule of inspections and schedule of circuit details, is completed and emailed to you in PDF format on within 24 hours of the inspection.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -628,7 +628,7 @@ export default function CommercialEicrPage() {
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. A NICEIC approved commercial electrician
             will be in touch to confirm your appointment. From £{entryPrice} for a
-            single consumer unit — written report issued the same day.
+            single consumer unit — written report issued within 24 hours.
           </p>
           <Link
             href="/book?service=commercial-eicr&type=commercial"
@@ -637,7 +637,7 @@ export default function CommercialEicrPage() {
             Book Commercial EICR — from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            Fixed pricing. No hidden charges. Written report same day.
+            Fixed pricing. No hidden charges. Written report within 24 hours.
           </p>
         </section>
       </div>

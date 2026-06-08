@@ -12,18 +12,18 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "About Us — My Landlord Certificate",
   description:
-    "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
+    "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Certificates within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/about" },
   openGraph: {
     title: "About Us — My Landlord Certificate",
     description:
-      "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Same-day certificates.",
+      "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Certificates within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/about",
   },
   twitter: {
     title: "About Us — My Landlord Certificate",
     description:
-      "Fixed prices. Accredited engineers. Same-day certificates. Landlord compliance made straightforward.",
+      "Fixed prices. Accredited engineers. Certificates within 24 hours. Landlord compliance made straightforward.",
   },
 };
 
@@ -36,7 +36,7 @@ const organizationSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+443301330066",
   description:
-    "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the M25 area. Fixed prices, accredited engineers, same-day certificates.",
+    "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the M25 area. Fixed prices, accredited engineers, certificates within 24 hours.",
   areaServed: "London and the M25 area",
   knowsAbout: [
     "EICR — Electrical Installation Condition Report",
@@ -96,7 +96,7 @@ const values = [
     body: "We work exclusively with NICEIC approved or NAPIT certified electricians, Gas Safe Registered engineers, accredited DEAs and NEBOSH qualified fire assessors. No unregistered subcontractors, ever.",
   },
   {
-    title: "Certificates emailed the same day",
+    title: "Certificates emailed within 24 hours",
     body: "Every certificate is issued digitally on the day of the inspection — not posted days later, not delayed pending admin review. You receive it by email and can forward it immediately.",
   },
   {
@@ -128,7 +128,7 @@ export default function AboutPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-xl mx-auto mb-10">
             We help London landlords get their compliance certificates quickly,
             affordably and without the usual friction. Fixed prices, accredited
-            engineers, certificates in your inbox the same day.
+            engineers, certificates in your inbox within 24 hours.
           </p>
           <TrustBadges variant="dark" className="justify-center" />
         </Container>
@@ -153,7 +153,7 @@ export default function AboutPage() {
               administrative side of being a landlord should not take more time than
               the property itself. Book online in under three minutes. An accredited
               engineer visits at the agreed slot. Your certificate is in your inbox
-              the same day. That is the entire process — and nothing should be added
+              within 24 hours. That is the entire process — and nothing should be added
               to complicate it.
             </p>
             <p>
@@ -264,7 +264,7 @@ export default function AboutPage() {
               },
               {
                 step: "3",
-                title: "Certificate emailed the same day",
+                title: "Certificate emailed within 24 hours",
                 body: "Your certificate is issued digitally and emailed to you on the day of the inspection. It is fully compliant and accepted by all local authorities, letting agents and mortgage lenders. EPC certificates are lodged on the national register automatically.",
               },
             ].map(({ step, title, body }) => (
@@ -338,7 +338,7 @@ export default function AboutPage() {
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
             Fixed prices. Next-day appointments across London and the M25 area.
-            Certificate emailed the same day.
+            Certificate emailed within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

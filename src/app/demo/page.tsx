@@ -39,7 +39,7 @@ const faqItems = [
   {
     question: "When will I receive my certificate?",
     answer:
-      "All certificates are emailed on the same day as the inspection, usually within a few hours of completion.",
+      "All certificates are emailed within 24 hours of the inspection, usually within a few hours of completion.",
   },
 ];
 
@@ -182,7 +182,7 @@ export default function DemoPage() {
                 href="/services/eicr"
                 icon={<EicrIcon />}
                 name="EICR Certificate"
-                description="Mandatory for all rental properties since 2020. Fixed-price inspections with same-day certificates."
+                description="Mandatory for all rental properties since 2020. Fixed-price inspections with certificates within 24 hours."
                 price={99}
                 turnaroundDays={2}
               />

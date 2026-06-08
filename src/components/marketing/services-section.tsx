@@ -198,7 +198,7 @@ const RESIDENTIAL: ServiceDef[] = [
     icon: <FlameIcon />,
     name: "Gas Safety Certificate (CP12)",
     description:
-      "Annual CP12 inspection of all gas appliances, flues and pipework by a Gas Safe registered engineer. Certificate issued same day.",
+      "Annual CP12 inspection of all gas appliances, flues and pipework by a Gas Safe registered engineer. Certificate issued within 24 hours.",
     price: getPriceForGasSafety(1),
     turnaroundDays: 1,
   },
@@ -225,7 +225,7 @@ const RESIDENTIAL: ServiceDef[] = [
     icon: <PlugIcon />,
     name: "PAT Testing",
     description:
-      "Portable Appliance Testing for furnished rental properties. Pass/fail label on every appliance, full asset register emailed same day.",
+      "Portable Appliance Testing for furnished rental properties. Pass/fail label on every appliance, full asset register emailed within 24 hours.",
     price: getPriceForPAT(1),
     turnaroundDays: 1,
   },
@@ -323,7 +323,7 @@ const COMMERCIAL: ServiceDef[] = [
     icon: <EicrIcon />,
     name: "Commercial EICR",
     description:
-      "Electrical Installation Condition Report for commercial premises, mixed-use buildings and HMO blocks. NICEIC approved engineers. Written report same day.",
+      "Electrical Installation Condition Report for commercial premises, mixed-use buildings and HMO blocks. NICEIC approved engineers. Written report within 24 hours.",
     price: COMMERCIAL_EICR_TABLE[0].price,
     turnaroundDays: 2,
   },

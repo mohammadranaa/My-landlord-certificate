@@ -139,7 +139,7 @@ const faqItems = [
   {
     question: "How much does an EPC cost in the UK?",
     answer:
-      "A domestic EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited assessors in London typically charge more. Our studio EPC at £89.99 is competitive for a same-day lodgement by an accredited DEA. Commercial EPCs start from £250 for properties up to 50m².",
+      "A domestic EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited assessors in London typically charge more. Our studio EPC at £89.99 is competitive for a next-day lodgement by an accredited DEA. Commercial EPCs start from £250 for properties up to 50m².",
   },
   {
     question: "How long does an EPC last?",
@@ -344,7 +344,7 @@ export default function EpcCostPage() {
               "Lighting assessment — fixed lighting, energy-saving bulbs",
               "SAP (Standard Assessment Procedure) calculation run using RdSAP methodology",
               "EPC lodged on the national register at the Landmark Trust EPC Register",
-              "A–G rating certificate and improvement recommendations emailed same day",
+              "A–G rating certificate and improvement recommendations emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -392,7 +392,7 @@ export default function EpcCostPage() {
             The national average for a domestic EPC quoted by comparison sites is
             typically <strong>£60–£120</strong>. In London, accredited assessors
             often charge <strong>£80–£150</strong> for a standard property, with
-            larger homes and same-day lodgement attracting a premium. Prices at
+            larger homes and next-day lodgement attracting a premium. Prices at
             the very low end (under £50) often come from newly qualified assessors
             building their portfolio — experience and accreditation scheme matter
             for the quality of improvement recommendations you receive.
@@ -741,7 +741,7 @@ export default function EpcCostPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             The price on this page is the price you pay — no call-out charges,
-            no hidden fees, lodged on the national register the same day.
+            no hidden fees, lodged on the national register within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
@@ -761,7 +761,7 @@ export default function EpcCostPage() {
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. Accredited DEA assessors. Lodged on national register same day.
+            No hidden charges. Accredited DEA assessors. Lodged on national register within 24 hours.
           </p>
         </section>
       </div>

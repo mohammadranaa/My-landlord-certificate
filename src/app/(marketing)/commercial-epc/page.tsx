@@ -16,14 +16,14 @@ const entryPrice = COMMERCIAL_EPC_TABLE[0].price;
 export const metadata: Metadata = {
   title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
   description:
-    "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report same day.",
+    "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
   openGraph: {
     title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
     description:
-      "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report same day.",
+      "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
 };
@@ -161,7 +161,7 @@ export default function CommercialEPCPage() {
             Commercial Energy Performance Certificate — required before selling or
             letting any commercial property. Accredited DEA assessors using
             SBEM methodology, MEES compliance advice included, report lodged on
-            the national register same day.
+            the national register within 24 hours.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -212,7 +212,7 @@ export default function CommercialEPCPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Report</dt>
-              <dd className="text-white font-semibold">same day</dd>
+              <dd className="text-white font-semibold">within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>

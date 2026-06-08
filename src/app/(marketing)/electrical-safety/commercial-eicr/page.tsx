@@ -72,7 +72,7 @@ const faqs = [
   {
     question: "How long does a commercial EICR take?",
     answer:
-      "A single-consumer-unit inspection typically takes 4–6 hours. Larger premises with multiple boards may require a full day or two visits. We will discuss the estimated duration and any requirement for out-of-hours access when booking. The certificate is emailed on the same day the inspection is completed.",
+      "A single-consumer-unit inspection typically takes 4–6 hours. Larger premises with multiple boards may require a full day or two visits. We will discuss the estimated duration and any requirement for out-of-hours access when booking. The certificate is emailed within 24 hours the inspection is completed.",
   },
   {
     question: "Do you cover HMOs and blocks of flats?",
@@ -121,9 +121,9 @@ const steps = [
   },
   {
     step: "3",
-    title: "Full written report same day",
+    title: "Full written report within 24 hours",
     description:
-      "Your commercial EICR is emailed the same day the inspection is completed, with a coded fault schedule and recommended next inspection date. Suitable for council, insurer, or tenant requests.",
+      "Your commercial EICR is emailed within 24 hours the inspection is completed, with a coded fault schedule and recommended next inspection date. Suitable for council, insurer, or tenant requests.",
   },
 ];
 
@@ -152,7 +152,7 @@ export default function CommercialEICRPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Priced per consumer unit · No hidden circuit charges · Certificate same day
+            NICEIC approved · Priced per consumer unit · No hidden circuit charges · Certificate within 24 hours
           </p>
           <TrustBadges serviceKey="commercial-eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -186,7 +186,7 @@ export default function CommercialEICRPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
@@ -278,7 +278,7 @@ export default function CommercialEICRPage() {
               "RCD trip-time verification",
               "Coded fault classification (C1, C2, C3, FI)",
               "Full written EICR report compliant with BS 7671",
-              "Certificate emailed same day",
+              "Certificate emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -346,7 +346,7 @@ export default function CommercialEICRPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice} per consumer unit. NICEIC approved. Full
-              written report same day. Same-week appointments across London.
+              written report within 24 hours. Same-week appointments across London.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

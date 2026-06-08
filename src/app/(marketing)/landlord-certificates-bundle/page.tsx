@@ -20,14 +20,14 @@ import {
 export const metadata: Metadata = {
   title: "Landlord Certificate Bundle — Save up to £44.97 | My Landlord Certificate",
   description:
-    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit and save. Essential Bundle from £130. Full Compliance £230. HMO Complete £450. All certificates emailed same day.",
+    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit and save. Essential Bundle from £130. Full Compliance £230. HMO Complete £450. All certificates emailed within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
   openGraph: {
     title: "Landlord Certificate Bundle — Save up to £44.97",
     description:
-      "Combine your landlord compliance certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. No hidden charges. Certificates emailed same day.",
+      "Combine your landlord compliance certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. No hidden charges. Certificates emailed within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
@@ -163,7 +163,7 @@ const faqSchema = {
       name: "Do I get separate certificates for each service?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Each service produces its own certificate — a separate EICR, CP12, EPC and FRA report. All are emailed on the same day of the visit and are fully compliant documents suitable for tenants and local authorities.",
+        text: "Yes. Each service produces its own certificate — a separate EICR, CP12, EPC and FRA report. All are emailed within 24 hours of the visit and are fully compliant documents suitable for tenants and local authorities.",
       },
     },
     {
@@ -261,7 +261,7 @@ const faqItems = [
   {
     question: "Do I get separate certificates for each service?",
     answer:
-      "Yes. Each service produces its own certificate — a separate EICR, CP12, EPC and FRA report. All are emailed to you on the same day as the visit and are fully compliant, stand-alone documents suitable for providing to tenants, letting agents and local authorities.",
+      "Yes. Each service produces its own certificate — a separate EICR, CP12, EPC and FRA report. All are emailed to you within 24 hours of the visit and are fully compliant, stand-alone documents suitable for providing to tenants, letting agents and local authorities.",
   },
   {
     question: "Which bundle is right for my HMO?",
@@ -314,7 +314,7 @@ export default function BundlePage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-8">
             Book your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment
             together and save versus booking each one separately. One engineer
-            visit. One booking. All certificates emailed the same day.
+            visit. One booking. All certificates emailed within 24 hours.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-10">
@@ -353,7 +353,7 @@ export default function BundlePage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificates</dt>
-              <dd className="text-white font-semibold">emailed same day</dd>
+              <dd className="text-white font-semibold">emailed within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Appointments</dt>
@@ -384,7 +384,7 @@ export default function BundlePage() {
               },
               {
                 abbr: "All",
-                title: "All certificates same day",
+                title: "All certificates within 24 hours",
                 body: "Every certificate from the bundle is emailed on the day of the visit. EICR, CP12, EPC and FRA arrive together as one complete digital compliance pack.",
               },
             ].map(({ abbr, title, body }) => (
@@ -411,7 +411,7 @@ export default function BundlePage() {
           </Heading>
           <p className="text-brand-grey mb-10">
             All bundles are completed in a single visit. All certificates are
-            emailed on the same day.
+            emailed within 24 hours.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -622,7 +622,7 @@ export default function BundlePage() {
           <p className="text-brand-charcoal/80 mb-5 text-sm leading-relaxed">
             Prefer to book one certificate at a time? Each service is available
             separately at a fixed price with the same next-day appointments and
-            same-day certificate delivery.
+            certificate within 24 hours.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -683,7 +683,7 @@ export default function BundlePage() {
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. All certificates emailed same day.
+            No hidden charges. All certificates emailed within 24 hours.
           </p>
         </section>
       </div>

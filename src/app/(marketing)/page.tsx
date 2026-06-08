@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates from £50 — no hidden charges. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Next-day appointments across London. Certificate emailed same day.",
+      "Landlord compliance certificates from £50 — no hidden charges. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Next-day appointments across London. Certificate emailed within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates for UK landlords — no hidden charges. NICEIC approved. Gas Safe registered. Next-day appointments. Certificate emailed same day.",
+      "Landlord compliance certificates for UK landlords — no hidden charges. NICEIC approved. Gas Safe registered. Next-day appointments. Certificate emailed within 24 hours.",
   },
 };
 
@@ -123,7 +123,7 @@ const faqItems = [
   {
     question: "How quickly can I get my landlord certificate?",
     answer:
-      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Same-day slots are available in many areas — call us on 0330 133 0066 to check availability.",
+      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Priority slots are available in many areas — call us on 0330 133 0066 to check availability.",
   },
   {
     question: "Do I need to be at the property during the inspection?",
@@ -163,7 +163,7 @@ export default function HomePage() {
         <Container className="relative py-20 md:py-28 lg:py-32">
           <div className="max-w-3xl">
             <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-              Accredited Engineers · Gas Safe Registered · Same-Day Certificates
+              Accredited Engineers · Gas Safe Registered · Certificates Within 24 Hours
             </p>
 
             <Heading level={1} id="hero-heading" inverted className="mb-6">
@@ -298,10 +298,10 @@ export default function HomePage() {
               },
               {
                 step: "03",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "Your certificate arrives by email on the day of the inspection — fully compliant, ready to forward to your tenant, letting agent or local authority.",
                 bullets: [
-                  "PDF certificate emailed same day as the visit",
+                  "PDF certificate emailed within 24 hours as the visit",
                   "Accepted by all local authorities and letting agents",
                   "Forward to tenant within 28 days as required by law",
                   "EPC lodged on the national register automatically",
@@ -396,11 +396,11 @@ export default function HomePage() {
               {
                 icon: "⚡",
                 title: "Next-day appointments across London",
-                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Same-day slots available in many areas — call 0330 133 0066.",
+                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Priority slots available in many areas — call 0330 133 0066.",
               },
               {
                 icon: "📄",
-                title: "Certificate emailed the same day",
+                title: "Certificate emailed within 24 hours",
                 body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
               },
             ].map(({ icon, title, body }) => (
@@ -441,7 +441,7 @@ export default function HomePage() {
               <p className="text-sm text-brand-grey mt-1">Certificates issued</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue">Same day</p>
+              <p className="text-3xl font-bold text-compliance-blue">Within 24 hours</p>
               <p className="text-sm text-brand-grey mt-1">Certificate delivery</p>
             </div>
             <div>
@@ -524,7 +524,7 @@ export default function HomePage() {
         <Container>
           <CTABanner
             heading="Ready to get your landlord certificates sorted?"
-            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the M25 area. All certificates emailed same day."
+            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the M25 area. All certificates emailed within 24 hours."
             primaryHref="/book"
             primaryLabel="Book your certificate now"
             secondaryHref="/pricing"

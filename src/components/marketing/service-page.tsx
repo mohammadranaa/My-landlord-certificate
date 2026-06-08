@@ -37,11 +37,11 @@ export function ServicePage({ service }: { service: ServiceData }) {
           <span className="text-white">
             From <strong>£{priceFrom}</strong>
           </span>
-          <span>Turnaround: <strong className="text-white">{turnaroundDays === 1 ? "Same day" : `${turnaroundDays} days`}</strong></span>
+          <span>Turnaround: <strong className="text-white">{turnaroundDays === 1 ? "Within 24 hours" : `${turnaroundDays} days`}</strong></span>
           {validityYears && (
             <span>Valid for: <strong className="text-white">{validityYears} year{validityYears > 1 ? "s" : ""}</strong></span>
           )}
-          <span>Certificate emailed <strong className="text-white">same day</strong></span>
+          <span>Certificate emailed <strong className="text-white">within 24 hours</strong></span>
         </div>
       </div>
 

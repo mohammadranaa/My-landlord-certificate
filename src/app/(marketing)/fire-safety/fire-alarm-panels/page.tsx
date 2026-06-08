@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_PANELS_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Fire Alarm Panel Servicing London from £74.99 — BS 5839-1 | My Landlord Certificate",
   description:
-    "Fire alarm panel inspection, testing and servicing from £74.99. Conventional and addressable panels. BS 5839-1 compliant. Written certificate same day. All 33 London boroughs.",
+    "Fire alarm panel inspection, testing and servicing from £74.99. Conventional and addressable panels. BS 5839-1 compliant. Written certificate within 24 hours. All 33 London boroughs.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-panels",
   },
@@ -125,7 +125,7 @@ export default function FireAlarmPanelsPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Conventional &amp; addressable panels · BS 5839-1 compliant · Certificate same day
+            Conventional &amp; addressable panels · BS 5839-1 compliant · Certificate within 24 hours
           </p>
           <TrustBadges serviceKey="fire-alarm-installation" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -159,7 +159,7 @@ export default function FireAlarmPanelsPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
@@ -224,7 +224,7 @@ export default function FireAlarmPanelsPage() {
               },
               {
                 step: "3",
-                title: "BS 5839-1 certificate issued same day",
+                title: "BS 5839-1 certificate issued within 24 hours",
                 body: "You receive a written service certificate recording every device tested, any faults found, and the next service due date. Suitable for your HMO licence, local authority, or insurance renewal.",
               },
             ].map(({ step, title, body }) => (
@@ -341,7 +341,7 @@ export default function FireAlarmPanelsPage() {
               Book your fire alarm panel service
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Written BS 5839-1 certificate same day.
+              Fixed price from £{entryPrice}. Written BS 5839-1 certificate within 24 hours.
               Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">

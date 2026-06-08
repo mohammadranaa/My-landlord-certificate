@@ -122,7 +122,7 @@ export default function PricingPage() {
           </Heading>
           <p className="text-blue-100 text-lg max-w-2xl">
             Every price you see is the price you pay. No call-out charges, no
-            hidden fees, no surprises. All certificates emailed same day.
+            hidden fees, no surprises. All certificates emailed within 24 hours.
           </p>
         </Container>
       </section>
@@ -733,7 +733,7 @@ export default function PricingPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book any certificate online in under 3 minutes. Fixed pricing.
-            Same-week appointments. Certificates emailed same day.
+            Same-week appointments. Certificates emailed within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

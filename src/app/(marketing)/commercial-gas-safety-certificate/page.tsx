@@ -46,7 +46,7 @@ const serviceSchema = {
   name: "Commercial Gas Safety Certificate (CP42)",
   url: "https://www.mylandlordcertificate.co.uk/commercial-gas-safety-certificate",
   description:
-    "Commercial Gas Safety Certificate (CP42) for non-domestic premises including commercial landlords, offices, restaurants, and care homes. Gas Safe registered engineers. Annual inspection and certificate issued the same day.",
+    "Commercial Gas Safety Certificate (CP42) for non-domestic premises including commercial landlords, offices, restaurants, and care homes. Gas Safe registered engineers. Annual inspection and certificate issued within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -219,7 +219,7 @@ export default function CommercialGasSafetyCertificatePage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             Annual commercial gas safety check and CP42 certificate for non-domestic
             premises. From £{entryPrice} for a single gas appliance. Gas Safe registered
-            engineers with commercial gas competencies. Certificate issued the same day.
+            engineers with commercial gas competencies. Certificate issued within 24 hours.
           </p>
 
           <PriceDisplay
@@ -265,7 +265,7 @@ export default function CommercialGasSafetyCertificatePage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">issued same day</dd>
+              <dd className="text-white font-semibold">issued within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
@@ -301,7 +301,7 @@ export default function CommercialGasSafetyCertificatePage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Our engineers hold Gas Safe registration with commercial gas and catering appliance
             competencies and operate across all 33 London boroughs, including the City of London.
-            Every CP42 certificate is produced digitally and emailed to you on the same day as
+            Every CP42 certificate is produced digitally and emailed to you within 24 hours as
             the inspection.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
@@ -491,7 +491,7 @@ export default function CommercialGasSafetyCertificatePage() {
               "Ignition, flame failure, and safety interlock checks",
               "Gas pipework tightness test",
               "Appliance classification (safe / at risk / immediately dangerous)",
-              "Written CP42 certificate emailed the same day",
+              "Written CP42 certificate emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -535,8 +535,8 @@ export default function CommercialGasSafetyCertificatePage() {
               },
               {
                 step: "3",
-                title: "CP42 certificate issued same day",
-                body: "Your CP42 Commercial Gas Safety Certificate is completed and emailed to you in PDF format on the same day as the inspection. Keep a copy on site and provide one to your tenant within 28 days where required by the Regulations.",
+                title: "CP42 certificate issued within 24 hours",
+                body: "Your CP42 Commercial Gas Safety Certificate is completed and emailed to you in PDF format on within 24 hours of the inspection. Keep a copy on site and provide one to your tenant within 28 days where required by the Regulations.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -631,7 +631,7 @@ export default function CommercialGasSafetyCertificatePage() {
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. A Gas Safe registered commercial engineer
             will be in touch to confirm your appointment slot. From £{entryPrice} for
-            one appliance — certificate emailed the same day.
+            one appliance — certificate emailed within 24 hours.
           </p>
           <Link
             href="/book?service=gas-safety-cp42&type=commercial"
@@ -640,7 +640,7 @@ export default function CommercialGasSafetyCertificatePage() {
             Book CP42 Certificate — from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            Fixed pricing. No hidden charges. Certificate same day.
+            Fixed pricing. No hidden charges. Certificate within 24 hours.
           </p>
         </section>
       </div>

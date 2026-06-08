@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "EICR Certificate London from £67.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 33 London boroughs. Certificate emailed same day.",
+    "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 33 London boroughs. Certificate emailed within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/eicr",
   },
@@ -28,7 +28,7 @@ const serviceSchema = {
   name: "Domestic EICR — Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/electrical-safety/domestic-eicr",
   description:
-    "Legally required for all private rental properties in England. NICEIC approved electricians inspect all fixed wiring, consumer units, sockets, and light fittings. Certificate emailed same day.",
+    "Legally required for all private rental properties in England. NICEIC approved electricians inspect all fixed wiring, consumer units, sockets, and light fittings. Certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -132,9 +132,9 @@ const steps = [
   },
   {
     step: "3",
-    title: "Certificate emailed same day",
+    title: "Certificate emailed within 24 hours",
     description:
-      "Your EICR is emailed to you the same day. You can forward it directly to your tenant or local authority. If remedial work is needed, we'll quote immediately.",
+      "Your EICR is emailed to you within 24 hours. You can forward it directly to your tenant or local authority. If remedial work is needed, we'll quote immediately.",
   },
 ];
 
@@ -167,7 +167,7 @@ export default function DomesticEICRPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Same-week appointments · Certificate emailed same day · All 33 London boroughs
+            NICEIC approved · Same-week appointments · Certificate emailed within 24 hours · All 33 London boroughs
           </p>
           <TrustBadges serviceKey="eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -201,7 +201,7 @@ export default function DomesticEICRPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
@@ -236,7 +236,7 @@ export default function DomesticEICRPage() {
             Our NICEIC approved electricians carry out EICRs to the latest 18th Edition Wiring
             Regulations (BS 7671:2018+A2:2022). We cover all property types — Victorian terraces
             with original wiring, purpose-built flats, HMOs, and new builds. The EICR certificate
-            is emailed to you the same day as the inspection.
+            is emailed to you within 24 hours as the inspection.
           </p>
 
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
@@ -293,7 +293,7 @@ export default function DomesticEICRPage() {
               "Earthing and bonding checks",
               "Coded fault classification (C1, C2, C3, FI)",
               "Written EICR compliant with BS 7671 18th Edition",
-              "Certificate emailed same day — ready for your tenant",
+              "Certificate emailed within 24 hours — ready for your tenant",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -364,7 +364,7 @@ export default function DomesticEICRPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. No call-out fees. NICEIC approved electricians.
-              Certificate emailed same day. Same-week appointments across all 33 London boroughs.
+              Certificate emailed within 24 hours. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

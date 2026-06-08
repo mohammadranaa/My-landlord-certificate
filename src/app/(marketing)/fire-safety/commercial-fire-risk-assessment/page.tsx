@@ -104,7 +104,7 @@ export default function CommercialFireRiskAssessmentPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            IFSM-qualified assessors · Written report same day · All building types
+            IFSM-qualified assessors · Written report within 24 hours · All building types
           </p>
           <TrustBadges serviceKey="fire-risk-assessment" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -138,7 +138,7 @@ export default function CommercialFireRiskAssessmentPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Report</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Legal basis</p>
@@ -260,7 +260,7 @@ export default function CommercialFireRiskAssessmentPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. IFSM-qualified assessors, written
-              report same day. Suitable for regulatory submission.
+              report within 24 hours. Suitable for regulatory submission.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

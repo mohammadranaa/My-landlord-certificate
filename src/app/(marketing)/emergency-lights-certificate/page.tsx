@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, ELC_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved | My Landlord Certificate",
   description:
-    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 33 London boroughs. Certificate same day.",
+    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 33 London boroughs. Certificate within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/emergency-lights-certificate",
   },
@@ -125,7 +125,7 @@ export default function EmergencyLightsCertificatePage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
-            NICEIC approved · Annual testing to BS 5266-1 · Certificate issued same day
+            NICEIC approved · Annual testing to BS 5266-1 · Certificate issued within 24 hours
           </p>
           <TrustBadges serviceKey="emergency-lights" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -159,7 +159,7 @@ export default function EmergencyLightsCertificatePage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
@@ -187,7 +187,7 @@ export default function EmergencyLightsCertificatePage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Our NICEIC approved engineers carry out a full 3-hour discharge test of each
             emergency luminaire, visually inspect all fittings and exit signage, and issue
-            a written certificate the same day. The certificate records each fitting&apos;s
+            a written certificate within 24 hours. The certificate records each fitting&apos;s
             pass/fail status and any remediation required.
           </p>
 
@@ -218,7 +218,7 @@ export default function EmergencyLightsCertificatePage() {
               },
               {
                 step: "3",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "You receive a written Emergency Lights Certificate listing every luminaire with its test result. Suitable for your HMO licence, local authority, or fire authority inspection.",
               },
             ].map(({ step, title, body }) => (
@@ -264,7 +264,7 @@ export default function EmergencyLightsCertificatePage() {
               "Full 3-hour discharge test of each luminaire",
               "Visual inspection of all fittings and exit signs",
               "Pass/fail recorded for each individual light",
-              "Written certificate issued same day",
+              "Written certificate issued within 24 hours",
               "Monthly test guidance for your records",
               "Fault reporting with recommended action",
               "NICEIC approved electrician",
@@ -383,7 +383,7 @@ export default function EmergencyLightsCertificatePage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Same-week appointments across all 33 London boroughs.
-              Certificate issued same day.
+              Certificate issued within 24 hours.
             </p>
             <Link
               href="/book?service=elc"

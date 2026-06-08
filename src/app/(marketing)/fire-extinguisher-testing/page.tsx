@@ -10,7 +10,7 @@ import { ADDITIONAL_CHARGES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service | My Landlord Certificate",
   description:
-    "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label same day. All London boroughs.",
+    "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label within 24 hours. All London boroughs.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-extinguisher-testing",
   },
@@ -125,7 +125,7 @@ export default function FireExtinguisherTestingPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            All extinguisher types · BS 5306-3 compliant · Service label issued same day
+            All extinguisher types · BS 5306-3 compliant · Service label issued within 24 hours
           </p>
           <TrustBadges serviceKey="fire-extinguisher-testing" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -159,7 +159,7 @@ export default function FireExtinguisherTestingPage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Service label</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
@@ -189,7 +189,7 @@ export default function FireExtinguisherTestingPage() {
             water mist, foam, CO₂, dry powder, and wet chemical. Extinguishers are inspected
             in-situ — no need to bring them to us. A dated service label is applied to each
             extinguisher after passing inspection, and a written service record is issued the
-            same day.
+            within 24 hours.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Where an extinguisher fails inspection or is beyond its service life, we can
@@ -225,7 +225,7 @@ export default function FireExtinguisherTestingPage() {
               },
               {
                 step: "3",
-                title: "Service record issued same day",
+                title: "Service record issued within 24 hours",
                 body: "You receive a written service record listing each extinguisher with its inspection result and next service date. Keep it with your HMO licence documents and compliance file.",
               },
             ].map(({ step, title, body }) => (
@@ -341,7 +341,7 @@ export default function FireExtinguisherTestingPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. All extinguisher types. Service label
-              issued same day. Same-week appointments across all 33 London boroughs.
+              issued within 24 hours. Same-week appointments across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

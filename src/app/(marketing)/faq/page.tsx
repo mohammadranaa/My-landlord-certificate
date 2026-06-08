@@ -42,7 +42,7 @@ const categories = [
       {
         question: "How quickly can I get an appointment?",
         answer:
-          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent same-day requirements, call 0330 133 0066 and we will do our best to accommodate you.",
+          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent priority bookings, call 0330 133 0066 and we will do our best to accommodate you.",
       },
       {
         question: "Do I need to be present during the inspection?",
@@ -258,7 +258,7 @@ const categories = [
       {
         question: "How is my certificate delivered?",
         answer:
-          "Every certificate is emailed to you as a PDF on the same day as the inspection — not posted, not delayed by admin, not sent the following week. You receive it directly to the email address you provided during booking. EPC certificates are additionally lodged on the national EPC register at epcregister.com automatically. Gas Safety Certificates and EICRs are provided in a format accepted by all local authorities, letting agents and mortgage lenders.",
+          "Every certificate is emailed to you as a PDF on within 24 hours of the inspection — not posted, not delayed by admin, not sent the following week. You receive it directly to the email address you provided during booking. EPC certificates are additionally lodged on the national EPC register at epcregister.com automatically. Gas Safety Certificates and EICRs are provided in a format accepted by all local authorities, letting agents and mortgage lenders.",
       },
       {
         question: "How do I share the certificate with my tenant?",
@@ -446,7 +446,7 @@ export default function FAQPage() {
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
             Fixed prices. Next-day appointments across London. Certificate emailed
-            the same day.
+            within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

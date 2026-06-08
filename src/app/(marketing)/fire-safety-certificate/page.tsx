@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Fire Safety Certificate London from £54.99 — Smoke Alarm Testing | My Landlord Certificate",
   description:
-    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 33 London boroughs. Same-day certificate.",
+    "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 33 London boroughs. Certificate within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate",
   },
@@ -129,7 +129,7 @@ export default function FireSafetyCertificatePage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            Accredited engineers · Annual testing to BS 5839-6 · Certificate issued same day
+            Accredited engineers · Annual testing to BS 5839-6 · Certificate issued within 24 hours
           </p>
           <TrustBadges serviceKey="fire-safety-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -163,7 +163,7 @@ export default function FireSafetyCertificatePage() {
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
-              <p className="font-bold text-white">Same day</p>
+              <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Standard</p>
@@ -223,7 +223,7 @@ export default function FireSafetyCertificatePage() {
               },
               {
                 step: "3",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "You receive the written Fire Safety Certificate listing every alarm with its test result. Keep it with your compliance file and submit it to your local authority or HMO licensing body if requested.",
               },
             ].map(({ step, title, body }) => (
@@ -275,7 +275,7 @@ export default function FireSafetyCertificatePage() {
               "CO detector testing if present",
               "Written Fire Safety Certificate",
               "Pass/fail for each individual alarm",
-              "Certificate emailed same day",
+              "Certificate emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
@@ -546,7 +546,7 @@ export default function FireSafetyCertificatePage() {
               Book your Fire Safety Certificate
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Accredited engineers, certificate same day.
+              Fixed price from £{entryPrice}. Accredited engineers, certificate within 24 hours.
               Same-week appointments across all 33 London boroughs.
             </p>
             <Link

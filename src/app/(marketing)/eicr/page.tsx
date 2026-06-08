@@ -20,12 +20,12 @@ import {
 export const metadata: Metadata = {
   title: "EICR Certificate from £67.99 | My Landlord Certificate",
   description:
-    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed same day.",
+    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr" },
   openGraph: {
     title: "EICR Certificate from £67.99 | My Landlord Certificate",
     description:
-      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the M25 area, certificate emailed same day.",
+      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the M25 area, certificate emailed within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
@@ -38,7 +38,7 @@ const serviceSchema = {
   name: "EICR — Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/eicr",
   description:
-    "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved and NAPIT certified electricians, certificate emailed same day.",
+    "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved and NAPIT certified electricians, certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -76,7 +76,7 @@ const productSchema = {
   "@type": "Product",
   name: "EICR Certificate — Electrical Installation Condition Report",
   description:
-    "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved and NAPIT certified electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed same day.",
+    "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved and NAPIT certified electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed within 24 hours.",
   brand: {
     "@type": "Brand",
     name: "My Landlord Certificate",
@@ -259,7 +259,7 @@ export default function EicrPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC &amp; NAPIT Approved · London &amp; M25 · Same-Day Certificate
+            NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
           </p>
 
           <Heading level={1} id="eicr-heading" inverted className="mb-4 max-w-2xl">
@@ -269,7 +269,7 @@ export default function EicrPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Electrical Installation Condition Report — a legal requirement for all
             private rented properties in England since 2020. NICEIC approved and
-            NAPIT certified electricians, no hidden charges, certificate emailed the same day.
+            NAPIT certified electricians, no hidden charges, certificate emailed within 24 hours.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -324,7 +324,7 @@ export default function EicrPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">emailed same day</dd>
+              <dd className="text-white font-semibold">emailed within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
@@ -553,7 +553,7 @@ export default function EicrPage() {
               "Earth bonding and earthing arrangement check",
               "Condition code (C1, C2, C3 or FI) assigned to every identified defect",
               "Written EICR report with prioritised recommendations",
-              "Signed landlord EICR certificate emailed on the same day",
+              "Signed landlord EICR certificate emailed within 24 hours",
               "PDF suitable for providing to your tenant and local authority",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -694,7 +694,7 @@ export default function EicrPage() {
               },
               {
                 step: "03",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "Your signed EICR certificate and report are emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant, upload it to your letting agent portal — it arrives fast.",
               },
             ].map(({ step, title, body }) => (
@@ -784,7 +784,7 @@ export default function EicrPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
-                stat: "Same day",
+                stat: "Within 24 hours",
                 label: "Certificate delivery",
                 sub: "emailed after inspection",
               },
@@ -936,7 +936,7 @@ export default function EicrPage() {
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Book online in under 3 minutes. A NICEIC approved or NAPIT certified
-            electrician will confirm your appointment. Certificate emailed the same day.
+            electrician will confirm your appointment. Certificate emailed within 24 hours.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Next-day appointments available across London and the M25 area —
@@ -947,7 +947,7 @@ export default function EicrPage() {
             >
               0330 133 0066
             </a>{" "}
-            for same-day slots.
+            for priority slots.
           </p>
           <Link
             href="/book?service=eicr"
@@ -956,7 +956,7 @@ export default function EicrPage() {
             Book my EICR — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed same day.
+            No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed within 24 hours.
           </p>
         </section>
       </div>

@@ -20,14 +20,14 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
   description:
-    "Book a Gas Safety Certificate (CP12) from £49.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed same day.",
+    "Book a Gas Safety Certificate (CP12) from £49.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
   openGraph: {
     title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
     description:
-      "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the M25 area, certificate emailed same day.",
+      "Annual CP12 landlord gas safety certificate from £49.99. Gas Safe Registered engineers, next-day appointments across London and the M25 area, certificate emailed within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
@@ -40,7 +40,7 @@ const serviceSchema = {
   name: "Gas Safety Certificate (CP12)",
   url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   description:
-    "Annual landlord gas safety certificate (CP12) confirming all gas appliances, flues and pipework in a rental property are safe. Legally required under the Gas Safety (Installation and Use) Regulations 1998. Gas Safe Registered engineers, certificate emailed same day.",
+    "Annual landlord gas safety certificate (CP12) confirming all gas appliances, flues and pipework in a rental property are safe. Legally required under the Gas Safety (Installation and Use) Regulations 1998. Gas Safe Registered engineers, certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -78,7 +78,7 @@ const productSchema = {
   "@type": "Product",
   name: "Gas Safety Certificate (CP12) — Landlord Annual Inspection",
   description:
-    "Landlord gas safety certificate (CP12) carried out by Gas Safe Registered engineers. Covers all gas appliances, flues, ventilation and gas pipework. Certificate emailed same day.",
+    "Landlord gas safety certificate (CP12) carried out by Gas Safe Registered engineers. Covers all gas appliances, flues, ventilation and gas pipework. Certificate emailed within 24 hours.",
   brand: {
     "@type": "Brand",
     name: "My Landlord Certificate",
@@ -221,7 +221,7 @@ const faqItems = [
   {
     question: "Do I have to give my tenant a copy of the Gas Safety Certificate?",
     answer:
-      "Yes — this is a legal obligation. You must provide a copy of the signed CP12 to existing tenants within 28 days of the inspection date, and to new tenants before they move in. Landlords must also retain a copy for at least 2 years. We email the certificate the same day so you can forward it immediately.",
+      "Yes — this is a legal obligation. You must provide a copy of the signed CP12 to existing tenants within 28 days of the inspection date, and to new tenants before they move in. Landlords must also retain a copy for at least 2 years. We email the certificate within 24 hours so you can forward it immediately.",
   },
   {
     question: "What is the penalty for not having a Gas Safety Certificate?",
@@ -306,7 +306,7 @@ export default function GasSafetyPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Annual CP12 landlord gas safety inspection — a legal requirement under
             the Gas Safety (Installation and Use) Regulations 1998. Gas Safe
-            Registered engineers, no hidden charges, certificate emailed the same day.
+            Registered engineers, no hidden charges, certificate emailed within 24 hours.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -361,7 +361,7 @@ export default function GasSafetyPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">emailed same day</dd>
+              <dd className="text-white font-semibold">emailed within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Accreditation</dt>
@@ -564,7 +564,7 @@ export default function GasSafetyPage() {
               "Safety device checks — thermostats, flame failure devices, overheat cut-outs",
               "Gas tightness test on accessible pipework",
               "Signed CP12 certificate listing every appliance and its result",
-              "Certificate emailed the same day — ready to forward to your tenant",
+              "Certificate emailed within 24 hours — ready to forward to your tenant",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -700,7 +700,7 @@ export default function GasSafetyPage() {
               },
               {
                 step: "03",
-                title: "Certificate emailed same day",
+                title: "Certificate emailed within 24 hours",
                 body: "Your signed CP12 gas safety certificate is emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant straight away to meet your 28-day obligation.",
               },
             ].map(({ step, title, body }) => (
@@ -770,7 +770,7 @@ export default function GasSafetyPage() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { stat: "Same day", label: "Certificate delivery", sub: "emailed after inspection" },
+              { stat: "Within 24 hours", label: "Certificate delivery", sub: "emailed after inspection" },
               { stat: "12 months", label: "CP12 validity", sub: "annual renewal required" },
             ].map(({ stat, label, sub }) => (
               <div
@@ -940,7 +940,7 @@ export default function GasSafetyPage() {
             ))}
           </div>
           <p className="text-sm text-brand-grey mt-4">
-            We email your CP12 as a PDF the same day as the inspection. It is
+            We email your CP12 as a PDF within 24 hours of the inspection. It is
             formatted to match exactly what local authorities and letting agents
             expect to see. Forward it to your tenant straight away.
           </p>
@@ -974,7 +974,7 @@ export default function GasSafetyPage() {
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Book online in under 3 minutes. A Gas Safe Registered engineer will
-            confirm your appointment. CP12 certificate emailed the same day.
+            confirm your appointment. CP12 certificate emailed within 24 hours.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Next-day appointments available across London and the M25 area —
@@ -985,7 +985,7 @@ export default function GasSafetyPage() {
             >
               0330 133 0066
             </a>{" "}
-            for same-day slots.
+            for priority slots.
           </p>
           <Link
             href="/book?service=gas-safety-cp12"
@@ -994,7 +994,7 @@ export default function GasSafetyPage() {
             Book my CP12 — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. Gas Safe Registered. Certificate emailed same day.
+            No hidden charges. Gas Safe Registered. Certificate emailed within 24 hours.
           </p>
         </section>
       </div>

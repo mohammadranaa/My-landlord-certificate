@@ -137,7 +137,7 @@ export default function FireSafetyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Fire Safety Services</h2>
           <p className="text-brand-grey mb-8">
-            Accredited engineers. Reports and certificates issued same day.
+            Accredited engineers. Reports and certificates issued within 24 hours.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -182,9 +182,9 @@ export default function FireSafetyPage() {
               </p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-compliance-blue mb-2">Same day</p>
+              <p className="text-3xl font-bold text-compliance-blue mb-2">Within 24 hours</p>
               <p className="text-sm text-brand-grey">
-                Fire risk assessment reports and safety certificates issued the same day.
+                Fire risk assessment reports and safety certificates issued within 24 hours.
                 No weeks-long wait.
               </p>
             </div>
@@ -204,7 +204,7 @@ export default function FireSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your fire safety inspection today"
-            subheading="Same-week appointments across London. Accredited fire safety engineers, written reports same day."
+            subheading="Same-week appointments across London. Accredited fire safety engineers, written reports within 24 hours."
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

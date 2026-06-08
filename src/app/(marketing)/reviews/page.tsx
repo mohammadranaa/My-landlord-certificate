@@ -90,7 +90,7 @@ const byService: {
     reviews: [
       {
         content:
-          "Ex-council flat in Tower Hamlets — I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate same day, no hidden extras.",
+          "Ex-council flat in Tower Hamlets — I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate within 24 hours, no hidden extras.",
         author: "Priya K.",
         location: "Tower Hamlets",
       },
@@ -132,7 +132,7 @@ const byService: {
       },
       {
         content:
-          "Needed the EPC for a remortgage. The assessor knew exactly what the lender would need and made sure everything was in order. Certificate arrived same day as the visit.",
+          "Needed the EPC for a remortgage. The assessor knew exactly what the lender would need and made sure everything was in order. Certificate arrived within 24 hours of the visit.",
         author: "Anna C.",
         location: "Merton",
       },
@@ -277,7 +277,7 @@ export default function ReviewsPage() {
             Join hundreds of London landlords
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
-            Fixed prices. Next-day appointments. Certificate emailed the same day.
+            Fixed prices. Next-day appointments. Certificate emailed within 24 hours.
             Book online in under 3 minutes.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

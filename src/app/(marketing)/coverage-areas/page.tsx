@@ -14,18 +14,18 @@ import { MapSection } from "@/components/ui/map-section";
 export const metadata: Metadata = {
   title: "Coverage Areas — All London Boroughs & M25 Wide | My Landlord Certificate",
   description:
-    "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed the same day.",
+    "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/coverage-areas" },
   openGraph: {
     title: "Coverage Areas — All London Boroughs & M25 Wide | My Landlord Certificate",
     description:
-      "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed the same day.",
+      "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed within 24 hours.",
     url: "https://www.mylandlordcertificate.co.uk/coverage-areas",
   },
   twitter: {
     title: "Coverage Areas — All London Boroughs & M25 Wide",
     description:
-      "All 33 London boroughs and the M25 area. Next-day appointments. Same-day certificate delivery.",
+      "All 33 London boroughs and the M25 area. Next-day appointments. Certificate within 24 hours.",
   },
 };
 
@@ -144,7 +144,7 @@ export default function CoverageAreasPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-xl mx-auto mb-10">
             Our accredited engineers cover every London borough and the wider M25
             corridor — including Surrey, Kent, Essex, and Hertfordshire. Next-day
-            appointments available. Certificate emailed the same day.
+            appointments available. Certificate emailed within 24 hours.
           </p>
           <TrustBadges variant="dark" className="justify-center" />
         </Container>
@@ -158,7 +158,7 @@ export default function CoverageAreasPage() {
               { label: "London boroughs", value: "All 33" },
               { label: "M25 coverage", value: "Wide area" },
               { label: "Appointments", value: "Next day" },
-              { label: "Certificate delivery", value: "Same day" },
+              { label: "Certificate delivery", value: "Within 24 hours" },
             ].map(({ label, value }) => (
               <div key={label} className="px-6 py-5 text-center">
                 <dt className="text-blue-200 text-xs font-medium uppercase tracking-wider mb-1">{label}</dt>
@@ -410,7 +410,7 @@ export default function CoverageAreasPage() {
               landlords in England, regardless of whether the property is in a London
               borough or a Surrey market town. Our Gas Safe Registered engineers and
               accredited energy assessors operate across county borders — one booking
-              system, the same fixed prices, the same same-day certificate delivery.
+              system, the same fixed prices, the same certificate within 24 hours.
             </p>
           </div>
         </Container>
@@ -459,7 +459,7 @@ export default function CoverageAreasPage() {
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
             Book online in under 3 minutes. We'll confirm next-day availability for
-            your postcode. Certificate emailed the same day.
+            your postcode. Certificate emailed within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

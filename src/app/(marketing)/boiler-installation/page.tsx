@@ -207,7 +207,7 @@ export default function BoilerInstallationPage() {
               {
                 step: "2",
                 title: "Installation day (6–8 hours)",
-                body: "Our Gas Safe engineer removes and disposes of the old boiler, installs and connects the new unit, flushes and treats the system, and commissions the boiler. Power and hot water are restored the same day.",
+                body: "Our Gas Safe engineer removes and disposes of the old boiler, installs and connects the new unit, flushes and treats the system, and commissions the boiler. Power and hot water are restored within 24 hours.",
               },
               {
                 step: "3",

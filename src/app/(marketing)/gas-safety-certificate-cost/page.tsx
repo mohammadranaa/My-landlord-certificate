@@ -141,7 +141,7 @@ const faqItems = [
   {
     question: "How much does a gas safety certificate cost in the UK?",
     answer:
-      "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our 1-appliance CP12 is £50 — at the competitive end of the market for a Gas Safe registered engineer, same-day certificate. A combined Gas Safety + Boiler Service costs £84.99.",
+      "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our 1-appliance CP12 is £50 — at the competitive end of the market for a Gas Safe registered engineer, certificate within 24 hours. A combined Gas Safety + Boiler Service costs £84.99.",
   },
   {
     question: "What is a CP12 certificate?",
@@ -348,7 +348,7 @@ export default function GasSafetyCertificateCostPage() {
               "Safety device operation test — overheat thermostat, flame failure device",
               "Ventilation adequacy check for each appliance",
               "Gas tightness test on the pipework installation",
-              "CP12 Landlord Gas Safety Record issued and emailed on the same day",
+              "CP12 Landlord Gas Safety Record issued and emailed within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -673,7 +673,7 @@ export default function GasSafetyCertificateCostPage() {
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. Gas Safe registered engineers. Certificate emailed same day.
+            No hidden charges. Gas Safe registered engineers. Certificate emailed within 24 hours.
           </p>
         </section>
       </div>

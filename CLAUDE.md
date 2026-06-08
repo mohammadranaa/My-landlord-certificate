@@ -6,7 +6,7 @@ Project context and conventions for Claude Code. Read this before making any cha
 
 ## 1. Project overview
 
-**My Landlord Certificate** is a UK landlord compliance certificate booking platform. Landlords book EICR, Gas Safety (CP12), EPC, Fire Risk Assessment, PAT Testing and other compliance services online. Engineers are dispatched and certificates are emailed the same day.
+**My Landlord Certificate** is a UK landlord compliance certificate booking platform. Landlords book EICR, Gas Safety (CP12), EPC, Fire Risk Assessment, PAT Testing and other compliance services online. Engineers are dispatched and certificates are emailed within 24 hours.
 
 - **Target audience:** UK residential landlords, HMO operators, letting agents
 - **Geography:** London and the M25 area (all 33 London boroughs)
@@ -19,6 +19,15 @@ Project context and conventions for Claude Code. Read this before making any cha
 - **Never use:** "London and the South East" on service pages (South East implies areas outside M25 like Brighton, Southampton, which we don't cover)
 - The `/coverage-areas` page may explain the M25 coverage in full detail
 - Borough pages use borough-specific language only
+
+### CERTIFICATE DELIVERY LANGUAGE RULE
+
+- **NEVER use:** "same day certificate", "same-day delivery", "emailed same day", "issued same day", "certificates same day", or any "same day" / "same-day" variant anywhere on the site
+- **Standard services** (EICR, Gas Safety, EPC, PAT Testing, Emergency Lights, Fire Safety Certificate, Asbestos, Commercial EICR, Commercial Gas, Commercial EPC): use **"certificate within 24 hours"** or **"emailed within 24 hours"**
+- **Fire Risk Assessment ONLY** (`/fire-risk-assessment`): use **"report within 48 hours"** — FRAs take longer to write
+- **Stats bars and eyebrow text:** short form `Within 24 hours` (standard) or `Within 48 hours` (FRA only)
+- **Metadata descriptions:** `certificate emailed within 24 hours` (standard) or `report emailed within 48 hours` (FRA)
+- **Do NOT use:** "same day", "same-day", "emailed same day", "certificates same day", "issued same day"
 
 ---
 
@@ -155,7 +164,7 @@ src/
   - Primary: `landlord certificates`, `property certificates`, `landlord compliance`
   - Service: `EICR certificate`, `gas safety certificate`, `CP12`, `EPC certificate`, `fire risk assessment`, `PAT testing`, `HMO certificates`
   - Qualifier: `London landlord`, `rental property`, `private rented sector`, `NICEIC approved`, `Gas Safe Registered`
-  - Transactional: `fixed price`, `same-day certificate`, `book online`
+  - Transactional: `fixed price`, `certificate within 24 hours`, `book online`
 - **Service card prices:** Import from `src/lib/pricing.ts`:
   - EICR: `getPriceForEICR('studio')` → £67.99
   - Gas Safety: `getPriceForGasSafety(1)` → £50

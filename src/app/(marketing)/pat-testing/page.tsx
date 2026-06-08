@@ -14,14 +14,14 @@ import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT } from "@/lib/pricing";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "PAT Testing from £59.99 | Digital Certificate Same Day | My Landlord Certificate",
+  title: "PAT Testing from £59.99 | Digital Certificate Within 24 Hours | My Landlord Certificate",
   description:
-    "PAT Testing from £59.99 for up to 10 appliances. Portable Appliance Testing for furnished rental properties and HMOs. Pass/fail labels on every appliance, digital asset register, certificate emailed same day.",
+    "PAT Testing from £59.99 for up to 10 appliances. Portable Appliance Testing for furnished rental properties and HMOs. Pass/fail labels on every appliance, digital asset register, certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pat-testing" },
   openGraph: {
-    title: "PAT Testing from £59.99 | Digital Certificate Same Day",
+    title: "PAT Testing from £59.99 | Digital Certificate Within 24 Hours",
     description:
-      "PAT Testing from £59.99 for up to 10 appliances. Pass/fail label on every appliance, full digital asset register, certificate emailed same day. Book online in under 3 minutes.",
+      "PAT Testing from £59.99 for up to 10 appliances. Pass/fail label on every appliance, full digital asset register, certificate emailed within 24 hours. Book online in under 3 minutes.",
     url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   },
 };
@@ -34,7 +34,7 @@ const serviceSchema = {
   name: "PAT Testing — Portable Appliance Testing",
   url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   description:
-    "Portable Appliance Testing (PAT) checks that all plug-in electrical appliances supplied with a furnished tenancy are safe. Visual inspection and electrical tests on every appliance. Pass/fail label applied, full digital asset register and certificate emailed same day.",
+    "Portable Appliance Testing (PAT) checks that all plug-in electrical appliances supplied with a furnished tenancy are safe. Visual inspection and electrical tests on every appliance. Pass/fail label applied, full digital asset register and certificate emailed within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -90,7 +90,7 @@ const productSchema = {
   "@type": "Product",
   name: "PAT Testing — Portable Appliance Testing",
   description:
-    "Portable Appliance Testing for furnished rental properties. Digital asset register and PAT certificate emailed same day.",
+    "Portable Appliance Testing for furnished rental properties. Digital asset register and PAT certificate emailed within 24 hours.",
   brand: {
     "@type": "Brand",
     name: "My Landlord Certificate",
@@ -202,7 +202,7 @@ const faqItems = [
   {
     question: "Do I need to be present during the PAT test?",
     answer:
-      "No — a tenant or keyholder can provide access. The engineer will test each appliance in situ and apply pass/fail labels on the day. The full digital asset register and PAT certificate are emailed to you on the same day.",
+      "No — a tenant or keyholder can provide access. The engineer will test each appliance in situ and apply pass/fail labels on the day. The full digital asset register and PAT certificate are emailed to you within 24 hours.",
   },
   {
     question: "What is a digital asset register?",
@@ -252,7 +252,7 @@ export default function PatTestingPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Fully Insured Engineers · London &amp; M25 · Same-Day Report
+            Fully Insured Engineers · London &amp; M25 · Within 24 Hours Report
           </p>
 
           <Heading level={1} id="pat-heading" inverted className="mb-4 max-w-2xl">
@@ -263,7 +263,7 @@ export default function PatTestingPage() {
             Portable Appliance Testing for furnished rental properties and HMOs.
             From £{lowestPrice} for up to 10 appliances — around £6 per appliance.
             Pass/fail label on every item. Digital asset register and certificate
-            emailed the same day.
+            emailed within 24 hours.
           </p>
 
           <PriceDisplay
@@ -309,7 +309,7 @@ export default function PatTestingPage() {
             </div>
             <div className="flex gap-1.5">
               <dt>Certificate</dt>
-              <dd className="text-white font-semibold">emailed same day</dd>
+              <dd className="text-white font-semibold">emailed within 24 hours</dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Includes</dt>
@@ -459,7 +459,7 @@ export default function PatTestingPage() {
               "Insulation resistance test on all appliances",
               "Pass (green) or Fail (red) label applied to each appliance on the day",
               "Digital asset register listing every appliance tested with make, model, and result",
-              "PAT test certificate emailed to you the same day",
+              "PAT test certificate emailed to you within 24 hours",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -584,8 +584,8 @@ export default function PatTestingPage() {
               },
               {
                 step: "3",
-                title: "Digital certificate emailed same day",
-                body: "Your PAT certificate and full digital asset register are emailed to you on the same day as the visit. The register lists every appliance by make, model, serial number, and result — your complete compliance record.",
+                title: "Digital certificate emailed within 24 hours",
+                body: "Your PAT certificate and full digital asset register are emailed to you within 24 hours of the visit. The register lists every appliance by make, model, serial number, and result — your complete compliance record.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -829,7 +829,7 @@ export default function PatTestingPage() {
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. An engineer will contact you to
             confirm your appointment slot. From £{lowestPrice} for up to 10 appliances —
-            digital certificate and asset register emailed the same day.
+            digital certificate and asset register emailed within 24 hours.
           </p>
           <Link
             href="/book?service=pat"
@@ -838,7 +838,7 @@ export default function PatTestingPage() {
             Book PAT Testing — from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
-            No hidden charges. Digital certificate emailed same day.
+            No hidden charges. Digital certificate emailed within 24 hours.
           </p>
         </section>
       </div>
