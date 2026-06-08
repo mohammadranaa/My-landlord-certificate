@@ -29,7 +29,7 @@ export const services: ServiceData[] = [
       "Full inspection of wiring, sockets and consumer unit",
       "Test of all circuits",
       "Condition rating (C1–C3) for any issues found",
-      "Signed certificate emailed same day",
+      "Signed certificate emailed within 24 hours",
     ],
     faqs: [
       {
@@ -62,7 +62,7 @@ export const services: ServiceData[] = [
       "Inspection of all gas appliances (boiler, hob, fire)",
       "Check of flues and ventilation",
       "Gas pressure and flow tests",
-      "CP12 certificate emailed same day",
+      "CP12 certificate emailed within 24 hours",
       "Copy provided to tenants within 28 days",
     ],
     faqs: [
@@ -97,7 +97,7 @@ export const services: ServiceData[] = [
       "A–G rating certificate",
       "Recommendations to improve rating",
       "Registration on the national EPC register",
-      "PDF certificate emailed same day",
+      "PDF certificate emailed within 24 hours",
     ],
     faqs: [
       {
@@ -159,7 +159,7 @@ export const services: ServiceData[] = [
       "Visual inspection of all portable appliances",
       "Earth continuity and insulation resistance tests",
       "Pass/fail label applied to each appliance",
-      "Full asset register and test report emailed same day",
+      "Full asset register and test report emailed within 24 hours",
     ],
     faqs: [
       {
@@ -188,7 +188,7 @@ export const services: ServiceData[] = [
       "Gas Safety Certificate (CP12)",
       "EICR",
       "EPC",
-      "All certificates emailed same day",
+      "All certificates emailed within 24 hours",
       "Reminder service for upcoming renewals",
     ],
     faqs: [
