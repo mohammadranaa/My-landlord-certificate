@@ -386,7 +386,7 @@ Most landlords need both certificates anyway. Book them together, save £25, get
 
 ✓ NICEIC \+ Gas Safe accredited engineer  
 ✓ Same-week appointments  
-✓ Both certificates emailed same day  
+✓ Both certificates emailed within 24 hours  
 ✓ Fixed price — no surprises
 
 Available across London and the South East. Book your landlord certificate online in 2 minutes → \[link\]"
@@ -453,7 +453,7 @@ You're not alone. About 1 in 4 landlords we work with inherited their property. 
 4\. Fire Risk Assessment (HMOs \+ larger flats) — £150  
 5\. PAT testing if you're letting it furnished — £45
 
-That's the complete list. Book any of them with us in under 2 minutes online. Engineer round within a week. Certificates emailed same day.
+That's the complete list. Book any of them with us in under 2 minutes online. Engineer round within a week. Certificates emailed within 24 hours.
 
 Save this post if it's useful. Or share it with that mate who just messaged you saying 'so I just inherited my mum's flat...' 💬"
 
@@ -505,7 +505,7 @@ EICRs from £99 with My Landlord Certificate. Same-week appointments. NICEIC app
 \*\*Caption:\*\*  
 "From 'oh no I forgot' to compliant — in less than a week 🤝
 
-Booking takes 2 minutes. Engineer comes within the week. Certificate's in your inbox same day.
+Booking takes 2 minutes. Engineer comes within the week. Certificate emailed within 24 hours.
 
 EICR from £99. Save this for renewal time 📌
 
@@ -609,12 +609,12 @@ Link in bio to book your landlord certificate.
 \#\#\# IG Post 7 \[B2C\] \[Service\] \[Single\]
 
 \*\*Image brief:\*\*  
-Photo of certificate on a phone screen (digital cert), with property in soft background. Caption overlay: "Same-day digital certificates."
+Photo of certificate on a phone screen (digital cert), with property in soft background. Caption overlay: "Within 24 hours digital certificates."
 
 \*\*Caption:\*\*  
 "Booked Monday. Engineer Wednesday. Certificate Thursday morning. ⚡
 
-Every certificate we issue is digital. Emailed to you the same day. Stored securely so you can re-download anytime — for letting agents, mortgage applications, council requests.
+Every certificate we issue is digital. Emailed to you within 24 hours. Stored securely so you can re-download anytime — for letting agents, mortgage applications, council requests.
 
 No more 'I had it somewhere'.
 
@@ -776,7 +776,7 @@ Book online, request Sam by name → \[link\]"
 📍 Hackney — Wednesday afternoon  
 📍 Wandsworth — Thursday morning
 
-£99 fixed. NICEIC engineer. Certificate same day.
+£99 fixed. NICEIC engineer. Certificate within 24 hours.
 
 DM your postcode and preferred time. First-come basis."
 
@@ -827,7 +827,7 @@ Book your landlord certificate online → \[link\]"
 
 If they ask and you can't produce it within 28 days, you're non-compliant. Section 21 invalidated. Up to £30k fine.
 
-Annual renewal, £55 with us. Engineer round within the week. Cert emailed same day.
+Annual renewal, £55 with us. Engineer round within the week. Cert emailed within 24 hours.
 
 Don't get caught short. \[link in comments\]"
 
@@ -940,7 +940,7 @@ Pre-written responses for common interactions. Customise the customer's name and
 \#\# 5.1 Common comments \+ replies
 
 \*\*Comment: "How much does an EICR cost?"\*\*  
-Reply: "Hi \[name\] — £99 fixed for a standard residential EICR. Includes the visit, the test, and the certificate emailed same day. Anything else you'd like to know? You can also book online in 2 mins → \[link\]"
+Reply: "Hi \[name\] — £99 fixed for a standard residential EICR. Includes the visit, the test, and the certificate emailed within 24 hours. Anything else you'd like to know? You can also book online in 2 mins → \[link\]"
 
 \*\*Comment: "Do you work in \[area\]?"\*\*  
 Reply: "Hi \[name\] — yes, we cover \[area\] and most of London \+ the South East. Most weeks we have appointments available within 7 days. Want me to check this week's slots? Or you can book directly → \[link\]"
@@ -949,7 +949,7 @@ Reply: "Hi \[name\] — yes, we cover \[area\] and most of London \+ the South E
 Reply: "Hi \[name\] — yes, EICR has been legally required for all rental properties since 2020 (renewed every 5 years). Maximum fine for non-compliance is £30k. Happy to chat through what you specifically need if it helps."
 
 \*\*Comment (negative): "I had a bad experience with another company..."\*\*  
-Reply: "Hi \[name\] — sorry to hear that, that's a horrible experience. We try to do things differently — fixed pricing, no surprise costs, NICEIC-only engineers, certificates same day. If you'd like to give us a try, feel free to DM and I'll personally check the engineer assigned."
+Reply: "Hi \[name\] — sorry to hear that, that's a horrible experience. We try to do things differently — fixed pricing, no surprise costs, NICEIC-only engineers, certificates within 24 hours. If you'd like to give us a try, feel free to DM and I'll personally check the engineer assigned."
 
 \*\*Comment: "Are you the same as Landlord Certificates / \[competitor\]?"\*\*  
 Reply: "Hi \[name\] — no, we're a separate company. My Landlord Certificate is a newer service focused on online booking, fixed pricing, and same-week appointments. Happy to answer any questions."

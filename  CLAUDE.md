@@ -254,7 +254,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 1\. \*\*Hero:\*\* H1 \+ subheading mentioning EICR, Gas Safety, EPC. Primary CTA "Book your certificate". Trust strip: NICEIC \+ Gas Safe \+ Trustpilot.  
 2\. \*\*Services grid:\*\* 6 service cards, each with price and "Learn more" link to the service page  
 3\. \*\*How it works:\*\* 3 steps (Book online → Engineer visits → Certificate emailed)  
-4\. \*\*Why landlords trust us:\*\* 4 benefit cards (Fixed pricing, Accredited engineers, Same-week appointments, Digital certs same day)  
+4\. \*\*Why landlords trust us:\*\* 4 benefit cards (Fixed pricing, Accredited engineers, Same-week appointments, Digital certs within 24 hours)  
 5\. \*\*Trustpilot reviews:\*\* 3 featured \+ "see all reviews" link  
 6\. \*\*Letting agents teaser:\*\* Brief section linking to \`/letting-agents\`  
 7\. \*\*FAQ preview:\*\* 5 most common questions, link to full FAQ  
@@ -273,7 +273,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 \*\*H1:\*\* EICR Certificate — Fixed £99 — Same-Week Appointments  
 \*\*Meta title:\*\* "EICR Certificate from £99 | NICEIC Approved | My Landlord Certificate"  
-\*\*Meta description:\*\* "Book your EICR certificate online from £99. NICEIC-approved engineers. Same-week appointments across London. Digital certificate emailed same day. Fixed pricing, no surprises."
+\*\*Meta description:\*\* "Book your EICR certificate online from £99. NICEIC-approved engineers. Same-week appointments across London. Digital certificate emailed within 24 hours. Fixed pricing, no surprises."
 
 \*\*Target keywords:\*\*  
 \- Primary: eicr, eicr certificate, electrical installation condition report  
@@ -286,7 +286,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 1\. \*\*Above-the-fold hero\*\*  
    \- H1 with "EICR Certificate" \+ price \+ speed  
-   \- Subhead mentioning NICEIC \+ digital same-day delivery  
+   \- Subhead mentioning NICEIC \+ digital within 24 hours delivery  
    \- Massive primary CTA "Book my EICR — £99"  
    \- Trust strip: NICEIC logo \+ Trustpilot 4.8★ \+ "1,000+ EICRs completed"  
    \- Mobile: sticky CTA bottom-of-screen
@@ -300,7 +300,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 3\. \*\*What's included for £99\*\*  
    \- H2: "What you get for £99 — no hidden costs"  
-   \- Bullet list: full installation inspection by NICEIC-registered engineer, test of fuse box / sockets / wiring / switches, digital certificate issued same day, minor remedial advice notes, valid for 5 years  
+   \- Bullet list: full installation inspection by NICEIC-registered engineer, test of fuse box / sockets / wiring / switches, digital certificate issued within 24 hours, minor remedial advice notes, valid for 5 years  
    \- Reinforce "fixed price" and "no surprises"
 
 4\. \*\*Legal context section\*\*  
@@ -366,7 +366,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 \*\*H1:\*\* Gas Safety Certificate (CP12) — Fixed £55 — Same-Week Appointments  
 \*\*Meta title:\*\* "Gas Safety Certificate (CP12) from £55 | Gas Safe Registered | My Landlord Certificate"  
-\*\*Meta description:\*\* "Book your Landlord Gas Safety Certificate (CP12) online from £55. Gas Safe registered engineers. Annual renewal. Digital certificate emailed same day."
+\*\*Meta description:\*\* "Book your Landlord Gas Safety Certificate (CP12) online from £55. Gas Safe registered engineers. Annual renewal. Digital certificate emailed within 24 hours."
 
 \*\*Target keywords:\*\*  
 \- Primary: gas safety certificate, gas safety certificate cost, landlord gas safety certificate, cp12  
@@ -402,7 +402,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 \*\*H1:\*\* EPC Certificate — Fixed £75 — Same-Week Appointments  
 \*\*Meta title:\*\* "EPC Certificate from £75 | Energy Performance Certificate | My Landlord Certificate"  
-\*\*Meta description:\*\* "Book your EPC certificate online from £75. Accredited DEA assessors. Valid for 10 years. Digital certificate same day. Required for sale and rental properties."
+\*\*Meta description:\*\* "Book your EPC certificate online from £75. Accredited DEA assessors. Valid for 10 years. Digital certificate within 24 hours. Required for sale and rental properties."
 
 \*\*Target keywords:\*\*  
 \- Primary: epc, epc certificate, energy performance certificate  
@@ -466,9 +466,9 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 
 \#\#\# PAGE: PAT Testing (\`/pat-testing\`)
 
-\*\*H1:\*\* PAT Testing — Fixed £45 — Digital Certificate Same Day  
+\*\*H1:\*\* PAT Testing — Fixed £45 — Digital Certificate Within 24 Hours  
 \*\*Meta title:\*\* "PAT Testing for Landlords from £45 | Portable Appliance Test | My Landlord Certificate"  
-\*\*Meta description:\*\* "Book PAT testing for your furnished rental property from £45. Qualified engineers. Digital certificate same day. Required for furnished lets and HMOs."
+\*\*Meta description:\*\* "Book PAT testing for your furnished rental property from £45. Qualified engineers. Digital certificate within 24 hours. Required for furnished lets and HMOs."
 
 \*\*Target keywords:\*\* pat testing, pat test certificate, portable appliance testing, landlord pat testing
 
@@ -622,7 +622,7 @@ world-class · best-in-class · leading provider · cowboy · rip-off · cheap �
 \*\*Required sections:\*\*  
 1\. Step 1: Book online (2 minutes — show booking flow)  
 2\. Step 2: Engineer arrives (same-week, NICEIC/Gas Safe, professional)  
-3\. Step 3: Certificate emailed (same-day digital delivery)  
+3\. Step 3: Certificate emailed (within 24 hours digital delivery)  
 4\. What to expect on the day  
 5\. Customer reviews highlighting ease
 
