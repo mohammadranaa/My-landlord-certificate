@@ -478,10 +478,10 @@ export default function CommercialEPCPage() {
             For premises above 850m² or buildings requiring Dynamic Simulation
             Modelling (DSM), please{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-compliance-blue hover:underline font-medium"
             >
-              call us on 0330 133 0066
+              email us
             </a>{" "}
             for a tailored quote.
           </p>
@@ -607,10 +607,10 @@ export default function CommercialEPCPage() {
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Book online or call{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-white font-semibold hover:underline"
             >
-              0330 133 0066
+              
             </a>{" "}
             for large or complex premises.
           </p>

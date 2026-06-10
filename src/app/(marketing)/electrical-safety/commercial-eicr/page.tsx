@@ -92,7 +92,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs for commercial EICR inspections. Same-week appointments are available throughout Greater London. For large premises or portfolio work, call us on 0330 133 0066 to discuss scheduling.",
+      "We cover all 33 London boroughs for commercial EICR inspections. Same-week appointments are available throughout Greater London. For large premises or portfolio work, email us to discuss scheduling.",
   },
 ];
 
@@ -356,10 +356,10 @@ export default function CommercialEICRPage() {
                 Book Online
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

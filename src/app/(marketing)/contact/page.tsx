@@ -31,7 +31,6 @@ const contactSchema = {
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
-  telephone: "+443301330066",
   email: "info@mylandlordcertificate.co.uk",
   areaServed: "London and the M25 area",
   openingHoursSpecification: [
@@ -133,10 +132,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs font-semibold text-brand-grey uppercase tracking-wider mb-0.5">Phone</p>
                       <a
-                        href="tel:03301330066"
+                        href="mailto:info@mylandlordcertificate.co.uk"
                         className="font-semibold text-brand-charcoal hover:text-compliance-blue transition-colors text-sm"
                       >
-                        0330 133 0066
+                       
                       </a>
                       <p className="text-xs text-brand-grey mt-0.5">Mon–Fri 8am–7pm · Sat 9am–5pm</p>
                     </div>
@@ -285,8 +284,8 @@ export default function ContactPage() {
           </div>
           <p className="mt-4 text-center text-sm text-brand-grey">
             Not sure if we cover your postcode?{" "}
-            <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
-              Call 0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+              Email us
             </a>{" "}
             and we&apos;ll confirm availability.
           </p>

@@ -223,23 +223,6 @@ export function NavBar({ className }: { className?: string }) {
         {/* ── Desktop right: contact + CTA ── */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
-            href="https://wa.me/443301330066"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp us"
-            className="p-1.5 text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
-          >
-            <WhatsAppIcon />
-          </a>
-          <a
-            href="tel:+443301330066"
-            className="flex items-center gap-1.5 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
-            aria-label="Call us on 0330 133 0066"
-          >
-            <span className="w-2 h-2 rounded-full bg-action-green animate-pulse shrink-0" aria-hidden="true" />
-            0330 133 0066
-          </a>
-          <a
             href="mailto:info@mylandlordcertificate.co.uk"
             aria-label="Email us"
             className="p-1.5 text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
@@ -265,22 +248,6 @@ export function NavBar({ className }: { className?: string }) {
 
         {/* ── Mobile: icons + CTA + hamburger ── */}
         <div className="flex lg:hidden items-center gap-1.5 ml-auto">
-          <a
-            href="https://wa.me/443301330066"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp us"
-            className="p-2 text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-md"
-          >
-            <WhatsAppIcon />
-          </a>
-          <a
-            href="tel:03301330066"
-            aria-label="Call us"
-            className="p-2 text-brand-charcoal hover:text-compliance-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-md"
-          >
-            <PhoneIcon />
-          </a>
           <Link
             href="/book"
             className="inline-flex items-center bg-action-green hover:bg-[#6ab000] text-brand-charcoal font-semibold px-3 py-1.5 rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-green focus-visible:ring-offset-2"

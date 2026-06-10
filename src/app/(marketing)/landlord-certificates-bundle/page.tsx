@@ -155,7 +155,7 @@ const faqSchema = {
       name: "Can I customise a bundle for my property?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — call us on 0330 133 0066 and we can put together a custom bundle combining any of our services at a discounted price.",
+        text: "Yes — email us and we can put together a custom bundle combining any of our services at a discounted price.",
       },
     },
     {
@@ -256,7 +256,7 @@ const faqItems = [
   {
     question: "Can I customise a bundle for my property?",
     answer:
-      "Yes — call us on 0330 133 0066 or use the booking notes to tell us what you need. We can bundle any combination of our services at a discounted price, including properties larger than those covered by the standard tiers.",
+      "Yes — email us or use the booking notes to tell us what you need. We can bundle any combination of our services at a discounted price, including properties larger than those covered by the standard tiers.",
   },
   {
     question: "Do I get separate certificates for each service?",
@@ -513,10 +513,10 @@ export default function BundlePage() {
           <p className="mt-6 text-sm text-center text-brand-grey">
             Need a different combination?{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-compliance-blue hover:underline font-medium"
             >
-              Call 0330 133 0066
+              Email us
             </a>{" "}
             for a custom bundle quote.
           </p>

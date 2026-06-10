@@ -118,7 +118,7 @@ export function LettingAgentForm() {
       setSubmittedName(result.data.name.split(" ")[0]);
     } catch {
       setSubmitError(
-        "Something went wrong — please try again or call us on 0330 133 0066.",
+        "Something went wrong — please try again or email us.",
       );
     } finally {
       setSubmitting(false);

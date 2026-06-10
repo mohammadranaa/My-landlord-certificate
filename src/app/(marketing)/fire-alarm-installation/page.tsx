@@ -133,10 +133,10 @@ export default function FireAlarmInstallationPage() {
               Book Now — £{FIRE_ALARM_INSTALLATION_PER_ALARM}/alarm
             </Link>
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Call 0330 133 0066
+              Email us
             </a>
           </div>
         </div>
@@ -335,10 +335,10 @@ export default function FireAlarmInstallationPage() {
                 Book Online
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

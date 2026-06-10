@@ -513,10 +513,10 @@ export default async function EICRBoroughPage({
             Same-week appointments across {borough.name} and all 33 London
             boroughs — or call{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-white font-semibold hover:underline"
             >
-              0330 133 0066
+              
             </a>
             .
           </p>

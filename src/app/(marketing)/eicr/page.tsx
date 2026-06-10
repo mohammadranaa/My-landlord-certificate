@@ -654,10 +654,10 @@ export default function EicrPage() {
             works through our network of NICEIC approved and NAPIT certified electricians. Contact
             us on{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-compliance-blue hover:underline font-medium"
             >
-              0330 133 0066
+              
             </a>{" "}
             or see our{" "}
             <Link
@@ -942,10 +942,10 @@ export default function EicrPage() {
             Next-day appointments available across London and the M25 area —
             or call{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-white font-semibold hover:underline"
             >
-              0330 133 0066
+              
             </a>{" "}
             for priority slots.
           </p>

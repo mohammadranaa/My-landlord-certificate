@@ -403,10 +403,10 @@ export default function EPCPage() {
                 Book Online — from £{entryPrice}
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

@@ -138,10 +138,10 @@ export default function FireDoorCertificatePage() {
               Book Now — £{FIRE_DOOR_CERT_PRICE}/door
             </Link>
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Call 0330 133 0066
+              Email us
             </a>
           </div>
         </div>
@@ -268,8 +268,8 @@ export default function FireDoorCertificatePage() {
           </div>
           <p className="text-sm text-brand-grey mt-4">
             Multi-door discounts for HMOs and large blocks — call{" "}
-            <a href="tel:03301330066" className="text-compliance-blue hover:underline">
-              0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline">
+              
             </a>{" "}
             for a tailored quote.
           </p>
@@ -358,10 +358,10 @@ export default function FireDoorCertificatePage() {
                 Book Online
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

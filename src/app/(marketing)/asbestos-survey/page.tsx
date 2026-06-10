@@ -255,8 +255,8 @@ export default function AsbestosSurveyPage() {
           <p className="text-sm text-brand-grey mt-2">
             Refurbishment and demolition surveys (Type 3) and large commercial properties —
             call{" "}
-            <a href="tel:03301330066" className="text-compliance-blue hover:underline">
-              0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline">
+              
             </a>{" "}
             for a tailored quote.
           </p>
@@ -615,10 +615,10 @@ export default function AsbestosSurveyPage() {
                 Book Online
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

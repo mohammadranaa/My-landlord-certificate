@@ -110,13 +110,13 @@ export default function LettingAgentsPage() {
                 Request agency account
               </a>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "bg-white/10 border border-white/30 text-white hover:bg-white/20",
                 )}
               >
-                Call 0330 133 0066
+                Email us
               </a>
             </div>
           </div>
@@ -331,8 +331,8 @@ export default function LettingAgentsPage() {
           </div>
           <p className="mt-6 text-center text-sm text-brand-grey">
             Prefer to speak first?{" "}
-            <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
-              Call 0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+              Email us
             </a>{" "}
             — we'll discuss your portfolio and answer any questions before you commit
             to anything.

@@ -48,9 +48,7 @@ const columns: FooterColumn[] = [
   {
     heading: "Contact",
     links: [
-      { href: "tel:03301330066", label: "0330 133 0066" },
       { href: "mailto:info@mylandlordcertificate.co.uk", label: "Email Us" },
-      { href: "https://wa.me/443301330066", label: "WhatsApp Us" },
       { href: "/contact", label: "Contact Form" },
       { href: "/book", label: "Book Online" },
     ],

@@ -36,7 +36,6 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
-  telephone: "+443301330066",
   areaServed: [
     // London boroughs
     "Barking and Dagenham", "Barnet", "Bexley", "Brent", "Bromley",
@@ -181,8 +180,8 @@ export default function CoverageAreasPage() {
           <MapSection />
           <p className="mt-6 text-center text-sm text-brand-grey">
             Not sure if we cover your postcode?{" "}
-            <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
-              Call 0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+              Email us
             </a>{" "}
             and we&apos;ll confirm availability.
           </p>
@@ -236,10 +235,10 @@ export default function CoverageAreasPage() {
           <p className="mt-8 text-center text-sm text-brand-grey">
             Not sure which borough your property is in?{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-compliance-blue font-medium hover:underline"
             >
-              Call 0330 133 0066
+              Email us
             </a>{" "}
             and we'll confirm availability for your postcode.
           </p>
@@ -296,8 +295,8 @@ export default function CoverageAreasPage() {
             Appointment availability in M25 corridor counties depends on engineer
             capacity. Book online and we'll confirm next-day availability for your
             postcode — or call{" "}
-            <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
-              0330 133 0066
+            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+              
             </a>{" "}
             to check before booking.
           </div>

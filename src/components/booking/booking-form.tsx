@@ -167,7 +167,7 @@ export function BookingForm() {
       router.push("/book/success");
     } catch {
       posthog?.capture("booking_error");
-      setSubmitError("Something went wrong. Please try again or call us on 0330 133 0066.");
+      setSubmitError("Something went wrong. Please try again or email us.");
       setIsSubmitting(false);
     }
   }

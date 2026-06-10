@@ -78,7 +78,7 @@ const faqs = [
   {
     question: "Do you offer finance for boiler installations?",
     answer:
-      "Yes, we can arrange interest-free and low-APR finance options for boiler installations. Call us on 0330 133 0066 to discuss the available plans — finance is subject to status and eligibility.",
+      "Yes, we can arrange interest-free and low-APR finance options for boiler installations. Email us to discuss the available plans — finance is subject to status and eligibility.",
   },
   {
     question: "Which areas of London do you cover?",
@@ -127,10 +127,10 @@ export default function BoilerInstallationPage() {
           <TrustBadges serviceKey="boiler-installation" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Call for a Quote — 0330 133 0066
+              Email for a Quote
             </a>
             <Link
               href="/book?service=boiler-installation"
@@ -254,7 +254,7 @@ export default function BoilerInstallationPage() {
             </ul>
           </div>
           <p className="text-sm text-brand-grey mt-4">
-            Call <a href="tel:03301330066" className="text-compliance-blue hover:underline">0330 133 0066</a> for large-volume or commercial boiler replacements.
+            Call <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline"></a> for large-volume or commercial boiler replacements.
           </p>
         </section>
 
@@ -337,10 +337,10 @@ export default function BoilerInstallationPage() {
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                Call 0330 133 0066
+                Email us
               </a>
               <Link
                 href="/book?service=boiler-installation"
@@ -354,7 +354,7 @@ export default function BoilerInstallationPage() {
       </div>
 
       <StickyMobileCTA
-        href="tel:03301330066"
+        href="mailto:info@mylandlordcertificate.co.uk"
         label="Call Us"
         price={BOILER_INSTALLATION_FROM}
         serviceName="Boiler Installation"

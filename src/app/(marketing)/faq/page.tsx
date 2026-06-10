@@ -37,12 +37,12 @@ const categories = [
       {
         question: "How do I book a landlord certificate?",
         answer:
-          "Book online at mylandlordcertificate.co.uk. Choose your service, enter your property address and size, select an appointment slot and pay securely. The booking takes under three minutes and you receive a confirmation email immediately with your engineer's contact details. You can also call us on 0330 133 0066 if you prefer to book by phone.",
+          "Book online at mylandlordcertificate.co.uk. Choose your service, enter your property address and size, select an appointment slot and pay securely. The booking takes under three minutes and you receive a confirmation email immediately with your engineer's contact details. You can also email us if you prefer.",
       },
       {
         question: "How quickly can I get an appointment?",
         answer:
-          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent priority bookings, call 0330 133 0066 and we will do our best to accommodate you.",
+          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent priority bookings, email us and we will do our best to accommodate you.",
       },
       {
         question: "Do I need to be present during the inspection?",
@@ -62,7 +62,7 @@ const categories = [
       {
         question: "What areas do you cover?",
         answer:
-          "We cover all 33 London boroughs plus the surrounding M25 corridor counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or call 0330 133 0066 and we will confirm availability.",
+          "We cover all 33 London boroughs plus the surrounding M25 corridor counties — Surrey, Kent, Essex and Hertfordshire. If you are unsure whether your property falls within our coverage area, enter your postcode during the booking process or email us and we will confirm availability.",
       },
       {
         question: "What happens if I need to rearrange my appointment?",
@@ -324,10 +324,10 @@ export default function FAQPage() {
             Assessment, PAT Testing, booking and pricing. If you can't find what you
             need, call{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="underline underline-offset-2 hover:text-white"
             >
-              0330 133 0066
+              
             </a>
             .
           </p>
@@ -418,7 +418,7 @@ export default function FAQPage() {
             calls within three rings.
           </p>
           <a
-            href="tel:03301330066"
+            href="mailto:info@mylandlordcertificate.co.uk"
             className="inline-flex items-center gap-2 text-compliance-blue font-semibold text-lg hover:underline"
           >
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -430,7 +430,7 @@ export default function FAQPage() {
                 strokeLinejoin="round"
               />
             </svg>
-            0330 133 0066
+            
           </a>
         </Container>
       </section>

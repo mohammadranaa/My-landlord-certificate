@@ -98,7 +98,7 @@ const faqs = [
   {
     question: "Which London boroughs do you cover?",
     answer:
-      "We cover all 33 London boroughs, including Central London, East London, North London, South London, and West London. Same-week appointments are available throughout Greater London. Call 0330 133 0066 or book online.",
+      "We cover all 33 London boroughs, including Central London, East London, North London, South London, and West London. Same-week appointments are available throughout Greater London. Book online.",
   },
 ];
 
@@ -362,10 +362,10 @@ export default function CP12Page() {
                 Book Now — from £{entryPrice}
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>

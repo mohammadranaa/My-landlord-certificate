@@ -228,8 +228,8 @@ export default function PricingPage() {
               />
               <p className="mt-3 text-sm text-brand-grey">
                 Commercial EICR projects over £500?{" "}
-                <a href="tel:03301330066" className="text-compliance-blue hover:underline font-medium">
-                  Call 0330 133 0066
+                <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
+                  Email us
                 </a>{" "}
                 for a custom quote.
               </p>
@@ -344,8 +344,8 @@ export default function PricingPage() {
               />
               <p className="mt-3 text-sm text-brand-grey">
                 Commercial gas projects over £500?{" "}
-                <a href="tel:03301330066" className="text-compliance-blue hover:underline font-medium">
-                  Call 0330 133 0066
+                <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
+                  Email us
                 </a>{" "}
                 for a custom quote.
               </p>
@@ -369,8 +369,8 @@ export default function PricingPage() {
               </div>
               <p className="mt-3 text-sm text-brand-grey">
                 Boiler installation pricing depends on make, model and complexity.{" "}
-                <a href="tel:03301330066" className="text-compliance-blue hover:underline font-medium">
-                  Call 0330 133 0066
+                <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
+                  Email us
                 </a>{" "}
                 for a bespoke quote.
               </p>
@@ -427,8 +427,8 @@ export default function PricingPage() {
               />
               <p className="mt-3 text-sm text-brand-grey">
                 Commercial EPC for properties over 750m²?{" "}
-                <a href="tel:03301330066" className="text-compliance-blue hover:underline font-medium">
-                  Call 0330 133 0066
+                <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
+                  Email us
                 </a>{" "}
                 for a custom quote.
               </p>
@@ -480,8 +480,8 @@ export default function PricingPage() {
               />
               <p className="mt-3 text-sm text-brand-grey">
                 Commercial FRA over £500?{" "}
-                <a href="tel:03301330066" className="text-compliance-blue hover:underline font-medium">
-                  Call 0330 133 0066
+                <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
+                  Email us
                 </a>{" "}
                 for a custom quote.
               </p>
@@ -715,10 +715,10 @@ export default function PricingPage() {
               </p>
             </div>
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className={cn(buttonVariants({ variant: "primary", size: "lg" }), "shrink-0")}
             >
-              Call 0330 133 0066
+              Email us
             </a>
           </div>
         </section>

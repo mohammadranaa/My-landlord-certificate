@@ -34,7 +34,6 @@ const organizationSchema = {
   "@type": "Organization",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
-  telephone: "+443301330066",
   description:
     "UK landlord compliance certificate booking platform. EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing across London and the M25 area. Fixed prices, accredited engineers, certificates within 24 hours.",
   areaServed: "London and the M25 area",
@@ -314,10 +313,10 @@ export default function AboutPage() {
             <p>
               Our customer service team is available by phone on{" "}
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="text-compliance-blue font-medium hover:underline"
               >
-                0330 133 0066
+                
               </a>{" "}
               if you have questions about your booking, want to discuss a specific
               property or need a certificate explained. We aim to answer all calls

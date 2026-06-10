@@ -251,7 +251,7 @@ const faqItems = [
   {
     question: "Do I need a Gas Safety Certificate if my rental has no boiler?",
     answer:
-      "You need a CP12 for every gas appliance you supply with the tenancy. If the property has a gas hob or gas fire but no boiler, those appliances still need inspecting. If the property has no gas supply whatsoever, no CP12 is required. If you're unsure, call us on 0330 133 0066 and we'll confirm what's needed.",
+      "You need a CP12 for every gas appliance you supply with the tenancy. If the property has a gas hob or gas fire but no boiler, those appliances still need inspecting. If the property has no gas supply whatsoever, no CP12 is required. If you're unsure, email us and we.ll confirm what.s needed.",
   },
   {
     question: "How long does a gas safety inspection take?",
@@ -980,10 +980,10 @@ export default function GasSafetyPage() {
             Next-day appointments available across London and the M25 area —
             or call{" "}
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="text-white font-semibold hover:underline"
             >
-              0330 133 0066
+              
             </a>{" "}
             for priority slots.
           </p>

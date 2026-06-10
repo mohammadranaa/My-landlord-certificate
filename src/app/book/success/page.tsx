@@ -170,8 +170,8 @@ export default function BookingSuccessPage() {
         </p>
         <p className="text-sm text-brand-grey">
           Questions? Call us on{" "}
-          <a href="tel:03301330066" className="text-compliance-blue font-medium hover:underline">
-            0330 133 0066
+          <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+            
           </a>
         </p>
       </div>

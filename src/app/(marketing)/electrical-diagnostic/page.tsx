@@ -85,7 +85,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Call 0330 133 0066 or book online.",
+      "We cover all 33 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Book online.",
   },
 ];
 
@@ -156,10 +156,10 @@ export default function ElectricalDiagnosticPage() {
               Book Now — £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr
             </Link>
             <a
-              href="tel:03301330066"
+              href="mailto:info@mylandlordcertificate.co.uk"
               className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Call 0330 133 0066
+              Email us
             </a>
           </div>
         </div>
@@ -383,10 +383,10 @@ export default function ElectricalDiagnosticPage() {
                 Book Online
               </Link>
               <a
-                href="tel:03301330066"
+                href="mailto:info@mylandlordcertificate.co.uk"
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                0330 133 0066
+                
               </a>
             </div>
           </div>
