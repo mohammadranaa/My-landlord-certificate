@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 
 interface ContactFields {
   name: string;
@@ -64,8 +65,8 @@ export function ContactForm() {
         <p className="text-brand-grey text-sm">
           We aim to respond to all enquiries within one working day. For urgent
           matters, call{" "}
-          <a href="tel:02000000000" className="text-compliance-blue font-medium hover:underline">
-            020 XXXX XXXX
+          <a href={TEL} className="text-compliance-blue font-medium hover:underline">
+            {PHONE_DISPLAY}
           </a>
           .
         </p>

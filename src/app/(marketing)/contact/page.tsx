@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { Container } from "@/components/ui/container";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Heading } from "@/components/ui/heading";
+import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL } from "@/lib/constants";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -31,6 +32,7 @@ const contactSchema = {
   "@type": "LocalBusiness",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
+  telephone: "+442039961070",
   email: "info@mylandlordcertificate.co.uk",
   areaServed: "London and the M25 area",
   openingHoursSpecification: [
@@ -132,10 +134,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs font-semibold text-brand-grey uppercase tracking-wider mb-0.5">Phone</p>
                       <a
-                        href="mailto:info@mylandlordcertificate.co.uk"
+                        href={TEL}
                         className="font-semibold text-brand-charcoal hover:text-compliance-blue transition-colors text-sm"
                       >
-                       
+                        {PHONE_DISPLAY}
                       </a>
                       <p className="text-xs text-brand-grey mt-0.5">Mon–Fri 8am–7pm · Sat 9am–5pm</p>
                     </div>
@@ -187,7 +189,7 @@ export default function ContactPage() {
                     <div>
                       <p className="text-xs font-semibold text-brand-grey uppercase tracking-wider mb-0.5">WhatsApp</p>
                       <a
-                        href="https://wa.me/447000000000"
+                        href={WHATSAPP_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-semibold text-brand-charcoal hover:text-[#25D366] transition-colors text-sm"

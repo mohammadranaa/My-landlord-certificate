@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -383,7 +384,7 @@ export default function TermsPage() {
                     info@mylandlordcertificate.co.uk
                   </a>
                 </li>
-                <li>Phone: 020 XXXX XXXX</li>
+                <li>Phone: <a href={TEL} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a></li>
               </ul>
               <p className="text-sm">
                 We aim to acknowledge all complaints within two working days and to
