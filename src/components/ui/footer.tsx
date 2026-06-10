@@ -94,14 +94,15 @@ export function Footer({ className }: FooterProps) {
         {/* Brand blurb */}
         <div className="mt-14 pt-8 border-t border-white/10">
           <div className="max-w-md">
-            <Image
-              src="/logo-white.svg"
-              alt="My Landlord Certificate"
-              width={64}
-              height={64}
-              unoptimized
-              className="h-16 w-auto object-contain mb-2"
-            />
+            <div className="bg-white rounded-xl px-4 py-2 inline-block mb-4">
+              <Image
+                src="/header-logo.png"
+                alt="My Landlord Certificate"
+                width={160}
+                height={48}
+                className="h-10 w-auto object-contain"
+              />
+            </div>
             <p className="text-blue-200 text-sm mb-2">Compliant. Sorted.</p>
             <p className="text-sm text-white/50 leading-relaxed">
               NICEIC & Gas Safe accredited property compliance across London and

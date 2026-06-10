@@ -64,9 +64,9 @@ const asbestos = {
 } as const;
 
 const topLinks = [
-  { href: "/blog",    label: "Blog"    },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
+  { href: "/blog",            label: "Blog"           },
+  { href: "/contact",         label: "Contact"        },
+  { href: "/letting-agents",  label: "Letting Agents" },
 ] as const;
 
 // ── Icon helpers ───────────────────────────────────────────────────────────────
@@ -175,16 +175,16 @@ export function NavBar({ className }: { className?: string }) {
         {/* ── Logo ── */}
         <Link
           href="/"
+          aria-label="My Landlord Certificate — home"
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue focus-visible:ring-offset-2 rounded-lg"
         >
           <Image
-            src="/header-logo.svg"
+            src="/header-logo.png"
             alt="My Landlord Certificate"
             width={160}
-            height={64}
-            priority
-            unoptimized
-            className="h-11 w-auto object-contain"
+            height={48}
+            priority={true}
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
@@ -280,15 +280,15 @@ export function NavBar({ className }: { className?: string }) {
                 <div className="flex items-center justify-between px-5 py-4 border-b border-border">
                   <Link
                     href="/"
+                    aria-label="My Landlord Certificate — home"
                     className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue rounded-sm"
                   >
                     <Image
-                      src="/header-logo.svg"
+                      src="/header-logo.png"
                       alt="My Landlord Certificate"
-                      width={48}
-                      height={48}
-                      unoptimized
-                      className="h-12 w-12 object-contain"
+                      width={140}
+                      height={42}
+                      className="h-9 w-auto object-contain"
                     />
                   </Link>
                   <Dialog.Close
