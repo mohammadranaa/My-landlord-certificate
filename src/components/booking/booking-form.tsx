@@ -114,6 +114,7 @@ export function BookingForm() {
       propertySubType: data.propertySize ?? "",
       services: services.map((s) => ({
         type: s.serviceType,
+        label: s.label,
         variant: s.optionLabel,
         price: s.price,
       })),
@@ -129,7 +130,7 @@ export function BookingForm() {
     };
 
     try {
-      const res = await fetch("/api/bookings", {
+      const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -139,35 +140,24 @@ export function BookingForm() {
         throw new Error(`Server error ${res.status}`);
       }
 
-      try {
-        sessionStorage.setItem(
-          "mlc_booking_success",
-          JSON.stringify({
-            name: data.name,
-            email: data.email,
-            services: services.map((s) => ({
-              label: s.label,
-              optionLabel: s.optionLabel,
-              price: s.price,
-            })),
-            appointment: { date: data.preferredDate, timeSlot: data.timePreference },
-            totalPrice: grandTotal,
-            discount,
-          }),
-        );
-      } catch {
-        // sessionStorage unavailable — success page shows generic state
+      const { url } = (await res.json()) as { url?: string };
+
+      if (!url) {
+        throw new Error("No checkout URL returned");
       }
 
-      posthog?.capture("booking_confirmed", {
+      posthog?.capture("checkout_redirected", {
         total_price: grandTotal,
         services: (data.services ?? []).map((s) => s.serviceType),
         discount,
       });
-      router.push("/book/success");
+
+      window.location.href = url;
     } catch {
       posthog?.capture("booking_error");
-      setSubmitError("Something went wrong. Please try again or email us.");
+      setSubmitError(
+        "Something went wrong. Please try again or call us on 020 3996 1070.",
+      );
       setIsSubmitting(false);
     }
   }

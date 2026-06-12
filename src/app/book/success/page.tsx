@@ -1,189 +1,188 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { parseISO } from "date-fns";
+import { stripe } from "@/lib/stripe";
+import { Container } from "@/components/ui/container";
+import { Heading } from "@/components/ui/heading";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { PHONE_DISPLAY, TEL, WHATSAPP_URL } from "@/lib/constants";
 
-type ServiceSummary = {
-  label: string;
-  optionLabel: string;
-  price: number;
+export const metadata: Metadata = {
+  title: "Booking Confirmed — My Landlord Certificate",
+  robots: { index: false },
 };
 
-type BookingSummary = {
-  name: string;
-  email: string;
-  services: ServiceSummary[];
-  appointment: { date: string; timeSlot: string };
-  totalPrice: number;
-  discount: number;
-};
+export default async function BookSuccessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ session_id?: string }>;
+}) {
+  const { session_id } = await searchParams;
 
-export default function BookingSuccessPage() {
-  const [summary, setSummary] = useState<BookingSummary | null>(null);
-
-  useEffect(() => {
+  let session = null;
+  if (session_id) {
     try {
-      const raw = sessionStorage.getItem("mlc_booking_success");
-      if (raw) {
-        setSummary(JSON.parse(raw) as BookingSummary);
-        sessionStorage.removeItem("mlc_booking_success");
-      }
+      session = await stripe.checkout.sessions.retrieve(session_id);
     } catch {
-      // sessionStorage unavailable — show generic success
+      // Session retrieval failed — show generic success
     }
-  }, []);
+  }
 
-  const formattedDate =
-    summary?.appointment.date
-      ? parseISO(summary.appointment.date).toLocaleDateString("en-GB", {
-          weekday: "long",
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        })
-      : null;
-
-  const timeLabel =
-    summary?.appointment.timeSlot === "morning"
-      ? "Morning — 8am to 12pm"
-      : summary?.appointment.timeSlot === "afternoon"
-        ? "Afternoon — 12pm to 6pm"
-        : summary?.appointment.timeSlot ?? "";
+  const customerName = session?.metadata?.customer_name ?? "";
+  const servicesReadable = session?.metadata?.services_readable ?? "";
+  const appointmentDate = session?.metadata?.appointment_date ?? "";
+  const appointmentSlot = session?.metadata?.appointment_slot ?? "";
+  const propertyAddress = session?.metadata?.property_address ?? "";
+  const totalPaid = session?.amount_total
+    ? `£${(session.amount_total / 100).toFixed(2)}`
+    : "";
 
   return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12">
-      {/* Checkmark */}
-      <div className="flex flex-col items-center text-center mb-10">
-        <div className="w-20 h-20 rounded-full bg-action-green/15 flex items-center justify-center mb-5">
+    <main className="min-h-screen bg-warm-white flex items-center justify-center py-16 px-4">
+      <Container className="max-w-xl text-center">
+        {/* Success icon */}
+        <div className="w-20 h-20 rounded-full bg-action-green/15 flex items-center justify-center mx-auto mb-6">
           <svg
             className="w-10 h-10 text-action-green"
-            fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 20 20"
+            fill="currentColor"
             aria-hidden="true"
           >
             <path
-              d="M5 13l4 4L19 7"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              fillRule="evenodd"
+              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+              clipRule="evenodd"
             />
           </svg>
         </div>
-        <h1 className="text-3xl font-bold text-brand-charcoal mb-3">
-          Booking Request Received!
-        </h1>
-        <p className="text-brand-charcoal/70 max-w-md">
-          Thank you{summary?.name ? `, ${summary.name.split(" ")[0]}` : ""}. Our team will call you within{" "}
-          <strong className="text-brand-charcoal">2 hours</strong> to confirm your appointment and arrange payment.
+
+        <Heading level={1} className="mb-3">
+          Booking confirmed
+          {customerName ? `, ${customerName.split(" ")[0]}` : ""}!
+        </Heading>
+
+        <p className="text-brand-grey text-lg mb-8">
+          Your payment was successful. We will call you within 2 hours to
+          confirm your appointment details.
         </p>
-        {summary?.email && (
-          <p className="text-sm text-brand-grey mt-2">
-            A confirmation will be sent to <span className="text-brand-charcoal">{summary.email}</span>
-          </p>
-        )}
-      </div>
 
-      {/* Booking summary */}
-      {summary && (
-        <div className="rounded-2xl border border-border bg-white p-6 mb-8">
-          <h2 className="font-bold text-brand-charcoal mb-4 text-sm uppercase tracking-wide">
-            Booking summary
-          </h2>
-
-          <div className="space-y-2 mb-4">
-            {summary.services.map((s) => (
-              <div key={s.label} className="flex justify-between items-start gap-3 text-sm">
-                <div>
-                  <p className="font-medium text-brand-charcoal">{s.label}</p>
-                  <p className="text-xs text-brand-grey">{s.optionLabel}</p>
-                </div>
-                <span className="tabular-nums text-brand-charcoal whitespace-nowrap">
-                  £{s.price.toFixed(2)}
+        {/* Booking summary */}
+        {(servicesReadable || appointmentDate || propertyAddress) && (
+          <div className="bg-white rounded-2xl border border-border p-6 text-left mb-8 space-y-3">
+            <p className="text-sm font-semibold text-brand-grey uppercase tracking-wider">
+              Booking summary
+            </p>
+            {servicesReadable && (
+              <div className="flex justify-between text-sm gap-4">
+                <span className="text-brand-grey shrink-0">Services</span>
+                <span className="font-medium text-brand-charcoal text-right">
+                  {servicesReadable}
                 </span>
               </div>
-            ))}
-          </div>
-
-          {summary.discount > 0 && (
-            <div className="flex justify-between text-sm text-action-green font-medium mb-2">
-              <span>10% multi-service discount</span>
-              <span className="tabular-nums">−£{summary.discount.toFixed(2)}</span>
-            </div>
-          )}
-
-          <div className="border-t border-border pt-3 flex justify-between items-center">
-            <p className="font-bold text-brand-charcoal">Estimated total</p>
-            <p className="text-xl font-bold text-compliance-blue tabular-nums">
-              £{summary.totalPrice.toFixed(2)}
-            </p>
-          </div>
-
-          {(formattedDate || timeLabel) && (
-            <div className="mt-4 pt-4 border-t border-border text-sm text-brand-charcoal/70 space-y-0.5">
-              {formattedDate && <p>Preferred date: <span className="text-brand-charcoal font-medium">{formattedDate}</span></p>}
-              {timeLabel && <p>Preferred slot: <span className="text-brand-charcoal font-medium">{timeLabel}</span></p>}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* What happens next */}
-      <div className="rounded-2xl bg-warm-white border border-border p-6 mb-8">
-        <h2 className="font-bold text-brand-charcoal mb-5">What happens next</h2>
-        <ol className="space-y-4">
-          {[
-            {
-              n: "1",
-              title: "We call you",
-              body: "One of our team will call you within 2 hours (during business hours) to confirm the appointment time.",
-            },
-            {
-              n: "2",
-              title: "Payment arranged",
-              body: "We take payment over the phone or send a secure payment link — no card details stored.",
-            },
-            {
-              n: "3",
-              title: "Engineer visits",
-              body: "An accredited engineer attends at the agreed time. Most certificates are issued within 24 hours.",
-            },
-          ].map(({ n, title, body }) => (
-            <li key={n} className="flex gap-4">
-              <span className="w-7 h-7 rounded-full bg-compliance-blue text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                {n}
-              </span>
-              <div>
-                <p className="font-semibold text-brand-charcoal text-sm">{title}</p>
-                <p className="text-sm text-brand-charcoal/70 mt-0.5 leading-relaxed">{body}</p>
+            )}
+            {propertyAddress && (
+              <div className="flex justify-between text-sm gap-4">
+                <span className="text-brand-grey shrink-0">Property</span>
+                <span className="font-medium text-brand-charcoal text-right">
+                  {propertyAddress}
+                </span>
               </div>
-            </li>
-          ))}
-        </ol>
-      </div>
+            )}
+            {appointmentDate && (
+              <div className="flex justify-between text-sm gap-4">
+                <span className="text-brand-grey shrink-0">Date</span>
+                <span className="font-medium text-brand-charcoal">
+                  {appointmentDate}
+                </span>
+              </div>
+            )}
+            {appointmentSlot && (
+              <div className="flex justify-between text-sm gap-4">
+                <span className="text-brand-grey shrink-0">Time slot</span>
+                <span className="font-medium text-brand-charcoal">
+                  {appointmentSlot}
+                </span>
+              </div>
+            )}
+            {totalPaid && (
+              <div className="flex justify-between text-sm border-t border-border pt-3 mt-3">
+                <span className="font-semibold text-brand-charcoal">
+                  Total paid
+                </span>
+                <span className="font-bold text-compliance-blue">
+                  {totalPaid}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
 
-      {/* Trust line */}
-      <div className="text-center mb-8 space-y-1">
-        <p className="text-sm text-brand-grey">
-          NICEIC approved · Gas Safe Registered · 500+ London landlords served
-        </p>
-        <p className="text-sm text-brand-grey">
-          Questions? Call us on{" "}
-          <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
-            
+        {/* What happens next */}
+        <div className="bg-compliance-blue/5 rounded-2xl p-6 text-left mb-8">
+          <p className="text-sm font-semibold text-compliance-blue uppercase tracking-wider mb-4">
+            What happens next
+          </p>
+          <ul className="space-y-3">
+            {[
+              "You will receive a confirmation email shortly",
+              "We will call you within 2 hours to confirm your exact appointment time",
+              "Our engineer will call 1 hour before arrival",
+              "Your certificate will be emailed within 24 hours of inspection",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-sm text-brand-charcoal"
+              >
+                <svg
+                  className="w-4 h-4 text-action-green shrink-0 mt-0.5"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.416 3.376a.75.75 0 01.208 1.04l-5 7.5a.75.75 0 01-1.154.114l-3-3a.75.75 0 011.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 011.04-.207z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Reschedule */}
+        <p className="text-sm text-brand-grey mb-8">
+          Need to reschedule or have a question?{" "}
+          <a
+            href={TEL}
+            className="text-compliance-blue font-medium hover:underline"
+          >
+            Call {PHONE_DISPLAY}
+          </a>{" "}
+          or{" "}
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#25D366] font-medium hover:underline"
+          >
+            WhatsApp us
           </a>
         </p>
-      </div>
 
-      <div className="text-center">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1 text-sm font-medium text-compliance-blue hover:underline"
-        >
-          ← Return to homepage
-        </Link>
-      </div>
-    </div>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link href="/" className={cn(buttonVariants({ variant: "primary" }))}>
+            Back to homepage
+          </Link>
+          <Link
+            href="/book"
+            className={cn(buttonVariants({ variant: "secondary" }))}
+          >
+            Book another certificate
+          </Link>
+        </div>
+      </Container>
+    </main>
   );
 }
