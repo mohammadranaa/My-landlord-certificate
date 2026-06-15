@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { SITE_URL } from "@/lib/constants";
 
 interface BookingService {
@@ -18,7 +18,7 @@ interface BookingPayload {
   totalPrice?: number;
 }
 
-type CreateParams = NonNullable<Parameters<typeof stripe.checkout.sessions.create>[0]>;
+type CreateParams = NonNullable<Parameters<ReturnType<typeof getStripe>["checkout"]["sessions"]["create"]>[0]>;
 type LineItem = NonNullable<CreateParams["line_items"]>[number];
 
 export async function POST(request: NextRequest) {
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
         booking.services?.map((s) => s.label ?? s.type).join(", ") ?? "",
     };
 
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       currency: "gbp",
       line_items: lineItems,

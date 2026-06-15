@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export default async function BookSuccessPage({
   let session = null;
   if (session_id) {
     try {
-      session = await stripe.checkout.sessions.retrieve(session_id);
+      session = await getStripe().checkout.sessions.retrieve(session_id);
     } catch {
       // Session retrieval failed — show generic success
     }
