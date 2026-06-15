@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { usePostHog } from "posthog-js/react";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
@@ -19,14 +19,18 @@ import { Step2PersonalInfo } from "./step-2-personal-info";
 import { Step3Services } from "./step-3-services";
 import { Step4DateTime } from "./step-4-datetime";
 import { Step5Review } from "./step-5-review";
+import { SaveQuotePrompt } from "./save-quote-prompt";
 
 
 export function BookingForm() {
-  const router = useRouter();
   const posthog = usePostHog();
   const searchParams = useSearchParams();
   const preselectedService = searchParams.get("service") ?? undefined;
   const preselectedType = (searchParams.get("type") as "residential" | "commercial") ?? undefined;
+
+  const sessionId = useRef(
+    `form_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
+  ).current;
 
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,36 +48,103 @@ export function BookingForm() {
     setData((prev) => ({ ...prev, ...partial }));
   }
 
+  async function savePartialBooking(
+    currentStep: number,
+    currentData: PartialBookingData,
+  ) {
+    if (!currentData.email) return;
+
+    const services = (currentData.services ?? []).map((s) => ({
+      type: s.serviceType,
+      variant: s.optionLabel,
+      price: s.price,
+    }));
+
+    const { total } = calculateBundlePrice(
+      (currentData.services ?? []).map((s) => ({
+        service: s.serviceType as ServiceType,
+        price: s.price,
+      })),
+    );
+    const charges =
+      (currentData.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
+      (currentData.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
+
+    try {
+      await fetch("/api/partial-booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          step: currentStep,
+          name: currentData.name ?? "",
+          email: currentData.email,
+          phone: currentData.phone ?? "",
+          propertyType: currentData.propertyCategory ?? "",
+          propertySubType: currentData.propertySize ?? "",
+          services,
+          property: {
+            streetAddress: [currentData.addressLine1, currentData.addressLine2]
+              .filter(Boolean)
+              .join(", "),
+            city: currentData.city ?? "",
+            postcode: (currentData.postcode ?? "").toUpperCase(),
+          },
+          appointment: {
+            date: currentData.preferredDate ?? "",
+            timeSlot:
+              currentData.timePreference === "morning"
+                ? "Morning (8am–12pm)"
+                : currentData.timePreference === "afternoon"
+                  ? "Afternoon (12pm–6pm)"
+                  : "",
+          },
+          totalPrice: total + charges,
+          sessionId,
+        }),
+      });
+    } catch {
+      // Silently fail — never block the user
+    }
+  }
+
   function handleStep1Complete(stepData: Step1Data) {
+    const merged = { ...data, ...stepData };
     merge(stepData);
     posthog?.capture("property_entered", {
       property_type: stepData.propertyCategory,
       property_size: stepData.propertySize,
     });
+    void savePartialBooking(1, merged);
     setStep(2);
   }
 
   function handleStep2Complete(stepData: Step2Data) {
+    const merged = { ...data, ...stepData };
     merge(stepData);
     posthog?.capture("contact_entered");
+    void savePartialBooking(2, merged);
     setStep(3);
   }
 
   function handleStep3Complete(services: ServiceEntry[]) {
+    const merged = { ...data, services };
     merge({ services });
     posthog?.capture("service_selected", {
       services: services.map((s) => s.serviceType),
       service_count: services.length,
     });
+    void savePartialBooking(3, merged);
     setStep(4);
   }
 
   function handleStep4Complete(stepData: Step4Data) {
+    const merged = { ...data, ...stepData };
     merge(stepData);
     posthog?.capture("slot_selected", {
       preferred_date: stepData.preferredDate,
       time_preference: stepData.timePreference,
     });
+    void savePartialBooking(4, merged);
     setStep(5);
   }
 
@@ -162,6 +233,17 @@ export function BookingForm() {
     }
   }
 
+  const { total: quoteServicesTotal } = calculateBundlePrice(
+    (data.services ?? []).map((s) => ({
+      service: s.serviceType as ServiceType,
+      price: s.price,
+    })),
+  );
+  const quoteAdditional =
+    (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
+    (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
+  const quoteTotal = quoteServicesTotal + quoteAdditional;
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
       <ProgressBar currentStep={step} />
@@ -236,6 +318,18 @@ export function BookingForm() {
 
         <OrderSummary data={data} />
       </div>
+
+      <SaveQuotePrompt
+        email={data.email ?? ""}
+        name={data.name ?? ""}
+        services={(data.services ?? []).map((s) => ({
+          type: s.serviceType,
+          variant: s.optionLabel,
+          price: s.price,
+        }))}
+        totalPrice={quoteTotal}
+        onDismiss={() => {}}
+      />
     </div>
   );
 }
