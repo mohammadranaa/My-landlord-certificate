@@ -98,6 +98,20 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+    if (googleSheetUrl) {
+      fetch(googleSheetUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...booking,
+          status: "Pending Payment",
+          paymentStatus: "Unpaid",
+          stripeSessionId: session.id,
+        }),
+      }).catch((err) => console.error("Sheet pre-payment log:", err));
+    }
+
     return NextResponse.json({ url: session.url });
   } catch (error) {
     console.error("Stripe checkout error:", error);
