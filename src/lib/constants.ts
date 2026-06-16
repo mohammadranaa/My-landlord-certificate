@@ -12,3 +12,5 @@ export const WHATSAPP_URL  = "https://wa.me/447825672801";
 export const EMAIL         = "info@mylandlordcertificate.co.uk";
 export const MAILTO        = "mailto:info@mylandlordcertificate.co.uk";
 export const TEL           = "tel:+442039961070";
+
+export const GA4_MEASUREMENT_ID = "G-1PTHLKT0Q4";

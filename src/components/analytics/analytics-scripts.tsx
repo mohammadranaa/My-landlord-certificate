@@ -1,12 +1,11 @@
 "use client";
 
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import { GA4_MEASUREMENT_ID } from "@/lib/constants";
 import { useConsent } from "./consent-provider";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-// Meta Pixel loads via a plain <script> tag — no @next/third-parties wrapper needed.
 function MetaPixel({ pixelId }: { pixelId: string }) {
   return (
     <>
@@ -41,7 +40,26 @@ export function AnalyticsScripts() {
 
   return (
     <>
-      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="ga4-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+              anonymize_ip: true,
+              cookie_flags: 'SameSite=None;Secure',
+            });
+          `,
+        }}
+      />
       {META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
     </>
   );

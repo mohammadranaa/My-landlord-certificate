@@ -40,6 +40,12 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
   const accept = useCallback(() => {
     writeCookie("granted");
     setConsent("granted");
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+        ad_storage: "denied",
+      });
+    }
   }, []);
 
   const decline = useCallback(() => {
