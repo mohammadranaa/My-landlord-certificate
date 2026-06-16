@@ -217,7 +217,21 @@ export const FIRE_ALARM_INSTALLATION_PER_ALARM = 209.99;
 
 // ─── Fire Door Certificate ────────────────────────────────────────────────────
 
-export const FIRE_DOOR_CERT_PRICE = 119.99;
+export const FIRE_DOOR_PRICES = {
+  "1-3 doors": 129.99,
+  "4 doors": 169.99,
+  "5 doors": 209.99,
+  "6 doors": 239.99,
+} as const;
+
+export const FIRE_DOOR_TABLE: readonly PriceRow[] = [
+  { label: "1–3 Fire Doors", price: 129.99 },
+  { label: "4 Fire Doors", price: 169.99 },
+  { label: "5 Fire Doors", price: 209.99 },
+  { label: "6 Fire Doors", price: 239.99 },
+];
+
+export const FIRE_DOOR_CERT_PRICE = FIRE_DOOR_PRICES["1-3 doors"];
 
 // ─── Fire Extinguisher Testing ────────────────────────────────────────────────
 
@@ -294,7 +308,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fra-residential": "from £74.99",
   "fra-commercial": "from £149.99",
   "fire-alarm-installation": "from £209.99/alarm",
-  "fire-door-cert": "from £119.99",
+  "fire-door-cert": "from £129.99",
   "fire-extinguisher": "from £79.99",
   "asbestos-survey": "from £239.99",
   epc: "from £89.99",

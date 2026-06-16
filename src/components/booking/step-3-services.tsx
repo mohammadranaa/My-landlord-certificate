@@ -117,7 +117,10 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
     label: "Fire Door Certificate",
     description: "Inspection and certification of fire doors",
     options: [
-      { label: "Fire Door Inspection & Certificate", price: 119.99 },
+      { label: "1–3 Fire Doors", price: 129.99 },
+      { label: "4 Fire Doors", price: 169.99 },
+      { label: "5 Fire Doors", price: 209.99 },
+      { label: "6 Fire Doors", price: 239.99 },
     ],
   },
   {
@@ -301,7 +304,10 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
     label: "Fire Door Certificate",
     description: "Inspection and certification of fire doors",
     options: [
-      { label: "Fire Door Inspection & Certificate", price: 119.99 },
+      { label: "1–3 Fire Doors", price: 129.99 },
+      { label: "4 Fire Doors", price: 169.99 },
+      { label: "5 Fire Doors", price: 209.99 },
+      { label: "6 Fire Doors", price: 239.99 },
     ],
   },
   {

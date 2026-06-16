@@ -2,18 +2,20 @@ import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
-import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_DOOR_CERT_PRICE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_DOOR_PRICES, FIRE_DOOR_TABLE } from "@/lib/pricing";
+import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Fire Door Certificate London — £119.99/door, BS 9999 Inspections | My Landlord Certificate",
+  title: "Fire Door Certificate London from £129.99 | FD30 & FD60 Inspections | My Landlord Certificate",
   description:
-    "Fire door inspection and certification from £119.99 per door. Gap tolerance, intumescent strips, self-closing checks to BS 9999. All 33 London boroughs. Certificate within 24 hours. HMO requirement.",
+    "Fire door inspections and certificates in London from £129.99 for 1-3 doors. BS 9999 and Fire Safety (England) Regulations 2022 compliant. HMOs, blocks of flats, commercial premises. Certificate within 24 hours. BAFE certified inspectors across all 33 London boroughs.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-door-certificate",
   },
 };
+
+const entryPrice = FIRE_DOOR_PRICES["1-3 doors"];
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -28,7 +30,7 @@ const serviceSchema = {
   areaServed: { "@type": "City", name: "London" },
   offers: {
     "@type": "Offer",
-    price: `${FIRE_DOOR_CERT_PRICE}`,
+    price: `${entryPrice}`,
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
   },
@@ -46,49 +48,33 @@ const breadcrumbSchema = {
 
 const faqs = [
   {
-    question: "What is a fire door certificate?",
+    question: "How much does a fire door certificate cost in London?",
     answer:
-      "A fire door certificate is a written record confirming that each fire door has been inspected against the requirements of BS 9999 and BS EN 1634-1. It records the door's fire rating, condition of the intumescent strips and smoke seals, gap tolerance, self-closing device, and any faults found. The certificate is suitable for submission to your local authority or HMO licensing body.",
+      "A fire door certificate from My Landlord Certificate costs £129.99 for 1-3 doors, £169.99 for 4 doors, £209.99 for 5 doors, and £239.99 for 6 doors. For 7 or more doors, call us for a bespoke quote. All prices are fixed with no hidden charges. A congestion charge surcharge of £18 applies for properties in the London Congestion Charge Zone.",
   },
   {
-    question: "Which properties need fire door inspections?",
+    question: "How often do fire doors need to be inspected?",
     answer:
-      "Fire doors are required in all HMOs, blocks of flats with communal areas, and commercial buildings. Under the Regulatory Reform (Fire Safety) Order 2005, the responsible person must ensure fire doors are maintained in efficient working order. Most London HMO licence conditions require annual fire door inspections.",
+      "For buildings above 11 metres, the Fire Safety (England) Regulations 2022 require quarterly inspections of communal area fire doors and annual inspections of flat entrance doors. For buildings under 11 metres — including most London HMOs and Victorian conversions — annual inspection is the accepted standard. Your HMO licence conditions will specify the minimum frequency required.",
   },
   {
-    question: "What gap tolerance is required for fire doors?",
+    question: "What is the difference between FD30 and FD60?",
     answer:
-      "The maximum permissible gap around the perimeter of a fire door is 3mm on the sides and top, and 8mm at the bottom (or up to 10mm in older buildings). Gaps beyond these limits allow smoke and fire to pass through and effectively invalidate the fire rating of the door. Our engineers measure all gaps and record them on the certificate.",
+      "FD30 doors provide 30 minutes of fire resistance and are standard for most residential escape routes. FD60 doors provide 60 minutes and are required in higher-risk locations or taller buildings. Our inspectors will confirm the rating of your existing doors and whether they are appropriate for their location.",
   },
   {
     question: "What happens if a fire door fails the inspection?",
     answer:
-      "Failed doors are recorded on the certificate with a description of the defect and a priority rating. Common failures include worn intumescent strips, damaged smoke seals, excessive gaps, or faulty self-closing mechanisms. Many minor defects can be remediated on the same visit — ask us when booking.",
+      "If a door fails inspection, the certificate will record the specific defects found and assign a priority rating. Minor defects (such as missing signage) are lower priority. Critical defects (such as a failed self-closer or missing intumescent strip) require urgent attention. We can provide a quote for remedial work or door replacement.",
   },
   {
-    question: "How often should fire doors be inspected?",
+    question: "Do I need fire doors in an HMO?",
     answer:
-      "The Fire Safety (England) Regulations 2022 require responsible persons in multi-occupied residential buildings above 11 metres to carry out quarterly checks of fire doors in communal areas and an annual check of flat entrance doors. For HMOs and smaller blocks, annual inspection is the standard recommendation and the typical HMO licence requirement.",
+      "Yes. Fire doors are a mandatory requirement in all licensable HMOs. They must be fitted on all habitable rooms that open onto escape routes (corridors and stairwells), on kitchen doors, and on any doors between different parts of the building. Your local council's HMO licence conditions will specify the exact requirements for your property.",
   },
   {
-    question: "What is the difference between FD30 and FD60 fire doors?",
-    answer:
-      "FD30 fire doors are rated to resist fire for 30 minutes; FD60 for 60 minutes. Most HMOs and purpose-built residential blocks require FD30 doors on escape routes. FD60 doors are typically required in higher-risk or taller buildings. Our inspector will confirm the required rating during the inspection and note any non-compliance.",
-  },
-  {
-    question: "Can you repair fire doors as well as inspect them?",
-    answer:
-      "Yes. We can carry out minor repairs during the inspection visit — replacing worn intumescent strips and smoke seals, adjusting self-closing mechanisms, and reattaching door furniture. Major remediation (rehinging, replacing core, or replacing the entire door) is quoted separately.",
-  },
-  {
-    question: "How many fire doors does my HMO need?",
-    answer:
-      "HMO fire door requirements depend on the size and layout of the property and the conditions set by your local authority. Typically, all bedroom doors and kitchen doors on escape routes must be fire doors. Common area doors (corridor to stairway, flat entrance doors) must also meet the standard. Our inspector can advise on the specific requirements for your property.",
-  },
-  {
-    question: "Which areas of London do you cover?",
-    answer:
-      "We cover all 33 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+    question: "Can you replace fire doors as well as inspect them?",
+    answer: `Yes. If your inspection identifies doors that need replacing, our engineers can supply and fit FD30 or FD60 rated door sets that comply with current standards. Call us on ${PHONE_DISPLAY} for a supply and installation quote.`,
   },
 ];
 
@@ -122,26 +108,31 @@ export default function FireDoorCertificatePage() {
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
-            Fire Door Certificate London from £{FIRE_DOOR_CERT_PRICE}/door
+          <p className="text-xs font-semibold tracking-widest text-compliance-blue uppercase mb-3">
+            BAFE Certified · BS 9999 Compliant · London &amp; M25
+          </p>
+          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-4 leading-tight">
+            Fire Door Certificate London — from £{entryPrice}
           </h1>
-          <PriceDisplay price={FIRE_DOOR_CERT_PRICE} from size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
-            Qualified inspectors · BS 9999 compliant · Certificate issued within 24 hours
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6 max-w-2xl">
+            Fire door inspections for HMOs, blocks of flats, and commercial premises across London.
+            Our qualified inspectors check every door against BS 9999 — measuring gaps, testing
+            self-closers, checking intumescent strips and smoke seals. Tiered fixed pricing.
+            Certificate within 24 hours.
           </p>
           <TrustBadges serviceKey="fire-door-certificate" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/book?service=fire-door-cert"
+              href="/book?service=fire-door"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Book Now — £{FIRE_DOOR_CERT_PRICE}/door
+              Book fire door inspection →
             </Link>
             <a
-              href="mailto:info@mylandlordcertificate.co.uk"
+              href={TEL}
               className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Email us
+              Call {PHONE_DISPLAY}
             </a>
           </div>
         </div>
@@ -152,20 +143,20 @@ export default function FireDoorCertificatePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-white/10">
             <div className="pl-0">
-              <p className="text-xs text-white/50 mb-0.5">Per door</p>
-              <p className="font-bold text-white">£{FIRE_DOOR_CERT_PRICE}</p>
+              <p className="text-xs text-white/50 mb-0.5">From</p>
+              <p className="font-bold text-white">£{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Frequency</p>
-              <p className="font-bold text-white">Annually</p>
+              <p className="text-xs text-white/50 mb-0.5">Standard</p>
+              <p className="font-bold text-white">BS 9999</p>
             </div>
             <div className="pl-4">
               <p className="text-xs text-white/50 mb-0.5">Certificate</p>
               <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Standard</p>
-              <p className="font-bold text-white">BS 9999</p>
+              <p className="text-xs text-white/50 mb-0.5">Frequency</p>
+              <p className="font-bold text-white">Annually</p>
             </div>
           </div>
         </div>
@@ -174,133 +165,248 @@ export default function FireDoorCertificatePage() {
       {/* ── Content well ── */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 md:pb-10">
 
-        {/* What is it */}
-        <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Fire door inspection for London HMOs and blocks of flats
-          </h2>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Fire doors are one of the most critical passive fire protection measures in any
-            building. A correctly installed and maintained fire door can hold back flames and
-            smoke for 30 or 60 minutes — giving occupants time to evacuate and emergency
-            services time to respond. In London HMOs and blocks of flats, fire doors on
-            escape routes are a mandatory requirement under the Regulatory Reform (Fire Safety)
-            Order 2005.
-          </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Our qualified inspectors check each door against the requirements of BS 9999,
-            measuring gap tolerances, testing self-closing devices, inspecting intumescent
-            strips and smoke seals, verifying fire-resistance ratings, and checking door
-            furniture and signage. The written certificate records the condition of each
-            door and any defects found, with a priority rating for remediation.
-          </p>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Pricing is per door. Multi-door discounts are available for large HMOs and
-            blocks of flats — call us to discuss.
-          </p>
+        {/* Pricing */}
+        <section id="pricing" className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Fire door certificate pricing</h2>
 
-          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
-            <p className="text-sm text-brand-charcoal">
-              <span className="font-semibold text-brand-amber">Legal requirement:</span>{" "}
-              The Fire Safety (England) Regulations 2022 require responsible persons in
-              multi-occupied residential buildings above 11 metres to inspect fire doors
-              quarterly in communal areas and annually for flat entrance doors. London HMO
-              licences typically require annual fire door inspections for all properties.
-            </p>
+          <div className="rounded-xl border border-border overflow-hidden mb-4">
+            <div className="bg-compliance-blue px-5 py-4">
+              <p className="text-sm font-semibold text-white">Fire Door Certificate — Fixed Prices</p>
+            </div>
+            {FIRE_DOOR_TABLE.map((row, i) => (
+              <div
+                key={row.label}
+                className={`px-5 py-4 flex items-center justify-between ${i % 2 === 0 ? "bg-warm-white" : "bg-white"}`}
+              >
+                <span className="text-sm text-brand-charcoal">{row.label}</span>
+                <span className="text-sm font-bold text-brand-charcoal tabular-nums">£{row.price.toFixed(2)}</span>
+              </div>
+            ))}
+            <div className="px-5 py-4 flex items-center justify-between bg-warm-white border-t border-border">
+              <span className="text-sm text-brand-charcoal">7+ fire doors</span>
+              <span className="text-sm font-bold text-compliance-blue">
+                <a href={TEL} className="hover:underline">Call for quote</a>
+              </span>
+            </div>
           </div>
+
+          <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
+            All prices are fixed and include the written inspection certificate. No hidden charges.
+            For large HMOs or blocks of flats with 7 or more fire doors, call us on{" "}
+            <a href={TEL} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a>{" "}
+            for a bespoke quote.
+          </p>
+          <p className="text-sm text-brand-grey">
+            Additional charges where applicable: London Congestion Charge Zone +£{ADDITIONAL_CHARGES.congestionZone} · No free on-site parking +£{ADDITIONAL_CHARGES.parking}
+          </p>
         </section>
 
-        {/* How it works */}
+        {/* What gets inspected */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-8">How it works</h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            What our inspectors check on every fire door
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            A fire door is not just a door — it is a complete assembly that must work as a system.
+            Every component must be present, undamaged, and correctly installed for the door to
+            provide its rated fire resistance. Our inspectors check all of the following:
+          </p>
+          <div className="space-y-5">
             {[
               {
-                step: "1",
-                title: "Book with your door count",
-                body: "Tell us how many fire doors need inspecting. We confirm the price and book a qualified inspector. Multi-door discounts available for large HMOs and blocks — call us to discuss.",
+                title: "Gap tolerances",
+                body: "The gaps around the door edges must not exceed 3–4mm. Gaps that are too large allow smoke and flame to pass through before the intumescent seal activates. Gaps that are too small prevent the door from closing properly.",
               },
               {
-                step: "2",
-                title: "On-site inspection per door",
-                body: "Our inspector measures gap tolerances, checks intumescent strips and smoke seals, tests the self-closing mechanism, verifies the fire rating, and inspects door furniture and signage. Results are recorded for each door.",
+                title: "Intumescent seals",
+                body: "Intumescent strips are fitted around the door edge and expand rapidly when exposed to heat, sealing the gap and preventing fire spread. Inspectors check they are present on all four sides, undamaged, and correctly fitted into the rebate.",
               },
               {
-                step: "3",
-                title: "Certificate emailed within 24 hours",
-                body: "You receive a written certificate listing each door with its inspection result, any defects found, and a priority rating. Suitable for HMO licensing and local authority inspection.",
+                title: "Cold smoke seals",
+                body: "Brush or compression seals that prevent cold smoke from passing around the door at normal temperatures — before the fire is hot enough to activate the intumescent seal. Required for FD30S and FD60S rated doors.",
               },
-            ].map(({ step, title, body }) => (
-              <div key={step} className="flex flex-col gap-3">
-                <span className="w-9 h-9 rounded-full bg-compliance-blue text-white flex items-center justify-center font-bold text-sm shrink-0">
-                  {step}
+              {
+                title: "Self-closing device",
+                body: "All fire doors must self-close and latch every time — without being held open manually. The closer is tested for correct tension, speed, and full closure from 90 degrees and from a partially open position. A door that does not latch provides no fire protection.",
+              },
+              {
+                title: "Fire resistance rating",
+                body: "The inspector checks the door leaf and frame for rating markings (FD30 or FD60) and assesses whether the rating matches the requirement for that location. FD30 = 30 minutes fire resistance. FD60 = 60 minutes fire resistance.",
+              },
+              {
+                title: "Door furniture and hinges",
+                body: "Hinges must be fire-rated (typically 3 × 76mm ball-bearing hinges), handles must not obstruct closing, and any letterboxes or cat flaps that have been retrofitted must be fire-rated.",
+              },
+              {
+                title: "Glazing panels",
+                body: "Any glass panels in the door must be fire-rated glazing — not standard glass. Standard glass shatters in seconds under fire conditions. Fire-rated glazing maintains integrity for the rated period.",
+              },
+              {
+                title: "Signage and condition",
+                body: '"Fire Door — Keep Shut" signage must be present on both sides of all fire doors on escape routes. The door leaf, frame, and surrounding wall must show no signs of damage, modification, or deterioration that could compromise performance.',
+              },
+            ].map(({ title, body }, i) => (
+              <div key={title} className="flex gap-4">
+                <span className="w-7 h-7 rounded-full bg-compliance-blue text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                  {i + 1}
                 </span>
-                <h3 className="font-semibold text-brand-charcoal">{title}</h3>
-                <p className="text-sm text-brand-charcoal/70 leading-relaxed">{body}</p>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{title}</p>
+                  <p className="text-sm text-brand-charcoal/70 leading-relaxed">{body}</p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Pricing */}
-        <section id="pricing" className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Pricing</h2>
-          <div className="bg-warm-white border border-border rounded-xl p-6">
-            <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-3xl font-bold text-compliance-blue">
-                £{FIRE_DOOR_CERT_PRICE}
-              </span>
-              <span className="text-brand-grey">per door (inspection &amp; certificate)</span>
+        {/* FD30 vs FD60 */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
+            FD30 vs FD60 — which does your property need?
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div className="rounded-xl border border-border p-5">
+              <p className="text-sm font-bold text-compliance-blue uppercase tracking-wider mb-2">FD30 — 30 minutes</p>
+              <p className="font-semibold text-brand-charcoal mb-3">The standard for most residential buildings</p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
+                Required on: escape route corridors in HMOs and blocks of flats, doors between flats
+                and communal corridors, doors to plant rooms and storage areas in residential
+                buildings.
+              </p>
+              <p className="text-sm text-brand-grey">
+                Identifiable by "FD30" markings on the door edge or by a plug in the door edge
+                (often a coloured timber or plastic plug).
+              </p>
             </div>
-            <p className="text-sm text-brand-grey mt-2 mb-4">
-              Price is per door inspected. For properties with multiple fire doors, call us
-              for a bundled quote. The certificate covers all doors inspected on the visit.
-            </p>
-            <ul className="text-sm text-brand-grey flex flex-col gap-1">
-              <li>· Full inspection and written certificate per door</li>
-              <li>· Gap tolerance measurement and record</li>
-              <li>· Intumescent strip and smoke seal check</li>
-              <li>· Self-closing mechanism test</li>
-              <li>
-                · Additional charges: Congestion Zone +£{ADDITIONAL_CHARGES.congestionZone} · Parking +£{ADDITIONAL_CHARGES.parking}
-              </li>
-            </ul>
+            <div className="rounded-xl border border-border p-5">
+              <p className="text-sm font-bold text-compliance-blue uppercase tracking-wider mb-2">FD60 — 60 minutes</p>
+              <p className="font-semibold text-brand-charcoal mb-3">Required in higher-risk or larger buildings</p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
+                Required on: doors in buildings over 18 metres (high-rise), doors to high-risk areas
+                such as commercial kitchens or electrical intake rooms, and as specified in a fire
+                risk assessment for complex buildings.
+              </p>
+              <p className="text-sm text-brand-grey">
+                Usually identifiable by "FD60" markings and thicker door construction.
+              </p>
+            </div>
           </div>
-          <p className="text-sm text-brand-grey mt-4">
-            Multi-door discounts for HMOs and large blocks — call{" "}
-            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline">
-              
-            </a>{" "}
-            for a tailored quote.
-          </p>
+          <div className="bg-compliance-blue/5 border border-compliance-blue/20 rounded-xl p-4">
+            <p className="text-sm text-brand-charcoal">
+              <span className="font-semibold">Not sure which rating your doors are?</span>{" "}
+              Our inspectors identify the rating during the inspection and confirm whether your
+              doors are appropriate for their location. If you need upgraded doors, we can
+              provide a quote for supply and installation.
+            </p>
+          </div>
         </section>
 
-        {/* What's included */}
+        {/* Legal requirements */}
         <section className="py-10 border-b border-border">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">What&apos;s included per door</h2>
-          <ul className="grid sm:grid-cols-2 gap-3">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
+            Fire door legal requirements for London landlords
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            The legal framework for fire doors in residential buildings has been significantly
+            strengthened following the Grenfell Tower disaster. Two pieces of legislation are
+            most relevant to London landlords:
+          </p>
+          <div className="space-y-6">
+            <div>
+              <p className="font-semibold text-brand-charcoal mb-2">Regulatory Reform (Fire Safety) Order 2005</p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                The primary fire safety law for all non-domestic premises and the communal areas of
+                residential buildings. It requires the Responsible Person (the freeholder, management
+                company, or their managing agent) to ensure that fire doors on escape routes are
+                maintained in good working order. This includes self-closing devices, intumescent
+                seals, and correct installation.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold text-brand-charcoal mb-2">Fire Safety (England) Regulations 2022</p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
+                Introduced following recommendations from the Grenfell Tower Inquiry. For
+                multi-occupied residential buildings above 11 metres in height, the Regulations
+                require:
+              </p>
+              <ul className="text-sm text-brand-charcoal/80 space-y-1 ml-4">
+                <li>· Quarterly checks of all fire doors in communal areas (corridors, stairwells, lobbies)</li>
+                <li>· Annual checks of all flat entrance fire doors</li>
+              </ul>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed mt-3">
+                For buildings under 11 metres (the majority of London HMOs and Victorian
+                conversions), annual inspection as part of the fire risk assessment is the
+                accepted standard.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold text-brand-charcoal mb-2">Housing Act 2004 — HMO Licensing</p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                London HMO licences issued by local councils almost universally include a condition
+                requiring fire doors to be fitted, maintained, and regularly inspected. Failure to
+                comply can result in licence revocation and fines of up to £30,000 per property.
+              </p>
+            </div>
+          </div>
+          <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4 mt-6">
+            <p className="text-sm text-brand-charcoal">
+              <span className="font-semibold text-brand-amber">Not sure if your building is above 11 metres?</span>{" "}
+              A building of approximately 4 or more storeys (depending on ceiling heights) is likely
+              to exceed 11 metres and trigger the quarterly inspection requirement. If in doubt,
+              our inspectors can advise during the visit.
+            </p>
+          </div>
+        </section>
+
+        {/* Common defects */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            The most common fire door defects found in London properties
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Based on our inspections across London HMOs and blocks of flats, these are the defects
+            we find most frequently — and why each one matters:
+          </p>
+          <div className="space-y-5">
             {[
-              "Gap tolerance measurement (sides, top, bottom)",
-              "Intumescent strip condition check",
-              "Smoke seal inspection",
-              "Self-closing device test",
-              "Fire resistance rating verification",
-              "Door furniture and signage check",
-              "Pass/fail record per door",
-              "Written certificate within 24 hours",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/20 text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
-                  ✓
-                </span>
-                <span className="text-sm text-brand-charcoal/80">{item}</span>
-              </li>
+              {
+                title: "Missing or damaged intumescent strips (most common)",
+                body: "Found in roughly 60% of older properties. Strips deteriorate over time, are sometimes removed during repainting, or were never fitted to the correct standard. A missing intumescent strip means the door provides no effective fire resistance regardless of its rated construction.",
+              },
+              {
+                title: "Self-closer not working correctly",
+                body: "Self-closers seize up, lose tension, or are deliberately disabled by occupants who find them inconvenient. A fire door propped open or failing to latch is legally equivalent to having no fire door at all.",
+              },
+              {
+                title: "Excessive gaps around the door",
+                body: "Common in older properties where frames have moved or settled over time. Gaps exceeding 4mm allow smoke and hot gases through before the intumescent seal can activate.",
+              },
+              {
+                title: "Non-fire-rated glazing",
+                body: "Many older fire doors have had standard glass panels installed as replacements. Standard glass shatters within seconds of fire exposure — providing no protection and creating a significant hazard from flying glass.",
+              },
+              {
+                title: "Missing cold smoke seals",
+                body: "Required on all FD30S and FD60S doors. Often absent on older doors or removed during maintenance. Without cold smoke seals, occupants can be overcome by smoke before the fire reaches the door.",
+              },
+              {
+                title: "Door wedged or propped open",
+                body: "The single most dangerous and most common finding. Occupants wedge fire doors open for convenience, completely negating their purpose. This is a legal breach and in the event of a fire creates a direct channel for smoke and flame to travel through the escape route.",
+              },
+            ].map(({ title, body }) => (
+              <div key={title} className="flex gap-3">
+                <span className="mt-1.5 w-2 h-2 rounded-full bg-brand-amber shrink-0" />
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{title}</p>
+                  <p className="text-sm text-brand-charcoal/70 leading-relaxed">{body}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
 
         {/* FAQs */}
-        <section className="below-fold py-10 border-b border-border">
+        <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
         </section>
@@ -347,21 +453,21 @@ export default function FireDoorCertificatePage() {
               Book your fire door inspection
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              £{FIRE_DOOR_CERT_PRICE} per door. Qualified inspectors, certificate within 24 hours.
-              Multi-door discounts for HMOs and blocks across all 33 London boroughs.
+              From £{entryPrice} for 1–3 doors. Qualified inspectors, certificate within 24 hours.
+              Fixed prices across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
-                href="/book?service=fire-door-cert"
+                href="/book?service=fire-door"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
                 Book Online
               </Link>
               <a
-                href="mailto:info@mylandlordcertificate.co.uk"
+                href={TEL}
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </div>
@@ -369,9 +475,9 @@ export default function FireDoorCertificatePage() {
       </div>
 
       <StickyMobileCTA
-        href="/book?service=fire-door-cert"
+        href="/book?service=fire-door"
         label="Book Now"
-        price={FIRE_DOOR_CERT_PRICE}
+        price={entryPrice}
         serviceName="Fire Door Certificate"
       />
     </>
