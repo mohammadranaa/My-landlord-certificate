@@ -30,13 +30,20 @@ export async function POST(request: NextRequest) {
 
   console.log("[letting-agent-lead]", JSON.stringify(lead));
 
-  const sheetUrl = process.env.LETTING_AGENT_LEADS_SHEET_URL;
+  const sheetUrl = process.env.NEXT_PUBLIC_LETTING_AGENT_SHEET_URL;
   if (sheetUrl) {
     try {
       const sheetRes = await fetch(sheetUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(lead),
+        body: JSON.stringify({
+          name: lead.name,
+          email: lead.email,
+          phone: lead.phone,
+          businessName: lead.businessName,
+          businessWebsite: lead.businessWebsite,
+          propertiesManaged: lead.propertiesManaged,
+        }),
         redirect: "follow",
       });
       console.log("[letting-agent-lead] Sheet response status:", sheetRes.status);
@@ -46,7 +53,7 @@ export async function POST(request: NextRequest) {
       console.error("[letting-agent-lead] Google Sheet submission failed:", err);
     }
   } else {
-    console.warn("[letting-agent-lead] LETTING_AGENT_LEADS_SHEET_URL not set — lead logged above only");
+    console.warn("[letting-agent-lead] NEXT_PUBLIC_LETTING_AGENT_SHEET_URL not set — lead logged above only");
   }
 
   return NextResponse.json({ success: true });
