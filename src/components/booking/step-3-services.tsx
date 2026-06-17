@@ -453,7 +453,7 @@ export function Step3Services({
         const opt = c.options[states[c.id].optionIndex];
         return {
           serviceType: c.id,
-          label: c.label,
+          label: `${c.label} — ${opt.label}`,
           optionLabel: opt.label,
           price: opt.price,
         };
