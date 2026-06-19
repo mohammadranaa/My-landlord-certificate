@@ -85,6 +85,31 @@ const faqs = [
     answer:
       "We cover all 33 London boroughs including Hackney, Islington, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Hammersmith & Fulham, Camden, Westminster, Barnet, Haringey, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
   },
+  {
+    question: "How much does fire alarm installation cost in London?",
+    answer:
+      "We charge £209.99 per alarm, which includes supply, installation, interconnection wiring, and commissioning. A typical 3-bedroom HMO requiring 5–6 alarms would cost £1,049.95–£1,259.94 in total. The BS 5839-6 commissioning certificate is included at no extra charge. We provide a free pre-installation survey and a fixed-price quotation before any work begins. Additional charges apply for properties in the London Congestion Charge Zone (£18) or where parking restrictions require a permit (£5).",
+  },
+  {
+    question: "What type of fire alarm does my HMO need?",
+    answer:
+      "Most HMOs in London require a Grade D, LD2 mains-wired interlinked system as a minimum. This means smoke detectors in all circulation areas (hallways, landings, stairwells) and in all principal habitable rooms (bedrooms, living rooms), plus heat detectors in the kitchen. Some boroughs — including Hackney, Tower Hamlets, and Islington — require LD1 full-coverage systems, which add detection in every room including bathrooms and utility areas. Your local authority's HMO licensing conditions set out the exact requirement, and our engineer will confirm the correct specification during the free survey.",
+  },
+  {
+    question: "How often do fire alarms need testing?",
+    answer:
+      "BS 5839-6 requires that mains-wired interlinked alarms are tested monthly by the occupant (pressing the test button) and inspected and tested annually by a competent person. For HMOs, the annual test must be documented and the certificate retained as part of the HMO licence compliance records. Our annual fire safety certificate service covers this requirement from £54.99 — see our Fire Safety Certificate page for details.",
+  },
+  {
+    question: "Can you upgrade my existing fire alarm system?",
+    answer:
+      "Yes. We regularly upgrade properties from battery-only systems or older hard-wired systems to current Grade D LD2 mains-wired interlinked standards. Where existing mains wiring is present and in good condition, we may be able to use it for the new system, reducing installation costs. Where full rewiring is required, we price by alarm as standard. Our engineer will assess the existing installation during the free survey and advise on the most cost-effective upgrade path.",
+  },
+  {
+    question: "Do you install fire alarms in commercial premises?",
+    answer:
+      "Yes. For commercial premises, offices, retail units, and larger residential buildings, we design and install Grade A addressable fire alarm systems to BS 5839-1 — a higher standard than the domestic Grade D systems used in residential HMOs. Grade A systems feature a central control panel, zone mapping, automatic detection throughout, and manual call points at all exits. Pricing for commercial installations depends on the size and complexity of the premises — call us on 020 3996 1070 for a survey and quotation.",
+  },
 ];
 
 const faqSchema = {
@@ -274,6 +299,240 @@ export default function FireAlarmInstallationPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* Types of fire alarm systems */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Types of fire alarm systems we install
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Fire alarm systems for residential and commercial properties are classified by two
+            separate grading systems: Grade (the type of power supply and interconnection) and
+            Category (the extent of coverage). Understanding both is essential for meeting your
+            HMO licence conditions and the requirements of BS 5839-6.
+          </p>
+
+          <div className="space-y-5">
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-compliance-blue text-white">Grade A</span>
+                <p className="font-semibold text-brand-charcoal">Fully addressable commercial systems (BS 5839-1)</p>
+              </div>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Grade A systems are the commercial standard — a fully addressable panel with zone
+                mapping, automatic detection throughout the building, and manual call points at all
+                exits. When a detector activates, the panel pinpoints its exact location. Grade A
+                systems are required for large commercial premises, care homes, hotels, and
+                high-rise residential buildings. They are designed, installed, and commissioned
+                to BS 5839-1 and must be maintained under a service contract. If your property
+                is a block of flats or converted building with communal areas, a Grade A system
+                may be required for the communal parts even if individual flats have Grade D
+                systems.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-action-green text-brand-charcoal">Grade D</span>
+                <p className="font-semibold text-brand-charcoal">Mains-powered interlinked alarms (BS 5839-6)</p>
+              </div>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Grade D is the standard for most HMOs and residential lettings in London. Grade D
+                alarms draw power from the mains supply and have a sealed backup battery — so they
+                continue to function during a power cut. When one alarm activates, all others
+                sound simultaneously. Grade D1 means hard-wired interconnection via cable; Grade D2
+                uses radio frequency (RF) wireless interconnection between alarms. Hard-wired (D1)
+                is preferred where cable runs are practical, but RF (D2) is acceptable and often
+                used in retrofit installations where running cables would cause significant
+                disruption. New HMO licences in all 33 London boroughs now require Grade D as a
+                minimum — battery-only alarms are no longer accepted for new or renewed licences
+                in most areas.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-3">Coverage categories — LD1, LD2, LD3</p>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm font-semibold text-brand-charcoal mb-1">LD1 — Full property coverage</p>
+                  <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                    Detectors installed in all rooms and areas of the property, including bedrooms,
+                    living rooms, kitchens, bathrooms, utility rooms, and all circulation areas.
+                    The most comprehensive residential protection level. Required by some London
+                    boroughs for larger HMOs (5 or more occupants) and for high-risk properties
+                    such as those with complex layouts or multiple floors. Some boroughs —
+                    including Hackney and Tower Hamlets — require LD1 for all licensable HMOs.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-brand-charcoal mb-1">LD2 — Escape routes plus high-risk rooms</p>
+                  <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                    Coverage in all escape routes (hallways, landings, stairwells) plus principal
+                    habitable rooms — bedrooms and living rooms — and heat detectors in kitchens.
+                    LD2 is the most common HMO requirement across London boroughs, including
+                    Southwark, Lambeth, Wandsworth, Brent, Ealing, Camden, and most other boroughs.
+                    It provides detection where a fire is most likely to start and along the routes
+                    occupants must use to escape.
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-brand-charcoal mb-1">LD3 — Escape routes only</p>
+                  <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                    Detectors only in circulation areas — hallways, landings, and stairwells. LD3
+                    is the minimum standard under the Smoke and Carbon Monoxide Alarm (Amendment)
+                    Regulations 2022, which require at least one smoke alarm on every floor of a
+                    rented property. However, LD3 alone is insufficient for HMO licensing in most
+                    London boroughs — the typical minimum for an HMO licence is LD2.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-4 text-sm text-brand-charcoal/80">
+              <strong className="text-compliance-blue">Borough-specific requirements: </strong>
+              London borough HMO licensing conditions vary. As a guide, most boroughs require
+              Grade D LD2 as the minimum for a standard licensable HMO, with Grade D LD1 required
+              for larger HMOs or those with specific risk factors. Always check your borough&apos;s
+              current HMO licensing conditions — our engineer will confirm the exact specification
+              required during the free pre-installation survey.
+            </div>
+          </div>
+        </section>
+
+        {/* Legal requirements */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Fire alarm legal requirements for London landlords
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            The legal obligation to install and maintain adequate fire detection in rented
+            properties arises from several overlapping pieces of legislation. Understanding
+            which applies to your property is essential for compliance.
+          </p>
+
+          <div className="space-y-4">
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                These regulations — in force since October 2022 — require all private landlords in
+                England to install at least one smoke alarm on every storey of their rental
+                property where there is a room used as living accommodation, and a carbon monoxide
+                alarm in any room with a fixed combustion appliance (excluding gas cookers). Alarms
+                must be tested at the start of each new tenancy. Failure to comply can result in a
+                local authority remedial action notice and a fine of up to £5,000. These regulations
+                apply to all rented properties — not just HMOs.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Housing Act 2004 — HMO Management Regulations
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                The Management of Houses in Multiple Occupation (England) Regulations 2006 require
+                the manager of an HMO to ensure that all means of escape from fire are maintained
+                in good order and repair, and that all fire detection and fire-fighting equipment
+                is maintained in proper working order. The HMO licensing regime under the Housing
+                Act 2004 adds a further layer: local authorities set specific conditions as part
+                of the HMO licence, which almost always include detailed fire alarm specifications
+                (Grade, category, and number of alarms) that go beyond the minimum set by the
+                2022 Regulations.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                Regulatory Reform (Fire Safety) Order 2005
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                The Fire Safety Order imposes duties on the &quot;Responsible Person&quot; — typically the
+                landlord or their managing agent — to carry out a fire risk assessment and
+                implement appropriate fire safety measures, including adequate means of detection
+                and warning. For HMOs and buildings with communal areas, the Order requires a
+                written fire risk assessment and a documented fire detection system that is
+                appropriate to the risk. This is a separate obligation from the 2022 Regulations
+                and the HMO licence conditions — all three must be met simultaneously.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                London borough HMO licensing conditions
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Every London borough sets its own HMO licence conditions, and these typically
+                specify the fire alarm grade and category in detail. Most boroughs now require
+                Grade D LD2 as the minimum for a standard licensable HMO. Some boroughs require
+                LD1 for larger properties. The conditions also specify alarm positions, testing
+                frequencies, and documentation requirements. Non-compliance with licence conditions
+                can lead to revocation of the HMO licence — making the property unlawful to let
+                — and fines of up to £30,000. Always confirm your specific borough&apos;s requirements
+                before installing.
+              </p>
+            </div>
+
+            <div className="rounded-xl border border-border bg-warm-white p-5">
+              <p className="font-semibold text-brand-charcoal mb-2">
+                The Responsible Person&apos;s testing obligations
+              </p>
+              <p className="text-sm text-brand-charcoal/80 leading-relaxed">
+                Once installed, the fire alarm system must be maintained. BS 5839-6 requires that
+                the Responsible Person (landlord or their agent) tests each alarm monthly by
+                pressing the test button, and arranges for an annual inspection and test by a
+                competent person. The annual test must be documented. For HMOs, this documentation
+                must be retained and produced on request during a local authority inspection.
+                Our annual fire safety certificate service provides the required annual inspection
+                and certificate from £54.99.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* BS 5839-6 */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            BS 5839-6 compliance explained
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            BS 5839-6 is the British Standard that governs the design, installation,
+            commissioning, and maintenance of fire detection and alarm systems in domestic
+            premises. It is the primary technical reference for all residential fire alarm
+            work in the UK — including HMOs, houses, flats, and residential care homes. A
+            separate standard, BS 5839-1, applies to commercial premises and larger
+            non-domestic buildings.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            The standard specifies everything from the minimum number and positioning of
+            detectors in each room type, to cable specifications, interconnection requirements,
+            alarm sound levels, and commissioning procedures. A system installed &quot;to BS 5839-6&quot;
+            means that every aspect of the design and installation has been carried out in
+            accordance with the Standard&apos;s requirements — not simply that a smoke alarm has
+            been put on the ceiling.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Upon completion, we issue a BS 5839-6 commissioning certificate. This document
+            confirms: the system has been designed to the correct Grade and Category for the
+            property; all alarms have been installed in the correct positions; the interlink
+            has been tested and verified (every alarm activates all others); and the system
+            has been handed over to the Responsible Person with instructions for testing and
+            maintenance. The commissioning certificate is accepted by all London local
+            authorities as evidence of compliance for HMO licence applications and renewals.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            There is no fixed expiry date on a BS 5839-6 commissioning certificate — it
+            confirms the state of the system at the time of installation. However, the annual
+            maintenance inspection is a separate requirement under the Standard, and local
+            authorities may require an annual fire safety certificate (confirming the system
+            has been tested and is still functional) as part of ongoing HMO licence compliance.
+            We provide this annual certificate from £54.99 — see our{" "}
+            <Link href="/fire-safety-certificate" className="text-compliance-blue hover:underline font-medium">
+              fire safety certificate service
+            </Link>
+            {" "}for details.
+          </p>
         </section>
 
         {/* FAQs */}
