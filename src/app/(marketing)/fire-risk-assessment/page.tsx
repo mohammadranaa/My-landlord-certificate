@@ -18,16 +18,17 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Fire Risk Assessment from £74 | NEBOSH Qualified | My Landlord Certificate",
+  title:
+    "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors | My Landlord Certificate",
   description:
-    "Book a Fire Risk Assessment from £74. Compulsory for HMOs under the Regulatory Reform (Fire Safety) Order 2005. NEBOSH qualified assessors. Written report with prioritised action plan, emailed within 48 hours.",
+    "Fire risk assessments in London from £74.99. IFSM certified and IFE registered assessors. HMOs, blocks of flats, commercial premises. Report within 48 hours. Covering all 33 London boroughs and the M25 area.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
-    title: "Fire Risk Assessment from £74 | NEBOSH Qualified Assessors",
+    title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
     description:
-      "Fire Risk Assessment from £74. Compulsory for HMOs. NEBOSH qualified assessors, written report with prioritised action plan, emailed within 48 hours. Book online in under 3 minutes.",
+      "Fire risk assessments in London from £74.99. IFSM certified and IFE registered assessors. HMOs, blocks of flats, commercial premises. Report within 48 hours.",
     url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
@@ -268,7 +269,7 @@ export default function FireRiskAssessmentPage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NEBOSH Qualified · London &amp; M25 · Report Within 48 Hours
+            IFSM Certified Assessors · IFE Registered · London &amp; M25
           </p>
 
           <Heading level={1} id="fra-heading" inverted className="mb-4 max-w-2xl">
@@ -336,6 +337,171 @@ export default function FireRiskAssessmentPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-20">
+
+        {/* ── IFSM accreditation ── */}
+        <section aria-labelledby="ifsm-heading">
+          <Heading level={2} id="ifsm-heading" className="mb-4">
+            IFSM certified fire risk assessors
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Our fire risk assessors are certified members of the Institute of Fire Safety
+            Managers (IFSM) — the leading professional body for fire risk assessment in the
+            UK. IFSM membership requires demonstrated competence in fire safety management,
+            ongoing professional development, and adherence to a strict code of ethics. It is
+            not a qualification that can be purchased or obtained by attending a short course
+            — it requires evidence of practical experience, technical knowledge, and a
+            commitment to continuous professional development that is reviewed regularly.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            The IFSM is recognised by the UK Government, the Home Office, and local fire and
+            rescue services as the benchmark for fire risk assessor competence. When your fire
+            risk assessment is carried out by an IFSM certified assessor, it carries the
+            weight and credibility that local authorities, insurers, and the courts recognise
+            as the gold standard — not simply a piece of paperwork, but a document produced by
+            a demonstrably competent professional.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Our assessors also hold qualifications from the Institution of Fire Engineers (IFE)
+            and carry NEBOSH Fire Safety and Risk Management certificates. This combination of
+            professional memberships and technical qualifications means your assessment is
+            carried out to the highest standard available — not by a general health and safety
+            consultant who happens to offer fire risk assessments as a side service, but by
+            specialists whose entire professional focus is fire safety.
+          </p>
+
+          <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-5 text-sm text-brand-charcoal/80">
+            <strong className="text-compliance-blue font-semibold">
+              Why IFSM certification matters for your fire risk assessment:
+            </strong>{" "}
+            Local councils and housing tribunals in London specifically look for fire risk
+            assessments carried out by competent persons. IFSM certification is the clearest
+            way to demonstrate competence under Article 9(3) of the Regulatory Reform (Fire
+            Safety) Order 2005, which requires that the responsible person appoints a
+            &quot;competent person&quot; to assist with fire safety measures. An assessment carried out
+            by an unqualified or uncertified person can be challenged in court and may leave
+            you personally liable — even if you genuinely believed the assessor was qualified.
+          </div>
+        </section>
+
+        {/* ── What we assess ── */}
+        <section aria-labelledby="what-we-assess-heading">
+          <Heading level={2} id="what-we-assess-heading" className="mb-4">
+            What our fire risk assessment covers
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            A fire risk assessment is not a checklist — it is a professional judgement about
+            the specific fire risks in a specific building at a specific point in time. Our
+            IFSM certified assessors examine fourteen areas in every residential and HMO
+            assessment.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            The assessment begins with means of escape. Every escape route is walked and
+            judged against the likely travel distances and the number and vulnerability of
+            occupants. Corridor widths, final exit door mechanisms, obstructions, and the
+            adequacy of signage are all evaluated. In HMOs and blocks of flats, the assessor
+            considers whether occupants on upper floors could become trapped if the ground
+            floor route is compromised, and whether there are adequate alternative escape
+            routes or refuge areas.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Fire detection and warning systems are tested and assessed for adequacy relative
+            to the size and layout of the property. This includes checking whether detectors
+            are interlinked, whether the correct type is installed in each location — heat
+            detectors in kitchens, smoke detectors in corridors and bedrooms — and whether
+            the system has been tested and serviced within the required intervals. Emergency
+            lighting is assessed for coverage, duration, and maintenance records, with
+            particular attention to escape route illumination following a mains failure.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Fire door condition is assessed in detail. The assessor checks each door for
+            closing mechanisms, gap tolerances (no more than 3mm at the head and sides, 8mm
+            at the floor), intumescent strip and cold smoke seal integrity, vision panels,
+            and whether doors are being propped open. Compartmentation — the fire-resisting
+            construction that contains a fire within a defined area — is checked at walls,
+            floors, ceilings, and around service penetrations such as pipes and cables, where
+            unsealed holes are one of the most common serious findings.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Arson risk is assessed from the outside as well as the inside. Bin stores
+            adjacent to the building, accessible voids, and external storage of combustible
+            materials are evaluated as arson opportunities. Management procedures are
+            reviewed — who is designated as the responsible person, what written procedures
+            exist, whether tenants have been briefed on evacuation, and whether maintenance
+            logs and previous assessment records are available.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Resident vulnerability is considered throughout the assessment. A property
+            occupied by elderly residents, people with mobility impairments, or those with
+            cognitive conditions requires a fundamentally different approach to evacuation
+            planning than one occupied by young professionals. The assessor notes any
+            Personal Emergency Evacuation Plans (PEEPs) that may be required and flags
+            these in the report.
+          </p>
+          <p className="text-brand-charcoal/80 leading-relaxed">
+            The assessment also covers electrical sources of ignition — including any
+            evidence of overloaded sockets, damaged wiring, or appliances left unattended —
+            gas appliance and kitchen arrangements, storage of flammable liquids or materials,
+            fire action notice provision and legibility, and fire extinguisher type,
+            location, and maintenance status. Every finding is documented, risk-rated, and
+            included in the written report with a recommended remediation timescale.
+          </p>
+        </section>
+
+        {/* ── After the assessment ── */}
+        <section aria-labelledby="after-assessment-heading">
+          <Heading level={2} id="after-assessment-heading" className="mb-4">
+            What happens after your fire risk assessment
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            The assessment itself is the inspection — the value is in what comes next. Here
+            is exactly what you receive and what the process looks like from inspection to
+            compliance.
+          </p>
+          <ol className="space-y-6 mb-6" role="list">
+            {[
+              {
+                step: "1",
+                title: "Written report emailed within 48 hours",
+                body: "Your full fire risk assessment report is emailed within 48 hours of the inspection. It is a formal written document — not a template with ticks in boxes — that describes the specific conditions observed in your property, references the applicable legislation and guidance, and provides the evidence base for every finding. It is accepted by all London local authorities, fire and rescue services, and HMO licensing teams.",
+              },
+              {
+                step: "2",
+                title: "Prioritised action plan — critical items first",
+                body: "Every finding in the report is given a risk rating: critical (immediate risk requiring same-day action), significant (action required within 3 months), moderate (action required within 6 months), or advisory (recommended improvement with no fixed timescale). The action plan is ordered from highest to lowest priority, so you and your managing agent know exactly what needs to happen first.",
+              },
+              {
+                step: "3",
+                title: "Recommended timescales for every remediation",
+                body: "Each action in the plan carries a recommended completion date. Where a matter is urgent — a propped fire door or a blocked escape route — this will be the same day or within 24 hours. Longer-term improvements such as a smoke detection upgrade or compartmentation works will have a realistic timeframe based on the severity of the risk.",
+              },
+              {
+                step: "4",
+                title: "A responsible person identified for each action",
+                body: "The report names or describes who should be responsible for each corrective action — whether that is the landlord, the managing agent, the resident, or a specialist contractor. This removes ambiguity and gives managing agents a clear instruction document to work from without further interpretation.",
+              },
+              {
+                step: "5",
+                title: "We can carry out remedial work ourselves",
+                body: "Where the report identifies works that need to be done, we can carry these out directly — fire door installation and replacement, fire alarm upgrades and interlinked detection systems, emergency lighting installation, fire extinguisher supply and servicing, compartmentation sealing of service penetrations, and fire safety signage. Having the same team carry out the assessment and the works ensures that the remedial action directly addresses the specific findings.",
+              },
+              {
+                step: "6",
+                title: "Review date set — typically 12 months",
+                body: "The report includes a recommended review date — typically 12 months for HMOs and blocks of flats, or sooner if significant changes are made to the property or its occupants. For lower-risk single lets without communal areas, a 2-year review may be appropriate. We will remind you when your reassessment is due.",
+              },
+            ].map(({ step, title, body }) => (
+              <li key={step} className="flex gap-5">
+                <span className="flex-shrink-0 w-9 h-9 rounded-full bg-compliance-blue text-white flex items-center justify-center font-bold text-sm">
+                  {step}
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{title}</p>
+                  <p className="text-brand-charcoal/80 text-sm leading-relaxed">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         {/* ── What is an FRA ── */}
         <section id="what-is-it" aria-labelledby="what-is-it-heading">
