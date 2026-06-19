@@ -42,7 +42,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/pat-testing`,          priority: 0.90, changeFrequency: "monthly" },
     { url: `${BASE}/fire-risk-assessment`, priority: 0.90, changeFrequency: "monthly" },
     { url: `${BASE}/epc`,                  priority: 0.90, changeFrequency: "monthly" },
-    { url: `${BASE}/asbestos-survey`,      priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/asbestos-survey`,               priority: 0.80, changeFrequency: "monthly" },
+    { url: `${BASE}/legionella-risk-assessment`,    priority: 0.80, changeFrequency: "monthly" },
   ];
 
   // ── Cost / pricing guide pages ──────────────────────────────────────────────

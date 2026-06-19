@@ -64,6 +64,12 @@ const asbestos = {
   price: FROM_PRICES["asbestos-survey"],
 } as const;
 
+const legionella = {
+  href: "/legionella-risk-assessment",
+  label: "Legionella Risk Assessment",
+  price: FROM_PRICES["legionella-risk-assessment"],
+} as const;
+
 const topLinks = [
   { href: "/blog",            label: "Blog"           },
   { href: "/contact",         label: "Contact"        },
@@ -135,7 +141,8 @@ export function NavBar({ className }: { className?: string }) {
 
   const anyServiceActive =
     categories.some((cat) => isActive(cat.href) || cat.services.some((s) => isActive(s.href))) ||
-    isActive(asbestos.href);
+    isActive(asbestos.href) ||
+    isActive(legionella.href);
 
   const openMega = useCallback(() => {
     clearTimeout(closeTimer.current);
@@ -417,6 +424,20 @@ export function NavBar({ className }: { className?: string }) {
                     <span className="text-xs text-brand-grey shrink-0 ml-2">{asbestos.price}</span>
                   </Link>
 
+                  {/* Legionella standalone */}
+                  <Link
+                    href={legionella.href}
+                    className={cn(
+                      "flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue",
+                      isActive(legionella.href)
+                        ? "text-compliance-blue bg-compliance-blue/5"
+                        : "text-brand-charcoal hover:text-compliance-blue hover:bg-compliance-blue/5",
+                    )}
+                  >
+                    <span>{legionella.label}</span>
+                    <span className="text-xs text-brand-grey shrink-0 ml-2">{legionella.price}</span>
+                  </Link>
+
                   <div className="my-1 border-t border-border" />
 
                   {/* Other links */}
@@ -523,16 +544,26 @@ export function NavBar({ className }: { className?: string }) {
               ))}
             </div>
 
-            {/* Bottom bar: Asbestos + View All */}
-            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
-              <Link
-                href={asbestos.href}
-                onClick={closeMega}
-                className="flex items-center gap-2 text-sm text-brand-charcoal hover:text-compliance-blue transition-colors"
-              >
-                <span className="font-medium">{asbestos.label}</span>
-                <span className="text-brand-grey">{asbestos.price}</span>
-              </Link>
+            {/* Bottom bar: Health & Safety standalones + View All */}
+            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between gap-4 flex-wrap">
+              <div className="flex items-center gap-6">
+                <Link
+                  href={asbestos.href}
+                  onClick={closeMega}
+                  className="flex items-center gap-2 text-sm text-brand-charcoal hover:text-compliance-blue transition-colors"
+                >
+                  <span className="font-medium">{asbestos.label}</span>
+                  <span className="text-brand-grey">{asbestos.price}</span>
+                </Link>
+                <Link
+                  href={legionella.href}
+                  onClick={closeMega}
+                  className="flex items-center gap-2 text-sm text-brand-charcoal hover:text-compliance-blue transition-colors"
+                >
+                  <span className="font-medium">{legionella.label}</span>
+                  <span className="text-brand-grey">{legionella.price}</span>
+                </Link>
+              </div>
               <Link
                 href="/pricing"
                 onClick={closeMega}

@@ -41,7 +41,8 @@ export type ServiceType =
   | "fire-extinguisher"
   | "asbestos-survey"
   | "epc"
-  | "commercial-epc";
+  | "commercial-epc"
+  | "legionella-risk-assessment";
 
 /** Pass to calculateBundlePrice — price should be the specific variant price for that booking */
 export type ServiceSelection = {
@@ -254,6 +255,12 @@ export const ASBESTOS_SURVEY_TABLE: readonly PriceRow[] = [
   { label: "6 Samples", price: 405.99 },
 ];
 
+// ─── Legionella Risk Assessment ──────────────────────────────────────────────
+
+export const LEGIONELLA_PRICES = {
+  standard: 299.99,
+} as const;
+
 // ─── Domestic EPC ─────────────────────────────────────────────────────────────
 
 export const DOMESTIC_EPC_PRICES = {
@@ -313,6 +320,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "asbestos-survey": "from £239.99",
   epc: "from £59.99",
   "commercial-epc": "from £249.99",
+  "legionella-risk-assessment": "from £299.99",
 };
 
 // ─── Helper Functions ─────────────────────────────────────────────────────────
