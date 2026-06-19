@@ -4,8 +4,9 @@ type Badge = "cheapest" | "most-popular";
 
 export type PriceTableRow = {
   label: string;
-  price: number;
+  price?: number;
   badge?: Badge;
+  callForQuote?: boolean;
 };
 
 interface PriceTableProps {
@@ -48,15 +49,16 @@ export function PriceTable({
   highlightCheapest = false,
   className,
 }: PriceTableProps) {
-  const lowestPrice = highlightCheapest
-    ? Math.min(...rows.map((r) => r.price))
+  const pricedRows = rows.filter((r) => !r.callForQuote && r.price !== undefined);
+  const lowestPrice = highlightCheapest && pricedRows.length > 0
+    ? Math.min(...pricedRows.map((r) => r.price as number))
     : null;
 
   const resolvedRows: PriceTableRow[] = rows.map((row) => ({
     ...row,
     badge:
       row.badge ??
-      (highlightCheapest && row.price === lowestPrice ? "cheapest" : undefined),
+      (!row.callForQuote && highlightCheapest && row.price === lowestPrice ? "cheapest" : undefined),
   }));
 
   return (
@@ -118,9 +120,15 @@ export function PriceTable({
 
                 {/* Price cell */}
                 <td className="block px-5 pb-4 pt-1 text-left md:table-cell md:py-4 md:text-right md:whitespace-nowrap">
-                  <span className="text-base font-bold text-brand-charcoal">
-                    {formatPrice(row.price)}
-                  </span>
+                  {row.callForQuote ? (
+                    <span className="text-base font-semibold text-compliance-blue">
+                      Call for quote
+                    </span>
+                  ) : (
+                    <span className="text-base font-bold text-brand-charcoal">
+                      {row.price !== undefined ? formatPrice(row.price) : "—"}
+                    </span>
+                  )}
                 </td>
               </tr>
             );

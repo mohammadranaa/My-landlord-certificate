@@ -10,20 +10,21 @@ import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
+import { TEL, PHONE_DISPLAY, MAILTO, EMAIL } from "@/lib/constants";
 
 const entryPrice = COMMERCIAL_EPC_TABLE[0].price;
 
 export const metadata: Metadata = {
   title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
   description:
-    "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours.",
+    "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours. Bespoke pricing for properties over 850m2.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
   openGraph: {
     title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
     description:
-      "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours.",
+      "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours. Bespoke pricing for properties over 850m2.",
     url: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
 };
@@ -454,7 +455,7 @@ export default function CommercialEPCPage() {
 
           <PriceTable
             title="Commercial EPC — price by floor area"
-            rows={COMMERCIAL_EPC_TABLE}
+            rows={[...COMMERCIAL_EPC_TABLE, { label: "Properties over 850m²", callForQuote: true }]}
             highlightCheapest
           />
 
@@ -475,15 +476,15 @@ export default function CommercialEPCPage() {
           </div>
 
           <p className="mt-5 text-sm text-brand-grey">
-            For premises above 850m² or buildings requiring Dynamic Simulation
-            Modelling (DSM), please{" "}
-            <a
-              href="mailto:info@mylandlordcertificate.co.uk"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              email us
+            Commercial properties over 850 square metres require a bespoke assessment scope. Call us on{" "}
+            <a href={TEL} className="text-compliance-blue hover:underline font-medium">
+              {PHONE_DISPLAY}
             </a>{" "}
-            for a tailored quote.
+            or email{" "}
+            <a href={MAILTO} className="text-compliance-blue hover:underline font-medium">
+              {EMAIL}
+            </a>{" "}
+            for a tailored quote within 24 hours.
           </p>
 
           <p className="mt-3 text-sm text-brand-grey">
@@ -606,11 +607,8 @@ export default function CommercialEPCPage() {
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Book online or call{" "}
-            <a
-              href="mailto:info@mylandlordcertificate.co.uk"
-              className="text-white font-semibold hover:underline"
-            >
-              
+            <a href={TEL} className="text-white font-semibold hover:underline">
+              {PHONE_DISPLAY}
             </a>{" "}
             for large or complex premises.
           </p>
