@@ -32,6 +32,20 @@ function abbreviate(display: string): string {
     .trim()
 }
 
+const BOROUGH_COLOURS = [
+  "#60A5FA", // blue-400
+  "#34D399", // emerald-400
+  "#A78BFA", // violet-400
+  "#F472B6", // pink-400
+  "#FBBF24", // amber-400
+  "#2DD4BF", // teal-400
+  "#FB923C", // orange-400
+  "#818CF8", // indigo-400
+]
+
+const getBoroughColour = (index: number) =>
+  BOROUGH_COLOURS[index % BOROUGH_COLOURS.length]
+
 const entries = Object.entries(BOROUGH_PATHS)
   .map(([geoName, pathData]) => ({
     geoName,
@@ -79,21 +93,21 @@ export function LondonCoverageMap() {
   return (
     <div className="w-full">
       {/* SVG map — tablet and up */}
-      <div className="hidden sm:block relative w-full max-w-3xl mx-auto select-none">
+      <div className="hidden sm:block relative w-full max-w-4xl mx-auto select-none">
         <svg
           viewBox="0 0 800 600"
-          className="w-full h-auto drop-shadow-sm"
+          className="w-full h-auto max-h-[600px] drop-shadow-sm"
           aria-label="Map of London boroughs covered by My Landlord Certificate"
         >
           <rect width="800" height="600" fill="#f0f7ff" rx="12" />
 
-          {entries.map(({ geoName, slug, pathData }) => {
+          {entries.map(({ geoName, slug, pathData }, i) => {
             const isHovered = hovered === geoName
             return (
               <path
                 key={geoName}
                 d={pathData}
-                fill={isHovered ? "#0093DB" : "#bfdbfe"}
+                fill={isHovered ? "#0093DB" : getBoroughColour(i)}
                 stroke="#ffffff"
                 strokeWidth={isHovered ? 1.5 : 0.8}
                 strokeLinejoin="round"

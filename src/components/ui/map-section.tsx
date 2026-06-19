@@ -7,7 +7,7 @@ const LondonCoverageMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full max-w-3xl mx-auto h-[400px] rounded-2xl bg-blue-100 animate-pulse" />
+      <div className="w-full max-w-4xl mx-auto h-[500px] rounded-2xl bg-blue-100 animate-pulse" />
     ),
   }
 )

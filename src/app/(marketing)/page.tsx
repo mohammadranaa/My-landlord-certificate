@@ -347,17 +347,19 @@ export default function HomePage() {
       </Section>
 
       {/* ── 4b. London coverage map ─────────────────────────────────────── */}
-      <section aria-labelledby="coverage-heading" className="py-16 bg-warm-white">
+      <section aria-labelledby="coverage-heading" className="py-16 md:py-20 bg-warm-white border-y border-border">
         <Container>
           <Heading level={2} id="coverage-heading" className="text-center mb-3">
             Covering all 33 London boroughs
           </Heading>
           <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
-            Our fully accredited engineers cover every borough — NICEIC and NAPIT approved for electrical, Gas Safe registered for gas, and BAFE/IFE certified for fire safety.
+            Click any borough to see local EICR pricing and availability. Our accredited
+            engineers cover every London borough and the wider M25 area.
           </p>
-          <MapSection />
+          <div className="max-w-4xl mx-auto">
+            <MapSection />
+          </div>
           <p className="text-center text-sm text-brand-grey mt-6">
-            Our accredited engineers cover every London borough and the wider M25 area. Gas Safety, EPC, Fire Risk Assessment and PAT Testing available everywhere we serve.{" "}
             <Link href="/coverage-areas" className="text-compliance-blue underline hover:no-underline">
               View all coverage areas →
             </Link>
