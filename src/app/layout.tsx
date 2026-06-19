@@ -7,6 +7,7 @@ import { ConsentProvider } from "@/components/analytics/consent-provider";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
 import { PostHogProvider } from "@/components/analytics/posthog-provider";
+import { FloatingButtons } from "@/components/ui/floating-buttons";
 import "./globals.css";
 
 const inter = Inter({
@@ -104,6 +105,7 @@ export default function RootLayout({
         {/* Vercel Analytics & Speed Insights — cookieless, no consent required */}
         <Analytics />
         <SpeedInsights />
+        <FloatingButtons />
       </body>
     </html>
   );
