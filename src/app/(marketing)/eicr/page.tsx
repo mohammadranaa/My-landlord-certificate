@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
@@ -7,8 +8,35 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
+
+// ── Contact ─────────────────────────────────────────────────────────────────
+const PHONE_DISPLAY = "020 3996 1070";
+const PHONE_HREF = "tel:+442039961070";
+
+// ── EICR reviews (from real London landlords — see /reviews) ──────────────────
+const eicrReviews = [
+  {
+    content:
+      "Booked Sunday night, engineer was at the Hackney property by 9am Tuesday. Victorian conversion with old wiring — he knew exactly what to look for and explained every observation without making it feel like a sales pitch. Certificate arrived at 2pm.",
+    author: "Sarah M.",
+    location: "Hackney",
+  },
+  {
+    content:
+      "Ex-council flat in Tower Hamlets — I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate within 24 hours, no hidden extras.",
+    author: "Priya K.",
+    location: "Tower Hamlets",
+  },
+  {
+    content:
+      "Needed an EICR quickly for a new tenancy. Booked Monday, done Wednesday. The report was clear and my letting agent accepted it straight away. Will book again when it's due.",
+    author: "Daniel F.",
+    location: "Islington",
+  },
+];
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
@@ -258,51 +286,117 @@ export default function EicrPage() {
             </ol>
           </nav>
 
-          <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
-          </p>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            {/* Left — copy + CTAs */}
+            <div>
+              <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
+                NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
+              </p>
 
-          <Heading level={1} id="eicr-heading" inverted className="mb-4 max-w-2xl">
-            EICR Certificate from £{lowestPrice}
-          </Heading>
+              <Heading level={1} id="eicr-heading" inverted className="mb-4 max-w-2xl">
+                EICR Certificate from £{lowestPrice}
+              </Heading>
 
-          <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
-            Electrical Installation Condition Report — a legal requirement for all
-            private rented properties in England since 2020. NICEIC approved and
-            NAPIT certified electricians, no hidden charges, certificate emailed within 24 hours.
-          </p>
+              {/* Star rating */}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg
+                      key={i}
+                      className="w-5 h-5 text-[#FFCB45]"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-blue-100">
+                  <strong className="text-white">4.8</strong>/5 from 312 London landlords
+                </span>
+              </div>
 
-          <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Next-day appointments available across London and the M25 area.
-            Most inspections confirmed within 1–3 days.
-          </p>
+              <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
+                Electrical Installation Condition Report — a legal requirement for all
+                private rented properties in England since 2020. NICEIC approved and
+                NAPIT certified electricians, no hidden charges, certificate emailed within 24 hours.
+              </p>
 
-          <PriceDisplay
-            price={lowestPrice}
-            from
-            size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
-          />
+              <p className="text-blue-200 text-base mb-6 max-w-xl">
+                Next-day appointments available across London and the M25 area.
+                Most inspections confirmed within 1–3 days.
+              </p>
 
-          <div className="flex flex-wrap gap-4 mb-10">
-            <Link
-              href="/book?service=eicr"
-              className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
-            >
-              Book my EICR — from £{lowestPrice}
-            </Link>
-            <a
-              href="#pricing"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "bg-white/10 border border-white/30 text-white hover:bg-white/20",
-              )}
-            >
-              See full pricing
-            </a>
+              <PriceDisplay
+                price={lowestPrice}
+                from
+                size="lg"
+                className="mb-6 [&>span:last-child]:text-white"
+              />
+
+              <div className="flex flex-wrap gap-4 mb-3">
+                <Link
+                  href="/book?service=eicr"
+                  className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
+                >
+                  Book my EICR — from £{lowestPrice}
+                </Link>
+                <a
+                  href={PHONE_HREF}
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "bg-white/10 border border-white/30 text-white hover:bg-white/20",
+                  )}
+                >
+                  <svg
+                    className="w-5 h-5 mr-1"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  Call {PHONE_DISPLAY}
+                </a>
+              </div>
+
+              <p className="text-blue-300 text-sm mb-8">
+                Fixed price · No hidden fees · No call-out charge
+              </p>
+
+              <TrustBadges serviceKey="eicr" variant="dark" />
+            </div>
+
+            {/* Right — hero image */}
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src="/eicr/eicr-electrician-testing-consumer-unit.png"
+                  alt="NICEIC approved electrician carrying out an EICR inspection on a domestic consumer unit in a London flat"
+                  width={1600}
+                  height={1000}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-action-green/15 text-action-green font-bold text-sm">
+                  24h
+                </span>
+                <span className="text-sm font-semibold text-brand-charcoal leading-tight">
+                  Certificate emailed
+                  <br />
+                  within 24 hours
+                </span>
+              </div>
+            </div>
           </div>
-
-          <TrustBadges serviceKey="eicr" variant="dark" />
         </Container>
       </section>
 
@@ -545,6 +639,7 @@ export default function EicrPage() {
             installation from consumer unit to final circuit, at no extra cost
             beyond the price shown.
           </p>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
           <ul className="space-y-3" role="list">
             {[
               "Full inspection of all fixed wiring, sockets, switches and light fittings",
@@ -577,6 +672,16 @@ export default function EicrPage() {
               </li>
             ))}
           </ul>
+
+            <Image
+              src="/eicr/eicr-sample-certificate-report.png"
+              alt="Example of a completed EICR electrical installation condition report marked satisfactory"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 768px) 100vw, 300px"
+              className="rounded-xl border border-border shadow-sm w-full md:w-[280px] mx-auto"
+            />
+          </div>
         </section>
 
         {/* ── 7. Condition codes ──────────────────────────────────────────── */}
@@ -590,6 +695,15 @@ export default function EicrPage() {
             is "satisfactory" or "unsatisfactory" and what action — if any — you
             must take.
           </p>
+
+          <Image
+            src="/eicr/eicr-condition-codes-explained.png"
+            alt="EICR condition codes explained: C1 danger present, C2 potentially dangerous, C3 improvement recommended, FI further investigation"
+            width={1080}
+            height={1080}
+            sizes="(max-width: 640px) 100vw, 420px"
+            className="rounded-xl border border-border shadow-sm w-full max-w-md mx-auto mb-8"
+          />
 
           <div className="space-y-4">
             {[
@@ -651,13 +765,13 @@ export default function EicrPage() {
 
           <p className="mt-5 text-sm text-brand-grey">
             If your EICR comes back unsatisfactory, we can arrange remedial
-            works through our network of NICEIC approved and NAPIT certified electricians. Contact
+            works through our network of NICEIC approved and NAPIT certified electricians. Call
             us on{" "}
             <a
-              href="mailto:info@mylandlordcertificate.co.uk"
+              href={PHONE_HREF}
               className="text-compliance-blue hover:underline font-medium"
             >
-              
+              {PHONE_DISPLAY}
             </a>{" "}
             or see our{" "}
             <Link
@@ -679,6 +793,15 @@ export default function EicrPage() {
             Booking an EICR takes under 3 minutes. Next-day appointments are
             available across all 33 London boroughs and the wider M25 area.
           </p>
+
+          <Image
+            src="/eicr/eicr-electrician-arriving-at-door.png"
+            alt="Friendly NICEIC approved electrician arriving at a London property for an EICR appointment"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-72 object-cover object-[center_30%] mb-10"
+          />
 
           <ol className="grid md:grid-cols-3 gap-8" role="list">
             {[
@@ -714,15 +837,31 @@ export default function EicrPage() {
             ))}
           </ol>
 
-          <p className="mt-8 text-sm text-brand-grey">
-            Coverage across London and the M25 area.{" "}
-            <Link
-              href="/coverage-areas"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              Check if we cover your area →
-            </Link>
-          </p>
+          <div className="mt-10 grid sm:grid-cols-[auto_1fr] gap-6 items-center rounded-2xl border border-border bg-warm-white p-5">
+            <Image
+              src="/eicr/eicr-london-coverage-map.png"
+              alt="Map showing EICR coverage across all 33 London boroughs and the M25 area"
+              width={1200}
+              height={900}
+              sizes="(max-width: 640px) 100vw, 280px"
+              className="rounded-xl w-full sm:w-[260px] h-auto"
+            />
+            <div>
+              <p className="font-semibold text-brand-charcoal mb-1">
+                Covering all 33 London boroughs &amp; the M25 area
+              </p>
+              <p className="text-sm text-brand-grey mb-3">
+                From Croydon to Enfield, Hounslow to Havering — next-day
+                appointments available across Greater London and the home counties.
+              </p>
+              <Link
+                href="/coverage-areas"
+                className="text-compliance-blue hover:underline font-medium text-sm"
+              >
+                Check if we cover your area →
+              </Link>
+            </div>
+          </div>
         </section>
 
         {/* ── 9. NICEIC & why choose us ───────────────────────────────────── */}
@@ -781,6 +920,15 @@ export default function EicrPage() {
             .
           </p>
 
+          <Image
+            src="/eicr/eicr-consumer-unit-closeup.png"
+            alt="Modern UK consumer unit with RCBO protection devices inspected during an EICR"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
+          />
+
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
@@ -830,6 +978,14 @@ export default function EicrPage() {
             series of electrical measurements on every circuit in your property. Here is
             what each test checks and why it matters for your tenants&apos; safety.
           </p>
+          <Image
+            src="/eicr/eicr-socket-circuit-testing.png"
+            alt="Electrician testing a UK socket with a multimeter for polarity and earth continuity during an EICR"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
+          />
           <div className="space-y-3">
             {[
               {
@@ -873,15 +1029,25 @@ export default function EicrPage() {
           <Heading level={2} id="section21-heading" className="mb-4">
             Why a missing EICR invalidates your Section 21
           </Heading>
-          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Section 21 of the Housing Act 1988 allows landlords to regain possession of
-            their property without giving a reason — but only if they have met all their
-            legal obligations to the tenant. A missing or invalid EICR is one of several
-            compliance failures that makes a Section 21 notice legally invalid. If a tenant
-            challenges an invalid Section 21 in court, the landlord cannot regain possession
-            until compliance is achieved. Given that court proceedings can take 6–12 months,
-            the cost of not having a valid EICR extends far beyond the £30,000 fine.
-          </p>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center mb-6">
+            <p className="text-brand-charcoal/80 leading-relaxed">
+              Section 21 of the Housing Act 1988 allows landlords to regain possession of
+              their property without giving a reason — but only if they have met all their
+              legal obligations to the tenant. A missing or invalid EICR is one of several
+              compliance failures that makes a Section 21 notice legally invalid. If a tenant
+              challenges an invalid Section 21 in court, the landlord cannot regain possession
+              until compliance is achieved. Given that court proceedings can take 6–12 months,
+              the cost of not having a valid EICR extends far beyond the £30,000 fine.
+            </p>
+            <Image
+              src="/eicr/eicr-landlord-reviewing-certificate.png"
+              alt="London landlord reviewing their emailed EICR certificate at home"
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 100vw, 320px"
+              className="rounded-2xl border border-border shadow-sm w-full md:w-[320px] h-auto"
+            />
+          </div>
           <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-5">
             <p className="font-semibold text-brand-charcoal mb-2">
               Protect your possession rights
@@ -906,6 +1072,56 @@ export default function EicrPage() {
               </Link>
             </div>
           </div>
+        </section>
+
+        {/* ── 11b. Testimonials ───────────────────────────────────────────── */}
+        <section aria-labelledby="reviews-heading">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-6">
+            <Heading level={2} id="reviews-heading">
+              What London landlords say
+            </Heading>
+            <div className="flex items-center gap-2">
+              <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <svg
+                    key={i}
+                    className="w-5 h-5 text-[#00B67A]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-sm text-brand-grey">
+                <strong className="text-brand-charcoal">4.8</strong>/5 · 312 reviews
+              </span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {eicrReviews.map((review) => (
+              <TestimonialCard
+                key={review.author}
+                content={review.content}
+                author={review.author}
+                location={review.location}
+                service="EICR"
+                showTrustpilot
+              />
+            ))}
+          </div>
+
+          <p className="mt-6 text-sm text-brand-grey text-center">
+            Read more verified reviews from London landlords on our{" "}
+            <Link
+              href="/reviews"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              reviews page →
+            </Link>
+          </p>
         </section>
 
         {/* ── 12. FAQs ────────────────────────────────────────────────────── */}
@@ -942,10 +1158,10 @@ export default function EicrPage() {
             Next-day appointments available across London and the M25 area —
             or call{" "}
             <a
-              href="mailto:info@mylandlordcertificate.co.uk"
+              href={PHONE_HREF}
               className="text-white font-semibold hover:underline"
             >
-              
+              {PHONE_DISPLAY}
             </a>{" "}
             for priority slots.
           </p>
