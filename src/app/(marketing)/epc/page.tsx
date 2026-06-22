@@ -12,9 +12,9 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "EPC London from £59.99 | Energy Performance Certificate for Landlords | My Landlord Certificate",
+  title: "EPC London from £89.99 | Energy Performance Certificate for Landlords | My Landlord Certificate",
   description:
-    "Energy Performance Certificate from £59.99. Required by law before renting or selling. Accredited DEA assessors across all 33 London boroughs. Certificate on national register within 24 hours.",
+    "Energy Performance Certificate from £89.99. Required by law before renting or selling. Accredited DEA assessors across all 33 London boroughs. Certificate on national register within 24 hours.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/epc",
   },

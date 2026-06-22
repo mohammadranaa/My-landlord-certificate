@@ -640,7 +640,7 @@ export default function LegionellaRiskAssessmentPage() {
               { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £49.99" },
               { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
               { label: "Asbestos Survey", href: "/asbestos-survey", price: "from £239.99" },
-              { label: "EPC Certificate", href: "/epc", price: "from £59.99" },
+              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
               { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
             ].map(({ label, href, price: p }) => (
               <Link

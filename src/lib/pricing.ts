@@ -269,17 +269,17 @@ export const LEGIONELLA_PRICES = {
 // ─── Domestic EPC ─────────────────────────────────────────────────────────────
 
 export const DOMESTIC_EPC_PRICES = {
-  studio: 59.99,
-  "1-3bed": 89.99,
-  "4bed": 109.99,
-  "5bed": 129.99,
+  studio: 89.99,
+  "1-3bed": 109.99,
+  "4bed": 129.99,
+  "5bed": 149.99,
 } as const satisfies Record<EPCPropertySize, number>;
 
 export const DOMESTIC_EPC_TABLE: readonly PriceRow[] = [
-  { label: "Studio Apartment", price: 59.99 },
-  { label: "1–3 Bedrooms", price: 89.99 },
-  { label: "4 Bedrooms", price: 109.99 },
-  { label: "5 Bedrooms", price: 129.99 },
+  { label: "Studio Apartment", price: 89.99 },
+  { label: "1–3 Bedrooms", price: 109.99 },
+  { label: "4 Bedrooms", price: 129.99 },
+  { label: "5 Bedrooms", price: 149.99 },
 ];
 
 // ─── Commercial EPC ───────────────────────────────────────────────────────────
@@ -323,7 +323,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fire-door-cert": "from £129.99",
   "fire-extinguisher": "from £79.99",
   "asbestos-survey": "from £239.99",
-  epc: "from £59.99",
+  epc: "from £89.99",
   "commercial-epc": "from £249.99",
   "legionella-risk-assessment": "from £299.99",
 };
