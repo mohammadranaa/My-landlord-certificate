@@ -21,6 +21,7 @@ const columns: FooterColumn[] = [
       { href: "/fire-safety", label: "Fire Safety" },
       { href: "/epc", label: "EPC Certificates" },
       { href: "/asbestos-survey", label: "Asbestos Survey" },
+      { href: "/legionella-risk-assessment", label: "Legionella Risk Assessment" },
       { href: "/pricing", label: "All Services & Pricing" },
     ],
   },
