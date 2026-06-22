@@ -80,10 +80,10 @@ export const DOMESTIC_EICR_TABLE: readonly PriceRow[] = [
 
 // ─── Commercial EICR ─────────────────────────────────────────────────────────
 
-export const COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE = 25;
+export const COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE = 10;
 
 export const COMMERCIAL_EICR_TABLE: readonly PriceRow[] = [
-  { label: "1 Consumer Unit (up to 10 circuits)", price: 149.99 },
+  { label: "1 Consumer Unit (up to 12 circuits, +£10 per additional circuit)", price: 149.99 },
   { label: "2 Consumer Units", price: 279.99 },
   { label: "3 Consumer Units", price: 418.99 },
   { label: "4 Consumer Units", price: 548.99 },
@@ -109,6 +109,8 @@ export const FUSE_BOX_TABLE: readonly PriceRow[] = [
 ];
 
 // ─── ELC (Emergency Lights Certificate) ──────────────────────────────────────
+
+export const ELC_INSTALLATION_PER_LIGHT = 219.99;
 
 export const ELC_TABLE: readonly PriceRow[] = [
   { label: "Up to 3 Emergency Lights", price: 54.99 },
@@ -137,8 +139,6 @@ export const PAT_TABLE: readonly PriceRow[] = [
 // ─── Gas Safety (CP12 — Domestic) ────────────────────────────────────────────
 
 export const GAS_SAFETY_CP12_TABLE: readonly PriceRow[] = [
-  { label: "Gas Safety Meter Only (no certificate)", price: 19.99 },
-  { label: "Gas Meter Only — No Appliance", price: 40 },
   { label: "1 Gas Appliance (CP12)", price: 49.99 },
   { label: "2 Gas Appliances (CP12)", price: 59.99 },
   { label: "3 Gas Appliances (CP12)", price: 69.99 },
@@ -149,13 +149,13 @@ export const GAS_SAFETY_CP12_TABLE: readonly PriceRow[] = [
 
 export const GAS_SAFETY_CP42_TABLE: readonly PriceRow[] = [
   { label: "1 Gas Appliance (CP42)", price: 159.99 },
-  { label: "2 Gas Appliances (CP42)", price: 199.99 },
-  { label: "3 Gas Appliances (CP42)", price: 239.99 },
-  { label: "4 Gas Appliances (CP42)", price: 299.99 },
-  { label: "5 Gas Appliances (CP42)", price: 339.99 },
-  { label: "6 Gas Appliances (CP42)", price: 399.99 },
-  { label: "7 Gas Appliances (CP42)", price: 439.99 },
-  { label: "8 Gas Appliances (CP42)", price: 499.99 },
+  { label: "2 Gas Appliances (CP42)", price: 259.99 },
+  { label: "3 Gas Appliances (CP42)", price: 359.99 },
+  { label: "4 Gas Appliances (CP42)", price: 459.99 },
+  { label: "5 Gas Appliances (CP42)", price: 509.99 },
+  { label: "6 Gas Appliances (CP42)", price: 559.99 },
+  { label: "7 Gas Appliances (CP42)", price: 609.99 },
+  { label: "8 Gas Appliances (CP42)", price: 659.99 },
 ];
 
 // ─── Boiler Installation ─────────────────────────────────────────────────────
@@ -215,6 +215,7 @@ export const FRA_COMMERCIAL_TABLE: readonly PriceRow[] = [
 // ─── Fire Alarm Installation ──────────────────────────────────────────────────
 
 export const FIRE_ALARM_INSTALLATION_PER_ALARM = 209.99;
+export const FIRE_ALARM_INSTALLATION_FULL_SYSTEM = 3499;
 
 // ─── Fire Door Certificate ────────────────────────────────────────────────────
 
@@ -223,6 +224,10 @@ export const FIRE_DOOR_PRICES = {
   "4 doors": 169.99,
   "5 doors": 209.99,
   "6 doors": 239.99,
+  "Fire Door Certificate": 119.99,
+  "FD30 New Installation": 800,
+  "FD60 New Installation": 1200,
+  "Fire Rated Fixing": 350,
 } as const;
 
 export const FIRE_DOOR_TABLE: readonly PriceRow[] = [
@@ -314,7 +319,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fire-alarm-panels": "from £74.99",
   "fra-residential": "from £74.99",
   "fra-commercial": "from £149.99",
-  "fire-alarm-installation": "from £209.99/alarm",
+  "fire-alarm-installation": "from £3,499",
   "fire-door-cert": "from £129.99",
   "fire-extinguisher": "from £79.99",
   "asbestos-survey": "from £239.99",
@@ -331,11 +336,9 @@ export function getPriceForEICR(propertySize: EICRPropertySize): number {
 
 /**
  * Returns the CP12 domestic gas safety certificate price for a given appliance count.
- * Pass 0 for a meter-only check (no appliance, no certificate = £40).
- * Max 3 appliances on a CP12 — for commercial use getPriceForGasSafetyCP42().
+ * Min 1 appliance. Max 3 appliances on a CP12 — for commercial use getPriceForGasSafetyCP42().
  */
 export function getPriceForGasSafety(applianceCount: number): number {
-  if (applianceCount <= 0) return 40;
   if (applianceCount === 1) return 49.99;
   if (applianceCount === 2) return 59.99;
   return 69.99;

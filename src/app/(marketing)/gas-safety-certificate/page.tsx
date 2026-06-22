@@ -89,7 +89,7 @@ const productSchema = {
     highPrice: "84.99",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
-    offerCount: 6,
+    offerCount: 4,
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };
@@ -264,7 +264,7 @@ const lowestPrice = getPriceForGasSafety(1);
 const highestAppliancePrice = getPriceForGasSafety(3);
 
 const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
-  i === 2 ? { ...row, badge: "most-popular" as const } : row,
+  i === 0 ? { ...row, badge: "most-popular" as const } : row,
 );
 
 // ── Page ──────────────────────────────────────────────────────────────────────

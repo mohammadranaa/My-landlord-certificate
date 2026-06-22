@@ -227,7 +227,7 @@ export default function CommercialEicrPage() {
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A full electrical installation condition report for commercial premises,
             HMO blocks, and mixed-use buildings. Priced by consumer unit — from £{entryPrice}{" "}
-            for a single consumer unit with up to 10 circuits. Written report issued within 24 hours.
+            for a single consumer unit with up to 12 circuits. Written report issued within 24 hours.
           </p>
 
           <PriceDisplay
@@ -437,8 +437,8 @@ export default function CommercialEicrPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             Pricing is fixed by the number of consumer units or distribution boards.
-            Each consumer unit price covers up to 10 circuits. Additional circuits are
-            charged at £{COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} per circuit over 10.
+            Each consumer unit price covers up to 12 circuits. Additional circuits are
+            charged at £{COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} per circuit over 12.
           </p>
 
           <PriceTable
@@ -453,7 +453,7 @@ export default function CommercialEicrPage() {
             </p>
             <ul className="list-disc list-inside space-y-1">
               <li>
-                Extra circuits over 10 per consumer unit:{" "}
+                Extra circuits over 12 per consumer unit:{" "}
                 <strong>£{COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} per circuit</strong>
               </li>
               <li>
@@ -496,7 +496,7 @@ export default function CommercialEicrPage() {
               "Classification of every defect as C1, C2, C3 or FI",
               "Schedule of inspections and schedule of circuit details",
               "Full written EICR in PDF format, emailed within 24 hours",
-              "Covers 1 consumer unit with up to 10 circuits",
+              "Covers 1 consumer unit with up to 12 circuits",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">

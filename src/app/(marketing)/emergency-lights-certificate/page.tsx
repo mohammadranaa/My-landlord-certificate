@@ -5,7 +5,8 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, ELC_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, ELC_INSTALLATION_PER_LIGHT, ELC_TABLE } from "@/lib/pricing";
+import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved | My Landlord Certificate",
@@ -253,6 +254,37 @@ export default function EmergencyLightsCertificatePage() {
             <span className="text-brand-charcoal font-medium">
               Parking restrictions +£{ADDITIONAL_CHARGES.parking}
             </span>
+          </p>
+        </section>
+
+        {/* Emergency light installation */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
+            Emergency light installation
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-4">
+            Need new or replacement emergency lighting fitted? We supply and install
+            maintained and non-maintained emergency luminaires to BS 5266-1. Each fitting
+            is positioned for maximum coverage and immediately added to your test register.
+          </p>
+          <div className="bg-warm-white border border-border rounded-xl p-6 mb-4">
+            <div className="flex items-baseline gap-2 mb-2">
+              <span className="text-3xl font-bold text-compliance-blue">
+                £{ELC_INSTALLATION_PER_LIGHT}
+              </span>
+              <span className="text-brand-grey">per light (supply &amp; install)</span>
+            </div>
+            <ul className="text-sm text-brand-grey flex flex-col gap-1 mt-3">
+              <li>· Supply and installation per luminaire or exit sign</li>
+              <li>· BS 5266-1 compliant positioning</li>
+              <li>· 3-hour rated maintained or non-maintained fittings available</li>
+              <li>· Certificate issued for all newly installed fittings</li>
+            </ul>
+          </div>
+          <p className="text-sm text-brand-charcoal/70">
+            For large installations or bespoke HMO layouts, call{" "}
+            <a href={`tel:${TEL}`} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a>{" "}
+            for a site-specific quote.
           </p>
         </section>
 

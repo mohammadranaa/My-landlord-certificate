@@ -5,7 +5,8 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
+import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service | My Landlord Certificate",
@@ -604,6 +605,26 @@ export default function FireExtinguisherTestingPage() {
           </div>
         </section>
 
+        {/* Fire alarm installation cross-sell */}
+        <section className="py-10 border-b border-border">
+          <div className="rounded-xl border border-border bg-warm-white p-6">
+            <h2 className="text-xl font-bold text-brand-charcoal mb-2">
+              Need fire alarm installation?
+            </h2>
+            <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
+              We also install mains-wired interlinked smoke and heat alarm systems — from
+              £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM} for a full system or £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm
+              (supply &amp; install). BS 5839-6 compliant with commissioning certificate included.
+            </p>
+            <Link
+              href="/fire-alarm-installation"
+              className="text-sm font-medium text-compliance-blue hover:underline"
+            >
+              View fire alarm installation prices →
+            </Link>
+          </div>
+        </section>
+
         {/* CTA block */}
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
@@ -622,10 +643,10 @@ export default function FireExtinguisherTestingPage() {
                 Book Online
               </Link>
               <a
-                href="mailto:info@mylandlordcertificate.co.uk"
+                href={`tel:${TEL}`}
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </div>

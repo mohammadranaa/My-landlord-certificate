@@ -4,7 +4,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_PER_ALARM } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Fire Alarm Installation London — £209.99/alarm, Mains-Wired | My Landlord Certificate",
@@ -254,27 +254,42 @@ export default function FireAlarmInstallationPage() {
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Pricing</h2>
-          <div className="bg-warm-white border border-border rounded-xl p-6">
-            <div className="flex items-baseline gap-2 mb-2">
-              <span className="text-3xl font-bold text-compliance-blue">
-                £{FIRE_ALARM_INSTALLATION_PER_ALARM}
-              </span>
-              <span className="text-brand-grey">per alarm (supply &amp; install)</span>
+          <div className="grid sm:grid-cols-2 gap-4 mb-4">
+            <div className="bg-warm-white border border-border rounded-xl p-6">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-3xl font-bold text-compliance-blue">
+                  £{FIRE_ALARM_INSTALLATION_PER_ALARM}
+                </span>
+                <span className="text-brand-grey">per alarm</span>
+              </div>
+              <p className="text-sm text-brand-charcoal font-medium mb-1">Individual alarm installation</p>
+              <p className="text-sm text-brand-grey leading-relaxed">
+                Supply and installation per mains-wired alarm. Most 1–3 bed properties need 4–6 alarms.
+              </p>
             </div>
-            <p className="text-sm text-brand-grey mt-2 mb-4">
-              Most 1–3 bedroom properties require 4–6 alarms. A free survey confirms the exact
-              number needed for your property type and layout. Final price is agreed before
-              installation begins.
-            </p>
-            <ul className="text-sm text-brand-grey flex flex-col gap-1">
-              <li>· Supply and installation per mains-wired alarm</li>
-              <li>· All alarms interconnected (hard-wired or RF)</li>
-              <li>· BS 5839-6 commissioning certificate included</li>
-              <li>
-                · Additional charges: Congestion Zone +£{ADDITIONAL_CHARGES.congestionZone} · Parking +£{ADDITIONAL_CHARGES.parking}
-              </li>
-            </ul>
+            <div className="bg-warm-white border border-border rounded-xl p-6">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-3xl font-bold text-compliance-blue">
+                  £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM}
+                </span>
+                <span className="text-brand-grey">full system</span>
+              </div>
+              <p className="text-sm text-brand-charcoal font-medium mb-1">Full system installation</p>
+              <p className="text-sm text-brand-grey leading-relaxed">
+                Complete Grade D LD2 system for a typical 1–3 bed property. Includes all alarms, wiring, and commissioning.
+              </p>
+            </div>
           </div>
+          <p className="text-sm text-brand-grey mb-2">
+            A free survey confirms the exact number of alarms needed. Final price agreed before installation begins.
+          </p>
+          <ul className="text-sm text-brand-grey flex flex-col gap-1">
+            <li>· All alarms interconnected (hard-wired or RF)</li>
+            <li>· BS 5839-6 commissioning certificate included</li>
+            <li>
+              · Additional charges: Congestion Zone +£{ADDITIONAL_CHARGES.congestionZone} · Parking +£{ADDITIONAL_CHARGES.parking}
+            </li>
+          </ul>
         </section>
 
         {/* What's included */}

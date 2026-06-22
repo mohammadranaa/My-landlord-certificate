@@ -3,7 +3,7 @@ import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCT
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_DOOR_PRICES, FIRE_DOOR_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_DOOR_PRICES, FIRE_DOOR_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -198,6 +198,42 @@ export default function FireDoorCertificatePage() {
           </p>
           <p className="text-sm text-brand-grey">
             Additional charges where applicable: London Congestion Charge Zone +£{ADDITIONAL_CHARGES.congestionZone} · No free on-site parking +£{ADDITIONAL_CHARGES.parking}
+          </p>
+        </section>
+
+        {/* Fire door installation and remedial work */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+            Fire door installation &amp; remedial work
+          </h2>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            Beyond inspection, we supply and install new fire doors and carry out remedial
+            fixing work. All installations comply with BS 9999 using CE-marked doorsets with
+            the correct intumescent seals and ironmongery.
+          </p>
+          <div className="rounded-xl border border-border overflow-hidden mb-4">
+            <div className="bg-compliance-blue px-5 py-4">
+              <p className="text-sm font-semibold text-white">Fire Door Installation — Fixed Prices</p>
+            </div>
+            {[
+              { label: "FD30 New Installation (complete doorset, supply & fit)", price: FIRE_DOOR_PRICES["FD30 New Installation"] },
+              { label: "FD60 New Installation (complete doorset, supply & fit)", price: FIRE_DOOR_PRICES["FD60 New Installation"] },
+              { label: "Fire Rated Fixing (repair / re-hang)", price: FIRE_DOOR_PRICES["Fire Rated Fixing"] },
+            ].map((row, i) => (
+              <div
+                key={row.label}
+                className={`px-5 py-4 flex items-center justify-between ${i % 2 === 0 ? "bg-warm-white" : "bg-white"}`}
+              >
+                <span className="text-sm text-brand-charcoal">{row.label}</span>
+                <span className="text-sm font-bold text-brand-charcoal tabular-nums">£{row.price}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-brand-charcoal/70 leading-relaxed">
+            Installation prices include supply of the doorset, fitting, and all hardware.
+            For 4 or more new installations or non-standard configurations, call{" "}
+            <a href={TEL} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a>{" "}
+            for a bespoke quote.
           </p>
         </section>
 
@@ -443,6 +479,26 @@ export default function FireDoorCertificatePage() {
                 <p className="text-sm text-brand-grey">{desc}</p>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Fire alarm installation cross-sell */}
+        <section className="py-10 border-b border-border">
+          <div className="rounded-xl border border-border bg-warm-white p-6">
+            <h2 className="text-xl font-bold text-brand-charcoal mb-2">
+              Need fire alarm installation?
+            </h2>
+            <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
+              We also install mains-wired interlinked smoke and heat alarm systems — from
+              £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM} for a full system or £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm
+              (supply &amp; install). BS 5839-6 compliant with commissioning certificate included.
+            </p>
+            <Link
+              href="/fire-alarm-installation"
+              className="text-sm font-medium text-compliance-blue hover:underline"
+            >
+              View fire alarm installation prices →
+            </Link>
           </div>
         </section>
 

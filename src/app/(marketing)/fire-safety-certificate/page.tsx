@@ -7,6 +7,8 @@ import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import {
   ADDITIONAL_CHARGES,
+  FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
+  FIRE_ALARM_INSTALLATION_PER_ALARM,
   FIRE_SAFETY_CERT_TABLE,
   getPriceForFireSafetyCert,
 } from "@/lib/pricing";
@@ -536,6 +538,26 @@ export default function FireSafetyCertificatePage() {
                 <p className="text-sm text-brand-grey">{desc}</p>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Fire alarm installation cross-sell */}
+        <section className="py-10 border-b border-border">
+          <div className="rounded-xl border border-border bg-warm-white p-6">
+            <h2 className="text-xl font-bold text-brand-charcoal mb-2">
+              Need fire alarm installation?
+            </h2>
+            <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
+              We also install mains-wired interlinked smoke and heat alarm systems — from
+              £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM} for a full system or £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm
+              (supply &amp; install). BS 5839-6 compliant with commissioning certificate included.
+            </p>
+            <Link
+              href="/fire-alarm-installation"
+              className="text-sm font-medium text-compliance-blue hover:underline"
+            >
+              View fire alarm installation prices →
+            </Link>
           </div>
         </section>
 

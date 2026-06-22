@@ -33,8 +33,6 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
     label: "Gas Safety Certificate",
     description: "CP12 — required annually for gas appliances",
     options: [
-      { label: "Gas Safety Meter Only (no certificate)", price: 19.99 },
-      { label: "Gas Meter Only — No Appliance", price: 40 },
       { label: "1 Gas Appliance (CP12)", price: 49.99 },
       { label: "2 Gas Appliances (CP12)", price: 59.99 },
       { label: "3 Gas Appliances (CP12)", price: 69.99 },
@@ -110,6 +108,7 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
       { label: "12–15 Emergency Lights", price: 195 },
       { label: "15–18 Emergency Lights", price: 230 },
       { label: "18–21 Emergency Lights", price: 264.99 },
+      { label: "Emergency Light Installation (per light)", price: 219.99 },
     ],
   },
   {
@@ -117,10 +116,10 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
     label: "Fire Door Certificate",
     description: "Inspection and certification of fire doors",
     options: [
-      { label: "1–3 Fire Doors", price: 129.99 },
-      { label: "4 Fire Doors", price: 169.99 },
-      { label: "5 Fire Doors", price: 209.99 },
-      { label: "6 Fire Doors", price: 239.99 },
+      { label: "Fire Door Certificate", price: 119.99 },
+      { label: "FD30 New Installation (complete)", price: 800 },
+      { label: "FD60 New Installation (complete)", price: 1200 },
+      { label: "Fire Rated Fixing (repair)", price: 350 },
     ],
   },
   {
@@ -188,7 +187,7 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
     label: "Commercial EICR",
     description: "Priced by number of consumer units",
     options: [
-      { label: "1 Consumer Unit (up to 10 circuits)", price: 149.99 },
+      { label: "1 Consumer Unit (up to 12 circuits)", price: 149.99 },
       { label: "2 Consumer Units", price: 279.99 },
       { label: "3 Consumer Units", price: 418.99 },
       { label: "4 Consumer Units", price: 548.99 },
@@ -204,13 +203,13 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
     description: "For commercial properties with gas appliances",
     options: [
       { label: "1 Gas Appliance (CP42)", price: 159.99 },
-      { label: "2 Gas Appliances (CP42)", price: 199.99 },
-      { label: "3 Gas Appliances (CP42)", price: 239.99 },
-      { label: "4 Gas Appliances (CP42)", price: 299.99 },
-      { label: "5 Gas Appliances (CP42)", price: 339.99 },
-      { label: "6 Gas Appliances (CP42)", price: 399.99 },
-      { label: "7 Gas Appliances (CP42)", price: 439.99 },
-      { label: "8 Gas Appliances (CP42)", price: 499.99 },
+      { label: "2 Gas Appliances (CP42)", price: 259.99 },
+      { label: "3 Gas Appliances (CP42)", price: 359.99 },
+      { label: "4 Gas Appliances (CP42)", price: 459.99 },
+      { label: "5 Gas Appliances (CP42)", price: 509.99 },
+      { label: "6 Gas Appliances (CP42)", price: 559.99 },
+      { label: "7 Gas Appliances (CP42)", price: 609.99 },
+      { label: "8 Gas Appliances (CP42)", price: 659.99 },
     ],
   },
   {
@@ -297,6 +296,7 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
       { label: "12–15 Emergency Lights", price: 195 },
       { label: "15–18 Emergency Lights", price: 230 },
       { label: "18–21 Emergency Lights", price: 264.99 },
+      { label: "Emergency Light Installation (per light)", price: 219.99 },
     ],
   },
   {
@@ -304,10 +304,10 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
     label: "Fire Door Certificate",
     description: "Inspection and certification of fire doors",
     options: [
-      { label: "1–3 Fire Doors", price: 129.99 },
-      { label: "4 Fire Doors", price: 169.99 },
-      { label: "5 Fire Doors", price: 209.99 },
-      { label: "6 Fire Doors", price: 239.99 },
+      { label: "Fire Door Certificate", price: 119.99 },
+      { label: "FD30 New Installation (complete)", price: 800 },
+      { label: "FD60 New Installation (complete)", price: 1200 },
+      { label: "Fire Rated Fixing (repair)", price: 350 },
     ],
   },
   {
