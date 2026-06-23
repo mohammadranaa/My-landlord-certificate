@@ -749,6 +749,30 @@ export default function EPCPage() {
           <FAQAccordion items={faqs} />
         </section>
 
+        {/* Find us / location */}
+        <section aria-labelledby="epc-map-heading" className="py-10 border-b border-border">
+          <h2 id="epc-map-heading" className="text-2xl font-bold text-brand-charcoal mb-2">
+            Find us
+          </h2>
+          <p className="text-brand-grey mb-6">
+            My Landlord Certificate, 134 Merton High St, London SW19 1BA. Accredited DEA
+            assessors covering all 33 London boroughs and the surrounding M25 area.
+          </p>
+          <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+            <iframe
+              title="My Landlord Certificate, 134 Merton High St, London SW19 1BA"
+              src="https://maps.google.com/maps?q=My%20Landlord%20Certificate%2C%20134%20Merton%20High%20St%2C%20London%20SW19%201BA&z=15&output=embed"
+              width="100%"
+              height="360"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              aria-label="Google map showing My Landlord Certificate at 134 Merton High St, London SW19 1BA"
+            />
+          </div>
+        </section>
+
         {/* CTA block */}
         <section className="py-10">
           <div className="bg-compliance-blue rounded-2xl px-6 py-10 text-center">
