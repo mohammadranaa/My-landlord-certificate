@@ -704,7 +704,7 @@ export default function EPCPage() {
                 What London landlords say
               </h2>
               <a
-                href="https://share.google/WwnnwG3NKvDAyiuhf"
+                href="https://share.google/GvNZMXMAQqMafn3VH"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"

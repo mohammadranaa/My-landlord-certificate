@@ -34,6 +34,13 @@ const contactSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   telephone: "+442039961070",
   email: "info@mylandlordcertificate.co.uk",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "134 Merton High St",
+    addressLocality: "London",
+    postalCode: "SW19 1BA",
+    addressCountry: "GB",
+  },
   areaServed: "London and the M25 area",
   openingHoursSpecification: [
     {
@@ -225,11 +232,11 @@ export default function ContactPage() {
                   <p className="text-xs font-semibold text-brand-grey uppercase tracking-wider mb-3">Google</p>
                   <div className="space-y-2">
                     <a
-                      href="#"
+                      href="https://share.google/GvNZMXMAQqMafn3VH"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors"
-                      aria-label="Find us on Google (link to be added)"
+                      aria-label="Find My Landlord Certificate on Google"
                     >
                       {/* Google "G" icon */}
                       <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -241,11 +248,11 @@ export default function ContactPage() {
                       Find us on Google
                     </a>
                     <a
-                      href="#"
+                      href="https://share.google/GvNZMXMAQqMafn3VH"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors"
-                      aria-label="Leave a review on Google (link to be added)"
+                      aria-label="Leave a review for My Landlord Certificate on Google"
                     >
                       <svg className="w-4 h-4 text-brand-amber shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
@@ -253,7 +260,7 @@ export default function ContactPage() {
                       Leave us a review on Google
                     </a>
                   </div>
-                  <p className="mt-3 text-xs text-brand-grey">Google Business Profile link coming soon.</p>
+                  <p className="mt-3 text-xs text-brand-grey">5.0 ★ from 9 Google reviews · Merton, London.</p>
                 </div>
               </div>
             </aside>
@@ -261,32 +268,33 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      {/* ── Service area map ── */}
+      {/* ── Location map ── */}
       <section aria-labelledby="map-heading" className="bg-white pb-16">
         <Container>
           <Heading level={2} id="map-heading" className="mb-2 text-center">
-            Our service area
+            Find us
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            We cover all 33 London boroughs and the surrounding M25 corridor counties.
-            Next-day appointments available across the entire area.
+            My Landlord Certificate, 134 Merton High St, London SW19 1BA. We cover all
+            33 London boroughs and the surrounding M25 area, with next-day appointments
+            available across the whole region.
           </p>
           <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
             <iframe
-              title="My Landlord Certificate service area — Greater London and the M25 area"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d158857.71754584453!2d-0.24168154989423!3d51.52877184853843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1234567890"
+              title="My Landlord Certificate, 134 Merton High St, London SW19 1BA"
+              src="https://maps.google.com/maps?q=My%20Landlord%20Certificate%2C%20134%20Merton%20High%20St%2C%20London%20SW19%201BA&z=15&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              aria-label="Map of Greater London showing My Landlord Certificate service area"
+              aria-label="Google map showing My Landlord Certificate at 134 Merton High St, London SW19 1BA"
             />
           </div>
           <p className="mt-4 text-center text-sm text-brand-grey">
             Not sure if we cover your postcode?{" "}
-            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
+            <a href={MAILTO} className="text-compliance-blue font-medium hover:underline">
               Email us
             </a>{" "}
             and we&apos;ll confirm availability.
