@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { GA4_MEASUREMENT_ID } from "@/lib/constants";
+import { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/constants";
 import { useConsent } from "./consent-provider";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -57,6 +57,7 @@ export function AnalyticsScripts() {
               anonymize_ip: true,
               cookie_flags: 'SameSite=None;Secure',
             });
+            gtag('config', '${GOOGLE_ADS_ID}');
           `,
         }}
       />

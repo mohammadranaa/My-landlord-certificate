@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
+import { GOOGLE_ADS_CONVERSION_LEAD } from "@/lib/constants";
 import type {
   PartialBookingData,
   ServiceEntry,
@@ -190,6 +191,35 @@ export function BookingForm() {
 
       if (!url) {
         throw new Error("No checkout URL returned");
+      }
+
+      // Push begin_checkout to the dataLayer (GTM trigger: Custom Event = "begin_checkout")
+      const w = window as unknown as {
+        dataLayer: unknown[];
+        gtag?: (...args: unknown[]) => void;
+      };
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: "begin_checkout",
+        currency: "GBP",
+        value: grandTotal,
+        items: services.map((s) => ({
+          item_name: s.label ?? s.serviceType,
+          item_category: s.serviceType,
+          price: s.price,
+          quantity: 1,
+        })),
+      });
+
+      // Fire the Google Ads "Submit lead form" conversion (consent-gated: gtag
+      // only exists once analytics consent is granted). Uses sendBeacon so it
+      // survives the redirect to Stripe.
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "conversion", {
+          send_to: GOOGLE_ADS_CONVERSION_LEAD,
+          value: grandTotal,
+          currency: "GBP",
+        });
       }
 
       window.location.href = url;

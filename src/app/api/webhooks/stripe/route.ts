@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
+import { createServiceRoleClient } from "@/lib/supabase/server";
 import Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -39,6 +40,21 @@ export async function POST(request: NextRequest) {
       const appointmentSlot = session.metadata?.appointment_slot ?? "";
       const servicesReadable = session.metadata?.services_readable ?? "";
       const totalPaid = (session.amount_total ?? 0) / 100;
+
+      // Mark the booking row as paid (created as 'pending' in /api/checkout).
+      try {
+        const supabase = createServiceRoleClient();
+        await supabase
+          .from("bookings")
+          .update({
+            payment_status: "paid",
+            amount_total: totalPaid,
+            paid_at: new Date().toISOString(),
+          } as unknown as never)
+          .eq("stripe_session_id", session.id);
+      } catch (dbErr) {
+        console.error("Booking DB update (paid) failed:", dbErr);
+      }
 
       const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
       if (googleSheetUrl) {

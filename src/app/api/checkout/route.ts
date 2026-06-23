@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { SITE_URL } from "@/lib/constants";
+import { createServiceRoleClient } from "@/lib/supabase/server";
+import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution";
 
 interface BookingService {
   type: string;
@@ -10,8 +12,10 @@ interface BookingService {
 }
 
 interface BookingPayload {
-  customer?: { name?: string; email?: string; phone?: string };
-  property?: { streetAddress?: string; postcode?: string };
+  customer?: { name?: string; email?: string; phone?: string; tenantPhone?: string };
+  property?: { streetAddress?: string; city?: string; postcode?: string };
+  propertyType?: string;
+  propertySubType?: string;
   services?: BookingService[];
   additionalCharges?: { congestionCharge?: boolean; parkingCharge?: boolean };
   appointment?: { date?: string; timeSlot?: string };
@@ -97,6 +101,49 @@ export async function POST(request: NextRequest) {
         },
       },
     });
+
+    // Persist the booking attempt + ad attribution to the database.
+    // Non-blocking: a DB failure must never stop the customer reaching checkout.
+    try {
+      const attribution = parseAttribution(
+        request.cookies.get(ATTRIBUTION_COOKIE)?.value,
+      );
+      const supabase = createServiceRoleClient();
+      await supabase.from("bookings").insert({
+        stripe_session_id: session.id,
+        payment_status: "pending",
+        amount_total: booking.totalPrice ?? null,
+        currency: "GBP",
+        customer_name: booking.customer?.name ?? null,
+        customer_email: booking.customer?.email ?? null,
+        customer_phone: booking.customer?.phone ?? null,
+        tenant_phone: booking.customer?.tenantPhone ?? null,
+        property_address: booking.property?.streetAddress ?? null,
+        property_city: booking.property?.city ?? null,
+        property_postcode: booking.property?.postcode ?? null,
+        property_type: booking.propertyType ?? null,
+        property_subtype: booking.propertySubType ?? null,
+        services: booking.services ?? null,
+        services_readable:
+          booking.services?.map((s) => s.label ?? s.type).join(", ") ?? null,
+        appointment_date: booking.appointment?.date ?? null,
+        appointment_slot: booking.appointment?.timeSlot ?? null,
+        congestion_charge: booking.additionalCharges?.congestionCharge ?? false,
+        parking_charge: booking.additionalCharges?.parkingCharge ?? false,
+        gclid: attribution.gclid ?? null,
+        gbraid: attribution.gbraid ?? null,
+        wbraid: attribution.wbraid ?? null,
+        utm_source: attribution.utm_source ?? null,
+        utm_medium: attribution.utm_medium ?? null,
+        utm_campaign: attribution.utm_campaign ?? null,
+        utm_term: attribution.utm_term ?? null,
+        utm_content: attribution.utm_content ?? null,
+        landing_page: attribution.landing_page ?? null,
+        referrer: attribution.referrer ?? null,
+      } as unknown as never);
+    } catch (dbErr) {
+      console.error("Booking DB insert failed (non-blocking):", dbErr);
+    }
 
     const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
     if (googleSheetUrl) {
