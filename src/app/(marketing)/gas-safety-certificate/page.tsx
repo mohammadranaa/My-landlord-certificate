@@ -76,7 +76,7 @@ const serviceSchema = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Gas Safety Certificate (CP12) — Landlord Annual Inspection",
+  name: "Gas Safety Certificate (CP12), Landlord Annual Inspection",
   description:
     "Landlord gas safety certificate (CP12) carried out by Gas Safe Registered engineers. Covers all gas appliances, flues, ventilation and gas pipework. Certificate emailed within 24 hours.",
   brand: {
@@ -122,7 +122,7 @@ const faqSchema = {
       name: "How often do I need a Gas Safety Certificate?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every 12 months without exception. The Gas Safety (Installation and Use) Regulations 1998 require landlords to arrange an annual gas safety check by a Gas Safe Registered engineer. There is no grace period — a lapsed CP12 is a legal breach.",
+        text: "Every 12 months without exception. The Gas Safety (Installation and Use) Regulations 1998 require landlords to arrange an annual gas safety check by a Gas Safe Registered engineer. There is no grace period, a lapsed CP12 is a legal breach.",
       },
     },
     {
@@ -138,7 +138,7 @@ const faqSchema = {
       name: "What appliances are covered by a CP12?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "All gas appliances supplied with the tenancy — typically the boiler, gas hob and any gas fire. The engineer also inspects all flues, ventilation and gas pipework serving each appliance.",
+        text: "All gas appliances supplied with the tenancy, typically the boiler, gas hob and any gas fire. The engineer also inspects all flues, ventilation and gas pipework serving each appliance.",
       },
     },
     {
@@ -162,7 +162,7 @@ const faqSchema = {
       name: "What if a tenant refuses access for the gas safety check?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You must document every attempt to gain access — send written notices and keep copies of all correspondence. The legal obligation remains with the landlord, so thorough record-keeping is essential. In the event of a persistent refusal, seek legal advice.",
+        text: "You must document every attempt to gain access, send written notices and keep copies of all correspondence. The legal obligation remains with the landlord, so thorough record-keeping is essential. In the event of a persistent refusal, seek legal advice.",
       },
     },
     {
@@ -170,7 +170,7 @@ const faqSchema = {
       name: "Is a CP12 the same as a boiler service?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. A CP12 is a safety inspection only — it checks that appliances are safe, not that they are running efficiently. A boiler service includes cleaning internal components and checking performance. We offer a combined gas safety check and boiler service for £84.99.",
+        text: "No. A CP12 is a safety inspection only, it checks that appliances are safe, not that they are running efficiently. A boiler service includes cleaning internal components and checking performance. We offer a combined gas safety check and boiler service for £84.99.",
       },
     },
     {
@@ -206,7 +206,7 @@ const faqItems = [
   {
     question: "How often do I need a Gas Safety Certificate?",
     answer:
-      "Every 12 months without exception. The Gas Safety (Installation and Use) Regulations 1998 require landlords to arrange an annual gas safety check carried out by a Gas Safe Registered engineer. There is no grace period — a lapsed CP12 is a criminal breach of the regulations.",
+      "Every 12 months without exception. The Gas Safety (Installation and Use) Regulations 1998 require landlords to arrange an annual gas safety check carried out by a Gas Safe Registered engineer. There is no grace period, a lapsed CP12 is a criminal breach of the regulations.",
   },
   {
     question: "How much does a Gas Safety Certificate cost?",
@@ -216,12 +216,12 @@ const faqItems = [
   {
     question: "What appliances are covered by a CP12?",
     answer:
-      "All gas appliances supplied with the tenancy — typically the boiler, gas hob and any gas fire or gas-powered appliance. The engineer also inspects all flues, ventilation and gas pipework serving each appliance. Appliances that belong to the tenant and were not supplied with the property are not covered.",
+      "All gas appliances supplied with the tenancy, typically the boiler, gas hob and any gas fire or gas-powered appliance. The engineer also inspects all flues, ventilation and gas pipework serving each appliance. Appliances that belong to the tenant and were not supplied with the property are not covered.",
   },
   {
     question: "Do I have to give my tenant a copy of the Gas Safety Certificate?",
     answer:
-      "Yes — this is a legal obligation. You must provide a copy of the signed CP12 to existing tenants within 28 days of the inspection date, and to new tenants before they move in. Landlords must also retain a copy for at least 2 years. We email the certificate within 24 hours so you can forward it immediately.",
+      "Yes, this is a legal obligation. You must provide a copy of the signed CP12 to existing tenants within 28 days of the inspection date, and to new tenants before they move in. Landlords must also retain a copy for at least 2 years. We email the certificate within 24 hours so you can forward it immediately.",
   },
   {
     question: "What is the penalty for not having a Gas Safety Certificate?",
@@ -231,12 +231,12 @@ const faqItems = [
   {
     question: "What if a tenant refuses access for the gas safety check?",
     answer:
-      "The legal obligation remains with the landlord regardless of tenant behaviour. You must document every access attempt in writing — send formal notices by recorded post and keep copies. If a tenant persistently refuses access, seek legal advice. The HSE takes a dim view of landlords who cannot demonstrate they made every reasonable effort.",
+      "The legal obligation remains with the landlord regardless of tenant behaviour. You must document every access attempt in writing, send formal notices by recorded post and keep copies. If a tenant persistently refuses access, seek legal advice. The HSE takes a dim view of landlords who cannot demonstrate they made every reasonable effort.",
   },
   {
     question: "Is a CP12 the same as a boiler service?",
     answer:
-      "No. A CP12 is a safety-only inspection — it confirms appliances are safe, not that they are running efficiently. A boiler service involves cleaning internal components, checking water pressure and assessing performance. We offer a combined gas safety check and boiler service for £84.99, which is cheaper than booking them separately.",
+      "No. A CP12 is a safety-only inspection, it confirms appliances are safe, not that they are running efficiently. A boiler service involves cleaning internal components, checking water pressure and assessing performance. We offer a combined gas safety check and boiler service for £84.99, which is cheaper than booking them separately.",
   },
   {
     question: "What happens if a gas appliance fails the safety check?",
@@ -256,7 +256,7 @@ const faqItems = [
   {
     question: "How long does a gas safety inspection take?",
     answer:
-      "Typically 30–60 minutes for a standard property with 1–2 appliances. A property with a boiler, gas hob and gas fire may take up to 90 minutes. You don't need to be present — a tenant or keyholder can provide access and we'll email the certificate directly to you.",
+      "Typically 30–60 minutes for a standard property with 1–2 appliances. A property with a boiler, gas hob and gas fire may take up to 90 minutes. You don't need to be present, a tenant or keyholder can provide access and we'll email the certificate directly to you.",
   },
 ];
 
@@ -304,7 +304,7 @@ export default function GasSafetyPage() {
           </Heading>
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
-            Annual CP12 landlord gas safety inspection — a legal requirement under
+            Annual CP12 landlord gas safety inspection, a legal requirement under
             the Gas Safety (Installation and Use) Regulations 1998. Gas Safe
             Registered engineers, no hidden charges, certificate emailed within 24 hours.
           </p>
@@ -326,7 +326,7 @@ export default function GasSafetyPage() {
               href="/book?service=gas-safety-cp12"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my CP12 — from £{lowestPrice}
+              Book my CP12, from £{lowestPrice}
             </Link>
             <a
               href="#pricing"
@@ -379,7 +379,7 @@ export default function GasSafetyPage() {
             What is a Gas Safety Certificate (CP12)?
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            A Gas Safety Certificate — formally known as a CP12 — is a document
+            A Gas Safety Certificate, formally known as a CP12, is a document
             confirming that all gas appliances, flues and pipework in a rental
             property have been inspected by a Gas Safe Registered engineer and
             found to be safe. The engineer checks each appliance for correct
@@ -389,7 +389,7 @@ export default function GasSafetyPage() {
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             The name CP12 comes from the standard inspection form used by Gas Safe
-            engineers. It is not the same as a boiler service — a CP12 tests
+            engineers. It is not the same as a boiler service, a CP12 tests
             whether appliances are safe, while a service checks performance and
             efficiency. If you want both, we offer a combined gas safety check and
             boiler service in a single visit.
@@ -398,7 +398,7 @@ export default function GasSafetyPage() {
             For landlords in the private rented sector, a valid CP12 is one of the
             most critical compliance documents you hold. Gas appliances that are not
             regularly inspected can develop faults that lead to carbon monoxide
-            poisoning — a serious and potentially fatal risk. The annual inspection
+            poisoning, a serious and potentially fatal risk. The annual inspection
             is your primary defence against that risk, and the CP12 is the evidence
             that you have met your legal duty of care.
           </p>
@@ -421,7 +421,7 @@ export default function GasSafetyPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             The Gas Safety (Installation and Use) Regulations 1998 place specific
             obligations on every landlord who provides gas appliances in a rental
-            property. The regulations apply to all privately rented properties —
+            property. The regulations apply to all privately rented properties,
             assured shorthold tenancies, periodic tenancies, HMO licences, houses
             in multiple occupation and student lets alike. There is no minimum
             tenancy length: even short-term lets require a valid CP12.
@@ -429,7 +429,7 @@ export default function GasSafetyPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             The gas safety check must be carried out by an engineer who is registered
             on the Gas Safe Register. It is a criminal offence to carry out gas work
-            — including safety inspections — without Gas Safe registration. Landlords
+           , including safety inspections, without Gas Safe registration. Landlords
             have no discretion on this point: only a Gas Safe Registered engineer can
             sign and issue a valid CP12 certificate.
           </p>
@@ -442,9 +442,9 @@ export default function GasSafetyPage() {
               {[
                 "Arrange an annual gas safety check by a Gas Safe Registered engineer",
                 "Provide a copy of the CP12 to existing tenants within 28 days of the inspection",
-                "Provide a copy to new tenants before they move in (not within 28 days — before)",
+                "Provide a copy to new tenants before they move in (not within 28 days, before)",
                 "Keep a record of every gas safety check for at least 2 years",
-                "Ensure access is available for the engineer — document failed access attempts in writing",
+                "Ensure access is available for the engineer, document failed access attempts in writing",
                 "Not allow tenants to use an appliance that has been condemned by the engineer",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
@@ -459,7 +459,7 @@ export default function GasSafetyPage() {
 
           <p className="text-sm text-brand-grey">
             The regulations apply to England, Wales and Scotland. Northern Ireland
-            has separate gas safety legislation — if your rental property is in
+            has separate gas safety legislation, if your rental property is in
             Northern Ireland, check with the relevant local authority.
           </p>
         </section>
@@ -471,14 +471,14 @@ export default function GasSafetyPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             Fixed pricing per number of gas appliances. The price you see is the
-            price you pay — no call-out charges, no hidden fees. Most domestic
+            price you pay, no call-out charges, no hidden fees. Most domestic
             rental properties have 1 gas appliance (the boiler), priced at
             £{lowestPrice}. Properties with a boiler, hob and gas fire cost
             £{highestAppliancePrice} for all three.
           </p>
 
           <PriceTable
-            title="Gas Safety Certificate (CP12) — price by appliance count"
+            title="Gas Safety Certificate (CP12), price by appliance count"
             rows={cp12TableWithBadge}
           />
 
@@ -559,12 +559,12 @@ export default function GasSafetyPage() {
             {[
               "Inspection of all gas appliances included in the tenancy (boiler, hob, gas fire)",
               "Flue integrity and terminal position check for each appliance",
-              "Ventilation adequacy check — ensuring correct air supply for combustion",
+              "Ventilation adequacy check, ensuring correct air supply for combustion",
               "Gas pressure and flow rate tests at every appliance",
-              "Safety device checks — thermostats, flame failure devices, overheat cut-outs",
+              "Safety device checks, thermostats, flame failure devices, overheat cut-outs",
               "Gas tightness test on accessible pipework",
               "Signed CP12 certificate listing every appliance and its result",
-              "Certificate emailed within 24 hours — ready to forward to your tenant",
+              "Certificate emailed within 24 hours, ready to forward to your tenant",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -608,7 +608,7 @@ export default function GasSafetyPage() {
                   "Flue integrity and terminal clearances",
                   "Combustion analysis and CO reading",
                   "Heat exchanger condition",
-                  "Safety devices — overheat stat, pressure relief",
+                  "Safety devices, overheat stat, pressure relief",
                   "Gas pressure at burner",
                 ],
               },
@@ -670,7 +670,7 @@ export default function GasSafetyPage() {
             Faulty gas appliances are the primary cause of CO poisoning in rental
             properties. The annual CP12 inspection is the most effective way to
             detect combustion problems before they become dangerous. We strongly
-            recommend fitting a CO alarm in every room with a gas appliance — this
+            recommend fitting a CO alarm in every room with a gas appliance, this
             is a legal requirement in Scotland and mandatory for new tenancies in
             England from October 2022.
           </div>
@@ -691,12 +691,12 @@ export default function GasSafetyPage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Choose your appliance count, pick a date and pay securely online. Next-day slots available across London and the M25 area — no phone calls required. You'll receive a booking confirmation immediately.",
+                body: "Choose your appliance count, pick a date and pay securely online. Next-day slots available across London and the M25 area, no phone calls required. You'll receive a booking confirmation immediately.",
               },
               {
                 step: "02",
                 title: "Gas Safe engineer visits",
-                body: "A Gas Safe Registered engineer arrives at your agreed time and carries out the full CP12 inspection. You don't need to be present — a tenant, keyholder or letting agent can provide access. The inspection typically takes 30–90 minutes.",
+                body: "A Gas Safe Registered engineer arrives at your agreed time and carries out the full CP12 inspection. You don't need to be present, a tenant, keyholder or letting agent can provide access. The inspection typically takes 30–90 minutes.",
               },
               {
                 step: "03",
@@ -744,11 +744,11 @@ export default function GasSafetyPage() {
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             It is a criminal offence for any person who is not Gas Safe registered
-            to carry out gas work — including safety inspections. A CP12 signed by
+            to carry out gas work, including safety inspections. A CP12 signed by
             an unregistered engineer is not legally valid, and a landlord relying on
             such a certificate remains in breach of the Gas Safety (Installation and
             Use) Regulations 1998. Every engineer who carries out our CP12
-            inspections is Gas Safe registered — you can verify their credentials on
+            inspections is Gas Safe registered, you can verify their credentials on
             the{" "}
             <a
               href="https://www.gassaferegister.co.uk/find-an-engineer"
@@ -764,7 +764,7 @@ export default function GasSafetyPage() {
             When you book through My Landlord Certificate, your engineer&apos;s
             registration number appears on the CP12 certificate itself. Your
             letting agent, mortgage lender or local authority can verify the
-            registration at any time — giving you an auditable, legally watertight
+            registration at any time, giving you an auditable, legally watertight
             record of compliance.
           </p>
 
@@ -802,7 +802,7 @@ export default function GasSafetyPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             A CP12 is not a quick visual check. For every gas appliance in the
-            property — boiler, gas fire, hob, water heater — the engineer runs a
+            property, boiler, gas fire, hob, water heater, the engineer runs a
             series of specific measurements. Here is what each check involves and
             why it matters.
           </p>
@@ -810,7 +810,7 @@ export default function GasSafetyPage() {
             {[
               {
                 title: "Gas rate",
-                body: "The engineer measures how quickly each appliance is consuming gas using the gas meter. This confirms the appliance is burning at the designed rate — too high or too low indicates a fault with the gas valve or burner.",
+                body: "The engineer measures how quickly each appliance is consuming gas using the gas meter. This confirms the appliance is burning at the designed rate, too high or too low indicates a fault with the gas valve or burner.",
               },
               {
                 title: "Working gas pressure",
@@ -818,7 +818,7 @@ export default function GasSafetyPage() {
               },
               {
                 title: "Flue gas analysis (combustion analysis)",
-                body: "The engineer inserts a calibrated probe into the flue and measures CO₂ and CO (carbon monoxide) levels in the exhaust gases. This is the most critical test. A high CO reading means the appliance is burning incompletely — a potentially fatal finding that results in the appliance being declared unsafe and taken out of service.",
+                body: "The engineer inserts a calibrated probe into the flue and measures CO₂ and CO (carbon monoxide) levels in the exhaust gases. This is the most critical test. A high CO reading means the appliance is burning incompletely, a potentially fatal finding that results in the appliance being declared unsafe and taken out of service.",
               },
               {
                 title: "Flue integrity and spillage test",
@@ -826,7 +826,7 @@ export default function GasSafetyPage() {
               },
               {
                 title: "Ventilation adequacy",
-                body: "The engineer checks there is sufficient air supply for combustion. Sealed rooms, blocked air bricks, and draught exclusion can restrict airflow and cause incomplete combustion — which produces carbon monoxide.",
+                body: "The engineer checks there is sufficient air supply for combustion. Sealed rooms, blocked air bricks, and draught exclusion can restrict airflow and cause incomplete combustion, which produces carbon monoxide.",
               },
               {
                 title: "Safety device testing",
@@ -855,11 +855,11 @@ export default function GasSafetyPage() {
         {/* ── 11. Carbon monoxide ─────────────────────────────────────────── */}
         <section aria-labelledby="co-heading">
           <Heading level={2} id="co-heading" className="mb-4">
-            Carbon monoxide — why the annual check matters
+            Carbon monoxide, why the annual check matters
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Carbon monoxide (CO) is produced when gas appliances burn incompletely.
-            It is colourless, odourless, and tasteless — completely undetectable by
+            It is colourless, odourless, and tasteless, completely undetectable by
             human senses. It binds to haemoglobin in the blood, preventing oxygen
             from reaching cells. At low concentrations it causes headaches, nausea
             and dizziness. At higher concentrations it causes loss of consciousness
@@ -868,7 +868,7 @@ export default function GasSafetyPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Around 50 people die from accidental CO poisoning in the UK every year,
             and over 4,000 are treated in A&amp;E. The majority of cases involve gas
-            appliances — boilers, gas fires, and back boilers in poorly maintained
+            appliances, boilers, gas fires, and back boilers in poorly maintained
             or poorly ventilated properties.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
@@ -877,16 +877,16 @@ export default function GasSafetyPage() {
             CO levels in the room become dangerous.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
-            <strong className="text-brand-amber">CO alarm — legal requirement: </strong>
+            <strong className="text-brand-amber">CO alarm, legal requirement: </strong>
             Since October 2022, landlords in England are legally required to fit a
             carbon monoxide alarm in every room containing a fixed combustion
-            appliance — including rooms with boilers and gas fires. The alarm must
+            appliance, including rooms with boilers and gas fires. The alarm must
             be in working order at the start of every new tenancy. Failure to comply
             carries a fine of up to £5,000.{" "}
             <strong className="text-brand-charcoal">
               A CO alarm is not a substitute for the annual gas safety check.
             </strong>{" "}
-            It is a last-resort warning device — not a replacement for the
+            It is a last-resort warning device, not a replacement for the
             preventive inspection that catches problems before they release CO into
             your tenants&apos; home.
           </div>
@@ -909,7 +909,7 @@ export default function GasSafetyPage() {
               },
               {
                 label: "Engineer details",
-                detail: "Full name, Gas Safe registration number, and employer. You can — and should — verify this number at gassaferegister.co.uk before work begins.",
+                detail: "Full name, Gas Safe registration number, and employer. You can, and should, verify this number at gassaferegister.co.uk before work begins.",
               },
               {
                 label: "Appliance table",
@@ -921,11 +921,11 @@ export default function GasSafetyPage() {
               },
               {
                 label: "Defects section",
-                detail: "If any appliance is declared unsafe, the defect is described and the action taken is recorded — for example: 'Appliance isolated at inlet valve — Do Not Use until repaired'. An unsafe appliance will also have a red warning sticker attached to it.",
+                detail: "If any appliance is declared unsafe, the defect is described and the action taken is recorded, for example: 'Appliance isolated at inlet valve, Do Not Use until repaired'. An unsafe appliance will also have a red warning sticker attached to it.",
               },
               {
                 label: "Next service due",
-                detail: "12 months from the inspection date. Diarise this immediately. A compliance gap — even a single day — is a breach of the regulations. Book before the expiry date, not after.",
+                detail: "12 months from the inspection date. Diarise this immediately. A compliance gap, even a single day, is a breach of the regulations. Book before the expiry date, not after.",
               },
             ].map((row) => (
               <div key={row.label} className="flex gap-4 rounded-xl border border-border bg-warm-white p-4">
@@ -949,7 +949,7 @@ export default function GasSafetyPage() {
         {/* ── 13. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            Gas Safety Certificate — frequently asked questions
+            Gas Safety Certificate, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
 
@@ -977,7 +977,7 @@ export default function GasSafetyPage() {
             confirm your appointment. CP12 certificate emailed within 24 hours.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
-            Next-day appointments available across London and the M25 area —
+            Next-day appointments available across London and the M25 area,
             or call{" "}
             <a
               href="mailto:info@mylandlordcertificate.co.uk"
@@ -991,7 +991,7 @@ export default function GasSafetyPage() {
             href="/book?service=gas-safety-cp12"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
-            Book my CP12 — from £{lowestPrice}
+            Book my CP12, from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
             No hidden charges. Gas Safe Registered. Certificate emailed within 24 hours.

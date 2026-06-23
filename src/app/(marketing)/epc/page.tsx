@@ -6,6 +6,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
 import Image from "next/image";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import {
@@ -28,7 +29,7 @@ const entryPrice = getPriceForEPC("studio");
 const epcReviews = [
   {
     content:
-      "The EPC assessor was thorough and efficient — in and out in 45 minutes for a 3-bed mid-terrace. We were hovering at a D rating and he flagged two low-cost improvements that would push us to a C before the deadline. Genuinely useful.",
+      "The EPC assessor was thorough and efficient, in and out in 45 minutes for a 3-bed mid-terrace. We were hovering at a D rating and he flagged two low-cost improvements that would push us to a C before the deadline. Genuinely useful.",
     author: "Rachel B.",
     location: "Lewisham",
   },
@@ -81,7 +82,7 @@ const faqs = [
   {
     question: "Is an EPC legally required to rent out a property in London?",
     answer:
-      "Yes. The Energy Performance of Buildings (England and Wales) Regulations 2012 require landlords to provide a valid EPC to prospective tenants before marketing a property to let. The EPC must be provided free of charge. Failure to comply can result in a local authority penalty charge of up to £5,000. The EPC must also be attached to any written tenancy agreement. There are no exemptions for furnished lettings, short lets, or HMOs — all residential tenancies require a valid EPC.",
+      "Yes. The Energy Performance of Buildings (England and Wales) Regulations 2012 require landlords to provide a valid EPC to prospective tenants before marketing a property to let. The EPC must be provided free of charge. Failure to comply can result in a local authority penalty charge of up to £5,000. The EPC must also be attached to any written tenancy agreement. There are no exemptions for furnished lettings, short lets, or HMOs. All residential tenancies require a valid EPC.",
   },
   {
     question: "What is the minimum EPC rating required to let a property?",
@@ -96,7 +97,7 @@ const faqs = [
   {
     question: "How long is an EPC valid for?",
     answer:
-      "A domestic EPC is valid for 10 years from the date of assessment. If you already have a valid EPC from a previous tenancy or sale, you do not need a new one until it expires — provided no significant energy-related improvements (new boiler, major insulation works) have been made. You can check whether a valid EPC exists for your property on the government's national EPC register at find-energy-certificate.service.gov.uk using the property address.",
+      "A domestic EPC is valid for 10 years from the date of assessment. If you already have a valid EPC from a previous tenancy or sale, you do not need a new one until it expires, provided no significant energy-related improvements (new boiler, major insulation works) have been made. You can check whether a valid EPC exists for your property on the government's national EPC register at find-energy-certificate.service.gov.uk using the property address.",
   },
   {
     question: "What improvements will raise my EPC rating the most?",
@@ -142,13 +143,13 @@ const steps = [
 ];
 
 const ratingBands = [
-  { rating: "A", range: "92–100 SAP", colour: "bg-green-600", text: "text-white", desc: "Exceptional — very low bills" },
-  { rating: "B", range: "81–91 SAP", colour: "bg-green-500", text: "text-white", desc: "Very good — low running costs" },
-  { rating: "C", range: "69–80 SAP", colour: "bg-lime-500", text: "text-white", desc: "Good — 2028 proposed minimum" },
-  { rating: "D", range: "55–68 SAP", colour: "bg-yellow-400", text: "text-brand-charcoal", desc: "Average — most UK homes" },
-  { rating: "E", range: "39–54 SAP", colour: "bg-orange-400", text: "text-white", desc: "Below average — legal minimum" },
-  { rating: "F", range: "21–38 SAP", colour: "bg-orange-600", text: "text-white", desc: "Poor — cannot legally let" },
-  { rating: "G", range: "1–20 SAP", colour: "bg-red-600", text: "text-white", desc: "Very poor — cannot legally let" },
+  { rating: "A", range: "92–100 SAP", colour: "bg-green-600", text: "text-white", desc: "Exceptional, very low bills" },
+  { rating: "B", range: "81–91 SAP", colour: "bg-green-500", text: "text-white", desc: "Very good, low running costs" },
+  { rating: "C", range: "69–80 SAP", colour: "bg-lime-500", text: "text-white", desc: "Good, 2028 proposed minimum" },
+  { rating: "D", range: "55–68 SAP", colour: "bg-yellow-400", text: "text-brand-charcoal", desc: "Average, most UK homes" },
+  { rating: "E", range: "39–54 SAP", colour: "bg-orange-400", text: "text-white", desc: "Below average, legal minimum" },
+  { rating: "F", range: "21–38 SAP", colour: "bg-orange-600", text: "text-white", desc: "Poor, cannot legally let" },
+  { rating: "G", range: "1–20 SAP", colour: "bg-red-600", text: "text-white", desc: "Very poor, cannot legally let" },
 ];
 
 const improvements = [
@@ -182,7 +183,7 @@ export default function EPCPage() {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-            {/* Left — copy + CTAs */}
+            {/* Left, copy + CTAs */}
             <div>
               <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
                 Elmhurst Accredited · All 33 London Boroughs · 10-Year Certificate
@@ -192,22 +193,9 @@ export default function EPCPage() {
                 EPC Certificate from £{entryPrice}
               </h1>
 
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-sm text-blue-100">
-                  <strong className="text-white">4.8</strong>/5 from 312 London landlords
-                </span>
-              </div>
-
               <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
               <p className="text-blue-100 text-lg leading-relaxed mb-5">
-                Energy Performance Certificate — required by law before renting or selling any
+                Energy Performance Certificate, required by law before renting or selling any
                 residential property in London. Accredited DEA assessors, certificate registered
                 on the national EPC register within 24 hours.
               </p>
@@ -216,7 +204,7 @@ export default function EPCPage() {
                   href="/book?service=epc"
                   className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
                 >
-                  Book Now — from £{entryPrice}
+                  Book Now, from £{entryPrice}
                 </Link>
                 <a
                   href={TEL}
@@ -232,7 +220,7 @@ export default function EPCPage() {
               <TrustBadges serviceKey="epc" variant="dark" />
             </div>
 
-            {/* Right — hero image */}
+            {/* Right, hero image */}
             <div className="relative">
               <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
                 <Image
@@ -316,7 +304,7 @@ export default function EPCPage() {
             Assessment Procedure) score and corresponding A–G band.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            Every EPC also includes a Recommendations Report — a prioritised list of
+            Every EPC also includes a Recommendations Report, a prioritised list of
             cost-effective improvements specific to your property, with estimated installation
             costs and projected energy savings. This is a valuable planning tool for landlords
             who need to improve their rating ahead of tightening MEES regulations. The
@@ -327,7 +315,7 @@ export default function EPCPage() {
             register, accessible to landlords, tenants, letting agents, and mortgage lenders.
             Prospective tenants, buyers, and letting agents can view the certificate at any time
             using the property address. The certificate is valid for 10 years from the date of
-            assessment, regardless of changes in ownership or tenancy — unless significant
+            assessment, regardless of changes in ownership or tenancy, unless significant
             energy-related works have been carried out that would materially affect the rating.
           </p>
 
@@ -361,7 +349,7 @@ export default function EPCPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             The EPC rating is derived from the SAP (Standard Assessment Procedure) score,
             which estimates the annual energy cost per square metre of floor area. The lower
-            the energy cost, the higher the rating. Most UK homes fall in bands D and E — only
+            the energy cost, the higher the rating. Most UK homes fall in bands D and E, only
             around 4% of privately rented homes currently achieve a C or above.
           </p>
           <div className="grid md:grid-cols-2 gap-6 items-center mb-6">
@@ -419,7 +407,7 @@ export default function EPCPage() {
                 be attached to any written tenancy agreement. Landlords who fail to provide a
                 valid EPC face a penalty charge of up to £5,000 issued by the local authority.
                 The EPC must be produced by an accredited DEA assessor and lodged on the
-                national register — self-certified or unregistered assessments are not valid.
+                national register, self-certified or unregistered assessments are not valid.
               </p>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
                 There are no exemptions for short lets, furnished properties, or properties
@@ -442,7 +430,7 @@ export default function EPCPage() {
                 increase to C by 2028.
               </p>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
-                Limited exemptions exist — for example, where all cost-effective improvements
+                Limited exemptions exist, for example, where all cost-effective improvements
                 have been made and the property still cannot reach E, or where a tenant refuses
                 consent for works. Exemptions must be registered on the PRS Exemptions Register
                 and are valid for 5 years. London councils are actively enforcing MEES through
@@ -476,13 +464,13 @@ export default function EPCPage() {
             Your EPC Recommendations Report lists the improvements most likely to raise your
             rating, ranked by cost-effectiveness. Below are the nine most impactful measures
             for London residential properties, together with typical costs and the rating
-            improvement you can expect. All improvements are cumulative — combining several
+            improvement you can expect. All improvements are cumulative, combining several
             measures will have a larger effect than any single one.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             For London landlords targeting the proposed 2028 minimum of C, the most practical
             path for typical Victorian terraces and purpose-built flats is usually a combination
-            of boiler replacement, loft insulation, and thermostat controls — which can move a
+            of boiler replacement, loft insulation, and thermostat controls, which can move a
             D-rated property into band C without the expense of solid wall insulation or
             renewables.
           </p>
@@ -520,7 +508,7 @@ export default function EPCPage() {
           </div>
 
           <p className="text-xs text-brand-grey mt-3">
-            Costs and impact estimates are indicative — actual results depend on the specific
+            Costs and impact estimates are indicative, actual results depend on the specific
             property. Your EPC Recommendations Report provides property-specific projections.
           </p>
         </section>
@@ -554,11 +542,11 @@ export default function EPCPage() {
                 type: "New build properties (post-2010)",
                 rating: "Typically B–C",
                 detail:
-                  "New builds are required to meet Part L of the Building Regulations and almost always achieve B or C. EPCs are still legally required before marketing — new build developers lodge the initial EPC as part of the completion process.",
+                  "New builds are required to meet Part L of the Building Regulations and almost always achieve B or C. EPCs are still legally required before marketing, new build developers lodge the initial EPC as part of the completion process.",
               },
               {
                 type: "HMOs (Houses in Multiple Occupation)",
-                rating: "Varies — D–G common",
+                rating: "Varies, D–G common",
                 detail:
                   "HMOs with shared facilities often have lower ratings due to electric storage heaters, individual meters, and poor insulation. Communal heating controls and insulation upgrades have a significant impact. HMOs rented as a whole require a single EPC; individual room lettings may not.",
               },
@@ -715,32 +703,38 @@ export default function EPCPage() {
               <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
                 What London landlords say
               </h2>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} className="w-5 h-5 text-[#00B67A]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-sm text-brand-grey">
-                  <strong className="text-brand-charcoal">4.8</strong>/5 · 312 reviews
-                </span>
-              </div>
+              <a
+                href="https://share.google/WwnnwG3NKvDAyiuhf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                  <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                  <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                  <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+                </svg>
+                Read our reviews on Google
+              </a>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {epcReviews.map((review) => (
-              <TestimonialCard
-                key={review.author}
-                content={review.content}
-                author={review.author}
-                location={review.location}
-                service="EPC"
-                showTrustpilot
-              />
-            ))}
-          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid md:grid-cols-3 gap-5">
+                {epcReviews.map((review) => (
+                  <TestimonialCard
+                    key={review.author}
+                    content={review.content}
+                    author={review.author}
+                    location={review.location}
+                    service="EPC"
+                    showTrustpilot
+                  />
+                ))}
+              </div>
+            }
+          />
           <p className="mt-6 text-sm text-brand-grey text-center">
             Read more verified reviews from London landlords on our{" "}
             <Link href="/reviews" className="text-compliance-blue hover:underline font-medium">
@@ -763,14 +757,14 @@ export default function EPCPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Accredited DEA assessors across all 33 London
-              boroughs — certificate registered on the national EPC register within 24 hours.
+              boroughs, certificate registered on the national EPC register within 24 hours.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="/book?service=epc"
                 className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                Book Online — from £{entryPrice}
+                Book Online, from £{entryPrice}
               </Link>
               <a
                 href={TEL}

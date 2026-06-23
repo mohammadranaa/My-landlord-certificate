@@ -19,14 +19,14 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate Cost 2025 — How Much Does a CP12 Cost? | My Landlord Certificate",
+  title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost? | My Landlord Certificate",
   description:
     "Gas Safety Certificate (CP12) costs from £50 for 1 appliance. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
   openGraph: {
-    title: "Gas Safety Certificate Cost 2025 — How Much Does a CP12 Cost?",
+    title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
     description:
       "CP12 prices start from £50 for 1 appliance. Full domestic price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
@@ -40,7 +40,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "How Much Does a Gas Safety Certificate Cost? Full 2025 Price Guide",
   description:
-    "A complete guide to Gas Safety Certificate (CP12) costs for landlords — domestic and commercial pricing, what affects the cost, how our prices compare to the national average, and how to get a fixed price.",
+    "A complete guide to Gas Safety Certificate (CP12) costs for landlords, domestic and commercial pricing, what affects the cost, how our prices compare to the national average, and how to get a fixed price.",
   url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   datePublished: "2025-01-01",
   dateModified: "2025-05-01",
@@ -97,7 +97,7 @@ const faqSchema = {
       name: "What is a CP12 certificate?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A CP12 is the industry shorthand for a Gas Safety Certificate — named after the CORGI Proforma 12 form that was used before the Gas Safe Register replaced CORGI in 2009. It is the annual certificate landlords must provide to tenants under the Gas Safety (Installation and Use) Regulations 1998.",
+        text: "A CP12 is the industry shorthand for a Gas Safety Certificate, named after the CORGI Proforma 12 form that was used before the Gas Safe Register replaced CORGI in 2009. It is the annual certificate landlords must provide to tenants under the Gas Safety (Installation and Use) Regulations 1998.",
       },
     },
     {
@@ -113,7 +113,7 @@ const faqSchema = {
       name: "Are there any extra charges on top of the gas safety certificate price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no hidden fees — the price in the table is the price you pay.",
+        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no hidden fees, the price in the table is the price you pay.",
       },
     },
     {
@@ -129,7 +129,7 @@ const faqSchema = {
       name: "Can I save money by bundling the gas safety certificate with other certificates?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
+        text: "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
       },
     },
   ],
@@ -141,27 +141,27 @@ const faqItems = [
   {
     question: "How much does a gas safety certificate cost in the UK?",
     answer:
-      "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our 1-appliance CP12 is £50 — at the competitive end of the market for a Gas Safe registered engineer, certificate within 24 hours. A combined Gas Safety + Boiler Service costs £84.99.",
+      "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our 1-appliance CP12 is £50, at the competitive end of the market for a Gas Safe registered engineer, certificate within 24 hours. A combined Gas Safety + Boiler Service costs £84.99.",
   },
   {
     question: "What is a CP12 certificate?",
     answer:
-      "CP12 is the industry shorthand for a Gas Safety Certificate — named after the CORGI Proforma 12 form used before Gas Safe Register replaced CORGI in 2009. It is the annual certificate landlords must provide to tenants under the Gas Safety (Installation and Use) Regulations 1998. The full name is Landlord Gas Safety Record (LGSR), but CP12 and Gas Safety Certificate are the common terms.",
+      "CP12 is the industry shorthand for a Gas Safety Certificate, named after the CORGI Proforma 12 form used before Gas Safe Register replaced CORGI in 2009. It is the annual certificate landlords must provide to tenants under the Gas Safety (Installation and Use) Regulations 1998. The full name is Landlord Gas Safety Record (LGSR), but CP12 and Gas Safety Certificate are the common terms.",
   },
   {
     question: "Why does the gas safety certificate cost more for more appliances?",
     answer:
-      "Each gas appliance must be individually inspected and tested — checking the burner pressure, gas rate, flue performance, safety devices and ventilation. A property with a boiler and a gas hob requires two complete inspection sequences, which takes more time. Prices increase in £10 bands per additional appliance.",
+      "Each gas appliance must be individually inspected and tested, checking the burner pressure, gas rate, flue performance, safety devices and ventilation. A property with a boiler and a gas hob requires two complete inspection sequences, which takes more time. Prices increase in £10 bands per additional appliance.",
   },
   {
     question: "How much does a gas safety certificate cost with a boiler service?",
     answer:
-      "A combined Gas Safety Certificate + Boiler Service costs £84.99. This bundles the annual CP12 inspection with a full boiler service — including cleaning, filter check, pump and pressure tests. It is the most cost-effective way to carry out both requirements in a single visit.",
+      "A combined Gas Safety Certificate + Boiler Service costs £84.99. This bundles the annual CP12 inspection with a full boiler service, including cleaning, filter check, pump and pressure tests. It is the most cost-effective way to carry out both requirements in a single visit.",
   },
   {
     question: "Are there any extra charges on top of the price?",
     answer:
-      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no hidden fees — the price in the table is the price you pay.",
+      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no hidden fees, the price in the table is the price you pay.",
   },
   {
     question: "How much does a commercial gas safety certificate cost?",
@@ -171,12 +171,12 @@ const faqItems = [
   {
     question: "Can I save money by bundling with other certificates?",
     answer:
-      "Yes — our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98. All certificates are completed in one visit.",
+      "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98. All certificates are completed in one visit.",
   },
   {
     question: "How do I know if a gas engineer is legally qualified to issue a CP12?",
     answer:
-      "Only Gas Safe registered engineers can legally carry out gas safety inspections and issue CP12 certificates. You can verify any engineer on the Gas Safe Register website at gassaferegister.co.uk. All our engineers are Gas Safe registered — you can check their registration details on their ID card before they start work.",
+      "Only Gas Safe registered engineers can legally carry out gas safety inspections and issue CP12 certificates. You can verify any engineer on the Gas Safe Register website at gassaferegister.co.uk. All our engineers are Gas Safe registered, you can check their registration details on their ID card before they start work.",
   },
 ];
 
@@ -239,7 +239,7 @@ export default function GasSafetyCertificateCostPage() {
             and{" "}
             <strong className="text-white">£{threeAppliancePrice}</strong> for 3 appliances.
             Commercial CP42 certificates start from{" "}
-            <strong className="text-white">£159.99</strong>. Full breakdown below — fixed
+            <strong className="text-white">£159.99</strong>. Full breakdown below, fixed
             prices, no call-out charges.
           </p>
 
@@ -255,7 +255,7 @@ export default function GasSafetyCertificateCostPage() {
               href="/book?service=gas-safety-cp12"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my CP12 — from £{lowestPrice}
+              Book my CP12, from £{lowestPrice}
             </Link>
             <Link
               href="/gas-safety-certificate"
@@ -305,11 +305,11 @@ export default function GasSafetyCertificateCostPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             All domestic CP12 prices are fixed by number of gas appliances. The
-            price you see is the price you pay — no call-out charge, no hidden fees.
+            price you see is the price you pay, no call-out charge, no hidden fees.
           </p>
 
           <PriceTable
-            title="Gas Safety Certificate (CP12) — full price breakdown"
+            title="Gas Safety Certificate (CP12), full price breakdown"
             rows={cp12TableWithBadge}
           />
 
@@ -336,7 +336,7 @@ export default function GasSafetyCertificateCostPage() {
             What does the gas safety certificate cost cover?
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
-            A CP12 is not a simple paperwork exercise — it is a structured
+            A CP12 is not a simple paperwork exercise, it is a structured
             safety inspection of every gas appliance in the property, carried
             out by a Gas Safe registered engineer. Here is what the cost covers.
           </p>
@@ -345,7 +345,7 @@ export default function GasSafetyCertificateCostPage() {
               "Visual inspection of each gas appliance, pipework, and gas meter",
               "Burner pressure and gas rate test on each appliance",
               "Flue flow and combustion performance check (including CO spillage test on boilers)",
-              "Safety device operation test — overheat thermostat, flame failure device",
+              "Safety device operation test, overheat thermostat, flame failure device",
               "Ventilation adequacy check for each appliance",
               "Gas tightness test on the pipework installation",
               "CP12 Landlord Gas Safety Record issued and emailed within 24 hours",
@@ -395,7 +395,7 @@ export default function GasSafetyCertificateCostPage() {
             The national average for a domestic CP12 quoted by comparison sites
             is typically <strong>£60–£120</strong> for a single boiler, with
             London prices often running higher. Prices vary significantly because
-            many engineers quote by the hour rather than a fixed upfront price —
+            many engineers quote by the hour rather than a fixed upfront price,
             meaning the final bill depends on how long the job takes.
           </p>
           <div className="overflow-x-auto">
@@ -445,7 +445,7 @@ export default function GasSafetyCertificateCostPage() {
             {[
               {
                 title: "Number of gas appliances",
-                body: "The primary driver. Each appliance — boiler, gas hob, gas fire, back boiler, warm air unit — must be individually tested. Prices increase in £10 bands per appliance. A property with just a combi boiler is the simplest and cheapest inspection; one with a boiler, hob and gas fire will cost more.",
+                body: "The primary driver. Each appliance, boiler, gas hob, gas fire, back boiler, warm air unit, must be individually tested. Prices increase in £10 bands per appliance. A property with just a combi boiler is the simplest and cheapest inspection; one with a boiler, hob and gas fire will cost more.",
               },
               {
                 title: "Boiler service",
@@ -453,7 +453,7 @@ export default function GasSafetyCertificateCostPage() {
               },
               {
                 title: "Appliance condition and access",
-                body: "If an appliance is poorly maintained, difficult to access, or requires the engineer to move furniture or locate a hidden gas valve, this adds time. Our fixed price covers standard residential access — appliances should be accessible before the engineer arrives.",
+                body: "If an appliance is poorly maintained, difficult to access, or requires the engineer to move furniture or locate a hidden gas valve, this adds time. Our fixed price covers standard residential access, appliances should be accessible before the engineer arrives.",
               },
               {
                 title: "Whether unsafe work is found",
@@ -461,7 +461,7 @@ export default function GasSafetyCertificateCostPage() {
               },
               {
                 title: "Commercial vs domestic",
-                body: "Commercial gas safety inspections (CP42) are more complex — covering larger appliances, higher gas pressures, and commercial-grade safety devices. Commercial certificates are priced significantly higher than domestic CP12s, starting from £159.99.",
+                body: "Commercial gas safety inspections (CP42) are more complex, covering larger appliances, higher gas pressures, and commercial-grade safety devices. Commercial certificates are priced significantly higher than domestic CP12s, starting from £159.99.",
               },
             ].map(({ title, body }) => (
               <div
@@ -512,12 +512,12 @@ export default function GasSafetyCertificateCostPage() {
           </Heading>
           <ul className="space-y-3" role="list">
             {[
-              "Count your appliances correctly before booking — only appliances supplied as part of the tenancy need testing. A tenant's own gas cooker is their responsibility.",
-              "Book the boiler service at the same visit — the combined Gas Safety + Boiler Service at £84.99 saves money over booking separately and keeps both records aligned.",
-              "Bundle with your EICR — our Essential Bundle (EICR + Gas Safety) costs £130 versus £144.99 separately, saving £14.99 in a single visit.",
-              "Don't let it lapse — a missed annual renewal creates urgency and some providers charge a premium. Book one to two months before expiry.",
-              "Ensure the engineer has clear access — all appliances, the gas meter, and the boiler flue terminal (if external) should be accessible before the appointment.",
-              "Choose fixed pricing — an hourly rate quote is unpredictable. Fixed-price providers show the full cost before you book.",
+              "Count your appliances correctly before booking, only appliances supplied as part of the tenancy need testing. A tenant's own gas cooker is their responsibility.",
+              "Book the boiler service at the same visit, the combined Gas Safety + Boiler Service at £84.99 saves money over booking separately and keeps both records aligned.",
+              "Bundle with your EICR, our Essential Bundle (EICR + Gas Safety) costs £130 versus £144.99 separately, saving £14.99 in a single visit.",
+              "Don't let it lapse, a missed annual renewal creates urgency and some providers charge a premium. Book one to two months before expiry.",
+              "Ensure the engineer has clear access, all appliances, the gas meter, and the boiler flue terminal (if external) should be accessible before the appointment.",
+              "Choose fixed pricing, an hourly rate quote is unpredictable. Fixed-price providers show the full cost before you book.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -545,7 +545,7 @@ export default function GasSafetyCertificateCostPage() {
         {/* ── Bundle cross-sell ── */}
         <section aria-labelledby="bundle-heading">
           <Heading level={2} id="bundle-heading" className="mb-4">
-            Save more — bundle your gas safety certificate
+            Save more, bundle your gas safety certificate
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Most landlords who need a Gas Safety Certificate also need an{" "}
@@ -638,7 +638,7 @@ export default function GasSafetyCertificateCostPage() {
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            Gas safety certificate cost — frequently asked questions
+            Gas safety certificate cost, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -652,7 +652,7 @@ export default function GasSafetyCertificateCostPage() {
             Get your Gas Safety Certificate at a fixed price
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
-            The price on this page is the price you pay — no call-out charges,
+            The price on this page is the price you pay, no call-out charges,
             no hidden fees, no re-quote on the day.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -660,7 +660,7 @@ export default function GasSafetyCertificateCostPage() {
               href="/book?service=gas-safety-cp12"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my CP12 — from £{lowestPrice}
+              Book my CP12, from £{lowestPrice}
             </Link>
             <Link
               href="/gas-safety-certificate"

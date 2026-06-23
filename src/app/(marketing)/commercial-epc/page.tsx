@@ -80,12 +80,12 @@ const faqItems = [
   {
     question: "Who needs a commercial EPC?",
     answer:
-      "Any owner or landlord of a commercial property must obtain a commercial EPC before the property is sold, rented out, or built. This applies to offices, retail units, restaurants, warehouses, light industrial units, and mixed-use premises. The obligation falls on the seller or landlord — the EPC must be made available free of charge to any prospective buyer or tenant before the property is marketed. Failure to comply can result in a fine of up to £5,000 per property.",
+      "Any owner or landlord of a commercial property must obtain a commercial EPC before the property is sold, rented out, or built. This applies to offices, retail units, restaurants, warehouses, light industrial units, and mixed-use premises. The obligation falls on the seller or landlord, the EPC must be made available free of charge to any prospective buyer or tenant before the property is marketed. Failure to comply can result in a fine of up to £5,000 per property.",
   },
   {
     question: "How long is a commercial EPC valid?",
     answer:
-      "A commercial EPC is valid for 10 years from the date of assessment, unless material changes are made to the building that affect its energy performance — such as installing a new heating system, significant insulation works, or a change of use. After any such change, a new assessment is recommended to ensure the certificate accurately reflects the building's current energy characteristics.",
+      "A commercial EPC is valid for 10 years from the date of assessment, unless material changes are made to the building that affect its energy performance, such as installing a new heating system, significant insulation works, or a change of use. After any such change, a new assessment is recommended to ensure the certificate accurately reflects the building's current energy characteristics.",
   },
   {
     question: "What is MEES for commercial property?",
@@ -100,7 +100,7 @@ const faqItems = [
   {
     question: "What happens if the building fails MEES?",
     answer:
-      "If your property receives an EPC rating of F or G, it cannot legally be let until it is improved to at least a rating of E or a valid exemption is registered. Our assessors can model cost-effective improvement scenarios — such as upgrading lighting controls, improving heating efficiency, or adding insulation — and show the projected impact on the EPC rating before any works are committed to. This allows you to prioritise the improvements with the best return on investment.",
+      "If your property receives an EPC rating of F or G, it cannot legally be let until it is improved to at least a rating of E or a valid exemption is registered. Our assessors can model cost-effective improvement scenarios, such as upgrading lighting controls, improving heating efficiency, or adding insulation, and show the projected impact on the EPC rating before any works are committed to. This allows you to prioritise the improvements with the best return on investment.",
   },
 ];
 
@@ -155,11 +155,11 @@ export default function CommercialEPCPage() {
             inverted
             className="mb-4 max-w-2xl"
           >
-            Commercial EPC — from £{entryPrice}
+            Commercial EPC, from £{entryPrice}
           </Heading>
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
-            Commercial Energy Performance Certificate — required before selling or
+            Commercial Energy Performance Certificate, required before selling or
             letting any commercial property. Accredited DEA assessors using
             SBEM methodology, MEES compliance advice included, report lodged on
             the national register within 24 hours.
@@ -167,7 +167,7 @@ export default function CommercialEPCPage() {
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
             Same-week appointments across all 33 London boroughs. Fixed pricing
-            by gross internal floor area — no hidden charges.
+            by gross internal floor area, no hidden charges.
           </p>
 
           <PriceDisplay
@@ -182,7 +182,7 @@ export default function CommercialEPCPage() {
               href="/book?service=commercial-epc&type=commercial"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book Commercial EPC — from £{entryPrice}
+              Book Commercial EPC, from £{entryPrice}
             </Link>
             <a
               href="#pricing"
@@ -235,7 +235,7 @@ export default function CommercialEPCPage() {
             A commercial Energy Performance Certificate (EPC) rates the energy
             efficiency of a non-domestic building on a scale from A (most
             efficient) to G (least efficient). It is produced using the
-            Simplified Building Energy Model (SBEM) — a government-approved
+            Simplified Building Energy Model (SBEM), a government-approved
             calculation methodology that accounts for the building&apos;s fabric,
             orientation, heating, cooling, ventilation, lighting, and any
             on-site renewable energy systems. The output is a standardised
@@ -248,14 +248,14 @@ export default function CommercialEPCPage() {
             sold, rented out, or newly constructed. The obligation rests with the
             seller or landlord, and the certificate must be made available free
             of charge to any prospective buyer or tenant before the property is
-            placed on the market. Unlike domestic EPCs — which are assessed using
-            the RdSAP methodology — commercial assessments require an on-site
+            placed on the market. Unlike domestic EPCs, which are assessed using
+            the RdSAP methodology, commercial assessments require an on-site
             survey by an accredited non-domestic energy assessor (DEA). Our
             assessors collect all the data needed and lodge the certificate on
             the national EPC register within 1–2 business days of their visit.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            For commercial landlords, the EPC is not just a legal formality — it
+            For commercial landlords, the EPC is not just a legal formality, it
             is an increasingly important compliance document given the trajectory
             of MEES (Minimum Energy Efficiency Standards) regulations. Properties
             that currently sit at a D or E rating face stricter requirements on
@@ -269,7 +269,7 @@ export default function CommercialEPCPage() {
             The Energy Performance of Buildings (England and Wales) Regulations
             2012 require a valid commercial EPC before any non-domestic property
             is sold, let, or constructed. Under MEES regulations, commercial
-            properties must achieve a minimum EPC rating of E — failure to
+            properties must achieve a minimum EPC rating of E, failure to
             comply can result in fines of up to{" "}
             <strong>£150,000 for breaches lasting more than three months</strong>.
           </div>
@@ -287,14 +287,14 @@ export default function CommercialEPCPage() {
             industrial units, medical and dental practices, and mixed-use
             buildings where the commercial element constitutes more than 50% of
             the floor area. The certificate must exist before the property is
-            marketed — it cannot be obtained retrospectively to satisfy a
+            marketed, it cannot be obtained retrospectively to satisfy a
             solicitor or agent&apos;s request once heads of terms are agreed.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Commercial landlords renewing existing leases are also affected by
             MEES regulations if the renewed lease constitutes a new tenancy in
-            law. Properties rated F or G cannot be let — even to existing
-            tenants renewing — without either improving the property or
+            law. Properties rated F or G cannot be let, even to existing
+            tenants renewing, without either improving the property or
             registering a valid exemption. Our assessors can identify the most
             cost-effective improvement route before any lease event to avoid
             compliance risk.
@@ -335,7 +335,7 @@ export default function CommercialEPCPage() {
             fall. Since April 2018, landlords have been prohibited from granting
             new leases on commercial properties with an EPC rating of F or G.
             Since April 2023, the restriction extended to cover all existing
-            commercial leases — meaning a landlord cannot continue to let an F-
+            commercial leases, meaning a landlord cannot continue to let an F-
             or G-rated property even under a pre-existing tenancy without
             registering a valid exemption.
           </p>
@@ -393,7 +393,7 @@ export default function CommercialEPCPage() {
             Our accredited DEA assessors carry out a thorough on-site survey of
             the building&apos;s energy-related characteristics. For most premises up
             to 500m², the visit takes 1–2 hours. The assessor does not require
-            access to internal plant rooms or roof voids in most cases — but
+            access to internal plant rooms or roof voids in most cases, but
             access to all main occupied areas and a copy of any existing building
             drawings or services documentation is helpful.
           </p>
@@ -401,18 +401,18 @@ export default function CommercialEPCPage() {
             The data collected feeds into SBEM (Simplified Building Energy Model)
             software, which calculates the building&apos;s asset energy performance
             under standardised occupancy conditions. The result reflects the
-            building&apos;s inherent energy characteristics — not how it is actually
-            used — which means the rating is comparable across buildings regardless
+            building&apos;s inherent energy characteristics, not how it is actually
+            used, which means the rating is comparable across buildings regardless
             of occupancy patterns.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              "Building fabric — walls, roof, floors, windows and glazing",
+              "Building fabric, walls, roof, floors, windows and glazing",
               "Orientation, shading and natural ventilation opportunities",
               "Heating system type, fuel, controls and distribution",
               "Cooling and air-conditioning systems",
-              "Ventilation — mechanical or natural",
+              "Ventilation, mechanical or natural",
               "Lighting type, controls and daylight sensing",
               "Hot water systems and any solar thermal",
               "On-site renewable energy generation (solar PV, etc.)",
@@ -454,7 +454,7 @@ export default function CommercialEPCPage() {
           </p>
 
           <PriceTable
-            title="Commercial EPC — price by floor area"
+            title="Commercial EPC, price by floor area"
             rows={[...COMMERCIAL_EPC_TABLE, { label: "Properties over 850m²", callForQuote: true }]}
             highlightCheapest
           />
@@ -505,7 +505,7 @@ export default function CommercialEPCPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Every commercial EPC we carry out includes all of the following at
-            the fixed price shown — there are no add-on charges for the
+            the fixed price shown, there are no add-on charges for the
             certificate, the register lodgement, or the improvement report.
           </p>
           <ul className="space-y-3" role="list">
@@ -515,7 +515,7 @@ export default function CommercialEPCPage() {
               "SBEM energy modelling using government-approved software",
               "A–G energy efficiency rating with improvement potential shown",
               "Detailed improvement recommendations ranked by impact",
-              "MEES compliance assessment — confirmed pass or fail at rating E",
+              "MEES compliance assessment, confirmed pass or fail at rating E",
               "EPC lodgement on the national government register",
               "PDF certificate suitable for marketing, solicitors, and lenders",
             ].map((item) => (
@@ -545,7 +545,7 @@ export default function CommercialEPCPage() {
         {/* ── FAQs ─────────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            Commercial EPC — frequently asked questions
+            Commercial EPC, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -563,7 +563,7 @@ export default function CommercialEPCPage() {
                 desc: "Residential EPC from £89.99. Valid 10 years. Accredited DEA assessors across London.",
               },
               {
-                name: "Domestic EPC — property types",
+                name: "Domestic EPC, property types",
                 href: "/epc",
                 desc: "EPC pricing guide for houses, flats, studios and HMOs.",
               },
@@ -616,7 +616,7 @@ export default function CommercialEPCPage() {
             href="/book?service=commercial-epc&type=commercial"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
-            Book Commercial EPC — from £{entryPrice}
+            Book Commercial EPC, from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
             No hidden charges. Accredited DEA assessors. MEES compliance advice included.

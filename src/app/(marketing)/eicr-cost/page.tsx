@@ -20,12 +20,12 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EICR Cost Guide 2025 — How Much Does an EICR Cost? | My Landlord Certificate",
+  title: "EICR Cost Guide 2025, How Much Does an EICR Cost? | My Landlord Certificate",
   description:
     "EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Full domestic and commercial EICR price breakdown, what drives the cost, and how to get a fixed price with no hidden charges.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-cost" },
   openGraph: {
-    title: "EICR Cost Guide 2025 — How Much Does an EICR Cost?",
+    title: "EICR Cost Guide 2025, How Much Does an EICR Cost?",
     description:
       "EICR prices start from £67.99. Full domestic and commercial price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
     url: "https://www.mylandlordcertificate.co.uk/eicr-cost",
@@ -39,7 +39,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "How Much Does an EICR Cost? Full 2025 Price Guide",
   description:
-    "A complete guide to EICR costs for landlords — domestic and commercial pricing, what affects the cost, how our prices compare to the national average, and how to get a fixed price.",
+    "A complete guide to EICR costs for landlords, domestic and commercial pricing, what affects the cost, how our prices compare to the national average, and how to get a fixed price.",
   url: "https://www.mylandlordcertificate.co.uk/eicr-cost",
   datePublished: "2025-01-01",
   dateModified: "2025-05-01",
@@ -96,7 +96,7 @@ const faqSchema = {
       name: "Why does an EICR cost more for larger properties?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every electrical circuit must be individually tested. Larger properties have more circuits, more sockets, more light fittings and more complex consumer units — all of which take more time. A studio might have 6 circuits; a large HMO can have 20 or more.",
+        text: "Every electrical circuit must be individually tested. Larger properties have more circuits, more sockets, more light fittings and more complex consumer units, all of which take more time. A studio might have 6 circuits; a large HMO can have 20 or more.",
       },
     },
     {
@@ -112,7 +112,7 @@ const faqSchema = {
       name: "Are there any extra charges on top of the EICR price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other fees — the price in the table is the price you pay.",
+        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other fees, the price in the table is the price you pay.",
       },
     },
     {
@@ -120,7 +120,7 @@ const faqSchema = {
       name: "Does the age of the wiring affect the EICR cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Not for our fixed-price tiers — the price is determined by property size, not age. However, older wiring is more likely to produce C1 or C2 codes that require remedial work. Remedial works are quoted separately after the inspection.",
+        text: "Not for our fixed-price tiers, the price is determined by property size, not age. However, older wiring is more likely to produce C1 or C2 codes that require remedial work. Remedial works are quoted separately after the inspection.",
       },
     },
     {
@@ -128,7 +128,7 @@ const faqSchema = {
       name: "Can I save money by bundling my EICR with other certificates?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes — our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98.",
+        text: "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98.",
       },
     },
   ],
@@ -140,17 +140,17 @@ const faqItems = [
   {
     question: "How much does an EICR cost in the UK?",
     answer:
-      "A domestic EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. The national average quoted by comparison sites is £150–£300 for a typical 3-bedroom home. Our 1–3 bedroom EICR is £94.99 — towards the lower end of the market for a fixed-price, certificate within 24 hours. Commercial EICRs start from £149.99 for a single consumer unit.",
+      "A domestic EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. The national average quoted by comparison sites is £150–£300 for a typical 3-bedroom home. Our 1–3 bedroom EICR is £94.99, towards the lower end of the market for a fixed-price, certificate within 24 hours. Commercial EICRs start from £149.99 for a single consumer unit.",
   },
   {
     question: "Why does an EICR cost more for larger properties?",
     answer:
-      "Every electrical circuit must be individually tested — for continuity, polarity and insulation resistance. Larger properties have more circuits, more sockets, more light fittings and more complex consumer units. A studio might have 6 circuits; a large HMO can have 20 or more. Our pricing reflects testing time, which scales directly with circuit count.",
+      "Every electrical circuit must be individually tested, for continuity, polarity and insulation resistance. Larger properties have more circuits, more sockets, more light fittings and more complex consumer units. A studio might have 6 circuits; a large HMO can have 20 or more. Our pricing reflects testing time, which scales directly with circuit count.",
   },
   {
     question: "Does the age of the wiring affect the EICR cost?",
     answer:
-      "Not for our fixed-price tiers — the price is determined by property size, not the age of the wiring. However, older wiring (pre-1970s rubber insulation, for example) is more likely to produce C1 or C2 codes that require remedial work. If remedial works are needed, these are quoted separately after the inspection.",
+      "Not for our fixed-price tiers, the price is determined by property size, not the age of the wiring. However, older wiring (pre-1970s rubber insulation, for example) is more likely to produce C1 or C2 codes that require remedial work. If remedial works are needed, these are quoted separately after the inspection.",
   },
   {
     question: "How much does a commercial EICR cost?",
@@ -160,22 +160,22 @@ const faqItems = [
   {
     question: "Are there any extra charges on top of the EICR price?",
     answer:
-      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no day-rate add-ons, and no surcharge for certificates within 24 hours — the price in the table is the price you pay.",
+      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no call-out charges, no day-rate add-ons, and no surcharge for certificates within 24 hours, the price in the table is the price you pay.",
   },
   {
     question: "Can I save money by bundling my EICR with other certificates?",
     answer:
-      "Yes — our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
+      "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
   },
   {
     question: "What happens if the EICR finds a problem?",
     answer:
-      "Faults are graded C1 (danger present — immediate action), C2 (potentially dangerous — urgent), C3 (improvement recommended), or FI (further investigation required). C1 and C2 codes mean the EICR outcome is unsatisfactory. Remedial works can be quoted separately. You cannot legally rent a property with an unsatisfactory EICR.",
+      "Faults are graded C1 (danger present, immediate action), C2 (potentially dangerous, urgent), C3 (improvement recommended), or FI (further investigation required). C1 and C2 codes mean the EICR outcome is unsatisfactory. Remedial works can be quoted separately. You cannot legally rent a property with an unsatisfactory EICR.",
   },
   {
     question: "How do I know if an EICR provider is charging a fair price?",
     answer:
-      "Fixed upfront pricing is the clearest signal. Avoid any electrician who quotes 'from £X per hour' without a ceiling — the final bill can be difficult to predict. Our prices are fixed by property size, displayed in full on this page, and don't change on the day.",
+      "Fixed upfront pricing is the clearest signal. Avoid any electrician who quotes 'from £X per hour' without a ceiling, the final bill can be difficult to predict. Our prices are fixed by property size, displayed in full on this page, and don't change on the day.",
   },
 ];
 
@@ -232,7 +232,7 @@ export default function EicrCostPage() {
             <strong className="text-white">£{highestDomesticPrice}</strong> for
             an 8-bedroom property. Commercial EICRs start from{" "}
             <strong className="text-white">£149.99</strong>. Full breakdown below
-            — no quotes, no call-out charges, no day-rate surprises.
+           , no quotes, no call-out charges, no day-rate surprises.
           </p>
 
           <PriceDisplay
@@ -247,7 +247,7 @@ export default function EicrCostPage() {
               href="/book?service=eicr"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my EICR — from £{lowestDomesticPrice}
+              Book my EICR, from £{lowestDomesticPrice}
             </Link>
             <Link
               href="/eicr"
@@ -297,12 +297,12 @@ export default function EicrCostPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             All domestic EICR prices are fixed by property size. The price you
-            see is the price you pay — no call-out charge added on top, no
+            see is the price you pay, no call-out charge added on top, no
             day-rate calculation, no adjustment on the day.
           </p>
 
           <PriceTable
-            title="Domestic EICR — full price breakdown"
+            title="Domestic EICR, full price breakdown"
             rows={DOMESTIC_EICR_TABLE}
             highlightCheapest
           />
@@ -331,15 +331,15 @@ export default function EicrCostPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Understanding what you are paying for helps you evaluate whether a
-            quote is reasonable. An EICR is not a quick visual check — it is a
+            quote is reasonable. An EICR is not a quick visual check, it is a
             systematic, circuit-by-circuit inspection and test of the entire
             fixed electrical installation in the property.
           </p>
           <ul className="space-y-3 mb-5" role="list">
             {[
               "Visual inspection of the consumer unit (fuse box), wiring, sockets, switches and light fittings",
-              "Dead testing of every circuit — continuity and polarity checks with the power off",
-              "Live testing — insulation resistance and RCD (residual current device) testing with power on",
+              "Dead testing of every circuit, continuity and polarity checks with the power off",
+              "Live testing, insulation resistance and RCD (residual current device) testing with power on",
               "Identification of any C1, C2, C3 or FI coded observations",
               "Written EICR report with every circuit recorded and a pass or unsatisfactory outcome",
               "Certificate emailed on the day of the inspection",
@@ -367,7 +367,7 @@ export default function EicrCostPage() {
           </ul>
           <p className="text-sm text-brand-charcoal/70">
             The inspection is carried out by a NICEIC approved or NAPIT certified
-            electrician — both government-recognised competent person schemes
+            electrician, both government-recognised competent person schemes
             assessed against BS 7671 (the wiring regulations). All our engineers
             carry public liability insurance and professional indemnity cover.
           </p>
@@ -383,7 +383,7 @@ export default function EicrCostPage() {
             sites is typically <strong>£150–£300</strong> for a 2–3 bedroom
             property, with some London electricians quoting £200–£400+. This
             variation exists because many electricians quote an hourly rate rather
-            than a fixed price — meaning the final bill depends on how long the
+            than a fixed price, meaning the final bill depends on how long the
             job takes, which the landlord cannot predict in advance.
           </p>
           <div className="overflow-x-auto">
@@ -434,15 +434,15 @@ export default function EicrCostPage() {
               },
               {
                 title: "Number of circuits and consumer units",
-                body: "Each circuit from the consumer unit (fuse box) must be tested for continuity, polarity and insulation resistance individually. More circuits equals more time — and commercial properties often have multiple consumer units, which is why commercial pricing is structured around consumer unit count.",
+                body: "Each circuit from the consumer unit (fuse box) must be tested for continuity, polarity and insulation resistance individually. More circuits equals more time, and commercial properties often have multiple consumer units, which is why commercial pricing is structured around consumer unit count.",
               },
               {
                 title: "Age and type of wiring",
-                body: "Older wiring — such as rubber-insulated wiring common in pre-1970s properties — requires more careful testing and is more likely to produce findings. This does not change our quoted price, but any remedial works identified in the report are quoted separately.",
+                body: "Older wiring, such as rubber-insulated wiring common in pre-1970s properties, requires more careful testing and is more likely to produce findings. This does not change our quoted price, but any remedial works identified in the report are quoted separately.",
               },
               {
                 title: "Property complexity",
-                body: "Outbuildings, detached garages, large garden circuits, non-standard consumer unit configurations or split-phase supplies take additional time. Our standard domestic prices cover typical residential properties — unusual configurations may need a custom quote.",
+                body: "Outbuildings, detached garages, large garden circuits, non-standard consumer unit configurations or split-phase supplies take additional time. Our standard domestic prices cover typical residential properties, unusual configurations may need a custom quote.",
               },
               {
                 title: "Whether remedial works are needed",
@@ -479,7 +479,7 @@ export default function EicrCostPage() {
           </p>
 
           <PriceTable
-            title="Commercial EICR — price by consumer units"
+            title="Commercial EICR, price by consumer units"
             rows={COMMERCIAL_EICR_TABLE}
             highlightCheapest
           />
@@ -502,12 +502,12 @@ export default function EicrCostPage() {
           </Heading>
           <ul className="space-y-3" role="list">
             {[
-              "Select the correct property size tier — check your bedroom count carefully before booking to avoid paying for a larger band.",
-              "Bundle with Gas Safety and EPC — our Essential Bundle (EICR + CP12) saves £14.99; the Full Compliance Bundle saves £24.98 on three certificates.",
-              "Ensure full access before the engineer arrives — consumer unit accessibility, loft hatches and outbuilding keys all need to be ready. Delays add risk to the schedule.",
-              "Fix known faults beforehand — a broken socket or a circuit that trips repeatedly will produce a C2 code and may require a re-inspection visit, which adds cost.",
-              "Choose a fixed-price provider — avoid quotes on an hourly basis, which are unpredictable. Our prices are listed in full and do not change on the day.",
-              "Book early in the renewal cycle — leaving the EICR until your certificate expires creates urgency that some providers charge a premium for.",
+              "Select the correct property size tier, check your bedroom count carefully before booking to avoid paying for a larger band.",
+              "Bundle with Gas Safety and EPC, our Essential Bundle (EICR + CP12) saves £14.99; the Full Compliance Bundle saves £24.98 on three certificates.",
+              "Ensure full access before the engineer arrives, consumer unit accessibility, loft hatches and outbuilding keys all need to be ready. Delays add risk to the schedule.",
+              "Fix known faults beforehand, a broken socket or a circuit that trips repeatedly will produce a C2 code and may require a re-inspection visit, which adds cost.",
+              "Choose a fixed-price provider, avoid quotes on an hourly basis, which are unpredictable. Our prices are listed in full and do not change on the day.",
+              "Book early in the renewal cycle, leaving the EICR until your certificate expires creates urgency that some providers charge a premium for.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -535,7 +535,7 @@ export default function EicrCostPage() {
         {/* ── Bundle cross-sell ── */}
         <section aria-labelledby="bundle-heading">
           <Heading level={2} id="bundle-heading" className="mb-4">
-            Save more — bundle your EICR
+            Save more, bundle your EICR
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Most landlords who need an EICR also need a Gas Safety Certificate
@@ -624,7 +624,7 @@ export default function EicrCostPage() {
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            EICR cost — frequently asked questions
+            EICR cost, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -638,7 +638,7 @@ export default function EicrCostPage() {
             Get your EICR at a fixed price
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
-            The price on this page is the price you pay — no call-out charges,
+            The price on this page is the price you pay, no call-out charges,
             no day-rate surprises, no re-quote on the day.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -646,7 +646,7 @@ export default function EicrCostPage() {
               href="/book?service=eicr"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my EICR — from £{lowestDomesticPrice}
+              Book my EICR, from £{lowestDomesticPrice}
             </Link>
             <Link
               href="/eicr"

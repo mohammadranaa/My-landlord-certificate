@@ -14,7 +14,7 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fire Safety Certificate London from £54.99 — Smoke Alarm Testing | My Landlord Certificate",
+  title: "Fire Safety Certificate London from £54.99, Smoke Alarm Testing | My Landlord Certificate",
   description:
     "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 33 London boroughs. Certificate within 24 hours.",
   alternates: {
@@ -27,7 +27,7 @@ const entryPrice = getPriceForFireSafetyCert(1);
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Fire Safety Certificate — Smoke and Heat Alarm Testing",
+  name: "Fire Safety Certificate, Smoke and Heat Alarm Testing",
   url: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate",
   provider: {
     "@type": "LocalBusiness",
@@ -62,7 +62,7 @@ const faqs = [
   {
     question: "What is tested during the inspection?",
     answer:
-      "Our engineers test each smoke and heat alarm using a calibrated aerosol test spray — not just a button press — which confirms the sensor chamber is actually responding to particles. We also check the battery condition, inspect for damage, check the manufacture date, and confirm the alarm is correctly positioned per BS 5839-6.",
+      "Our engineers test each smoke and heat alarm using a calibrated aerosol test spray, not just a button press, which confirms the sensor chamber is actually responding to particles. We also check the battery condition, inspect for damage, check the manufacture date, and confirm the alarm is correctly positioned per BS 5839-6.",
   },
   {
     question: "Does this cover carbon monoxide detectors?",
@@ -72,7 +72,7 @@ const faqs = [
   {
     question: "What if an alarm fails the test?",
     answer:
-      "Failed alarms are recorded in the certificate and must be replaced. Alarms that are over 10 years old (smoke) or 5 years old (CO) should typically be replaced regardless of test result. We can supply and fit replacement alarms during the same visit — mention this when booking.",
+      "Failed alarms are recorded in the certificate and must be replaced. Alarms that are over 10 years old (smoke) or 5 years old (CO) should typically be replaced regardless of test result. We can supply and fit replacement alarms during the same visit, mention this when booking.",
   },
   {
     question: "How many alarms does my rental property need?",
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: "Can you install new alarms as well as test existing ones?",
     answer:
-      "Yes. If your property is missing alarms or existing alarms need replacing, we can supply and install them during the same visit. Battery alarms are typically £35–£55 per alarm installed. Mains-wired interlinked alarms are quoted separately — see our Fire Alarm Installation page.",
+      "Yes. If your property is missing alarms or existing alarms need replacing, we can supply and install them during the same visit. Battery alarms are typically £35–£55 per alarm installed. Mains-wired interlinked alarms are quoted separately, see our Fire Alarm Installation page.",
   },
   {
     question: "Do you test wireless interconnected alarms?",
@@ -139,7 +139,7 @@ export default function FireSafetyCertificatePage() {
               href="/book?service=fire-safety-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
             >
-              Book Now — from £{entryPrice}
+              Book Now, from £{entryPrice}
             </Link>
             <a
               href="#pricing"
@@ -190,8 +190,8 @@ export default function FireSafetyCertificatePage() {
             and strongly recommended for all landlords as evidence of ongoing compliance.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Our accredited engineers test every alarm using a calibrated aerosol test spray —
-            not just a button press — which confirms the optical or ionisation sensor is
+            Our accredited engineers test every alarm using a calibrated aerosol test spray,
+            not just a button press, which confirms the optical or ionisation sensor is
             responding correctly to simulated smoke particles. We check battery condition,
             manufacture dates, and positioning compliance against BS 5839-6. The written
             certificate lists every alarm with its test result.
@@ -216,7 +216,7 @@ export default function FireSafetyCertificatePage() {
               {
                 step: "1",
                 title: "Book with your alarm count",
-                body: "Tell us how many smoke, heat, and CO alarms you have. We confirm the price, book your appointment, and arrive at the agreed time — no need for you to be present if a tenant can provide access.",
+                body: "Tell us how many smoke, heat, and CO alarms you have. We confirm the price, book your appointment, and arrive at the agreed time, no need for you to be present if a tenant can provide access.",
               },
               {
                 step: "2",
@@ -292,11 +292,11 @@ export default function FireSafetyCertificatePage() {
         {/* Detector types */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
-            Smoke detectors vs heat detectors — which does your property need?
+            Smoke detectors vs heat detectors, which does your property need?
           </h2>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Not all detectors are the same. Using the wrong type in the wrong
-            location causes either missed fires or nuisance alarms — which leads
+            location causes either missed fires or nuisance alarms, which leads
             tenants to remove batteries. Here is what each type does and where
             it belongs.
           </p>
@@ -304,36 +304,36 @@ export default function FireSafetyCertificatePage() {
             {[
               {
                 type: "Optical (photoelectric) smoke detector",
-                best: "Slow, smouldering fires — burning furniture, overheating wiring",
+                best: "Slow, smouldering fires, burning furniture, overheating wiring",
                 how: "A light beam inside the chamber is scattered when smoke particles enter. The scattered light triggers the alarm.",
                 locations: "Living rooms, bedrooms, hallways",
-                avoid: "Kitchens and bathrooms — cooking steam and shower steam cause frequent false alarms",
+                avoid: "Kitchens and bathrooms, cooking steam and shower steam cause frequent false alarms",
                 borderClass: "border-orange-200",
                 badgeClass: "bg-orange-100 text-orange-700",
               },
               {
                 type: "Ionisation smoke detector",
-                best: "Fast, flaming fires — burning paper, fast-spreading fires",
+                best: "Fast, flaming fires, burning paper, fast-spreading fires",
                 how: "A tiny amount of radioactive material ionises air in the detector. Smoke disrupts this ionisation and triggers the alarm.",
-                locations: "Hallways (less common today — being replaced by optical and multi-sensor types)",
-                avoid: "Kitchens — more prone to false alarms from cooking than optical types",
+                locations: "Hallways (less common today, being replaced by optical and multi-sensor types)",
+                avoid: "Kitchens, more prone to false alarms from cooking than optical types",
                 borderClass: "border-yellow-200",
                 badgeClass: "bg-yellow-100 text-yellow-700",
               },
               {
-                type: "Heat detector — fixed temperature type",
+                type: "Heat detector, fixed temperature type",
                 best: "Kitchens, garages, and utility rooms where cooking smoke or steam is present",
                 how: "Triggers when air temperature reaches a preset level (typically 58°C or 90°C). Unaffected by cooking fumes.",
                 locations: "Kitchens, utility rooms, garages",
-                avoid: "Sleeping areas — slower to respond than smoke detectors and must not be the sole alarm on escape routes",
+                avoid: "Sleeping areas, slower to respond than smoke detectors and must not be the sole alarm on escape routes",
                 borderClass: "border-red-200",
                 badgeClass: "bg-red-100 text-red-700",
               },
               {
                 type: "Multi-sensor detector",
-                best: "General installation in modern systems — fewer false alarms, better detection",
+                best: "General installation in modern systems, fewer false alarms, better detection",
                 how: "Combines optical smoke sensing, heat sensing, and sometimes CO sensing. Intelligent processing reduces false alarms while improving genuine fire detection.",
-                locations: "Any room — particularly useful near kitchens and in HMOs where false alarms are a persistent issue",
+                locations: "Any room, particularly useful near kitchens and in HMOs where false alarms are a persistent issue",
                 avoid: null,
                 borderClass: "border-compliance-blue/30",
                 badgeClass: "bg-compliance-blue/10 text-compliance-blue",
@@ -377,7 +377,7 @@ export default function FireSafetyCertificatePage() {
             All fire alarm systems in the UK must comply with BS 5839. The standard
             defines system categories based on their purpose and coverage. The
             category required for your property is specified by the fire risk
-            assessment — here is a plain-English reference:
+            assessment, here is a plain-English reference:
           </p>
           <div className="overflow-x-auto rounded-xl border border-border mb-6">
             <table className="w-full text-sm">
@@ -392,7 +392,7 @@ export default function FireSafetyCertificatePage() {
                 {[
                   {
                     cat: "Category M",
-                    coverage: "Manual call points only — no automatic detection",
+                    coverage: "Manual call points only, no automatic detection",
                     use: "Small commercial premises",
                   },
                   {
@@ -412,7 +412,7 @@ export default function FireSafetyCertificatePage() {
                   },
                   {
                     cat: "Grade D (domestic)",
-                    coverage: "Mains-powered with battery backup — individual interlinked units. No central panel.",
+                    coverage: "Mains-powered with battery backup, individual interlinked units. No central panel.",
                     use: "Single-family homes, simple HMOs",
                   },
                 ].map((row, i) => (
@@ -430,7 +430,7 @@ export default function FireSafetyCertificatePage() {
               <span className="font-semibold text-brand-charcoal">For most residential HMOs: </span>
               A Grade D, Category LD2 or LD3 system (as defined in BS 5839 Part 6 for
               domestic premises) is required as a minimum. The exact requirement depends
-              on the property layout and number of occupants — your{" "}
+              on the property layout and number of occupants, your{" "}
               <Link
                 href="/fire-risk-assessment"
                 className="text-compliance-blue hover:underline font-medium"
@@ -456,7 +456,7 @@ export default function FireSafetyCertificatePage() {
               {
                 period: "Weekly",
                 title: "Test button check",
-                body: "Trigger one call point or test button to confirm the alarm sounds correctly. Rotate around all devices over time so every alarm is tested periodically. Log every test in a fire log book — this record is inspected during HMO licence renewals.",
+                body: "Trigger one call point or test button to confirm the alarm sounds correctly. Rotate around all devices over time so every alarm is tested periodically. Log every test in a fire log book, this record is inspected during HMO licence renewals.",
                 borderClass: "border-green-200",
                 badgeClass: "bg-green-100 text-green-700",
               },
@@ -470,7 +470,7 @@ export default function FireSafetyCertificatePage() {
               {
                 period: "Annual",
                 title: "Full engineer service",
-                body: "A qualified fire alarm engineer must service the entire system once a year. The service covers: testing every detector individually, testing every call point, checking all sounders and visual alarms, inspecting cables and connections, checking battery charge levels, and updating the logbook. An Annual Fire Alarm Service Certificate is issued after this visit — this is separate from the Fire Safety Certificate issued after a fire risk assessment.",
+                body: "A qualified fire alarm engineer must service the entire system once a year. The service covers: testing every detector individually, testing every call point, checking all sounders and visual alarms, inspecting cables and connections, checking battery charge levels, and updating the logbook. An Annual Fire Alarm Service Certificate is issued after this visit, this is separate from the Fire Safety Certificate issued after a fire risk assessment.",
                 borderClass: "border-brand-amber/30",
                 badgeClass: "bg-brand-amber/10 text-brand-amber",
               },
@@ -491,7 +491,7 @@ export default function FireSafetyCertificatePage() {
           <div className="bg-brand-amber/10 border border-brand-amber/30 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
               <span className="font-semibold text-brand-amber">Insurance warning:</span>{" "}
-              Failure to service the system annually does not just create a compliance gap —
+              Failure to service the system annually does not just create a compliance gap,
               it can void your property insurance if a fire occurs. Many insurers require
               evidence of annual fire alarm servicing as an explicit policy condition.
               Keep your Annual Fire Alarm Service Certificate alongside your Fire Safety
@@ -548,7 +548,7 @@ export default function FireSafetyCertificatePage() {
               Need fire alarm installation?
             </h2>
             <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
-              We also install mains-wired interlinked smoke and heat alarm systems — from
+              We also install mains-wired interlinked smoke and heat alarm systems, from
               £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM} for a full system or £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm
               (supply &amp; install). BS 5839-6 compliant with commissioning certificate included.
             </p>
@@ -575,7 +575,7 @@ export default function FireSafetyCertificatePage() {
               href="/book?service=fire-safety-cert"
               className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors"
             >
-              Book Now — from £{entryPrice}
+              Book Now, from £{entryPrice}
             </Link>
           </div>
         </section>
