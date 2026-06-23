@@ -166,7 +166,7 @@ const faqSchema = {
       name: "What qualifications should a fire risk assessor hold?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The government recommends using a competent, trained fire risk assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications — particularly the NEBOSH National Certificate in Fire Safety and Risk Management — are the industry-recognised standard for residential fire risk assessors.",
+        text: "The government recommends using a competent, trained fire risk assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications, particularly the NEBOSH National Certificate in Fire Safety and Risk Management, are the industry-recognised standard for residential fire risk assessors.",
       },
     },
     {
@@ -186,7 +186,7 @@ const faqItems = [
   {
     question: "Is a Fire Risk Assessment legally required for landlords?",
     answer:
-      "A written Fire Risk Assessment is compulsory for all HMOs (Houses in Multiple Occupation) under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended — and most landlord insurance policies require it. The Building Safety Act 2022 introduced further duties for buildings over 18 metres or 7+ storeys. We recommend all landlords have an FRA regardless of property type.",
+      "A written Fire Risk Assessment is compulsory for all HMOs (Houses in Multiple Occupation) under the Regulatory Reform (Fire Safety) Order 2005. For single lets it is strongly recommended, and most landlord insurance policies require it. The Building Safety Act 2022 introduced further duties for buildings over 18 metres or 7+ storeys. We recommend all landlords have an FRA regardless of property type.",
   },
   {
     question: "How much does a Fire Risk Assessment cost?",
@@ -196,7 +196,7 @@ const faqItems = [
   {
     question: "What qualifications should my fire risk assessor hold?",
     answer:
-      "The government recommends using a competent, trained assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications — specifically the NEBOSH National Certificate in Fire Safety and Risk Management — are the industry-recognised standard. All our assessors hold NEBOSH certification and carry professional indemnity insurance.",
+      "The government recommends using a competent, trained assessor. NEBOSH (National Examination Board in Occupational Safety and Health) qualifications, specifically the NEBOSH National Certificate in Fire Safety and Risk Management, are the industry-recognised standard. All our assessors hold NEBOSH certification and carry professional indemnity insurance.",
   },
   {
     question: "What does the Building Safety Act 2022 mean for me?",
@@ -206,7 +206,7 @@ const faqItems = [
   {
     question: "How often should a Fire Risk Assessment be reviewed?",
     answer:
-      "Annually, or whenever there is a significant change to the property — structural alterations, change of use, change in number of occupants, or a new tenancy. For HMOs, your local authority may inspect and require evidence of a current assessment.",
+      "Annually, or whenever there is a significant change to the property, structural alterations, change of use, change in number of occupants, or a new tenancy. For HMOs, your local authority may inspect and require evidence of a current assessment.",
   },
   {
     question: "What does the assessment actually cover?",
@@ -216,17 +216,17 @@ const faqItems = [
   {
     question: "What is the difference between an FRA for a single let and an HMO?",
     answer:
-      "For single lets, the assessment focuses on the main living areas and escape routes. For HMOs, the assessment is more detailed — covering communal areas, individual rooms, fire compartmentation, and the significantly higher risk posed by multiple unrelated occupants sharing a property. HMO assessments typically also cover the requirements imposed by the HMO licence conditions.",
+      "For single lets, the assessment focuses on the main living areas and escape routes. For HMOs, the assessment is more detailed, covering communal areas, individual rooms, fire compartmentation, and the significantly higher risk posed by multiple unrelated occupants sharing a property. HMO assessments typically also cover the requirements imposed by the HMO licence conditions.",
   },
   {
     question: "Do I need a separate assessment for communal areas?",
     answer:
-      "Yes — if your property has shared communal areas (hallways, staircases, landings), these require a separate FRA from the individual dwelling. We offer communal area assessments from £129.99 for buildings up to 3 floors, scaling to £149.99 for 3–6 floors.",
+      "Yes, if your property has shared communal areas (hallways, staircases, landings), these require a separate FRA from the individual dwelling. We offer communal area assessments from £129.99 for buildings up to 3 floors, scaling to £149.99 for 3–6 floors.",
   },
   {
     question: "What happens if the assessment identifies problems?",
     answer:
-      "Every issue is graded by priority in the written report — immediate action, short-term action, and ongoing maintenance. Immediate risks (such as a faulty smoke alarm or a blocked escape route) must be addressed before tenants can occupy the property. Our assessors will walk you through the findings and advise on next steps.",
+      "Every issue is graded by priority in the written report, immediate action, short-term action, and ongoing maintenance. Immediate risks (such as a faulty smoke alarm or a blocked escape route) must be addressed before tenants can occupy the property. Our assessors will walk you through the findings and advise on next steps.",
   },
   {
     question: "Can I do my own Fire Risk Assessment?",
@@ -297,7 +297,7 @@ export default function FireRiskAssessmentPage() {
               href="/book?service=fra-residential"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my FRA — from £{lowestPrice}
+              Book my FRA, from £{lowestPrice}
             </Link>
             <a
               href="#pricing"
@@ -347,11 +347,11 @@ export default function FireRiskAssessmentPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Our fire risk assessors are certified members of the Institute of Fire Safety
-            Managers (IFSM) — the leading professional body for fire risk assessment in the
+            Managers (IFSM), the leading professional body for fire risk assessment in the
             UK. IFSM membership requires demonstrated competence in fire safety management,
             ongoing professional development, and adherence to a strict code of ethics. It is
             not a qualification that can be purchased or obtained by attending a short course
-            — it requires evidence of practical experience, technical knowledge, and a
+           , it requires evidence of practical experience, technical knowledge, and a
             commitment to continuous professional development that is reviewed regularly.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
@@ -359,14 +359,14 @@ export default function FireRiskAssessmentPage() {
             rescue services as the benchmark for fire risk assessor competence. When your fire
             risk assessment is carried out by an IFSM certified assessor, it carries the
             weight and credibility that local authorities, insurers, and the courts recognise
-            as the gold standard — not simply a piece of paperwork, but a document produced by
+            as the gold standard, not simply a piece of paperwork, but a document produced by
             a demonstrably competent professional.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Our assessors also hold qualifications from the Institution of Fire Engineers (IFE)
             and carry NEBOSH Fire Safety and Risk Management certificates. This combination of
             professional memberships and technical qualifications means your assessment is
-            carried out to the highest standard available — not by a general health and safety
+            carried out to the highest standard available, not by a general health and safety
             consultant who happens to offer fire risk assessments as a side service, but by
             specialists whose entire professional focus is fire safety.
           </p>
@@ -381,7 +381,7 @@ export default function FireRiskAssessmentPage() {
             Safety) Order 2005, which requires that the responsible person appoints a
             &quot;competent person&quot; to assist with fire safety measures. An assessment carried out
             by an unqualified or uncertified person can be challenged in court and may leave
-            you personally liable — even if you genuinely believed the assessor was qualified.
+            you personally liable, even if you genuinely believed the assessor was qualified.
           </div>
         </section>
 
@@ -391,7 +391,7 @@ export default function FireRiskAssessmentPage() {
             What our fire risk assessment covers
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            A fire risk assessment is not a checklist — it is a professional judgement about
+            A fire risk assessment is not a checklist, it is a professional judgement about
             the specific fire risks in a specific building at a specific point in time. Our
             IFSM certified assessors examine fourteen areas in every residential and HMO
             assessment.
@@ -408,8 +408,8 @@ export default function FireRiskAssessmentPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Fire detection and warning systems are tested and assessed for adequacy relative
             to the size and layout of the property. This includes checking whether detectors
-            are interlinked, whether the correct type is installed in each location — heat
-            detectors in kitchens, smoke detectors in corridors and bedrooms — and whether
+            are interlinked, whether the correct type is installed in each location, heat
+            detectors in kitchens, smoke detectors in corridors and bedrooms, and whether
             the system has been tested and serviced within the required intervals. Emergency
             lighting is assessed for coverage, duration, and maintenance records, with
             particular attention to escape route illumination following a mains failure.
@@ -418,8 +418,8 @@ export default function FireRiskAssessmentPage() {
             Fire door condition is assessed in detail. The assessor checks each door for
             closing mechanisms, gap tolerances (no more than 3mm at the head and sides, 8mm
             at the floor), intumescent strip and cold smoke seal integrity, vision panels,
-            and whether doors are being propped open. Compartmentation — the fire-resisting
-            construction that contains a fire within a defined area — is checked at walls,
+            and whether doors are being propped open. Compartmentation, the fire-resisting
+            construction that contains a fire within a defined area, is checked at walls,
             floors, ceilings, and around service penetrations such as pipes and cables, where
             unsealed holes are one of the most common serious findings.
           </p>
@@ -427,7 +427,7 @@ export default function FireRiskAssessmentPage() {
             Arson risk is assessed from the outside as well as the inside. Bin stores
             adjacent to the building, accessible voids, and external storage of combustible
             materials are evaluated as arson opportunities. Management procedures are
-            reviewed — who is designated as the responsible person, what written procedures
+            reviewed, who is designated as the responsible person, what written procedures
             exist, whether tenants have been briefed on evacuation, and whether maintenance
             logs and previous assessment records are available.
           </p>
@@ -440,8 +440,8 @@ export default function FireRiskAssessmentPage() {
             these in the report.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed">
-            The assessment also covers electrical sources of ignition — including any
-            evidence of overloaded sockets, damaged wiring, or appliances left unattended —
+            The assessment also covers electrical sources of ignition, including any
+            evidence of overloaded sockets, damaged wiring, or appliances left unattended,
             gas appliance and kitchen arrangements, storage of flammable liquids or materials,
             fire action notice provision and legibility, and fire extinguisher type,
             location, and maintenance status. Every finding is documented, risk-rated, and
@@ -455,7 +455,7 @@ export default function FireRiskAssessmentPage() {
             What happens after your fire risk assessment
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            The assessment itself is the inspection — the value is in what comes next. Here
+            The assessment itself is the inspection, the value is in what comes next. Here
             is exactly what you receive and what the process looks like from inspection to
             compliance.
           </p>
@@ -464,32 +464,32 @@ export default function FireRiskAssessmentPage() {
               {
                 step: "1",
                 title: "Written report emailed within 48 hours",
-                body: "Your full fire risk assessment report is emailed within 48 hours of the inspection. It is a formal written document — not a template with ticks in boxes — that describes the specific conditions observed in your property, references the applicable legislation and guidance, and provides the evidence base for every finding. It is accepted by all London local authorities, fire and rescue services, and HMO licensing teams.",
+                body: "Your full fire risk assessment report is emailed within 48 hours of the inspection. It is a formal written document, not a template with ticks in boxes, that describes the specific conditions observed in your property, references the applicable legislation and guidance, and provides the evidence base for every finding. It is accepted by all London local authorities, fire and rescue services, and HMO licensing teams.",
               },
               {
                 step: "2",
-                title: "Prioritised action plan — critical items first",
+                title: "Prioritised action plan, critical items first",
                 body: "Every finding in the report is given a risk rating: critical (immediate risk requiring same-day action), significant (action required within 3 months), moderate (action required within 6 months), or advisory (recommended improvement with no fixed timescale). The action plan is ordered from highest to lowest priority, so you and your managing agent know exactly what needs to happen first.",
               },
               {
                 step: "3",
                 title: "Recommended timescales for every remediation",
-                body: "Each action in the plan carries a recommended completion date. Where a matter is urgent — a propped fire door or a blocked escape route — this will be the same day or within 24 hours. Longer-term improvements such as a smoke detection upgrade or compartmentation works will have a realistic timeframe based on the severity of the risk.",
+                body: "Each action in the plan carries a recommended completion date. Where a matter is urgent, a propped fire door or a blocked escape route, this will be the same day or within 24 hours. Longer-term improvements such as a smoke detection upgrade or compartmentation works will have a realistic timeframe based on the severity of the risk.",
               },
               {
                 step: "4",
                 title: "A responsible person identified for each action",
-                body: "The report names or describes who should be responsible for each corrective action — whether that is the landlord, the managing agent, the resident, or a specialist contractor. This removes ambiguity and gives managing agents a clear instruction document to work from without further interpretation.",
+                body: "The report names or describes who should be responsible for each corrective action, whether that is the landlord, the managing agent, the resident, or a specialist contractor. This removes ambiguity and gives managing agents a clear instruction document to work from without further interpretation.",
               },
               {
                 step: "5",
                 title: "We can carry out remedial work ourselves",
-                body: "Where the report identifies works that need to be done, we can carry these out directly — fire door installation and replacement, fire alarm upgrades and interlinked detection systems, emergency lighting installation, fire extinguisher supply and servicing, compartmentation sealing of service penetrations, and fire safety signage. Having the same team carry out the assessment and the works ensures that the remedial action directly addresses the specific findings.",
+                body: "Where the report identifies works that need to be done, we can carry these out directly, fire door installation and replacement, fire alarm upgrades and interlinked detection systems, emergency lighting installation, fire extinguisher supply and servicing, compartmentation sealing of service penetrations, and fire safety signage. Having the same team carry out the assessment and the works ensures that the remedial action directly addresses the specific findings.",
               },
               {
                 step: "6",
-                title: "Review date set — typically 12 months",
-                body: "The report includes a recommended review date — typically 12 months for HMOs and blocks of flats, or sooner if significant changes are made to the property or its occupants. For lower-risk single lets without communal areas, a 2-year review may be appropriate. We will remind you when your reassessment is due.",
+                title: "Review date set, typically 12 months",
+                body: "The report includes a recommended review date, typically 12 months for HMOs and blocks of flats, or sooner if significant changes are made to the property or its occupants. For lower-risk single lets without communal areas, a 2-year review may be appropriate. We will remind you when your reassessment is due.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -520,8 +520,8 @@ export default function FireRiskAssessmentPage() {
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             At the end of the inspection you receive a written report detailing
-            every finding, a prioritised action plan — graded into immediate,
-            short-term, and ongoing actions — and a recommended date for
+            every finding, a prioritised action plan, graded into immediate,
+            short-term, and ongoing actions, and a recommended date for
             reassessment. The report is emailed to you within 48 hours of the
             visit.
           </p>
@@ -532,7 +532,7 @@ export default function FireRiskAssessmentPage() {
             areas shared by multiple occupants. The Renters&apos; Rights Bill
             2025 is expected to extend written FRA obligations further. Even
             where not yet a named legal requirement, your landlord insurance
-            policy is likely to require it — and an FRA is the only recognised
+            policy is likely to require it, and an FRA is the only recognised
             way to demonstrate you have met your duty of care.
           </div>
         </section>
@@ -598,7 +598,7 @@ export default function FireRiskAssessmentPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             Fixed pricing by property type and size. No call-out charges, no
-            hidden fees — the price you see is the price you pay.
+            hidden fees, the price you see is the price you pay.
           </p>
 
           <PriceTable
@@ -657,7 +657,7 @@ export default function FireRiskAssessmentPage() {
               "Evaluation of fire-fighting equipment (extinguishers, fire blankets)",
               "Assessment of emergency lighting where fitted",
               "Written report with findings graded by risk priority",
-              "Prioritised action plan — immediate, short-term, and ongoing actions",
+              "Prioritised action plan, immediate, short-term, and ongoing actions",
               "Recommended reassessment date included in the report",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -720,8 +720,8 @@ export default function FireRiskAssessmentPage() {
                 Larger flats and converted buildings
               </p>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
-                Any building with communal areas — shared hallways, staircases,
-                or landings — falls under the Fire Safety Order. This includes
+                Any building with communal areas, shared hallways, staircases,
+                or landings, falls under the Fire Safety Order. This includes
                 converted Victorian terraces split into flats and any building
                 where two or more tenants share common parts. A separate
                 communal area assessment is required in addition to any
@@ -746,7 +746,7 @@ export default function FireRiskAssessmentPage() {
               </p>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
                 A written FRA is not yet a named legal requirement for single
-                occupancy properties, but it is strongly recommended — and
+                occupancy properties, but it is strongly recommended, and
                 increasingly required by landlord insurance policies. The
                 Renters&apos; Rights Bill 2025 is expected to bring single lets
                 within the scope of mandatory FRA requirements.
@@ -770,7 +770,7 @@ export default function FireRiskAssessmentPage() {
               {
                 step: "2",
                 title: "Assessor visits the property",
-                body: "A NEBOSH qualified fire risk assessor carries out the inspection. You or your tenant can provide access — you do not need to be present. The assessor inspects every relevant area methodically and notes all findings.",
+                body: "A NEBOSH qualified fire risk assessor carries out the inspection. You or your tenant can provide access, you do not need to be present. The assessor inspects every relevant area methodically and notes all findings.",
               },
               {
                 step: "3",
@@ -800,8 +800,8 @@ export default function FireRiskAssessmentPage() {
             The government does not approve individual fire risk assessors in the
             same way it approves electricians or gas engineers, but it strongly
             recommends using a &quot;competent&quot; assessor with appropriate training
-            and experience. NEBOSH — the National Examination Board in
-            Occupational Safety and Health — provides the industry-recognised
+            and experience. NEBOSH, the National Examination Board in
+            Occupational Safety and Health, provides the industry-recognised
             qualification for fire risk assessors: the NEBOSH National
             Certificate in Fire Safety and Risk Management.
           </p>
@@ -847,10 +847,10 @@ export default function FireRiskAssessmentPage() {
         {/* ── 5-step process ── */}
         <section aria-labelledby="five-steps-heading">
           <Heading level={2} id="five-steps-heading" className="mb-4">
-            How a fire risk assessment works — the 5 steps
+            How a fire risk assessment works, the 5 steps
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-8">
-            A Fire Risk Assessment is not a form — it is a structured process defined in
+            A Fire Risk Assessment is not a form, it is a structured process defined in
             UK government guidance. Here are the five official steps and what each
             involves in a residential setting.
           </p>
@@ -864,7 +864,7 @@ export default function FireRiskAssessmentPage() {
               {
                 step: "2",
                 title: "Identify people at risk",
-                body: "The assessment considers all occupants — particularly those most vulnerable: sleeping occupants (slower to respond to alarms), people with disabilities or mobility impairments, HMO tenants who may not know each other or the building layout, and any children in the property.",
+                body: "The assessment considers all occupants, particularly those most vulnerable: sleeping occupants (slower to respond to alarms), people with disabilities or mobility impairments, HMO tenants who may not know each other or the building layout, and any children in the property.",
               },
               {
                 step: "3",
@@ -879,7 +879,7 @@ export default function FireRiskAssessmentPage() {
               {
                 step: "5",
                 title: "Review and update",
-                body: "The assessment must be reviewed after any fire or near-miss, significant building changes, a change in number of occupants, new activities that introduce new risks — and as a minimum annually. An out-of-date FRA provides no legal protection.",
+                body: "The assessment must be reviewed after any fire or near-miss, significant building changes, a change in number of occupants, new activities that introduce new risks, and as a minimum annually. An out-of-date FRA provides no legal protection.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">
@@ -925,7 +925,7 @@ export default function FireRiskAssessmentPage() {
               },
               {
                 label: "Fire extinguishers",
-                detail: "Are the correct types present — water for general areas, CO₂ near electrical equipment, wet chemical in kitchens? Are they within their annual service date?",
+                detail: "Are the correct types present, water for general areas, CO₂ near electrical equipment, wet chemical in kitchens? Are they within their annual service date?",
               },
               {
                 label: "Ignition sources",
@@ -984,7 +984,7 @@ export default function FireRiskAssessmentPage() {
                 badgeClass: "bg-gray-200 text-gray-800",
                 forFires: "Electrical equipment and flammable liquids (Class B)",
                 locations: "Near electrical panels, meter cupboards, IT equipment",
-                caution: "Very cold discharge — do not hold the horn directly",
+                caution: "Very cold discharge, do not hold the horn directly",
                 neverUse: null,
               },
               {
@@ -992,10 +992,10 @@ export default function FireRiskAssessmentPage() {
                 label: "Wet Chemical",
                 borderClass: "border-yellow-300",
                 badgeClass: "bg-yellow-100 text-yellow-800",
-                forFires: "Cooking oils and fats (Class F — chip pans, fryers)",
+                forFires: "Cooking oils and fats (Class F, chip pans, fryers)",
                 locations: "Any kitchen with a deep fat fryer or range",
                 caution: null,
-                neverUse: "Never substitute water on cooking oil — it causes a steam explosion",
+                neverUse: "Never substitute water on cooking oil, it causes a steam explosion",
               },
               {
                 colour: "Cream label",
@@ -1106,7 +1106,7 @@ export default function FireRiskAssessmentPage() {
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            Fire Risk Assessment — frequently asked questions
+            Fire Risk Assessment, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -1118,7 +1118,7 @@ export default function FireRiskAssessmentPage() {
               Need fire alarm installation?
             </Heading>
             <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
-              We also install mains-wired interlinked smoke and heat alarm systems — from
+              We also install mains-wired interlinked smoke and heat alarm systems, from
               £{FIRE_ALARM_INSTALLATION_FULL_SYSTEM} for a full system or £{FIRE_ALARM_INSTALLATION_PER_ALARM} per alarm
               (supply &amp; install). BS 5839-6 compliant with commissioning certificate included.
             </p>
@@ -1142,13 +1142,13 @@ export default function FireRiskAssessmentPage() {
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. A NEBOSH qualified assessor will
             contact you to confirm your appointment. Written report emailed
-            within 48 hours of the inspection — from £{popularPrice} for a 1–3 bedroom property.
+            within 48 hours of the inspection, from £{popularPrice} for a 1–3 bedroom property.
           </p>
           <Link
             href="/book?service=fra-residential"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
-            Book my FRA — from £{lowestPrice}
+            Book my FRA, from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
             No hidden charges. NEBOSH qualified assessors. Report emailed within 48 hours.

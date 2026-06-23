@@ -19,12 +19,12 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EPC Cost Guide 2025 — How Much Does an EPC Cost? | My Landlord Certificate",
+  title: "EPC Cost Guide 2025, How Much Does an EPC Cost? | My Landlord Certificate",
   description:
     "EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. Full domestic and commercial EPC price breakdown, what drives the cost, and how to get a fixed price with no hidden charges.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/epc-cost" },
   openGraph: {
-    title: "EPC Cost Guide 2025 — How Much Does an EPC Cost?",
+    title: "EPC Cost Guide 2025, How Much Does an EPC Cost?",
     description:
       "EPC prices start from £89.99. Full domestic and commercial price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
     url: "https://www.mylandlordcertificate.co.uk/epc-cost",
@@ -38,7 +38,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "How Much Does an EPC Cost? Full 2025 Price Guide",
   description:
-    "A complete guide to Energy Performance Certificate (EPC) costs for landlords — domestic and commercial pricing, what affects the cost, MEES implications, and how to get a fixed price.",
+    "A complete guide to Energy Performance Certificate (EPC) costs for landlords, domestic and commercial pricing, what affects the cost, MEES implications, and how to get a fixed price.",
   url: "https://www.mylandlordcertificate.co.uk/epc-cost",
   datePublished: "2025-01-01",
   dateModified: "2025-05-01",
@@ -103,7 +103,7 @@ const faqSchema = {
       name: "Why does an EPC cost more for larger properties?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Larger properties take longer to assess — the DEA must measure every room, inspect the heating system, hot water cylinder, insulation, windows, and lighting throughout the property. More rooms equals more measurement and data entry time.",
+        text: "Larger properties take longer to assess, the DEA must measure every room, inspect the heating system, hot water cylinder, insulation, windows, and lighting throughout the property. More rooms equals more measurement and data entry time.",
       },
     },
     {
@@ -111,7 +111,7 @@ const faqSchema = {
       name: "Are there any extra charges on top of the EPC price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees — the price in the table is the price you pay.",
+        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
       },
     },
     {
@@ -144,7 +144,7 @@ const faqItems = [
   {
     question: "How long does an EPC last?",
     answer:
-      "An EPC is valid for 10 years from the date of issue. If you have made significant energy improvements — new boiler, loft insulation, double glazing — it is worth commissioning a new assessment before the 10-year expiry, as a better rating could allow you to increase rent or attract better tenants.",
+      "An EPC is valid for 10 years from the date of issue. If you have made significant energy improvements, new boiler, loft insulation, double glazing, it is worth commissioning a new assessment before the 10-year expiry, as a better rating could allow you to increase rent or attract better tenants.",
   },
   {
     question: "Why does an EPC cost more for larger properties?",
@@ -154,27 +154,27 @@ const faqItems = [
   {
     question: "What is the minimum EPC rating required to let a property?",
     answer:
-      "The current minimum under MEES (Minimum Energy Efficiency Standards) is an E rating. Landlords cannot legally let a property rated F or G — doing so can result in a fine of up to £30,000. The government has signalled it intends to raise the minimum to a C rating for new tenancies, though no firm date has been legislated as of 2025.",
+      "The current minimum under MEES (Minimum Energy Efficiency Standards) is an E rating. Landlords cannot legally let a property rated F or G, doing so can result in a fine of up to £30,000. The government has signalled it intends to raise the minimum to a C rating for new tenancies, though no firm date has been legislated as of 2025.",
   },
   {
     question: "Can I get a new EPC before the 10 years is up?",
     answer:
-      "Yes — you can commission a new EPC at any time. A new assessment is worth considering if you have made energy efficiency improvements, if the current rating is F or G, or if you want to demonstrate a higher rating to prospective tenants.",
+      "Yes, you can commission a new EPC at any time. A new assessment is worth considering if you have made energy efficiency improvements, if the current rating is F or G, or if you want to demonstrate a higher rating to prospective tenants.",
   },
   {
     question: "Are there any extra charges on top of the EPC price?",
     answer:
-      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees — the price in the table is the price you pay.",
+      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
   },
   {
     question: "How much does a commercial EPC cost?",
     answer:
-      "A commercial EPC starts from £250 for properties up to 50m², rising to £999 for properties up to 850m². Commercial EPCs are significantly more complex than domestic assessments — they require a different methodology (SBEM rather than RdSAP) and are priced by floor area.",
+      "A commercial EPC starts from £250 for properties up to 50m², rising to £999 for properties up to 850m². Commercial EPCs are significantly more complex than domestic assessments, they require a different methodology (SBEM rather than RdSAP) and are priced by floor area.",
   },
   {
     question: "Can I save money by bundling an EPC with other certificates?",
     answer:
-      "Yes — our Full Compliance Bundle (EICR + Gas Safety Certificate + EPC) costs £230 versus £254.98 if booked separately, saving £24.98. All three certificates are completed in one visit.",
+      "Yes, our Full Compliance Bundle (EICR + Gas Safety Certificate + EPC) costs £230 versus £254.98 if booked separately, saving £24.98. All three certificates are completed in one visit.",
   },
 ];
 
@@ -230,7 +230,7 @@ export default function EpcCostPage() {
             bedroom property, and up to{" "}
             <strong className="text-white">£{largestPrice}</strong> for a 5-bedroom
             home. Commercial EPCs start from{" "}
-            <strong className="text-white">£250</strong>. Full breakdown below —
+            <strong className="text-white">£250</strong>. Full breakdown below,
             fixed prices, no call-out charges.
           </p>
 
@@ -246,7 +246,7 @@ export default function EpcCostPage() {
               href="/book?service=epc"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my EPC — from £{lowestPrice}
+              Book my EPC, from £{lowestPrice}
             </Link>
             <Link
               href="/epc"
@@ -296,12 +296,12 @@ export default function EpcCostPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             All domestic EPC prices are fixed by property size. The price you
-            see is the price you pay — no call-out charge, no hidden fees, no
+            see is the price you pay, no call-out charge, no hidden fees, no
             adjustment on the day.
           </p>
 
           <PriceTable
-            title="Domestic EPC — full price breakdown"
+            title="Domestic EPC, full price breakdown"
             rows={DOMESTIC_EPC_TABLE}
             highlightCheapest
           />
@@ -337,11 +337,11 @@ export default function EpcCostPage() {
           <ul className="space-y-3 mb-5" role="list">
             {[
               "Room-by-room measurement of the property's floor area",
-              "Inspection of the heating system — boiler type, age, controls, and programmer",
-              "Hot water system assessment — cylinder insulation, thermostat, immersion heater",
-              "Insulation check — loft, wall type (solid, cavity, or insulated), floor insulation",
+              "Inspection of the heating system, boiler type, age, controls, and programmer",
+              "Hot water system assessment, cylinder insulation, thermostat, immersion heater",
+              "Insulation check, loft, wall type (solid, cavity, or insulated), floor insulation",
               "Window and door glazing type and age",
-              "Lighting assessment — fixed lighting, energy-saving bulbs",
+              "Lighting assessment, fixed lighting, energy-saving bulbs",
               "SAP (Standard Assessment Procedure) calculation run using RdSAP methodology",
               "EPC lodged on the national register at the Landmark Trust EPC Register",
               "A–G rating certificate and improvement recommendations emailed within 24 hours",
@@ -394,7 +394,7 @@ export default function EpcCostPage() {
             often charge <strong>£80–£150</strong> for a standard property, with
             larger homes and next-day lodgement attracting a premium. Prices at
             the very low end (under £50) often come from newly qualified assessors
-            building their portfolio — experience and accreditation scheme matter
+            building their portfolio, experience and accreditation scheme matter
             for the quality of improvement recommendations you receive.
           </p>
           <div className="overflow-x-auto">
@@ -437,13 +437,13 @@ export default function EpcCostPage() {
         {/* ── MEES callout ── */}
         <section aria-labelledby="mees-heading">
           <Heading level={2} id="mees-heading" className="mb-4">
-            Why the EPC cost matters more than ever — MEES
+            Why the EPC cost matters more than ever, MEES
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Under the Minimum Energy Efficiency Standards (MEES), landlords cannot
             legally let a property with an EPC rating of F or G. The penalty for
             non-compliance can reach <strong>£30,000</strong>. Knowing your
-            property&apos;s current EPC rating is the first step — you cannot improve
+            property&apos;s current EPC rating is the first step, you cannot improve
             what you have not measured.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
@@ -451,7 +451,7 @@ export default function EpcCostPage() {
             C rating for new tenancies, though no firm date has been set in
             legislation as of 2025. Landlords whose properties are currently D
             or E would be wise to commission an EPC now to understand what
-            improvement works — if any — would be needed to comply.
+            improvement works, if any, would be needed to comply.
           </p>
 
           {/* A–G rating scale */}
@@ -512,11 +512,11 @@ export default function EpcCostPage() {
             {[
               {
                 title: "Property size",
-                body: "The primary driver. A larger property takes more time to measure and assess — more rooms, more heating zones, more data collection. A studio might take 30–45 minutes; a 5-bedroom house can take 90 minutes or more. Our pricing reflects this assessment time directly.",
+                body: "The primary driver. A larger property takes more time to measure and assess, more rooms, more heating zones, more data collection. A studio might take 30–45 minutes; a 5-bedroom house can take 90 minutes or more. Our pricing reflects this assessment time directly.",
               },
               {
                 title: "Property type and construction",
-                body: "Older or unusual properties can take longer to assess accurately — solid walls, non-standard construction (timber frame, concrete panel), and converted buildings require more judgement calls from the assessor. Our standard domestic prices cover conventional residential construction.",
+                body: "Older or unusual properties can take longer to assess accurately, solid walls, non-standard construction (timber frame, concrete panel), and converted buildings require more judgement calls from the assessor. Our standard domestic prices cover conventional residential construction.",
               },
               {
                 title: "Heating system complexity",
@@ -524,7 +524,7 @@ export default function EpcCostPage() {
               },
               {
                 title: "Data available to the assessor",
-                body: "An assessor can award better ratings if documentary evidence exists — for example, installation certificates for cavity wall insulation, window FENSA certificates, or boiler commissioning records. Without evidence, the assessor must default to conservative assumptions, which can lower the rating.",
+                body: "An assessor can award better ratings if documentary evidence exists, for example, installation certificates for cavity wall insulation, window FENSA certificates, or boiler commissioning records. Without evidence, the assessor must default to conservative assumptions, which can lower the rating.",
               },
               {
                 title: "Commercial vs domestic",
@@ -553,11 +553,11 @@ export default function EpcCostPage() {
           <p className="text-brand-grey mb-6">
             Commercial EPCs are priced by floor area and require a Level 4 or 5
             Non-Domestic Energy Assessor. All commercial properties being let or
-            sold must have a valid EPC — the penalty for non-compliance is £500–£5,000.
+            sold must have a valid EPC, the penalty for non-compliance is £500–£5,000.
           </p>
 
           <PriceTable
-            title="Commercial EPC — price by floor area"
+            title="Commercial EPC, price by floor area"
             rows={COMMERCIAL_EPC_TABLE}
             highlightCheapest
           />
@@ -580,12 +580,12 @@ export default function EpcCostPage() {
           </Heading>
           <ul className="space-y-3" role="list">
             {[
-              "Select the correct property size — a studio and a 1-bed are often different tiers. Check your bedroom count before booking.",
-              "Have documentation ready — installation certificates for insulation, FENSA certificates for windows, and boiler commissioning records all allow the assessor to award credit without making conservative assumptions.",
-              "Make improvements before the assessment — fitting LED lighting and a boiler programmer costs very little but can nudge a D rating towards a C, which matters for MEES compliance.",
-              "Bundle with EICR and Gas Safety — our Full Compliance Bundle (all three) costs £230 versus £254.98 separately, saving £24.98 in one visit.",
-              "Don't wait until the 10-year expiry — if your property is F or G, renewing the EPC after improvements demonstrates compliance immediately. Commission a new EPC as soon as improvements are made.",
-              "Choose a fixed-price provider — variable-rate EPC quotes can be difficult to compare. Our prices are fixed by property size and shown in full before you book.",
+              "Select the correct property size, a studio and a 1-bed are often different tiers. Check your bedroom count before booking.",
+              "Have documentation ready, installation certificates for insulation, FENSA certificates for windows, and boiler commissioning records all allow the assessor to award credit without making conservative assumptions.",
+              "Make improvements before the assessment, fitting LED lighting and a boiler programmer costs very little but can nudge a D rating towards a C, which matters for MEES compliance.",
+              "Bundle with EICR and Gas Safety, our Full Compliance Bundle (all three) costs £230 versus £254.98 separately, saving £24.98 in one visit.",
+              "Don't wait until the 10-year expiry, if your property is F or G, renewing the EPC after improvements demonstrates compliance immediately. Commission a new EPC as soon as improvements are made.",
+              "Choose a fixed-price provider, variable-rate EPC quotes can be difficult to compare. Our prices are fixed by property size and shown in full before you book.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -613,7 +613,7 @@ export default function EpcCostPage() {
         {/* ── Bundle cross-sell ── */}
         <section aria-labelledby="bundle-heading">
           <Heading level={2} id="bundle-heading" className="mb-4">
-            Save more — bundle your EPC
+            Save more, bundle your EPC
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Most landlords commissioning an EPC also need an{" "}
@@ -726,7 +726,7 @@ export default function EpcCostPage() {
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            EPC cost — frequently asked questions
+            EPC cost, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -740,7 +740,7 @@ export default function EpcCostPage() {
             Get your EPC at a fixed price
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
-            The price on this page is the price you pay — no call-out charges,
+            The price on this page is the price you pay, no call-out charges,
             no hidden fees, lodged on the national register within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -748,7 +748,7 @@ export default function EpcCostPage() {
               href="/book?service=epc"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book my EPC — from £{lowestPrice}
+              Book my EPC, from £{lowestPrice}
             </Link>
             <Link
               href="/epc"

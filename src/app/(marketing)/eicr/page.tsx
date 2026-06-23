@@ -16,17 +16,17 @@ import { cn } from "@/lib/utils";
 const PHONE_DISPLAY = "020 3996 1070";
 const PHONE_HREF = "tel:+442039961070";
 
-// ── EICR reviews (from real London landlords — see /reviews) ──────────────────
+// ── EICR reviews (from real London landlords, see /reviews) ──────────────────
 const eicrReviews = [
   {
     content:
-      "Booked Sunday night, engineer was at the Hackney property by 9am Tuesday. Victorian conversion with old wiring — he knew exactly what to look for and explained every observation without making it feel like a sales pitch. Certificate arrived at 2pm.",
+      "Booked Sunday night, engineer was at the Hackney property by 9am Tuesday. Victorian conversion with old wiring, he knew exactly what to look for and explained every observation without making it feel like a sales pitch. Certificate arrived at 2pm.",
     author: "Sarah M.",
     location: "Hackney",
   },
   {
     content:
-      "Ex-council flat in Tower Hamlets — I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate within 24 hours, no hidden extras.",
+      "Ex-council flat in Tower Hamlets, I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate within 24 hours, no hidden extras.",
     author: "Priya K.",
     location: "Tower Hamlets",
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "EICR — Electrical Installation Condition Report",
+  name: "EICR, Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/eicr",
   description:
     "An EICR (Electrical Installation Condition Report) is a formal assessment of all fixed electrical wiring and installations in a property. Legally required for all private rented properties in England. NICEIC approved and NAPIT certified electricians, certificate emailed within 24 hours.",
@@ -102,7 +102,7 @@ const serviceSchema = {
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "EICR Certificate — Electrical Installation Condition Report",
+  name: "EICR Certificate, Electrical Installation Condition Report",
   description:
     "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved and NAPIT certified electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed within 24 hours.",
   brand: {
@@ -156,7 +156,7 @@ const faqSchema = {
       name: "How often do I need an EICR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Every 5 years, or at each change of tenancy — whichever comes first. If the report recommends a shorter re-inspection interval (e.g. 2 years for an older installation), that interval applies instead.",
+        text: "Every 5 years, or at each change of tenancy, whichever comes first. If the report recommends a shorter re-inspection interval (e.g. 2 years for an older installation), that interval applies instead.",
       },
     },
     {
@@ -188,7 +188,7 @@ const faqSchema = {
       name: "Do I need a new EICR for each new tenancy?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Not necessarily — your EICR is valid for 5 years from the date of issue. You need a new one if your current certificate has expired, or if the engineer recommended a shorter re-inspection interval.",
+        text: "Not necessarily. Your EICR is valid for 5 years from the date of issue. You need a new one if your current certificate has expired, or if the engineer recommended a shorter re-inspection interval.",
       },
     },
     {
@@ -196,7 +196,7 @@ const faqSchema = {
       name: "Does an EICR cover electrical appliances?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. An EICR covers only fixed electrical wiring, consumer units, sockets and light fittings — the permanent installation. Portable appliances (white goods, lamps, TVs) are tested separately by PAT Testing.",
+        text: "No. An EICR covers only fixed electrical wiring, consumer units, sockets and light fittings, the permanent installation. Portable appliances (white goods, lamps, TVs) are tested separately by PAT Testing.",
       },
     },
     {
@@ -204,7 +204,7 @@ const faqSchema = {
       name: "What accreditations do your electricians hold?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our electricians are either NICEIC approved or NAPIT certified — both are government-recognised competent person schemes assessed against BS 7671 (the IET Wiring Regulations). An EICR carried out by a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders.",
+        text: "Our electricians are either NICEIC approved or NAPIT certified. Both are government-recognised competent person schemes assessed against BS 7671 (the IET Wiring Regulations). An EICR carried out by a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders.",
       },
     },
   ],
@@ -221,7 +221,7 @@ const faqItems = [
   {
     question: "How often do I need an EICR?",
     answer:
-      "Every 5 years, or at each change of tenancy — whichever comes first. If the report recommends a shorter re-inspection interval (for example 2 years on an older or complex installation), that interval applies instead. Always keep the certificate on file — you must be able to provide it to tenants and your local authority on request.",
+      "Every 5 years, or at each change of tenancy, whichever comes first. If the report recommends a shorter re-inspection interval (for example 2 years on an older or complex installation), that interval applies instead. Always keep the certificate on file. You must be able to provide it to tenants and your local authority on request.",
   },
   {
     question: "How much does an EICR cost?",
@@ -231,12 +231,12 @@ const faqItems = [
   {
     question: "What happens if my property fails an EICR?",
     answer:
-      "You will receive a C1 (danger present) or C2 (potentially dangerous) code — either results in an 'unsatisfactory' report. Remedial works must be completed within 28 days and evidenced in writing to your local authority. C1 hazards are made safe by the engineer on the day before they leave. We can arrange remedial works through our network of NICEIC approved electricians.",
+      "You will receive a C1 (danger present) or C2 (potentially dangerous) code, either results in an 'unsatisfactory' report. Remedial works must be completed within 28 days and evidenced in writing to your local authority. C1 hazards are made safe by the engineer on the day before they leave. We can arrange remedial works through our network of NICEIC approved electricians.",
   },
   {
     question: "How long does an EICR inspection take?",
     answer:
-      "Typically 2–4 hours depending on property size and the age of the electrical installation. Older properties with rewirable fuses or aluminium wiring may take longer. You don't need to be present — a tenant or keyholder can provide access and the certificate will be emailed directly to you.",
+      "Typically 2–4 hours depending on property size and the age of the electrical installation. Older properties with rewirable fuses or aluminium wiring may take longer. You don't need to be present. A tenant or keyholder can provide access and the certificate will be emailed directly to you.",
   },
   {
     question: "Do I need a new EICR for each new tenancy?",
@@ -246,12 +246,12 @@ const faqItems = [
   {
     question: "Does an EICR cover electrical appliances?",
     answer:
-      "No. An EICR covers only the fixed electrical installation — wiring, consumer unit, sockets, switches and light fittings. Portable appliances supplied with a furnished tenancy (white goods, TVs, lamps) are covered separately by PAT Testing. If you supply appliances, you may need both.",
+      "No. An EICR covers only the fixed electrical installation, wiring, consumer unit, sockets, switches and light fittings. Portable appliances supplied with a furnished tenancy (white goods, TVs, lamps) are covered separately by PAT Testing. If you supply appliances, you may need both.",
   },
   {
     question: "What accreditations do your electricians hold?",
     answer:
-      "Our electricians are either NICEIC approved or NAPIT certified — both are government-recognised competent person schemes assessed annually against BS 7671 (the IET Wiring Regulations). An EICR from a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders. You can verify any engineer's registration on the NICEIC contractor search or the NAPIT member finder.",
+      "Our electricians are either NICEIC approved or NAPIT certified. Both are government-recognised competent person schemes assessed annually against BS 7671 (the IET Wiring Regulations). An EICR from a NICEIC approved or NAPIT certified electrician is accepted by all UK local authorities, letting agents and mortgage lenders. You can verify any engineer's registration on the NICEIC contractor search or the NAPIT member finder.",
   },
 ];
 
@@ -287,7 +287,7 @@ export default function EicrPage() {
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-            {/* Left — copy + CTAs */}
+            {/* Left, copy + CTAs */}
             <div>
               <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
                 NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
@@ -318,7 +318,7 @@ export default function EicrPage() {
               </div>
 
               <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
-                Electrical Installation Condition Report — a legal requirement for all
+                Electrical Installation Condition Report, a legal requirement for all
                 private rented properties in England since 2020. NICEIC approved and
                 NAPIT certified electricians, no hidden charges, certificate emailed within 24 hours.
               </p>
@@ -340,7 +340,7 @@ export default function EicrPage() {
                   href="/book?service=eicr"
                   className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
                 >
-                  Book my EICR — from £{lowestPrice}
+                  Book my EICR, from £{lowestPrice}
                 </Link>
                 <a
                   href={PHONE_HREF}
@@ -372,7 +372,7 @@ export default function EicrPage() {
               <TrustBadges serviceKey="eicr" variant="dark" />
             </div>
 
-            {/* Right — hero image */}
+            {/* Right, hero image */}
             <div className="relative">
               <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
                 <Image
@@ -442,11 +442,11 @@ export default function EicrPage() {
             NAPIT certified electrician tests every circuit from the fuse board,
             checks all sockets, light fittings, bonding and earthing
             arrangements, and assigns a condition code to anything that falls
-            below the current British Standard BS 7671 — the IET Wiring Regulations.
+            below the current British Standard BS 7671, the IET Wiring Regulations.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             The result is a written report that tells you exactly what state the
-            electrical installation is in, what — if anything — needs attention,
+            electrical installation is in, what, if anything, needs attention,
             and whether the property is safe for continued occupation. An EICR
             is not the same as a test of your appliances: it covers only the
             fixed installation. Portable appliances supplied with a furnished
@@ -464,7 +464,7 @@ export default function EicrPage() {
             most important electrical safety document you need to hold. Without
             a valid certificate on file you are in breach of the Electrical
             Safety Standards in the Private Rented Sector (England) Regulations
-            2020 — and your local authority can issue a remedial notice and a
+            2020, and your local authority can issue a remedial notice and a
             civil penalty of up to £30,000.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
@@ -488,12 +488,12 @@ export default function EicrPage() {
             England has been legally required to hold a valid Electrical
             Installation Condition Report. The requirement was introduced by the
             Electrical Safety Standards in the Private Rented Sector (England)
-            Regulations 2020, which apply to all tenancy types — assured
+            Regulations 2020, which apply to all tenancy types, assured
             shorthold tenancies, periodic tenancies, HMO licences and student
             lets alike.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
-            Your EICR must be carried out by a qualified electrician — one who
+            Your EICR must be carried out by a qualified electrician, one who
             is competent to test and assess electrical installations. In
             practice this means a registered electrician, and NICEIC approval
             or NAPIT certification are both widely recognised as the benchmark
@@ -508,7 +508,7 @@ export default function EicrPage() {
             <ul className="space-y-2 text-sm text-brand-charcoal/80">
               {[
                 "Commission an EICR at least every 5 years (or at each change of tenancy if sooner)",
-                "Use a qualified and competent electrician — ideally NICEIC approved or NAPIT certified",
+                "Use a qualified and competent electrician, ideally NICEIC approved or NAPIT certified",
                 "Provide a copy of the EICR to every tenant before or at the start of their tenancy",
                 "Provide a copy to your local housing authority within 7 days of a written request",
                 "Arrange and evidence completion of remedial works within 28 days of a C1 or C2 finding",
@@ -527,7 +527,7 @@ export default function EicrPage() {
           <p className="text-sm text-brand-grey">
             The regulations apply to residential rental properties in England
             only. If your rental property is in Wales, Scotland or Northern
-            Ireland, separate electrical safety legislation applies — check with
+            Ireland, separate electrical safety legislation applies, check with
             your local authority for the current requirements.
           </p>
         </section>
@@ -539,7 +539,7 @@ export default function EicrPage() {
           </Heading>
           <p className="text-brand-grey mb-6">
             Fixed pricing by property size. The price shown is the price you
-            pay — no call-out charges, no hidden fees. Our EICR covers studio
+            pay, no call-out charges, no hidden fees. Our EICR covers studio
             apartments from £{lowestPrice} up to 8-bedroom HMO properties at
             £{highestPrice}. For a detailed breakdown of what affects the cost,
             see our{" "}
@@ -553,7 +553,7 @@ export default function EicrPage() {
           </p>
 
           <PriceTable
-            title="Domestic EICR — price by property size"
+            title="Domestic EICR, price by property size"
             rows={DOMESTIC_EICR_TABLE}
             highlightCheapest
           />
@@ -643,7 +643,7 @@ export default function EicrPage() {
           <ul className="space-y-3" role="list">
             {[
               "Full inspection of all fixed wiring, sockets, switches and light fittings",
-              "Consumer unit (fuse board) check — type, condition, labelling and protection devices",
+              "Consumer unit (fuse board) check, type, condition, labelling and protection devices",
               "Test of every circuit for continuity, insulation resistance and polarity",
               "Earth bonding and earthing arrangement check",
               "Condition code (C1, C2, C3 or FI) assigned to every identified defect",
@@ -692,7 +692,7 @@ export default function EicrPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Every circuit and fitting inspected during an EICR receives one of
             four condition codes. The codes determine whether your EICR result
-            is "satisfactory" or "unsatisfactory" and what action — if any — you
+            is "satisfactory" or "unsatisfactory" and what action, if any, you
             must take.
           </p>
 
@@ -712,7 +712,7 @@ export default function EicrPage() {
                 label: "Danger present",
                 colour: "bg-red-50 border-red-200",
                 badge: "bg-red-100 text-red-700",
-                body: "An immediate risk to the occupants of the property. A C1 code means the engineer must make the hazard safe before leaving. The EICR result will be 'unsatisfactory.' Remedial works are required immediately — the property must not be occupied until the C1 is resolved and evidenced.",
+                body: "An immediate risk to the occupants of the property. A C1 code means the engineer must make the hazard safe before leaving. The EICR result will be 'unsatisfactory.' Remedial works are required immediately. The property must not be occupied until the C1 is resolved and evidenced.",
               },
               {
                 code: "C2",
@@ -726,14 +726,14 @@ export default function EicrPage() {
                 label: "Improvement recommended",
                 colour: "bg-yellow-50 border-yellow-200",
                 badge: "bg-yellow-100 text-yellow-700",
-                body: "An item that doesn't fully meet the current standard but is not dangerous. A C3 code does not cause the EICR to fail — your property can still receive a 'satisfactory' result. Addressing C3 codes is strongly recommended but not legally required within a set timeframe.",
+                body: "An item that doesn't fully meet the current standard but is not dangerous. A C3 code does not cause the EICR to fail. Your property can still receive a 'satisfactory' result. Addressing C3 codes is strongly recommended but not legally required within a set timeframe.",
               },
               {
                 code: "FI",
                 label: "Further investigation required",
                 colour: "bg-blue-50 border-blue-200",
                 badge: "bg-blue-100 text-blue-700",
-                body: "An area that could not be fully assessed during the inspection — typically due to restricted access or concealed wiring. A property with FI codes cannot receive a satisfactory result until the investigation is completed and findings confirmed.",
+                body: "An area that could not be fully assessed during the inspection, typically due to restricted access or concealed wiring. A property with FI codes cannot receive a satisfactory result until the investigation is completed and findings confirmed.",
               },
             ].map(({ code, label, colour, badge, body }) => (
               <div
@@ -808,17 +808,17 @@ export default function EicrPage() {
               {
                 step: "01",
                 title: "Book online",
-                body: "Select your property size, choose a date and pay securely online. Next-day slots available across London and the M25 area — no phone calls required. You'll receive a booking confirmation immediately.",
+                body: "Select your property size, choose a date and pay securely online. Next-day slots available across London and the M25 area, no phone calls required. You'll receive a booking confirmation immediately.",
               },
               {
                 step: "02",
                 title: "Accredited electrician visits",
-                body: "A NICEIC approved or NAPIT certified electrician arrives at your agreed time and carries out the full EICR inspection. You don't need to be present — a tenant, keyholder or letting agent can provide access. The inspection typically takes 2–4 hours.",
+                body: "A NICEIC approved or NAPIT certified electrician arrives at your agreed time and carries out the full EICR inspection. You don't need to be present. A tenant, keyholder or letting agent can provide access. The inspection typically takes 2–4 hours.",
               },
               {
                 step: "03",
                 title: "Certificate emailed within 24 hours",
-                body: "Your signed EICR certificate and report are emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant, upload it to your letting agent portal — it arrives fast.",
+                body: "Your signed EICR certificate and report are emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant, upload it to your letting agent portal. It arrives fast.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex flex-col gap-3">
@@ -851,7 +851,7 @@ export default function EicrPage() {
                 Covering all 33 London boroughs &amp; the M25 area
               </p>
               <p className="text-sm text-brand-grey mb-3">
-                From Croydon to Enfield, Hounslow to Havering — next-day
+                From Croydon to Enfield, Hounslow to Havering, next-day
                 appointments available across Greater London and the home counties.
               </p>
               <Link
@@ -871,7 +871,7 @@ export default function EicrPage() {
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Every EICR we carry out is performed by an electrician holding
-            either NICEIC approval or NAPIT certification — both
+            either NICEIC approval or NAPIT certification, both
             government-recognised competent person schemes, assessed annually
             against BS 7671 (the IET Wiring Regulations) by independent
             technical auditors. NICEIC is the UK&apos;s largest electrical
@@ -974,7 +974,7 @@ export default function EicrPage() {
             What the electrician actually tests
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            An EICR is not a visual check — it involves specialist test equipment and a
+            An EICR is not a visual check. It involves specialist test equipment and a
             series of electrical measurements on every circuit in your property. Here is
             what each test checks and why it matters for your tenants&apos; safety.
           </p>
@@ -990,23 +990,23 @@ export default function EicrPage() {
             {[
               {
                 title: "Continuity of protective conductors (the earth test)",
-                body: "Checks that the earth wire in every circuit is intact and has a low electrical resistance. The earth wire is your last line of defence — if a fault occurs, it carries fault current safely to earth and trips the circuit breaker before anyone receives a shock. A broken or high-resistance earth is typically a C2 observation.",
+                body: "Checks that the earth wire in every circuit is intact and has a low electrical resistance. The earth wire is your last line of defence. If a fault occurs, it carries fault current safely to earth and trips the circuit breaker before anyone receives a shock. A broken or high-resistance earth is typically a C2 observation.",
               },
               {
                 title: "Insulation resistance",
-                body: "Applies a high test voltage to the wiring insulation and measures how well it resists current leakage. Good insulation should show at least 1 Megaohm (MΩ) of resistance. Low insulation resistance indicates cable deterioration, moisture ingress, or damage — and is a common finding in older London properties.",
+                body: "Applies a high test voltage to the wiring insulation and measures how well it resists current leakage. Good insulation should show at least 1 Megaohm (MΩ) of resistance. Low insulation resistance indicates cable deterioration, moisture ingress, or damage, and is a common finding in older London properties.",
               },
               {
                 title: "Polarity",
-                body: "Confirms that live, neutral and earth wires are connected to the correct terminals everywhere in the installation. Reversed polarity — live and neutral swapped — is dangerous because a switch in the off position may still leave the appliance live. Polarity failures are typically C2.",
+                body: "Confirms that live, neutral and earth wires are connected to the correct terminals everywhere in the installation. Reversed polarity, live and neutral swapped, is dangerous because a switch in the off position may still leave the appliance live. Polarity failures are typically C2.",
               },
               {
                 title: "Earth fault loop impedance (EFLI)",
-                body: "Measures the total electrical resistance of the fault current path — from the live conductor, through a fault, through earth, and back to the supply. This confirms that in a real fault, enough current will flow to trip the circuit breaker quickly enough to protect people.",
+                body: "Measures the total electrical resistance of the fault current path, from the live conductor, through a fault, through earth, and back to the supply. This confirms that in a real fault, enough current will flow to trip the circuit breaker quickly enough to protect people.",
               },
               {
                 title: "RCD testing",
-                body: "Residual Current Devices (RCDs) are the safety devices that disconnect power within 40 milliseconds when they detect a fault current as small as 30mA — fast enough to prevent a fatal electric shock. The test confirms each RCD trips within this time. Missing RCDs on socket circuits is the single most common C2 observation on UK EICRs.",
+                body: "Residual Current Devices (RCDs) are the safety devices that disconnect power within 40 milliseconds when they detect a fault current as small as 30mA, fast enough to prevent a fatal electric shock. The test confirms each RCD trips within this time. Missing RCDs on socket circuits is the single most common C2 observation on UK EICRs.",
               },
             ].map((item) => (
               <details key={item.title} className="group rounded-xl border border-border bg-warm-white">
@@ -1032,7 +1032,7 @@ export default function EicrPage() {
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center mb-6">
             <p className="text-brand-charcoal/80 leading-relaxed">
               Section 21 of the Housing Act 1988 allows landlords to regain possession of
-              their property without giving a reason — but only if they have met all their
+              their property without giving a reason, but only if they have met all their
               legal obligations to the tenant. A missing or invalid EICR is one of several
               compliance failures that makes a Section 21 notice legally invalid. If a tenant
               challenges an invalid Section 21 in court, the landlord cannot regain possession
@@ -1155,7 +1155,7 @@ export default function EicrPage() {
             electrician will confirm your appointment. Certificate emailed within 24 hours.
           </p>
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
-            Next-day appointments available across London and the M25 area —
+            Next-day appointments available across London and the M25 area,
             or call{" "}
             <a
               href={PHONE_HREF}
@@ -1169,7 +1169,7 @@ export default function EicrPage() {
             href="/book?service=eicr"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
-            Book my EICR — from £{lowestPrice}
+            Book my EICR, from £{lowestPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
             No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed within 24 hours.

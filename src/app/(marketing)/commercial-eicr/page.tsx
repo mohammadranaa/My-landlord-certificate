@@ -41,7 +41,7 @@ const entryPrice = COMMERCIAL_EICR_TABLE[0].price;
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Commercial EICR — Electrical Installation Condition Report",
+  name: "Commercial EICR, Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   description:
     "Commercial Electrical Installation Condition Report (EICR) for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued within 24 hours.",
@@ -110,7 +110,7 @@ const faqSchema = {
       name: "How often is a commercial EICR required?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops — 5 years; industrial premises — 3 years; HMO common parts — 5 years; swimming pools — 1 year; construction site temporary installations — 3 months. A change of occupancy or significant change of use also triggers a new EICR. Always follow the interval stated on the previous EICR report.",
+        text: "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops, 5 years; industrial premises, 3 years; HMO common parts, 5 years; swimming pools, 1 year; construction site temporary installations, 3 months. A change of occupancy or significant change of use also triggers a new EICR. Always follow the interval stated on the previous EICR report.",
       },
     },
     {
@@ -134,7 +134,7 @@ const faqSchema = {
       name: "What happens if remedial work is needed after a commercial EICR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Any C1 (danger present) defects must be rectified immediately — the premises should not be occupied until the fault is made safe. C2 defects must be remedied as a matter of urgency before the next inspection cycle. C3 recommendations should be addressed at the earliest practicable opportunity. A follow-up verification certificate is issued once remedial work is completed. We can quote for remedial electrical work at the time of inspection.",
+        text: "Any C1 (danger present) defects must be rectified immediately, the premises should not be occupied until the fault is made safe. C2 defects must be remedied as a matter of urgency before the next inspection cycle. C3 recommendations should be addressed at the earliest practicable opportunity. A follow-up verification certificate is issued once remedial work is completed. We can quote for remedial electrical work at the time of inspection.",
       },
     },
     {
@@ -142,7 +142,7 @@ const faqSchema = {
       name: "Which businesses and premises need a commercial EICR?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Any non-domestic premises with a fixed electrical installation requires periodic inspection — including retail units, offices, warehouses, restaurants, care homes, HMO blocks with commercial common parts, mixed-use buildings, schools, leisure facilities, and places of worship. Landlords of commercial property are required by the Electricity at Work Regulations 1989 to ensure electrical systems are maintained in a safe condition.",
+        text: "Any non-domestic premises with a fixed electrical installation requires periodic inspection, including retail units, offices, warehouses, restaurants, care homes, HMO blocks with commercial common parts, mixed-use buildings, schools, leisure facilities, and places of worship. Landlords of commercial property are required by the Electricity at Work Regulations 1989 to ensure electrical systems are maintained in a safe condition.",
       },
     },
   ],
@@ -159,7 +159,7 @@ const faqItems = [
   {
     question: "How often is a commercial EICR required?",
     answer:
-      "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops — 5 years; industrial premises and factories — 3 years; HMO common parts — 5 years; swimming pools — 1 year; construction site temporary installations — 3 months. A change of occupancy or significant change of use also triggers a new EICR requirement, regardless of when the last one was issued. Some commercial leases and insurance policies specify a shorter cycle than the standard recommendation — always check your lease and policy. The safest rule is to follow the interval stated on the previous EICR report, which reflects the actual condition of that specific installation.",
+      "The IET Wiring Regulations (BS 7671) set maximum recommended intervals by premises type: offices and shops, 5 years; industrial premises and factories, 3 years; HMO common parts, 5 years; swimming pools, 1 year; construction site temporary installations, 3 months. A change of occupancy or significant change of use also triggers a new EICR requirement, regardless of when the last one was issued. Some commercial leases and insurance policies specify a shorter cycle than the standard recommendation, always check your lease and policy. The safest rule is to follow the interval stated on the previous EICR report, which reflects the actual condition of that specific installation.",
   },
   {
     question: "What is included in a commercial EICR?",
@@ -169,12 +169,12 @@ const faqItems = [
   {
     question: "How does a commercial EICR differ from a domestic EICR?",
     answer:
-      "Both follow BS 7671, but commercial installations are technically more complex in several important ways. Commercial premises frequently have three-phase supplies (400V between phases rather than 230V single-phase), which require different test equipment, higher-rated protective devices, and specific knowledge of three-phase distribution. Where a domestic property typically has one consumer unit with 10–16 circuits, a commercial premises may have multiple sub-distribution boards, main and sub-main switchgear, and hundreds of circuits across several floors. Commercial installations also include equipment not found domestically — motor starters, transformer supplies, specialist containment systems, and data infrastructure earthing. For these reasons, commercial EICR pricing is based on the number of consumer units and distribution boards rather than bedroom count. All our commercial EICR engineers hold NICEIC commercial approval and carry the appropriate test equipment for three-phase and large-scale installations.",
+      "Both follow BS 7671, but commercial installations are technically more complex in several important ways. Commercial premises frequently have three-phase supplies (400V between phases rather than 230V single-phase), which require different test equipment, higher-rated protective devices, and specific knowledge of three-phase distribution. Where a domestic property typically has one consumer unit with 10–16 circuits, a commercial premises may have multiple sub-distribution boards, main and sub-main switchgear, and hundreds of circuits across several floors. Commercial installations also include equipment not found domestically, motor starters, transformer supplies, specialist containment systems, and data infrastructure earthing. For these reasons, commercial EICR pricing is based on the number of consumer units and distribution boards rather than bedroom count. All our commercial EICR engineers hold NICEIC commercial approval and carry the appropriate test equipment for three-phase and large-scale installations.",
   },
   {
     question: "What happens if remedial work is needed after a commercial EICR?",
     answer:
-      "Any C1 (danger present) defect must be made safe immediately — the affected part of the installation should be isolated until the fault is rectified. C2 defects must be addressed urgently before the next scheduled inspection. C3 recommendations should be implemented at the earliest practicable opportunity. Once remedial work is complete, a verification certificate is issued. Our engineers can quote for remedial electrical work at the time of the inspection, saving you a separate call-out.",
+      "Any C1 (danger present) defect must be made safe immediately, the affected part of the installation should be isolated until the fault is rectified. C2 defects must be addressed urgently before the next scheduled inspection. C3 recommendations should be implemented at the earliest practicable opportunity. Once remedial work is complete, a verification certificate is issued. Our engineers can quote for remedial electrical work at the time of the inspection, saving you a separate call-out.",
   },
   {
     question: "Which businesses and premises need a commercial EICR?",
@@ -221,12 +221,12 @@ export default function CommercialEicrPage() {
           </p>
 
           <Heading level={1} id="commercial-eicr-heading" inverted className="mb-4 max-w-2xl">
-            Commercial EICR — from £{entryPrice}
+            Commercial EICR, from £{entryPrice}
           </Heading>
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A full electrical installation condition report for commercial premises,
-            HMO blocks, and mixed-use buildings. Priced by consumer unit — from £{entryPrice}{" "}
+            HMO blocks, and mixed-use buildings. Priced by consumer unit, from £{entryPrice}{" "}
             for a single consumer unit with up to 12 circuits. Written report issued within 24 hours.
           </p>
 
@@ -242,7 +242,7 @@ export default function CommercialEicrPage() {
               href="/book?service=commercial-eicr&type=commercial"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book Commercial EICR — from £{entryPrice}
+              Book Commercial EICR, from £{entryPrice}
             </Link>
             <a
               href="#pricing"
@@ -291,7 +291,7 @@ export default function CommercialEicrPage() {
             What is a commercial EICR?
           </Heading>
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
-            A commercial EICR — Electrical Installation Condition Report — is a
+            A commercial EICR, Electrical Installation Condition Report, is a
             comprehensive assessment of the fixed electrical installation inside a
             non-domestic or commercial property. Carried out by a NICEIC approved
             electrician, the inspection covers every consumer unit, distribution board,
@@ -302,15 +302,15 @@ export default function CommercialEicrPage() {
             The inspector tests each circuit for continuity, polarity, insulation resistance,
             and earth loop impedance, and verifies that every protective device operates
             correctly within its design parameters. Any defect found is classified using the
-            standard coding system: C1 (danger present — requires immediate action), C2
-            (potentially dangerous — requires urgent remediation), C3 (improvement
+            standard coding system: C1 (danger present, requires immediate action), C2
+            (potentially dangerous, requires urgent remediation), C3 (improvement
             recommended), or FI (further investigation required before a verdict can be
             reached). The completed written report states whether the installation is
             satisfactory or unsatisfactory overall.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            Unlike a domestic EICR — which is priced by property size and typically covers
-            a single consumer unit — a commercial EICR is priced by the number of consumer
+            Unlike a domestic EICR, which is priced by property size and typically covers
+            a single consumer unit, a commercial EICR is priced by the number of consumer
             units or distribution boards, reflecting the greater complexity of commercial
             installations. Our NICEIC approved engineers are qualified and insured for
             non-domestic electrical work across all 33 London boroughs.
@@ -347,12 +347,12 @@ export default function CommercialEicrPage() {
               {
                 category: "HMO and block landlords",
                 detail:
-                  "Where an HMO has commercial common parts — entrance lobbies, stairwells, or shared facilities that are not covered by domestic EICR rules — a commercial EICR is required for those areas.",
+                  "Where an HMO has commercial common parts, entrance lobbies, stairwells, or shared facilities that are not covered by domestic EICR rules, a commercial EICR is required for those areas.",
               },
               {
                 category: "Mixed-use buildings",
                 detail:
-                  "Buildings that combine residential upper floors with ground-floor commercial units require separate EICRs for each distinct installation — a domestic EICR for the flats, a commercial EICR for the commercial supply.",
+                  "Buildings that combine residential upper floors with ground-floor commercial units require separate EICRs for each distinct installation, a domestic EICR for the flats, a commercial EICR for the commercial supply.",
               },
               {
                 category: "Business occupiers",
@@ -393,14 +393,14 @@ export default function CommercialEicrPage() {
           </p>
           <ul className="space-y-3 mb-5" role="list">
             {[
-              "Consumer units and distribution boards — condition of enclosures, labelling, protection ratings, and accessibility",
-              "Protective devices — correct rating and type of circuit breakers, fuses, and RCDs for each circuit",
-              "Earthing and main protective bonding — continuity, conductor sizing, and compliance with current regulations",
-              "Supplementary bonding — equipotential bonding in bathrooms, kitchens, and areas with simultaneous access to earth",
-              "Wiring systems — condition of cables, containment, and segregation from other services",
-              "Circuits — continuity, polarity, insulation resistance, and earth loop impedance on every circuit",
-              "RCD functionality — trip-time testing to confirm operation within the required 40ms or 300ms limits",
-              "Fixed equipment — visual inspection of luminaires, socket outlets, switches, and permanently connected equipment",
+              "Consumer units and distribution boards, condition of enclosures, labelling, protection ratings, and accessibility",
+              "Protective devices, correct rating and type of circuit breakers, fuses, and RCDs for each circuit",
+              "Earthing and main protective bonding, continuity, conductor sizing, and compliance with current regulations",
+              "Supplementary bonding, equipotential bonding in bathrooms, kitchens, and areas with simultaneous access to earth",
+              "Wiring systems, condition of cables, containment, and segregation from other services",
+              "Circuits, continuity, polarity, insulation resistance, and earth loop impedance on every circuit",
+              "RCD functionality, trip-time testing to confirm operation within the required 40ms or 300ms limits",
+              "Fixed equipment, visual inspection of luminaires, socket outlets, switches, and permanently connected equipment",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">
@@ -442,7 +442,7 @@ export default function CommercialEicrPage() {
           </p>
 
           <PriceTable
-            title="Commercial EICR — price by consumer unit count"
+            title="Commercial EICR, price by consumer unit count"
             rows={COMMERCIAL_EICR_TABLE}
             highlightCheapest
           />
@@ -536,7 +536,7 @@ export default function CommercialEicrPage() {
               {
                 step: "2",
                 title: "NICEIC approved engineer visits",
-                body: "A NICEIC approved commercial electrician attends the premises at the agreed time. They carry out a full inspection and test of every consumer unit, circuit, and protective device. The inspection is non-destructive — no drilling or damage to surfaces.",
+                body: "A NICEIC approved commercial electrician attends the premises at the agreed time. They carry out a full inspection and test of every consumer unit, circuit, and protective device. The inspection is non-destructive, no drilling or damage to surfaces.",
               },
               {
                 step: "3",
@@ -560,7 +560,7 @@ export default function CommercialEicrPage() {
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
-            Commercial EICR — frequently asked questions
+            Commercial EICR, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
@@ -628,13 +628,13 @@ export default function CommercialEicrPage() {
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes. A NICEIC approved commercial electrician
             will be in touch to confirm your appointment. From £{entryPrice} for a
-            single consumer unit — written report issued within 24 hours.
+            single consumer unit, written report issued within 24 hours.
           </p>
           <Link
             href="/book?service=commercial-eicr&type=commercial"
             className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
           >
-            Book Commercial EICR — from £{entryPrice}
+            Book Commercial EICR, from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-300">
             Fixed pricing. No hidden charges. Written report within 24 hours.
