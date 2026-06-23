@@ -229,7 +229,7 @@ export default function EPCPage() {
                   width={1600}
                   height={1000}
                   priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100%, 50vw"
                   className="w-full h-auto object-cover"
                 />
               </div>
@@ -290,7 +290,7 @@ export default function EPCPage() {
             alt="Accredited domestic energy assessor inspecting a boiler and heating controls during an EPC assessment"
             width={1200}
             height={800}
-            sizes="(max-width: 768px) 100vw, 768px"
+            sizes="(max-width: 768px) 100%, 768px"
             className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
           />
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
@@ -358,7 +358,7 @@ export default function EPCPage() {
               alt="EPC energy efficiency rating chart from A (most efficient) to G (least efficient), with C marked as the minimum rental standard"
               width={1080}
               height={1080}
-              sizes="(max-width: 768px) 100vw, 460px"
+              sizes="(max-width: 768px) 100%, 460px"
               className="rounded-xl border border-border shadow-sm w-full"
             />
             <div className="space-y-2">
@@ -480,7 +480,7 @@ export default function EPCPage() {
             alt="Energy assessor measuring loft insulation depth as part of an EPC assessment"
             width={1200}
             height={800}
-            sizes="(max-width: 768px) 100vw, 768px"
+            sizes="(max-width: 768px) 100%, 768px"
             className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
           />
 
@@ -633,7 +633,7 @@ export default function EPCPage() {
               alt="Example of a domestic Energy Performance Certificate showing the A–G energy efficiency rating"
               width={1200}
               height={1500}
-              sizes="(max-width: 768px) 100vw, 280px"
+              sizes="(max-width: 768px) 100%, 280px"
               className="rounded-xl border border-border shadow-sm w-full md:w-[280px] mx-auto"
             />
           </div>
@@ -647,7 +647,7 @@ export default function EPCPage() {
             alt="Accredited energy assessor arriving at a London property for an EPC appointment"
             width={1200}
             height={800}
-            sizes="(max-width: 768px) 100vw, 768px"
+            sizes="(max-width: 768px) 100%, 768px"
             className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-72 object-cover object-[center_30%] mb-8"
           />
           <div className="flex flex-col gap-6">
@@ -696,7 +696,7 @@ export default function EPCPage() {
               alt="London landlord reviewing their emailed EPC certificate at home"
               width={1200}
               height={800}
-              sizes="(max-width: 768px) 100vw, 300px"
+              sizes="(max-width: 768px) 100%, 300px"
               className="rounded-2xl border border-border shadow-sm w-full md:w-[300px] h-auto"
             />
             <div>
