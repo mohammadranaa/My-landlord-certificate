@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_EXTINGUISHER_SUPPLY_PRICES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -282,8 +282,39 @@ export default function FireExtinguisherTestingPage() {
               Parking restrictions +£{ADDITIONAL_CHARGES.parking}
             </span>
           </p>
-          <p className="text-sm text-brand-grey mt-2">
-            Replacement extinguisher supply quoted separately — ask us when booking.
+
+          <p className="text-sm font-semibold text-brand-grey uppercase tracking-wider mt-8 mb-4">
+            Supply &amp; Installation
+          </p>
+          <p className="text-brand-charcoal/80 text-sm leading-relaxed mb-4">
+            Need a new extinguisher or fire blanket? Our engineers supply and install all types
+            of fire extinguisher to BS 5306 standard. Every new installation includes a
+            commissioning certificate and is logged for your compliance records. Fire blankets
+            are British Standard BS EN 1869 certified and suitable for kitchen use in HMOs,
+            care homes, and commercial kitchens.
+          </p>
+          <div className="rounded-xl border border-border overflow-hidden">
+            <div className="bg-compliance-blue px-5 py-4">
+              <p className="text-sm font-semibold text-white">Supply &amp; Installation — Fixed Prices</p>
+            </div>
+            <div className="px-5 py-4 flex items-center justify-between bg-warm-white">
+              <span className="text-sm text-brand-charcoal">New Fire Extinguisher Installation</span>
+              <span className="text-sm font-bold text-brand-charcoal tabular-nums">
+                From £{FIRE_EXTINGUISHER_SUPPLY_PRICES["New Fire Extinguisher Installation"]}
+              </span>
+            </div>
+            <div className="px-5 py-4 flex items-center justify-between bg-white">
+              <span className="text-sm text-brand-charcoal">Fire Blanket (supply &amp; fit)</span>
+              <span className="text-sm font-bold text-brand-charcoal tabular-nums">
+                £{FIRE_EXTINGUISHER_SUPPLY_PRICES["Fire Blanket"]}
+              </span>
+            </div>
+          </div>
+          <p className="text-sm text-brand-grey mt-4">
+            New extinguisher price depends on type and size — CO₂, dry powder, foam, or wet chemical.
+            Call{" "}
+            <a href={`tel:${TEL}`} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a>{" "}
+            for a supply and fit quote for your premises.
           </p>
         </section>
 

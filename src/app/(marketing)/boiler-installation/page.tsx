@@ -105,26 +105,26 @@ export default function BoilerInstallationPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-white border-b border-border py-10 lg:py-14">
+      <section className="bg-compliance-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-brand-grey flex-wrap">
-              <li><Link href="/" className="hover:text-compliance-blue transition-colors">Home</Link></li>
+            <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li><Link href="/gas-safety" className="hover:text-compliance-blue transition-colors">Gas Safety</Link></li>
+              <li><Link href="/gas-safety" className="hover:text-white transition-colors">Gas Safety</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-brand-charcoal font-medium">Boiler Installation</li>
+              <li className="text-white font-medium">Boiler Installation</li>
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
+          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Boiler Installation London from £{BOILER_INSTALLATION_FROM.toLocaleString()}
           </h1>
-          <PriceDisplay price={BOILER_INSTALLATION_FROM} from size="lg" className="mb-4" />
-          <p className="text-brand-grey mb-4">
+          <PriceDisplay price={BOILER_INSTALLATION_FROM} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <p className="text-blue-100 mb-4">
             Gas Safe Registered · Supply &amp; install · CP12 included · 10-year warranty
           </p>
-          <TrustBadges serviceKey="boiler-installation" variant="light" className="mb-6" />
+          <TrustBadges serviceKey="boiler-installation" variant="dark" className="mb-6" />
           <div className="flex flex-wrap gap-3">
             <a
               href="mailto:info@mylandlordcertificate.co.uk"
@@ -134,7 +134,7 @@ export default function BoilerInstallationPage() {
             </a>
             <Link
               href="/book?service=boiler-installation"
-              className="inline-flex items-center border border-border hover:border-compliance-blue text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+              className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               Request a Survey
             </Link>

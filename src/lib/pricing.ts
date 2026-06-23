@@ -249,6 +249,11 @@ export const FIRE_EXTINGUISHER_TABLE: readonly PriceRow[] = [
   { label: "15–20 Extinguishers", price: 204.99 },
 ];
 
+export const FIRE_EXTINGUISHER_SUPPLY_PRICES = {
+  "New Fire Extinguisher Installation": 174.99,
+  "Fire Blanket": 149.99,
+} as const;
+
 // ─── Asbestos Survey (Management Survey) ─────────────────────────────────────
 
 export const ASBESTOS_SURVEY_TABLE: readonly PriceRow[] = [

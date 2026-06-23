@@ -132,6 +132,8 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
       { label: "6–10 Extinguishers", price: 134.99 },
       { label: "10–15 Extinguishers", price: 174.99 },
       { label: "15–20 Extinguishers", price: 204.99 },
+      { label: "New Fire Extinguisher Installation", price: 174.99 },
+      { label: "Fire Blanket Supply & Fit", price: 149.99 },
     ],
   },
   {
@@ -320,6 +322,8 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
       { label: "6–10 Extinguishers", price: 134.99 },
       { label: "10–15 Extinguishers", price: 174.99 },
       { label: "15–20 Extinguishers", price: 204.99 },
+      { label: "New Fire Extinguisher Installation", price: 174.99 },
+      { label: "Fire Blanket Supply & Fit", price: 149.99 },
     ],
   },
   {
