@@ -468,13 +468,13 @@ export default function FireRiskAssessmentPage() {
               },
               {
                 step: "2",
-                title: "Prioritised action plan, critical items first",
-                body: "Every finding in the report is given a risk rating: critical (immediate risk requiring same-day action), significant (action required within 3 months), moderate (action required within 6 months), or advisory (recommended improvement with no fixed timescale). The action plan is ordered from highest to lowest priority, so you and your managing agent know exactly what needs to happen first.",
+                title: "Prioritised action plan — critical items first",
+                body: "Every finding in the report is given a risk rating: critical (immediate risk requiring immediate action), significant (action required within 3 months), moderate (action required within 6 months), or advisory (recommended improvement with no fixed timescale). The action plan is ordered from highest to lowest priority, so you and your managing agent know exactly what needs to happen first.",
               },
               {
                 step: "3",
                 title: "Recommended timescales for every remediation",
-                body: "Each action in the plan carries a recommended completion date. Where a matter is urgent, a propped fire door or a blocked escape route, this will be the same day or within 24 hours. Longer-term improvements such as a smoke detection upgrade or compartmentation works will have a realistic timeframe based on the severity of the risk.",
+                body: "Each action in the plan carries a recommended completion date. Where a matter is urgent — a propped fire door or a blocked escape route — this will be immediate or within 24 hours. Longer-term improvements such as a smoke detection upgrade or compartmentation works will have a realistic timeframe based on the severity of the risk.",
               },
               {
                 step: "4",

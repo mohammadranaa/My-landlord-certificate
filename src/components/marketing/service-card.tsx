@@ -41,7 +41,7 @@ export function ServiceCard({
 
       <div className="flex items-center justify-between">
         <span className="text-xs text-brand-grey">
-          {turnaroundDays === 1 ? "Same-day certificate" : `Certificate in ${turnaroundDays} days`}
+          {turnaroundDays === 1 ? "Certificate within 24 hours" : `Certificate in ${turnaroundDays} days`}
         </span>
         <span className="text-brand-blue text-sm font-medium group-hover:underline">
           Learn more →

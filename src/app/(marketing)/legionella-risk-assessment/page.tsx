@@ -594,7 +594,7 @@ export default function LegionellaRiskAssessmentPage() {
               {
                 step: "5",
                 title: "Prioritised action plan",
-                body: "The action plan sets out every corrective measure required, prioritised by urgency: immediate actions (control failures requiring same-day attention), short-term actions (to be completed within a defined timeframe), and ongoing maintenance requirements (flushing schedules, temperature monitoring, and reassessment dates).",
+                body: "The action plan sets out every corrective measure required, prioritised by urgency: immediate actions (control failures requiring immediate attention), short-term actions (to be completed within a defined timeframe), and ongoing maintenance requirements (flushing schedules, temperature monitoring, and reassessment dates).",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">

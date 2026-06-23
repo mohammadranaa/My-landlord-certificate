@@ -68,7 +68,7 @@ export function ServiceCard({
         </span>
         <span className="text-xs text-brand-grey">
           {turnaroundDays === 1
-            ? "Same-day cert"
+            ? "Within 24 hrs"
             : turnaroundDays
               ? `${turnaroundDays}-day cert`
               : "Fast turnaround"}
