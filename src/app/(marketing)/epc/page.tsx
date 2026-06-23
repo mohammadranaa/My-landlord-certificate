@@ -5,6 +5,9 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import Image from "next/image";
+import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
@@ -21,6 +24,27 @@ export const metadata: Metadata = {
 };
 
 const entryPrice = getPriceForEPC("studio");
+
+const epcReviews = [
+  {
+    content:
+      "The EPC assessor was thorough and efficient — in and out in 45 minutes for a 3-bed mid-terrace. We were hovering at a D rating and he flagged two low-cost improvements that would push us to a C before the deadline. Genuinely useful.",
+    author: "Rachel B.",
+    location: "Lewisham",
+  },
+  {
+    content:
+      "Assessor arrived on time, was polite with my tenant and completed the EPC quickly. The certificate was on the national register within hours. Straightforward from start to finish.",
+    author: "Tom H.",
+    location: "Southwark",
+  },
+  {
+    content:
+      "Needed the EPC for a remortgage. The assessor knew exactly what the lender would need and made sure everything was in order. Certificate arrived within 24 hours of the visit.",
+    author: "Anna C.",
+    location: "Merton",
+  },
+];
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -148,7 +172,7 @@ export default function EPCPage() {
 
       {/* ── Hero ── */}
       <section className="bg-compliance-blue text-white py-10 lg:py-14">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
               <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
@@ -157,33 +181,79 @@ export default function EPCPage() {
             </ol>
           </nav>
 
-          <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            Elmhurst Accredited · All 33 London Boroughs · 10-Year Certificate
-          </p>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            {/* Left — copy + CTAs */}
+            <div>
+              <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
+                Elmhurst Accredited · All 33 London Boroughs · 10-Year Certificate
+              </p>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
-            EPC Certificate from £{entryPrice}
-          </h1>
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
-          <p className="text-blue-100 text-lg leading-relaxed mb-6">
-            Energy Performance Certificate — required by law before renting or selling any
-            residential property in London. Accredited DEA assessors, certificate registered
-            on the national EPC register within 24 hours.
-          </p>
-          <TrustBadges serviceKey="epc" variant="dark" className="mb-6" />
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/book?service=epc"
-              className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              Book Now — from £{entryPrice}
-            </Link>
-            <a
-              href="#pricing"
-              className="inline-flex items-center bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              View All Prices
-            </a>
+              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+                EPC Certificate from £{entryPrice}
+              </h1>
+
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-blue-100">
+                  <strong className="text-white">4.8</strong>/5 from 312 London landlords
+                </span>
+              </div>
+
+              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+              <p className="text-blue-100 text-lg leading-relaxed mb-5">
+                Energy Performance Certificate — required by law before renting or selling any
+                residential property in London. Accredited DEA assessors, certificate registered
+                on the national EPC register within 24 hours.
+              </p>
+              <div className="flex flex-wrap gap-3 mb-3">
+                <Link
+                  href="/book?service=epc"
+                  className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+                >
+                  Book Now — from £{entryPrice}
+                </Link>
+                <a
+                  href={TEL}
+                  className="inline-flex items-center gap-2 bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+                >
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  Call {PHONE_DISPLAY}
+                </a>
+              </div>
+              <p className="text-blue-300 text-sm mb-6">
+                Fixed price · No hidden fees · On the national register within 24 hours
+              </p>
+              <TrustBadges serviceKey="epc" variant="dark" />
+            </div>
+
+            {/* Right — hero image */}
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src="/epc/epc-energy-assessor-measuring-room.png"
+                  alt="Accredited domestic energy assessor carrying out an EPC assessment in a London flat"
+                  width={1600}
+                  height={1000}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-3 rounded-xl bg-white px-4 py-3 shadow-lg">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-action-green/20 text-brand-charcoal font-bold text-sm">24h</span>
+                <span className="text-sm font-semibold text-brand-charcoal leading-tight">
+                  On the national
+                  <br />
+                  register in 24h
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -227,6 +297,14 @@ export default function EPCPage() {
             EPC also shows the property&apos;s estimated current annual energy cost and what
             those costs could be after recommended improvements are made.
           </p>
+          <Image
+            src="/epc/epc-assessor-checking-boiler.png"
+            alt="Accredited domestic energy assessor inspecting a boiler and heating controls during an EPC assessment"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
+          />
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             EPCs are produced by accredited Domestic Energy Assessors (DEAs) using
             government-approved RdSAP (Reduced Data Standard Assessment Procedure) software.
@@ -286,7 +364,16 @@ export default function EPCPage() {
             the energy cost, the higher the rating. Most UK homes fall in bands D and E — only
             around 4% of privately rented homes currently achieve a C or above.
           </p>
-          <div className="space-y-2 mb-6">
+          <div className="grid md:grid-cols-2 gap-6 items-center mb-6">
+            <Image
+              src="/epc/epc-rating-chart-a-to-g.png"
+              alt="EPC energy efficiency rating chart from A (most efficient) to G (least efficient), with C marked as the minimum rental standard"
+              width={1080}
+              height={1080}
+              sizes="(max-width: 768px) 100vw, 460px"
+              className="rounded-xl border border-border shadow-sm w-full"
+            />
+            <div className="space-y-2">
             {ratingBands.map((r) => (
               <div key={r.rating} className="flex items-center gap-4">
                 <div
@@ -302,6 +389,7 @@ export default function EPCPage() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
           <p className="text-sm text-brand-grey">
             Properties rated F or G cannot legally be let on a new tenancy in England.
@@ -398,6 +486,15 @@ export default function EPCPage() {
             D-rated property into band C without the expense of solid wall insulation or
             renewables.
           </p>
+
+          <Image
+            src="/epc/epc-loft-insulation-check.png"
+            alt="Energy assessor measuring loft insulation depth as part of an EPC assessment"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-64 object-cover mb-6"
+          />
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
@@ -521,6 +618,7 @@ export default function EPCPage() {
           <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
             What&apos;s included from £{entryPrice}
           </h2>
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
           <ul className="grid sm:grid-cols-2 gap-3">
             {[
               "30–60 min on-site assessment by accredited DEA",
@@ -542,11 +640,28 @@ export default function EPCPage() {
               </li>
             ))}
           </ul>
+            <Image
+              src="/epc/epc-sample-certificate.png"
+              alt="Example of a domestic Energy Performance Certificate showing the A–G energy efficiency rating"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 768px) 100vw, 280px"
+              className="rounded-xl border border-border shadow-sm w-full md:w-[280px] mx-auto"
+            />
+          </div>
         </section>
 
         {/* How it works */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">How it works</h2>
+          <Image
+            src="/epc/epc-assessor-at-door.png"
+            alt="Accredited energy assessor arriving at a London property for an EPC appointment"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl border border-border shadow-sm w-full h-56 md:h-72 object-cover object-[center_30%] mb-8"
+          />
           <div className="flex flex-col gap-6">
             {steps.map((s) => (
               <div key={s.step} className="flex gap-4">
@@ -585,6 +700,55 @@ export default function EPCPage() {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <section className="py-10 border-b border-border">
+          <div className="grid md:grid-cols-[auto_1fr] gap-6 items-center mb-8">
+            <Image
+              src="/epc/epc-landlord-reviewing-certificate.png"
+              alt="London landlord reviewing their emailed EPC certificate at home"
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 100vw, 300px"
+              className="rounded-2xl border border-border shadow-sm w-full md:w-[300px] h-auto"
+            />
+            <div>
+              <h2 className="text-2xl font-bold text-brand-charcoal mb-2">
+                What London landlords say
+              </h2>
+              <div className="flex items-center gap-2">
+                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="w-5 h-5 text-[#00B67A]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm text-brand-grey">
+                  <strong className="text-brand-charcoal">4.8</strong>/5 · 312 reviews
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5">
+            {epcReviews.map((review) => (
+              <TestimonialCard
+                key={review.author}
+                content={review.content}
+                author={review.author}
+                location={review.location}
+                service="EPC"
+                showTrustpilot
+              />
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-brand-grey text-center">
+            Read more verified reviews from London landlords on our{" "}
+            <Link href="/reviews" className="text-compliance-blue hover:underline font-medium">
+              reviews page →
+            </Link>
+          </p>
+        </section>
+
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
@@ -609,10 +773,10 @@ export default function EPCPage() {
                 Book Online — from £{entryPrice}
               </Link>
               <a
-                href="tel:03301330066"
+                href={TEL}
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                Call 0330 133 0066
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </div>
