@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { usePostHog } from "posthog-js/react";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import type {
@@ -23,7 +22,6 @@ import { SaveQuotePrompt } from "./save-quote-prompt";
 
 
 export function BookingForm() {
-  const posthog = usePostHog();
   const searchParams = useSearchParams();
   const preselectedService = searchParams.get("service") ?? undefined;
   const preselectedType = (searchParams.get("type") as "residential" | "commercial") ?? undefined;
@@ -38,11 +36,6 @@ export function BookingForm() {
   const [data, setData] = useState<PartialBookingData>({
     propertyCategory: preselectedType ?? undefined,
   });
-
-  useEffect(() => {
-    posthog?.capture("booking_started");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   function merge(partial: Partial<PartialBookingData>) {
     setData((prev) => ({ ...prev, ...partial }));
@@ -110,10 +103,6 @@ export function BookingForm() {
   function handleStep1Complete(stepData: Step1Data) {
     const merged = { ...data, ...stepData };
     merge(stepData);
-    posthog?.capture("property_entered", {
-      property_type: stepData.propertyCategory,
-      property_size: stepData.propertySize,
-    });
     void savePartialBooking(1, merged);
     setStep(2);
   }
@@ -121,7 +110,6 @@ export function BookingForm() {
   function handleStep2Complete(stepData: Step2Data) {
     const merged = { ...data, ...stepData };
     merge(stepData);
-    posthog?.capture("contact_entered");
     void savePartialBooking(2, merged);
     setStep(3);
   }
@@ -129,10 +117,6 @@ export function BookingForm() {
   function handleStep3Complete(services: ServiceEntry[]) {
     const merged = { ...data, services };
     merge({ services });
-    posthog?.capture("service_selected", {
-      services: services.map((s) => s.serviceType),
-      service_count: services.length,
-    });
     void savePartialBooking(3, merged);
     setStep(4);
   }
@@ -140,10 +124,6 @@ export function BookingForm() {
   function handleStep4Complete(stepData: Step4Data) {
     const merged = { ...data, ...stepData };
     merge(stepData);
-    posthog?.capture("slot_selected", {
-      preferred_date: stepData.preferredDate,
-      time_preference: stepData.timePreference,
-    });
     void savePartialBooking(4, merged);
     setStep(5);
   }
@@ -152,11 +132,6 @@ export function BookingForm() {
     merge({ acceptedTerms: termsAccepted });
     setIsSubmitting(true);
     setSubmitError(null);
-    posthog?.capture("payment_initiated", {
-      total_price: data.services?.reduce((sum, s) => sum + s.price, 0) ?? 0,
-      service_count: data.services?.length ?? 0,
-    });
-
     const services = data.services ?? [];
     const { discount, total } = calculateBundlePrice(
       services.map((s) => ({
@@ -217,15 +192,8 @@ export function BookingForm() {
         throw new Error("No checkout URL returned");
       }
 
-      posthog?.capture("checkout_redirected", {
-        total_price: grandTotal,
-        services: (data.services ?? []).map((s) => s.serviceType),
-        discount,
-      });
-
       window.location.href = url;
     } catch {
-      posthog?.capture("booking_error");
       setSubmitError(
         "Something went wrong. Please try again or call us on 020 3996 1070.",
       );

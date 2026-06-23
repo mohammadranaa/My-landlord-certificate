@@ -20,7 +20,7 @@ export function ConsentBanner() {
             We use cookies to improve your experience
           </p>
           <p className="text-xs text-brand-grey leading-relaxed">
-            We use analytics cookies (Google Analytics, PostHog) to understand how visitors use our
+            We use analytics cookies (Google Analytics) to understand how visitors use our
             site, and ad cookies (Meta Pixel) to measure our marketing. You can accept or decline
             non-essential cookies.{" "}
             <a href="/privacy" className="text-compliance-blue underline hover:no-underline">
