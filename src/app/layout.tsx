@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
@@ -19,6 +19,14 @@ const defaultTitle = "My Landlord Certificate — UK Property Compliance";
 const defaultDescription =
   "Book EICR, Gas Safety, EPC, Fire Risk Assessment and PAT testing online. NICEIC & Gas Safe accredited engineers. Next-day appointments across London. Fixed prices, no surprises.";
 const siteUrl = "https://www.mylandlordcertificate.co.uk";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -78,7 +86,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-background text-foreground w-full min-w-0 overflow-x-hidden" suppressHydrationWarning>
         {/* Consent Mode v2 default — must run before any GA4 script loads */}
         <Script
           id="ga4-consent-default"
