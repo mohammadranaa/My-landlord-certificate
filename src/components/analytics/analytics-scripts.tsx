@@ -36,8 +36,10 @@ fbq('init','${pixelId}');fbq('track','PageView');`,
 export function AnalyticsScripts() {
   const { consent } = useConsent();
 
-  if (consent !== "granted") return null;
-
+  // The Google tag loads in ALL cases so Consent Mode v2 can model conversions
+  // for visitors who decline (it sends cookieless pings). It respects the
+  // "denied" default set in the root layout until the visitor accepts. Meta
+  // Pixel has no consent mode, so it stays gated behind explicit consent.
   return (
     <>
       <Script
@@ -61,7 +63,7 @@ export function AnalyticsScripts() {
           `,
         }}
       />
-      {META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
+      {consent === "granted" && META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
     </>
   );
 }
