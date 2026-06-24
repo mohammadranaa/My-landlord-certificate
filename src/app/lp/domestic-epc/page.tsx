@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { PriceTable } from "@/components/ui/price-table";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { DOMESTIC_EPC_TABLE, getPriceForEPC } from "@/lib/pricing";
@@ -395,6 +396,18 @@ export default function DomesticEpcLandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Coverage map (display-only, no exits) ── */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">We cover every London borough</h2>
+          <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
+            Accredited assessors across all 33 London boroughs and the surrounding M25 area,
+            with same-week appointments available.
+          </p>
+          <MapSection interactive={false} />
         </div>
       </section>
 
