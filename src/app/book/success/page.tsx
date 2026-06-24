@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { PHONE_DISPLAY, TEL, WHATSAPP_URL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, WHATSAPP_URL, GOOGLE_REVIEW_URL } from "@/lib/constants";
 import { PurchaseEvent } from "@/components/analytics/purchase-event";
 
 export const metadata: Metadata = {
@@ -163,6 +163,24 @@ export default async function BookSuccessPage({
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Google review prompt */}
+        <div className="mt-8 mb-8 p-5 bg-warm-white rounded-xl border border-border text-center">
+          <p className="text-sm font-semibold text-brand-charcoal mb-1">
+            Happy with your booking?
+          </p>
+          <p className="text-sm text-brand-grey mb-3">
+            It takes 30 seconds and helps other London landlords find us.
+          </p>
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+          >
+            ★ Leave us a Google review
+          </a>
         </div>
 
         {/* Reschedule */}

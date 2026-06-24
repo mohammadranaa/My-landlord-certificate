@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { GoogleReviews } from "@/components/marketing/google-reviews";
 import Image from "next/image";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
@@ -704,7 +704,7 @@ export default function EPCPage() {
                 What London landlords say
               </h2>
               <a
-                href="https://share.google/GvNZMXMAQqMafn3VH"
+                href={GOOGLE_BUSINESS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"

@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { Container } from "@/components/ui/container";
 import { ContactForm } from "@/components/ui/contact-form";
 import { Heading } from "@/components/ui/heading";
-import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL, GOOGLE_BUSINESS_URL, GOOGLE_REVIEW_URL } from "@/lib/constants";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -232,7 +232,7 @@ export default function ContactPage() {
                   <p className="text-xs font-semibold text-brand-grey uppercase tracking-wider mb-3">Google</p>
                   <div className="space-y-2">
                     <a
-                      href="https://share.google/GvNZMXMAQqMafn3VH"
+                      href={GOOGLE_BUSINESS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors"
@@ -248,7 +248,7 @@ export default function ContactPage() {
                       Find us on Google
                     </a>
                     <a
-                      href="https://share.google/GvNZMXMAQqMafn3VH"
+                      href={GOOGLE_REVIEW_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-brand-charcoal hover:text-compliance-blue transition-colors"
@@ -260,7 +260,7 @@ export default function ContactPage() {
                       Leave us a review on Google
                     </a>
                   </div>
-                  <p className="mt-3 text-xs text-brand-grey">5.0 ★ from 9 Google reviews · Merton, London.</p>
+                  <p className="mt-3 text-xs text-brand-grey">Find us on Google · Leave a review</p>
                 </div>
               </div>
             </aside>

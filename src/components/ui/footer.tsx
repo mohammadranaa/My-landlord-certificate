@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL, GOOGLE_REVIEW_URL } from "@/lib/constants";
 
 interface FooterColumn {
   heading: string;
@@ -186,7 +186,7 @@ export function Footer({ className }: FooterProps) {
         {/* Bottom bar */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>© {year} My Landlord Certificate Ltd. All rights reserved.</p>
-          <nav className="flex gap-4" aria-label="Legal links">
+          <nav className="flex gap-4 flex-wrap items-center" aria-label="Legal links">
             <Link
               href="/privacy"
               className="hover:text-white/70 transition-colors"
@@ -205,6 +205,14 @@ export function Footer({ className }: FooterProps) {
             >
               Cookie Policy
             </Link>
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white/70 transition-colors"
+            >
+              Leave a Google review ★
+            </a>
           </nav>
         </div>
       </div>
