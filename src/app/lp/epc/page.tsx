@@ -4,7 +4,6 @@ import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { PriceTable } from "@/components/ui/price-table";
-import { TrustBadges } from "@/components/ui/trust-badges";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { GoogleReviews } from "@/components/marketing/google-reviews";
 import { cn } from "@/lib/utils";
@@ -169,7 +168,7 @@ export default function EpcLandingPage() {
       </header>
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white">
+      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
@@ -227,13 +226,26 @@ export default function EpcLandingPage() {
         </div>
       </div>
 
-      {/* ── Accreditation logos (white chips on a warm band = clearly visible) ── */}
-      <section className="bg-warm-white border-b border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-9 flex flex-col items-center gap-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-grey">
-            Accredited &amp; government-register approved
+      {/* ── Accreditation logos ── */}
+      <section className="bg-warm-white border-y border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
+            Accredited &amp; registered with
           </p>
-          <TrustBadges serviceKey="epc" showAccreditations variant="light" className="justify-center gap-x-8" />
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {[
+              { src: "/accreditations/elmhurst.png", alt: "Elmhurst Energy approved energy assessor" },
+              { src: "/accreditations/stroma.png", alt: "Stroma Certification" },
+              { src: "/accreditations/cibse.png", alt: "CIBSE" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="bg-white rounded-2xl border border-border shadow-sm flex items-center justify-center w-36 h-24 sm:w-44 sm:h-28 p-4"
+              >
+                <Image src={logo.src} alt={logo.alt} width={220} height={220} className="max-h-full w-auto object-contain" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -386,7 +398,7 @@ export default function EpcLandingPage() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="bg-compliance-blue text-white">
+      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">Book your EPC today, from £{entryPrice}</h2>
           <p className="text-blue-100 mb-7 max-w-lg mx-auto">
