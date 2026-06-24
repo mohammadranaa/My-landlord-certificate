@@ -270,6 +270,42 @@ export default function EpcLandingPage() {
         </div>
       </section>
 
+      {/* ── Thorough assessment (imagery) ── */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Thorough &amp; accredited</p>
+            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">A proper assessment, by an accredited DEA</h2>
+            <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+              Your assessor inspects the construction, insulation, glazing, heating system and
+              controls, then lodges your A to G rating on the national register with a free
+              recommendations report showing how to improve it.
+            </p>
+            <ul className="space-y-2.5">
+              {[
+                "Walls, loft and floor insulation",
+                "Boiler, heating system and controls",
+                "Window glazing and renewables",
+                "Lodged on the national register within 24 hours",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Image
+            src="/epc/epc-assessor-checking-boiler.png"
+            alt="Accredited domestic energy assessor inspecting a boiler and heating controls"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="rounded-2xl shadow-md w-full h-auto"
+          />
+        </div>
+      </section>
+
       {/* ── A to G rating ── */}
       <section className="bg-warm-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
@@ -296,6 +332,38 @@ export default function EpcLandingPage() {
         </div>
       </section>
 
+      {/* ── What you get (imagery) ── */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+          <Image
+            src="/epc/epc-sample-certificate.png"
+            alt="Example of a domestic Energy Performance Certificate showing the A to G rating"
+            width={1200}
+            height={1500}
+            sizes="(max-width: 768px) 100vw, 340px"
+            className="rounded-2xl border border-border shadow-md w-full max-w-[340px] mx-auto"
+          />
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">What you get</p>
+            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Your official EPC, ready to use</h2>
+            <ul className="space-y-2.5">
+              {[
+                "A to G energy efficiency rating",
+                "Estimated energy costs and potential savings",
+                "Free recommendations report",
+                "Lodged on the national EPC register",
+                "Emailed to you, valid for 10 years",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* ── Pricing ── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">Fixed EPC pricing</h2>
@@ -312,7 +380,15 @@ export default function EpcLandingPage() {
       <section className="bg-warm-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <p className="text-center text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Simple, fast, online</p>
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-10 text-center">How it works</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-8 text-center">How it works</h2>
+          <Image
+            src="/epc/epc-assessor-at-door.png"
+            alt="Friendly accredited energy assessor arriving at a London property"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="rounded-2xl shadow-md w-full h-48 md:h-60 object-cover object-[center_35%] mb-10 max-w-3xl mx-auto"
+          />
           <div className="relative grid md:grid-cols-3 gap-6">
             {/* connector line behind the icons (desktop) */}
             <div className="hidden md:block absolute top-[52px] left-[16.66%] right-[16.66%] h-0.5 bg-compliance-blue/20" aria-hidden="true" />
