@@ -88,6 +88,26 @@ const steps = [
   { n: "3", title: "Certificate in 24 hours", body: "We lodge your EPC on the national register and email you the certificate and recommendations report." },
 ];
 
+const stepIcons = [
+  // Book / calendar
+  <svg key="1" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>,
+  // Assessor visit / home
+  <svg key="2" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" /><path d="M9 21v-6h6v6" /></svg>,
+  // Certificate / document check
+  <svg key="3" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" /><path d="M9 14l2 2 4-4" /></svg>,
+];
+
+const benefitIcons = [
+  // shield check (legal)
+  <svg key="b1" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>,
+  // award (accredited)
+  <svg key="b2" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5" /><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5" /></svg>,
+  // clock (24h)
+  <svg key="b3" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
+  // tag (fixed price)
+  <svg key="b4" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><circle cx="7" cy="7" r="1.5" /></svg>,
+];
+
 const faqs = [
   {
     q: "How much does an EPC cost?",
@@ -178,8 +198,7 @@ export default function EpcLandingPage() {
                   Call {PHONE_DISPLAY}
                 </a>
               </div>
-              <p className="text-blue-300 text-sm mb-6">Fixed price · No hidden fees · Book in under 2 minutes</p>
-              <TrustBadges serviceKey="epc" showAccreditations variant="dark" />
+              <p className="text-blue-300 text-sm">Fixed price · No hidden fees · Book in under 2 minutes</p>
             </div>
             <div className="relative">
               <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
@@ -208,20 +227,34 @@ export default function EpcLandingPage() {
         </div>
       </div>
 
+      {/* ── Accreditation logos (white chips on a warm band = clearly visible) ── */}
+      <section className="bg-warm-white border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-9 flex flex-col items-center gap-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-grey">
+            Accredited &amp; government-register approved
+          </p>
+          <TrustBadges serviceKey="epc" showAccreditations variant="light" className="justify-center gap-x-8" />
+        </div>
+      </section>
+
       {/* ── Benefits ── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid sm:grid-cols-2 gap-5">
-          {benefits.map((b) => (
-            <div key={b.title} className="rounded-2xl border border-border bg-white p-6">
-              <div className="flex items-start gap-3">
-                <span className="mt-0.5 w-6 h-6 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-sm font-bold">✓</span>
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
+          <p className="text-center text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Why landlords choose us</p>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-10 text-center">Compliant, fast and fully accredited</h2>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {benefits.map((b, i) => (
+              <div key={b.title} className="rounded-2xl border border-border bg-white shadow-sm p-6 flex items-start gap-4">
+                <span className="w-11 h-11 rounded-xl bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0">
+                  {benefitIcons[i]}
+                </span>
                 <div>
                   <p className="font-semibold text-brand-charcoal mb-1">{b.title}</p>
                   <p className="text-sm text-brand-charcoal/75 leading-relaxed">{b.body}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -265,13 +298,19 @@ export default function EpcLandingPage() {
 
       {/* ── How it works ── */}
       <section className="bg-warm-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-8 text-center">How it works</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {steps.map((s) => (
-              <div key={s.n} className="text-center">
-                <div className="w-12 h-12 rounded-2xl bg-compliance-blue/10 text-compliance-blue font-bold text-lg flex items-center justify-center mx-auto mb-3">{s.n}</div>
-                <p className="font-semibold text-brand-charcoal mb-1">{s.title}</p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
+          <p className="text-center text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Simple, fast, online</p>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-10 text-center">How it works</h2>
+          <div className="relative grid md:grid-cols-3 gap-6">
+            {/* connector line behind the icons (desktop) */}
+            <div className="hidden md:block absolute top-[52px] left-[16.66%] right-[16.66%] h-0.5 bg-compliance-blue/20" aria-hidden="true" />
+            {steps.map((s, i) => (
+              <div key={s.n} className="relative bg-white rounded-2xl border border-border shadow-sm p-6 text-center">
+                <div className="relative z-10 w-14 h-14 rounded-2xl bg-compliance-blue text-white flex items-center justify-center mx-auto mb-4 ring-4 ring-warm-white">
+                  {stepIcons[i]}
+                </div>
+                <p className="text-xs font-bold text-compliance-blue uppercase tracking-widest mb-1">Step {s.n}</p>
+                <p className="font-semibold text-brand-charcoal mb-2">{s.title}</p>
                 <p className="text-sm text-brand-grey leading-relaxed">{s.body}</p>
               </div>
             ))}
@@ -318,6 +357,30 @@ export default function EpcLandingPage() {
                 <div className="px-5 pb-4 pt-1 text-sm text-brand-charcoal/80 leading-relaxed">{f.a}</div>
               </details>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Find us / map ── */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">Find us</h2>
+          <p className="text-brand-grey text-center mb-6 max-w-xl mx-auto">
+            134 Merton High St, London SW19 1BA. Accredited DEA assessors covering all 33 London
+            boroughs and the surrounding M25 area.
+          </p>
+          <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+            <iframe
+              title="My Landlord Certificate, 134 Merton High St, London SW19 1BA"
+              src="https://maps.google.com/maps?q=My%20Landlord%20Certificate%2C%20134%20Merton%20High%20St%2C%20London%20SW19%201BA&z=15&output=embed"
+              width="100%"
+              height="360"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              aria-label="Google map showing My Landlord Certificate at 134 Merton High St, London SW19 1BA"
+            />
           </div>
         </div>
       </section>
