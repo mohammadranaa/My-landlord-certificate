@@ -6,6 +6,7 @@ import { Heading } from "@/components/ui/heading";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PHONE_DISPLAY, TEL, WHATSAPP_URL } from "@/lib/constants";
+import { PurchaseEvent } from "@/components/analytics/purchase-event";
 
 export const metadata: Metadata = {
   title: "Booking Confirmed — My Landlord Certificate",
@@ -36,9 +37,22 @@ export default async function BookSuccessPage({
   const totalPaid = session?.amount_total
     ? `£${(session.amount_total / 100).toFixed(2)}`
     : "";
+  const purchaseValue = session?.amount_total ? session.amount_total / 100 : 0;
 
   return (
     <main className="min-h-screen bg-warm-white flex items-center justify-center py-16 px-4">
+      {session_id && purchaseValue > 0 && (
+        <PurchaseEvent
+          transactionId={session_id}
+          value={purchaseValue}
+          currency={(session?.currency ?? "gbp").toUpperCase()}
+          items={
+            servicesReadable
+              ? servicesReadable.split(",").map((s) => ({ item_name: s.trim(), quantity: 1 }))
+              : []
+          }
+        />
+      )}
       <Container className="max-w-xl text-center">
         {/* Success icon */}
         <div className="w-20 h-20 rounded-full bg-action-green/15 flex items-center justify-center mx-auto mb-6">

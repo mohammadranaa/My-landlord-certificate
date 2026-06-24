@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConsentProvider } from "@/components/analytics/consent-provider";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
+import { AttributionCapture } from "@/components/analytics/attribution-capture";
 import { FloatingButtons } from "@/components/ui/floating-buttons";
 import "./globals.css";
 
@@ -111,6 +112,7 @@ export default function RootLayout({
         {/* Vercel Analytics & Speed Insights — cookieless, no consent required */}
         <Analytics />
         <SpeedInsights />
+        <AttributionCapture />
         <FloatingButtons />
       </body>
     </html>
