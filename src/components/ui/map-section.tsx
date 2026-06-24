@@ -12,6 +12,6 @@ const LondonCoverageMap = dynamic(
   }
 )
 
-export function MapSection() {
-  return <LondonCoverageMap />
+export function MapSection({ interactive }: { interactive?: boolean } = {}) {
+  return <LondonCoverageMap interactive={interactive} />
 }
