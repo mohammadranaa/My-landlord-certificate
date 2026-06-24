@@ -380,15 +380,7 @@ export default function EpcLandingPage() {
       <section className="bg-warm-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <p className="text-center text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Simple, fast, online</p>
-          <h2 className="text-2xl font-bold text-brand-charcoal mb-8 text-center">How it works</h2>
-          <Image
-            src="/epc/epc-assessor-at-door.png"
-            alt="Friendly accredited energy assessor arriving at a London property"
-            width={1200}
-            height={800}
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="rounded-2xl shadow-md w-full h-48 md:h-60 object-cover object-[center_35%] mb-10 max-w-3xl mx-auto"
-          />
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-10 text-center">How it works</h2>
           <div className="relative grid md:grid-cols-3 gap-6">
             {/* connector line behind the icons (desktop) */}
             <div className="hidden md:block absolute top-[52px] left-[16.66%] right-[16.66%] h-0.5 bg-compliance-blue/20" aria-hidden="true" />
