@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local staging folder
+/new-images
+
+# local Google Ads analysis
+/google-ads-data
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

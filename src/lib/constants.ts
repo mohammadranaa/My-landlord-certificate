@@ -15,9 +15,9 @@ export const EMAIL         = "info@mylandlordcertificate.co.uk";
 export const MAILTO        = "mailto:info@mylandlordcertificate.co.uk";
 export const TEL           = "tel:+442039961070";
 
-export const GA4_MEASUREMENT_ID = "G-MZQZ7N8197";
+export const GA4_MEASUREMENT_ID = "G-1PTHLKT0Q4";
 
 // Google Ads conversion tracking
-export const GOOGLE_ADS_ID = "AW-16713546639";
+export const GOOGLE_ADS_ID = "AW-18223043841";
 /** "Submit lead form" conversion — fires when the booking form is submitted (→ Stripe). */
-export const GOOGLE_ADS_CONVERSION_LEAD = "AW-16713546639/No_dCLjOrMQcEI_30aE-";
+export const GOOGLE_ADS_CONVERSION_LEAD = "AW-18223043841/42EECNzxucUcEIGqtvFD";
