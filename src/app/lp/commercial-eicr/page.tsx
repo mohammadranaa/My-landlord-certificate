@@ -335,6 +335,78 @@ export default function CommercialEicrLandingPage() {
         </div>
       </section>
 
+      {/* ── Condition codes explained ── */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Understanding your report</p>
+            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">EICR condition codes, explained</h2>
+            <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+              Your EICR certificate uses standardised observation codes to classify any issues found
+              during the inspection. Here is what each code means for your commercial premises:
+            </p>
+            <ul className="space-y-3">
+              {[
+                { code: "C1", label: "Danger present", desc: "Immediate risk to safety. Must be addressed urgently before the installation can be used." },
+                { code: "C2", label: "Potentially dangerous", desc: "Could become dangerous. Remedial action required as soon as possible." },
+                { code: "C3", label: "Improvement recommended", desc: "Not dangerous but could be improved to meet current standards." },
+                { code: "FI", label: "Further investigation", desc: "More investigation needed to determine the extent of the issue." },
+              ].map((item) => (
+                <li key={item.code} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                  <span className="mt-0.5 shrink-0 w-8 h-5 rounded bg-compliance-blue/10 text-compliance-blue flex items-center justify-center text-xs font-bold">{item.code}</span>
+                  <span><strong className="text-brand-charcoal">{item.label}</strong> — {item.desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <Image
+            src="/eicr/eicr-condition-codes-explained.png"
+            alt="EICR condition codes C1, C2, C3 and FI explained — danger present, potentially dangerous, improvement recommended, further investigation"
+            width={1080}
+            height={1080}
+            sizes="(max-width: 768px) 100vw, 460px"
+            className="rounded-xl border border-border shadow-sm w-full"
+          />
+        </div>
+      </section>
+
+      {/* ── Sample certificate ── */}
+      <section className="bg-warm-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
+          <Image
+            src="/eicr/eicr-sample-certificate-report.png"
+            alt="Example of a completed EICR certificate showing test results and observation codes"
+            width={1200}
+            height={1500}
+            sizes="(max-width: 768px) 100vw, 340px"
+            className="rounded-2xl border border-border shadow-md w-full max-w-[340px] mx-auto"
+          />
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">Your certificate</p>
+            <h2 className="text-2xl font-bold text-brand-charcoal mb-4">A detailed report you can hand to anyone</h2>
+            <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+              Your EICR certificate is a multi-page document that covers every circuit in your
+              premises. It is accepted by landlords, insurers, local authorities and fire risk
+              assessors as proof of electrical compliance.
+            </p>
+            <ul className="space-y-2.5">
+              {[
+                "Full schedule of inspections and test results",
+                "Observation codes with clear explanations",
+                "Overall satisfactory or unsatisfactory outcome",
+                "Recommended date for next inspection",
+                "Emailed as a PDF within 24 hours",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">&check;</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* ── Our work on-site ── */}
       <section className="bg-white overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
