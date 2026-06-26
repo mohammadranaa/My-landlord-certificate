@@ -232,7 +232,7 @@ export default function EpcLandingPage() {
       <section className="bg-warm-white border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
-            Accredited &amp; registered with
+            Our engineers are accredited &amp; registered with
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {[

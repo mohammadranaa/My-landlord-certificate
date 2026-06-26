@@ -225,7 +225,7 @@ export default function CommercialEicrLandingPage() {
       <section className="bg-warm-white border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
           <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
-            Accredited &amp; registered with
+            Our engineers are accredited &amp; registered with
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {[
@@ -285,7 +285,7 @@ export default function CommercialEicrLandingPage() {
                 "Certificate emailed within 24 hours",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">&check;</span>
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
                   {t}
                 </li>
               ))}
@@ -326,7 +326,7 @@ export default function CommercialEicrLandingPage() {
                 "Emailed within 24 hours, valid for up to 5 years",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">&check;</span>
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
                   {t}
                 </li>
               ))}
@@ -398,7 +398,7 @@ export default function CommercialEicrLandingPage() {
                 "Emailed as a PDF within 24 hours",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">&check;</span>
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
                   {t}
                 </li>
               ))}
