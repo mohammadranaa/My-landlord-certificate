@@ -16,6 +16,7 @@ export const MAILTO        = "mailto:info@mylandlordcertificate.co.uk";
 export const TEL           = "tel:+442039961070";
 
 export const GA4_MEASUREMENT_ID = "G-1PTHLKT0Q4";
+export const CLARITY_PROJECT_ID = "xf6v3gkawz";
 
 // Google Ads conversion tracking
 export const GOOGLE_ADS_ID = "AW-18223043841";
