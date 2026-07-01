@@ -9,11 +9,11 @@ import { GoogleReviews } from "@/components/marketing/google-reviews";
 import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import { DOMESTIC_EPC_TABLE, getPriceForEPC } from "@/lib/pricing";
 
 const entryPrice = getPriceForEPC("studio");
-const GOOGLE_PROFILE = "https://share.google/GvNZMXMAQqMafn3VH";
+const GOOGLE_PROFILE = GOOGLE_BUSINESS_URL;
 
 // Dedicated Google Ads landing page. Unlinked, noindex (kept separate from the
 // indexed SEO page at /epc to avoid duplicate content). Stripped navigation,

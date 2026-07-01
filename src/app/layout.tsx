@@ -88,24 +88,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground w-full min-w-0 overflow-x-hidden" suppressHydrationWarning>
-        {/* Consent Mode v2 default — must run before any GA4 script loads */}
+        {/* Prime dataLayer so gtag() calls before consent don't throw */}
         <Script
-          id="ga4-consent-default"
+          id="gtag-dataLayer-init"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('consent', 'default', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied',
-                'ad_user_data': 'denied',
-                'ad_personalization': 'denied',
-                'wait_for_update': 500,
-              });
-              gtag('set', 'url_passthrough', true);
-              gtag('set', 'ads_data_redaction', true);
-            `,
+            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}`,
           }}
         />
         <ConsentProvider>

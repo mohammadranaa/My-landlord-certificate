@@ -54,9 +54,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/pricing`,                      priority: 0.85, changeFrequency: "monthly" },
   ];
 
-  // ── Bundle page ──────────────────────────────────────────────────────────────
+  // ── Bundle / compliance pages ─────────────────────────────────────────────────
   const bundlePages: MetadataRoute.Sitemap = [
     { url: `${BASE}/landlord-certificates-bundle`, priority: 0.88, changeFrequency: "monthly" },
+    { url: `${BASE}/hmo-compliance`,               priority: 0.90, changeFrequency: "monthly" },
   ];
 
   // ── Commercial service pages ─────────────────────────────────────────────────

@@ -70,6 +70,12 @@ const legionella = {
   price: FROM_PRICES["legionella-risk-assessment"],
 } as const;
 
+const hmoCompliance = {
+  href: "/hmo-compliance",
+  label: "HMO Compliance",
+  description: "All certificates in one place",
+} as const;
+
 const topLinks = [
   { href: "/blog",            label: "Blog"           },
   { href: "/contact",         label: "Contact"        },
@@ -142,7 +148,8 @@ export function NavBar({ className }: { className?: string }) {
   const anyServiceActive =
     categories.some((cat) => isActive(cat.href) || cat.services.some((s) => isActive(s.href))) ||
     isActive(asbestos.href) ||
-    isActive(legionella.href);
+    isActive(legionella.href) ||
+    isActive(hmoCompliance.href);
 
   const openMega = useCallback(() => {
     clearTimeout(closeTimer.current);
@@ -438,6 +445,25 @@ export function NavBar({ className }: { className?: string }) {
                     <span className="text-xs text-brand-grey shrink-0 ml-2">{legionella.price}</span>
                   </Link>
 
+                  {/* HMO Compliance featured */}
+                  <Link
+                    href={hmoCompliance.href}
+                    className={cn(
+                      "flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue",
+                      isActive(hmoCompliance.href)
+                        ? "text-compliance-blue bg-compliance-blue/5"
+                        : "text-compliance-blue bg-compliance-blue/5 hover:bg-compliance-blue/10",
+                    )}
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-action-green" aria-hidden="true" />
+                      {hmoCompliance.label}
+                    </span>
+                    <span className="text-xs text-brand-grey shrink-0 ml-2 font-normal">
+                      {hmoCompliance.description}
+                    </span>
+                  </Link>
+
                   <div className="my-1 border-t border-border" />
 
                   {/* Other links */}
@@ -544,9 +570,9 @@ export function NavBar({ className }: { className?: string }) {
               ))}
             </div>
 
-            {/* Bottom bar: Health & Safety standalones + View All */}
+            {/* Bottom bar: Health & Safety standalones + HMO featured + View All */}
             <div className="mt-8 pt-6 border-t border-border flex items-center justify-between gap-4 flex-wrap">
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-6 flex-wrap">
                 <Link
                   href={asbestos.href}
                   onClick={closeMega}
@@ -562,6 +588,17 @@ export function NavBar({ className }: { className?: string }) {
                 >
                   <span className="font-medium">{legionella.label}</span>
                   <span className="text-brand-grey">{legionella.price}</span>
+                </Link>
+                <Link
+                  href={hmoCompliance.href}
+                  onClick={closeMega}
+                  className="flex items-center gap-2 text-sm font-semibold text-compliance-blue hover:underline transition-colors"
+                >
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-action-green" aria-hidden="true" />
+                    {hmoCompliance.label}
+                  </span>
+                  <span className="text-xs text-brand-grey font-normal">{hmoCompliance.description}</span>
                 </Link>
               </div>
               <Link

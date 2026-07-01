@@ -9,11 +9,11 @@ import { GoogleReviews } from "@/components/marketing/google-reviews";
 import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import { COMMERCIAL_EICR_TABLE } from "@/lib/pricing";
 
 const entryPrice = 149.99;
-const GOOGLE_PROFILE = "https://share.google/GvNZMXMAQqMafn3VH";
+const GOOGLE_PROFILE = GOOGLE_BUSINESS_URL;
 
 export const metadata: Metadata = {
   title: "Commercial EICR from £149.99 | NICEIC Approved | My Landlord Certificate",

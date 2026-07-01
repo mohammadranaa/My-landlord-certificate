@@ -51,7 +51,10 @@ const organizationSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   logo: "https://www.mylandlordcertificate.co.uk/logo.svg",
   email: "hello@mylandlordcertificate.co.uk",
-  sameAs: ["https://uk.trustpilot.com/review/mylandlordcertificate.co.uk"],
+  sameAs: [
+    "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk",
+    "https://share.google/Mv45RjwKpz36PD8Uk",
+  ],
   address: {
     "@type": "PostalAddress",
     addressCountry: "GB",

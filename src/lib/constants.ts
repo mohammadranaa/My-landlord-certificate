@@ -22,3 +22,5 @@ export const CLARITY_PROJECT_ID = "xf6v3gkawz";
 export const GOOGLE_ADS_ID = "AW-18223043841";
 /** "Submit lead form" conversion — fires when the booking form is submitted (→ Stripe). */
 export const GOOGLE_ADS_CONVERSION_LEAD = "AW-18223043841/42EECNzxucUcEIGqtvFD";
+
+export const HMO_COMPLIANCE_URL = "/hmo-compliance";
