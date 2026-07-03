@@ -6,6 +6,11 @@ import Image from "next/image";
 interface SlideItem {
   src: string;
   alt: string;
+  /** Optional caption overlay (shown at the bottom of the slide). */
+  title?: string;
+  caption?: string;
+  /** Optional small circular badge, e.g. "FRA" / "EPC". */
+  badge?: string;
 }
 
 export function ImageSlider({ images }: { images: readonly SlideItem[] }) {
@@ -59,17 +64,38 @@ export function ImageSlider({ images }: { images: readonly SlideItem[] }) {
               data-slide
               type="button"
               onClick={() => setLightbox(i)}
-              className="snap-start shrink-0 w-[280px] sm:w-[340px] md:w-[400px] group cursor-zoom-in"
+              className="snap-start shrink-0 w-[280px] sm:w-[340px] md:w-[400px] group cursor-zoom-in text-left"
             >
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-sm">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={800}
-                  height={533}
-                  sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, 400px"
-                  className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
-                />
+                <div className={img.title ? "relative aspect-[4/3]" : "relative"}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 340px, 400px"
+                    className={
+                      img.title
+                        ? "absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        : "w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                    }
+                  />
+                </div>
+                {img.title && (
+                  <div className="absolute inset-x-0 bottom-0 p-4 pt-10 bg-gradient-to-t from-black/80 via-black/45 to-transparent">
+                    <div className="flex items-end justify-between gap-2">
+                      <div>
+                        <p className="text-white font-semibold text-sm leading-tight">{img.title}</p>
+                        {img.caption && <p className="text-white/80 text-xs leading-snug mt-0.5">{img.caption}</p>}
+                      </div>
+                      {img.badge && (
+                        <span className="shrink-0 w-9 h-9 rounded-full bg-action-green text-white text-[11px] font-bold flex items-center justify-center">
+                          {img.badge}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-2 shadow-md">
                     <svg className="w-5 h-5 text-brand-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

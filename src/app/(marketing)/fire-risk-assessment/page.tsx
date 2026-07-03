@@ -9,6 +9,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
+import { ImageSlider } from "@/components/ui/image-slider";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -447,6 +448,26 @@ export default function FireRiskAssessmentPage() {
             location, and maintenance status. Every finding is documented, risk-rated, and
             included in the written report with a recommended remediation timescale.
           </p>
+        </section>
+
+        {/* ── Recent work (real job photos) ── */}
+        <section aria-labelledby="recent-work-heading">
+          <Heading level={2} id="recent-work-heading" className="mb-2">
+            From a recent London fire risk assessment
+          </Heading>
+          <p className="text-brand-grey mb-6">
+            Real photos from a fire risk assessment in a London block. Click any image to enlarge.
+          </p>
+          <ImageSlider
+            images={[
+              { src: "/fire-risk-assessment/jobs/fra-job-communal-escape.jpg", alt: "Communal stairwell and escape route inspected during a fire risk assessment", title: "Communal areas & escape routes", caption: "Stairwells, corridors and escape routes checked and kept clear.", badge: "FRA" },
+              { src: "/fire-risk-assessment/jobs/fra-job-fire-door.jpg", alt: "Fire door being measured and inspected during a fire risk assessment", title: "Fire door inspection", caption: "Seals, closers, gaps and glazing checked and measured.", badge: "FRA" },
+              { src: "/fire-risk-assessment/jobs/fra-job-corridor-exit.jpg", alt: "Communal corridor leading to the final exit", title: "Escape route & final exit", caption: "Clear routes and a compliant final exit to open air.", badge: "FRA" },
+              { src: "/fire-risk-assessment/jobs/fra-job-smoke-alarm.jpg", alt: "Ceiling-mounted smoke and heat alarm checked during the assessment", title: "Smoke & heat alarm check", caption: "Detection coverage and alarm placement assessed.", badge: "FRA" },
+              { src: "/fire-risk-assessment/jobs/fra-job-extinguisher.jpg", alt: "Fire extinguisher checked during the fire risk assessment", title: "Firefighting equipment", caption: "Extinguishers, signage and servicing checked.", badge: "FRA" },
+              { src: "/fire-risk-assessment/jobs/fra-job-electrical-intake.jpg", alt: "Electrical intake and consumer unit reviewed for fire hazards", title: "Electrical intake safety", caption: "Meters, consumer units and ignition sources reviewed.", badge: "FRA" },
+            ]}
+          />
         </section>
 
         {/* ── After the assessment ── */}
