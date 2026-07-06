@@ -88,12 +88,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground w-full min-w-0 overflow-x-hidden" suppressHydrationWarning>
-        {/* Prime dataLayer so gtag() calls before consent don't throw */}
+        {/* Consent Mode v2 default: deny everything until the visitor chooses.
+            Must run before gtag.js loads so Google can collect cookieless
+            signals (and model conversions) for visitors who decline or ignore. */}
         <Script
-          id="gtag-dataLayer-init"
+          id="gtag-consent-default"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}`,
+            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  wait_for_update: 500
+});
+gtag('set', 'url_passthrough', true);
+gtag('set', 'ads_data_redaction', true);`,
           }}
         />
         <ConsentProvider>

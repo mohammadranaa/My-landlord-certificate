@@ -34,7 +34,24 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
   const [consent, setConsent] = useState<ConsentValue>("pending");
 
   useEffect(() => {
-    setConsent(readCookie());
+    const stored = readCookie();
+    setConsent(stored);
+    // Re-apply a previously stored choice on load. The root layout defaults all
+    // consent to "denied", so a returning visitor who already accepted (or
+    // declined) needs an explicit update or their choice would be lost.
+    if (
+      typeof window !== "undefined" &&
+      typeof window.gtag === "function" &&
+      (stored === "granted" || stored === "denied")
+    ) {
+      const state = stored === "granted" ? "granted" : "denied";
+      window.gtag("consent", "update", {
+        analytics_storage: state,
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+      });
+    }
   }, []);
 
   const accept = useCallback(() => {
