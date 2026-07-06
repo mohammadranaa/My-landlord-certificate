@@ -53,43 +53,36 @@ fbq('init','${pixelId}');fbq('track','PageView');`,
 export function AnalyticsScripts() {
   const { consent } = useConsent();
 
-  // The Google tag loads in ALL cases so Consent Mode v2 can model conversions
-  // for visitors who decline (it sends cookieless pings). It respects the
-  // "denied" default set in the root layout until the visitor accepts. Meta
-  // Pixel has no consent mode, so it stays gated behind explicit consent.
+  // The Google tag loads on EVERY page load so Consent Mode v2 works: it
+  // respects the "denied" default set in the root layout head (sending only
+  // cookieless pings that let Google model declined/ignored conversions), and
+  // is upgraded to "granted" by ConsentProvider when the visitor accepts. Do
+  // NOT set 'consent update' to granted here — that would override the default
+  // for everyone. Meta Pixel and Clarity have no consent mode, so they stay
+  // gated behind explicit consent.
   return (
     <>
-      {consent === "granted" && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script
-            id="ga4-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('consent', 'update', {
-                  'analytics_storage': 'granted',
-                  'ad_storage': 'granted',
-                  'ad_user_data': 'granted',
-                  'ad_personalization': 'granted',
-                });
-                gtag('config', '${GA4_MEASUREMENT_ID}', {
-                  page_path: window.location.pathname,
-                  anonymize_ip: true,
-                  cookie_flags: 'SameSite=None;Secure',
-                });
-                gtag('config', '${GOOGLE_ADS_ID}');
-              `,
-            }}
-          />
-        </>
-      )}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="ga4-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+              anonymize_ip: true,
+              cookie_flags: 'SameSite=None;Secure',
+            });
+            gtag('config', '${GOOGLE_ADS_ID}');
+          `,
+        }}
+      />
       {consent === "granted" && META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
       {consent === "granted" && <MicrosoftClarity />}
     </>
