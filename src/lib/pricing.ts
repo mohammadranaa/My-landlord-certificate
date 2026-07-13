@@ -95,7 +95,7 @@ export const COMMERCIAL_EICR_TABLE: readonly PriceRow[] = [
 
 // ─── Electrical Diagnostic ───────────────────────────────────────────────────
 
-export const ELECTRICAL_DIAGNOSTIC_HOURLY_RATE = 89.99;
+export const ELECTRICAL_DIAGNOSTIC_HOURLY_RATE = 99.99;
 
 // ─── Fuse Box Installation ───────────────────────────────────────────────────
 
@@ -313,7 +313,7 @@ export const ADDITIONAL_CHARGES = {
 export const FROM_PRICES: Record<ServiceType, string> = {
   eicr: "from £67.99",
   "commercial-eicr": "from £149.99",
-  "electrical-diagnostic": "from £89.99/hr",
+  "electrical-diagnostic": "from £99.99/hr",
   "fuse-box": "from £599.99",
   elc: "from £54.99",
   pat: "from £59.99",

@@ -354,7 +354,7 @@ export default function FuseBoxInstallationPage() {
               {
                 name: "Electrical Diagnostic",
                 href: "/electrical-diagnostic",
-                desc: "Fault finding from £89.99/hr. Identify the root cause of recurring faults.",
+                desc: "Fault finding from £99.99/hr. Identify the root cause of recurring faults.",
               },
               {
                 name: "PAT Testing",
