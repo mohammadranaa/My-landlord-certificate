@@ -248,12 +248,12 @@ const categories = [
       {
         question: "Are your prices fixed, or can they change on the day?",
         answer:
-          "Prices are fixed. The price displayed before you pay is the price on your invoice. The only additional charges that can apply are for parking (£5 where paid parking is required) and the London Congestion Zone charge (£18 for properties inside the Congestion Zone). Both are shown during the booking process. No other charges are added after the visit.",
+          "Prices are fixed. The price displayed before you pay is the price on your invoice. The only additional charges that can apply are for parking (£10 where paid parking is required) and the London Congestion Zone charge (£20 for properties inside the Congestion Zone). Both are shown during the booking process. No other charges are added after the visit.",
       },
       {
         question: "Are there any additional charges I should know about?",
         answer:
-          "Two potential additional charges: a parking charge of £5 if the engineer needs to pay for parking at your property, and a Congestion Zone surcharge of £18 for properties inside the London Congestion Zone. If your property requires remedial electrical work following an EICR, the engineer will provide a separate quote on the day — there is no obligation to accept.",
+          "Two potential additional charges: a parking charge of £10 if the engineer needs to pay for parking at your property, and a Congestion Zone surcharge of £20 for properties inside the London Congestion Zone. If your property requires remedial electrical work following an EICR, the engineer will provide a separate quote on the day — there is no obligation to accept.",
       },
       {
         question: "How is my certificate delivered?",

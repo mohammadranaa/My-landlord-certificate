@@ -50,7 +50,7 @@ const faqs = [
   {
     question: "How much does a fire door certificate cost in London?",
     answer:
-      "A fire door certificate from My Landlord Certificate costs £129.99 for 1-3 doors, £169.99 for 4 doors, £209.99 for 5 doors, and £239.99 for 6 doors. For 7 or more doors, call us for a bespoke quote. All prices are fixed with no hidden charges. A congestion charge surcharge of £18 applies for properties in the London Congestion Charge Zone.",
+      "A fire door certificate from My Landlord Certificate costs £129.99 for 1-3 doors, £169.99 for 4 doors, £209.99 for 5 doors, and £239.99 for 6 doors. For 7 or more doors, call us for a bespoke quote. All prices are fixed with no hidden charges. A congestion charge surcharge of £20 applies for properties in the London Congestion Charge Zone.",
   },
   {
     question: "How often do fire doors need to be inspected?",

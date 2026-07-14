@@ -111,7 +111,7 @@ const faqSchema = {
       name: "Are there any extra charges on top of the EPC price?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We charge £5 for parking if no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
+        text: "We charge £10 for parking if no free on-site parking is available, and £20 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
       },
     },
     {
@@ -164,7 +164,7 @@ const faqItems = [
   {
     question: "Are there any extra charges on top of the EPC price?",
     answer:
-      "We charge £5 for parking where no free on-site parking is available, and £18 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
+      "We charge £10 for parking where no free on-site parking is available, and £20 for properties in the London Congestion Charge Zone. There are no other hidden fees, the price in the table is the price you pay.",
   },
   {
     question: "How much does a commercial EPC cost?",

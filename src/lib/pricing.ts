@@ -304,8 +304,8 @@ export const COMMERCIAL_EPC_TABLE: readonly PriceRow[] = [
 // ─── Additional Charges ───────────────────────────────────────────────────────
 
 export const ADDITIONAL_CHARGES = {
-  parking: 5,
-  congestionZone: 18,
+  parking: 10,
+  congestionZone: 20,
 } as const;
 
 // ─── FROM_PRICES — used in hero sections and meta titles ──────────────────────

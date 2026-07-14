@@ -178,12 +178,12 @@ export default function TermsPage() {
               <ul className="list-disc pl-5 space-y-1 text-sm mb-4">
                 <li>
                   <strong className="text-brand-charcoal">Parking:</strong>{" "}
-                  £5.00 where the engineer is required to pay for parking at or near
+                  £10.00 where the engineer is required to pay for parking at or near
                   the property.
                 </li>
                 <li>
                   <strong className="text-brand-charcoal">London Congestion Zone:</strong>{" "}
-                  £18.00 for properties located within the London Congestion Charge
+                  £20.00 for properties located within the London Congestion Charge
                   Zone, reflecting the charge incurred by the engineer.
                 </li>
               </ul>

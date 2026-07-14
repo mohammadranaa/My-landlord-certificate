@@ -150,7 +150,7 @@ const faqSchema = {
       name: "Is a Congestion Charge added for central London properties?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, properties within the London Congestion Charge Zone incur an additional charge of £18. This is the only London-specific surcharge. There is no general London premium on our EICR prices.",
+        text: "Yes, properties within the London Congestion Charge Zone incur an additional charge of £20. This is the only London-specific surcharge. There is no general London premium on our EICR prices.",
       },
     },
     {
@@ -170,7 +170,7 @@ const faqItems = [
   {
     question: "How much does an EICR cost in London?",
     answer:
-      "An EICR in London costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Some London providers charge a premium over national rates, our fixed pricing applies equally across all 33 boroughs with no London surcharge. The only location-based addition is the £18 Congestion Charge Zone fee for central London properties.",
+      "An EICR in London costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Some London providers charge a premium over national rates, our fixed pricing applies equally across all 33 boroughs with no London surcharge. The only location-based addition is the £20 Congestion Charge Zone fee for central London properties.",
   },
   {
     question: "Do you cover all London boroughs?",
@@ -185,7 +185,7 @@ const faqItems = [
   {
     question: "Is there a Congestion Charge for central London properties?",
     answer:
-      "Yes, properties within the TfL Congestion Charge Zone incur an additional £18. This is disclosed upfront and the only location-based surcharge we apply. There is no general London premium on our EICR prices.",
+      "Yes, properties within the TfL Congestion Charge Zone incur an additional £20. This is disclosed upfront and the only location-based surcharge we apply. There is no general London premium on our EICR prices.",
   },
   {
     question: "How quickly can I get an EICR in London?",

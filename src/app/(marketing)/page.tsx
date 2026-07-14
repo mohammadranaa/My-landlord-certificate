@@ -134,7 +134,7 @@ const faqItems = [
   {
     question: "Are there any hidden charges?",
     answer:
-      "No. The price shown for each certificate is what you pay. No call-out fees, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £5 for parking (where no free on-site parking is available) and £18 for properties in the London Congestion Charge Zone.",
+      "No. The price shown for each certificate is what you pay. No call-out fees, no surcharges for older properties, no pressure to buy remedial work. The only additional charges are £10 for parking (where no free on-site parking is available) and £20 for properties in the London Congestion Charge Zone.",
   },
   {
     question: "Which areas do you cover?",

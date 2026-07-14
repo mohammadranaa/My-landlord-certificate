@@ -86,7 +86,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Camden, Barnet, and all other boroughs. A congestion zone supplement of £18 applies for properties within the TfL congestion zone.",
+      "We cover all 33 London boroughs including Westminster, Islington, Hackney, Tower Hamlets, Southwark, Lambeth, Wandsworth, Brent, Ealing, Camden, Barnet, and all other boroughs. A congestion zone supplement of £20 applies for properties within the TfL congestion zone.",
   },
 ];
 

@@ -433,7 +433,7 @@ export default function CommercialEicrLandingPage() {
         <p className="text-brand-grey mb-6 text-center">By number of consumer units. Additional circuits above 12 per unit are £10 each.</p>
         <PriceTable title="Commercial EICR" rows={COMMERCIAL_EICR_TABLE} highlightCheapest />
         <p className="text-xs text-brand-grey text-center mt-4">
-          Parking £5 &middot; Congestion zone surcharge £18 &middot; Prices include VAT
+          Parking £10 &middot; Congestion zone surcharge £20 &middot; Prices include VAT
         </p>
         <div className="text-center mt-8">
           <Link href="/book?service=commercial-eicr" className={cn(buttonVariants({ variant: "cta", size: "lg" }))}>

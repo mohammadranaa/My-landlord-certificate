@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { SITE_URL } from "@/lib/constants";
+import { ADDITIONAL_CHARGES } from "@/lib/pricing";
 import { createServiceRoleClient } from "@/lib/supabase/server";
 import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution";
 
@@ -50,7 +51,7 @@ export async function POST(request: NextRequest) {
         price_data: {
           currency: "gbp",
           product_data: { name: "London Congestion Charge Zone" },
-          unit_amount: 1800,
+          unit_amount: Math.round(ADDITIONAL_CHARGES.congestionZone * 100),
         },
         quantity: 1,
       });
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
         price_data: {
           currency: "gbp",
           product_data: { name: "No Free Parking — Additional Charge" },
-          unit_amount: 500,
+          unit_amount: Math.round(ADDITIONAL_CHARGES.parking * 100),
         },
         quantity: 1,
       });
