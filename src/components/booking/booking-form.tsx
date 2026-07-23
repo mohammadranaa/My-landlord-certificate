@@ -174,6 +174,7 @@ export function BookingForm() {
         timeSlot: data.timePreference === "morning" ? "Morning (8am–12pm)" : "Afternoon (12pm–6pm)",
       },
       totalPrice: grandTotal,
+      sessionId,
     };
 
     try {

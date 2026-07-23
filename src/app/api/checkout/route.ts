@@ -21,6 +21,7 @@ interface BookingPayload {
   additionalCharges?: { congestionCharge?: boolean; parkingCharge?: boolean };
   appointment?: { date?: string; timeSlot?: string };
   totalPrice?: number;
+  sessionId?: string;
 }
 
 type CreateParams = NonNullable<Parameters<ReturnType<typeof getStripe>["checkout"]["sessions"]["create"]>[0]>;
@@ -88,6 +89,7 @@ export async function POST(request: NextRequest) {
       currency: "gbp",
       line_items: lineItems,
       customer_email: booking.customer?.email,
+      client_reference_id: booking.sessionId,
       metadata,
       payment_intent_data: { metadata },
       success_url: `${SITE_URL}/book/success?session_id={CHECKOUT_SESSION_ID}`,
