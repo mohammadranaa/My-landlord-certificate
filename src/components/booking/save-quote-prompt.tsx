@@ -1,6 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+
+// Set to true when the "save my quote" exit-intent feature is ready to go live.
+const SAVE_QUOTE_PROMPT_ENABLED = false;
 
 interface SaveQuotePromptProps {
   email: string;
@@ -20,10 +23,13 @@ export function SaveQuotePrompt({
   const [visible, setVisible] = useState(false);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const shownRef = useRef(false);
 
   const handleExitIntent = useCallback(
     (e: MouseEvent) => {
+      if (shownRef.current) return;
       if (e.clientY < 50 && email && !sent) {
+        shownRef.current = true;
         setVisible(true);
       }
     },
@@ -31,9 +37,16 @@ export function SaveQuotePrompt({
   );
 
   useEffect(() => {
+    if (!SAVE_QUOTE_PROMPT_ENABLED) return;
     document.addEventListener("mouseleave", handleExitIntent);
     return () => document.removeEventListener("mouseleave", handleExitIntent);
   }, [handleExitIntent]);
+
+  const handleDismiss = () => {
+    shownRef.current = true;
+    setVisible(false);
+    onDismiss();
+  };
 
   const handleSaveQuote = async () => {
     setSending(true);
@@ -116,10 +129,7 @@ export function SaveQuotePrompt({
                 {sending ? "Sending…" : "Email my quote"}
               </button>
               <button
-                onClick={() => {
-                  setVisible(false);
-                  onDismiss();
-                }}
+                onClick={handleDismiss}
                 className="px-4 py-2.5 text-sm text-brand-grey hover:text-brand-charcoal transition-colors"
               >
                 No thanks
@@ -149,10 +159,7 @@ export function SaveQuotePrompt({
               Check your inbox — we&apos;ve sent your price breakdown to {email}
             </p>
             <button
-              onClick={() => {
-                setVisible(false);
-                onDismiss();
-              }}
+              onClick={handleDismiss}
               className="text-sm text-compliance-blue hover:underline"
             >
               Continue booking
