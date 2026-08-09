@@ -15,6 +15,7 @@ import {
   LazyStickyMobileCTA as StickyMobileCTA,
 } from "@/components/lazy";
 import { getPriceForGasSafety } from "@/lib/pricing";
+import { PHONE_NUMBER, EMAIL } from "@/lib/constants";
 
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
@@ -67,15 +68,46 @@ const organizationSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://www.mylandlordcertificate.co.uk/#business",
   name: "My Landlord Certificate",
   url: "https://www.mylandlordcertificate.co.uk",
-  email: "hello@mylandlordcertificate.co.uk",
+  telephone: PHONE_NUMBER,
+  email: EMAIL,
   description:
     "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. No hidden charges, next-day appointments across London.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "134 Merton High Street",
+    addressLocality: "London",
+    addressRegion: "Greater London",
+    postalCode: "SW19 1BA",
+    addressCountry: "GB",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "17:00",
+    },
+  ],
   areaServed: ["London", "the M25 area"],
   currenciesAccepted: "GBP",
   paymentAccepted: "Credit Card, Debit Card",
   priceRange: "££",
+  sameAs: [
+    "https://share.google/Mv45RjwKpz36PD8Uk",
+    "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk",
+    "https://www.facebook.com/profile.php?id=61589410869490",
+    "https://www.instagram.com/mylandlordcertificate",
+    "https://www.linkedin.com/company/my-landlord-certificate/",
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",
