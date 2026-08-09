@@ -22,10 +22,15 @@ export function ConsentBanner() {
           <p className="text-xs text-brand-grey leading-relaxed">
             We use analytics cookies (Google Analytics) to understand how visitors use our
             site, and ad cookies (Meta Pixel) to measure our marketing. You can accept or decline
-            non-essential cookies.{" "}
+            non-essential cookies. See our{" "}
+            <a href="/cookies" className="text-compliance-blue underline hover:no-underline">
+              Cookie Policy
+            </a>{" "}
+            for details, or read our{" "}
             <a href="/privacy" className="text-compliance-blue underline hover:no-underline">
               Privacy policy
             </a>
+            .
           </p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
