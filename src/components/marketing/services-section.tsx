@@ -181,6 +181,7 @@ type ServiceDef = {
   description: string;
   price: number;
   turnaroundDays?: number;
+  turnaroundLabel?: string;
 };
 
 const RESIDENTIAL: ServiceDef[] = [
@@ -219,6 +220,7 @@ const RESIDENTIAL: ServiceDef[] = [
       "Compulsory for all HMOs under the Regulatory Reform (Fire Safety) Order 2005. Written report with prioritised action plan included.",
     price: getPriceForFRA("studio"),
     turnaroundDays: 2,
+    turnaroundLabel: "Within 48 hours",
   },
   {
     href: "/pat-testing",

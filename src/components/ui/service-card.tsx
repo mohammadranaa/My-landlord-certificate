@@ -11,6 +11,8 @@ interface ServiceCardProps {
   description: string;
   price: number;
   turnaroundDays?: number;
+  /** Overrides the computed turnaround badge text (e.g. "Within 48 hours" for Fire Risk Assessment). */
+  turnaroundLabel?: string;
   className?: string;
 }
 
@@ -34,6 +36,7 @@ export function ServiceCard({
   description,
   price,
   turnaroundDays,
+  turnaroundLabel,
   className,
 }: ServiceCardProps) {
   return (
@@ -67,11 +70,13 @@ export function ServiceCard({
           from £{price}
         </span>
         <span className="text-xs text-brand-grey">
-          {turnaroundDays === 1
-            ? "Within 24 hrs"
-            : turnaroundDays
-              ? `${turnaroundDays}-day cert`
-              : "Fast turnaround"}
+          {turnaroundLabel
+            ? turnaroundLabel
+            : turnaroundDays === 1
+              ? "Within 24 hrs"
+              : turnaroundDays
+                ? "Within 24 hours"
+                : "Fast turnaround"}
         </span>
       </div>
     </Link>

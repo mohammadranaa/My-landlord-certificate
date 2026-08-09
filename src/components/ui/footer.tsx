@@ -140,7 +140,7 @@ export function Footer({ className }: FooterProps) {
             <p className="text-blue-200 text-sm mb-2">Compliant. Sorted.</p>
             <p className="text-sm text-white/50 leading-relaxed">
               NICEIC & Gas Safe accredited property compliance across London and
-              the M25 area. Fixed prices, same-week appointments, no
+              the M25 area. Fixed prices, next-day appointments, no
               hidden fees.
             </p>
 
