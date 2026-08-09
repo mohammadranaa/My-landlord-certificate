@@ -10,11 +10,13 @@ import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
+import { PHONE_DISPLAY } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
   FIRE_ALARM_INSTALLATION_PER_ALARM,
   FRA_RESIDENTIAL_TABLE,
+  FRA_COMMERCIAL_TABLE,
   getPriceForFRA,
 } from "@/lib/pricing";
 
@@ -23,14 +25,14 @@ import {
 export const metadata: Metadata = {
   title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
   description:
-    "Fire risk assessments in London from £74.99. IFSM certified and IFE registered assessors. HMOs, blocks of flats, commercial premises. Report within 48 hours. Covering all 33 London boroughs and the M25 area.",
+    "Fire risk assessments for residential and commercial properties in London from £74.99. IFSM certified assessors. HMOs, blocks of flats, offices and commercial premises. Report within 48 hours. Covering all 33 London boroughs and the M25 area.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
     title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
     description:
-      "Fire risk assessments in London from £74.99. IFSM certified and IFE registered assessors. HMOs, blocks of flats, commercial premises. Report within 48 hours.",
+      "Fire risk assessments for residential and commercial properties in London from £74.99. IFSM certified assessors. HMOs, blocks of flats, offices and commercial premises. Report within 48 hours.",
     url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };
@@ -107,9 +109,9 @@ const productSchema = {
   offers: {
     "@type": "AggregateOffer",
     lowPrice: "74",
-    highPrice: "349.99",
+    highPrice: "539.99",
     priceCurrency: "GBP",
-    offerCount: "9",
+    offerCount: "16",
     availability: "https://schema.org/InStock",
   },
 };
@@ -237,6 +239,7 @@ const faqItems = [
 
 const lowestPrice = getPriceForFRA("studio");
 const popularPrice = getPriceForFRA("1-3bed");
+const commercialLowestPrice = FRA_COMMERCIAL_TABLE[0].price;
 
 const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
   i === 3 ? { ...row, badge: "most-popular" as const } : row,
@@ -320,7 +323,9 @@ export default function FireRiskAssessmentPage() {
           <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
             <div className="flex gap-1.5">
               <dt>From</dt>
-              <dd className="text-white font-semibold">£{lowestPrice}</dd>
+              <dd className="text-white font-semibold">
+                £{lowestPrice} residential · £{commercialLowestPrice} commercial
+              </dd>
             </div>
             <div className="flex gap-1.5">
               <dt>Review</dt>
@@ -642,17 +647,30 @@ export default function FireRiskAssessmentPage() {
             </ul>
           </div>
 
-          <p className="mt-5 text-sm text-brand-grey">
-            Need an FRA for a commercial property, office, or retail unit?{" "}
-            <Link
-              href="/commercial-fire-risk-assessment"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              See commercial FRA pricing →
-            </Link>
-          </p>
+          <div className="mt-10">
+            <Heading level={3} className="mb-4">
+              Commercial Fire Risk Assessment pricing
+            </Heading>
+            <p className="text-brand-grey text-sm mb-6">
+              For commercial premises, blocks of flats, and larger residential
+              buildings. All commercial assessments are carried out by IFSM
+              certified assessors. Report and prioritised action plan within
+              48 hours.
+            </p>
 
-          <p className="mt-3 text-sm text-brand-grey">
+            <PriceTable
+              title="Commercial Fire Risk Assessment"
+              rows={FRA_COMMERCIAL_TABLE}
+            />
+
+            <p className="text-sm text-brand-grey mt-4">
+              For buildings not listed or complex multi-tenanted premises,
+              call us on {PHONE_DISPLAY} for a bespoke quote. Commercial FRA
+              from £{commercialLowestPrice}.
+            </p>
+          </div>
+
+          <p className="mt-5 text-sm text-brand-grey">
             Comparing all landlord certificate prices?{" "}
             <Link
               href="/pricing"
