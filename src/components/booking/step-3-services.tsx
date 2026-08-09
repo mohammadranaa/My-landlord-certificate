@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { ServiceEntry } from "@/lib/booking-schema";
+import { LEGIONELLA_PRICES } from "@/lib/pricing";
 
 type ServiceOption = { label: string; price: number };
 
@@ -147,6 +148,14 @@ const RESIDENTIAL_SERVICES: ServiceConfig[] = [
       { label: "4 Samples", price: 339.99 },
       { label: "5 Samples", price: 379.99 },
       { label: "6 Samples", price: 405.99 },
+    ],
+  },
+  {
+    id: "legionella",
+    label: "Legionella Risk Assessment",
+    description: "ACoP L8 and HSG274 compliant water system inspection — recommended for all rental properties",
+    options: [
+      { label: "Per Property", price: LEGIONELLA_PRICES.standard },
     ],
   },
   {
@@ -337,6 +346,14 @@ const COMMERCIAL_SERVICES: ServiceConfig[] = [
       { label: "4 Samples", price: 339.99 },
       { label: "5 Samples", price: 379.99 },
       { label: "6 Samples", price: 405.99 },
+    ],
+  },
+  {
+    id: "legionella",
+    label: "Legionella Risk Assessment",
+    description: "ACoP L8 and HSG274 compliant water system inspection — recommended for all rental properties",
+    options: [
+      { label: "Per Property", price: LEGIONELLA_PRICES.standard },
     ],
   },
   {
