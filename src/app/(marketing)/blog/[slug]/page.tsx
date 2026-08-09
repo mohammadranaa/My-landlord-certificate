@@ -10,9 +10,11 @@ import {
   getRelatedPosts,
   extractHeadings,
   formatDate,
+  getBlogCTA,
   CATEGORY_STYLES,
   CATEGORY_GRADIENT,
   type PostFaq,
+  type BlogCTA,
 } from "@/lib/blog";
 import {
   getPriceForEICR,
@@ -60,26 +62,24 @@ export async function generateMetadata({
 
 // ── MDX custom components ─────────────────────────────────────────────────────
 
-function MidArticleCTA() {
-  return (
-    <div className="my-10 rounded-2xl bg-compliance-blue p-6 text-white not-prose">
-      <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider mb-2">
-        Need an EICR?
-      </p>
-      <p className="text-xl font-bold mb-1">
-        Book from £{getPriceForEICR("studio")} — certificate emailed within 24 hours
-      </p>
-      <p className="text-blue-100 text-sm mb-5">
-        NICEIC approved engineers. Fixed price. All 33 London boroughs covered.
-      </p>
-      <Link
-        href="/eicr"
-        className="inline-flex items-center bg-action-green text-brand-charcoal font-bold px-6 py-2.5 rounded-xl hover:bg-brand-green-dark transition-colors text-sm"
-      >
-        Book your EICR →
-      </Link>
-    </div>
-  );
+function createMidArticleCTA(cta: BlogCTA) {
+  return function MidArticleCTA() {
+    return (
+      <div className="my-10 rounded-2xl bg-compliance-blue p-6 text-white not-prose">
+        <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider mb-2">
+          Ready to book?
+        </p>
+        <p className="text-xl font-bold mb-1">{cta.label}</p>
+        <p className="text-blue-100 text-sm mb-5">{cta.subtext}</p>
+        <Link
+          href={cta.href}
+          className="inline-flex items-center bg-action-green text-brand-charcoal font-bold px-6 py-2.5 rounded-xl hover:bg-brand-green-dark transition-colors text-sm"
+        >
+          {cta.label} →
+        </Link>
+      </div>
+    );
+  };
 }
 
 function FAQList({ items }: { items: PostFaq[] }) {
@@ -200,7 +200,6 @@ const proseComponents = {
       {children}
     </tr>
   ),
-  MidArticleCTA,
   FAQList,
 };
 
@@ -218,6 +217,7 @@ export default async function BlogPostPage({
   const { frontmatter: fm, content: rawContent } = raw;
   const headings = extractHeadings(rawContent);
   const related = getRelatedPosts(slug, fm.category);
+  const cta = getBlogCTA(slug);
 
   const { content } = await compileMDX({
     source: rawContent,
@@ -240,7 +240,7 @@ export default async function BlogPostPage({
         faqs: fm.faqs ?? [],
       },
     },
-    components: proseComponents,
+    components: { ...proseComponents, MidArticleCTA: createMidArticleCTA(cta) },
   });
 
   const badgeClass = CATEGORY_STYLES[fm.category] ?? "bg-brand-charcoal text-white";
@@ -387,12 +387,12 @@ export default async function BlogPostPage({
 
               {/* Sidebar CTA */}
               <div className="mt-5 rounded-2xl bg-compliance-blue p-5 text-white">
-                <p className="font-bold mb-1 text-sm">Book your EICR</p>
+                <p className="font-bold mb-1 text-sm">{cta.label}</p>
                 <p className="text-blue-100 text-xs mb-4 leading-relaxed">
-                  From £{getPriceForEICR("studio")} · Certificate within 24 hours
+                  {cta.subtext}
                 </p>
                 <Link
-                  href="/book"
+                  href={cta.href}
                   className="block text-center bg-action-green text-brand-charcoal font-bold px-4 py-2 rounded-lg hover:bg-brand-green-dark transition-colors text-sm"
                 >
                   Book now

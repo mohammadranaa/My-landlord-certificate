@@ -1,6 +1,14 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import {
+  getPriceForEICR,
+  getPriceForGasSafety,
+  getPriceForEPC,
+  getPriceForFRA,
+  getPriceForPAT,
+  LEGIONELLA_PRICES,
+} from "@/lib/pricing";
 
 const POSTS_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -105,6 +113,106 @@ export function extractHeadings(
     headings.push({ id, text });
   }
   return headings;
+}
+
+// ─── Post-topic CTAs ─────────────────────────────────────────────────────────
+// `href` service IDs must match the ids in src/components/booking/step-3-services.tsx
+// — that form has no "legionella" service yet, so that post links to plain /book.
+
+export interface BlogCTA {
+  label: string;
+  href: string;
+  subtext: string;
+}
+
+const eicrPrice = getPriceForEICR("studio");
+const gasPrice = getPriceForGasSafety(1);
+const epcPrice = getPriceForEPC("studio");
+const fraPrice = getPriceForFRA("studio");
+const patPrice = getPriceForPAT(1);
+const legionellaPrice = LEGIONELLA_PRICES.standard;
+
+export const BLOG_CTAS: Record<string, BlogCTA> = {
+  "what-is-an-eicr": {
+    label: `Book your EICR from £${eicrPrice}`,
+    href: "/book?service=eicr",
+    subtext: "Next-day appointments · Certificate within 24 hours",
+  },
+  "eicr-cost-london-2026": {
+    label: `Book your EICR from £${eicrPrice}`,
+    href: "/book?service=eicr",
+    subtext: "Fixed price · No hidden charges",
+  },
+  "eicr-cost-guide-2026": {
+    label: `Book your EICR from £${eicrPrice}`,
+    href: "/book?service=eicr",
+    subtext: "Fixed price · No hidden charges",
+  },
+  "what-happens-if-eicr-fails": {
+    label: `Book your EICR from £${eicrPrice}`,
+    href: "/book?service=eicr",
+    subtext: "NICEIC approved · Certificate within 24 hours",
+  },
+  "eicr-vs-pat-testing-difference": {
+    label: "Book EICR + PAT Testing",
+    href: "/book",
+    subtext: `EICR from £${eicrPrice} · PAT from £${patPrice}`,
+  },
+  "gas-safety-certificate-landlord-guide": {
+    label: `Book your Gas Safety Certificate from £${gasPrice}`,
+    href: "/book?service=gas-safety-cp12",
+    subtext: "Gas Safe registered · Certificate within 24 hours",
+  },
+  "how-often-gas-safety-certificate-landlord": {
+    label: `Book your Gas Safety Certificate from £${gasPrice}`,
+    href: "/book?service=gas-safety-cp12",
+    subtext: "Annual requirement · Gas Safe registered engineers",
+  },
+  "how-to-improve-epc-rating": {
+    label: `Book your EPC from £${epcPrice}`,
+    href: "/book?service=epc",
+    subtext: "Elmhurst accredited assessors · Valid 10 years",
+  },
+  "fire-risk-assessment-hmo-guide": {
+    label: `Book your Fire Risk Assessment from £${fraPrice}`,
+    href: "/book?service=fra-residential",
+    subtext: "IFSM certified assessors · Report within 48 hours",
+  },
+  "legionella-risk-assessment-landlord-guide": {
+    label: `Book your Legionella Risk Assessment — £${legionellaPrice}`,
+    href: "/book",
+    subtext: "ACoP L8 compliant · Report within 48 hours",
+  },
+  "first-time-landlord-compliance-checklist": {
+    label: "Book all your landlord certificates",
+    href: "/book",
+    subtext: "All certificates from one provider",
+  },
+  "landlord-certificates-guide-2026": {
+    label: "Book your landlord certificates",
+    href: "/book",
+    subtext: `EICR from £${eicrPrice} · Gas Safety from £${gasPrice}`,
+  },
+  "renters-rights-act-2025-landlord-guide": {
+    label: "Check your compliance certificates",
+    href: "/book",
+    subtext: "Stay compliant under the new rules",
+  },
+  "section-21-compliance-landlords": {
+    label: "Book your compliance certificates",
+    href: "/book",
+    subtext: "EICR, Gas Safety and EPC from one provider",
+  },
+};
+
+export const DEFAULT_BLOG_CTA: BlogCTA = {
+  label: "Book a certificate",
+  href: "/book",
+  subtext: "All landlord certificates from one provider",
+};
+
+export function getBlogCTA(slug: string): BlogCTA {
+  return BLOG_CTAS[slug] ?? DEFAULT_BLOG_CTA;
 }
 
 export function formatDate(dateStr: string): string {
