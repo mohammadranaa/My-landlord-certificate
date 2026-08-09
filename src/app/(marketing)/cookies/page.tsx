@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/heading";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | My Landlord Certificate",
+  title: "Cookie Policy",
   description:
     "Cookie policy for mylandlordcertificate.co.uk. Learn how we use cookies and how to manage your preferences.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/cookies" },

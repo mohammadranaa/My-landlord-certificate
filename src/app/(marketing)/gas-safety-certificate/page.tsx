@@ -18,7 +18,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate (CP12) from £49.99 | My Landlord Certificate",
+  title: "Gas Safety Certificate (CP12) from £49.99",
   description:
     "Book a Gas Safety Certificate (CP12) from £49.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed within 24 hours.",
   alternates: {

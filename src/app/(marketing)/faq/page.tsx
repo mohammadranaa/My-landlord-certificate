@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "FAQ — Landlord Certificates Explained | My Landlord Certificate",
+  title: "FAQ — Landlord Certificates Explained",
   description:
     "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/faq" },

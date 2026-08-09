@@ -19,7 +19,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost? | My Landlord Certificate",
+  title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
   description:
     "Gas Safety Certificate (CP12) costs from £50 for 1 appliance. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
   alternates: {

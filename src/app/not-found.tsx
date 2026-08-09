@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Page Not Found — My Landlord Certificate",
+  title: "Page Not Found",
   robots: { index: false },
 };
 

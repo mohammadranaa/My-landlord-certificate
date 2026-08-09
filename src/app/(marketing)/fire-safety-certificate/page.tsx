@@ -14,7 +14,7 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fire Safety Certificate London from £54.99, Smoke Alarm Testing | My Landlord Certificate",
+  title: "Fire Safety Certificate London from £54.99, Smoke Alarm Testing",
   description:
     "Smoke and CO alarm testing and certification from £54.99. Required under the Smoke and Carbon Monoxide Alarm Regulations 2022. Accredited engineers across all 33 London boroughs. Certificate within 24 hours.",
   alternates: {

@@ -7,7 +7,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INS
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Fire Door Certificate London from £129.99 | FD30 & FD60 Inspections | My Landlord Certificate",
+  title: "Fire Door Certificate London from £129.99 | FD30 & FD60 Inspections",
   description:
     "Fire door inspections and certificates in London from £129.99 for 1-3 doors. BS 9999 and Fire Safety (England) Regulations 2022 compliant. HMOs, blocks of flats, commercial premises. Certificate within 24 hours. BAFE certified inspectors across all 33 London boroughs.",
   alternates: {

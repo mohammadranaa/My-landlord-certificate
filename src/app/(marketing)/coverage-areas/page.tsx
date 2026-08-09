@@ -12,7 +12,7 @@ import { MapSection } from "@/components/ui/map-section";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Coverage Areas — All London Boroughs & M25 Wide | My Landlord Certificate",
+  title: "Coverage Areas — All London Boroughs & M25 Wide",
   description:
     "EICR, Gas Safety, EPC and Fire Risk Assessment across all 33 London boroughs and the M25 area. Next-day appointments. Certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/coverage-areas" },

@@ -18,7 +18,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Commercial EICR from £149.99 | London | My Landlord Certificate",
+  title: "Commercial EICR from £149.99 | London",
   description:
     "Commercial EICR from £149.99. NICEIC approved electricians covering all London boroughs. Required every 3–5 years. Written report within 24 hours.",
   alternates: {

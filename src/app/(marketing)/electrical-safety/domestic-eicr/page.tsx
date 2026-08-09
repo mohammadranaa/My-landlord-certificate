@@ -12,7 +12,7 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "EICR Certificate London from £67.99 — NICEIC Approved | My Landlord Certificate",
+  title: "EICR Certificate London from £67.99 — NICEIC Approved",
   description:
     "Book a landlord EICR (Electrical Installation Condition Report) from £67.99. Legally required for all rental properties in England. NICEIC approved electricians, same-week appointments across all 33 London boroughs. Certificate emailed within 24 hours.",
   alternates: {

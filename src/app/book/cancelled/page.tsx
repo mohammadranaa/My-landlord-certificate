@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { PHONE_DISPLAY, TEL, WHATSAPP_URL, EMAIL, MAILTO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Booking Cancelled — My Landlord Certificate",
+  title: "Booking Cancelled",
   robots: { index: false },
 };
 

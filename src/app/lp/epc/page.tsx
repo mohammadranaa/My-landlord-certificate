@@ -19,7 +19,7 @@ const GOOGLE_PROFILE = GOOGLE_BUSINESS_URL;
 // indexed SEO page at /epc to avoid duplicate content). Stripped navigation,
 // one goal: book or call.
 export const metadata: Metadata = {
-  title: "EPC Certificate London from £89.99 | Book Online | My Landlord Certificate",
+  title: "EPC Certificate London from £89.99 | Book Online",
   description:
     "Energy Performance Certificate from £89.99. Accredited DEA assessors across all 33 London boroughs. On the national register within 24 hours. Book online in 2 minutes or call.",
   robots: { index: false, follow: false },

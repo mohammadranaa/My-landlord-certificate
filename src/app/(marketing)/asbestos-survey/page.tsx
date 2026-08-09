@@ -9,7 +9,7 @@ import { ADDITIONAL_CHARGES, ASBESTOS_SURVEY_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Asbestos Survey London from £239.99 | My Landlord Certificate",
+  title: "Asbestos Survey London from £239.99",
   description:
     "Asbestos management survey from £239.99 including 1 sample. Required before renovation or demolition in pre-2000 properties. UKAS-accredited laboratory analysis. London-wide service.",
   alternates: {

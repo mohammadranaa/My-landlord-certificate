@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/heading";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — My Landlord Certificate",
+  title: "Privacy Policy",
   description:
     "How My Landlord Certificate collects, uses and protects your personal data. UK GDPR compliant privacy policy.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/privacy" },

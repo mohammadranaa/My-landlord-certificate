@@ -20,7 +20,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EICR Cost Guide 2025, How Much Does an EICR Cost? | My Landlord Certificate",
+  title: "EICR Cost Guide 2025, How Much Does an EICR Cost?",
   description:
     "EICR costs from £67.99 for a studio to £199.99 for an 8-bedroom property. Full domestic and commercial EICR price breakdown, what drives the cost, and how to get a fixed price with no hidden charges.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-cost" },

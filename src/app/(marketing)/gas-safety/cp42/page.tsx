@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial Gas Safety Certificate (CP42) London from £159.99 | My Landlord Certificate",
+  title: "Commercial Gas Safety Certificate (CP42) London from £159.99",
   description:
     "Annual CP42 commercial gas safety inspection from £159.99. Gas Safe Registered with COMCAT and COCN1 competencies. Restaurants, offices, HMOs. All 33 London boroughs. Certificate within 24 hours.",
   alternates: {

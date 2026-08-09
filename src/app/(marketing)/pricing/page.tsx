@@ -35,7 +35,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Pricing — All Landlord Compliance Certificates | My Landlord Certificate",
+  title: "Pricing — All Landlord Compliance Certificates",
   description:
     "Full pricing for EICR, Gas Safety Certificate, EPC, Fire Risk Assessment, PAT Testing, ELC, Asbestos Survey and more. Fixed prices, no hidden fees. From £50.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pricing" },

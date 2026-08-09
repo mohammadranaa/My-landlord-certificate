@@ -9,7 +9,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INS
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service | My Landlord Certificate",
+  title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service",
   description:
     "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label within 24 hours. All London boroughs.",
   alternates: {

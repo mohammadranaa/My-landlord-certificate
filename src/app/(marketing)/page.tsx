@@ -23,7 +23,9 @@ const ServicesSection = dynamic(
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate",
+  title: {
+    absolute: "Landlord Certificates London — EICR, Gas Safety & EPC | MLC",
+  },
   description:
     "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. From £50 — no hidden charges. Next-day appointments available across London.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk" },

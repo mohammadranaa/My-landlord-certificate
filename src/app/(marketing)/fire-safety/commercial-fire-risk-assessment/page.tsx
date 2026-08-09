@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, FRA_COMMERCIAL_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial Fire Risk Assessment from £149.99 | My Landlord Certificate",
+  title: "Commercial Fire Risk Assessment from £149.99",
   description:
     "Commercial fire risk assessment from £149.99 for communal areas up to 3 floors. Required under the Regulatory Reform (Fire Safety) Order 2005. IFSM-qualified assessors. London-wide.",
   alternates: {

@@ -12,7 +12,7 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial EICR London from £149.99 — NICEIC Approved | My Landlord Certificate",
+  title: "Commercial EICR London from £149.99 — NICEIC Approved",
   description:
     "Commercial EICR (Electrical Installation Condition Report) from £149.99 per consumer unit. Required under the Electricity at Work Regulations 1989. NICEIC approved electricians for offices, HMOs, retail, and mixed-use premises across London.",
   alternates: {

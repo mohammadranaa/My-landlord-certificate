@@ -15,7 +15,7 @@ import { TEL, PHONE_DISPLAY, MAILTO, EMAIL } from "@/lib/constants";
 const entryPrice = COMMERCIAL_EPC_TABLE[0].price;
 
 export const metadata: Metadata = {
-  title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
+  title: "Commercial EPC from £249.99 | London",
   description:
     "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs. MEES compliance advice included. Report within 24 hours. Bespoke pricing for properties over 850m2.",
   alternates: {

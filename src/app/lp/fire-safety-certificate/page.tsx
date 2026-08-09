@@ -16,7 +16,7 @@ const BOOK = "/book?service=fire-safety-cert";
 // Dedicated Google Ads landing page. Unlinked, noindex (kept separate from the
 // indexed SEO page at /fire-safety-certificate). Stripped navigation, one goal.
 export const metadata: Metadata = {
-  title: `Fire Safety Certificate London from £${entryPrice} | Smoke Alarm Testing | My Landlord Certificate`,
+  title: `Fire Safety Certificate London from £${entryPrice} | Smoke Alarm Testing`,
   description:
     "Smoke and heat alarm testing and certification for landlords across London. Required under the Smoke and Carbon Monoxide Alarm Regulations. Certificate within 24 hours. Book online or call.",
   robots: { index: false, follow: false },

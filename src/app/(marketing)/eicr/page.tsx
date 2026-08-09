@@ -46,7 +46,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EICR Certificate from £67.99 | My Landlord Certificate",
+  title: "EICR Certificate from £67.99",
   description:
     "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr" },

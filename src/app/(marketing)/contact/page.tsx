@@ -8,7 +8,7 @@ import { PHONE_DISPLAY, TEL, WHATSAPP_URL, MAILTO, EMAIL, GOOGLE_BUSINESS_URL, G
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Contact Us — My Landlord Certificate",
+  title: "Contact Us",
   description:
     "Get in touch with the My Landlord Certificate team. Call, email, WhatsApp or use our contact form. We respond to all enquiries within one working day.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/contact" },

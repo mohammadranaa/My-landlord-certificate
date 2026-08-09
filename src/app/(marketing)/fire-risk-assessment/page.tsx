@@ -21,8 +21,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:
-    "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors | My Landlord Certificate",
+  title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
   description:
     "Fire risk assessments in London from £74.99. IFSM certified and IFE registered assessors. HMOs, blocks of flats, commercial premises. Report within 48 hours. Covering all 33 London boroughs and the M25 area.",
   alternates: {

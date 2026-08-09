@@ -16,7 +16,7 @@ const BOOK = "/book?service=fra-residential";
 // Dedicated Google Ads landing page. Unlinked, noindex (kept separate from the
 // indexed SEO page at /fire-risk-assessment). Stripped navigation, one goal.
 export const metadata: Metadata = {
-  title: `Fire Risk Assessment London from £${entryPrice} | Book Online | My Landlord Certificate`,
+  title: `Fire Risk Assessment London from £${entryPrice} | Book Online`,
   description:
     "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Competent assessors, written report and action plan within 48 hours. Book online or call.",
   robots: { index: false, follow: false },

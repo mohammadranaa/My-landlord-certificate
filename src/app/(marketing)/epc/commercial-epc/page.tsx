@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial EPC London from £249.99 — Accredited DEA Assessors | My Landlord Certificate",
+  title: "Commercial EPC London from £249.99 — Accredited DEA Assessors",
   description:
     "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 33 London boroughs. Registered on national database.",
   alternates: {

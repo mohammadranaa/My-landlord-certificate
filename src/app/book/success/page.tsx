@@ -9,7 +9,7 @@ import { PHONE_DISPLAY, TEL, WHATSAPP_URL, GOOGLE_REVIEW_URL } from "@/lib/const
 import { PurchaseEvent } from "@/components/analytics/purchase-event";
 
 export const metadata: Metadata = {
-  title: "Booking Confirmed — My Landlord Certificate",
+  title: "Booking Confirmed",
   robots: { index: false },
 };
 

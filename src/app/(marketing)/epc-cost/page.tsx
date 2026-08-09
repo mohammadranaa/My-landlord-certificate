@@ -19,7 +19,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EPC Cost Guide 2025, How Much Does an EPC Cost? | My Landlord Certificate",
+  title: "EPC Cost Guide 2025, How Much Does an EPC Cost?",
   description:
     "EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. Full domestic and commercial EPC price breakdown, what drives the cost, and how to get a fixed price with no hidden charges.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/epc-cost" },

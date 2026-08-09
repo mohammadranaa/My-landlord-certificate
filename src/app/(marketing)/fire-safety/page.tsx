@@ -6,7 +6,7 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fire Safety Certificates & Assessments | My Landlord Certificate",
+  title: "Fire Safety Certificates & Assessments",
   description:
     "Fire safety certificates from £54.99, fire risk assessments from £74.99, fire alarm installation from £209.99/alarm. Accredited fire safety engineers across London.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-safety" },

@@ -18,7 +18,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "EICR London, from £67.99, All 33 Boroughs | My Landlord Certificate",
+  title: "EICR London, from £67.99, All 33 Boroughs",
   description:
     "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed within 24 hours.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-london" },

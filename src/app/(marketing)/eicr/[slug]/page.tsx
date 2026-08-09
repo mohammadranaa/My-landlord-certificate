@@ -36,7 +36,7 @@ export async function generateMetadata({
   const borough = getBoroughData(slug);
   if (!borough) return {};
   return {
-    title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
+    title: `EICR ${borough.name} from £${entryPrice}`,
     description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours. Book online.`,
     alternates: {
       canonical: `${SITE_URL}/eicr/${slug}`,

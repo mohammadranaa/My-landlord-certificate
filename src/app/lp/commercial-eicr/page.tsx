@@ -16,7 +16,7 @@ const entryPrice = 149.99;
 const GOOGLE_PROFILE = GOOGLE_BUSINESS_URL;
 
 export const metadata: Metadata = {
-  title: "Commercial EICR from £149.99 | NICEIC Approved | My Landlord Certificate",
+  title: "Commercial EICR from £149.99 | NICEIC Approved",
   description:
     "Commercial Electrical Installation Condition Report from £149.99. NICEIC approved contractors across London and the M25 area. Certificate emailed within 24 hours. Book online or call.",
   robots: { index: false, follow: false },

@@ -12,7 +12,7 @@ import {
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate (CP12) London from £49.99 | My Landlord Certificate",
+  title: "Gas Safety Certificate (CP12) London from £49.99",
   description:
     "Annual landlord gas safety certificate (CP12) from £49.99. Legally required every 12 months for rental properties with gas appliances. Gas Safe Registered engineers across all 33 London boroughs. Certificate emailed within 24 hours.",
   alternates: {

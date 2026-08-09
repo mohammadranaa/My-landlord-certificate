@@ -11,8 +11,7 @@ import { ADDITIONAL_CHARGES, LEGIONELLA_PRICES } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title:
-    "Legionella Risk Assessment London — £299.99 | ACoP L8 Compliant | My Landlord Certificate",
+  title: "Legionella Risk Assessment London — £299.99 | ACoP L8 Compliant",
   description:
     "Legionella risk assessments in London from £299.99. ACoP L8 and HSG274 compliant. On-site water system inspection, temperature checks, stagnation analysis, and detailed report with action plan. All 33 London boroughs and M25.",
   alternates: {

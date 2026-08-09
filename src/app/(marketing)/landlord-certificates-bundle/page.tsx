@@ -18,7 +18,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Landlord Certificate Bundle — Save up to £44.97 | My Landlord Certificate",
+  title: "Landlord Certificate Bundle — Save up to £44.97",
   description:
     "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit and save. Essential Bundle from £130. Full Compliance £230. HMO Complete £450. All certificates emailed within 24 hours.",
   alternates: {

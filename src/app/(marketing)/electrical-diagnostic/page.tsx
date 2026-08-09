@@ -7,7 +7,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, ELECTRICAL_DIAGNOSTIC_HOURLY_RATE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Electrical Diagnostic London — £99.99/hr, No Call-Out Fee | My Landlord Certificate",
+  title: "Electrical Diagnostic London — £99.99/hr, No Call-Out Fee",
   description:
     "Electrical fault finding from £99.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 33 London boroughs. Minor repairs same visit.",
   alternates: {

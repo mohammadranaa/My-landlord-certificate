@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, ASBESTOS_SURVEY_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Asbestos Survey from £239.99 | My Landlord Certificate",
+  title: "Asbestos Survey from £239.99",
   description:
     "Asbestos management survey from £239.99 including 1 sample. Required before renovation or demolition work in pre-2000 properties. UKAS-accredited laboratory analysis. London-wide.",
   alternates: {

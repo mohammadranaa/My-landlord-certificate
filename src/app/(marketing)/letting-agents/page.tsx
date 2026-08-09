@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
+  title: "Letting Agents — Landlord Certificate Partner",
   description:
     "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, certificates within 24 hours for your landlords.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/letting-agents" },

@@ -17,8 +17,7 @@ import {
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title:
-    "Commercial Gas Safety Certificate CP42 from £159.99 | My Landlord Certificate",
+  title: "Commercial Gas Safety Certificate CP42 from £159.99",
   description:
     "Commercial Gas Safety Certificate (CP42) from £159.99. Gas Safe registered engineers. Annual certification for commercial premises across London.",
   alternates: {

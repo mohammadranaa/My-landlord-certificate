@@ -8,7 +8,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fuse Box Installation London from £599.99 — NICEIC Approved | My Landlord Certificate",
+  title: "Fuse Box Installation London from £599.99 — NICEIC Approved",
   description:
     "Consumer unit replacement from £599.99. NICEIC approved electricians across all 33 London boroughs. Dual-RCD or RCBO protection, Part P self-certified, EICR included on completion.",
   alternates: {
