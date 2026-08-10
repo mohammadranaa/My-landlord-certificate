@@ -83,6 +83,11 @@ const localBusinessSchema = {
     postalCode: "SW19 1BA",
     addressCountry: "GB",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 51.415969,
+    longitude: -0.187741,
+  },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
