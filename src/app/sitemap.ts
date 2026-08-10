@@ -21,7 +21,8 @@ import { getAllPosts } from "@/lib/blog";
 
 const BASE = "https://www.mylandlordcertificate.co.uk";
 
-// All 33 London borough slugs — must match keys in eicr/[slug]/page.tsx
+// All 33 London borough slugs — must match keys in borough-data.ts, used by
+// eicr/[slug], gas-safety-certificate/[slug], epc/[slug] and pat-testing/[slug]
 const boroughSlugs = [
   "barking-dagenham", "barnet", "bexley", "brent", "bromley",
   "camden", "city-of-london", "croydon", "ealing", "enfield",
@@ -102,6 +103,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...boroughSlugs.map((slug) => ({
       url: `${BASE}/eicr/${slug}`,
       priority: 0.72 as number,
+      changeFrequency: "monthly" as const,
+    })),
+    ...boroughSlugs.map((slug) => ({
+      url: `${BASE}/gas-safety-certificate/${slug}`,
+      priority: 0.70 as number,
+      changeFrequency: "monthly" as const,
+    })),
+    ...boroughSlugs.map((slug) => ({
+      url: `${BASE}/epc/${slug}`,
+      priority: 0.70 as number,
+      changeFrequency: "monthly" as const,
+    })),
+    ...boroughSlugs.map((slug) => ({
+      url: `${BASE}/pat-testing/${slug}`,
+      priority: 0.70 as number,
       changeFrequency: "monthly" as const,
     })),
   ];
