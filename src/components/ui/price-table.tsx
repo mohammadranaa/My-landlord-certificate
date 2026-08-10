@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type Badge = "cheapest" | "most-popular";
@@ -14,6 +15,14 @@ interface PriceTableProps {
   rows: readonly PriceTableRow[];
   /** Automatically adds a "Cheapest" badge to the lowest-priced row. */
   highlightCheapest?: boolean;
+  /**
+   * Destination for the per-row "Book" button. Deep-link to the booking flow
+   * for this service, e.g. "/book?service=eicr". Defaults to "/book".
+   * Pass `null` to hide the booking buttons entirely.
+   */
+  bookHref?: string | null;
+  /** Label for the per-row booking button. */
+  bookLabel?: string;
   className?: string;
 }
 
@@ -47,6 +56,8 @@ export function PriceTable({
   title,
   rows,
   highlightCheapest = false,
+  bookHref = "/book",
+  bookLabel = "Book",
   className,
 }: PriceTableProps) {
   const pricedRows = rows.filter((r) => !r.callForQuote && r.price !== undefined);
@@ -118,17 +129,28 @@ export function PriceTable({
                   </span>
                 </td>
 
-                {/* Price cell */}
-                <td className="block px-5 pb-4 pt-1 text-left md:table-cell md:py-4 md:text-right md:whitespace-nowrap">
-                  {row.callForQuote ? (
-                    <span className="text-base font-semibold text-compliance-blue">
-                      Call for quote
-                    </span>
-                  ) : (
-                    <span className="text-base font-bold text-brand-charcoal">
-                      {row.price !== undefined ? formatPrice(row.price) : "—"}
-                    </span>
-                  )}
+                {/* Price + Book cell */}
+                <td className="block px-5 pb-4 pt-1 text-left md:table-cell md:py-3 md:text-right md:whitespace-nowrap">
+                  <div className="flex items-center justify-between gap-3 md:justify-end md:gap-4">
+                    {row.callForQuote ? (
+                      <span className="text-base font-semibold text-compliance-blue">
+                        Call for quote
+                      </span>
+                    ) : (
+                      <span className="text-base font-bold text-brand-charcoal">
+                        {row.price !== undefined ? formatPrice(row.price) : "—"}
+                      </span>
+                    )}
+                    {bookHref && !row.callForQuote && row.price !== undefined && (
+                      <Link
+                        href={bookHref}
+                        aria-label={`Book — ${row.label}`}
+                        className="shrink-0 inline-flex items-center rounded-lg bg-action-green px-3.5 py-1.5 text-xs font-semibold text-brand-charcoal transition-colors hover:bg-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue"
+                      >
+                        {bookLabel}
+                      </Link>
+                    )}
+                  </div>
                 </td>
               </tr>
             );

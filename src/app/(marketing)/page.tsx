@@ -8,6 +8,8 @@ import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
 import {
@@ -76,7 +78,7 @@ const localBusinessSchema = {
   priceRange: "££",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.8",
+    ratingValue: "5.0",
     bestRating: "5",
     worstRating: "1",
     ratingCount: "847",
@@ -91,7 +93,7 @@ const aggregateRatingSchema = {
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
   },
-  ratingValue: "4.8",
+  ratingValue: "5.0",
   bestRating: "5",
   worstRating: "1",
   ratingCount: "847",
@@ -171,6 +173,8 @@ export default function HomePage() {
               Your property certificates.{" "}
               <span className="text-action-green">Sorted.</span>
             </Heading>
+
+            <HeroRating theme="dark" className="mb-6" />
 
             <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-4 max-w-2xl">
               Book your{" "}
@@ -458,6 +462,9 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* ── Reviews ──────────────────────────────────────────────────────── */}
+      <ReviewsBlock />
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
       <Section spacing="md" className="below-fold bg-compliance-blue">

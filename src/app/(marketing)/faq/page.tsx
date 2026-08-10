@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -68,6 +69,16 @@ const categories = [
         question: "What happens if I need to rearrange my appointment?",
         answer:
           "Contact us by phone or email at least 24 hours before your appointment and we will rearrange at no charge. Cancellations or rearrangements with less than 24 hours' notice may incur a rebooking fee. Full details are in our terms and conditions.",
+      },
+      {
+        question: "What is your cancellation and refund policy?",
+        answer:
+          "You can rearrange or cancel free of charge up to 24 hours before your appointment — just contact us by phone or email. Changes or cancellations with less than 24 hours' notice, or a missed visit where no access was available, may incur a rebooking fee to cover the engineer's allocated time. If we are unable to complete the inspection through no fault of your own, you will not be charged. Full terms are in our terms and conditions.",
+      },
+      {
+        question: "What happens if my tenant won't allow access for the inspection?",
+        answer:
+          "The legal responsibility for arranging the inspection stays with you as the landlord, so it is important to document every access attempt. Give your tenant as much notice as possible and confirm the appointment in writing. Your engineer can coordinate directly with the tenant or a keyholder — you do not need to be present yourself. If a tenant repeatedly refuses access, keep copies of all notices and correspondence as evidence that you took all reasonable steps, and we will rearrange the visit if access is not possible on the day.",
       },
     ],
   },
@@ -270,6 +281,16 @@ const categories = [
         answer:
           "Yes. A VAT invoice is emailed to you with your booking confirmation. If you need a separate receipt or a copy of your invoice, contact us at any time and we will resend it. All booking records are retained in your account if you register, or available on request if you booked as a guest.",
       },
+      {
+        question: "How much does a landlord certificate cost?",
+        answer:
+          "Prices are fixed and depend on the service and property size. An EICR starts from £67.99, a Gas Safety Certificate (CP12) from £50, an EPC from £89.99, a Fire Risk Assessment from £74 and PAT Testing from £59.99. Booking two or more certificates in a single visit saves money — the Essential Bundle (EICR + Gas Safety) starts from £130. Every price is shown in full before you pay, with no charges added afterwards. See our pricing page for the complete list.",
+      },
+      {
+        question: "If remedial work is found, am I obliged to use you for it?",
+        answer:
+          "No. If an inspection identifies remedial work — for example C1 or C2 observations on an EICR — you are under no obligation to have us carry out the repairs. Our engineer will provide a clear, itemised quote on the day, but you are free to obtain other quotes or use your own contractor. You are, however, legally required to complete the necessary remedial work (typically within 28 days for an EICR) and obtain written confirmation that the installation has been made safe before the property can be let.",
+      },
     ],
   },
 ];
@@ -321,13 +342,13 @@ export default function FAQPage() {
           </Heading>
           <p className="text-blue-100 text-lg leading-relaxed max-w-xl mx-auto">
             {totalQuestions} questions covering EICR, Gas Safety, EPC, Fire Risk
-            Assessment, PAT Testing, booking and pricing. If you can't find what you
+            Assessment, PAT Testing, booking and pricing. If you can&apos;t find what you
             need, call{" "}
             <a
-              href="mailto:info@mylandlordcertificate.co.uk"
+              href={TEL}
               className="underline underline-offset-2 hover:text-white"
             >
-              
+              {PHONE_DISPLAY}
             </a>
             .
           </p>
@@ -418,7 +439,7 @@ export default function FAQPage() {
             calls within three rings.
           </p>
           <a
-            href="mailto:info@mylandlordcertificate.co.uk"
+            href={TEL}
             className="inline-flex items-center gap-2 text-compliance-blue font-semibold text-lg hover:underline"
           >
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -430,7 +451,7 @@ export default function FAQPage() {
                 strokeLinejoin="round"
               />
             </svg>
-            
+            {PHONE_DISPLAY}
           </a>
         </Container>
       </section>

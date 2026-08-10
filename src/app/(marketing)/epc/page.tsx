@@ -6,7 +6,9 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { ImageSlider } from "@/components/ui/image-slider";
 import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
 import Image from "next/image";
 import { TEL, PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import {
@@ -164,6 +166,18 @@ const improvements = [
   { rank: "9", measure: "LED lighting throughout", impact: "+1–2 points", cost: "~£50–£200" },
 ];
 
+function GoogleStars() {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 on Google">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 export default function EPCPage() {
   return (
     <>
@@ -192,6 +206,18 @@ export default function EPCPage() {
               <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
                 EPC Certificate from £{entryPrice}
               </h1>
+
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mb-4 hover:underline"
+              >
+                <GoogleStars />
+                <span className="text-sm text-blue-100">
+                  Rated <strong className="text-white">5.0</strong> on Google
+                </span>
+              </a>
 
               <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
               <p className="text-blue-100 text-lg leading-relaxed mb-5">
@@ -269,6 +295,35 @@ export default function EPCPage() {
           </div>
         </div>
       </div>
+
+      {/* ── Accreditation logos ── */}
+      <section className="bg-warm-white border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
+            Our engineers are accredited &amp; registered with
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {[
+              { src: "/accreditations/elmhurst.png", alt: "Elmhurst Energy approved energy assessor" },
+              { src: "/accreditations/stroma.png", alt: "Stroma Certification" },
+              { src: "/accreditations/cibse.png", alt: "CIBSE" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="bg-white rounded-2xl border border-border shadow-sm flex items-center justify-center w-36 h-24 sm:w-44 sm:h-28 p-4"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={220}
+                  height={220}
+                  className="max-h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Content well ── */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 md:pb-10">
@@ -572,6 +627,71 @@ export default function EPCPage() {
           </div>
         </section>
 
+        {/* A proper assessment, by an accredited DEA */}
+        <section className="py-10 border-b border-border">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+                Thorough &amp; accredited
+              </p>
+              <h2 className="text-2xl font-bold text-brand-charcoal mb-4">
+                A proper assessment, by an accredited DEA
+              </h2>
+              <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+                Your assessor inspects the construction, insulation, glazing, heating system and
+                controls, then lodges your A to G rating on the national register with a free
+                recommendations report showing how to improve it.
+              </p>
+              <ul className="space-y-2.5">
+                {[
+                  "Walls, loft and floor insulation",
+                  "Boiler, heating system and controls",
+                  "Window glazing and renewables",
+                  "Lodged on the national register within 24 hours",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                      ✓
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Image
+              src="/epc/epc-radiator-heating-controls.png"
+              alt="Accredited domestic energy assessor checking radiators and heating controls during an EPC assessment"
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="rounded-2xl shadow-md w-full h-auto"
+            />
+          </div>
+        </section>
+
+        {/* See what our assessors actually check (gallery) */}
+        <section className="py-10 border-b border-border overflow-hidden">
+          <p className="text-center text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+            From a recent assessment
+          </p>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-3 text-center">
+            See what our assessors actually check
+          </h2>
+          <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
+            Every EPC involves a thorough room-by-room survey of your property. Here is what a
+            typical visit looks like — real photos from a recent assessment.
+          </p>
+          <ImageSlider
+            images={[
+              { src: "/epc/epc-boiler-inspection.png", alt: "Assessor inspecting the boiler and heating system to record type, age and efficiency" },
+              { src: "/epc/epc-boiler-controls-thermostat.png", alt: "Assessor recording boiler controls, thermostat settings and heating efficiency" },
+              { src: "/epc/epc-window-glazing-assessment.png", alt: "Assessor checking window glazing type — single, double or triple — which affects the energy rating" },
+              { src: "/epc/epc-wall-floor-insulation.png", alt: "Assessor inspecting wall and floor construction to determine insulation levels" },
+              { src: "/epc/epc-meter-energy-supply.png", alt: "Assessor recording the electricity and gas meter type as part of the energy assessment" },
+            ]}
+          />
+        </section>
+
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
@@ -582,6 +702,7 @@ export default function EPCPage() {
             title="Domestic EPC"
             rows={DOMESTIC_EPC_TABLE}
             highlightCheapest
+            bookHref="/book?service=epc"
           />
           <p className="text-sm text-brand-grey mt-4">
             Additional charges may apply:{" "}
@@ -637,6 +758,15 @@ export default function EPCPage() {
               className="rounded-xl border border-border shadow-sm w-full md:w-[280px] mx-auto"
             />
           </div>
+        </section>
+
+        {/* Mid-page CTA */}
+        <section className="py-10 border-b border-border">
+          <InlineCTA
+            href="/book?service=epc"
+            heading="Ready to book your EPC?"
+            subtext={`Fixed price from £${entryPrice} · on the national register within 24 hours.`}
+          />
         </section>
 
         {/* How it works */}

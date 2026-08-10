@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Bell, ClipboardList, Flame, Shield, Siren } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -96,6 +98,8 @@ export default function FireSafetyPage() {
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
               Fire Safety Certificates &amp; Assessments
             </h1>
+
+            <HeroRating theme="dark" className="mb-5" />
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
               From fire risk assessments and alarm installation to fire door inspections and
               extinguisher servicing. We help landlords and HMO operators meet their obligations
@@ -198,6 +202,8 @@ export default function FireSafetyPage() {
           </div>
         </div>
       </section>
+
+      <ReviewsBlock />
 
       {/* ── CTA ── */}
       <section className="py-14 bg-warm-white">

@@ -8,6 +8,8 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -231,6 +233,8 @@ export default function GasSafetyCertificateCostPage() {
           <Heading level={1} id="gas-cost-heading" inverted className="mb-4 max-w-3xl">
             How much does a gas safety certificate cost?
           </Heading>
+
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A domestic Gas Safety Certificate (CP12) starts from{" "}
@@ -677,6 +681,8 @@ export default function GasSafetyCertificateCostPage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=gas-safety-cp12"

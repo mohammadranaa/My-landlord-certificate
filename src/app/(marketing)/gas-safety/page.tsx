@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Flame, Building2, Thermometer } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -78,6 +80,8 @@ export default function GasSafetyPage() {
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
               Gas Safety Certificates &amp; Services
             </h1>
+
+            <HeroRating theme="dark" className="mb-5" />
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
               Annual gas safety inspections (CP12), commercial gas certification (CP42), and
               full boiler installations. All work carried out by Gas Safe Registered engineers —
@@ -180,6 +184,8 @@ export default function GasSafetyPage() {
           </div>
         </div>
       </section>
+
+      <ReviewsBlock />
 
       {/* ── CTA ── */}
       <section className="py-14 bg-warm-white">

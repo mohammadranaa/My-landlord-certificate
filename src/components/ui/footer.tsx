@@ -28,6 +28,8 @@ const columns: FooterColumn[] = [
   {
     heading: "Company",
     links: [
+      { href: "/about", label: "About Us" },
+      { href: "/reviews", label: "Reviews" },
       { href: "/#how-it-works", label: "How It Works" },
       { href: "/blog", label: "Blog" },
       { href: "/letting-agents", label: "Letting Agents" },

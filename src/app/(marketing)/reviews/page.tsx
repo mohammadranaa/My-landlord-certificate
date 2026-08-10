@@ -37,7 +37,7 @@ const aggregateRatingSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
+    ratingValue: "5.0",
     reviewCount: "312",
     bestRating: "5",
     worstRating: "1",
@@ -194,14 +194,14 @@ export default function ReviewsPage() {
             My Landlord Certificate Reviews
           </p>
           <Heading level={1} id="reviews-heading" inverted className="mb-6 max-w-2xl mx-auto">
-            Rated 4.9 out of 5 by London landlords
+            Rated 5.0 out of 5 by London landlords
           </Heading>
 
           {/* Prominent rating block */}
           <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-white/10 border border-white/20 rounded-2xl px-8 py-6 mb-8">
             <div className="text-center sm:text-left">
-              <p className="text-6xl font-bold text-white leading-none mb-1">4.9</p>
-              <div className="flex gap-1 justify-center sm:justify-start mb-1" role="img" aria-label="4.9 out of 5 stars">
+              <p className="text-6xl font-bold text-white leading-none mb-1">5.0</p>
+              <div className="flex gap-1 justify-center sm:justify-start mb-1" role="img" aria-label="5.0 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <svg
                     key={i}

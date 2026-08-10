@@ -9,6 +9,8 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, LEGIONELLA_PRICES } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
 export const metadata: Metadata = {
   title:
@@ -143,6 +145,7 @@ export default function LegionellaRiskAssessmentPage() {
           <Heading level={1} id="legionella-heading" inverted className="mb-4 max-w-2xl">
             Legionella Risk Assessment London — £{price}
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-8">
             Comprehensive water system inspection and risk assessment compliant with ACoP L8
@@ -697,6 +700,8 @@ export default function LegionellaRiskAssessmentPage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book"

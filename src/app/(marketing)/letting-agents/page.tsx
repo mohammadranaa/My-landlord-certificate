@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { LettingAgentForm } from "@/components/ui/letting-agent-form";
+import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -96,6 +97,7 @@ export default function LettingAgentsPage() {
             <Heading level={1} id="la-heading" inverted className="mb-5">
               The compliance partner your landlords expect
             </Heading>
+            <HeroRating theme="dark" className="mb-5" />
             <p className="text-blue-100 text-lg leading-relaxed mb-8">
               When a landlord asks you to arrange their EICR or Gas Safety Certificate,
               your reputation goes with it. We give you a partner you can recommend
@@ -153,7 +155,7 @@ export default function LettingAgentsPage() {
               A delayed Gas Safety Certificate pushes back a tenancy start date. A
               missing EICR puts a landlord in breach of the 2020 Electrical Safety
               Standards — and if you recommended the property as compliant, your
-              agency's advice is on record. A certificate issued by an unaccredited
+              agency&apos;s advice is on record. A certificate issued by an unaccredited
               engineer is worthless: a local authority will not accept it, an insurer
               will not recognise it, and a landlord who relied on your recommendation
               will hold you responsible.
@@ -300,7 +302,7 @@ export default function LettingAgentsPage() {
               juggling four different contractors and certificates were sometimes arriving
               a week after the inspection. With My Landlord Certificate, everything
               arrives within 24 hours and the prices are the same every time. Our landlords
-              stopped asking questions about compliance costs because there's nothing
+              stopped asking questions about compliance costs because there&apos;s nothing
               to question.&rdquo;
             </blockquote>
             <figcaption>
@@ -322,7 +324,7 @@ export default function LettingAgentsPage() {
             Set up an agency account
           </Heading>
           <p className="text-brand-grey text-center mb-10">
-            Tell us about your portfolio. We'll be in touch within one working day
+            Tell us about your portfolio. We&apos;ll be in touch within one working day
             to discuss how we can support your agency — including volume pricing for
             larger portfolios.
           </p>
@@ -334,7 +336,7 @@ export default function LettingAgentsPage() {
             <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
               Email us
             </a>{" "}
-            — we'll discuss your portfolio and answer any questions before you commit
+            — we&apos;ll discuss your portfolio and answer any questions before you commit
             to anything.
           </p>
         </Container>
@@ -384,7 +386,7 @@ export default function LettingAgentsPage() {
           <p className="text-blue-200 mb-8 leading-relaxed">
             Book a single certificate for any property in your portfolio. See how the
             process works. If the engineer, certificate and experience meet your
-            standard, we'll talk about the rest of your portfolio.
+            standard, we&apos;ll talk about the rest of your portfolio.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

@@ -8,6 +8,8 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -53,7 +55,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "76",
@@ -215,6 +217,7 @@ export default function CommercialGasSafetyCertificatePage() {
           <Heading level={1} id="cp42-heading" inverted className="mb-4 max-w-2xl">
             Commercial Gas Safety Certificate (CP42) — from £{entryPrice}
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             Annual commercial gas safety check and CP42 certificate for non-domestic
@@ -644,6 +647,8 @@ export default function CommercialGasSafetyCertificatePage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=gas-safety-cp42&type=commercial"

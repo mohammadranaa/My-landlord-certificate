@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Zap, Building2, Search, Settings, Lightbulb, Plug } from "lucide-react";
 import { JsonLd } from "@/components/shared/json-ld";
 import { CTABanner } from "@/components/ui/cta-banner";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -105,6 +107,8 @@ export default function ElectricalSafetyPage() {
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
               Electrical Safety Certificates
             </h1>
+
+            <HeroRating theme="dark" className="mb-5" />
             <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl">
               From mandatory EICR inspections to PAT testing and fuse box upgrades — our
               NICEIC and NAPIT approved engineers cover every electrical compliance need for
@@ -195,6 +199,8 @@ export default function ElectricalSafetyPage() {
           </div>
         </div>
       </section>
+
+      <ReviewsBlock />
 
       {/* ── CTA ── */}
       <section className="py-14 bg-warm-white">

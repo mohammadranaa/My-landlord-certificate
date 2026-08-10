@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -8,6 +9,11 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { ImageSlider } from "@/components/ui/image-slider";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
+import { GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -51,7 +57,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "94",
@@ -183,6 +189,41 @@ const faqItems = [
   },
 ];
 
+// ── Reviews ───────────────────────────────────────────────────────────────────
+
+const reviews = [
+  {
+    content:
+      "Needed an EICR for our office lease renewal. The electrician was thorough, tested every circuit and had the certificate back to us within 24 hours. Very professional.",
+    author: "James M.",
+    location: "City of London",
+  },
+  {
+    content:
+      "We manage six commercial units and use My Landlord Certificate for all our EICRs. Consistent pricing, reliable engineers and certificates always within 24 hours. No complaints.",
+    author: "Sarah L.",
+    location: "Croydon",
+  },
+  {
+    content:
+      "The engineer explained every C2 observation clearly and gave us a prioritised list of remedial works. Far more helpful than the last company we used. Highly recommend.",
+    author: "David P.",
+    location: "Islington",
+  },
+];
+
+function GoogleStars() {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 on Google">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function CommercialEicrPage() {
@@ -216,46 +257,76 @@ export default function CommercialEicrPage() {
             </ol>
           </nav>
 
-          <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
-          </p>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            <div>
+              <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
+                NICEIC &amp; NAPIT Approved · London &amp; M25 · Certificate Within 24 Hours
+              </p>
 
-          <Heading level={1} id="commercial-eicr-heading" inverted className="mb-4 max-w-2xl">
-            Commercial EICR, from £{entryPrice}
-          </Heading>
+              <Heading level={1} id="commercial-eicr-heading" inverted className="mb-3">
+                Commercial EICR, from £{entryPrice}
+              </Heading>
 
-          <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
-            A full electrical installation condition report for commercial premises,
-            HMO blocks, and mixed-use buildings. Priced by consumer unit, from £{entryPrice}{" "}
-            for a single consumer unit with up to 12 circuits. Written report issued within 24 hours.
-          </p>
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mb-5 hover:underline"
+              >
+                <GoogleStars />
+                <span className="text-sm text-blue-100">
+                  Rated <strong className="text-white">5.0</strong> on Google
+                </span>
+              </a>
 
-          <PriceDisplay
-            price={entryPrice}
-            from
-            size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
-          />
+              <p className="text-blue-100 text-lg leading-relaxed mb-6">
+                A full electrical installation condition report for commercial premises,
+                HMO blocks, and mixed-use buildings. Priced by consumer unit, from £{entryPrice}{" "}
+                for a single consumer unit with up to 12 circuits. Written report issued within 24 hours.
+              </p>
 
-          <div className="flex flex-wrap gap-4 mb-10">
-            <Link
-              href="/book?service=commercial-eicr&type=commercial"
-              className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
-            >
-              Book Commercial EICR, from £{entryPrice}
-            </Link>
-            <a
-              href="#pricing"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "bg-white/10 border border-white/30 text-white hover:bg-white/20",
-              )}
-            >
-              See full pricing
-            </a>
+              <PriceDisplay
+                price={entryPrice}
+                from
+                size="lg"
+                className="mb-8 [&>span:last-child]:text-white"
+              />
+
+              <div className="flex flex-wrap gap-4 mb-10">
+                <Link
+                  href="/book?service=commercial-eicr&type=commercial"
+                  className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
+                >
+                  Book Commercial EICR, from £{entryPrice}
+                </Link>
+                <a
+                  href="#pricing"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "bg-white/10 border border-white/30 text-white hover:bg-white/20",
+                  )}
+                >
+                  See full pricing
+                </a>
+              </div>
+
+              <TrustBadges serviceKey="commercial-eicr" variant="dark" />
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src="/commercial-eicr/commercial-eicr-hero-electrician.png"
+                  alt="NICEIC approved electrician arriving at a commercial premises in London to carry out an EICR inspection"
+                  width={1600}
+                  height={1000}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
-
-          <TrustBadges serviceKey="commercial-eicr" variant="dark" />
         </Container>
       </section>
 
@@ -282,6 +353,35 @@ export default function CommercialEicrPage() {
           </dl>
         </Container>
       </div>
+
+      {/* ── Accreditation logos ── */}
+      <section className="bg-warm-white border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
+            Our engineers are accredited &amp; registered with
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {[
+              { src: "/accreditations/niceic.png", alt: "NICEIC approved contractor" },
+              { src: "/accreditations/napit.png", alt: "NAPIT registered" },
+              { src: "/accreditations/elecsa.png", alt: "ELECSA registered contractor" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="bg-white rounded-2xl border border-border shadow-sm flex items-center justify-center w-36 h-24 sm:w-44 sm:h-28 p-4"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={220}
+                  height={220}
+                  className="max-h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-20">
 
@@ -430,6 +530,72 @@ export default function CommercialEicrPage() {
           </p>
         </section>
 
+        {/* ── What we inspect (gallery) ── */}
+        <section aria-labelledby="inspect-gallery-heading" className="overflow-hidden">
+          <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+            From a recent commercial inspection
+          </p>
+          <Heading level={2} id="inspect-gallery-heading" className="mb-3">
+            See what our engineers actually inspect
+          </Heading>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-8 max-w-2xl">
+            A commercial EICR covers every consumer unit, distribution board, circuit and piece
+            of fixed wiring in your premises. Here is what a typical inspection looks like.
+          </p>
+          <ImageSlider
+            images={[
+              { src: "/commercial-eicr/commercial-eicr-consumer-unit-inspection.png", alt: "Engineer inspecting a commercial consumer unit and testing individual circuit breakers" },
+              { src: "/commercial-eicr/commercial-eicr-socket-circuit-testing.png", alt: "Engineer testing sockets and circuits with a multifunction tester in a commercial premises" },
+              { src: "/commercial-eicr/commercial-eicr-distribution-board-wiring.png", alt: "Engineer examining a three-phase distribution board and cable routing in a plant room" },
+              { src: "/commercial-eicr/commercial-eicr-emergency-lighting-check.png", alt: "Engineer testing emergency exit lighting above a fire door in a commercial corridor" },
+              { src: "/commercial-eicr/commercial-eicr-rcd-earth-fault-testing.png", alt: "Close-up of RCD trip testing on a commercial consumer unit with a calibrated tester" },
+            ]}
+          />
+        </section>
+
+        {/* ── Condition codes explained ── */}
+        <section aria-labelledby="condition-codes-heading">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+                Understanding your report
+              </p>
+              <Heading level={2} id="condition-codes-heading" className="mb-4">
+                EICR condition codes, explained
+              </Heading>
+              <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+                Your EICR certificate uses standardised observation codes to classify any issues
+                found during the inspection. Here is what each code means for your commercial premises:
+              </p>
+              <ul className="space-y-3">
+                {[
+                  { code: "C1", label: "Danger present", desc: "Immediate risk to safety. Must be addressed urgently before the installation can be used." },
+                  { code: "C2", label: "Potentially dangerous", desc: "Could become dangerous. Remedial action required as soon as possible." },
+                  { code: "C3", label: "Improvement recommended", desc: "Not dangerous but could be improved to meet current standards." },
+                  { code: "FI", label: "Further investigation", desc: "More investigation needed to determine the extent of the issue." },
+                ].map((item) => (
+                  <li key={item.code} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                    <span className="mt-0.5 shrink-0 w-8 h-5 rounded bg-compliance-blue/10 text-compliance-blue flex items-center justify-center text-xs font-bold">
+                      {item.code}
+                    </span>
+                    <span>
+                      <strong className="text-brand-charcoal">{item.label}</strong> — {item.desc}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Image
+              src="/eicr/eicr-condition-codes-explained.png"
+              alt="EICR condition codes C1, C2, C3 and FI explained — danger present, potentially dangerous, improvement recommended, further investigation"
+              width={1080}
+              height={1080}
+              sizes="(max-width: 768px) 100vw, 460px"
+              className="rounded-xl border border-border shadow-sm w-full"
+            />
+          </div>
+        </section>
+
         {/* ── Pricing ── */}
         <section id="pricing" aria-labelledby="pricing-heading">
           <Heading level={2} id="pricing-heading" className="mb-2">
@@ -445,6 +611,7 @@ export default function CommercialEicrPage() {
             title="Commercial EICR, price by consumer unit count"
             rows={COMMERCIAL_EICR_TABLE}
             highlightCheapest
+            bookHref="/book?service=commercial-eicr&type=commercial"
           />
 
           <div className="mt-4 rounded-xl border border-border bg-warm-white p-4 text-sm text-brand-charcoal/70">
@@ -521,6 +688,56 @@ export default function CommercialEicrPage() {
           </ul>
         </section>
 
+        {/* ── Sample certificate ── */}
+        <section aria-labelledby="sample-report-heading">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <Image
+              src="/eicr/eicr-sample-certificate-report.png"
+              alt="Example of a completed EICR certificate showing test results and observation codes"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 768px) 100vw, 340px"
+              className="rounded-2xl border border-border shadow-md w-full max-w-[340px] mx-auto"
+            />
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+                Your certificate
+              </p>
+              <Heading level={2} id="sample-report-heading" className="mb-4">
+                A detailed report you can hand to anyone
+              </Heading>
+              <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+                Your EICR certificate is a multi-page document that covers every circuit in your
+                premises. It is accepted by landlords, insurers, local authorities and fire risk
+                assessors as proof of electrical compliance.
+              </p>
+              <ul className="space-y-2.5">
+                {[
+                  "Full schedule of inspections and test results",
+                  "Observation codes with clear explanations",
+                  "Overall satisfactory or unsatisfactory outcome",
+                  "Recommended date for next inspection",
+                  "Emailed as a PDF within 24 hours",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                      ✓
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Mid-page CTA */}
+        <InlineCTA
+          href="/book?service=commercial-eicr&type=commercial"
+          heading="Ready to book a commercial EICR?"
+          subtext={`Fixed price from £${entryPrice} per consumer unit · written report within 24 hours.`}
+        />
+
         {/* ── How it works ── */}
         <section aria-labelledby="how-it-works-heading">
           <Heading level={2} id="how-it-works-heading" className="mb-6">
@@ -555,6 +772,44 @@ export default function CommercialEicrPage() {
               </li>
             ))}
           </ol>
+        </section>
+
+        {/* ── Reviews ── */}
+        <section aria-labelledby="reviews-heading">
+          <div className="flex flex-col items-center text-center mb-8">
+            <Heading level={2} id="reviews-heading" className="mb-2">
+              What our commercial clients say
+            </Heading>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+              </svg>
+              Read our reviews on Google
+            </a>
+          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid md:grid-cols-3 gap-5">
+                {reviews.map((r) => (
+                  <TestimonialCard
+                    key={r.author}
+                    content={r.content}
+                    author={r.author}
+                    location={r.location}
+                    service="Commercial EICR"
+                  />
+                ))}
+              </div>
+            }
+          />
         </section>
 
         {/* ── FAQs ── */}

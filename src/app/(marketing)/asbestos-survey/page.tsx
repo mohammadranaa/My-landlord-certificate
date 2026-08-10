@@ -7,6 +7,8 @@ import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, ASBESTOS_SURVEY_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
 export const metadata: Metadata = {
   title: "Asbestos Survey London from £239.99 | My Landlord Certificate",
@@ -170,6 +172,7 @@ export default function AsbestosSurveyPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Asbestos Survey London from £{entryPrice}
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             UKAS Accredited · London &amp; M25 · Report in 5–7 Days
@@ -798,6 +801,8 @@ export default function AsbestosSurveyPage() {
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=asbestos-survey"

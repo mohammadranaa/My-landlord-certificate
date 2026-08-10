@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { ImageSlider } from "@/components/ui/image-slider";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
+import { GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -106,6 +112,59 @@ const faqSchema = {
   })),
 };
 
+const reviews = [
+  {
+    content:
+      "Booked a fire safety certificate for my flat before new tenants moved in. The engineer tested every smoke and heat alarm, replaced one that had expired and emailed the certificate within 24 hours. Simple and quick.",
+    author: "Daniel R.",
+    location: "Lewisham",
+  },
+  {
+    content:
+      "Needed smoke and CO alarm certificates across three rental properties. Fixed price, one visit each, and the certificates came through within 24 hours. Made my compliance paperwork painless.",
+    author: "Priya S.",
+    location: "Ealing",
+  },
+];
+
+const benefits = [
+  {
+    title: "A legal requirement",
+    body: "Under the Smoke and Carbon Monoxide Alarm (England) Regulations 2015 (amended 2022), landlords must fit at least one smoke alarm on every storey and a carbon monoxide alarm in any room with a fixed combustion appliance, and make sure they work.",
+  },
+  {
+    title: "Accredited engineers",
+    body: "Every alarm is tested by a trained, fire-safety accredited engineer, so your certificate stands up with tenants, letting agents and councils.",
+  },
+  {
+    title: "Certificate in 24 hours",
+    body: "You receive a clear certificate confirming your smoke, heat and CO alarms are present and working, ready for your records and your tenants.",
+  },
+  {
+    title: "Fixed price, all boroughs",
+    body: "The price you see is the price you pay. No call-out charges. Same-week appointments across all 33 London boroughs.",
+  },
+];
+
+const benefitIcons = [
+  <svg key="b1" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>,
+  <svg key="b2" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5" /><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5" /></svg>,
+  <svg key="b3" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
+  <svg key="b4" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><circle cx="7" cy="7" r="1.5" /></svg>,
+];
+
+function GoogleStars() {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 on Google">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 export default function FireSafetyCertificatePage() {
   return (
     <>
@@ -114,7 +173,7 @@ export default function FireSafetyCertificatePage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white py-10 lg:py-14">
+      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
@@ -126,27 +185,60 @@ export default function FireSafetyCertificatePage() {
             </ol>
           </nav>
 
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
-            Fire Safety Certificate London from £{entryPrice}
-          </h1>
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
-          <p className="text-blue-100 mb-4">
-            Accredited engineers · Annual testing to BS 5839-6 · Certificate issued within 24 hours
-          </p>
-          <TrustBadges serviceKey="fire-safety-certificate" variant="dark" className="mb-6" />
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/book?service=fire-safety-cert"
-              className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              Book Now, from £{entryPrice}
-            </Link>
-            <a
-              href="#pricing"
-              className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              View All Prices
-            </a>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+                Fire Safety Certificate London from £{entryPrice}
+              </h1>
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mb-4 hover:underline"
+              >
+                <GoogleStars />
+                <span className="text-sm text-blue-100">
+                  Rated <strong className="text-white">5.0</strong> on Google
+                </span>
+              </a>
+              <p className="text-blue-100 leading-relaxed mb-4 max-w-xl">
+                Landlord smoke, heat and carbon monoxide alarm testing and certification
+                across all 33 London boroughs — compliant with the Smoke and Carbon Monoxide
+                Alarm Regulations 2022 and tested to BS 5839-6.
+              </p>
+              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+              <p className="text-blue-100 mb-4">
+                Accredited engineers · Annual testing to BS 5839-6 · Certificate issued within 24 hours
+              </p>
+              <TrustBadges serviceKey="fire-safety-certificate" variant="dark" className="mb-6" />
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/book?service=fire-safety-cert"
+                  className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors"
+                >
+                  Book Now, from £{entryPrice}
+                </Link>
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+                >
+                  View All Prices
+                </a>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src="/fire-safety-certificate/fire-safety-certificate-hero-alarm.png"
+                  alt="Engineer testing a ceiling-mounted smoke alarm with a test pole in a London home"
+                  width={1536}
+                  height={1024}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -174,6 +266,35 @@ export default function FireSafetyCertificatePage() {
           </div>
         </div>
       </div>
+
+      {/* ── Accreditation logos ── */}
+      <section className="bg-warm-white border-b border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
+            Our engineers are fire-safety accredited
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {[
+              { src: "/accreditations/bafe.png", alt: "BAFE registered" },
+              { src: "/accreditations/ife.png", alt: "Institution of Fire Engineers" },
+              { src: "/accreditations/ifsm.png", alt: "Institute of Fire Safety Managers" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="bg-white rounded-2xl border border-border shadow-sm flex items-center justify-center w-36 h-24 sm:w-44 sm:h-28 p-4"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={220}
+                  height={220}
+                  className="max-h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Content well ── */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 md:pb-10">
@@ -208,6 +329,15 @@ export default function FireSafetyCertificatePage() {
           </div>
         </section>
 
+        {/* Mid-page CTA */}
+        <section className="py-10 border-b border-border">
+          <InlineCTA
+            href="/book?service=fire-safety-cert"
+            heading="Ready to book your fire safety certificate?"
+            subtext={`Fixed price from £${entryPrice} · certificate emailed within 24 hours · all 33 London boroughs.`}
+          />
+        </section>
+
         {/* How it works */}
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-8">How it works</h2>
@@ -240,6 +370,32 @@ export default function FireSafetyCertificatePage() {
           </div>
         </section>
 
+        {/* Why landlords choose us */}
+        <section className="py-10 border-b border-border">
+          <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+            Why landlords choose us
+          </p>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-8">
+            Compliant, fast and landlord-ready
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {benefits.map((b, i) => (
+              <div
+                key={b.title}
+                className="rounded-2xl border border-border bg-white shadow-sm p-6 flex items-start gap-4"
+              >
+                <span className="w-11 h-11 rounded-xl bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0">
+                  {benefitIcons[i]}
+                </span>
+                <div>
+                  <p className="font-semibold text-brand-charcoal mb-1">{b.title}</p>
+                  <p className="text-sm text-brand-charcoal/75 leading-relaxed">{b.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Pricing */}
         <section id="pricing" className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Pricing</h2>
@@ -250,6 +406,7 @@ export default function FireSafetyCertificatePage() {
             title="Fire Safety Certificate"
             rows={FIRE_SAFETY_CERT_TABLE}
             highlightCheapest
+            bookHref="/book?service=fire-safety-cert"
           />
           <p className="text-sm text-brand-grey mt-4">
             Additional charges may apply:{" "}
@@ -287,6 +444,34 @@ export default function FireSafetyCertificatePage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* From a recent London job */}
+        <section className="py-10 border-b border-border">
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">
+            From a recent London job
+          </h2>
+          <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
+            Real photos from our engineers. Click any image to enlarge.
+          </p>
+          <ImageSlider
+            images={[
+              {
+                src: "/fire-risk-assessment/jobs/fra-job-smoke-alarm.jpg",
+                alt: "Ceiling-mounted smoke and heat alarm checked and tested",
+                title: "Smoke & heat alarm check",
+                caption: "Placement, operation and expiry checked on every alarm.",
+                badge: "FSC",
+              },
+              {
+                src: "/fire-risk-assessment/jobs/fra-job-fire-door.jpg",
+                alt: "Fire door inspected as part of the property's fire safety",
+                title: "Fire door check",
+                caption: "Seals, closers and gaps checked where fire doors are fitted.",
+                badge: "FSC",
+              },
+            ]}
+          />
         </section>
 
         {/* Detector types */}
@@ -498,6 +683,42 @@ export default function FireSafetyCertificatePage() {
               Certificate and fire risk assessment.
             </p>
           </div>
+        </section>
+
+        {/* Reviews */}
+        <section className="py-10 border-b border-border">
+          <div className="flex flex-col items-center text-center mb-8">
+            <h2 className="text-2xl font-bold text-brand-charcoal mb-2">What London landlords say</h2>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+              </svg>
+              Read our reviews on Google
+            </a>
+          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+                {reviews.map((r) => (
+                  <TestimonialCard
+                    key={r.author}
+                    content={r.content}
+                    author={r.author}
+                    location={r.location}
+                    service="Fire Safety Certificate"
+                  />
+                ))}
+              </div>
+            }
+          />
         </section>
 
         {/* FAQs */}

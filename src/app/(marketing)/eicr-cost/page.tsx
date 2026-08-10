@@ -16,6 +16,8 @@ import {
   DOMESTIC_EICR_TABLE,
   getPriceForEICR,
 } from "@/lib/pricing";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -223,6 +225,7 @@ export default function EicrCostPage() {
           <Heading level={1} id="eicr-cost-heading" inverted className="mb-4 max-w-3xl">
             How much does an EICR cost?
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A domestic EICR starts from{" "}
@@ -663,6 +666,8 @@ export default function EicrCostPage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=eicr"

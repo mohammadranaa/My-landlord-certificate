@@ -19,7 +19,7 @@ import {
   getPriceForPAT,
 } from "@/lib/pricing";
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 
 const entryPrice = getPriceForEICR("studio");
 
@@ -513,10 +513,10 @@ export default async function EICRBoroughPage({
             Same-week appointments across {borough.name} and all 33 London
             boroughs — or call{" "}
             <a
-              href="mailto:info@mylandlordcertificate.co.uk"
+              href={TEL}
               className="text-white font-semibold hover:underline"
             >
-              
+              {PHONE_DISPLAY}
             </a>
             .
           </p>

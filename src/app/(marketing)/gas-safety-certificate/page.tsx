@@ -8,6 +8,11 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { GOOGLE_BUSINESS_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -47,7 +52,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "284",
@@ -267,6 +272,27 @@ const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
   i === 0 ? { ...row, badge: "most-popular" as const } : row,
 );
 
+const reviews = [
+  {
+    content:
+      "My tenant let the engineer in while I was at work — worked perfectly. The CP12 arrived by email within 24 hours, and I forwarded it to the tenant and letting agent the same evening. Exactly how it should work.",
+    author: "Laura P.",
+    location: "Wandsworth",
+  },
+  {
+    content:
+      "Two appliances, completed in under an hour. The engineer noticed a small issue with the boiler flue and explained it clearly before leaving. Sorted the same week. No drama.",
+    author: "David L.",
+    location: "Ealing",
+  },
+  {
+    content:
+      "Third year running I've used them for the Croydon HMO. Always on time, always professional. The Gas Safety Certificate is in my inbox before I've even had a chance to follow up. No surprises on the bill ever.",
+    author: "James T.",
+    location: "Croydon",
+  },
+];
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function GasSafetyPage() {
@@ -302,6 +328,8 @@ export default function GasSafetyPage() {
           <Heading level={1} id="gas-heading" inverted className="mb-4 max-w-2xl">
             Gas Safety Certificate (CP12) from £{lowestPrice}
           </Heading>
+
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Annual CP12 landlord gas safety inspection, a legal requirement under
@@ -480,6 +508,7 @@ export default function GasSafetyPage() {
           <PriceTable
             title="Gas Safety Certificate (CP12), price by appliance count"
             rows={cp12TableWithBadge}
+            bookHref="/book?service=gas-safety-cp12"
           />
 
           <div className="mt-4 rounded-xl border border-border bg-warm-white p-4 text-sm text-brand-charcoal/70">
@@ -677,6 +706,13 @@ export default function GasSafetyPage() {
         </section>
 
         {/* ── 8. How it works ─────────────────────────────────────────────── */}
+        {/* Mid-page CTA */}
+        <InlineCTA
+          href="/book?service=gas-safety-cp12"
+          heading="Ready to book your Gas Safety Certificate?"
+          subtext={`Fixed price from £${lowestPrice} · CP12 emailed within 24 hours · next-day slots.`}
+        />
+
         <section aria-labelledby="how-it-works-heading">
           <Heading level={2} id="how-it-works-heading" className="mb-4">
             How to book your landlord gas safety certificate
@@ -946,6 +982,44 @@ export default function GasSafetyPage() {
           </p>
         </section>
 
+        {/* ── Reviews ─────────────────────────────────────────────────────── */}
+        <section aria-labelledby="reviews-heading">
+          <div className="flex flex-col items-center text-center mb-8">
+            <Heading level={2} id="reviews-heading" className="mb-2">
+              What London landlords say
+            </Heading>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+              </svg>
+              Read our reviews on Google
+            </a>
+          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid md:grid-cols-3 gap-5">
+                {reviews.map((r) => (
+                  <TestimonialCard
+                    key={r.author}
+                    content={r.content}
+                    author={r.author}
+                    location={r.location}
+                    service="Gas Safety"
+                  />
+                ))}
+              </div>
+            }
+          />
+        </section>
+
         {/* ── 13. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
           <Heading level={2} id="faq-heading" className="mb-6">
@@ -979,11 +1053,8 @@ export default function GasSafetyPage() {
           <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
             Next-day appointments available across London and the M25 area,
             or call{" "}
-            <a
-              href="mailto:info@mylandlordcertificate.co.uk"
-              className="text-white font-semibold hover:underline"
-            >
-              
+            <a href={TEL} className="text-white font-semibold hover:underline">
+              {PHONE_DISPLAY}
             </a>{" "}
             for priority slots.
           </p>

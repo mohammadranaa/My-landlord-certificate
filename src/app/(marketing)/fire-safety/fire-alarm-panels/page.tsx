@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FIRE_ALARM_PANELS_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -123,6 +126,7 @@ export default function FireAlarmPanelsPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-brand-charcoal mb-3 leading-tight">
             Fire Alarm Panel Servicing London from £{entryPrice}
           </h1>
+          <HeroRating theme="light" className="mb-5" />
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
             Conventional &amp; addressable panels · BS 5839-1 compliant · Certificate within 24 hours
@@ -262,8 +266,8 @@ export default function FireAlarmPanelsPage() {
           </p>
           <p className="text-sm text-brand-grey mt-2">
             For large commercial systems, call{" "}
-            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline">
-              
+            <a href={TEL} className="text-compliance-blue hover:underline">
+              {PHONE_DISPLAY}
             </a>{" "}
             for a tailored quote.
           </p>
@@ -352,15 +356,17 @@ export default function FireAlarmPanelsPage() {
                 Book Online
               </Link>
               <a
-                href="mailto:info@mylandlordcertificate.co.uk"
+                href={TEL}
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=fire-alarm-panels"
