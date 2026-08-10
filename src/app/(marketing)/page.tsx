@@ -202,8 +202,8 @@ export default function HomePage() {
             </p>
 
             <Heading level={1} id="hero-heading" inverted className="mb-6">
-              Your property certificates.{" "}
-              <span className="text-action-green">Sorted.</span>
+              Landlord Certificates in London — EICR, Gas Safety &amp; EPC{" "}
+              <span className="text-action-green">from £{GAS_FROM}</span>
             </Heading>
 
             <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-4 max-w-2xl">

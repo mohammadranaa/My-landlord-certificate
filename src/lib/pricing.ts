@@ -324,7 +324,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fire-alarm-panels": "from £74.99",
   "fra-residential": "from £74.99",
   "fra-commercial": "from £149.99",
-  "fire-alarm-installation": "from £3,499",
+  "fire-alarm-installation": "from £209.99/alarm",
   "fire-door-cert": "from £129.99",
   "fire-extinguisher": "from £79.99",
   "asbestos-survey": "from £239.99",

@@ -154,7 +154,7 @@ src/
 
 ### PAGE: Homepage (/)
 
-- **H1:** "Your property certificates. Sorted."
+- **H1:** "Landlord Certificates in London — EICR, Gas Safety & EPC from £X" — price is the Gas Safety 1-appliance price (`getPriceForGasSafety(1)`), never hardcoded
 - **Meta title:** "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate"
 - **Meta description:** "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices from £50. Same-week appointments across London."
 - **Word count target:** 800–1,200 words (visible body text)
