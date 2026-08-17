@@ -319,7 +319,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   pat: "from £59.99",
   "gas-safety-cp12": "from £49.99",
   "gas-safety-cp42": "from £159.99",
-  "boiler-installation": "from £2,499",
+  "boiler-installation": "from £2,499", 
   "fire-safety-cert": "from £54.99",
   "fire-alarm-panels": "from £74.99",
   "fra-residential": "from £74.99",
