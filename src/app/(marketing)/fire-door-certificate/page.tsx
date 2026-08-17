@@ -3,6 +3,8 @@ import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCT
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_DOOR_PRICES, FIRE_DOOR_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
@@ -114,6 +116,7 @@ export default function FireDoorCertificatePage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
             Fire Door Certificate London — from £{entryPrice}
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <p className="text-blue-100 leading-relaxed mb-6 max-w-2xl">
             Fire door inspections for HMOs, blocks of flats, and commercial premises across London.
             Our qualified inspectors check every door against BS 9999 — measuring gaps, testing
@@ -310,7 +313,7 @@ export default function FireDoorCertificatePage() {
                 buildings.
               </p>
               <p className="text-sm text-brand-grey">
-                Identifiable by "FD30" markings on the door edge or by a plug in the door edge
+                Identifiable by &quot;FD30&quot; markings on the door edge or by a plug in the door edge
                 (often a coloured timber or plastic plug).
               </p>
             </div>
@@ -323,7 +326,7 @@ export default function FireDoorCertificatePage() {
                 risk assessment for complex buildings.
               </p>
               <p className="text-sm text-brand-grey">
-                Usually identifiable by "FD60" markings and thicker door construction.
+                Usually identifiable by &quot;FD60&quot; markings and thicker door construction.
               </p>
             </div>
           </div>
@@ -529,6 +532,8 @@ export default function FireDoorCertificatePage() {
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=fire-door"

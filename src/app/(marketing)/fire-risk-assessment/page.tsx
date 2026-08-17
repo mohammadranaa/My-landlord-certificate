@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -8,9 +9,12 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
 import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
-import { PHONE_DISPLAY } from "@/lib/constants";
+import { PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -52,7 +56,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "147",
@@ -245,6 +249,33 @@ const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
   i === 3 ? { ...row, badge: "most-popular" as const } : row,
 );
 
+const reviews = [
+  {
+    content:
+      "Detailed FRA for my 5-bed HMO. The assessor flagged issues with the fire door seals but was clear about which were urgent and which could wait. The written report was professional and accepted by the council first time.",
+    author: "Mohammed A.",
+    location: "Newham",
+  },
+  {
+    content:
+      "Needed a Fire Risk Assessment for my HMO licence renewal. The assessor was NEBOSH qualified and the report covered everything the council required. No follow-up queries from the licensing team.",
+    author: "Emma C.",
+    location: "Brent",
+  },
+];
+
+function GoogleStars() {
+  return (
+    <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 on Google">
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function FireRiskAssessmentPage() {
@@ -273,47 +304,77 @@ export default function FireRiskAssessmentPage() {
             </ol>
           </nav>
 
-          <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            IFSM Certified Assessors · IFE Registered · London &amp; M25
-          </p>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            <div>
+              <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
+                IFSM Certified Assessors · IFE Registered · London &amp; M25
+              </p>
 
-          <Heading level={1} id="fra-heading" inverted className="mb-4 max-w-2xl">
-            Fire Risk Assessment from £{lowestPrice}
-          </Heading>
+              <Heading level={1} id="fra-heading" inverted className="mb-3">
+                Fire Risk Assessment from £{lowestPrice}
+              </Heading>
 
-          <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
-            Compulsory for all HMOs under the Regulatory Reform (Fire Safety)
-            Order 2005 and strongly recommended for all rental properties.
-            NEBOSH qualified assessors. Written report with prioritised action
-            plan emailed within 48 hours of the inspection.
-          </p>
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mb-5 hover:underline"
+              >
+                <GoogleStars />
+                <span className="text-sm text-blue-100">
+                  Rated <strong className="text-white">5.0</strong> on Google
+                </span>
+              </a>
 
-          <PriceDisplay
-            price={lowestPrice}
-            from
-            size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
-          />
+              <p className="text-blue-100 text-lg leading-relaxed mb-6">
+                Compulsory for all HMOs under the Regulatory Reform (Fire Safety)
+                Order 2005 and strongly recommended for all rental properties.
+                NEBOSH qualified assessors. Written report with prioritised action
+                plan emailed within 48 hours of the inspection.
+              </p>
 
-          <div className="flex flex-wrap gap-4 mb-10">
-            <Link
-              href="/book?service=fra-residential"
-              className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
-            >
-              Book my FRA, from £{lowestPrice}
-            </Link>
-            <a
-              href="#pricing"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "bg-white/10 border border-white/30 text-white hover:bg-white/20",
-              )}
-            >
-              See full pricing
-            </a>
+              <PriceDisplay
+                price={lowestPrice}
+                from
+                size="lg"
+                className="mb-8 [&>span:last-child]:text-white"
+              />
+
+              <div className="flex flex-wrap gap-4 mb-10">
+                <Link
+                  href="/book?service=fra-residential"
+                  className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
+                >
+                  Book my FRA, from £{lowestPrice}
+                </Link>
+                <a
+                  href="#pricing"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "bg-white/10 border border-white/30 text-white hover:bg-white/20",
+                  )}
+                >
+                  See full pricing
+                </a>
+              </div>
+
+              <TrustBadges serviceKey="fire-risk-assessment" variant="dark" />
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+                <Image
+                  src="/fire-risk-assessment/fire-risk-assessment-hero-assessor.png"
+                  alt="Fire risk assessor inspecting the communal area of a London apartment block"
+                  width={1600}
+                  height={1000}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
           </div>
-
-          <TrustBadges serviceKey="fire-risk-assessment" variant="dark" />
         </Container>
       </section>
 
@@ -342,6 +403,35 @@ export default function FireRiskAssessmentPage() {
           </dl>
         </Container>
       </div>
+
+      {/* ── Accreditation logos ── */}
+      <section className="bg-warm-white border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-brand-grey mb-6">
+            Our engineers are fire-safety accredited
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {[
+              { src: "/accreditations/bafe.png", alt: "BAFE registered" },
+              { src: "/accreditations/ife.png", alt: "Institution of Fire Engineers" },
+              { src: "/accreditations/ifsm.png", alt: "Institute of Fire Safety Managers" },
+            ].map((logo) => (
+              <div
+                key={logo.src}
+                className="bg-white rounded-2xl border border-border shadow-sm flex items-center justify-center w-36 h-24 sm:w-44 sm:h-28 p-4"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={220}
+                  height={220}
+                  className="max-h-full w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-20">
 
@@ -454,6 +544,47 @@ export default function FireRiskAssessmentPage() {
           </p>
         </section>
 
+        {/* ── Every fire-safety measure, checked ── */}
+        <section aria-labelledby="measures-checked-heading">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <Image
+              src="/fire-risk-assessment/fire-risk-assessment-fire-door-inspection.png"
+              alt="Assessor checking a fire door's intumescent seals and self-closer"
+              width={1200}
+              height={800}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="rounded-2xl shadow-md w-full h-auto"
+            />
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+                A proper inspection
+              </p>
+              <Heading level={2} id="measures-checked-heading" className="mb-4">
+                Every fire-safety measure, checked
+              </Heading>
+              <p className="text-brand-charcoal/80 leading-relaxed mb-5">
+                Your assessor works methodically through the building and its communal areas,
+                rating each hazard and setting out exactly what needs to happen.
+              </p>
+              <ul className="space-y-2.5">
+                {[
+                  "Fire doors, seals and self-closers",
+                  "Detection, alarms and emergency lighting",
+                  "Extinguishers, signage and escape routes",
+                  "Electrical, storage and housekeeping hazards",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                      ✓
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* ── Recent work (real job photos) ── */}
         <section aria-labelledby="recent-work-heading">
           <Heading level={2} id="recent-work-heading" className="mb-2">
@@ -472,6 +603,44 @@ export default function FireRiskAssessmentPage() {
               { src: "/fire-risk-assessment/jobs/fra-job-electrical-intake.jpg", alt: "Electrical intake and consumer unit reviewed for fire hazards", title: "Electrical intake safety", caption: "Meters, consumer units and ignition sources reviewed.", badge: "FRA" },
             ]}
           />
+        </section>
+
+        {/* ── A clear, council-ready report ── */}
+        <section aria-labelledby="council-ready-heading">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <Image
+              src="/fire-risk-assessment/fire-risk-assessment-report-sample.png"
+              alt="Example of a completed written fire risk assessment report with risk ratings and action plan"
+              width={1200}
+              height={1500}
+              sizes="(max-width: 768px) 100vw, 340px"
+              className="rounded-2xl border border-border shadow-md w-full max-w-[340px] mx-auto"
+            />
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-compliance-blue mb-2">
+                What you get
+              </p>
+              <Heading level={2} id="council-ready-heading" className="mb-4">
+                A clear, council-ready report
+              </Heading>
+              <ul className="space-y-2.5">
+                {[
+                  "Written fire risk assessment report",
+                  "Risk rating for every hazard area",
+                  "Prioritised action plan with timescales",
+                  "Responsible-person guidance",
+                  "Recommended review date",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                      ✓
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </section>
 
         {/* ── After the assessment ── */}
@@ -629,6 +798,7 @@ export default function FireRiskAssessmentPage() {
           <PriceTable
             title="Residential Fire Risk Assessment"
             rows={fraTableWithBadge}
+            bookHref="/book?service=fra-residential"
           />
 
           <div className="mt-4 rounded-xl border border-border bg-warm-white p-4 text-sm text-brand-charcoal/70">
@@ -793,6 +963,13 @@ export default function FireRiskAssessmentPage() {
           </div>
         </section>
 
+        {/* Mid-page CTA */}
+        <InlineCTA
+          href="/book?service=fra-residential"
+          heading="Ready to book your Fire Risk Assessment?"
+          subtext={`Fixed price from £${lowestPrice} · written report within 48 hours.`}
+        />
+
         {/* ── How it works ── */}
         <section aria-labelledby="how-it-works-heading">
           <Heading level={2} id="how-it-works-heading" className="mb-6">
@@ -853,7 +1030,7 @@ export default function FireRiskAssessmentPage() {
               <p className="text-xs text-brand-grey">Professional indemnity cover on every assessment</p>
             </div>
             <div className="rounded-xl border border-border bg-warm-white p-4 text-center">
-              <p className="text-2xl font-bold text-compliance-blue mb-1">4.9 ★</p>
+              <p className="text-2xl font-bold text-compliance-blue mb-1">5.0 ★</p>
               <p className="text-xs text-brand-grey">Average rating from 147 verified reviews</p>
             </div>
           </div>
@@ -1139,6 +1316,44 @@ export default function FireRiskAssessmentPage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        {/* ── Reviews ── */}
+        <section aria-labelledby="reviews-heading">
+          <div className="flex flex-col items-center text-center mb-8">
+            <Heading level={2} id="reviews-heading" className="mb-2">
+              What London landlords say
+            </Heading>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+              </svg>
+              Read our reviews on Google
+            </a>
+          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+                {reviews.map((r) => (
+                  <TestimonialCard
+                    key={r.author}
+                    content={r.content}
+                    author={r.author}
+                    location={r.location}
+                    service="Fire Risk Assessment"
+                  />
+                ))}
+              </div>
+            }
+          />
         </section>
 
         {/* ── FAQs ── */}

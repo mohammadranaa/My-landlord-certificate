@@ -5,6 +5,8 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_EXTINGUISHER_SUPPLY_PRICES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 
@@ -144,6 +146,7 @@ export default function FireExtinguisherTestingPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Fire Extinguisher Testing London from £{entryPrice}
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             All extinguisher types · BS 5306-3 compliant · Service label issued within 24 hours
@@ -683,6 +686,8 @@ export default function FireExtinguisherTestingPage() {
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=fire-extinguisher"

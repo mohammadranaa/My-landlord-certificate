@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, BOILER_INSTALLATION_FROM } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -120,6 +123,7 @@ export default function BoilerInstallationPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Boiler Installation London from £{BOILER_INSTALLATION_FROM.toLocaleString()}
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <PriceDisplay price={BOILER_INSTALLATION_FROM} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             Gas Safe Registered · Supply &amp; install · CP12 included · 10-year warranty
@@ -254,7 +258,7 @@ export default function BoilerInstallationPage() {
             </ul>
           </div>
           <p className="text-sm text-brand-grey mt-4">
-            Call <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline"></a> for large-volume or commercial boiler replacements.
+            Call <a href={TEL} className="text-compliance-blue hover:underline">{PHONE_DISPLAY}</a> for large-volume or commercial boiler replacements.
           </p>
         </section>
 
@@ -352,6 +356,8 @@ export default function BoilerInstallationPage() {
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="mailto:info@mylandlordcertificate.co.uk"

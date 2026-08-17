@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -145,6 +148,7 @@ export default function FireAlarmInstallationPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Fire Alarm Installation London from £{FIRE_ALARM_INSTALLATION_PER_ALARM}/alarm
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <PriceDisplay price={FIRE_ALARM_INSTALLATION_PER_ALARM} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             Mains-wired interlinked · BS 5839-6 compliant · Free survey · Commissioning certificate included
@@ -609,15 +613,17 @@ export default function FireAlarmInstallationPage() {
                 Book Online
               </Link>
               <a
-                href="mailto:info@mylandlordcertificate.co.uk"
+                href={TEL}
                 className="inline-flex items-center border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3 rounded-xl transition-colors"
               >
-                
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=fire-alarm-installation"

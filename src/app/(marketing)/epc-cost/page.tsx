@@ -15,6 +15,8 @@ import {
   DOMESTIC_EPC_TABLE,
   getPriceForEPC,
 } from "@/lib/pricing";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -222,6 +224,7 @@ export default function EpcCostPage() {
           <Heading level={1} id="epc-cost-heading" inverted className="mb-4 max-w-3xl">
             How much does an EPC cost?
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A domestic EPC starts from{" "}
@@ -765,6 +768,8 @@ export default function EpcCostPage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=epc"

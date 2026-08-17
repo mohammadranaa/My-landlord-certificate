@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 
 import { MapSection } from "@/components/ui/map-section";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -140,6 +143,7 @@ export default function CoverageAreasPage() {
           <Heading level={1} id="coverage-heading" inverted className="mb-4 max-w-3xl mx-auto">
             Landlord certificates across London and the M25 area
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
           <p className="text-blue-100 text-lg leading-relaxed max-w-xl mx-auto mb-10">
             Our accredited engineers cover every London borough and the wider M25
             corridor — including Surrey, Kent, Essex, and Hertfordshire. Next-day
@@ -240,7 +244,7 @@ export default function CoverageAreasPage() {
             >
               Email us
             </a>{" "}
-            and we'll confirm availability for your postcode.
+            and we&apos;ll confirm availability for your postcode.
           </p>
         </Container>
       </section>
@@ -293,10 +297,10 @@ export default function CoverageAreasPage() {
           <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 max-w-2xl mx-auto text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">M25 coverage note:</strong>{" "}
             Appointment availability in M25 corridor counties depends on engineer
-            capacity. Book online and we'll confirm next-day availability for your
+            capacity. Book online and we&apos;ll confirm next-day availability for your
             postcode — or call{" "}
-            <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue font-medium hover:underline">
-              
+            <a href={TEL} className="text-compliance-blue font-medium hover:underline">
+              {PHONE_DISPLAY}
             </a>{" "}
             to check before booking.
           </div>
@@ -386,7 +390,7 @@ export default function CoverageAreasPage() {
 
           <div className="space-y-6 text-brand-charcoal/80 leading-relaxed">
             <p>
-              London's private rented sector is one of the most regulated in the
+              London&apos;s private rented sector is one of the most regulated in the
               country. Every London borough operates its own selective and additional
               licensing schemes on top of the mandatory HMO licensing framework.
               Several boroughs — including Newham, Waltham Forest and Brent — run
@@ -398,7 +402,7 @@ export default function CoverageAreasPage() {
               difference. Victorian terrace conversions common in Hackney and
               Islington carry very different electrical risks to post-war ex-council
               blocks in Tower Hamlets or Lewisham. Our NICEIC approved and NAPIT
-              certified electricians are familiar with London's varied property
+              certified electricians are familiar with London&apos;s varied property
               types — from Edwardian maisonettes to modern purpose-built flats —
               and know what to look for in each.
             </p>
@@ -447,6 +451,8 @@ export default function CoverageAreasPage() {
         </Container>
       </section>
 
+      <ReviewsBlock />
+
       {/* ── CTA ── */}
       <section
         aria-labelledby="cta-heading"
@@ -457,7 +463,7 @@ export default function CoverageAreasPage() {
             Ready to book in your area?
           </Heading>
           <p className="text-blue-200 mb-8 leading-relaxed">
-            Book online in under 3 minutes. We'll confirm next-day availability for
+            Book online in under 3 minutes. We&apos;ll confirm next-day availability for
             your postcode. Certificate emailed within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

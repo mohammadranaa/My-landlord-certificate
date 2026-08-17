@@ -26,7 +26,9 @@ function MicrosoftClarity() {
 function MetaPixel({ pixelId }: { pixelId: string }) {
   return (
     <>
-      <script
+      <Script
+        id="meta-pixel"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

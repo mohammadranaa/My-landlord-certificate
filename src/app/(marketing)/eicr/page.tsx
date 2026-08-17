@@ -10,6 +10,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 
 // ── Contact ─────────────────────────────────────────────────────────────────
@@ -73,7 +74,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.8",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "312",
@@ -297,25 +298,7 @@ export default function EicrPage() {
                 EICR Certificate from £{lowestPrice}
               </Heading>
 
-              {/* Star rating */}
-              <div className="flex items-center gap-2 mb-5">
-                <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-[#FFCB45]"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-sm text-blue-100">
-                  <strong className="text-white">4.8</strong>/5 from 312 London landlords
-                </span>
-              </div>
+              <HeroRating theme="dark" className="mb-5" />
 
               <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
                 Electrical Installation Condition Report, a legal requirement for all
@@ -692,7 +675,7 @@ export default function EicrPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Every circuit and fitting inspected during an EICR receives one of
             four condition codes. The codes determine whether your EICR result
-            is "satisfactory" or "unsatisfactory" and what action, if any, you
+            is &quot;satisfactory&quot; or &quot;unsatisfactory&quot; and what action, if any, you
             must take.
           </p>
 

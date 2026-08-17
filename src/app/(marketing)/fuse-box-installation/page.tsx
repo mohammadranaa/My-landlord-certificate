@@ -5,6 +5,8 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -128,6 +130,7 @@ export default function FuseBoxInstallationPage() {
           <h1 className="text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
             Fuse Box Installation London from £{entryPrice}
           </h1>
+          <HeroRating theme="dark" className="mb-5" />
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             NICEIC & NAPIT approved · Supply &amp; install · Part P self-certified · EICR included
@@ -395,6 +398,8 @@ export default function FuseBoxInstallationPage() {
           </div>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=fuse-box"

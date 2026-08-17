@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import {
   DOMESTIC_EICR_TABLE,
@@ -47,7 +49,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "203",
@@ -310,6 +312,7 @@ export default function BundlePage() {
           <Heading level={1} id="bundle-heading" inverted className="mb-4 max-w-2xl">
             All your landlord certificates — bundled &amp; discounted
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-8">
             Book your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment
@@ -687,6 +690,8 @@ export default function BundlePage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?bundle=essential"

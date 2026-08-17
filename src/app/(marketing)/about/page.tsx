@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -313,10 +314,10 @@ export default function AboutPage() {
             <p>
               Our customer service team is available by phone on{" "}
               <a
-                href="mailto:info@mylandlordcertificate.co.uk"
+                href={TEL}
                 className="text-compliance-blue font-medium hover:underline"
               >
-                
+                {PHONE_DISPLAY}
               </a>{" "}
               if you have questions about your booking, want to discuss a specific
               property or need a certificate explained. We aim to answer all calls

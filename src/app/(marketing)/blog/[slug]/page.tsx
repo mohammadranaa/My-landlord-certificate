@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { Container } from "@/components/ui/container";
 import { JsonLd } from "@/components/shared/json-ld";
 import {
@@ -222,6 +223,7 @@ export default async function BlogPostPage({
   const { content } = await compileMDX({
     source: rawContent,
     options: {
+      mdxOptions: { remarkPlugins: [remarkGfm] },
       scope: {
         // Pricing scope variables — MDX uses {eicrFrom} etc.
         eicrFrom: getPriceForEICR("studio"),
@@ -320,6 +322,10 @@ export default async function BlogPostPage({
             <span aria-hidden="true">·</span>
             <span>{fm.readTime}</span>
           </div>
+          <p className="mt-3 max-w-2xl text-xs text-white/60">
+            Written and fact-checked by our compliance team — reviewed against current UK
+            regulations by our NICEIC-approved, Gas Safe registered and NEBOSH-qualified engineers.
+          </p>
         </Container>
       </div>
 
@@ -356,6 +362,21 @@ export default async function BlogPostPage({
                   View all prices
                 </Link>
               </div>
+            </div>
+
+            {/* Author bio */}
+            <div className="mt-10 rounded-2xl border border-border bg-warm-white p-6 not-prose">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-brand-grey">
+                About the author
+              </p>
+              <p className="mb-1 font-bold text-brand-charcoal">{fm.author}</p>
+              <p className="text-sm leading-relaxed text-brand-charcoal/75">
+                This guide was written and fact-checked by the My Landlord Certificate compliance
+                team and reviewed against current UK legislation by our NICEIC-approved,
+                NAPIT-registered, Gas Safe registered, accredited DEA and NEBOSH-qualified
+                engineers. We help landlords across all 33 London boroughs stay compliant with
+                fixed-price EICR, Gas Safety (CP12), EPC, Fire Risk Assessment and PAT testing.
+              </p>
             </div>
           </article>
 

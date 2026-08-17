@@ -8,6 +8,11 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { InlineCTA } from "@/components/ui/inline-cta";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { GOOGLE_BUSINESS_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT } from "@/lib/pricing";
 
@@ -41,7 +46,7 @@ const serviceSchema = {
     url: "https://www.mylandlordcertificate.co.uk",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
+      ratingValue: "5.0",
       bestRating: "5",
       worstRating: "1",
       ratingCount: "118",
@@ -223,6 +228,27 @@ const faqItems = [
 
 const lowestPrice = getPriceForPAT(1);
 
+const reviews = [
+  {
+    content:
+      "Furnished HMO with 22 appliances — done in two hours. Every item labelled, full digital report emailed within 24 hours. My letting agent was impressed by how organised the documentation was.",
+    author: "Chris M.",
+    location: "Greenwich",
+  },
+  {
+    content:
+      "Booked PAT testing alongside the EICR in one visit. Saved me organising two separate appointments and the price was better than I expected. Will do the same next year.",
+    author: "Yusuf A.",
+    location: "Redbridge",
+  },
+  {
+    content:
+      "Quick, professional and well-priced. The engineer tested every appliance in my rental, labelled each one and sent a clear certificate. Made my compliance file complete.",
+    author: "Sophie R.",
+    location: "Camden",
+  },
+];
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function PatTestingPage() {
@@ -258,6 +284,8 @@ export default function PatTestingPage() {
           <Heading level={1} id="pat-heading" inverted className="mb-4 max-w-2xl">
             PAT Testing from £{lowestPrice}
           </Heading>
+
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             Portable Appliance Testing for furnished rental properties and HMOs.
@@ -808,6 +836,51 @@ export default function PatTestingPage() {
             the absence of testing will be treated as evidence of negligence by
             courts and insurers alike.
           </div>
+        </section>
+
+        {/* Mid-page CTA */}
+        <InlineCTA
+          href="/book?service=pat-testing"
+          heading="Ready to book PAT Testing?"
+          subtext={`Fixed price from £${lowestPrice} · digital certificate within 24 hours.`}
+        />
+
+        {/* ── Reviews ── */}
+        <section aria-labelledby="reviews-heading">
+          <div className="flex flex-col items-center text-center mb-8">
+            <Heading level={2} id="reviews-heading" className="mb-2">
+              What London landlords say
+            </Heading>
+            <a
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
+                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
+              </svg>
+              Read our reviews on Google
+            </a>
+          </div>
+          <GoogleReviews
+            fallback={
+              <div className="grid md:grid-cols-3 gap-5">
+                {reviews.map((r) => (
+                  <TestimonialCard
+                    key={r.author}
+                    content={r.content}
+                    author={r.author}
+                    location={r.location}
+                    service="PAT Testing"
+                  />
+                ))}
+              </div>
+            }
+          />
         </section>
 
         {/* ── FAQs ── */}

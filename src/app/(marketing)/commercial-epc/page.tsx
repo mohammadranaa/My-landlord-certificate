@@ -8,6 +8,8 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY, MAILTO, EMAIL } from "@/lib/constants";
@@ -157,6 +159,7 @@ export default function CommercialEPCPage() {
           >
             Commercial EPC, from £{entryPrice}
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Commercial Energy Performance Certificate, required before selling or
@@ -623,6 +626,8 @@ export default function CommercialEPCPage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book?service=commercial-epc&type=commercial"

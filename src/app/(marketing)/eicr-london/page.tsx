@@ -8,6 +8,7 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -247,6 +248,7 @@ export default function EicrLondonPage() {
           <Heading level={1} id="eicr-london-heading" inverted className="mb-4 max-w-2xl">
             EICR London, from £{lowestPrice}, All 33 Boroughs Covered
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             Electrical Installation Condition Reports for London landlords.

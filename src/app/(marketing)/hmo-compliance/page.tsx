@@ -5,6 +5,8 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
+import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import {
@@ -381,6 +383,7 @@ export default function HMOCompliancePage() {
           <Heading level={1} id="hmo-heading" inverted className="mb-4 max-w-2xl">
             HMO Compliance Certificates London
           </Heading>
+          <HeroRating theme="dark" className="mb-5" />
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-8">
             Every certificate your HMO licence requires — from a single provider. EICR, Gas Safety CP12, Fire Risk Assessment, EPC, Emergency Lights, PAT Testing, Fire Door Certificate, and Legionella Risk Assessment. Fixed prices, next-day appointments across all 33 London boroughs. Certificate emailed within 24 hours.
@@ -804,6 +807,8 @@ export default function HMOCompliancePage() {
           </p>
         </section>
       </div>
+
+      <ReviewsBlock />
 
       <StickyMobileCTA
         href="/book"

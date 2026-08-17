@@ -70,6 +70,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
     },
   },
+  verification: {
+    google: "TVjZfQIOjAFUGDn9HnpH_bsIePXdUXM6BTOG0KL2470",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
