@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
-import { TrustBadges } from "@/components/ui/trust-badges";
-import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
@@ -158,62 +157,251 @@ export default function HomePage() {
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section
         aria-labelledby="hero-heading"
-        className="relative overflow-hidden bg-compliance-blue"
+        className="relative overflow-hidden bg-[#EEF8FD] md:bg-white"
       >
-        {/* Gradient layer */}
-        <div className="absolute inset-0 bg-gradient-to-br from-compliance-blue via-compliance-blue to-brand-blue-dark pointer-events-none" aria-hidden="true" />
+        {/* Desktop — full-bleed background photo with soft light-blue wash */}
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/hero/home-hero.png"
+            alt="London landlords reviewing their property compliance certificates online at home"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#E6F4FC_0%,#EEF8FD_50%,rgba(255,255,255,0)_76%)]" />
+        </div>
+        {/* Mobile — photo as a soft hero background: light-blue field up top, couple revealed from under the CTAs */}
+        <div className="absolute inset-0 md:hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,#E6F4FC_0%,#EEF8FD_45%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[650px]">
+            <Image
+              src="/hero/home-hero-mobile.webp"
+              alt="London landlords reviewing their property compliance certificates on a tablet at home"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-top"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,#EEF8FD_0%,rgba(238,248,253,0.5)_14%,rgba(238,248,253,0)_30%)]" />
+          </div>
+        </div>
 
-        <Container className="relative py-20 md:py-28 lg:py-32">
-          <div className="max-w-3xl">
-            <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-              Accredited Engineers · Gas Safe Registered · Certificates Within 24 Hours
-            </p>
+        <Container className="relative">
+          {/* Copy + trust card */}
+          <div className="relative pt-12 pb-0 md:py-12 lg:py-24">
+            <div className="max-w-xl lg:max-w-[54%]">
+              <Heading level={1} id="hero-heading" className="mb-5">
+                Landlord Certificates in London — EICR, Gas Safety &amp; EPC from{" "}
+                <span className="text-action-green">£49.99</span>
+              </Heading>
 
-            <Heading level={1} id="hero-heading" inverted className="mb-6">
-              Your property certificates.{" "}
-              <span className="text-action-green">Sorted.</span>
-            </Heading>
+              <p className="mb-2 text-lg leading-relaxed text-brand-charcoal/80">
+                Book your EICR, Gas Safety Certificate (CP12), Gas Safety
+                Certificate (CP42), EPC, Fire Risk Assessment, Fire Safety
+                Certificate, PAT Testing, Emergency Lights Certificate, Asbestos
+                Survey and more — online in minutes.
+              </p>
+              <p className="mb-7 text-lg leading-relaxed text-brand-charcoal/80">
+                Next-day appointments across London.
+              </p>
 
-            <HeroRating theme="dark" className="mb-6" />
+              {/* Trust points */}
+              <ul className="mb-8 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
+                {[
+                  "Accredited Engineers",
+                  "Competitive Prices",
+                  "Certificates Within 24 Hours",
+                  "Trusted by Landlords",
+                ].map((point) => (
+                  <li key={point} className="flex items-center gap-2.5 font-medium text-brand-charcoal">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-action-green/15">
+                      <svg className="h-3.5 w-3.5 text-action-green" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
 
-            <p className="text-lg md:text-xl text-blue-100 leading-relaxed mb-4 max-w-2xl">
-              Book your{" "}
-              <strong>EICR</strong>,{" "}
-              <strong>Gas Safety Certificate (CP12)</strong>,{" "}
-              <strong>Gas Safety Certificate (CP42)</strong>,{" "}
-              <strong>EPC</strong>,{" "}
-              <strong>Fire Risk Assessment</strong>,{" "}
-              <strong>Fire Safety Certificate</strong>,{" "}
-              <strong>PAT Testing</strong>,{" "}
-              <strong>Emergency Lights Certificate</strong>,{" "}
-              <strong>Asbestos Survey</strong>{" "}
-              and more — online in minutes. Next-day appointments across London.
-            </p>
-
-            <p className="text-blue-200 text-base mb-10 max-w-2xl">
-              Landlord compliance doesn&apos;t have to be complicated. Every property
-              certificate your rental property needs, under one roof, with no surprises on the invoice.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mb-12">
-              <Link
-                href="/book"
-                className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
-              >
-                Book your certificate
-              </Link>
-              <Link
-                href="/pricing"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "bg-white/10 border border-white/30 text-white hover:bg-white/20",
-                )}
-              >
-                See all prices
-              </Link>
+              {/* CTAs */}
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link href="/book" className={cn(buttonVariants({ variant: "cta", size: "lg" }))}>
+                  Book your certificate
+                </Link>
+                <Link
+                  href="/pricing"
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "border-2 border-compliance-blue bg-white/90 text-compliance-blue backdrop-blur-sm hover:bg-white",
+                  )}
+                >
+                  See all prices
+                </Link>
+              </div>
             </div>
 
-            <TrustBadges variant="dark" />
+            {/* Glass trust card */}
+            <div className="absolute -right-2 top-[64%] hidden w-[220px] -translate-y-1/2 rounded-2xl bg-white/85 p-5 shadow-xl ring-1 ring-black/5 backdrop-blur-md lg:block">
+              <div className="flex items-center gap-2.5">
+                <svg className="h-6 w-6 shrink-0 text-compliance-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+                <span className="text-sm font-bold leading-tight text-brand-charcoal">
+                  Certificates
+                  <br />
+                  Within 24 Hours
+                </span>
+              </div>
+              <div className="mt-4 border-t border-border pt-4">
+                <div className="mb-1.5 flex gap-0.5" role="img" aria-label="Rated 5 out of 5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="h-5 w-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-lg font-bold leading-tight text-brand-charcoal">Rated 5.0/5</p>
+                <p className="text-xs text-brand-grey">by London landlords</p>
+              </div>
+            </div>
+
+            {/* Mobile — reveal space so the couple appears under the CTAs, then the key-points strip */}
+            <div aria-hidden="true" className="h-[400px] md:hidden" />
+            <div className="-mx-4 sm:-mx-6 md:hidden">
+              <div className="bg-compliance-blue text-white">
+                <ul className="grid grid-cols-3 divide-x divide-white/15">
+                  {[
+                    {
+                      l1: "Fully Accredited",
+                      l2: "Engineers",
+                      icon: (
+                        <>
+                          <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" />
+                          <path d="M9 12l2 2 4-4" />
+                        </>
+                      ),
+                    },
+                    {
+                      l1: "Certificates",
+                      l2: "Within 24 Hours",
+                      icon: (
+                        <>
+                          <circle cx="12" cy="12" r="9" />
+                          <path d="M12 7v5l3 2" />
+                        </>
+                      ),
+                    },
+                    {
+                      l1: "Next-Day",
+                      l2: "Appointments",
+                      icon: (
+                        <>
+                          <rect x="3" y="4" width="18" height="18" rx="2" />
+                          <path d="M16 2v4M8 2v4M3 10h18" />
+                        </>
+                      ),
+                    },
+                  ].map((item) => (
+                    <li key={item.l1} className="flex flex-col items-center gap-1.5 px-2 py-3 text-center">
+                      <svg className="h-5 w-5 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        {item.icon}
+                      </svg>
+                      <span className="leading-tight">
+                        <span className="block text-[10px] font-semibold">{item.l1}</span>
+                        <span className="block text-[9px] text-white/70">{item.l2}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Contained feature bar ─────────────────────────────────────── */}
+          <div className="hidden pb-8 md:block lg:pb-12">
+            <div className="overflow-hidden rounded-2xl bg-compliance-blue text-white shadow-xl ring-1 ring-black/5">
+              <ul className="grid grid-cols-5 divide-x divide-white/15">
+                {[
+                  {
+                    l1: "Fully Accredited",
+                    l2: "Engineers",
+                    icon: (
+                      <>
+                        <path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" />
+                        <path d="M9 12l2 2 4-4" />
+                      </>
+                    ),
+                  },
+                  {
+                    l1: "Certificates",
+                    l2: "Within 24 Hours",
+                    icon: (
+                      <>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                      </>
+                    ),
+                  },
+                  {
+                    l1: "Next-Day",
+                    l2: "Appointments",
+                    icon: (
+                      <>
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                      </>
+                    ),
+                  },
+                  {
+                    l1: "Transparent",
+                    l2: "Pricing",
+                    icon: (
+                      <>
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                        <path d="M7 7h.01" />
+                      </>
+                    ),
+                  },
+                  {
+                    l1: "Expert Support",
+                    l2: "7 Days a Week",
+                    icon: (
+                      <>
+                        <path d="M4 14v-3a8 8 0 0 1 16 0v3" />
+                        <path d="M18 19a2 2 0 0 1-2 2h-3" />
+                        <rect x="2" y="14" width="4" height="6" rx="1" />
+                        <rect x="18" y="14" width="4" height="6" rx="1" />
+                      </>
+                    ),
+                  },
+                ].map((item) => (
+                  <li
+                    key={item.l1}
+                    className="flex items-center justify-center gap-2.5 px-3 py-5 lg:px-6"
+                  >
+                    <svg
+                      className="h-6 w-6 shrink-0 text-white/90"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      {item.icon}
+                    </svg>
+                    <span className="leading-tight">
+                      <span className="block text-sm font-semibold">{item.l1}</span>
+                      <span className="block text-xs text-white/70">{item.l2}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Container>
       </section>
