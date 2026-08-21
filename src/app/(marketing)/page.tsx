@@ -8,6 +8,9 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
 import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { Reveal } from "@/components/ui/reveal";
+import { CountUp } from "@/components/ui/count-up";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
@@ -246,20 +249,23 @@ export default function HomePage() {
               </p>
 
               {/* Trust points */}
-              <ul className="mb-8 grid max-w-md grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
+              <ul className="mb-8 grid max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
                 {[
                   "Accredited Engineers",
                   "Competitive Prices",
                   "Certificates Within 24 Hours",
                   "Trusted by Landlords",
                 ].map((point) => (
-                  <li key={point} className="flex items-center gap-2.5 font-medium text-brand-charcoal">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-action-green/15">
-                      <svg className="h-3.5 w-3.5 text-action-green" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <li
+                    key={point}
+                    className="flex items-center gap-3 rounded-xl border border-border bg-white/85 px-4 py-3 shadow-sm ring-1 ring-black/[0.02] backdrop-blur-sm transition-shadow hover:shadow-md"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-action-green text-white shadow-sm">
+                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8.5l3 3 7-7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                    {point}
+                    <span className="text-sm font-semibold leading-tight text-brand-charcoal">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -419,23 +425,25 @@ export default function HomePage() {
                 ].map((item) => (
                   <li
                     key={item.l1}
-                    className="flex items-center justify-center gap-2.5 px-3 py-5 lg:px-6"
+                    className="flex items-center justify-center gap-3 px-3 py-6 lg:px-5"
                   >
-                    <svg
-                      className="h-6 w-6 shrink-0 text-white/90"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      {item.icon}
-                    </svg>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/25">
+                      <svg
+                        className="h-6 w-6 text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.85"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        {item.icon}
+                      </svg>
+                    </span>
                     <span className="leading-tight">
-                      <span className="block text-sm font-semibold">{item.l1}</span>
-                      <span className="block text-xs text-white/70">{item.l2}</span>
+                      <span className="block text-[15px] font-bold text-white">{item.l1}</span>
+                      <span className="block text-xs font-medium text-white/85">{item.l2}</span>
                     </span>
                   </li>
                 ))}
@@ -461,139 +469,175 @@ export default function HomePage() {
       */}
 
       {/* ── 3. Services grid ─────────────────────────────────────────────── */}
-      <Section spacing="lg" className="bg-warm-white">
-        <Container>
-          <div className="text-center mb-10">
-            <Heading level={2} className="mb-4">
-              Every certificate you need, residential or commercial
-            </Heading>
-            <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              Fixed prices, no hidden charges, next-day appointments — digital certificate
-              emailed on the day of the inspection.
-            </p>
-          </div>
+      <Section spacing="lg" className="relative overflow-hidden bg-white">
+        {/* Ambient decoration */}
+        <div aria-hidden="true" className="mesh-soft pointer-events-none absolute inset-0" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-compliance-blue/5 blur-3xl animate-float-slow"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-action-green/5 blur-3xl"
+        />
+        <Container className="relative">
+          <SectionHeading
+            eyebrow="Our Services"
+            title="Every certificate you need, residential or commercial"
+            className="mb-10"
+          >
+            Fixed prices, no hidden charges, next-day appointments — digital certificate
+            emailed on the day of the inspection.
+          </SectionHeading>
 
-          <ServicesSection />
+          <Reveal delay={80}>
+            <ServicesSection />
+          </Reveal>
         </Container>
       </Section>
 
       {/* ── 4. How it works ──────────────────────────────────────────────── */}
-      <Section id="how-it-works" spacing="lg" className="bg-white">
-        <Container>
-          <div className="text-center mb-14">
-            <Heading level={2} className="mb-4">
-              Book your landlord certificate in 3 steps
-            </Heading>
-            <p className="text-brand-grey text-lg max-w-xl mx-auto">
-              Getting your property compliance certificate has never been easier.
-              Most bookings take under 3 minutes.
-            </p>
+      <Section id="how-it-works" spacing="lg" className="relative overflow-hidden bg-warm-white">
+        <div aria-hidden="true" className="bg-grid mask-fade pointer-events-none absolute inset-0 opacity-70" />
+        <Container className="relative">
+          <SectionHeading
+            eyebrow="Simple Process"
+            title="Book your landlord certificate in 3 steps"
+            className="mb-16"
+          >
+            Getting your property compliance certificate has never been easier.
+            Most bookings take under 3 minutes.
+          </SectionHeading>
+
+          <div className="relative">
+            {/* Connector line joining the three step badges (desktop) */}
+            <div
+              aria-hidden="true"
+              className="absolute left-[16.67%] right-[16.67%] top-7 hidden h-0.5 bg-gradient-to-r from-compliance-blue/30 via-compliance-blue/30 to-action-green/40 md:block"
+            />
+
+            <ol className="grid gap-8 md:grid-cols-3" role="list">
+              {[
+                {
+                  step: "01",
+                  title: "Book online",
+                  body: "Choose your certificate, select your property size, pick a date and pay securely. Next-day slots available across London and the M25 area.",
+                  bullets: [
+                    "EICR, Gas Safety, EPC, FRA, PAT or a bundle",
+                    "Fixed price shown before you pay — no hidden extras",
+                    "Morning, afternoon and evening slots available",
+                    "Confirmation email sent immediately",
+                  ],
+                  icon: (
+                    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" strokeWidth="1.75"/>
+                      <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      <path d="M7 13h4M7 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  ),
+                },
+                {
+                  step: "02",
+                  title: "Engineer visits your property",
+                  body: "A fully accredited engineer arrives at your agreed time. You don't need to be present — your tenant or a keyholder can provide access.",
+                  bullets: [
+                    "NICEIC approved electricians for EICR",
+                    "Gas Safe registered engineers for CP12",
+                    "Accredited DEA assessors for EPC",
+                    "ID-verified, insured and background-checked",
+                  ],
+                  icon: (
+                    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" stroke="currentColor" strokeWidth="1.75"/>
+                      <path d="M3 21c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                      <path d="M16 10l1.5 1.5L21 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  ),
+                },
+                {
+                  step: "03",
+                  title: "Certificate emailed within 24 hours",
+                  body: "Your certificate arrives by email on the day of the inspection — fully compliant, ready to forward to your tenant, letting agent or local authority.",
+                  bullets: [
+                    "PDF certificate emailed within 24 hours as the visit",
+                    "Accepted by all local authorities and letting agents",
+                    "Forward to tenant within 28 days as required by law",
+                    "EPC lodged on the national register automatically",
+                  ],
+                  icon: (
+                    <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.75"/>
+                      <path d="M2 8l10 7 10-7" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
+                    </svg>
+                  ),
+                },
+              ].map(({ step, title, body, bullets, icon }, i) => (
+                <Reveal as="li" key={step} delay={i * 140} className="group">
+                  <div className="card-lift relative h-full overflow-hidden rounded-2xl border border-border bg-white p-7 transition-colors hover:border-compliance-blue/40 hover:shadow-xl hover:shadow-compliance-blue/5">
+                    {/* Ghosted step number as a design element */}
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -right-2 -top-4 select-none text-[7rem] font-black leading-none text-compliance-blue/[0.05] transition-colors duration-300 group-hover:text-compliance-blue/[0.08]"
+                    >
+                      {step}
+                    </span>
+                    {/* Numbered icon badge */}
+                    <div className="relative mb-5 inline-flex">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-compliance-blue/10 text-compliance-blue ring-4 ring-white transition-all duration-300 group-hover:bg-compliance-blue group-hover:text-white">
+                        {icon}
+                      </div>
+                      <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-action-green text-[11px] font-bold text-white shadow-sm">
+                        {step.replace(/^0/, "")}
+                      </span>
+                    </div>
+
+                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-compliance-blue">
+                      Step {step}
+                    </p>
+                    <h3 className="mb-2 text-lg font-semibold text-brand-charcoal">{title}</h3>
+                    <p className="mb-4 text-sm leading-relaxed text-brand-grey">{body}</p>
+                    <ul className="space-y-2">
+                      {bullets.map((b) => (
+                        <li key={b} className="flex items-start gap-2 text-sm text-brand-charcoal/70">
+                          <svg className="mt-0.5 h-4 w-4 shrink-0 text-action-green" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              ))}
+            </ol>
           </div>
 
-          <ol className="grid md:grid-cols-3 gap-10" role="list">
-            {[
-              {
-                step: "01",
-                title: "Book online",
-                body: "Choose your certificate, select your property size, pick a date and pay securely. Next-day slots available across London and the M25 area.",
-                bullets: [
-                  "EICR, Gas Safety, EPC, FRA, PAT or a bundle",
-                  "Fixed price shown before you pay — no hidden extras",
-                  "Morning, afternoon and evening slots available",
-                  "Confirmation email sent immediately",
-                ],
-                icon: (
-                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" strokeWidth="1.75"/>
-                    <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                    <path d="M7 13h4M7 17h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                ),
-              },
-              {
-                step: "02",
-                title: "Engineer visits your property",
-                body: "A fully accredited engineer arrives at your agreed time. You don't need to be present — your tenant or a keyholder can provide access.",
-                bullets: [
-                  "NICEIC approved electricians for EICR",
-                  "Gas Safe registered engineers for CP12",
-                  "Accredited DEA assessors for EPC",
-                  "ID-verified, insured and background-checked",
-                ],
-                icon: (
-                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" stroke="currentColor" strokeWidth="1.75"/>
-                    <path d="M3 21c0-4.418 4.03-8 9-8s9 3.582 9 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                    <path d="M16 10l1.5 1.5L21 8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ),
-              },
-              {
-                step: "03",
-                title: "Certificate emailed within 24 hours",
-                body: "Your certificate arrives by email on the day of the inspection — fully compliant, ready to forward to your tenant, letting agent or local authority.",
-                bullets: [
-                  "PDF certificate emailed within 24 hours as the visit",
-                  "Accepted by all local authorities and letting agents",
-                  "Forward to tenant within 28 days as required by law",
-                  "EPC lodged on the national register automatically",
-                ],
-                icon: (
-                  <svg className="w-7 h-7 text-compliance-blue" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.75"/>
-                    <path d="M2 8l10 7 10-7" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
-                  </svg>
-                ),
-              },
-            ].map(({ step, title, body, bullets, icon }) => (
-              <li key={step} className="flex flex-col gap-4">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-compliance-blue/10 shrink-0">
-                  {icon}
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-compliance-blue uppercase tracking-wider mb-1">Step {step}</p>
-                  <h3 className="text-lg font-semibold text-brand-charcoal mb-2">{title}</h3>
-                  <p className="text-brand-grey leading-relaxed text-sm mb-4">{body}</p>
-                  <ul className="space-y-2">
-                    {bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-brand-charcoal/70">
-                        <svg className="w-4 h-4 text-action-green mt-0.5 shrink-0" fill="none" viewBox="0 0 16 16" aria-hidden="true">
-                          <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ol>
-
-          <div className="flex flex-wrap gap-4 justify-center mt-14">
+          <Reveal className="mt-14 flex flex-wrap justify-center gap-4">
             <Link href="/book" className={cn(buttonVariants({ variant: "cta", size: "lg" }))}>
               Book now
             </Link>
             <Link href="/pricing" className={cn(buttonVariants({ variant: "secondary", size: "lg" }))}>
               See all prices
             </Link>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
       {/* ── 4b. London coverage map ─────────────────────────────────────── */}
-      <section aria-labelledby="coverage-heading" className="py-16 md:py-20 bg-warm-white border-y border-border">
+      <section aria-label="London coverage areas" className="border-y border-border bg-white py-16 md:py-20">
         <Container>
-          <Heading level={2} id="coverage-heading" className="text-center mb-3">
-            Covering all 33 London boroughs
-          </Heading>
-          <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
+          <SectionHeading
+            eyebrow="London & the M25"
+            title="Covering all 33 London boroughs"
+            className="mb-10"
+          >
             Click any borough to see local EICR pricing and availability. Our accredited
             engineers cover every London borough and the wider M25 area.
-          </p>
-          <div className="max-w-4xl mx-auto">
+          </SectionHeading>
+          <Reveal delay={80} className="mx-auto max-w-4xl">
             <MapSection />
-          </div>
-          <p className="text-center text-sm text-brand-grey mt-6">
+          </Reveal>
+          <p className="mt-6 text-center text-sm text-brand-grey">
             <Link href="/coverage-areas" className="text-compliance-blue underline hover:no-underline">
               View all coverage areas →
             </Link>
@@ -601,91 +645,143 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* ── 4c. Why us ───────────────────────────────────────────────────── */}
-      <Section spacing="lg" className="bg-warm-white">
-        <Container>
-          <div className="text-center mb-14">
-            <Heading level={2} className="mb-4">
-              Why landlords choose My Landlord Certificate
-            </Heading>
-            <p className="text-brand-grey text-lg max-w-2xl mx-auto">
-              Property compliance is non-negotiable. We make staying on top of
-              every landlord certificate simple, affordable and fast — so you can
-              get on with managing your rental portfolio.
-            </p>
-          </div>
-
-          <ul className="grid sm:grid-cols-2 gap-8" role="list">
-            {[
-              {
-                icon: "£",
-                title: "No hidden charges",
-                body: "The price shown is what you pay — no call-out fees, no surcharges for older properties, no pressure to buy unnecessary remedial work. You'll always see the exact amount before you confirm your booking.",
-              },
-              {
-                icon: "✓",
-                title: "NICEIC approved and Gas Safe registered engineers",
-                body: "Every engineer holds the correct accreditation for the job. Your EICR is carried out by a NICEIC approved electrician. Your Gas Safety Certificate is issued by a Gas Safe registered engineer. Every certificate stands up to scrutiny from tenants, letting agents and local authority inspectors.",
-              },
-              {
-                icon: "⚡",
-                title: "Next-day appointments across London",
-                body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Priority slots available in many areas — email us.",
-              },
-              {
-                icon: "📄",
-                title: "Certificate emailed within 24 hours",
-                body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
-              },
-            ].map(({ icon, title, body }) => (
-              <li
-                key={title}
-                className="flex gap-5 p-6 bg-white rounded-2xl border border-border"
+      {/* ── 4c. Why us — editorial split ──────────────────────────────────── */}
+      <Section spacing="lg" className="relative overflow-hidden bg-warm-white">
+        <div aria-hidden="true" className="mesh-soft pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            {/* Sticky heading */}
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <SectionHeading
+                eyebrow="Why Choose Us"
+                title="Why landlords choose My Landlord Certificate"
+                align="left"
               >
-                <div className="w-12 h-12 rounded-xl bg-compliance-blue/10 text-compliance-blue font-bold text-xl flex items-center justify-center shrink-0" aria-hidden="true">
-                  {icon}
-                </div>
-                <div>
-                  <p className="font-semibold text-brand-charcoal mb-2 text-base">
-                    {title}
-                  </p>
-                  <p className="text-sm text-brand-grey leading-relaxed">{body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+                Property compliance is non-negotiable. We make staying on top of
+                every landlord certificate simple, affordable and fast — so you can
+                get on with managing your rental portfolio.
+              </SectionHeading>
+              <Reveal delay={120} className="mt-8">
+                <Link
+                  href="/letting-agents"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-compliance-blue px-5 py-2.5 text-sm font-semibold text-compliance-blue transition-colors hover:bg-compliance-blue hover:text-white"
+                >
+                  For letting agents &amp; portfolio landlords →
+                </Link>
+              </Reveal>
+            </div>
 
-          <div className="text-center mt-10">
-            <Link
-              href="/letting-agents"
-              className="text-compliance-blue hover:underline font-medium text-sm"
+            {/* Feature rows */}
+            <ul
+              className="overflow-hidden rounded-3xl border border-border bg-white/70 shadow-sm backdrop-blur-sm"
+              role="list"
             >
-              For letting agents &amp; portfolio landlords →
-            </Link>
+              {[
+                {
+                  title: "No hidden charges",
+                  body: "The price shown is what you pay — no call-out fees, no surcharges for older properties, no pressure to buy unnecessary remedial work. You'll always see the exact amount before you confirm your booking.",
+                  icon: (
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="1.75" />
+                      <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.75" />
+                      <path d="M6 9v6M18 9v6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "NICEIC approved and Gas Safe registered engineers",
+                  body: "Every engineer holds the correct accreditation for the job. Your EICR is carried out by a NICEIC approved electrician. Your Gas Safety Certificate is issued by a Gas Safe registered engineer. Every certificate stands up to scrutiny from tenants, letting agents and local authority inspectors.",
+                  icon: (
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 3l8 3v6c0 5-4 9-8 11-4-2-8-6-8-11V6l8-3z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+                      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Next-day appointments across London",
+                  body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Priority slots available in many areas — email us.",
+                  icon: (
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M13 2L3 14h8l-1 8 11-13h-8l0-7z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+                {
+                  title: "Certificate emailed within 24 hours",
+                  body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
+                  icon: (
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.75" />
+                      <path d="M3 8l9 6 9-6" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                },
+              ].map(({ icon, title, body }, i) => (
+                <Reveal
+                  as="li"
+                  key={title}
+                  delay={i * 90}
+                  className="group border-b border-border last:border-b-0"
+                >
+                  <div className="flex gap-5 p-6 transition-colors group-hover:bg-warm-white md:p-7">
+                    <div
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-compliance-blue/10 text-compliance-blue transition-all duration-300 group-hover:scale-105 group-hover:bg-compliance-blue group-hover:text-white"
+                      aria-hidden="true"
+                    >
+                      {icon}
+                    </div>
+                    <div>
+                      <p className="mb-2 text-base font-semibold text-brand-charcoal">
+                        {title}
+                      </p>
+                      <p className="text-sm leading-relaxed text-brand-grey">{body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </ul>
           </div>
         </Container>
       </Section>
 
-      {/* ── 5. Trust indicators ──────────────────────────────────────────── */}
-      <section className="py-12 bg-white border-y border-border" aria-label="Trust indicators">
-        <Container>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-3xl font-bold text-compliance-blue">500+</p>
-              <p className="text-sm text-brand-grey mt-1">Certificates issued</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-compliance-blue">Within 24 hours</p>
-              <p className="text-sm text-brand-grey mt-1">Certificate delivery</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-compliance-blue">Fixed</p>
-              <p className="text-sm text-brand-grey mt-1">No hidden charges</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-compliance-blue">33</p>
-              <p className="text-sm text-brand-grey mt-1">London boroughs covered</p>
-            </div>
+      {/* ── 5. Trust indicators ───────────────────────────────────────────── */}
+      <section
+        className="relative overflow-hidden border-y border-border bg-[#EAF4FB] py-16 md:py-24"
+        aria-label="Trust indicators"
+      >
+        <div aria-hidden="true" className="mesh-soft pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <Reveal className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-compliance-blue/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-compliance-blue">
+              <span className="h-1.5 w-1.5 rounded-full bg-action-green" />
+              Trusted across London
+            </span>
+            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-snug text-brand-charcoal md:text-4xl">
+              The numbers landlords rely on
+            </h2>
+          </Reveal>
+
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            {([
+              { numeric: 500, suffix: "+", label: "Certificates issued" },
+              { text: "24 hrs", label: "Certificate delivery" },
+              { text: "Fixed", label: "No hidden charges" },
+              { numeric: 33, suffix: "", label: "London boroughs covered" },
+            ] as { numeric?: number; suffix?: string; text?: string; label: string }[]).map((stat, i) => (
+              <Reveal as="div" key={stat.label} delay={i * 90} className="group">
+                <div className="card-lift h-full rounded-2xl border border-border bg-white px-4 py-8 text-center shadow-sm transition-all hover:border-compliance-blue/40 hover:shadow-lg hover:shadow-compliance-blue/5">
+                  <p className="text-4xl font-bold tracking-tight md:text-5xl">
+                    {typeof stat.numeric === "number" ? (
+                      <CountUp end={stat.numeric} suffix={stat.suffix} className="text-gradient-brand" />
+                    ) : (
+                      <span className="text-gradient-brand">{stat.text}</span>
+                    )}
+                  </p>
+                  <p className="mt-2.5 text-sm font-medium text-brand-grey">{stat.label}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </section>
@@ -694,35 +790,61 @@ export default function HomePage() {
       <ReviewsBlock />
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
-      <Section spacing="md" className="below-fold bg-compliance-blue">
-        <Container>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-            <div className="max-w-xl">
-              <p className="text-blue-200 text-xs font-semibold uppercase tracking-widest mb-3">
+      <Section spacing="md" className="below-fold relative overflow-hidden bg-compliance-blue">
+        {/* Ambient depth */}
+        <div aria-hidden="true" className="bg-dot-grid pointer-events-none absolute inset-0 opacity-[0.12]" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slow"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-action-green/10 blur-3xl"
+        />
+        <Container className="relative">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+            {/* Left — copy + CTA below description */}
+            <Reveal>
+              <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
+                <span className="h-1.5 w-1.5 rounded-full bg-action-green" />
                 For letting agents &amp; portfolio landlords
               </p>
-              <Heading level={2} inverted className="mb-4">
+              <Heading level={2} inverted className="mt-4">
                 Managing multiple rental properties?
               </Heading>
-              <p className="text-blue-100 text-base leading-relaxed">
+              <p className="mt-4 text-base leading-relaxed text-blue-100">
                 My Landlord Certificate works with letting agencies and HMO landlords
                 managing multiple properties. A dedicated account manager, volume
                 pricing, a renewal reminder dashboard and coordinated multi-property
                 scheduling keeps every property compliant — with far less admin.{" "}
                 <Link
                   href="/contact"
-                  className="text-white underline underline-offset-2 hover:text-blue-100 transition-colors"
+                  className="text-white underline underline-offset-2 transition-colors hover:text-blue-100"
                 >
                   Get in touch.
                 </Link>
               </p>
-            </div>
-            <Link
-              href="/letting-agents"
-              className={cn(buttonVariants({ variant: "cta", size: "lg" }), "shrink-0")}
-            >
-              Request a portfolio quote
-            </Link>
+              <Link
+                href="/letting-agents"
+                className={cn(buttonVariants({ variant: "cta", size: "lg" }), "mt-8")}
+              >
+                Request a portfolio quote
+              </Link>
+            </Reveal>
+
+            {/* Right — image */}
+            <Reveal delay={120}>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/20">
+                <Image
+                  src="/eicr/eicr-landlord-reviewing-certificate.png"
+                  alt="Portfolio landlord reviewing multiple property compliance certificates online"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5" />
+              </div>
+            </Reveal>
           </div>
         </Container>
       </Section>
@@ -730,24 +852,25 @@ export default function HomePage() {
       {/* ── 7. FAQ preview ───────────────────────────────────────────────── */}
       <Section spacing="lg" className="below-fold bg-warm-white">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <Heading level={2} className="mb-4">
-                Common landlord compliance questions
-              </Heading>
-              <p className="text-brand-grey text-lg">
-                Plain-English answers to the questions every UK landlord asks
-                about their property certificates.
-              </p>
-            </div>
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Common landlord compliance questions"
+              className="mb-12"
+            >
+              Plain-English answers to the questions every UK landlord asks
+              about their property certificates.
+            </SectionHeading>
 
-            <FAQAccordion items={faqItems} includeSchema={false} />
+            <Reveal delay={80}>
+              <FAQAccordion items={faqItems} includeSchema={false} />
+            </Reveal>
 
-            <p className="text-center mt-8 text-sm text-brand-grey">
+            <p className="mt-8 text-center text-sm text-brand-grey">
               More questions?{" "}
               <Link
                 href="/faq"
-                className="text-compliance-blue hover:underline font-medium"
+                className="font-medium text-compliance-blue hover:underline"
               >
                 See our full FAQ →
               </Link>
@@ -759,16 +882,18 @@ export default function HomePage() {
       {/* ── 8. Final CTA ─────────────────────────────────────────────────── */}
       <Section spacing="lg" className="bg-white">
         <Container>
-          <CTABanner
-            heading="Ready to get your landlord certificates sorted?"
-            subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the M25 area. All certificates emailed within 24 hours."
-            primaryHref="/book"
-            primaryLabel="Book your certificate now"
-            secondaryHref="/pricing"
-            secondaryLabel="View all prices"
-            showTrustBadges
-            variant="blue"
-          />
+          <Reveal>
+            <CTABanner
+              heading="Ready to get your landlord certificates sorted?"
+              subheading="Book online in under 3 minutes. No hidden charges. Next-day appointments across London and the M25 area. All certificates emailed within 24 hours."
+              primaryHref="/book"
+              primaryLabel="Book your certificate now"
+              secondaryHref="/pricing"
+              secondaryLabel="View all prices"
+              showTrustBadges
+              variant="blue"
+            />
+          </Reveal>
         </Container>
       </Section>
 

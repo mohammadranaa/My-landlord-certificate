@@ -43,40 +43,52 @@ export function ServiceCard({
     <Link
       href={href}
       className={cn(
-        "group flex flex-col gap-4 bg-white rounded-2xl border border-border p-6",
-        "hover:border-compliance-blue hover:shadow-lg",
-        "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue",
+        "card-lift group relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-compliance-blue/25 bg-white p-6 shadow-sm",
+        "hover:border-compliance-blue hover:bg-compliance-blue/[0.02] hover:shadow-xl hover:shadow-compliance-blue/10",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-compliance-blue",
         className,
       )}
     >
+      {/* Top accent bar — always visible, thickens on hover */}
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-compliance-blue to-action-green transition-all duration-300 group-hover:h-1.5"
+      />
+
       {/* Icon */}
-      <div className="w-12 h-12 rounded-xl bg-compliance-blue/10 text-compliance-blue flex items-center justify-center shrink-0">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-compliance-blue/10 text-compliance-blue transition-all duration-300 group-hover:bg-compliance-blue group-hover:text-white group-hover:scale-105">
         {icon}
       </div>
 
       {/* Text */}
       <div className="flex-1">
-        <h3 className="font-semibold text-brand-charcoal text-lg mb-1 group-hover:text-compliance-blue transition-colors">
+        <h3 className="mb-1 text-lg font-semibold text-brand-charcoal transition-colors group-hover:text-compliance-blue">
           {name}
         </h3>
-        <p className="text-sm text-brand-grey leading-relaxed line-clamp-2">
+        <p className="line-clamp-2 text-sm leading-relaxed text-brand-grey">
           {description}
         </p>
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-3 border-t border-border">
+      <div className="flex items-center justify-between border-t border-border pt-3">
         <span className="text-lg font-bold text-brand-charcoal">
           from £{price}
         </span>
-        <span className="text-xs text-brand-grey">
-          {turnaroundLabel
-            ? turnaroundLabel
-            : turnaroundDays === 1
-              ? "Within 24 hrs"
-              : turnaroundDays
-                ? "Within 24 hours"
-                : "Fast turnaround"}
+        {/* Turnaround by default, "View details" on hover (cross-fade) */}
+        <span className="relative inline-grid text-xs font-medium">
+          <span className="col-start-1 row-start-1 whitespace-nowrap text-brand-grey transition-all duration-300 group-hover:-translate-y-1 group-hover:opacity-0">
+            {turnaroundLabel
+              ? turnaroundLabel
+              : turnaroundDays === 1
+                ? "Within 24 hrs"
+                : turnaroundDays
+                  ? "Within 24 hours"
+                  : "Fast turnaround"}
+          </span>
+          <span className="col-start-1 row-start-1 flex translate-y-1 items-center gap-1 justify-self-end whitespace-nowrap font-semibold text-compliance-blue opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            View details →
+          </span>
         </span>
       </div>
     </Link>

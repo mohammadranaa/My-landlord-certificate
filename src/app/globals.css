@@ -222,3 +222,149 @@ body {
   content-visibility: auto;
   contain-intrinsic-size: 0 500px;
 }
+
+/* ── Scroll reveal ───────────────────────────────────────
+   Content is present in the DOM for SEO regardless of opacity.
+   Only animates when motion is allowed; reduced-motion users
+   always see fully-rendered content. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Decorative accent underline ─────────────────────────
+   Brand blue → green gradient bar under section titles. */
+.accent-bar {
+  height: 4px;
+  width: 56px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-green));
+}
+
+/* ── Soft dot-grid backdrop (uses existing border tone) ── */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--brand-blue) 14%, transparent) 1px,
+    transparent 1.4px
+  );
+  background-size: 22px 22px;
+}
+
+/* ── Fine line grid — light sections ─────────────────────
+   Subtle architectural grid; pair with a mask to fade edges. */
+.bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--brand-charcoal) 5%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--brand-charcoal) 5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 46px 46px;
+}
+
+/* ── Fine line grid — dark sections ──────────────────────── */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* ── Soft brand mesh wash for flat light sections ───────── */
+.mesh-soft {
+  background-image:
+    radial-gradient(
+      55% 45% at 12% 0%,
+      color-mix(in srgb, var(--brand-blue) 9%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 45% at 100% 25%,
+      color-mix(in srgb, var(--brand-green) 8%, transparent),
+      transparent 70%
+    );
+}
+
+/* Fade a pattern layer out towards the edges (radial mask). */
+.mask-fade {
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 55%, transparent 100%);
+}
+
+/* ── Gradient text (brand blue → green) ─────────────────── */
+.text-gradient-brand {
+  background-image: linear-gradient(120deg, var(--brand-blue), var(--brand-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Ambient floating blobs for section depth ──────────── */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -18px, 0);
+    }
+  }
+  .animate-float-slow {
+    animation: float-slow 9s ease-in-out infinite;
+  }
+}
+
+/* ── Animated draw for the "how it works" connector line ── */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes grow-line {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ── Card lift helper — subtle, professional ─────────────
+   Apply alongside `group` for hover elevation. */
+.card-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-lift:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* ── Gradient hairline accent that grows on hover ────────
+   Used as a top bar on feature cards. */
+.grow-accent {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-green));
+}
+.group:hover .grow-accent {
+  transform: scaleX(1);
+}
