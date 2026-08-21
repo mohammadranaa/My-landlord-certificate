@@ -18,10 +18,10 @@ const buttonVariants = cva(
         // ── Brand variants ────────────────────────────────────────────────
         /** Compliance Blue background, white text. Primary actions. */
         primary:
-          "bg-compliance-blue text-white hover:bg-brand-blue-dark",
-        /** Outlined Compliance Blue. Secondary actions beside a primary. */
+          "bg-compliance-blue text-white shadow-sm shadow-compliance-blue/20 hover:bg-brand-blue-dark hover:-translate-y-0.5 hover:shadow-md hover:shadow-compliance-blue/30",
+        /** Outlined Compliance Blue. Fills solid on hover (white text stays readable). */
         secondary:
-          "border-2 border-compliance-blue bg-transparent text-compliance-blue hover:bg-compliance-blue/10",
+          "border-2 border-compliance-blue bg-transparent text-compliance-blue hover:bg-compliance-blue hover:text-white hover:-translate-y-0.5 hover:shadow-md hover:shadow-compliance-blue/20",
         /** Text-only. Low-emphasis actions. */
         tertiary:
           "bg-transparent text-compliance-blue underline-offset-4 hover:underline",
@@ -29,10 +29,10 @@ const buttonVariants = cva(
          * Action Green background, Charcoal text.
          * Use for booking CTAs. Dark text is required — #80D100 is too light for white text (WCAG fail).
          */
-        cta: "bg-action-green text-brand-charcoal hover:bg-brand-green-dark font-semibold",
+        cta: "bg-action-green text-brand-charcoal font-semibold shadow-md shadow-action-green/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-action-green/50",
         // ── Utility variants (shadcn/base-ui compatibility) ───────────────
         default:
-          "bg-compliance-blue text-white hover:bg-brand-blue-dark",
+          "bg-compliance-blue text-white shadow-sm shadow-compliance-blue/20 hover:bg-brand-blue-dark hover:-translate-y-0.5 hover:shadow-md hover:shadow-compliance-blue/30",
         outline:
           "border border-border bg-background hover:bg-muted hover:text-foreground",
         ghost:

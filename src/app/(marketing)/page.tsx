@@ -790,16 +790,13 @@ export default function HomePage() {
       <ReviewsBlock />
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
-      <Section spacing="md" className="below-fold relative overflow-hidden bg-compliance-blue">
-        {/* Ambient depth */}
-        <div aria-hidden="true" className="bg-dot-grid pointer-events-none absolute inset-0 opacity-[0.12]" />
+      <Section spacing="lg" className="below-fold bg-blue-rich relative overflow-hidden">
+        {/* Ambient depth + line/ring design */}
+        <div aria-hidden="true" className="bg-grid-lines mask-fade pointer-events-none absolute inset-0" />
+        <div aria-hidden="true" className="deco-rings pointer-events-none absolute -left-10 top-10 hidden h-20 w-20 md:block" />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-16 -top-16 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float-slow"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-action-green/10 blur-3xl"
         />
         <Container className="relative">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">

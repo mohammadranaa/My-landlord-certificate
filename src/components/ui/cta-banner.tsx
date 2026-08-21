@@ -45,7 +45,7 @@ export function CTABanner({
       className={cn(
         "relative overflow-hidden rounded-3xl px-8 py-16 text-center",
         isBlue
-          ? "bg-gradient-to-br from-compliance-blue via-compliance-blue to-brand-blue-dark shadow-xl shadow-compliance-blue/20 ring-1 ring-white/10"
+          ? "bg-blue-rich shadow-xl shadow-compliance-blue/25 ring-1 ring-white/10"
           : "border border-border bg-white",
         className,
       )}
@@ -55,7 +55,15 @@ export function CTABanner({
         <>
           <div
             aria-hidden="true"
-            className="bg-grid-dark mask-fade pointer-events-none absolute inset-0 opacity-40"
+            className="bg-grid-lines mask-fade pointer-events-none absolute inset-0"
+          />
+          <div
+            aria-hidden="true"
+            className="deco-rings pointer-events-none absolute -left-8 -top-8 hidden h-20 w-20 sm:block"
+          />
+          <div
+            aria-hidden="true"
+            className="deco-rings pointer-events-none absolute -bottom-8 -right-8 hidden h-16 w-16 sm:block"
           />
           <div
             aria-hidden="true"
@@ -93,7 +101,7 @@ export function CTABanner({
           {/* Primary CTA — Action Green with dark text (contrast-safe) */}
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center rounded-xl bg-action-green px-8 py-3.5 text-base font-semibold text-brand-charcoal shadow-lg shadow-black/10 transition-all duration-200 hover:-translate-y-0.5 hover:bg-brand-green-dark hover:shadow-xl hover:shadow-black/15"
+            className="inline-flex items-center justify-center rounded-xl bg-action-green px-8 py-3.5 text-base font-semibold text-brand-charcoal shadow-lg shadow-action-green/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-action-green/40"
           >
             {primaryLabel}
           </Link>
@@ -102,10 +110,10 @@ export function CTABanner({
             <Link
               href={secondaryHref}
               className={cn(
-                "inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-medium transition-colors",
+                "inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-semibold transition-all duration-200 hover:-translate-y-0.5",
                 isBlue
-                  ? "border-2 border-white/50 text-white hover:bg-white/10"
-                  : "border-2 border-brand-charcoal/30 text-brand-charcoal hover:bg-brand-charcoal/5",
+                  ? "border-2 border-white/70 text-white hover:bg-white hover:text-compliance-blue hover:shadow-lg hover:shadow-black/10"
+                  : "border-2 border-brand-charcoal/30 text-brand-charcoal hover:bg-brand-charcoal hover:text-white",
               )}
             >
               {secondaryLabel}
