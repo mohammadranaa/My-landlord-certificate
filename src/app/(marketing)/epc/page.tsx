@@ -219,7 +219,7 @@ export default function EPCPage() {
                 </span>
               </a>
 
-              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
               <p className="text-blue-100 text-lg leading-relaxed mb-5">
                 Energy Performance Certificate, required by law before renting or selling any
                 residential property in London. Accredited DEA assessors, certificate registered
@@ -240,7 +240,7 @@ export default function EPCPage() {
                   Call {PHONE_DISPLAY}
                 </a>
               </div>
-              <p className="text-blue-300 text-sm mb-6">
+              <p className="text-blue-100 text-sm mb-6">
                 Fixed price · No hidden fees · On the national register within 24 hours
               </p>
               <TrustBadges serviceKey="epc" variant="dark" />
@@ -542,7 +542,7 @@ export default function EPCPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
               <thead>
-                <tr className="bg-compliance-blue text-white">
+                <tr className="bg-hero-blue text-white">
                   <th scope="col" className="text-left px-4 py-3 font-semibold">#</th>
                   <th scope="col" className="text-left px-4 py-3 font-semibold">Improvement</th>
                   <th scope="col" className="text-left px-4 py-3 font-semibold">Typical impact</th>
@@ -650,7 +650,7 @@ export default function EPCPage() {
                   "Lodged on the national register within 24 hours",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
                       ✓
                     </span>
                     {t}

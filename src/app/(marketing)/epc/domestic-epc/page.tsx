@@ -460,7 +460,7 @@ export default function DomesticEPCPage() {
                   "Emailed to you, valid for 10 years",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
                       ✓
                     </span>
                     {t}

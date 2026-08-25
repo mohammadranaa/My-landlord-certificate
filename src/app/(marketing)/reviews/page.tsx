@@ -187,7 +187,7 @@ export default function ReviewsPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="reviews-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-20 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
@@ -220,7 +220,7 @@ export default function ReviewsPage() {
             <div className="text-center sm:text-left">
               <p className="text-4xl font-bold text-white leading-none mb-1">312</p>
               <p className="text-blue-200 text-sm">verified reviews</p>
-              <p className="text-blue-300 text-xs mt-0.5">verified reviews from London landlords</p>
+              <p className="text-blue-100 text-xs mt-0.5">verified reviews from London landlords</p>
             </div>
           </div>
 

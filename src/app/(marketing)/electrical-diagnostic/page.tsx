@@ -147,7 +147,7 @@ export default function ElectricalDiagnosticPage() {
             Electrical Diagnostic — £{ELECTRICAL_DIAGNOSTIC_HOURLY_RATE}/hr, No Call-Out Fee
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from={false} size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={ELECTRICAL_DIAGNOSTIC_HOURLY_RATE} from={false} size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             NICEIC & NAPIT approved · No call-out fee · Fault traced same visit · Minor repairs included
           </p>

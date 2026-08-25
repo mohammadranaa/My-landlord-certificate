@@ -353,6 +353,49 @@ body {
   );
 }
 
+/* ── Hero blue: rich gradient with baked grid lines + rings ──
+   One class → every service-page hero gets the design, no extra DOM. */
+.bg-hero-blue {
+  background-color: var(--brand-blue);
+  background-image:
+    /* concentric ring lines, top-right corner */
+    radial-gradient(
+      circle at 92% 16%,
+      transparent 74px,
+      rgba(255, 255, 255, 0.13) 75px,
+      rgba(255, 255, 255, 0.13) 76px,
+      transparent 77px,
+      transparent 118px,
+      rgba(255, 255, 255, 0.09) 119px,
+      rgba(255, 255, 255, 0.09) 120px,
+      transparent 121px,
+      transparent 164px,
+      rgba(255, 255, 255, 0.06) 165px,
+      rgba(255, 255, 255, 0.06) 166px,
+      transparent 167px
+    ),
+    /* fine grid lines */
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    /* top light sheen + cyan highlight + green glow + diagonal base */
+    radial-gradient(85% 55% at 72% 0%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(55% 75% at 88% 6%, rgba(125, 220, 255, 0.45), transparent 60%),
+    radial-gradient(52% 70% at 3% 100%, rgba(128, 209, 0, 0.26), transparent 62%),
+    linear-gradient(135deg, #1aabee 0%, var(--brand-blue) 45%, #005c92 100%);
+  background-size: auto, 56px 56px, 56px 56px, auto, auto, auto, auto;
+  background-repeat: no-repeat, repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+
+/* ── Spec bar: designed charcoal strip (grid + corner glow) ── */
+.bg-spec-bar {
+  background-color: var(--brand-charcoal);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(70% 140% at 100% 0%, rgba(0, 147, 219, 0.18), transparent 68%);
+  background-size: 40px 40px, 40px 40px, auto;
+}
+
 /* ── Concentric decorative rings (place in a corner) ────── */
 .deco-rings {
   border-radius: 9999px;

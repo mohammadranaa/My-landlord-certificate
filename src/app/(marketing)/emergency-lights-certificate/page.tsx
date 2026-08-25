@@ -127,7 +127,7 @@ export default function EmergencyLightsCertificatePage() {
             Emergency Lights Certificate London from £{entryPrice}
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             NICEIC approved · Annual testing to BS 5266-1 · Certificate issued within 24 hours
           </p>

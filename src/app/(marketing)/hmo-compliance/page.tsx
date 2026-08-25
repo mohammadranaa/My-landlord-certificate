@@ -362,7 +362,7 @@ export default function HMOCompliancePage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section aria-labelledby="hmo-heading" className="bg-compliance-blue text-white">
+      <section aria-labelledby="hmo-heading" className="bg-hero-blue text-white">
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200">
@@ -410,24 +410,24 @@ export default function HMOCompliancePage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>Services</dt>
-              <dd className="text-white font-semibold">9 in one place</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Services</dt>
+              <dd className="text-sm font-bold text-white">9 in one place</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Coverage</dt>
-              <dd className="text-white font-semibold">All 33 boroughs</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Coverage</dt>
+              <dd className="text-sm font-bold text-white">All 33 boroughs</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Delivery</dt>
-              <dd className="text-white font-semibold">Within 24 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Delivery</dt>
+              <dd className="text-sm font-bold text-white">Within 24 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Booking</dt>
-              <dd className="text-white font-semibold">Online, instant</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Booking</dt>
+              <dd className="text-sm font-bold text-white">Online, instant</dd>
             </div>
           </dl>
         </Container>
@@ -542,7 +542,7 @@ export default function HMOCompliancePage() {
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-compliance-blue text-white">
+                <tr className="bg-hero-blue text-white">
                   <th scope="col" className="text-left px-4 py-3 font-semibold rounded-tl-xl">
                     Certificate
                   </th>
@@ -802,7 +802,7 @@ export default function HMOCompliancePage() {
               Call {PHONE_DISPLAY}
             </a>
           </div>
-          <p className="mt-5 text-xs text-blue-300">
+          <p className="mt-5 text-xs text-blue-100">
             Fixed prices · All 33 London boroughs · Certificate emailed within 24 hours
           </p>
         </section>

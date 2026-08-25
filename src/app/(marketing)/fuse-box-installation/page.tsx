@@ -131,7 +131,7 @@ export default function FuseBoxInstallationPage() {
             Fuse Box Installation London from £{entryPrice}
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             NICEIC & NAPIT approved · Supply &amp; install · Part P self-certified · EICR included
           </p>

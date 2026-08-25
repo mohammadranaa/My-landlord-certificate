@@ -178,7 +178,7 @@ const proseComponents = {
     </div>
   ),
   thead: ({ children, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
-    <thead className="bg-compliance-blue text-white" {...props}>
+    <thead className="bg-hero-blue text-white" {...props}>
       {children}
     </thead>
   ),

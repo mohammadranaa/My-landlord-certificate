@@ -87,7 +87,7 @@ export default function LettingAgentsPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="la-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <div className="max-w-2xl">

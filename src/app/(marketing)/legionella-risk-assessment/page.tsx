@@ -122,7 +122,7 @@ export default function LegionellaRiskAssessmentPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="legionella-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -177,24 +177,24 @@ export default function LegionellaRiskAssessmentPage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>Fixed price</dt>
-              <dd className="text-white font-semibold">£{price}</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Fixed price</dt>
+              <dd className="text-sm font-bold text-white">£{price}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Standard</dt>
-              <dd className="text-white font-semibold">ACoP L8</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Standard</dt>
+              <dd className="text-sm font-bold text-white">ACoP L8</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Report</dt>
-              <dd className="text-white font-semibold">Within 48 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Report</dt>
+              <dd className="text-sm font-bold text-white">Within 48 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Frequency</dt>
-              <dd className="text-white font-semibold">Every 2 years</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Frequency</dt>
+              <dd className="text-sm font-bold text-white">Every 2 years</dd>
             </div>
           </dl>
         </Container>
@@ -214,7 +214,7 @@ export default function LegionellaRiskAssessmentPage() {
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-compliance-blue text-white">
+                <tr className="bg-hero-blue text-white">
                   <th scope="col" className="text-left px-5 py-3 font-semibold">Service</th>
                   <th scope="col" className="text-right px-5 py-3 font-semibold">Price</th>
                 </tr>
@@ -694,7 +694,7 @@ export default function LegionellaRiskAssessmentPage() {
               Call {PHONE_DISPLAY}
             </a>
           </div>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             No hidden charges. ACoP L8 compliant. Report within 48 hours.
           </p>
         </section>

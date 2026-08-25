@@ -290,7 +290,7 @@ export default function BundlePage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="bundle-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -343,24 +343,24 @@ export default function BundlePage() {
       </section>
 
       {/* ── Quick stats bar ── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>Bundles from</dt>
-              <dd className="text-white font-semibold">£130</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Bundles from</dt>
+              <dd className="text-sm font-bold text-white">£130</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Save up to</dt>
-              <dd className="text-white font-semibold">£44.97</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Save up to</dt>
+              <dd className="text-sm font-bold text-white">£44.97</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Certificates</dt>
-              <dd className="text-white font-semibold">emailed within 24 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Certificates</dt>
+              <dd className="text-sm font-bold text-white">emailed within 24 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Appointments</dt>
-              <dd className="text-white font-semibold">next-day available</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Appointments</dt>
+              <dd className="text-sm font-bold text-white">next-day available</dd>
             </div>
           </dl>
         </Container>
@@ -685,7 +685,7 @@ export default function BundlePage() {
               Essential Bundle — £130
             </Link>
           </div>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             No hidden charges. All certificates emailed within 24 hours.
           </p>
         </section>

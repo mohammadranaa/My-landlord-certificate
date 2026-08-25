@@ -149,7 +149,7 @@ export default function FireAlarmInstallationPage() {
             Fire Alarm Installation London from £{FIRE_ALARM_INSTALLATION_PER_ALARM}/alarm
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={FIRE_ALARM_INSTALLATION_PER_ALARM} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={FIRE_ALARM_INSTALLATION_PER_ALARM} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             Mains-wired interlinked · BS 5839-6 compliant · Free survey · Commissioning certificate included
           </p>

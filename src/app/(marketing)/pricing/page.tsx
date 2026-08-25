@@ -105,7 +105,7 @@ export default function PricingPage() {
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ── */}
-      <section aria-labelledby="pricing-heading" className="bg-compliance-blue text-white">
+      <section aria-labelledby="pricing-heading" className="bg-hero-blue text-white">
         <Container className="py-16 md:py-20">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200">

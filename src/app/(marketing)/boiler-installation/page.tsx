@@ -124,7 +124,7 @@ export default function BoilerInstallationPage() {
             Boiler Installation London from £{BOILER_INSTALLATION_FROM.toLocaleString()}
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={BOILER_INSTALLATION_FROM} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={BOILER_INSTALLATION_FROM} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             Gas Safe Registered · Supply &amp; install · CP12 included · 10-year warranty
           </p>

@@ -206,7 +206,7 @@ export default function FireSafetyCertificatePage() {
                 across all 33 London boroughs — compliant with the Smoke and Carbon Monoxide
                 Alarm Regulations 2022 and tested to BS 5839-6.
               </p>
-              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
               <p className="text-blue-100 mb-4">
                 Accredited engineers · Annual testing to BS 5839-6 · Certificate issued within 24 hours
               </p>

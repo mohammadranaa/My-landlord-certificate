@@ -197,7 +197,7 @@ export default function EicrCostPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="eicr-cost-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -242,7 +242,7 @@ export default function EicrCostPage() {
             price={lowestDomesticPrice}
             from
             size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
+            className="mb-8 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white"
           />
 
           <div className="flex flex-wrap gap-4 mb-10">
@@ -268,24 +268,24 @@ export default function EicrCostPage() {
       </section>
 
       {/* ── Quick stats bar ── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>Studio</dt>
-              <dd className="text-white font-semibold">£{lowestDomesticPrice}</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Studio</dt>
+              <dd className="text-sm font-bold text-white">£{lowestDomesticPrice}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>1–3 bed</dt>
-              <dd className="text-white font-semibold">£{popularDomesticPrice}</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">1–3 bed</dt>
+              <dd className="text-sm font-bold text-white">£{popularDomesticPrice}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Commercial from</dt>
-              <dd className="text-white font-semibold">£149.99</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Commercial from</dt>
+              <dd className="text-sm font-bold text-white">£149.99</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Valid</dt>
-              <dd className="text-white font-semibold">5 years</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Valid</dt>
+              <dd className="text-sm font-bold text-white">5 years</dd>
             </div>
           </dl>
         </Container>
@@ -392,7 +392,7 @@ export default function EicrCostPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
               <thead>
-                <tr className="bg-compliance-blue text-white">
+                <tr className="bg-hero-blue text-white">
                   <th scope="col" className="text-left px-4 py-3 font-semibold">Property</th>
                   <th scope="col" className="text-left px-4 py-3 font-semibold">Market range</th>
                   <th scope="col" className="text-left px-4 py-3 font-semibold">Our price</th>
@@ -661,7 +661,7 @@ export default function EicrCostPage() {
               EICR service overview
             </Link>
           </div>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             No hidden charges. NICEIC approved &amp; NAPIT certified. Certificate emailed within 24 hours.
           </p>
         </section>

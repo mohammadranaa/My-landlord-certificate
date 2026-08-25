@@ -331,7 +331,7 @@ export default function FAQPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="faq-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-20 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">

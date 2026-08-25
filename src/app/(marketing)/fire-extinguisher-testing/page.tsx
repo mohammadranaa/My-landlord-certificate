@@ -147,7 +147,7 @@ export default function FireExtinguisherTestingPage() {
             Fire Extinguisher Testing London from £{entryPrice}
           </h1>
           <HeroRating theme="dark" className="mb-5" />
-          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+          <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
           <p className="text-blue-100 mb-4">
             All extinguisher types · BS 5306-3 compliant · Service label issued within 24 hours
           </p>
