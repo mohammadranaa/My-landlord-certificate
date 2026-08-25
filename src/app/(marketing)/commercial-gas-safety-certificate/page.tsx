@@ -329,7 +329,7 @@ export default function CommercialGasSafetyCertificatePage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse rounded-xl overflow-hidden border border-border text-sm">
               <thead>
-                <tr className="bg-hero-blue text-white">
+                <tr className="bg-compliance-blue text-white">
                   <th scope="col" className="px-5 py-3 text-left font-semibold">Feature</th>
                   <th scope="col" className="px-5 py-3 text-left font-semibold">CP12 (Domestic)</th>
                   <th scope="col" className="px-5 py-3 text-left font-semibold">CP42 (Commercial)</th>

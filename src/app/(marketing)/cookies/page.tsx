@@ -146,7 +146,7 @@ export default function CookiesPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-hero-blue text-white">
+                    <tr className="bg-compliance-blue text-white">
                       <th scope="col" className="text-left px-4 py-3 rounded-tl-xl font-semibold">Cookie name</th>
                       <th scope="col" className="text-left px-4 py-3 font-semibold">Type</th>
                       <th scope="col" className="text-left px-4 py-3 font-semibold">Purpose</th>

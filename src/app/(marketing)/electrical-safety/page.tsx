@@ -86,7 +86,7 @@ export default function ElectricalSafetyPage() {
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white py-14 lg:py-20">
+      <section className="bg-hero-blue text-white py-14 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-white/60">

@@ -157,7 +157,7 @@ export default function PrivacyPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-hero-blue text-white">
+                    <tr className="bg-compliance-blue text-white">
                       <th className="text-left px-4 py-3 rounded-tl-xl font-semibold">Purpose</th>
                       <th className="text-left px-4 py-3 rounded-tr-xl font-semibold">Lawful basis</th>
                     </tr>
@@ -272,7 +272,7 @@ export default function PrivacyPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-hero-blue text-white">
+                    <tr className="bg-compliance-blue text-white">
                       <th className="text-left px-4 py-3 rounded-tl-xl font-semibold">Data category</th>
                       <th className="text-left px-4 py-3 rounded-tr-xl font-semibold">Retention period</th>
                     </tr>
@@ -312,7 +312,7 @@ export default function PrivacyPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-hero-blue text-white">
+                    <tr className="bg-compliance-blue text-white">
                       <th className="text-left px-4 py-3 rounded-tl-xl font-semibold">Type</th>
                       <th className="text-left px-4 py-3 font-semibold">Purpose</th>
                       <th className="text-left px-4 py-3 rounded-tr-xl font-semibold">Duration</th>

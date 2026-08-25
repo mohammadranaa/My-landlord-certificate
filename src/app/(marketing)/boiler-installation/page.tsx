@@ -108,7 +108,7 @@ export default function BoilerInstallationPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white py-10 lg:py-14">
+      <section className="bg-hero-blue text-white py-10 lg:py-14">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
@@ -147,23 +147,23 @@ export default function BoilerInstallationPage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x md:divide-white/10">
             <div className="pl-0">
-              <p className="text-xs text-white/50 mb-0.5">From</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">From</p>
               <p className="font-bold text-white">£{BOILER_INSTALLATION_FROM.toLocaleString()}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Duration</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Duration</p>
               <p className="font-bold text-white">1 day</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Includes</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Includes</p>
               <p className="font-bold text-white">CP12 + warranty</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Accreditation</p>
               <p className="font-bold text-white">Gas Safe</p>
             </div>
           </div>

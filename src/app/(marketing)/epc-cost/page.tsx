@@ -403,7 +403,7 @@ export default function EpcCostPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border rounded-xl overflow-hidden">
               <thead>
-                <tr className="bg-hero-blue text-white">
+                <tr className="bg-compliance-blue text-white">
                   <th scope="col" className="text-left px-4 py-3 font-semibold">
                     Property size
                   </th>

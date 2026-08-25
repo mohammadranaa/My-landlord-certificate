@@ -542,7 +542,7 @@ export default function HMOCompliancePage() {
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-hero-blue text-white">
+                <tr className="bg-compliance-blue text-white">
                   <th scope="col" className="text-left px-4 py-3 font-semibold rounded-tl-xl">
                     Certificate
                   </th>

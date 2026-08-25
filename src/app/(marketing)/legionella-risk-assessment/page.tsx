@@ -214,7 +214,7 @@ export default function LegionellaRiskAssessmentPage() {
           <div className="overflow-x-auto rounded-xl border border-border">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-hero-blue text-white">
+                <tr className="bg-compliance-blue text-white">
                   <th scope="col" className="text-left px-5 py-3 font-semibold">Service</th>
                   <th scope="col" className="text-right px-5 py-3 font-semibold">Price</th>
                 </tr>
