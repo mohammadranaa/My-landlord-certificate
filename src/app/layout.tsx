@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ConsentProvider } from "@/components/analytics/consent-provider";
@@ -94,9 +93,7 @@ export default function RootLayout({
         {/* Consent Mode v2 default: deny everything until the visitor chooses.
             Must run before gtag.js loads so Google can collect cookieless
             signals (and model conversions) for visitors who decline or ignore. */}
-        <Script
-          id="gtag-consent-default"
-          strategy="beforeInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', {
@@ -110,10 +107,8 @@ gtag('set', 'url_passthrough', true);
 gtag('set', 'ads_data_redaction', true);`,
           }}
         />
-        {/* Google Tag Manager — loads after the Consent Mode v2 default above */}
-        <Script
-          id="gtm-head"
-          strategy="afterInteractive"
+        {/* Google Tag Manager — runs right after the Consent Mode v2 default above */}
+        <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
