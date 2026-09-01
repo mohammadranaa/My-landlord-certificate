@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
-import { GOOGLE_ADS_CONVERSION_LEAD } from "@/lib/constants";
+import { GOOGLE_ADS_CONVERSION_LEAD, GOOGLE_ADS_CONVERSION_DETAILS } from "@/lib/constants";
 import type {
   PartialBookingData,
   ServiceEntry,
@@ -112,6 +112,23 @@ export function BookingForm() {
     const merged = { ...data, ...stepData };
     merge(stepData);
     void savePartialBooking(2, merged);
+
+    // Fire ONLY when the "Your Details" step is completed successfully — i.e. the
+    // user entered valid details and is advancing to Step 3. If validation fails,
+    // Step2PersonalInfo never calls onComplete, so nothing fires here.
+    const w = window as unknown as {
+      dataLayer: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: "details_submitted" });
+    // Google Ads conversion ("Details submitted"). gtag respects Consent Mode v2.
+    if (typeof w.gtag === "function") {
+      w.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION_DETAILS,
+      });
+    }
+
     setStep(3);
   }
 
