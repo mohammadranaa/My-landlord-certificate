@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -303,6 +303,55 @@ export default function CoverageAreasPage() {
               {PHONE_DISPLAY}
             </a>{" "}
             to check before booking.
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Outside London and the M25 ── */}
+      <section aria-labelledby="outside-m25-heading" className="py-16 bg-warm-white">
+        <Container className="max-w-3xl">
+          <Heading level={2} id="outside-m25-heading" className="mb-6 text-center">
+            Outside London and the M25
+          </Heading>
+
+          <div className="space-y-6 text-brand-charcoal/80 leading-relaxed">
+            <p>
+              Our engineers are based across London and regularly work throughout
+              the M25 area. For properties beyond the M25 — including parts of
+              Surrey, Kent, Essex, Hertfordshire, and other Home Counties — we do
+              travel, but an additional travel charge applies. This is quoted
+              individually based on the property location and the services
+              required.
+            </p>
+            <p>
+              If your property is outside the M25, call us on{" "}
+              <a href={TEL} className="text-compliance-blue font-medium hover:underline">
+                {PHONE_DISPLAY}
+              </a>{" "}
+              or email{" "}
+              <a href={MAILTO} className="text-compliance-blue font-medium hover:underline">
+                {EMAIL}
+              </a>{" "}
+              with your postcode and the certificates you need. We will come back
+              to you with a fixed quote within 24 hours. There is no obligation.
+            </p>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href={TEL}
+              className={cn(buttonVariants({ variant: "primary", size: "lg" }))}
+            >
+              Get a quote for outside M25
+            </a>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 text-sm text-brand-charcoal/80">
+            <strong className="text-brand-amber">Note:</strong> All prices shown
+            on this website apply to properties within the London Congestion
+            Charge Zone and the M25 area. Outside-M25 jobs are priced
+            individually — always at a fixed agreed price before any work
+            begins.
           </div>
         </Container>
       </section>

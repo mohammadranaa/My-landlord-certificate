@@ -24,3 +24,11 @@ export const GOOGLE_ADS_ID = "AW-18223043841";
 export const GOOGLE_ADS_CONVERSION_LEAD = "AW-18223043841/42EECNzxucUcEIGqtvFD";
 
 export const HMO_COMPLIANCE_URL = "/hmo-compliance";
+
+export const OUTSIDE_M25_NOTE =
+  "Prices shown apply to London and the " +
+  "M25 area. For properties outside the " +
+  "M25, we do travel — call us on " +
+  "020 3996 1070 or email " +
+  "info@mylandlordcertificate.co.uk " +
+  "for a tailored quote.";

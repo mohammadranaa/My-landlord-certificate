@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
 import { cn } from "@/lib/utils";
+import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   ASBESTOS_SURVEY_TABLE,
@@ -148,6 +149,19 @@ export default function PricingPage() {
       </div>
 
       <Container className="py-16 space-y-24">
+
+        <div className="bg-blue-50 border border-compliance-blue/20 rounded-xl p-4 mb-8 text-sm text-brand-charcoal">
+          <strong>Prices shown are for London and the M25 area.</strong>{" "}
+          For properties outside the M25, we do cover these — call us on{" "}
+          <a href={TEL} className="text-compliance-blue font-medium">
+            {PHONE_DISPLAY}
+          </a>{" "}
+          or email{" "}
+          <a href={MAILTO} className="text-compliance-blue font-medium">
+            {EMAIL}
+          </a>{" "}
+          for a bespoke quote.
+        </div>
 
         {/* ── "From" prices summary ── */}
         <section aria-labelledby="summary-heading">
@@ -695,6 +709,12 @@ export default function PricingPage() {
 
           <p className="mt-4 text-sm text-brand-grey">
             These are the only additional charges we apply. All other pricing is fixed and inclusive.
+          </p>
+
+          <p className="text-sm text-brand-grey mt-6 text-center">
+            All prices apply to properties within London and the M25 area.
+            For outside-M25 properties, please
+            <a href={TEL} className="text-compliance-blue font-medium"> call {PHONE_DISPLAY}</a> for a tailored quote.
           </p>
         </section>
 
