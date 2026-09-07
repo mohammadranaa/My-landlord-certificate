@@ -125,23 +125,23 @@ export default function CommercialFireRiskAssessmentPage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x md:divide-white/10">
             <div className="pl-0">
-              <p className="text-xs text-white/50 mb-0.5">Entry price</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Entry price</p>
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Review</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Review</p>
               <p className="font-bold text-white">Annually</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Report</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Report</p>
               <p className="font-bold text-white">Within 24 hours</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Legal basis</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Legal basis</p>
               <p className="font-bold text-white">RR(FS)O 2005</p>
             </div>
           </div>

@@ -186,7 +186,7 @@ export default function EPCPage() {
       <JsonLd data={faqSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white py-10 lg:py-14">
+      <section className="bg-hero-blue text-white py-10 lg:py-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center gap-2 text-sm text-blue-200 flex-wrap">
@@ -219,7 +219,7 @@ export default function EPCPage() {
                 </span>
               </a>
 
-              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:last-child]:text-white" />
+              <PriceDisplay price={entryPrice} from size="lg" className="mb-4 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white" />
               <p className="text-blue-100 text-lg leading-relaxed mb-5">
                 Energy Performance Certificate, required by law before renting or selling any
                 residential property in London. Accredited DEA assessors, certificate registered
@@ -240,7 +240,7 @@ export default function EPCPage() {
                   Call {PHONE_DISPLAY}
                 </a>
               </div>
-              <p className="text-blue-300 text-sm mb-6">
+              <p className="text-blue-100 text-sm mb-6">
                 Fixed price · No hidden fees · On the national register within 24 hours
               </p>
               <TrustBadges serviceKey="epc" variant="dark" />
@@ -273,23 +273,23 @@ export default function EPCPage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x md:divide-white/10">
             <div className="pl-0">
-              <p className="text-xs text-white/50 mb-0.5">Entry price</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Entry price</p>
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Valid for</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Valid for</p>
               <p className="font-bold text-white">10 years</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Legal minimum</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Legal minimum</p>
               <p className="font-bold text-white">E rating (MEES)</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Certificate</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Certificate</p>
               <p className="font-bold text-white">Within 24 hours</p>
             </div>
           </div>
@@ -650,7 +650,7 @@ export default function EPCPage() {
                   "Lodged on the national register within 24 hours",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
                       ✓
                     </span>
                     {t}

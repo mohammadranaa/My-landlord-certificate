@@ -306,7 +306,7 @@ export default function GasSafetyPage() {
       {/* ── 1. Hero ────────────────────────────────────────────────────────── */}
       <section
         aria-labelledby="gas-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -346,7 +346,7 @@ export default function GasSafetyPage() {
             price={lowestPrice}
             from
             size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
+            className="mb-8 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white"
           />
 
           <div className="flex flex-wrap gap-4 mb-10">
@@ -372,28 +372,28 @@ export default function GasSafetyPage() {
       </section>
 
       {/* ── 2. Stats bar ───────────────────────────────────────────────────── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>From</dt>
-              <dd className="text-white font-semibold">£{lowestPrice}</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">From</dt>
+              <dd className="text-sm font-bold text-white">£{lowestPrice}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Required</dt>
-              <dd className="text-white font-semibold">every 12 months</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Required</dt>
+              <dd className="text-sm font-bold text-white">every 12 months</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Appointments</dt>
-              <dd className="text-white font-semibold">next-day available</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Appointments</dt>
+              <dd className="text-sm font-bold text-white">next-day available</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Certificate</dt>
-              <dd className="text-white font-semibold">emailed within 24 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Certificate</dt>
+              <dd className="text-sm font-bold text-white">emailed within 24 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Accreditation</dt>
-              <dd className="text-white font-semibold">Gas Safe Registered</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Accreditation</dt>
+              <dd className="text-sm font-bold text-white">Gas Safe Registered</dd>
             </div>
           </dl>
         </Container>
@@ -1050,7 +1050,7 @@ export default function GasSafetyPage() {
             Book online in under 3 minutes. A Gas Safe Registered engineer will
             confirm your appointment. CP12 certificate emailed within 24 hours.
           </p>
-          <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
+          <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
             Next-day appointments available across London and the M25 area,
             or call{" "}
             <a href={TEL} className="text-white font-semibold hover:underline">
@@ -1064,7 +1064,7 @@ export default function GasSafetyPage() {
           >
             Book my CP12, from £{lowestPrice}
           </Link>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             No hidden charges. Gas Safe Registered. Certificate emailed within 24 hours.
           </p>
         </section>

@@ -154,7 +154,7 @@ export default function FireRiskAssessmentLandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
@@ -201,12 +201,12 @@ export default function FireRiskAssessmentLandingPage() {
       </section>
 
       {/* Trust bar */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
-          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-xs">Fixed price</span></div>
-          <div><span className="font-bold">48 hours</span><br /><span className="text-white/60 text-xs">Written report</span></div>
-          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-xs">+ M25 area</span></div>
-          <div><span className="font-bold">HMO &amp; blocks</span><br /><span className="text-white/60 text-xs">council-accepted</span></div>
+          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Fixed price</span></div>
+          <div><span className="font-bold">48 hours</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Written report</span></div>
+          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">+ M25 area</span></div>
+          <div><span className="font-bold">HMO &amp; blocks</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">council-accepted</span></div>
         </div>
       </div>
 
@@ -456,7 +456,7 @@ export default function FireRiskAssessmentLandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">Book your fire risk assessment today, from £{entryPrice}</h2>
           <p className="text-blue-100 mb-7 max-w-lg mx-auto">

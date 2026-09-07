@@ -163,7 +163,7 @@ export default function CommercialEicrLandingPage() {
       </header>
 
       {/* ── Hero ── */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
@@ -212,12 +212,12 @@ export default function CommercialEicrLandingPage() {
       </section>
 
       {/* ── Trust bar ── */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
-          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-xs">Per consumer unit</span></div>
-          <div><span className="font-bold">Within 24 hours</span><br /><span className="text-white/60 text-xs">Certificate emailed</span></div>
-          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-xs">+ M25 area</span></div>
-          <div><span className="font-bold">NICEIC approved</span><br /><span className="text-white/60 text-xs">Industry gold standard</span></div>
+          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Per consumer unit</span></div>
+          <div><span className="font-bold">Within 24 hours</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Certificate emailed</span></div>
+          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">+ M25 area</span></div>
+          <div><span className="font-bold">NICEIC approved</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Industry gold standard</span></div>
         </div>
       </div>
 
@@ -543,7 +543,7 @@ export default function CommercialEicrLandingPage() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">Book your commercial EICR today, from £{entryPrice}</h2>
           <p className="text-blue-100 mb-7 max-w-lg mx-auto">

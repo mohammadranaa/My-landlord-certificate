@@ -244,23 +244,23 @@ export default function DomesticEPCPage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x md:divide-white/10">
             <div className="pl-0">
-              <p className="text-xs text-white/50 mb-0.5">Entry price</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Entry price</p>
               <p className="font-bold text-white">from £{entryPrice}</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Valid for</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Valid for</p>
               <p className="font-bold text-white">10 years</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Minimum rating</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Minimum rating</p>
               <p className="font-bold text-white">E (MEES)</p>
             </div>
             <div className="pl-4">
-              <p className="text-xs text-white/50 mb-0.5">Accreditation</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-white/50 mb-0.5">Accreditation</p>
               <p className="font-bold text-white">DEA accredited</p>
             </div>
           </div>
@@ -460,7 +460,7 @@ export default function DomesticEPCPage() {
                   "Emailed to you, valid for 10 years",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
                       ✓
                     </span>
                     {t}

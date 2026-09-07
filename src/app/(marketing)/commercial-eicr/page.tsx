@@ -236,7 +236,7 @@ export default function CommercialEicrPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="commercial-eicr-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -289,7 +289,7 @@ export default function CommercialEicrPage() {
                 price={entryPrice}
                 from
                 size="lg"
-                className="mb-8 [&>span:last-child]:text-white"
+                className="mb-8 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white"
               />
 
               <div className="flex flex-wrap gap-4 mb-10">
@@ -331,24 +331,24 @@ export default function CommercialEicrPage() {
       </section>
 
       {/* ── Quick stats bar ── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
           <dl className="flex flex-wrap gap-x-8 gap-y-1 text-white/60">
-            <div className="flex gap-1.5">
-              <dt>Entry price</dt>
-              <dd className="text-white font-semibold">£{entryPrice}</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Entry price</dt>
+              <dd className="text-sm font-bold text-white">£{entryPrice}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Required</dt>
-              <dd className="text-white font-semibold">every 3–5 years</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Required</dt>
+              <dd className="text-sm font-bold text-white">every 3–5 years</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Report</dt>
-              <dd className="text-white font-semibold">issued within 24 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Report</dt>
+              <dd className="text-sm font-bold text-white">issued within 24 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Accreditation</dt>
-              <dd className="text-white font-semibold">NICEIC & NAPIT</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Accreditation</dt>
+              <dd className="text-sm font-bold text-white">NICEIC & NAPIT</dd>
             </div>
           </dl>
         </Container>
@@ -720,7 +720,7 @@ export default function CommercialEicrPage() {
                   "Emailed as a PDF within 24 hours",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-brand-charcoal/80">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green/15 text-action-green flex items-center justify-center shrink-0 text-xs font-bold">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-action-green text-brand-charcoal flex items-center justify-center shrink-0 text-xs font-bold">
                       ✓
                     </span>
                     {t}
@@ -891,7 +891,7 @@ export default function CommercialEicrPage() {
           >
             Book Commercial EICR, from £{entryPrice}
           </Link>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             Fixed pricing. No hidden charges. Written report within 24 hours.
           </p>
         </section>

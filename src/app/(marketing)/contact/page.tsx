@@ -86,7 +86,7 @@ export default function ContactPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="contact-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-14 md:py-16 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">

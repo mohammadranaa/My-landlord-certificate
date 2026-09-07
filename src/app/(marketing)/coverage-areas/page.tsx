@@ -134,7 +134,7 @@ export default function CoverageAreasPage() {
       {/* ── Hero ── */}
       <section
         aria-labelledby="coverage-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-20 text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">

@@ -44,7 +44,7 @@ export default function TermsPage() {
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ── */}
-      <section className="bg-compliance-blue text-white">
+      <section className="bg-hero-blue text-white">
         <Container className="py-12 md:py-14">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">
             Legal

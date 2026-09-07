@@ -126,7 +126,7 @@ export default function CommercialEPCPage() {
       {/* ── Hero ──────────────────────────────────────────────────────────────── */}
       <section
         aria-labelledby="commercial-epc-heading"
-        className="bg-compliance-blue text-white"
+        className="bg-hero-blue text-white"
       >
         <Container className="py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-6">
@@ -177,7 +177,7 @@ export default function CommercialEPCPage() {
             price={entryPrice}
             from
             size="lg"
-            className="mb-8 [&>span:last-child]:text-white"
+            className="mb-8 [&>span:first-child]:text-blue-100 [&>span:last-child]:text-white"
           />
 
           <div className="flex flex-wrap gap-4 mb-10">
@@ -203,24 +203,24 @@ export default function CommercialEPCPage() {
       </section>
 
       {/* ── Stats bar ─────────────────────────────────────────────────────────── */}
-      <div className="bg-brand-charcoal text-sm py-3">
+      <div className="bg-spec-bar text-sm py-5 border-t-2 border-action-green">
         <Container>
-          <dl className="flex flex-wrap gap-x-8 gap-y-1 text-brand-grey">
-            <div className="flex gap-1.5">
-              <dt>From</dt>
-              <dd className="text-white font-semibold">£{entryPrice}</dd>
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">From</dt>
+              <dd className="text-sm font-bold text-white">£{entryPrice}</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Valid for</dt>
-              <dd className="text-white font-semibold">10 years</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Valid for</dt>
+              <dd className="text-sm font-bold text-white">10 years</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Report</dt>
-              <dd className="text-white font-semibold">within 24 hours</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Report</dt>
+              <dd className="text-sm font-bold text-white">within 24 hours</dd>
             </div>
-            <div className="flex gap-1.5">
-              <dt>Accreditation</dt>
-              <dd className="text-white font-semibold">Accredited DEAs</dd>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Accreditation</dt>
+              <dd className="text-sm font-bold text-white">Accredited DEAs</dd>
             </div>
           </dl>
         </Container>
@@ -608,7 +608,7 @@ export default function CommercialEPCPage() {
             compliance advice included, certificate lodged on the national
             register. Same-week appointments across all 33 London boroughs.
           </p>
-          <p className="text-blue-300 text-sm mb-6 max-w-md mx-auto">
+          <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
             Book online or call{" "}
             <a href={TEL} className="text-white font-semibold hover:underline">
               {PHONE_DISPLAY}
@@ -621,7 +621,7 @@ export default function CommercialEPCPage() {
           >
             Book Commercial EPC, from £{entryPrice}
           </Link>
-          <p className="mt-4 text-xs text-blue-300">
+          <p className="mt-4 text-xs text-blue-100">
             No hidden charges. Accredited DEA assessors. MEES compliance advice included.
           </p>
         </section>

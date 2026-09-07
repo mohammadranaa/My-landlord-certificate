@@ -154,7 +154,7 @@ export default function FireSafetyCertificateLandingPage() {
       </header>
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
@@ -201,12 +201,12 @@ export default function FireSafetyCertificateLandingPage() {
       </section>
 
       {/* Trust bar */}
-      <div className="bg-brand-charcoal text-white">
+      <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
-          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-xs">Fixed price</span></div>
-          <div><span className="font-bold">24 hours</span><br /><span className="text-white/60 text-xs">Certificate emailed</span></div>
-          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-xs">+ M25 area</span></div>
-          <div><span className="font-bold">Smoke &amp; CO</span><br /><span className="text-white/60 text-xs">landlord-ready</span></div>
+          <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Fixed price</span></div>
+          <div><span className="font-bold">24 hours</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Certificate emailed</span></div>
+          <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">+ M25 area</span></div>
+          <div><span className="font-bold">Smoke &amp; CO</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">landlord-ready</span></div>
         </div>
       </div>
 
@@ -305,7 +305,7 @@ export default function FireSafetyCertificateLandingPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
           {/* "What's included" card — a designed marketing tile, not a document mockup */}
           <div className="w-full max-w-[360px] mx-auto rounded-2xl border border-border shadow-md overflow-hidden bg-white">
-            <div className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white px-6 py-7 text-center">
+            <div className="bg-hero-blue text-white px-6 py-7 text-center">
               <span className="inline-flex w-14 h-14 rounded-2xl bg-white/15 items-center justify-center mb-3">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z" /><path d="M9 12l2 2 4-4" /></svg>
               </span>
@@ -476,7 +476,7 @@ export default function FireSafetyCertificateLandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-gradient-to-br from-compliance-blue to-blue-900 text-white">
+      <section className="bg-hero-blue text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">Book your fire safety certificate today, from £{entryPrice}</h2>
           <p className="text-blue-100 mb-7 max-w-lg mx-auto">
