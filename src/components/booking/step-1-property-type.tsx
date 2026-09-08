@@ -73,7 +73,7 @@ export function Step1PropertyType({ defaultValues, onComplete }: Step1Props) {
           What type of property is it?
         </h2>
         <p className="text-sm text-brand-grey mb-4">
-          This determines which certificates and services are available.
+          This helps us tailor your booking and confirm the right engineer.
         </p>
 
         <div className="grid grid-cols-2 gap-3 mb-2">

@@ -19,6 +19,9 @@ export async function POST(request: NextRequest) {
       property?: { streetAddress?: string; city?: string; postcode?: string };
       appointment?: { date?: string; timeSlot?: string };
       totalPrice?: number;
+      hmoDiscount?: boolean;
+      discountAmount?: number;
+      discountLabel?: string | null;
       sessionId?: string;
     };
 
@@ -33,6 +36,9 @@ export async function POST(request: NextRequest) {
       property,
       appointment,
       totalPrice,
+      hmoDiscount,
+      discountAmount,
+      discountLabel,
       sessionId,
     } = data;
 
@@ -60,6 +66,9 @@ export async function POST(request: NextRequest) {
           services,
           appointment,
           totalPrice: totalPrice ?? 0,
+          hmoDiscount: hmoDiscount ?? false,
+          discountAmount: discountAmount ?? 0,
+          discountLabel: discountLabel ?? "",
           status: `Partial — Step ${step ?? "?"}`,
           stripeSessionId: "",
           sessionId,

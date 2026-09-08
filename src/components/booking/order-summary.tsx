@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
+import { calculateBundlePrice, calculateHmoDiscount, isHmoBundleActive, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import type { PartialBookingData, ServiceEntry } from "@/lib/booking-schema";
 
@@ -13,7 +13,7 @@ interface OrderSummaryProps {
 
 function calcTotals(data: PartialBookingData) {
   const services: ServiceEntry[] = data.services ?? [];
-  const { subtotal, discount, total } = calculateBundlePrice(
+  const { subtotal, total } = calculateBundlePrice(
     services.map((s) => ({
       service: s.serviceType as ServiceType,
       price: s.price,
@@ -22,11 +22,25 @@ function calcTotals(data: PartialBookingData) {
   const charges =
     (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
     (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
-  return { services, subtotal, discount, servicesTotal: total, charges, grandTotal: total + charges };
+  const baseTotal = total + charges;
+  const serviceTypes = services.map((s) => s.serviceType);
+  const hmoDiscountActive = isHmoBundleActive(serviceTypes);
+  const hmoDiscountAmount = calculateHmoDiscount(baseTotal, serviceTypes);
+  return {
+    services,
+    subtotal,
+    servicesTotal: total,
+    charges,
+    baseTotal,
+    hmoDiscountActive,
+    hmoDiscountAmount,
+    grandTotal: baseTotal - hmoDiscountAmount,
+  };
 }
 
 function SummaryContent({ data }: { data: PartialBookingData }) {
-  const { services, subtotal, discount, charges, grandTotal } = calcTotals(data);
+  const { services, subtotal, charges, hmoDiscountActive, hmoDiscountAmount, grandTotal } =
+    calcTotals(data);
 
   if (services.length === 0) {
     return (
@@ -82,6 +96,12 @@ function SummaryContent({ data }: { data: PartialBookingData }) {
           <div className="flex justify-between text-sm text-brand-grey">
             <span>Total Additional Charges</span>
             <span className="tabular-nums">£{charges.toFixed(2)}</span>
+          </div>
+        )}
+        {hmoDiscountActive && (
+          <div className="flex justify-between text-sm font-medium text-action-green">
+            <span>HMO discount (10%)</span>
+            <span className="tabular-nums">−£{hmoDiscountAmount.toFixed(2)}</span>
           </div>
         )}
         <div className="flex justify-between text-base font-bold text-brand-charcoal border-t border-border pt-1.5">

@@ -21,6 +21,9 @@ interface BookingPayload {
   additionalCharges?: { congestionCharge?: boolean; parkingCharge?: boolean };
   appointment?: { date?: string; timeSlot?: string };
   totalPrice?: number;
+  hmoDiscount?: boolean;
+  discountAmount?: number;
+  discountLabel?: string | null;
   sessionId?: string;
 }
 
@@ -82,12 +85,30 @@ export async function POST(request: NextRequest) {
       appointment_slot: booking.appointment?.timeSlot ?? "",
       services_readable:
         booking.services?.map((s) => s.label ?? s.type).join(", ") ?? "",
+      hmo_discount: booking.hmoDiscount ? "true" : "false",
+      discount_amount: (booking.discountAmount ?? 0).toFixed(2),
+      discount_label: booking.discountLabel ?? "",
     };
+
+    // The HMO bundle discount is applied at the Stripe session level (not baked
+    // into individual line items) so the amount actually charged matches the
+    // discounted grandTotal shown to the customer during review.
+    let discountCouponId: string | undefined;
+    if (booking.hmoDiscount && (booking.discountAmount ?? 0) > 0) {
+      const coupon = await getStripe().coupons.create({
+        amount_off: Math.round((booking.discountAmount ?? 0) * 100),
+        currency: "gbp",
+        duration: "once",
+        name: booking.discountLabel ?? "HMO Bundle Discount",
+      });
+      discountCouponId = coupon.id;
+    }
 
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       currency: "gbp",
       line_items: lineItems,
+      ...(discountCouponId ? { discounts: [{ coupon: discountCouponId }] } : {}),
       customer_email: booking.customer?.email,
       client_reference_id: booking.sessionId,
       metadata,

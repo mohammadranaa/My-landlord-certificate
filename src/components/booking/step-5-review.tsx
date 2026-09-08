@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { parseISO } from "date-fns";
 import { cn } from "@/lib/utils";
 import { step5Schema, type Step5Data, type PartialBookingData } from "@/lib/booking-schema";
-import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
+import { calculateBundlePrice, calculateHmoDiscount, isHmoBundleActive, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 
 function ReviewSection({
@@ -53,7 +53,7 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
   });
 
   const services = data.services ?? [];
-  const { subtotal, discount, total } = calculateBundlePrice(
+  const { subtotal, total } = calculateBundlePrice(
     services.map((s) => ({
       service: s.serviceType as ServiceType,
       price: s.price,
@@ -62,7 +62,11 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
   const charges =
     (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
     (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
-  const grandTotal = total + charges;
+  const baseTotal = total + charges;
+  const serviceTypes = services.map((s) => s.serviceType);
+  const hmoDiscountActive = isHmoBundleActive(serviceTypes);
+  const hmoDiscountAmount = calculateHmoDiscount(baseTotal, serviceTypes);
+  const grandTotal = baseTotal - hmoDiscountAmount;
 
   async function onFormSubmit(stepData: Step5Data) {
     await onSubmit(stepData.acceptedTerms);
@@ -182,7 +186,36 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
         )}
       </ReviewSection>
 
+      {hmoDiscountActive && (
+        <div className="flex items-center gap-3 bg-action-green/10 border border-action-green/30 rounded-xl p-4">
+          <div className="w-8 h-8 rounded-full bg-action-green flex items-center justify-center text-white flex-shrink-0 text-sm font-bold">
+            %
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-brand-charcoal">
+              HMO bundle discount applied — 10% off
+            </p>
+            <p className="text-xs text-brand-grey">
+              You&apos;ve selected all 4 required HMO compliance certificates. 10% discount
+              automatically applied to your order.
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="rounded-xl border-2 border-compliance-blue bg-compliance-blue/5 px-4 py-3">
+        {hmoDiscountActive && (
+          <div className="space-y-1 mb-2 pb-2 border-b border-compliance-blue/20 text-sm">
+            <div className="flex justify-between text-brand-charcoal/70">
+              <span>Subtotal</span>
+              <span className="tabular-nums">£{baseTotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between font-medium text-action-green">
+              <span>HMO discount (10%)</span>
+              <span className="tabular-nums">−£{hmoDiscountAmount.toFixed(2)}</span>
+            </div>
+          </div>
+        )}
         <div className="flex justify-between items-center">
           <p className="font-bold text-brand-charcoal">Total due today</p>
           <p className="text-2xl font-bold text-compliance-blue tabular-nums">

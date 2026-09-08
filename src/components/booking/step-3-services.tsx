@@ -3,404 +3,239 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { ServiceEntry } from "@/lib/booking-schema";
-import { LEGIONELLA_PRICES } from "@/lib/pricing";
+import {
+  ASBESTOS_SURVEY_TABLE,
+  BOILER_INSTALLATION_FROM,
+  COMMERCIAL_EICR_TABLE,
+  COMMERCIAL_EPC_TABLE,
+  DOMESTIC_EICR_TABLE,
+  DOMESTIC_EPC_TABLE,
+  EICR_ADDITIONAL_CU_PRICE,
+  ELC_INSTALLATION_PER_LIGHT,
+  ELC_TABLE,
+  ELECTRICAL_DIAGNOSTIC_HOURLY_RATE,
+  FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
+  FIRE_ALARM_INSTALLATION_PER_ALARM,
+  FIRE_ALARM_PANELS_TABLE,
+  FIRE_DOOR_PRICES,
+  FIRE_DOOR_TABLE,
+  FIRE_EXTINGUISHER_SUPPLY_PRICES,
+  FIRE_EXTINGUISHER_TABLE,
+  FIRE_SAFETY_CERT_TABLE,
+  FRA_COMMERCIAL_TABLE,
+  FRA_RESIDENTIAL_TABLE,
+  FUSE_BOX_TABLE,
+  GAS_SAFETY_CP12_TABLE,
+  GAS_SAFETY_CP42_TABLE,
+  LEGIONELLA_PRICES,
+  PAT_TABLE,
+} from "@/lib/pricing";
 
 type ServiceOption = { label: string; price: number };
+
+type ServiceCategory = "electrical" | "gas" | "epc" | "fire" | "health-safety";
 
 type ServiceConfig = {
   id: string;
   label: string;
-  description: string;
+  category: ServiceCategory;
+  description?: string;
+  helperNote?: string;
+  note?: string;
   options: ServiceOption[];
 };
 
-const RESIDENTIAL_SERVICES: ServiceConfig[] = [
+const CATEGORY_LABELS: Record<ServiceCategory, string> = {
+  electrical: "Electrical Safety",
+  gas: "Gas Safety",
+  epc: "Energy Performance (EPC)",
+  fire: "Fire Safety",
+  "health-safety": "Health & Safety",
+};
+
+const CATEGORY_ORDER: ServiceCategory[] = ["electrical", "gas", "epc", "fire", "health-safety"];
+
+/** Marketing-page deep links (?service=) that predate the unified service list. */
+const LEGACY_SERVICE_ID_ALIASES: Record<string, string> = {
+  "fra-residential": "fire-risk-assessment",
+  "fra-commercial": "fire-risk-assessment",
+  "pat-testing": "pat",
+};
+
+const SERVICES: ServiceConfig[] = [
+  // ── Electrical Safety ──────────────────────────────────────────────────────
   {
     id: "eicr",
     label: "EICR Certificate",
-    description: "Electrical Installation Condition Report — required every 5 years",
-    options: [
-      { label: "Studio Apartment", price: 67.99 },
-      { label: "1–3 Bedrooms", price: 94.99 },
-      { label: "4 Bedrooms", price: 104.99 },
-      { label: "5 Bedrooms", price: 139.99 },
-      { label: "6 Bedrooms", price: 159.99 },
-      { label: "7 Bedrooms", price: 179.99 },
-      { label: "8 Bedrooms", price: 199.99 },
-    ],
+    category: "electrical",
+    description: "Legally required every 5 years",
+    options: [...DOMESTIC_EICR_TABLE],
   },
   {
-    id: "gas-safety-cp12",
-    label: "Gas Safety Certificate",
-    description: "CP12 — required annually for gas appliances",
-    options: [
-      { label: "1 Gas Appliance (CP12)", price: 49.99 },
-      { label: "2 Gas Appliances (CP12)", price: 59.99 },
-      { label: "3 Gas Appliances (CP12)", price: 69.99 },
-      { label: "Gas Safety + Boiler Service (CP12)", price: 84.99 },
-    ],
+    id: "commercial-eicr",
+    label: "Commercial EICR",
+    category: "electrical",
+    note: "Additional circuits beyond 12 per consumer unit charged at £10 each.",
+    options: [...COMMERCIAL_EICR_TABLE],
   },
   {
-    id: "epc",
-    label: "EPC Certificate",
-    description: "Energy Performance Certificate — required to let a property",
+    id: "electrical-diagnostic",
+    label: "Electrical Diagnostic",
+    category: "electrical",
+    options: [{ label: "Per hour", price: ELECTRICAL_DIAGNOSTIC_HOURLY_RATE }],
+  },
+  {
+    id: "fuse-box",
+    label: "Fuse Box Installation",
+    category: "electrical",
+    options: [...FUSE_BOX_TABLE],
+  },
+  {
+    id: "elc",
+    label: "Emergency Lights Certificate",
+    category: "electrical",
     options: [
-      { label: "Studio Apartment", price: 89.99 },
-      { label: "1–3 Bedrooms", price: 109.99 },
-      { label: "4 Bedrooms", price: 129.99 },
-      { label: "5 Bedrooms", price: 149.99 },
+      ...ELC_TABLE,
+      { label: "Light Installation (per light)", price: ELC_INSTALLATION_PER_LIGHT },
     ],
   },
   {
     id: "pat",
     label: "PAT Testing",
-    description: "Portable Appliance Testing",
-    options: [
-      { label: "Up to 10 Appliances", price: 59.99 },
-      { label: "10–15 Appliances", price: 69.99 },
-      { label: "15–20 Appliances", price: 79.99 },
-      { label: "20–25 Appliances", price: 99.99 },
-      { label: "25–30 Appliances", price: 129.99 },
-      { label: "30–35 Appliances", price: 169.99 },
-      { label: "35–40 Appliances", price: 199.99 },
-      { label: "40–45 Appliances", price: 229.99 },
-      { label: "45–50 Appliances", price: 259.99 },
-    ],
+    category: "electrical",
+    options: [...PAT_TABLE],
   },
-  {
-    id: "fire-safety-cert",
-    label: "Fire Safety Certificate",
-    description: "Smoke & heat alarm testing and certification",
-    options: [
-      { label: "Up to 3 Smoke/Heat Alarms", price: 54.99 },
-      { label: "3–6 Alarms", price: 90 },
-      { label: "6–9 Alarms", price: 125 },
-      { label: "9–12 Alarms", price: 160 },
-      { label: "12–15 Alarms", price: 195 },
-      { label: "15–18 Alarms", price: 230 },
-      { label: "18–21 Alarms", price: 264.99 },
-    ],
-  },
-  {
-    id: "fra-residential",
-    label: "Fire Risk Assessment",
-    description: "Required annually under the Regulatory Reform (Fire Safety) Order 2005",
-    options: [
-      { label: "Studio Apartment", price: 74.99 },
-      { label: "Communal Area (1–3 Floors)", price: 129.99 },
-      { label: "Communal Area (3–6 Floors)", price: 149.99 },
-      { label: "1–3 Bedrooms", price: 139.99 },
-      { label: "Up to 4 Bedrooms", price: 179.99 },
-      { label: "Up to 5 Bedrooms", price: 189.99 },
-      { label: "Up to 6 Bedrooms", price: 249.99 },
-      { label: "Up to 7 Bedrooms", price: 299.99 },
-      { label: "Up to 8 Bedrooms", price: 349.99 },
-    ],
-  },
-  {
-    id: "elc",
-    label: "Emergency Lights Certificate",
-    description: "Annual testing and certification of emergency lighting",
-    options: [
-      { label: "Up to 3 Emergency Lights", price: 54.99 },
-      { label: "3–6 Emergency Lights", price: 90 },
-      { label: "6–9 Emergency Lights", price: 125 },
-      { label: "9–12 Emergency Lights", price: 160 },
-      { label: "12–15 Emergency Lights", price: 195 },
-      { label: "15–18 Emergency Lights", price: 230 },
-      { label: "18–21 Emergency Lights", price: 264.99 },
-      { label: "Emergency Light Installation (per light)", price: 219.99 },
-    ],
-  },
-  {
-    id: "fire-door-cert",
-    label: "Fire Door Certificate",
-    description: "Inspection and certification of fire doors",
-    options: [
-      { label: "Fire Door Certificate", price: 119.99 },
-      { label: "FD30 New Installation (complete)", price: 800 },
-      { label: "FD60 New Installation (complete)", price: 1200 },
-      { label: "Fire Rated Fixing (repair)", price: 350 },
-    ],
-  },
-  {
-    id: "fire-extinguisher",
-    label: "Fire Extinguisher Testing",
-    description: "Annual inspection and testing of fire extinguishers",
-    options: [
-      { label: "1–3 Extinguishers", price: 79.99 },
-      { label: "3–6 Extinguishers", price: 99.99 },
-      { label: "6–10 Extinguishers", price: 134.99 },
-      { label: "10–15 Extinguishers", price: 174.99 },
-      { label: "15–20 Extinguishers", price: 204.99 },
-      { label: "New Fire Extinguisher Installation", price: 174.99 },
-      { label: "Fire Blanket Supply & Fit", price: 149.99 },
-    ],
-  },
-  {
-    id: "asbestos-survey",
-    label: "Asbestos Survey",
-    description: "Management survey — required before refurbishment or demolition",
-    options: [
-      { label: "1 Sample", price: 239.99 },
-      { label: "2 Samples", price: 279.99 },
-      { label: "3 Samples", price: 299.99 },
-      { label: "4 Samples", price: 339.99 },
-      { label: "5 Samples", price: 379.99 },
-      { label: "6 Samples", price: 405.99 },
-    ],
-  },
-  {
-    id: "legionella",
-    label: "Legionella Risk Assessment",
-    description: "ACoP L8 and HSG274 compliant water system inspection — recommended for all rental properties",
-    options: [
-      { label: "Per Property", price: LEGIONELLA_PRICES.standard },
-    ],
-  },
-  {
-    id: "fuse-box",
-    label: "Fuse Box Installation",
-    description: "Consumer unit replacement and installation",
-    options: [
-      { label: "6 Way Consumer Unit", price: 599.99 },
-      { label: "6–10 Way Consumer Unit", price: 699.99 },
-      { label: "10–15 Way Consumer Unit", price: 859.99 },
-      { label: "15–20 Way Consumer Unit", price: 1079.99 },
-      { label: "Double Decker Consumer Unit", price: 1149.99 },
-      { label: "Skeleton Board", price: 979.99 },
-    ],
-  },
-  {
-    id: "electrical-diagnostic",
-    label: "Electrical Diagnostic",
-    description: "Fault-finding by a qualified electrician — charged per hour",
-    options: [
-      { label: "1 Hour", price: 89.99 },
-      { label: "2 Hours", price: 179.98 },
-      { label: "3 Hours", price: 269.97 },
-      { label: "4 Hours", price: 359.96 },
-    ],
-  },
-  {
-    id: "boiler-installation",
-    label: "Boiler Installation",
-    description: "Supply and installation of a new gas boiler",
-    options: [
-      { label: "Standard Boiler Installation", price: 2499 },
-    ],
-  },
-];
 
-const COMMERCIAL_SERVICES: ServiceConfig[] = [
+  // ── Gas Safety ──────────────────────────────────────────────────────────────
   {
-    id: "commercial-eicr",
-    label: "Commercial EICR",
-    description: "Priced by number of consumer units",
-    options: [
-      { label: "1 Consumer Unit (up to 12 circuits)", price: 149.99 },
-      { label: "2 Consumer Units", price: 279.99 },
-      { label: "3 Consumer Units", price: 418.99 },
-      { label: "4 Consumer Units", price: 548.99 },
-      { label: "5 Consumer Units", price: 705.99 },
-      { label: "6 Consumer Units", price: 849.99 },
-      { label: "7 Consumer Units", price: 998.99 },
-      { label: "8 Consumer Units", price: 1155.99 },
-    ],
+    id: "gas-safety-cp12",
+    label: "Gas Safety Certificate (CP12)",
+    category: "gas",
+    description: "Annual legal requirement for all rental properties with gas.",
+    helperNote:
+      "A boiler is not counted as a standard appliance. If the property has a boiler, select 'Boiler Check + Service'.",
+    options: [...GAS_SAFETY_CP12_TABLE],
   },
   {
     id: "gas-safety-cp42",
     label: "Commercial Gas Safety (CP42)",
-    description: "For commercial properties with gas appliances",
+    category: "gas",
+    options: [...GAS_SAFETY_CP42_TABLE],
+  },
+  {
+    id: "boiler-installation",
+    label: "Boiler Installation",
+    category: "gas",
+    note: `Final price confirmed after survey. £${BOILER_INSTALLATION_FROM.toLocaleString()} is the starting price.`,
     options: [
-      { label: "1 Gas Appliance (CP42)", price: 159.99 },
-      { label: "2 Gas Appliances (CP42)", price: 259.99 },
-      { label: "3 Gas Appliances (CP42)", price: 359.99 },
-      { label: "4 Gas Appliances (CP42)", price: 459.99 },
-      { label: "5 Gas Appliances (CP42)", price: 509.99 },
-      { label: "6 Gas Appliances (CP42)", price: 559.99 },
-      { label: "7 Gas Appliances (CP42)", price: 609.99 },
-      { label: "8 Gas Appliances (CP42)", price: 659.99 },
+      { label: "Supply and installation (quote based on model)", price: BOILER_INSTALLATION_FROM },
     ],
+  },
+
+  // ── EPC ─────────────────────────────────────────────────────────────────────
+  {
+    id: "epc",
+    label: "Domestic EPC",
+    category: "epc",
+    options: [...DOMESTIC_EPC_TABLE],
   },
   {
     id: "commercial-epc",
     label: "Commercial EPC",
-    description: "Energy Performance Certificate for commercial premises",
-    options: [
-      { label: "Up to 50m²", price: 249.99 },
-      { label: "50m² – 100m²", price: 320 },
-      { label: "100m² – 250m²", price: 399 },
-      { label: "250m² – 350m²", price: 499 },
-      { label: "350m² – 450m²", price: 599 },
-      { label: "450m² – 550m²", price: 699 },
-      { label: "550m² – 650m²", price: 799 },
-      { label: "650m² – 750m²", price: 899 },
-      { label: "750m² – 850m²", price: 999 },
-    ],
+    category: "epc",
+    note: "Over 850m² — call for quote: 020 3996 1070",
+    options: [...COMMERCIAL_EPC_TABLE],
   },
-  {
-    id: "pat",
-    label: "PAT Testing",
-    description: "Portable Appliance Testing",
-    options: [
-      { label: "Up to 10 Appliances", price: 59.99 },
-      { label: "10–15 Appliances", price: 69.99 },
-      { label: "15–20 Appliances", price: 79.99 },
-      { label: "20–25 Appliances", price: 99.99 },
-      { label: "25–30 Appliances", price: 129.99 },
-      { label: "30–35 Appliances", price: 169.99 },
-      { label: "35–40 Appliances", price: 199.99 },
-      { label: "40–45 Appliances", price: 229.99 },
-      { label: "45–50 Appliances", price: 259.99 },
-    ],
-  },
-  {
-    id: "fra-commercial",
-    label: "Commercial Fire Risk Assessment",
-    description: "Required under the Regulatory Reform (Fire Safety) Order 2005",
-    options: [
-      { label: "Communal Area — Up to 3 Floors", price: 149.99 },
-      { label: "Communal Area — 3–5 Floors", price: 189.99 },
-      { label: "Communal Area — 5–10 Floors", price: 279.99 },
-      { label: "Commercial Building — 1–3 Floors", price: 249.99 },
-      { label: "Commercial Building — 3–5 Floors", price: 369.99 },
-      { label: "Commercial Building — 5–8 Floors", price: 459.99 },
-      { label: "Commercial Building — 8–12 Floors", price: 539.99 },
-    ],
-  },
+
+  // ── Fire Safety ─────────────────────────────────────────────────────────────
   {
     id: "fire-safety-cert",
     label: "Fire Safety Certificate",
-    description: "Smoke & heat alarm testing and certification",
-    options: [
-      { label: "Up to 3 Smoke/Heat Alarms", price: 54.99 },
-      { label: "3–6 Alarms", price: 90 },
-      { label: "6–9 Alarms", price: 125 },
-      { label: "9–12 Alarms", price: 160 },
-      { label: "12–15 Alarms", price: 195 },
-      { label: "15–18 Alarms", price: 230 },
-      { label: "18–21 Alarms", price: 264.99 },
-    ],
+    category: "fire",
+    options: [...FIRE_SAFETY_CERT_TABLE],
+  },
+  {
+    id: "fire-alarm-panels",
+    label: "Fire Alarm Panels",
+    category: "fire",
+    options: [...FIRE_ALARM_PANELS_TABLE],
   },
   {
     id: "fire-alarm-installation",
     label: "Fire Alarm Installation",
-    description: "Supply and installation of fire alarm systems",
+    category: "fire",
     options: [
-      { label: "1 Alarm", price: 209.99 },
-      { label: "2 Alarms", price: 419.98 },
-      { label: "3 Alarms", price: 629.97 },
-      { label: "4 Alarms", price: 839.96 },
-      { label: "5 Alarms", price: 1049.95 },
+      { label: "Per alarm (mains powered)", price: FIRE_ALARM_INSTALLATION_PER_ALARM },
+      { label: "Full system installation", price: FIRE_ALARM_INSTALLATION_FULL_SYSTEM },
     ],
   },
   {
-    id: "elc",
-    label: "Emergency Lights Certificate",
-    description: "Annual testing and certification of emergency lighting",
+    id: "fire-risk-assessment",
+    label: "Fire Risk Assessment",
+    category: "fire",
     options: [
-      { label: "Up to 3 Emergency Lights", price: 54.99 },
-      { label: "3–6 Emergency Lights", price: 90 },
-      { label: "6–9 Emergency Lights", price: 125 },
-      { label: "9–12 Emergency Lights", price: 160 },
-      { label: "12–15 Emergency Lights", price: 195 },
-      { label: "15–18 Emergency Lights", price: 230 },
-      { label: "18–21 Emergency Lights", price: 264.99 },
-      { label: "Emergency Light Installation (per light)", price: 219.99 },
+      ...FRA_RESIDENTIAL_TABLE,
+      ...FRA_COMMERCIAL_TABLE.filter((row) => row.label.startsWith("Commercial Building")),
     ],
   },
   {
-    id: "fire-door-cert",
+    id: "fire-door",
     label: "Fire Door Certificate",
-    description: "Inspection and certification of fire doors",
+    category: "fire",
     options: [
-      { label: "Fire Door Certificate", price: 119.99 },
-      { label: "FD30 New Installation (complete)", price: 800 },
-      { label: "FD60 New Installation (complete)", price: 1200 },
-      { label: "Fire Rated Fixing (repair)", price: 350 },
+      ...FIRE_DOOR_TABLE,
+      { label: "FD30 New Installation", price: FIRE_DOOR_PRICES["FD30 New Installation"] },
+      { label: "FD60 New Installation", price: FIRE_DOOR_PRICES["FD60 New Installation"] },
+      { label: "Fire Rated Fixing (repair)", price: FIRE_DOOR_PRICES["Fire Rated Fixing"] },
     ],
   },
   {
     id: "fire-extinguisher",
     label: "Fire Extinguisher Testing",
-    description: "Annual inspection and testing of fire extinguishers",
+    category: "fire",
     options: [
-      { label: "1–3 Extinguishers", price: 79.99 },
-      { label: "3–6 Extinguishers", price: 99.99 },
-      { label: "6–10 Extinguishers", price: 134.99 },
-      { label: "10–15 Extinguishers", price: 174.99 },
-      { label: "15–20 Extinguishers", price: 204.99 },
-      { label: "New Fire Extinguisher Installation", price: 174.99 },
-      { label: "Fire Blanket Supply & Fit", price: 149.99 },
+      ...FIRE_EXTINGUISHER_TABLE,
+      {
+        label: "New Extinguisher Installation",
+        price: FIRE_EXTINGUISHER_SUPPLY_PRICES["New Fire Extinguisher Installation"],
+      },
+      { label: "Fire Blanket", price: FIRE_EXTINGUISHER_SUPPLY_PRICES["Fire Blanket"] },
     ],
   },
+
+  // ── Health & Safety ─────────────────────────────────────────────────────────
   {
     id: "asbestos-survey",
     label: "Asbestos Survey",
-    description: "Management survey — required before refurbishment or demolition",
-    options: [
-      { label: "1 Sample", price: 239.99 },
-      { label: "2 Samples", price: 279.99 },
-      { label: "3 Samples", price: 299.99 },
-      { label: "4 Samples", price: 339.99 },
-      { label: "5 Samples", price: 379.99 },
-      { label: "6 Samples", price: 405.99 },
-    ],
+    category: "health-safety",
+    options: [...ASBESTOS_SURVEY_TABLE],
   },
   {
     id: "legionella",
     label: "Legionella Risk Assessment",
-    description: "ACoP L8 and HSG274 compliant water system inspection — recommended for all rental properties",
-    options: [
-      { label: "Per Property", price: LEGIONELLA_PRICES.standard },
-    ],
-  },
-  {
-    id: "fuse-box",
-    label: "Fuse Box Installation",
-    description: "Consumer unit replacement and installation",
-    options: [
-      { label: "6 Way Consumer Unit", price: 599.99 },
-      { label: "6–10 Way Consumer Unit", price: 699.99 },
-      { label: "10–15 Way Consumer Unit", price: 859.99 },
-      { label: "15–20 Way Consumer Unit", price: 1079.99 },
-      { label: "Double Decker Consumer Unit", price: 1149.99 },
-      { label: "Skeleton Board", price: 979.99 },
-    ],
-  },
-  {
-    id: "electrical-diagnostic",
-    label: "Electrical Diagnostic",
-    description: "Fault-finding by a qualified electrician — charged per hour",
-    options: [
-      { label: "1 Hour", price: 89.99 },
-      { label: "2 Hours", price: 179.98 },
-      { label: "3 Hours", price: 269.97 },
-      { label: "4 Hours", price: 359.96 },
-    ],
-  },
-  {
-    id: "boiler-installation",
-    label: "Boiler Installation",
-    description: "Supply and installation of a new gas boiler",
-    options: [
-      { label: "Standard Boiler Installation", price: 2499 },
-    ],
+    category: "health-safety",
+    options: [{ label: "Per Property", price: LEGIONELLA_PRICES.standard }],
   },
 ];
 
+const EICR_ADDITIONAL_CU_ENTRY_TYPE = "eicr-additional-cu";
+
 type SelectionState = { selected: boolean; optionIndex: number };
 
+function resolvePreselectedId(id?: string): string | undefined {
+  if (!id) return undefined;
+  return LEGACY_SERVICE_ID_ALIASES[id] ?? id;
+}
+
 function buildInitialState(
-  configs: ServiceConfig[],
   existing: ServiceEntry[],
   preselectedServiceId?: string,
 ): Record<string, SelectionState> {
+  const resolvedPreselect = resolvePreselectedId(preselectedServiceId);
   const state: Record<string, SelectionState> = {};
-  for (const config of configs) {
+  for (const config of SERVICES) {
     const match = existing.find((s) => s.serviceType === config.id);
-    const preselected = !match && config.id === preselectedServiceId;
+    const preselected = !match && config.id === resolvedPreselect;
     state[config.id] = {
       selected: !!match || preselected,
       optionIndex: match
@@ -411,8 +246,13 @@ function buildInitialState(
   return state;
 }
 
+function buildInitialAdditionalCUs(existing: ServiceEntry[]): number {
+  const cuEntry = existing.find((s) => s.serviceType === EICR_ADDITIONAL_CU_ENTRY_TYPE);
+  if (!cuEntry) return 0;
+  return Math.max(0, Math.round(cuEntry.price / EICR_ADDITIONAL_CU_PRICE));
+}
+
 interface Step3Props {
-  propertyCategory: "residential" | "commercial";
   defaultServices: ServiceEntry[];
   preselectedServiceId?: string;
   onBack: () => void;
@@ -420,19 +260,16 @@ interface Step3Props {
 }
 
 export function Step3Services({
-  propertyCategory,
   defaultServices,
   preselectedServiceId,
   onBack,
   onComplete,
 }: Step3Props) {
-  const configs =
-    propertyCategory === "residential"
-      ? RESIDENTIAL_SERVICES
-      : COMMERCIAL_SERVICES;
-
   const [states, setStates] = useState<Record<string, SelectionState>>(() =>
-    buildInitialState(configs, defaultServices, preselectedServiceId),
+    buildInitialState(defaultServices, preselectedServiceId),
+  );
+  const [additionalCUs, setAdditionalCUs] = useState(() =>
+    buildInitialAdditionalCUs(defaultServices),
   );
   const [submitError, setSubmitError] = useState("");
 
@@ -453,6 +290,7 @@ export function Step3Services({
   }
 
   const selectedCount = Object.values(states).filter((s) => s.selected).length;
+  const eicrSelected = states.eicr?.selected ?? false;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -460,7 +298,7 @@ export function Step3Services({
       setSubmitError("Please select at least one service.");
       return;
     }
-    const missingOption = configs.some(
+    const missingOption = SERVICES.some(
       (c) => states[c.id].selected && states[c.id].optionIndex === -1,
     );
     if (missingOption) {
@@ -468,24 +306,33 @@ export function Step3Services({
       return;
     }
 
-    const result: ServiceEntry[] = configs
-      .filter((c) => states[c.id].selected)
-      .map((c) => {
-        const opt = c.options[states[c.id].optionIndex];
-        return {
-          serviceType: c.id,
-          label: `${c.label} — ${opt.label}`,
-          optionLabel: opt.label,
-          price: opt.price,
-        };
+    const result: ServiceEntry[] = SERVICES.filter((c) => states[c.id].selected).map((c) => {
+      const opt = c.options[states[c.id].optionIndex];
+      return {
+        serviceType: c.id,
+        label: `${c.label} — ${opt.label}`,
+        optionLabel: opt.label,
+        price: opt.price,
+      };
+    });
+
+    if (eicrSelected && additionalCUs > 0) {
+      result.push({
+        serviceType: EICR_ADDITIONAL_CU_ENTRY_TYPE,
+        label: "EICR — Additional Consumer Unit",
+        optionLabel: `${additionalCUs} × additional consumer unit`,
+        price: round2(additionalCUs * EICR_ADDITIONAL_CU_PRICE),
       });
+    }
 
     onComplete(result);
   }
 
-  const runningTotal = configs
-    .filter((c) => states[c.id].selected && states[c.id].optionIndex >= 0)
-    .reduce((sum, c) => sum + c.options[states[c.id].optionIndex].price, 0);
+  const servicesTotal = SERVICES.filter(
+    (c) => states[c.id].selected && states[c.id].optionIndex >= 0,
+  ).reduce((sum, c) => sum + c.options[states[c.id].optionIndex].price, 0);
+  const addonTotal = eicrSelected ? additionalCUs * EICR_ADDITIONAL_CU_PRICE : 0;
+  const runningTotal = servicesTotal + addonTotal;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -498,73 +345,122 @@ export function Step3Services({
         </p>
       </div>
 
-      <div className="space-y-3">
-        {configs.map((config) => {
-          const state = states[config.id];
-          const selectedOption =
-            state.optionIndex >= 0
-              ? config.options[state.optionIndex]
-              : null;
+      <div className="space-y-6">
+        {CATEGORY_ORDER.map((category) => (
+          <div key={category} className="space-y-3">
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-brand-grey">
+              {CATEGORY_LABELS[category]}
+            </h3>
+            {SERVICES.filter((c) => c.category === category).map((config) => {
+              const state = states[config.id];
+              const selectedOption =
+                state.optionIndex >= 0 ? config.options[state.optionIndex] : null;
 
-          return (
-            <div
-              key={config.id}
-              className={cn(
-                "rounded-xl border-2 transition-colors",
-                state.selected
-                  ? "border-compliance-blue bg-compliance-blue/[0.03]"
-                  : "border-border bg-white",
-              )}
-            >
-              <label className="flex items-start gap-3 p-4 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={state.selected}
-                  onChange={() => toggle(config.id)}
-                  className="mt-0.5 w-4 h-4 rounded accent-compliance-blue shrink-0"
-                />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <p className="font-semibold text-sm text-brand-charcoal">
-                      {config.label}
-                    </p>
-                    {selectedOption && (
-                      <span className="text-sm font-semibold text-compliance-blue tabular-nums">
-                        £{selectedOption.price.toFixed(2)}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-brand-grey mt-0.5">
-                    {config.description}
-                  </p>
-                </div>
-              </label>
+              return (
+                <div
+                  key={config.id}
+                  className={cn(
+                    "rounded-xl border-2 transition-colors",
+                    state.selected
+                      ? "border-compliance-blue bg-compliance-blue/[0.03]"
+                      : "border-border bg-white",
+                  )}
+                >
+                  <label className="flex items-start gap-3 p-4 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={state.selected}
+                      onChange={() => toggle(config.id)}
+                      className="mt-0.5 w-4 h-4 rounded accent-compliance-blue shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <p className="font-semibold text-sm text-brand-charcoal">
+                          {config.label}
+                        </p>
+                        {selectedOption && (
+                          <span className="text-sm font-semibold text-compliance-blue tabular-nums">
+                            £{selectedOption.price.toFixed(2)}
+                          </span>
+                        )}
+                      </div>
+                      {config.description && (
+                        <p className="text-xs text-brand-grey mt-0.5">{config.description}</p>
+                      )}
+                    </div>
+                  </label>
 
-              {state.selected && (
-                <div className="px-4 pb-4 pt-0">
-                  <select
-                    value={state.optionIndex}
-                    onChange={(e) => setOption(config.id, parseInt(e.target.value))}
-                    className={cn(
-                      "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-brand-charcoal",
-                      "focus:outline-none focus:ring-2 focus:ring-compliance-blue focus:border-compliance-blue",
-                      state.optionIndex === -1 && "text-brand-grey",
-                    )}
-                  >
-                    <option value="-1" disabled>
-                      Select option
-                    </option>
-                    {config.options.map((opt, idx) => (
-                      <option key={idx} value={idx}>
-                        {opt.label} — £{opt.price.toFixed(2)}
-                      </option>
-                    ))}
-                  </select>
+                  {state.selected && (
+                    <div className="px-4 pb-4 pt-0 space-y-3">
+                      {config.helperNote && (
+                        <p className="text-xs text-brand-grey bg-warm-white rounded-lg px-3 py-2">
+                          {config.helperNote}
+                        </p>
+                      )}
+                      <select
+                        value={state.optionIndex}
+                        onChange={(e) => setOption(config.id, parseInt(e.target.value))}
+                        className={cn(
+                          "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-brand-charcoal",
+                          "focus:outline-none focus:ring-2 focus:ring-compliance-blue focus:border-compliance-blue",
+                          state.optionIndex === -1 && "text-brand-grey",
+                        )}
+                      >
+                        <option value="-1" disabled>
+                          Select option
+                        </option>
+                        {config.options.map((opt, idx) => (
+                          <option key={idx} value={idx}>
+                            {opt.label} — £{opt.price.toFixed(2)}
+                          </option>
+                        ))}
+                      </select>
+                      {config.note && (
+                        <p className="text-xs text-brand-grey">{config.note}</p>
+                      )}
+
+                      {config.id === "eicr" && (
+                        <div className="p-3 bg-warm-white rounded-lg border border-border">
+                          <p className="text-xs font-medium text-brand-charcoal mb-2">
+                            Additional consumer units
+                          </p>
+                          <p className="text-xs text-brand-grey mb-3">
+                            £{EICR_ADDITIONAL_CU_PRICE.toFixed(2)} each. Common in HMOs, converted
+                            flats and larger properties. Engineer confirms on arrival.
+                          </p>
+                          <div className="flex items-center gap-3">
+                            <button
+                              type="button"
+                              onClick={() => setAdditionalCUs(Math.max(0, additionalCUs - 1))}
+                              className="w-7 h-7 rounded-full border border-border flex items-center justify-center text-brand-charcoal hover:bg-gray-100"
+                            >
+                              −
+                            </button>
+                            <span className="text-sm font-medium text-brand-charcoal w-4 text-center">
+                              {additionalCUs}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setAdditionalCUs(additionalCUs + 1)}
+                              className="w-7 h-7 rounded-full border border-border flex items-center justify-center text-brand-charcoal hover:bg-gray-100"
+                            >
+                              +
+                            </button>
+                            {additionalCUs > 0 && (
+                              <span className="text-xs text-compliance-blue ml-2">
+                                +£{(additionalCUs * EICR_ADDITIONAL_CU_PRICE).toFixed(2)} added
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        ))}
       </div>
 
       {runningTotal > 0 && (
@@ -605,4 +501,8 @@ export function Step3Services({
       </div>
     </form>
   );
+}
+
+function round2(n: number): number {
+  return Math.round(n * 100) / 100;
 }

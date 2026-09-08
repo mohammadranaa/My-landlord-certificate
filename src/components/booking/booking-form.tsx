@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { calculateBundlePrice, ADDITIONAL_CHARGES } from "@/lib/pricing";
+import { calculateBundlePrice, calculateHmoDiscount, isHmoBundleActive, ADDITIONAL_CHARGES } from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import { GOOGLE_ADS_CONVERSION_LEAD, GOOGLE_ADS_CONVERSION_DETAILS } from "@/lib/constants";
 import type {
@@ -63,6 +63,10 @@ export function BookingForm() {
     const charges =
       (currentData.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
       (currentData.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
+    const baseTotal = total + charges;
+    const serviceTypes = (currentData.services ?? []).map((s) => s.serviceType);
+    const hmoDiscount = isHmoBundleActive(serviceTypes);
+    const discountAmount = calculateHmoDiscount(baseTotal, serviceTypes);
 
     try {
       await fetch("/api/partial-booking", {
@@ -92,7 +96,10 @@ export function BookingForm() {
                   ? "Afternoon (12pm–6pm)"
                   : "",
           },
-          totalPrice: total + charges,
+          totalPrice: baseTotal - discountAmount,
+          hmoDiscount,
+          discountAmount,
+          discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
           sessionId,
         }),
       });
@@ -160,7 +167,11 @@ export function BookingForm() {
     const charges =
       (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
       (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
-    const grandTotal = total + charges;
+    const baseTotal = total + charges;
+    const serviceTypes = services.map((s) => s.serviceType);
+    const hmoDiscount = isHmoBundleActive(serviceTypes);
+    const discountAmount = calculateHmoDiscount(baseTotal, serviceTypes);
+    const grandTotal = baseTotal - discountAmount;
 
     const payload = {
       customer: {
@@ -191,6 +202,9 @@ export function BookingForm() {
         timeSlot: data.timePreference === "morning" ? "Morning (8am–12pm)" : "Afternoon (12pm–6pm)",
       },
       totalPrice: grandTotal,
+      hmoDiscount,
+      discountAmount,
+      discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
       sessionId,
     };
 
@@ -258,7 +272,9 @@ export function BookingForm() {
   const quoteAdditional =
     (data.congestionZone ? ADDITIONAL_CHARGES.congestionZone : 0) +
     (data.parkingRestriction ? ADDITIONAL_CHARGES.parking : 0);
-  const quoteTotal = quoteServicesTotal + quoteAdditional;
+  const quoteBaseTotal = quoteServicesTotal + quoteAdditional;
+  const quoteServiceTypes = (data.services ?? []).map((s) => s.serviceType);
+  const quoteTotal = quoteBaseTotal - calculateHmoDiscount(quoteBaseTotal, quoteServiceTypes);
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
@@ -296,7 +312,6 @@ export function BookingForm() {
             )}
             {step === 3 && (
               <Step3Services
-                propertyCategory={data.propertyCategory ?? "residential"}
                 defaultServices={data.services ?? []}
                 preselectedServiceId={data.services?.length ? undefined : preselectedService}
                 onBack={() => setStep(2)}

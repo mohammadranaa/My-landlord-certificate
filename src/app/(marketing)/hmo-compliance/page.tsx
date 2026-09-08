@@ -433,6 +433,39 @@ export default function HMOCompliancePage() {
         </Container>
       </div>
 
+      {/* ── HMO bundle discount callout ── */}
+      <section className="py-10 bg-action-green/5 border border-action-green/20 rounded-2xl mx-4 md:mx-auto md:max-w-4xl mt-10 mb-0">
+        <Container className="text-center">
+          <div className="inline-flex items-center gap-2 bg-action-green text-white text-sm font-semibold px-4 py-2 rounded-full mb-4">
+            10% HMO Bundle Discount
+          </div>
+          <Heading level={2} className="mb-3">
+            Book all 4 required certificates and save 10%
+          </Heading>
+          <p className="text-brand-grey max-w-xl mx-auto text-sm mb-6">
+            Select EICR, Gas Safety Certificate, Fire Risk Assessment, and Fire Safety
+            Certificate together in our booking form and the 10% discount is applied
+            automatically. No code needed.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-6">
+            {[
+              { name: "EICR", price: `from £${PRICES.eicr}` },
+              { name: "Gas Safety", price: `from £${PRICES.gas}` },
+              { name: "Fire Risk Assessment", price: `from £${PRICES.fra}` },
+              { name: "Fire Safety Cert", price: `from £${PRICES.fireSafety}` },
+            ].map((item) => (
+              <div key={item.name} className="bg-white rounded-xl border border-action-green/30 p-3 text-center">
+                <p className="text-xs font-semibold text-brand-charcoal">{item.name}</p>
+                <p className="text-xs text-brand-grey mt-1">{item.price}</p>
+              </div>
+            ))}
+          </div>
+          <Link href="/book" className={cn(buttonVariants({ variant: "cta" }), "text-sm")}>
+            Book HMO bundle — save 10% →
+          </Link>
+        </Container>
+      </section>
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 space-y-20">
 
         {/* ── Section 1 — What certificates ── */}

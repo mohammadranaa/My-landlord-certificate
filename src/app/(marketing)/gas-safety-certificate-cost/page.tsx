@@ -13,6 +13,7 @@ import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
+  GAS_SAFETY_CP12_PRICES,
   GAS_SAFETY_CP12_TABLE,
   GAS_SAFETY_CP42_TABLE,
   getPriceForGasSafety,
@@ -23,14 +24,14 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
   description:
-    "Gas Safety Certificate (CP12) costs from £50 for 1 appliance. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
+    "Gas Safety Certificate (CP12) costs from £64.99 for up to 2 appliances. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
   openGraph: {
     title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
     description:
-      "CP12 prices start from £50 for 1 appliance. Full domestic price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
+      "CP12 prices start from £64.99 for up to 2 appliances. Full domestic price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
 };
@@ -91,7 +92,7 @@ const faqSchema = {
       name: "How much does a gas safety certificate cost in the UK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance, £60 for 2 appliances, and £70 for 3 appliances. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. A combined Gas Safety + Boiler Service costs £84.99.",
+        text: "A domestic Gas Safety Certificate (CP12) costs from £64.99 for up to 2 appliances, and £74.99 for 3 appliances. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. A combined Gas Safety + Boiler Service costs £84.99.",
       },
     },
     {
@@ -143,7 +144,7 @@ const faqItems = [
   {
     question: "How much does a gas safety certificate cost in the UK?",
     answer:
-      "A domestic Gas Safety Certificate (CP12) costs from £50 for 1 appliance. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our 1-appliance CP12 is £50, at the competitive end of the market for a Gas Safe registered engineer, certificate within 24 hours. A combined Gas Safety + Boiler Service costs £84.99.",
+      "A domestic Gas Safety Certificate (CP12) costs from £64.99 for up to 2 appliances. The national average quoted by comparison sites is £60–£120 for a typical property with one boiler. Our CP12 for up to 2 appliances is £64.99, at the competitive end of the market for a Gas Safe registered engineer, certificate within 24 hours. A combined Gas Safety + Boiler Service costs £84.99.",
   },
   {
     question: "What is a CP12 certificate?",
@@ -183,11 +184,11 @@ const faqItems = [
 ];
 
 const lowestPrice = getPriceForGasSafety(1);
-const twoAppliancePrice = getPriceForGasSafety(2);
 const threeAppliancePrice = getPriceForGasSafety(3);
+const boilerPrice = GAS_SAFETY_CP12_PRICES["Boiler Check + Service"];
 
 const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
-  i === 2 ? { ...row, badge: "most-popular" as const } : row,
+  i === 1 ? { ...row, badge: "most-popular" as const } : row,
 );
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -238,8 +239,7 @@ export default function GasSafetyCertificateCostPage() {
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-6">
             A domestic Gas Safety Certificate (CP12) starts from{" "}
-            <strong className="text-white">£{lowestPrice}</strong> for 1 appliance,{" "}
-            <strong className="text-white">£{twoAppliancePrice}</strong> for 2 appliances,
+            <strong className="text-white">£{lowestPrice}</strong> for up to 2 appliances,
             and{" "}
             <strong className="text-white">£{threeAppliancePrice}</strong> for 3 appliances.
             Commercial CP42 certificates start from{" "}
@@ -281,16 +281,16 @@ export default function GasSafetyCertificateCostPage() {
         <Container>
           <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
-              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">1 appliance</dt>
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Up to 2 appliances</dt>
               <dd className="text-sm font-bold text-white">£{lowestPrice}</dd>
-            </div>
-            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
-              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">2 appliances</dt>
-              <dd className="text-sm font-bold text-white">£{twoAppliancePrice}</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">3 appliances</dt>
               <dd className="text-sm font-bold text-white">£{threeAppliancePrice}</dd>
+            </div>
+            <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
+              <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Boiler + service</dt>
+              <dd className="text-sm font-bold text-white">£{boilerPrice}</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Valid</dt>
@@ -419,10 +419,9 @@ export default function GasSafetyCertificateCostPage() {
               </thead>
               <tbody>
                 {[
-                  { appliances: "1 appliance (boiler only)", market: "£60–£120", ours: `£${lowestPrice}` },
-                  { appliances: "2 appliances", market: "£80–£150", ours: `£${twoAppliancePrice}` },
+                  { appliances: "Up to 2 appliances (e.g. boiler only)", market: "£60–£150", ours: `£${lowestPrice}` },
                   { appliances: "3 appliances", market: "£100–£180", ours: `£${threeAppliancePrice}` },
-                  { appliances: "Gas Safety + Boiler Service", market: "£100–£200", ours: "£84.99" },
+                  { appliances: "Gas Safety + Boiler Service", market: "£100–£200", ours: `£${boilerPrice}` },
                 ].map(({ appliances, market, ours }, i) => (
                   <tr key={appliances} className={i % 2 === 0 ? "bg-white" : "bg-warm-white"}>
                     <td className="px-4 py-3 text-brand-charcoal font-medium">{appliances}</td>

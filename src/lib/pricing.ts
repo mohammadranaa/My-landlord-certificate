@@ -36,6 +36,7 @@ export type ServiceType =
   | "fire-alarm-panels"
   | "fra-residential"
   | "fra-commercial"
+  | "fire-risk-assessment"
   | "fire-alarm-installation"
   | "fire-door-cert"
   | "fire-extinguisher"
@@ -78,6 +79,9 @@ export const DOMESTIC_EICR_TABLE: readonly PriceRow[] = [
   { label: "8 Bedrooms", price: 199.99 },
 ];
 
+/** Per additional consumer unit beyond the property's standard EICR — common in HMOs and converted flats. */
+export const EICR_ADDITIONAL_CU_PRICE = 49.99;
+
 // ─── Commercial EICR ─────────────────────────────────────────────────────────
 
 export const COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE = 10;
@@ -85,12 +89,12 @@ export const COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE = 10;
 export const COMMERCIAL_EICR_TABLE: readonly PriceRow[] = [
   { label: "1 Consumer Unit (up to 12 circuits, +£10 per additional circuit)", price: 149.99 },
   { label: "2 Consumer Units", price: 279.99 },
-  { label: "3 Consumer Units", price: 418.99 },
-  { label: "4 Consumer Units", price: 548.99 },
-  { label: "5 Consumer Units", price: 705.99 },
+  { label: "3 Consumer Units", price: 419.99 },
+  { label: "4 Consumer Units", price: 549.99 },
+  { label: "5 Consumer Units", price: 709.99 },
   { label: "6 Consumer Units", price: 849.99 },
-  { label: "7 Consumer Units", price: 998.99 },
-  { label: "8 Consumer Units", price: 1155.99 },
+  { label: "7 Consumer Units", price: 999.99 },
+  { label: "8 Consumer Units", price: 1149.99 },
 ];
 
 // ─── Electrical Diagnostic ───────────────────────────────────────────────────
@@ -114,11 +118,11 @@ export const ELC_INSTALLATION_PER_LIGHT = 219.99;
 
 export const ELC_TABLE: readonly PriceRow[] = [
   { label: "Up to 3 Emergency Lights", price: 54.99 },
-  { label: "3–6 Emergency Lights", price: 90 },
-  { label: "6–9 Emergency Lights", price: 125 },
-  { label: "9–12 Emergency Lights", price: 160 },
-  { label: "12–15 Emergency Lights", price: 195 },
-  { label: "15–18 Emergency Lights", price: 230 },
+  { label: "3–6 Emergency Lights", price: 89.99 },
+  { label: "6–9 Emergency Lights", price: 124.99 },
+  { label: "9–12 Emergency Lights", price: 159.99 },
+  { label: "12–15 Emergency Lights", price: 194.99 },
+  { label: "15–18 Emergency Lights", price: 229.99 },
   { label: "18–21 Emergency Lights", price: 264.99 },
 ];
 
@@ -138,11 +142,16 @@ export const PAT_TABLE: readonly PriceRow[] = [
 
 // ─── Gas Safety (CP12 — Domestic) ────────────────────────────────────────────
 
+export const GAS_SAFETY_CP12_PRICES = {
+  "Up to 2 Appliances (excl. boiler)": 64.99,
+  "3 Appliances (excl. boiler)": 74.99,
+  "Boiler Check + Service": 84.99,
+} as const;
+
 export const GAS_SAFETY_CP12_TABLE: readonly PriceRow[] = [
-  { label: "1 Gas Appliance (CP12)", price: 49.99 },
-  { label: "2 Gas Appliances (CP12)", price: 59.99 },
-  { label: "3 Gas Appliances (CP12)", price: 69.99 },
-  { label: "Gas Safety + Boiler Service (CP12)", price: 84.99 },
+  { label: "Up to 2 Appliances (excl. boiler)", price: GAS_SAFETY_CP12_PRICES["Up to 2 Appliances (excl. boiler)"] },
+  { label: "3 Appliances (excl. boiler)", price: GAS_SAFETY_CP12_PRICES["3 Appliances (excl. boiler)"] },
+  { label: "Boiler Check + Service", price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"] },
 ];
 
 // ─── Gas Safety (CP42 — Commercial) ──────────────────────────────────────────
@@ -166,11 +175,11 @@ export const BOILER_INSTALLATION_FROM = 2499;
 
 export const FIRE_SAFETY_CERT_TABLE: readonly PriceRow[] = [
   { label: "Up to 3 Smoke/Heat Alarms", price: 54.99 },
-  { label: "3–6 Alarms", price: 90 },
-  { label: "6–9 Alarms", price: 125 },
-  { label: "9–12 Alarms", price: 160 },
-  { label: "12–15 Alarms", price: 195 },
-  { label: "15–18 Alarms", price: 230 },
+  { label: "3–6 Alarms", price: 89.99 },
+  { label: "6–9 Alarms", price: 124.99 },
+  { label: "9–12 Alarms", price: 159.99 },
+  { label: "12–15 Alarms", price: 194.99 },
+  { label: "15–18 Alarms", price: 229.99 },
   { label: "18–21 Alarms", price: 264.99 },
 ];
 
@@ -178,11 +187,11 @@ export const FIRE_SAFETY_CERT_TABLE: readonly PriceRow[] = [
 
 export const FIRE_ALARM_PANELS_TABLE: readonly PriceRow[] = [
   { label: "Up to 3 Smoke/Heat Alarms", price: 74.99 },
-  { label: "3–6 Alarms", price: 110 },
-  { label: "6–9 Alarms", price: 145 },
-  { label: "9–12 Alarms", price: 180 },
-  { label: "12–15 Alarms", price: 215 },
-  { label: "15–18 Alarms", price: 230 },
+  { label: "3–6 Alarms", price: 109.99 },
+  { label: "6–9 Alarms", price: 144.99 },
+  { label: "9–12 Alarms", price: 179.99 },
+  { label: "12–15 Alarms", price: 214.99 },
+  { label: "15–18 Alarms", price: 229.99 },
   { label: "18–21 Alarms", price: 264.99 },
 ];
 
@@ -316,6 +325,20 @@ export const ADDITIONAL_CHARGES = {
  */
 export const M25_CORRIDOR_CHARGE_FROM = 30;
 
+/**
+ * Booking-form HMO bundle discount: 10% off the order total (services +
+ * additional charges) when all four required HMO certificates are selected
+ * together. Applied automatically — no code needed.
+ */
+export const HMO_BUNDLE_DISCOUNT = 0.10;
+
+export const HMO_REQUIRED_SERVICES = [
+  "eicr",
+  "gas-safety-cp12",
+  "fire-risk-assessment",
+  "fire-safety-cert",
+] as const;
+
 // ─── FROM_PRICES — used in hero sections and meta titles ──────────────────────
 
 export const FROM_PRICES: Record<ServiceType, string> = {
@@ -325,13 +348,14 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fuse-box": "from £599.99",
   elc: "from £54.99",
   pat: "from £59.99",
-  "gas-safety-cp12": "from £49.99",
+  "gas-safety-cp12": "from £64.99",
   "gas-safety-cp42": "from £159.99",
-  "boiler-installation": "from £2,499", 
+  "boiler-installation": "from £2,499",
   "fire-safety-cert": "from £54.99",
   "fire-alarm-panels": "from £74.99",
   "fra-residential": "from £74.99",
   "fra-commercial": "from £149.99",
+  "fire-risk-assessment": "from £74.99",
   "fire-alarm-installation": "from £209.99/alarm",
   "fire-door-cert": "from £129.99",
   "fire-extinguisher": "from £79.99",
@@ -348,13 +372,13 @@ export function getPriceForEICR(propertySize: EICRPropertySize): number {
 }
 
 /**
- * Returns the CP12 domestic gas safety certificate price for a given appliance count.
- * Min 1 appliance. Max 3 appliances on a CP12 — for commercial use getPriceForGasSafetyCP42().
+ * Returns the CP12 domestic gas safety certificate price for a given appliance count
+ * (excluding boiler check + service, which is its own tier — see GAS_SAFETY_CP12_PRICES).
+ * Up to 2 appliances share a tier. For commercial use getPriceForGasSafetyCP42().
  */
 export function getPriceForGasSafety(applianceCount: number): number {
-  if (applianceCount === 1) return 49.99;
-  if (applianceCount === 2) return 59.99;
-  return 69.99;
+  if (applianceCount <= 2) return GAS_SAFETY_CP12_PRICES["Up to 2 Appliances (excl. boiler)"];
+  return GAS_SAFETY_CP12_PRICES["3 Appliances (excl. boiler)"];
 }
 
 export function getPriceForEPC(propertySize: EPCPropertySize): number {
@@ -390,11 +414,11 @@ export function getPriceForFRA(propertyType: FRAPropertyType): number {
 
 export function getPriceForFireSafetyCert(alarmCount: number): number {
   if (alarmCount <= 3) return 54.99;
-  if (alarmCount <= 6) return 90;
-  if (alarmCount <= 9) return 125;
-  if (alarmCount <= 12) return 160;
-  if (alarmCount <= 15) return 195;
-  if (alarmCount <= 18) return 230;
+  if (alarmCount <= 6) return 89.99;
+  if (alarmCount <= 9) return 124.99;
+  if (alarmCount <= 12) return 159.99;
+  if (alarmCount <= 15) return 194.99;
+  if (alarmCount <= 18) return 229.99;
   return 264.99;
 }
 
@@ -418,6 +442,22 @@ export function calculateBundlePrice(services: ServiceSelection[]): {
 
 export function getEntryPrice(service: ServiceType): string {
   return FROM_PRICES[service];
+}
+
+/** True once all 4 required HMO certificates are present among the selected service types. */
+export function isHmoBundleActive(selectedServiceTypes: readonly string[]): boolean {
+  return HMO_REQUIRED_SERVICES.every((required) => selectedServiceTypes.includes(required));
+}
+
+/**
+ * 10% HMO bundle discount on the full order total (services + additional
+ * charges), applied only when isHmoBundleActive is true. Returns 0 otherwise.
+ */
+export function calculateHmoDiscount(
+  baseTotal: number,
+  selectedServiceTypes: readonly string[],
+): number {
+  return isHmoBundleActive(selectedServiceTypes) ? round2(baseTotal * HMO_BUNDLE_DISCOUNT) : 0;
 }
 
 // ─── Internal ─────────────────────────────────────────────────────────────────
