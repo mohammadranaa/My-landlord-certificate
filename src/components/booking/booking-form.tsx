@@ -254,6 +254,22 @@ export function BookingForm() {
         });
       }
 
+      // Fire the OpenAI (ChatGPT Ads) pixel checkout event. amount is in minor
+      // currency units (pence), matching Stripe's convention.
+      if (typeof window.oaiq === "function") {
+        window.oaiq("measure", "checkout_started", {
+          type: "contents",
+          amount: Math.round(grandTotal * 100),
+          currency: "GBP",
+          contents: services.map((s) => ({
+            id: s.serviceType,
+            name: s.label,
+            content_type: "product",
+            quantity: 1,
+          })),
+        });
+      }
+
       window.location.href = url;
     } catch {
       setSubmitError(

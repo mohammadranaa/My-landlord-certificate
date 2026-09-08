@@ -27,6 +27,9 @@ export const GOOGLE_ADS_CONVERSION_DETAILS = "AW-18223043841/VoTkCKjr8escEIGqtvF
 
 export const HMO_COMPLIANCE_URL = "/hmo-compliance";
 
+// ChatGPT Ads (OpenAI) measurement pixel — see components/analytics/analytics-scripts.tsx
+export const OPENAI_PIXEL_ID = "L68ZZ34f67c7b9b2NF25Rf";
+
 export const OUTSIDE_M25_NOTE =
   "Prices shown apply to London and the " +
   "M25 area. For properties outside the " +

@@ -1,7 +1,9 @@
 "use client";
 
 import Script from "next/script";
-import { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID, CLARITY_PROJECT_ID } from "@/lib/constants";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { GA4_MEASUREMENT_ID, GOOGLE_ADS_ID, CLARITY_PROJECT_ID, OPENAI_PIXEL_ID } from "@/lib/constants";
 import { useConsent } from "./consent-provider";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -52,6 +54,46 @@ fbq('init','${pixelId}');fbq('track','PageView');`,
   );
 }
 
+function OpenAIPixel({ pixelId }: { pixelId: string }) {
+  return (
+    <Script
+      id="openai-pixel-init"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+!function(w,d,s,u){
+  if(w.oaiq)return;
+  var q=function(){q.q.push(arguments)};
+  q.q=[];w.oaiq=q;
+  var j=d.createElement(s);
+  j.async=1;j.src=u;
+  var f=d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(j,f)
+}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init",{pixelId:"${pixelId}"});`,
+      }}
+    />
+  );
+}
+
+/**
+ * Fires the OpenAI pixel "page_viewed" event on the initial load and on every
+ * client-side route change (the pixel has no built-in SPA route listener).
+ */
+function OpenAIPageView() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window === "undefined" || typeof window.oaiq !== "function") return;
+    window.oaiq("measure", "page_viewed", {
+      type: "contents",
+      contents: [{ id: pathname, name: document.title, content_type: "page" }],
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 export function AnalyticsScripts() {
   const { consent } = useConsent();
 
@@ -60,8 +102,8 @@ export function AnalyticsScripts() {
   // cookieless pings that let Google model declined/ignored conversions), and
   // is upgraded to "granted" by ConsentProvider when the visitor accepts. Do
   // NOT set 'consent update' to granted here — that would override the default
-  // for everyone. Meta Pixel and Clarity have no consent mode, so they stay
-  // gated behind explicit consent.
+  // for everyone. Meta Pixel, Clarity and the OpenAI (ChatGPT Ads) pixel have
+  // no consent mode, so they stay gated behind explicit consent.
   return (
     <>
       <Script
@@ -87,6 +129,12 @@ export function AnalyticsScripts() {
       />
       {consent === "granted" && META_PIXEL_ID && <MetaPixel pixelId={META_PIXEL_ID} />}
       {consent === "granted" && <MicrosoftClarity />}
+      {consent === "granted" && (
+        <>
+          <OpenAIPixel pixelId={OPENAI_PIXEL_ID} />
+          <OpenAIPageView />
+        </>
+      )}
     </>
   );
 }

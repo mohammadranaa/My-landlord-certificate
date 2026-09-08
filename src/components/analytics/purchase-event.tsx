@@ -19,7 +19,9 @@ interface PurchaseEventProps {
  * Pushes a GA4-style `purchase` event to the dataLayer on the booking success
  * page (GTM trigger: Custom Event = "purchase"). Deduplicated per transaction
  * via sessionStorage so a page refresh does not fire it twice; Google Ads also
- * dedupes on transaction_id.
+ * dedupes on transaction_id. Also fires the OpenAI (ChatGPT Ads) pixel
+ * "order_created" event — the typeof check below is a sufficient gate since
+ * the pixel script only exists on window once cookie consent was granted.
  */
 export function PurchaseEvent({
   transactionId,
@@ -46,6 +48,21 @@ export function PurchaseEvent({
           items,
         },
       });
+
+      if (typeof window.oaiq === "function") {
+        // amount is in minor currency units (pence), matching Stripe's convention.
+        window.oaiq("measure", "order_created", {
+          type: "contents",
+          amount: Math.round(value * 100),
+          currency,
+          contents: items.map((item) => ({
+            id: item.item_name,
+            name: item.item_name,
+            content_type: "product",
+            quantity: item.quantity ?? 1,
+          })),
+        });
+      }
     } catch {
       // Never block rendering.
     }

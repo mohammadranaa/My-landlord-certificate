@@ -115,6 +115,11 @@ export function LettingAgentForm() {
         body: JSON.stringify(result.data),
       });
       if (!res.ok) throw new Error(`Server error ${res.status}`);
+
+      if (typeof window !== "undefined" && typeof window.oaiq === "function") {
+        window.oaiq("measure", "lead_created", { type: "customer_action" });
+      }
+
       setSubmittedName(result.data.name.split(" ")[0]);
     } catch {
       setSubmitError(
