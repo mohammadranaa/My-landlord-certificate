@@ -144,13 +144,13 @@ export const PAT_TABLE: readonly PriceRow[] = [
 
 export const GAS_SAFETY_CP12_PRICES = {
   "Up to 2 Appliances (excl. boiler)": 64.99,
-  "3 Appliances (excl. boiler)": 74.99,
+  "3 Appliances": 74.99,
   "Boiler Check + Service": 84.99,
 } as const;
 
 export const GAS_SAFETY_CP12_TABLE: readonly PriceRow[] = [
   { label: "Up to 2 Appliances (excl. boiler)", price: GAS_SAFETY_CP12_PRICES["Up to 2 Appliances (excl. boiler)"] },
-  { label: "3 Appliances (excl. boiler)", price: GAS_SAFETY_CP12_PRICES["3 Appliances (excl. boiler)"] },
+  { label: "3 Appliances", price: GAS_SAFETY_CP12_PRICES["3 Appliances"] },
   { label: "Boiler Check + Service", price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"] },
 ];
 
@@ -378,7 +378,7 @@ export function getPriceForEICR(propertySize: EICRPropertySize): number {
  */
 export function getPriceForGasSafety(applianceCount: number): number {
   if (applianceCount <= 2) return GAS_SAFETY_CP12_PRICES["Up to 2 Appliances (excl. boiler)"];
-  return GAS_SAFETY_CP12_PRICES["3 Appliances (excl. boiler)"];
+  return GAS_SAFETY_CP12_PRICES["3 Appliances"];
 }
 
 export function getPriceForEPC(propertySize: EPCPropertySize): number {
