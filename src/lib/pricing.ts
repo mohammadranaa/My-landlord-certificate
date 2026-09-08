@@ -308,6 +308,14 @@ export const ADDITIONAL_CHARGES = {
   congestionZone: 20,
 } as const;
 
+/**
+ * M25 corridor (Surrey, Kent, Essex, Hertfordshire and other towns within/
+ * bordering the M25 but outside the 33 London boroughs) is covered, but at a
+ * higher price than the standard London rate. The surcharge varies by exact
+ * location, so this is a "from" figure, not a fixed add-on.
+ */
+export const M25_CORRIDOR_CHARGE_FROM = 30;
+
 // ─── FROM_PRICES — used in hero sections and meta titles ──────────────────────
 
 export const FROM_PRICES: Record<ServiceType, string> = {

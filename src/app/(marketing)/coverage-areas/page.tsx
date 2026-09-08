@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { M25_CORRIDOR_CHARGE_FROM } from "@/lib/pricing";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -259,7 +260,8 @@ export default function CoverageAreasPage() {
             Our engineer network covers the full M25 corridor, not just the 33 London
             boroughs. If your rental property is in Surrey, Kent, Essex, or
             Hertfordshire — anywhere within or bordering the M25 — we can book a
-            next-day appointment at the same fixed prices.
+            next-day appointment. An additional coverage charge applies, from{" "}
+            £{M25_CORRIDOR_CHARGE_FROM}, depending on your exact location.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -296,9 +298,11 @@ export default function CoverageAreasPage() {
 
           <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-4 max-w-2xl mx-auto text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">M25 coverage note:</strong>{" "}
-            Appointment availability in M25 corridor counties depends on engineer
-            capacity. Book online and we&apos;ll confirm next-day availability for your
-            postcode — or call{" "}
+            M25 corridor bookings carry an additional coverage charge from £
+            {M25_CORRIDOR_CHARGE_FROM}, which varies by exact location, on top of
+            the standard price. Appointment availability also depends on engineer
+            capacity. Book online and we&apos;ll confirm next-day availability and the
+            exact charge for your postcode — or call{" "}
             <a href={TEL} className="text-compliance-blue font-medium hover:underline">
               {PHONE_DISPLAY}
             </a>{" "}
@@ -462,7 +466,9 @@ export default function CoverageAreasPage() {
               landlords in England, regardless of whether the property is in a London
               borough or a Surrey market town. Our Gas Safe Registered engineers and
               accredited energy assessors operate across county borders — one booking
-              system, the same fixed prices, the same certificate within 24 hours.
+              system, the same certificate within 24 hours, with an additional
+              coverage charge from £{M25_CORRIDOR_CHARGE_FROM} for M25 corridor
+              locations.
             </p>
           </div>
         </Container>
@@ -475,8 +481,9 @@ export default function CoverageAreasPage() {
             Our services — available across all areas
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            The same fixed prices and accredited engineers wherever your property
-            is — London borough or M25 corridor location.
+            The same accredited engineers wherever your property is — London
+            borough or M25 corridor location. M25 corridor bookings carry an
+            additional coverage charge from £{M25_CORRIDOR_CHARGE_FROM}.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
