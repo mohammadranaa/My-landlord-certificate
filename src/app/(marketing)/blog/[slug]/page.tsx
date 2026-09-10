@@ -87,9 +87,8 @@ function FAQList({ items }: { items: PostFaq[] }) {
   if (!items?.length) return null;
   return (
     <div className="mt-10 not-prose">
-      <h2 className="text-2xl font-bold text-brand-charcoal mb-6">
-        Frequently Asked Questions
-      </h2>
+      {/* Heading lives in the MDX body (## Frequently Asked Questions) so the
+          TOC sidebar can anchor-link to it — don't duplicate it here. */}
       <dl className="space-y-6">
         {items.map((faq) => (
           <div key={faq.question} className="border-b border-border pb-6 last:border-0 last:pb-0">
@@ -224,6 +223,12 @@ export default async function BlogPostPage({
     source: rawContent,
     options: {
       mdxOptions: { remarkPlugins: [remarkGfm] },
+      // All blog MDX is first-party content (authored and committed by us, never
+      // user-submitted), so it's safe to allow the {scope} expressions the posts
+      // rely on for prices and FAQs. next-mdx-remote defaults blockJS to true,
+      // which silently strips every {expression} — that's why prices and FAQs
+      // were rendering blank across every post.
+      blockJS: false,
       scope: {
         // Pricing scope variables — MDX uses {eicrFrom} etc.
         eicrFrom: getPriceForEICR("studio"),
