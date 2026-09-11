@@ -137,6 +137,23 @@ export default function FireRiskAssessmentLandingPage() {
     <>
       <JsonLd data={serviceSchema} />
 
+      {/* Announcement bar — marquee ticker */}
+      <div className="bg-brand-charcoal text-gray-200 text-[13px] font-medium overflow-hidden">
+        <div className="py-2.5 flex whitespace-nowrap animate-[marquee-scroll_20s_linear_infinite] hover:[animation-play-state:paused]">
+          {[0, 1].map((i) => (
+            <div key={i} className="flex items-center gap-5 shrink-0 px-4" aria-hidden={i === 1 || undefined}>
+              <span>&#9989; <strong className="text-white">Fixed price from £{entryPrice}</strong></span>
+              <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
+              <span>&#9889; <strong className="text-white">Report in 48 hrs</strong></span>
+              <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
+              <span>&#11088; <span className="text-action-green">5.0 on Google</span></span>
+              <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
+              <span>&#128205; 33 boroughs + M25</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Header: logo + phone + CTA, NO navigation */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
