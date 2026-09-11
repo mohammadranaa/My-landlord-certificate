@@ -391,7 +391,7 @@ export default function HMOCompliancePage() {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/book"
+              href="/book?bundle=hmo"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book HMO inspection →
@@ -460,7 +460,7 @@ export default function HMOCompliancePage() {
               </div>
             ))}
           </div>
-          <Link href="/book" className={cn(buttonVariants({ variant: "cta" }), "text-sm")}>
+          <Link href="/book?bundle=hmo" className={cn(buttonVariants({ variant: "cta" }), "text-sm")}>
             Book HMO bundle — save 10% →
           </Link>
         </Container>
@@ -820,7 +820,7 @@ export default function HMOCompliancePage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/book"
+              href="/book?bundle=hmo"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
               Book online →
@@ -844,7 +844,7 @@ export default function HMOCompliancePage() {
       <ReviewsBlock />
 
       <StickyMobileCTA
-        href="/book"
+        href="/book?bundle=hmo"
         label="Book HMO inspection"
         price={PRICES.eicr}
         serviceName="HMO compliance from"

@@ -2,7 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { calculateBundlePrice, calculateHmoDiscount, isHmoBundleActive, ADDITIONAL_CHARGES } from "@/lib/pricing";
+import {
+  calculateBundlePrice,
+  calculateHmoDiscount,
+  isHmoBundleActive,
+  getPriceForEICR,
+  getPriceForFRA,
+  getPriceForFireSafetyCert,
+  GAS_SAFETY_CP12_PRICES,
+  ADDITIONAL_CHARGES,
+} from "@/lib/pricing";
 import type { ServiceType } from "@/lib/pricing";
 import { GOOGLE_ADS_CONVERSION_LEAD, GOOGLE_ADS_CONVERSION_DETAILS } from "@/lib/constants";
 import type {
@@ -21,11 +30,46 @@ import { Step4DateTime } from "./step-4-datetime";
 import { Step5Review } from "./step-5-review";
 import { SaveQuotePrompt } from "./save-quote-prompt";
 
+/**
+ * Default pre-fill for /book?bundle=hmo — the 4 HMO_REQUIRED_SERVICES from
+ * pricing.ts, each with the most common option for a typical HMO. These are
+ * starting points only: Step3Services renders them through the same
+ * defaultServices path as any other pre-selection, so the checkbox, the
+ * option dropdown and the "remove" toggle all work exactly as they would for
+ * a manually selected service.
+ */
+const HMO_BUNDLE_SERVICES: ServiceEntry[] = [
+  {
+    serviceType: "eicr",
+    label: "EICR Certificate — 1–3 Bedrooms",
+    optionLabel: "1–3 Bedrooms",
+    price: getPriceForEICR("1-3bed"),
+  },
+  {
+    serviceType: "gas-safety-cp12",
+    label: "Gas Safety Certificate (CP12) — Boiler Check + Service",
+    optionLabel: "Boiler Check + Service",
+    price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
+  },
+  {
+    serviceType: "fire-risk-assessment",
+    label: "Fire Risk Assessment — 1–3 Bedrooms",
+    optionLabel: "1–3 Bedrooms",
+    price: getPriceForFRA("1-3bed"),
+  },
+  {
+    serviceType: "fire-safety-cert",
+    label: "Fire Safety Certificate — Up to 3 Smoke/Heat Alarms",
+    optionLabel: "Up to 3 Smoke/Heat Alarms",
+    price: getPriceForFireSafetyCert(3),
+  },
+];
 
 export function BookingForm() {
   const searchParams = useSearchParams();
   const preselectedService = searchParams.get("service") ?? undefined;
   const preselectedType = (searchParams.get("type") as "residential" | "commercial") ?? undefined;
+  const isHmoBundle = searchParams.get("bundle") === "hmo";
 
   const sessionId = useRef(
     `form_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
@@ -328,8 +372,15 @@ export function BookingForm() {
             )}
             {step === 3 && (
               <Step3Services
-                defaultServices={data.services ?? []}
+                defaultServices={
+                  data.services?.length
+                    ? data.services
+                    : isHmoBundle
+                      ? HMO_BUNDLE_SERVICES
+                      : []
+                }
                 preselectedServiceId={data.services?.length ? undefined : preselectedService}
+                isHmoBundle={isHmoBundle}
                 onBack={() => setStep(2)}
                 onComplete={handleStep3Complete}
               />

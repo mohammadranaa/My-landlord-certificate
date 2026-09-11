@@ -27,8 +27,10 @@ import {
   FUSE_BOX_TABLE,
   GAS_SAFETY_CP12_TABLE,
   GAS_SAFETY_CP42_TABLE,
+  HMO_REQUIRED_SERVICES,
   LEGIONELLA_PRICES,
   PAT_TABLE,
+  isHmoBundleActive,
 } from "@/lib/pricing";
 
 type ServiceOption = { label: string; price: number };
@@ -255,6 +257,7 @@ function buildInitialAdditionalCUs(existing: ServiceEntry[]): number {
 interface Step3Props {
   defaultServices: ServiceEntry[];
   preselectedServiceId?: string;
+  isHmoBundle?: boolean;
   onBack: () => void;
   onComplete: (services: ServiceEntry[]) => void;
 }
@@ -262,6 +265,7 @@ interface Step3Props {
 export function Step3Services({
   defaultServices,
   preselectedServiceId,
+  isHmoBundle = false,
   onBack,
   onComplete,
 }: Step3Props) {
@@ -291,6 +295,8 @@ export function Step3Services({
 
   const selectedCount = Object.values(states).filter((s) => s.selected).length;
   const eicrSelected = states.eicr?.selected ?? false;
+  const selectedServiceTypes = SERVICES.filter((c) => states[c.id].selected).map((c) => c.id);
+  const hmoBundleNoticeActive = isHmoBundle && isHmoBundleActive(selectedServiceTypes);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -345,6 +351,25 @@ export function Step3Services({
         </p>
       </div>
 
+      {hmoBundleNoticeActive && (
+        <div className="mb-6 p-4 rounded-xl bg-action-green/10 border border-action-green/30 flex items-start gap-3">
+          <div className="w-8 h-8 rounded-full bg-action-green flex items-center justify-center text-white flex-shrink-0 text-sm font-bold mt-0.5">
+            ✓
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-brand-charcoal">
+              HMO compliance bundle pre-selected
+            </p>
+            <p className="text-xs text-brand-grey mt-1">
+              EICR, Gas Safety Certificate, Fire Risk Assessment and Fire Safety
+              Certificate have been added to your order. Your 10% HMO discount will
+              apply automatically. You can adjust the property size options below or
+              add more services.
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="space-y-6">
         {CATEGORY_ORDER.map((category) => (
           <div key={category} className="space-y-3">
@@ -397,6 +422,12 @@ export function Step3Services({
                           {config.helperNote}
                         </p>
                       )}
+                      {isHmoBundle &&
+                        (HMO_REQUIRED_SERVICES as readonly string[]).includes(config.id) && (
+                          <p className="text-xs text-compliance-blue">
+                            Pre-filled for your HMO bundle — change the size below if needed
+                          </p>
+                        )}
                       <select
                         value={state.optionIndex}
                         onChange={(e) => setOption(config.id, parseInt(e.target.value))}
