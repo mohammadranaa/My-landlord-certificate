@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -21,15 +21,18 @@ import {
 import { cn } from "@/lib/utils";
 import { step4Schema, type Step4Data } from "@/lib/booking-schema";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
+import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { getEarliestBookingDate, isPastUkBookingCutoff } from "@/lib/booking-datetime";
 
 const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 interface CalendarProps {
   value: string;
   onChange: (iso: string) => void;
+  earliestDate: Date;
 }
 
-function Calendar({ value, onChange }: CalendarProps) {
+function Calendar({ value, onChange, earliestDate }: CalendarProps) {
   const today = new Date();
   const [viewMonth, setViewMonth] = useState(today);
 
@@ -40,15 +43,9 @@ function Calendar({ value, onChange }: CalendarProps) {
   const calendarEnd = endOfWeek(endOfMonth(viewMonth), { weekStartsOn: 1 });
   const days = eachDayOfInterval({ start: calendarStart, end: calendarEnd });
 
-  function getEarliestBookingDate(): Date {
-    const earliest = new Date();
-    earliest.setHours(earliest.getHours() + 36);
-    return new Date(earliest.getFullYear(), earliest.getMonth(), earliest.getDate());
-  }
-
   function isDisabled(day: Date) {
     if (isSunday(day)) return true;
-    if (day < getEarliestBookingDate()) return true;
+    if (day < earliestDate) return true;
     return false;
   }
 
@@ -133,6 +130,11 @@ interface Step4Props {
 }
 
 export function Step4DateTime({ defaultValues, onBack, onComplete }: Step4Props) {
+  // Computed once on mount — a user filling in the form for a few minutes
+  // around the exact 5pm boundary is an acceptable edge case to not chase.
+  const isAfterCutoff = useMemo(() => isPastUkBookingCutoff(), []);
+  const earliestDate = useMemo(() => getEarliestBookingDate(), []);
+
   const {
     register,
     handleSubmit,
@@ -222,6 +224,60 @@ export function Step4DateTime({ defaultValues, onBack, onComplete }: Step4Props)
       </div>
 
       <div>
+        {/* Always shown — urgent booking CTA. Wording changes depending on
+            whether next-day slots are still bookable online (before 5pm UK)
+            or the cutoff has passed (day-after-tomorrow is the earliest). */}
+        <div className="mb-5 p-4 rounded-xl border border-border bg-warm-white flex items-start gap-3">
+          <div className="w-8 h-8 rounded-full bg-compliance-blue/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg
+              className="w-4 h-4 text-compliance-blue"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+          </div>
+          <div>
+            {isAfterCutoff ? (
+              <>
+                <p className="text-sm font-semibold text-brand-charcoal">
+                  Need an urgent appointment?
+                </p>
+                <p className="text-xs text-brand-grey mt-0.5 mb-2">
+                  Online bookings after 5pm are for the day after tomorrow onwards.
+                  For tomorrow&apos;s availability, call us now.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-sm font-semibold text-brand-charcoal">
+                  Need a same-day or urgent booking?
+                </p>
+                <p className="text-xs text-brand-grey mt-0.5 mb-2">
+                  Next-day appointments are available online until 5pm. For
+                  same-day bookings, call us directly.
+                </p>
+              </>
+            )}
+            <a
+              href={TEL}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-compliance-blue hover:underline"
+            >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              Call {PHONE_DISPLAY}
+            </a>
+          </div>
+        </div>
+
         <p className="text-sm font-medium text-brand-charcoal mb-2">
           Preferred appointment date{" "}
           <span className="text-red-500" aria-hidden="true">
@@ -232,9 +288,22 @@ export function Step4DateTime({ defaultValues, onBack, onComplete }: Step4Props)
           control={control}
           name="preferredDate"
           render={({ field }) => (
-            <Calendar value={field.value} onChange={field.onChange} />
+            <Calendar value={field.value} onChange={field.onChange} earliestDate={earliestDate} />
           )}
         />
+        {isAfterCutoff ? (
+          <p className="text-xs text-brand-grey mt-2">
+            Earliest available: the day after tomorrow. For tomorrow, call
+            <a href={TEL} className="text-compliance-blue font-medium ml-1">
+              {PHONE_DISPLAY}
+            </a>
+            .
+          </p>
+        ) : (
+          <p className="text-xs text-brand-grey mt-2">
+            Next-day appointments available — book by 5pm today for tomorrow.
+          </p>
+        )}
         {errors.preferredDate && (
           <p className="mt-1 text-xs text-red-600">
             {errors.preferredDate.message}

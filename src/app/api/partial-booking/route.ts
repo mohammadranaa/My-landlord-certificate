@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getEarliestBookingDate } from "@/lib/booking-datetime";
 
 interface PartialService {
   type: string;
@@ -44,6 +45,21 @@ export async function POST(request: NextRequest) {
 
     if (!email) {
       return NextResponse.json({ saved: false });
+    }
+
+    // Steps 1–3 save with no date chosen yet (appointment.date === ""), so
+    // only validate once a real date is present — Step 4 onwards.
+    if (appointment?.date) {
+      const bookingDate = new Date(appointment.date);
+      if (bookingDate < getEarliestBookingDate()) {
+        return NextResponse.json(
+          {
+            error:
+              "Booking date too soon. For urgent bookings call 020 3996 1070",
+          },
+          { status: 400 },
+        );
+      }
     }
 
     const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
