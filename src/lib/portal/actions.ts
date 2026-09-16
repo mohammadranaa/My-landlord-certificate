@@ -7,6 +7,28 @@ import type { PortalUserStatus } from "@/types/database";
 
 export type SignupResult = { success: true } | { success: false; error: string };
 
+/**
+ * Supabase Auth writes to auth.users, but a service-role query against a
+ * table with a foreign key into auth.users can occasionally run before
+ * that row is visible yet — a few hundred ms of race, not a real error.
+ * Poll briefly for the row to actually be there before inserting against
+ * it, instead of assuming signUp() returning a user id means it's
+ * immediately queryable everywhere.
+ */
+async function waitForAuthUser(
+  serviceClient: ReturnType<typeof createServiceRoleClient>,
+  userId: string,
+  attempts = 5,
+  delayMs = 300,
+): Promise<boolean> {
+  for (let i = 0; i < attempts; i++) {
+    const { data, error } = await serviceClient.auth.admin.getUserById(userId);
+    if (data?.user && !error) return true;
+    await new Promise((resolve) => setTimeout(resolve, delayMs));
+  }
+  return false;
+}
+
 export async function signUpPortalUser(data: SignupData): Promise<SignupResult> {
   const supabase = await createClient();
 
@@ -26,6 +48,16 @@ export async function signUpPortalUser(data: SignupData): Promise<SignupResult> 
   // required, there's no active session yet at this point to satisfy the
   // "authenticated, auth.uid() = auth_user_id" insert policy.
   const serviceClient = createServiceRoleClient();
+
+  const userReady = await waitForAuthUser(serviceClient, authData.user.id);
+  if (!userReady) {
+    console.error("Auth user never became visible for insert:", authData.user.id);
+    return {
+      success: false,
+      error:
+        "Your account was created but setup is taking longer than expected. Please try logging in in a minute, or contact support if it persists.",
+    };
+  }
 
   const { error: insertError } = await serviceClient.from("portal_users").insert({
     auth_user_id: authData.user.id,

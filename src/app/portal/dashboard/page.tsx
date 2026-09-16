@@ -15,7 +15,6 @@ const STATUS_STYLES: Record<string, string> = {
   cancelled: "bg-red-100 text-red-700",
 };
 const DEFAULT_STATUS_STYLE = "bg-compliance-blue/10 text-compliance-blue";
-
 function statusClass(status: string) {
   return STATUS_STYLES[status.toLowerCase()] ?? DEFAULT_STATUS_STYLE;
 }
@@ -26,16 +25,42 @@ const PAYMENT_STYLES: Record<string, string> = {
   unpaid: "bg-brand-amber/15 text-brand-amber",
 };
 const DEFAULT_PAYMENT_STYLE = "bg-brand-grey/10 text-brand-grey";
-
 function paymentClass(status: string) {
   return PAYMENT_STYLES[status.toLowerCase()] ?? DEFAULT_PAYMENT_STYLE;
 }
 
-interface DashboardInvoiceRow {
-  id: string;
+function renewalBadge(expiryDate: string | null) {
+  if (!expiryDate) return null;
+  const days = Math.ceil(
+    (new Date(expiryDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24),
+  );
+  if (days < 0) return { label: "Expired", days, className: "bg-red-100 text-red-700" };
+  if (days <= 60)
+    return {
+      label: `Due in ${days}d`,
+      days,
+      className: "bg-brand-amber/15 text-brand-amber",
+    };
+  return { label: "Valid", days, className: "bg-action-green/15 text-action-green" };
+}
+
+interface CertRow {
+  job_id: string | null;
+  certificate_type: string | null;
+  expiry_date: string | null;
+  public_url: string | null;
+}
+
+interface InvoiceRow {
   job_id: string | null;
   status: string | null;
+  balance_due: number | null;
   date: string | null;
+}
+
+function formatGbp(amount: number | null) {
+  if (amount === null) return "";
+  return `£${amount.toFixed(2)}`;
 }
 
 export default async function PortalDashboardPage() {
@@ -45,24 +70,29 @@ export default async function PortalDashboardPage() {
 
   // Deliberately narrow select — never select("*") on jobs. See
   // database-PATCH-2-instructions.md for why.
-  const [{ data: jobs, error: jobsError }, { data: invoices }] = await Promise.all([
-    supabase
-      .from("jobs")
-      .select(
-        "id, job_number, title, status, site_address, site_postcode, scheduled_date, scheduled_slot, completed_date, certificate_status, created_at",
-      )
-      .order("created_at", { ascending: false })
-      .returns<PortalJobSummary[]>(),
-    supabase
-      .from("invoices")
-      .select("id, job_id, status, date")
-      .order("date", { ascending: false })
-      .returns<DashboardInvoiceRow[]>(),
-  ]);
+  const [{ data: jobs, error: jobsError }, { data: certs }, { data: invoices }] =
+    await Promise.all([
+      supabase
+        .from("jobs")
+        .select(
+          "id, job_number, title, status, site_address, site_postcode, scheduled_date, scheduled_slot, completed_date, certificate_status, created_at",
+        )
+        .order("created_at", { ascending: false })
+        .returns<PortalJobSummary[]>(),
+      supabase
+        .from("certificates")
+        .select("job_id, certificate_type, expiry_date, public_url")
+        .returns<CertRow[]>(),
+      supabase
+        .from("invoices")
+        .select("job_id, status, balance_due, date")
+        .order("date", { ascending: false })
+        .returns<InvoiceRow[]>(),
+    ]);
 
   if (jobsError) {
     return (
-      <div className="mx-auto max-w-4xl px-4 py-12">
+      <div className="mx-auto max-w-6xl px-4 py-12">
         <p className="text-sm text-red-600">
           Couldn't load your jobs right now. Please refresh, or contact us if
           this keeps happening.
@@ -71,9 +101,15 @@ export default async function PortalDashboardPage() {
     );
   }
 
-  // Most recent invoice per job (already ordered by date desc above), for
-  // the payment badge on each card.
-  const latestInvoiceByJob = new Map<string, DashboardInvoiceRow>();
+  const certsByJob = new Map<string, CertRow[]>();
+  for (const cert of certs ?? []) {
+    if (!cert.job_id) continue;
+    const list = certsByJob.get(cert.job_id) ?? [];
+    list.push(cert);
+    certsByJob.set(cert.job_id, list);
+  }
+
+  const latestInvoiceByJob = new Map<string, InvoiceRow>();
   for (const inv of invoices ?? []) {
     if (!inv.job_id) continue;
     if (!latestInvoiceByJob.has(inv.job_id)) {
@@ -82,7 +118,7 @@ export default async function PortalDashboardPage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-6xl px-4 py-10">
       {portalUser.client_id && (
         <PortalRealtimeRefresher
           channelName={`portal-dashboard-${portalUser.client_id}`}
@@ -92,7 +128,9 @@ export default async function PortalDashboardPage() {
         />
       )}
 
-      <h1 className="mb-6 text-2xl font-bold text-brand-charcoal">Your jobs</h1>
+      <h1 className="mb-6 text-2xl font-bold text-brand-charcoal">
+        Your properties
+      </h1>
 
       {jobs.length === 0 ? (
         <p className="text-sm text-brand-grey">
@@ -100,48 +138,133 @@ export default async function PortalDashboardPage() {
           it'll show up here.
         </p>
       ) : (
-        <div className="space-y-3">
-          {jobs.map((job) => {
-            const invoice = latestInvoiceByJob.get(job.id);
-            return (
-              <Link
-                key={job.id}
-                href={`/portal/jobs/${job.id}`}
-                className="block rounded-xl border border-border bg-white p-4 transition-colors hover:border-compliance-blue"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-semibold text-brand-charcoal">{job.title}</p>
-                    <p className="text-sm text-brand-grey">
-                      {job.site_address}
-                      {job.site_postcode ? `, ${job.site_postcode}` : ""}
-                    </p>
-                    <p className="mt-1 text-xs text-brand-grey">Job #{job.job_number}</p>
-                  </div>
-                  <div className="flex shrink-0 flex-col items-end gap-1.5">
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-medium ${statusClass(job.status)}`}
-                    >
-                      {job.status}
-                    </span>
-                    {invoice?.status && (
+        <div className="overflow-x-auto rounded-xl border border-border bg-white">
+          <table className="w-full min-w-[900px] text-left text-sm">
+            <thead>
+              <tr className="border-b border-border text-xs font-medium text-brand-grey">
+                <th className="px-4 py-3">Property</th>
+                <th className="px-4 py-3">Job</th>
+                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">Certificate</th>
+                <th className="px-4 py-3">Renewal</th>
+                <th className="px-4 py-3">Payment</th>
+                <th className="px-4 py-3">Scheduled</th>
+                <th className="px-4 py-3" />
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.map((job) => {
+                const jobCerts = certsByJob.get(job.id) ?? [];
+                const invoice = latestInvoiceByJob.get(job.id);
+
+                // Most urgent renewal across this job's certificates (soonest
+                // expiry, or already expired) — the one worth surfacing.
+                const mostUrgent = jobCerts
+                  .map((c) => ({ cert: c, badge: renewalBadge(c.expiry_date) }))
+                  .filter((x) => x.badge)
+                  .sort((a, b) => (a.badge!.days ?? 0) - (b.badge!.days ?? 0))[0];
+
+                return (
+                  <tr
+                    key={job.id}
+                    className="border-b border-border last:border-b-0 hover:bg-warm-white"
+                  >
+                    <td className="px-4 py-3 align-top">
+                      <p className="font-medium text-brand-charcoal">
+                        {job.site_address ?? "—"}
+                      </p>
+                      {job.site_postcode && (
+                        <p className="text-xs text-brand-grey">{job.site_postcode}</p>
+                      )}
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
+                      <p className="text-brand-charcoal">{job.title}</p>
+                      <p className="text-xs text-brand-grey">#{job.job_number}</p>
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
                       <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${paymentClass(invoice.status)}`}
+                        className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${statusClass(job.status)}`}
                       >
-                        {invoice.status}
+                        {job.status}
                       </span>
-                    )}
-                  </div>
-                </div>
-                {job.scheduled_date && (
-                  <p className="mt-2 text-xs text-brand-grey">
-                    Scheduled {job.scheduled_date}
-                    {job.scheduled_slot ? ` · ${job.scheduled_slot}` : ""}
-                  </p>
-                )}
-              </Link>
-            );
-          })}
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
+                      {jobCerts.length === 0 ? (
+                        <span className="text-xs text-brand-grey">None yet</span>
+                      ) : (
+                        <div className="space-y-1">
+                          {jobCerts.map((cert, i) =>
+                            cert.public_url ? (
+                              <a
+                                key={i}
+                                href={cert.public_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block text-compliance-blue hover:underline"
+                              >
+                                {cert.certificate_type}
+                              </a>
+                            ) : (
+                              <p key={i} className="text-brand-charcoal">
+                                {cert.certificate_type}
+                              </p>
+                            ),
+                          )}
+                        </div>
+                      )}
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
+                      {mostUrgent ? (
+                        <span
+                          className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${mostUrgent.badge!.className}`}
+                        >
+                          {mostUrgent.badge!.label}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-brand-grey">—</span>
+                      )}
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
+                      {invoice?.status ? (
+                        <div>
+                          <span
+                            className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${paymentClass(invoice.status)}`}
+                          >
+                            {invoice.status}
+                          </span>
+                          {invoice.balance_due !== null && invoice.balance_due > 0 && (
+                            <p className="mt-1 text-xs text-brand-grey">
+                              {formatGbp(invoice.balance_due)} due
+                            </p>
+                          )}
+                        </div>
+                      ) : (
+                        <span className="text-xs text-brand-grey">No invoice</span>
+                      )}
+                    </td>
+
+                    <td className="px-4 py-3 align-top text-brand-charcoal">
+                      {job.scheduled_date ?? job.completed_date ?? "—"}
+                    </td>
+
+                    <td className="px-4 py-3 align-top">
+                      <Link
+                        href={`/portal/jobs/${job.id}`}
+                        className="font-medium text-compliance-blue hover:underline"
+                      >
+                        View
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
