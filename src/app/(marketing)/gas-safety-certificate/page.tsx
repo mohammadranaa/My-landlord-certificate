@@ -42,6 +42,7 @@ export const metadata: Metadata = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  serviceType: "Gas Safety Certificate (CP12)",
   name: "Gas Safety Certificate (CP12)",
   url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   description:

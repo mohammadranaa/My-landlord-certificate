@@ -77,6 +77,7 @@ const localBusinessSchema = {
   url: "https://www.mylandlordcertificate.co.uk",
   telephone: PHONE_NUMBER,
   email: EMAIL,
+  image: "https://www.mylandlordcertificate.co.uk/header-logo.png",
   description:
     "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. No hidden charges, next-day appointments across London.",
   address: {

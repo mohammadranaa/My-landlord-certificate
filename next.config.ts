@@ -73,6 +73,9 @@ const nextConfig: NextConfig = {
       // Misplaced pages from prior build pass
       { source: "/fire-safety/asbestos-survey", destination: "/asbestos-survey", permanent: true },
       { source: "/fire-safety/commercial-fire-risk-assessment", destination: "/fire-risk-assessment", permanent: true },
+      // TODO: remove once the dedicated Commercial FRA page (CLAUDE.md §8,
+      // planned at this exact slug, from £149.99) is built.
+      { source: "/commercial-fire-risk-assessment", destination: "/fire-risk-assessment", permanent: true },
       // Flatten electrical sub-pages
       { source: "/electrical-safety/electrical-diagnostic", destination: "/electrical-diagnostic", permanent: true },
       { source: "/electrical-safety/fuse-box-installation", destination: "/fuse-box-installation", permanent: true },

@@ -52,6 +52,7 @@ const epcReviews = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  serviceType: "Energy Performance Certificate (EPC)",
   name: "Domestic Energy Performance Certificate (EPC)",
   url: "https://www.mylandlordcertificate.co.uk/epc",
   description:

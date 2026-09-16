@@ -64,6 +64,7 @@ export const metadata: Metadata = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  serviceType: "EICR - Electrical Installation Condition Report",
   name: "EICR, Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/eicr",
   description:

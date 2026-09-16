@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  serviceType: "Fire Risk Assessment",
   name: "Fire Risk Assessment",
   url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   description:
