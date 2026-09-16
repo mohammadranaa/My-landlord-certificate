@@ -120,6 +120,7 @@ export interface PortalJobSummary {
   scheduled_slot: string | null;
   completed_date: string | null;
   certificate_status: string | null;
+  property_id: string | null;
   created_at: string;
 }
 
@@ -136,6 +137,7 @@ export interface PortalJobDetail extends PortalJobSummary {
 export interface PortalCertificate {
   id: string;
   job_id: string | null;
+  property_id: string | null;
   certificate_type: string | null;
   site_address: string | null;
   issue_date: string | null;
@@ -170,6 +172,17 @@ export interface PortalInvoice {
   status: string | null;
   date: string | null;
   sent_at: string | null;
+}
+
+export interface PortalProperty {
+  id: string;
+  client_id: string | null;
+  address: string;
+  city: string | null;
+  postcode: string | null;
+  property_type: string | null;
+  property_subtype: string | null;
+  bedrooms: number | null;
 }
 
 /**
@@ -375,6 +388,11 @@ export interface Database {
         Row: PortalInvoice;
         Insert: Partial<PortalInvoice>;
         Update: Partial<PortalInvoice>;
+      };
+      properties: {
+        Row: PortalProperty;
+        Insert: Partial<PortalProperty>;
+        Update: Partial<PortalProperty>;
       };
       clients: {
         Row: AdminClientRef;
