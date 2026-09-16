@@ -1,10 +1,10 @@
+import Link from "next/link";
 import { getPortalSession } from "@/lib/portal/session";
 import { LogoutButton } from "@/components/portal/logout-button";
-import Link from "next/link";
 
-// Simple header shell for the unauthenticated/pending flow — login, signup,
-// pending. The approved-agent app shell (sidebar, KPIs) lives in the
-// sibling (app) route group instead.
+// Scoped to login/signup/pending only. The full sidebar shell for the
+// authenticated app lives separately in (app)/layout.tsx — these two never
+// overlap, so there's exactly one header rendered per route, never two.
 export default async function PortalAuthLayout({
   children,
 }: {

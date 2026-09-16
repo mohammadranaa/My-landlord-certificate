@@ -5,13 +5,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Bare pass-through — the (auth) and (app) route groups each render their
-// own shell (simple header vs. full sidebar app). This layout only exists
-// to hold metadata shared across all of /portal/*.
-export default function PortalLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+// Deliberately bare. The simple top-bar shell now lives in
+// (auth)/layout.tsx (login/signup/pending only), and the full sidebar shell
+// lives in (app)/layout.tsx (dashboard/jobs/account). This outer layout
+// exists only because /portal/page.tsx needs *something* above it — it
+// must never render its own header, or every (app) route gets two stacked
+// headers.
+export default function PortalLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
