@@ -4,7 +4,6 @@ import { createClient } from "@/lib/supabase/server";
 import {
   getPortfolioData,
   cellStatus,
-  certExpiryStatus,
   daysUntil,
   CERT_CODES,
   CERT_TYPE_LABELS,
@@ -83,7 +82,7 @@ const STATUS_TYPE_MAP: Record<"expired" | "expiring" | "missing", CertStatus> = 
 };
 
 export default async function PortalOverviewPage() {
-  const { properties, kpis, certs } = await getPortfolioData();
+  const { properties, kpis, byType: byTypeCounts } = await getPortfolioData();
 
   const totalProperties = properties.length;
   const compliantPct = totalProperties > 0 ? Math.round((kpis.compliant / totalProperties) * 100) : 0;
@@ -96,25 +95,6 @@ export default async function PortalOverviewPage() {
   ];
 
   const needsAttention = buildNeedsAttention(properties);
-
-  // By-type breakdown, computed from the real certificate rows across the
-  // whole portfolio (not the per-property KPI tallies, which only count
-  // "worst status per property" — this wants every individual cell).
-  const byTypeCounts: Record<CertCode, { valid: number; expiring: number; expired: number; total: number }> =
-    CERT_CODES.reduce(
-      (acc, code) => ({ ...acc, [code]: { valid: 0, expiring: 0, expired: 0, total: 0 } }),
-      {} as Record<CertCode, { valid: number; expiring: number; expired: number; total: number }>,
-    );
-  for (const group of properties) {
-    for (const code of CERT_CODES) {
-      const certsOfType = group.certsByCode[code];
-      if (certsOfType.length === 0) continue;
-      const latest = certsOfType.reduce((a, b) => ((a.issue_date ?? "") > (b.issue_date ?? "") ? a : b));
-      const status = certExpiryStatus(latest.expiry_date);
-      byTypeCounts[code][status] += 1;
-      byTypeCounts[code].total += 1;
-    }
-  }
 
   // Recent activity — real job_diary entries, public-facing only.
   const supabase = await createClient();
