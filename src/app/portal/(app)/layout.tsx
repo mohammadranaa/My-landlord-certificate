@@ -1,6 +1,7 @@
 import { Barlow, Barlow_Condensed } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import { Toaster } from "sonner";
 import { requireApprovedPortalUser } from "@/lib/portal/session";
 import { getPortfolioData } from "@/lib/portal/properties";
 import { LogoutButton } from "@/components/portal/logout-button";
@@ -56,10 +57,11 @@ export default async function PortalAppLayout({
     .toUpperCase();
 
   return (
-    <div className={`${barlow.variable} ${barlowCondensed.variable} flex min-h-screen bg-[#FAFAF7]`}>
+    <div className={`${barlow.variable} ${barlowCondensed.variable} flex h-screen bg-[#FAFAF7]`}>
+      <Toaster position="bottom-center" richColors />
       {/* Sidebar */}
       <aside
-        className="flex w-[244px] shrink-0 flex-col text-[#FAFAF7]"
+        className="flex h-screen w-[244px] shrink-0 flex-col overflow-y-auto text-[#FAFAF7]"
         style={{
           padding: "26px 18px 22px",
           background: "#1F2937",
@@ -141,7 +143,7 @@ export default async function PortalAppLayout({
       </aside>
 
       {/* Main column */}
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex h-screen min-w-0 flex-1 flex-col overflow-hidden">
         <header
           className="flex items-center gap-4 bg-white px-8 py-4"
           style={{ borderBottom: "1px solid #e7e4dc" }}
@@ -179,7 +181,7 @@ export default async function PortalAppLayout({
           </div>
         </header>
 
-        <main className="flex-1" style={{ padding: "30px 32px 56px" }}>
+        <main className="flex-1 overflow-y-auto" style={{ padding: "30px 32px 56px" }}>
           <div className="mx-auto" style={{ maxWidth: 1220 }}>
             {children}
           </div>
