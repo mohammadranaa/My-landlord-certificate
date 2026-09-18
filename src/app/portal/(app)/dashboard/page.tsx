@@ -1,272 +1,351 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { requireApprovedPortalUser } from "@/lib/portal/session";
 import { createClient } from "@/lib/supabase/server";
-import { PortalRealtimeRefresher } from "@/components/portal/realtime-refresher";
-import type { PortalJobSummary } from "@/types/database";
+import {
+  getPortfolioData,
+  cellStatus,
+  certExpiryStatus,
+  daysUntil,
+  CERT_CODES,
+  CERT_TYPE_LABELS,
+  type CertCode,
+  type CertStatus,
+} from "@/lib/portal/properties";
+import { RegistrationMarks } from "@/components/portal/registration-marks";
+import { StatusBadge } from "@/components/portal/status";
+import { RequestRenewalDialog } from "@/components/portal/request-renewal-dialog";
+import { ToastStubButton } from "@/components/portal/toast-stub-button";
+import type { PortalDiaryEntry } from "@/types/database";
 
 export const metadata: Metadata = {
-  title: "Dashboard — Agent Portal — My Landlord Certificate",
+  title: "Overview — Agent Portal — My Landlord Certificate",
   robots: { index: false, follow: false },
 };
 
-const STATUS_STYLES: Record<string, string> = {
-  completed: "bg-action-green/15 text-action-green",
-  cancelled: "bg-red-100 text-red-700",
-};
-const DEFAULT_STATUS_STYLE = "bg-compliance-blue/10 text-compliance-blue";
-function statusClass(status: string) {
-  return STATUS_STYLES[status.toLowerCase()] ?? DEFAULT_STATUS_STYLE;
+const condensed: React.CSSProperties = { fontFamily: "var(--font-barlow-condensed)" };
+
+interface NeedsAttentionRow {
+  code: CertCode;
+  address: string;
+  postcode: string | null;
+  status: "expired" | "expiring" | "missing";
+  urgencyText: string;
+  publicUrl: string | null;
+  sortKey: number;
 }
 
-const PAYMENT_STYLES: Record<string, string> = {
-  paid: "bg-action-green/15 text-action-green",
-  overdue: "bg-red-100 text-red-700",
-  unpaid: "bg-brand-amber/15 text-brand-amber",
-};
-const DEFAULT_PAYMENT_STYLE = "bg-brand-grey/10 text-brand-grey";
-function paymentClass(status: string) {
-  return PAYMENT_STYLES[status.toLowerCase()] ?? DEFAULT_PAYMENT_STYLE;
-}
+function buildNeedsAttention(properties: Awaited<ReturnType<typeof getPortfolioData>>["properties"]) {
+  const rows: NeedsAttentionRow[] = [];
 
-function renewalBadge(expiryDate: string | null) {
-  if (!expiryDate) return null;
-  const days = Math.ceil(
-    (new Date(expiryDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24),
-  );
-  if (days < 0) return { label: "Expired", days, className: "bg-red-100 text-red-700" };
-  if (days <= 60)
-    return {
-      label: `Due in ${days}d`,
-      days,
-      className: "bg-brand-amber/15 text-brand-amber",
-    };
-  return { label: "Valid", days, className: "bg-action-green/15 text-action-green" };
-}
+  for (const group of properties) {
+    for (const code of CERT_CODES) {
+      const certsOfType = group.certsByCode[code];
+      const hasOpenJob = group.jobs.some((j) => j.status?.toLowerCase() !== "completed");
+      const status = cellStatus(certsOfType, hasOpenJob && certsOfType.length === 0);
+      if (status !== "expired" && status !== "expiring" && status !== "missing") continue;
 
-interface CertRow {
-  job_id: string | null;
-  certificate_type: string | null;
-  expiry_date: string | null;
-  public_url: string | null;
-}
+      const latestCert =
+        certsOfType.length > 0
+          ? certsOfType.reduce((a, b) => ((a.issue_date ?? "") > (b.issue_date ?? "") ? a : b))
+          : null;
 
-interface InvoiceRow {
-  job_id: string | null;
-  status: string | null;
-  balance_due: number | null;
-  date: string | null;
-}
+      let urgencyText: string;
+      let sortKey: number;
 
-function formatGbp(amount: number | null) {
-  if (amount === null) return "";
-  return `£${amount.toFixed(2)}`;
-}
+      if (status === "missing") {
+        urgencyText = "Never supplied";
+        sortKey = -100000;
+      } else {
+        const days = daysUntil(latestCert!.expiry_date) ?? 0;
+        sortKey = days;
+        urgencyText = status === "expired" ? `Expired ${Math.abs(days)} days ago` : `Expires in ${days} days`;
+      }
 
-export default async function PortalDashboardPage() {
-  const portalUser = await requireApprovedPortalUser();
-
-  const supabase = await createClient();
-
-  // Deliberately narrow select — never select("*") on jobs. See
-  // database-PATCH-2-instructions.md for why.
-  const [{ data: jobs, error: jobsError }, { data: certs }, { data: invoices }] =
-    await Promise.all([
-      supabase
-        .from("jobs")
-        .select(
-          "id, job_number, title, status, site_address, site_postcode, scheduled_date, scheduled_slot, completed_date, certificate_status, created_at",
-        )
-        .order("created_at", { ascending: false })
-        .returns<PortalJobSummary[]>(),
-      supabase
-        .from("certificates")
-        .select("job_id, certificate_type, expiry_date, public_url")
-        .returns<CertRow[]>(),
-      supabase
-        .from("invoices")
-        .select("job_id, status, balance_due, date")
-        .order("date", { ascending: false })
-        .returns<InvoiceRow[]>(),
-    ]);
-
-  if (jobsError) {
-    return (
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <p className="text-sm text-red-600">
-          Couldn't load your jobs right now. Please refresh, or contact us if
-          this keeps happening.
-        </p>
-      </div>
-    );
-  }
-
-  const certsByJob = new Map<string, CertRow[]>();
-  for (const cert of certs ?? []) {
-    if (!cert.job_id) continue;
-    const list = certsByJob.get(cert.job_id) ?? [];
-    list.push(cert);
-    certsByJob.set(cert.job_id, list);
-  }
-
-  const latestInvoiceByJob = new Map<string, InvoiceRow>();
-  for (const inv of invoices ?? []) {
-    if (!inv.job_id) continue;
-    if (!latestInvoiceByJob.has(inv.job_id)) {
-      latestInvoiceByJob.set(inv.job_id, inv);
+      rows.push({
+        code,
+        address: group.property.address,
+        postcode: group.property.postcode,
+        status,
+        urgencyText,
+        publicUrl: latestCert?.public_url ?? null,
+        sortKey,
+      });
     }
   }
 
+  return rows.sort((a, b) => a.sortKey - b.sortKey).slice(0, 8);
+}
+
+const STATUS_TYPE_MAP: Record<"expired" | "expiring" | "missing", CertStatus> = {
+  expired: "expired",
+  expiring: "expiring",
+  missing: "missing",
+};
+
+export default async function PortalOverviewPage() {
+  const { properties, kpis, certs } = await getPortfolioData();
+
+  const totalProperties = properties.length;
+  const compliantPct = totalProperties > 0 ? Math.round((kpis.compliant / totalProperties) * 100) : 0;
+
+  const kpiPlates = [
+    { label: "Fully compliant", value: kpis.compliant, note: `${compliantPct}% of the portfolio`, dot: "#80D100" },
+    { label: "Expiring ≤ 30 days", value: kpis.expiring, note: "Renewal window open", dot: "#F59E0B" },
+    { label: "Expired / breach", value: kpis.expiredOrBreach, note: "Action required today", dot: "#D14343" },
+    { label: "Awaiting certificate", value: kpis.awaitingCertificate, note: "Visit complete, PDF pending", dot: "#0093DB" },
+  ];
+
+  const needsAttention = buildNeedsAttention(properties);
+
+  // By-type breakdown, computed from the real certificate rows across the
+  // whole portfolio (not the per-property KPI tallies, which only count
+  // "worst status per property" — this wants every individual cell).
+  const byTypeCounts: Record<CertCode, { valid: number; expiring: number; expired: number; total: number }> =
+    CERT_CODES.reduce(
+      (acc, code) => ({ ...acc, [code]: { valid: 0, expiring: 0, expired: 0, total: 0 } }),
+      {} as Record<CertCode, { valid: number; expiring: number; expired: number; total: number }>,
+    );
+  for (const group of properties) {
+    for (const code of CERT_CODES) {
+      const certsOfType = group.certsByCode[code];
+      if (certsOfType.length === 0) continue;
+      const latest = certsOfType.reduce((a, b) => ((a.issue_date ?? "") > (b.issue_date ?? "") ? a : b));
+      const status = certExpiryStatus(latest.expiry_date);
+      byTypeCounts[code][status] += 1;
+      byTypeCounts[code].total += 1;
+    }
+  }
+
+  // Recent activity — real job_diary entries, public-facing only.
+  const supabase = await createClient();
+  const { data: diaryEntries } = await supabase
+    .from("job_diary")
+    .select("id, job_id, entry_type, content, author_name, is_internal, created_at")
+    .eq("is_internal", false)
+    .order("created_at", { ascending: false })
+    .limit(5)
+    .returns<PortalDiaryEntry[]>();
+
+  const jobById = new Map(properties.flatMap((g) => g.jobs.map((j) => [j.id, j])));
+
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      {portalUser.client_id && (
-        <PortalRealtimeRefresher
-          channelName={`portal-dashboard-${portalUser.client_id}`}
-          subscriptions={[
-            { table: "jobs", filter: `client_id=eq.${portalUser.client_id}` },
-          ]}
-        />
-      )}
+    <div>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-[13px] font-semibold uppercase tracking-[.2em] text-[#0078b8]" style={condensed}>
+            Overview
+          </p>
+          <h1 className="mt-1 text-[40px] font-semibold leading-[1.08] text-[#1F2937]" style={condensed}>
+            Portfolio compliance
+          </h1>
+          <p className="mt-2 max-w-[60ch] text-[15px] text-[#4B5563]">
+            {totalProperties} managed properties across {CERT_CODES.length} certificate types. Everything
+            below is live from your job and certificate records.
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <ToastStubButton
+            label="Download pack"
+            message="Compliance pack generating — we'll email the ZIP shortly."
+          />
+          <ToastStubButton
+            label="Request renewals"
+            message="Renewal requests sent for every property needing action."
+            variant="primary"
+          />
+        </div>
+      </div>
 
-      <h1 className="mb-6 text-2xl font-bold text-brand-charcoal">
-        Your properties
-      </h1>
+      {/* KPI row */}
+      <div
+        className="mt-[26px] grid gap-[18px]"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
+      >
+        {kpiPlates.map((kpi) => (
+          <div key={kpi.label} className="relative border border-[#dcdfd8] bg-white p-5">
+            <RegistrationMarks />
+            <div className="flex items-center gap-2">
+              <span className="h-[9px] w-[9px]" style={{ background: kpi.dot }} />
+              <span
+                className="text-[13px] font-semibold uppercase tracking-[.16em] text-[#4B5563]"
+                style={condensed}
+              >
+                {kpi.label}
+              </span>
+            </div>
+            <p className="mt-2 text-[52px] font-semibold leading-none text-[#1F2937]" style={condensed}>
+              {kpi.value}
+            </p>
+            <p className="mt-1 text-[13px] text-[#6B7280]">{kpi.note}</p>
+          </div>
+        ))}
+      </div>
 
-      {jobs.length === 0 ? (
-        <p className="text-sm text-brand-grey">
-          No jobs on file yet. Once we start work on one of your properties,
-          it'll show up here.
-        </p>
-      ) : (
-        <div className="overflow-x-auto rounded-xl border border-border bg-white">
-          <table className="w-full min-w-[900px] text-left text-sm">
-            <thead>
-              <tr className="border-b border-border text-xs font-medium text-brand-grey">
-                <th className="px-4 py-3">Property</th>
-                <th className="px-4 py-3">Job</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Certificate</th>
-                <th className="px-4 py-3">Renewal</th>
-                <th className="px-4 py-3">Payment</th>
-                <th className="px-4 py-3">Scheduled</th>
-                <th className="px-4 py-3" />
-              </tr>
-            </thead>
-            <tbody>
-              {jobs.map((job) => {
-                const jobCerts = certsByJob.get(job.id) ?? [];
-                const invoice = latestInvoiceByJob.get(job.id);
+      {/* Needs attention */}
+      <div className="mt-[26px] border border-[#dcdfd8] bg-white">
+        <div className="flex items-center justify-between border-b border-[#e7e4dc] px-5 py-4">
+          <h2 className="text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+            Needs attention
+          </h2>
+          <span className="text-[13px] text-[#6B7280]">Sorted by urgency</span>
+        </div>
 
-                // Most urgent renewal across this job's certificates (soonest
-                // expiry, or already expired) — the one worth surfacing.
-                const mostUrgent = jobCerts
-                  .map((c) => ({ cert: c, badge: renewalBadge(c.expiry_date) }))
-                  .filter((x) => x.badge)
-                  .sort((a, b) => (a.badge!.days ?? 0) - (b.badge!.days ?? 0))[0];
+        {needsAttention.length === 0 ? (
+          <p className="px-5 py-6 text-sm text-[#6B7280]">Nothing needs attention right now.</p>
+        ) : (
+          <div>
+            {needsAttention.map((row, i) => (
+              <div
+                key={`${row.address}-${row.code}-${i}`}
+                className="grid items-center gap-4 border-b border-[#f0eee7] px-5 py-4 last:border-b-0"
+                style={{ gridTemplateColumns: "minmax(0,1.6fr) minmax(0,.9fr) minmax(0,.7fr) auto" }}
+              >
+                <div className="flex items-center gap-3">
+                  <StatusCode code={row.code} status={STATUS_TYPE_MAP[row.status]} />
+                  <div className="min-w-0">
+                    <Link
+                      href="/portal/properties"
+                      className="block truncate text-[15px] font-semibold text-[#1F2937] hover:text-[#0078b8]"
+                    >
+                      {row.address}
+                    </Link>
+                    <p className="truncate text-[12.5px] text-[#6B7280]">
+                      {CERT_TYPE_LABELS[row.code]} · {row.postcode ?? "—"}
+                    </p>
+                  </div>
+                </div>
 
+                <p className="text-[13.5px] text-[#4B5563]">{row.urgencyText}</p>
+
+                <div>
+                  <StatusBadge status={STATUS_TYPE_MAP[row.status]} />
+                </div>
+
+                <div className="flex items-center gap-2 justify-self-end">
+                  {row.publicUrl ? (
+                    <a
+                      href={row.publicUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-[#cfd6de] bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8]"
+                    >
+                      PDF
+                    </a>
+                  ) : (
+                    <span className="px-3 py-1.5 text-[12.5px] text-[#9CA3AF]">No PDF</span>
+                  )}
+                  <RequestRenewalDialog
+                    title={CERT_TYPE_LABELS[row.code]}
+                    subtitle={`${row.address}, ${row.postcode ?? ""}`}
+                    trigger={
+                      <button className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-1.5 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7]">
+                        Request renewal
+                      </button>
+                    }
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Two-up: by-type + recent activity */}
+      <div
+        className="mt-[26px] grid gap-[18px]"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
+      >
+        <div className="border border-[#dcdfd8] bg-white p-5">
+          <h2 className="mb-4 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+            By certificate type
+          </h2>
+          <div className="space-y-3">
+            {CERT_CODES.map((code) => {
+              const c = byTypeCounts[code];
+              const total = c.total || 1;
+              const validPct = (c.valid / total) * 100;
+              const expiringPct = (c.expiring / total) * 100;
+              const expiredPct = (c.expired / total) * 100;
+              return (
+                <div
+                  key={code}
+                  className="grid items-center gap-3"
+                  style={{ gridTemplateColumns: "118px minmax(0,1fr) 64px" }}
+                >
+                  <span className="text-[13px] font-medium text-[#4B5563]">{CERT_TYPE_LABELS[code]}</span>
+                  <div className="flex h-[10px] w-full overflow-hidden bg-[#f0eee7]">
+                    <div style={{ width: `${validPct}%`, background: "#80D100" }} />
+                    <div style={{ width: `${expiringPct}%`, background: "#F59E0B" }} />
+                    <div style={{ width: `${expiredPct}%`, background: "#D14343" }} />
+                  </div>
+                  <span className="text-right text-[13px] text-[#6B7280]">
+                    {c.expiring + c.expired} / {c.total}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="border border-[#dcdfd8] bg-white p-5">
+          <h2 className="mb-4 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+            Recent activity
+          </h2>
+          {!diaryEntries || diaryEntries.length === 0 ? (
+            <p className="text-sm text-[#9CA3AF]">No recent activity.</p>
+          ) : (
+            <div className="space-y-3">
+              {diaryEntries.map((entry) => {
+                const job = jobById.get(entry.job_id ?? "");
                 return (
-                  <tr
-                    key={job.id}
-                    className="border-b border-border last:border-b-0 hover:bg-warm-white"
+                  <div
+                    key={entry.id}
+                    className="grid items-start gap-3"
+                    style={{ gridTemplateColumns: "14px minmax(0,1fr)" }}
                   >
-                    <td className="px-4 py-3 align-top">
-                      <p className="font-medium text-brand-charcoal">
-                        {job.site_address ?? "—"}
+                    <span className="mt-1 h-[9px] w-[9px] shrink-0" style={{ background: "#0093DB" }} />
+                    <div>
+                      <p className="text-[14px] text-[#1F2937]">
+                        {entry.content}
+                        {job?.site_address ? ` — ${job.site_address}` : ""}
                       </p>
-                      {job.site_postcode && (
-                        <p className="text-xs text-brand-grey">{job.site_postcode}</p>
-                      )}
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      <p className="text-brand-charcoal">{job.title}</p>
-                      <p className="text-xs text-brand-grey">#{job.job_number}</p>
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      <span
-                        className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${statusClass(job.status)}`}
-                      >
-                        {job.status}
-                      </span>
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      {jobCerts.length === 0 ? (
-                        <span className="text-xs text-brand-grey">None yet</span>
-                      ) : (
-                        <div className="space-y-1">
-                          {jobCerts.map((cert, i) =>
-                            cert.public_url ? (
-                              <a
-                                key={i}
-                                href={cert.public_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block text-compliance-blue hover:underline"
-                              >
-                                {cert.certificate_type}
-                              </a>
-                            ) : (
-                              <p key={i} className="text-brand-charcoal">
-                                {cert.certificate_type}
-                              </p>
-                            ),
-                          )}
-                        </div>
-                      )}
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      {mostUrgent ? (
-                        <span
-                          className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${mostUrgent.badge!.className}`}
-                        >
-                          {mostUrgent.badge!.label}
-                        </span>
-                      ) : (
-                        <span className="text-xs text-brand-grey">—</span>
-                      )}
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      {invoice?.status ? (
-                        <div>
-                          <span
-                            className={`inline-block rounded-full px-2.5 py-1 text-xs font-medium ${paymentClass(invoice.status)}`}
-                          >
-                            {invoice.status}
-                          </span>
-                          {invoice.balance_due !== null && invoice.balance_due > 0 && (
-                            <p className="mt-1 text-xs text-brand-grey">
-                              {formatGbp(invoice.balance_due)} due
-                            </p>
-                          )}
-                        </div>
-                      ) : (
-                        <span className="text-xs text-brand-grey">No invoice</span>
-                      )}
-                    </td>
-
-                    <td className="px-4 py-3 align-top text-brand-charcoal">
-                      {job.scheduled_date ?? job.completed_date ?? "—"}
-                    </td>
-
-                    <td className="px-4 py-3 align-top">
-                      <Link
-                        href={`/portal/jobs/${job.id}`}
-                        className="font-medium text-compliance-blue hover:underline"
-                      >
-                        View
-                      </Link>
-                    </td>
-                  </tr>
+                      <p className="mt-0.5 text-[12px] text-[#9CA3AF]">
+                        {new Date(entry.created_at).toLocaleString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                        {entry.author_name ? ` · ${entry.author_name}` : ""}
+                      </p>
+                    </div>
+                  </div>
                 );
               })}
-            </tbody>
-          </table>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
+  );
+}
+
+function StatusCode({ code, status }: { code: CertCode; status: CertStatus }) {
+  const colors: Record<CertStatus, { text: string; border: string }> = {
+    valid: { text: "#4f8a00", border: "#80D100" },
+    expiring: { text: "#96620a", border: "#F59E0B" },
+    expired: { text: "#a52222", border: "#D14343" },
+    booked: { text: "#0078b8", border: "#0093DB" },
+    missing: { text: "#4B5563", border: "#9CA3AF" },
+    na: { text: "#6B7280", border: "#E5E7EB" },
+  };
+  const c = colors[status];
+  return (
+    <span
+      className="flex h-[30px] w-[46px] shrink-0 items-center justify-center border text-[13px] font-semibold uppercase tracking-[.08em]"
+      style={{ color: c.text, borderColor: c.border, ...condensed }}
+    >
+      {code}
+    </span>
   );
 }
