@@ -168,6 +168,11 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
     href: "/book?service=gas-safety-cp12",
     subtext: "Annual requirement · Gas Safe registered engineers",
   },
+  "gas-safety-certificate-cost-london": {
+    label: `Book your Gas Safety Certificate from £${gasPrice}`,
+    href: "/book?service=gas-safety-cp12",
+    subtext: "Fixed price · No hidden charges · Next-day appointments",
+  },
   "how-to-improve-epc-rating": {
     label: `Book your EPC from £${epcPrice}`,
     href: "/book?service=epc",
