@@ -72,21 +72,21 @@ const serviceSchema = {
       {
         "@type": "Offer",
         name: "Studio apartment FRA",
-        price: "74",
+        price: String(getPriceForFRA("studio")),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "1–3 bedroom FRA",
-        price: "139.99",
+        price: String(getPriceForFRA("1-3bed")),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "Up to 4 bedroom FRA",
-        price: "179.99",
+        price: String(getPriceForFRA("4bed")),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
@@ -94,7 +94,7 @@ const serviceSchema = {
   },
   offers: {
     "@type": "Offer",
-    price: "74",
+    price: String(getPriceForFRA("studio")),
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
@@ -113,7 +113,7 @@ const productSchema = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "74",
+    lowPrice: String(getPriceForFRA("studio")),
     highPrice: "539.99",
     priceCurrency: "GBP",
     offerCount: "16",

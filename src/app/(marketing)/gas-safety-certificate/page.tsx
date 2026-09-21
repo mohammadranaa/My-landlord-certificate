@@ -64,15 +64,16 @@ const serviceSchema = {
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Gas Safety Certificate Pricing",
-    itemListElement: [
-      { "@type": "Offer", name: "1 Gas Appliance (CP12)", price: "50", priceCurrency: "GBP" },
-      { "@type": "Offer", name: "2 Gas Appliances (CP12)", price: "60", priceCurrency: "GBP" },
-      { "@type": "Offer", name: "3 Gas Appliances (CP12)", price: "70", priceCurrency: "GBP" },
-    ],
+    itemListElement: GAS_SAFETY_CP12_TABLE.map((row) => ({
+      "@type": "Offer",
+      name: row.label,
+      price: String(row.price),
+      priceCurrency: "GBP",
+    })),
   },
   offers: {
     "@type": "Offer",
-    price: "50",
+    price: String(getPriceForGasSafety(1)),
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
