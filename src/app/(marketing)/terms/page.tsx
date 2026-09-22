@@ -9,7 +9,7 @@ import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Terms and conditions for using My Landlord Certificate booking services. Covers booking, pricing, cancellation, certificate delivery, liability and governing law.",
+    "Terms and conditions for using My Landlord Certificate booking services. Covers pricing, cancellation and certificate delivery.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/terms" },
   robots: { index: false },
   openGraph: {

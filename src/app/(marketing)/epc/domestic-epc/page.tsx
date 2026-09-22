@@ -437,7 +437,7 @@ export default function DomesticEPCPage() {
         <section className="py-10 border-b border-border">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <Image
-              src="/epc/epc-sample-certificate.png"
+              src="/epc/epc-sample-certificate.webp"
               alt="Example of a domestic Energy Performance Certificate showing the A to G rating"
               width={1200}
               height={1500}

@@ -10,7 +10,7 @@ import { FROM_PRICES } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Electrical Safety Certificates | EICR, PAT Testing & More",
   description:
-    "NICEIC approved electrical safety certificates across London. Domestic EICR from £67.99, PAT testing from £59.99, fuse box installation from £599.99. Fixed prices, same-week appointments.",
+    "NICEIC approved electrical safety certificates across London. EICR from £67.99, PAT testing from £59.99. Fixed prices. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/electrical-safety" },
 };
 

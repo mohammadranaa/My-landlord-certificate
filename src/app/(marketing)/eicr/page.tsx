@@ -12,6 +12,7 @@ import { TestimonialCard } from "@/components/ui/testimonial-card";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
 
 // ── Contact ─────────────────────────────────────────────────────────────────
 const PHONE_DISPLAY = "020 3996 1070";
@@ -49,12 +50,12 @@ import {
 export const metadata: Metadata = {
   title: "EICR Certificate from £67.99",
   description:
-    "Book an EICR (Electrical Installation Condition Report) from £67.99. Legally required for all landlords in England since 2020. NICEIC approved and NAPIT certified electricians, next-day appointments, certificate emailed within 24 hours.",
+    "Book an EICR from £67.99. Legally required for landlords in England since 2020. NICEIC and NAPIT certified electricians. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr" },
   openGraph: {
     title: "EICR Certificate from £67.99 | My Landlord Certificate",
     description:
-      "Electrical Installation Condition Report from £67.99. NICEIC approved and NAPIT certified engineers, next-day appointments across London and the M25 area, certificate emailed within 24 hours.",
+      "Electrical Installation Condition Report from £67.99. NICEIC and NAPIT certified engineers, next-day appointments. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/eicr",
   },
 };
@@ -1124,6 +1125,28 @@ export default function EicrPage() {
               See our full FAQ →
             </Link>
           </p>
+        </section>
+
+        {/* ── Areas we cover ── */}
+        <section aria-labelledby="areas-we-cover-heading">
+          <Heading level={2} id="areas-we-cover-heading" className="mb-4">
+            Areas we cover
+          </Heading>
+          <p className="text-brand-grey mb-6">
+            EICR certificates across all 33 London boroughs. Select your borough for local
+            pricing, coverage and booking.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {ALL_BOROUGHS.map((borough) => (
+              <Link
+                key={borough.slug}
+                href={`/eicr/${borough.slug}`}
+                className="border border-border rounded-xl px-4 py-3 text-sm font-medium text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
+              >
+                {borough.name}
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* ── 11. CTA block ────────────────────────────────────────────────── */}

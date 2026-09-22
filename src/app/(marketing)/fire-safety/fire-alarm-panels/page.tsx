@@ -13,7 +13,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_PANELS_TABLE } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Fire Alarm Panel Servicing London from £74.99 — BS 5839-1",
   description:
-    "Fire alarm panel inspection, testing and servicing from £74.99. Conventional and addressable panels. BS 5839-1 compliant. Written certificate within 24 hours. All 33 London boroughs.",
+    "Fire alarm panel inspection and servicing from £74.99. Conventional and addressable panels, BS 5839-1 compliant. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-safety/fire-alarm-panels",
   },

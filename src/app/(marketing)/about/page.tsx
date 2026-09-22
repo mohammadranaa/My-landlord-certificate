@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Certificates within 24 hours.",
+    "We help London landlords get EICR, Gas Safety, EPC and FRA certificates quickly and affordably. Fixed prices. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/about" },
   openGraph: {
     title: "About Us — My Landlord Certificate",
     description:
-      "We help London landlords get EICR, Gas Safety, EPC and Fire Risk Assessment certificates quickly, affordably and without hassle. Fixed prices. Accredited engineers. Certificates within 24 hours.",
+      "We help London landlords get EICR, Gas Safety, EPC and FRA certificates quickly and affordably. Fixed prices. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/about",
   },
   twitter: {

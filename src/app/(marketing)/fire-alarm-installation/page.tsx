@@ -12,7 +12,7 @@ import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INS
 export const metadata: Metadata = {
   title: "Fire Alarm Installation London — £209.99/alarm, Mains-Wired",
   description:
-    "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. Grade D LD2, BS 5839-6 compliant. Free survey. All 33 London boroughs. Commissioning certificate included.",
+    "Mains-wired interlinked smoke and heat alarm installation from £209.99 per alarm. BS 5839-6 compliant, free survey. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-alarm-installation",
   },

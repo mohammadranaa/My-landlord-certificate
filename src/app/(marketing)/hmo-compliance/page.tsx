@@ -41,7 +41,7 @@ const PRICES = {
 export const metadata: Metadata = {
   title: "HMO Compliance Certificates London | All Inspections from One Provider",
   description:
-    "Every certificate your HMO licence requires — EICR, Gas Safety, Fire Risk Assessment, EPC, Emergency Lights, PAT Testing and more. London-wide coverage. Fixed prices. Book online or call 020 3996 1070.",
+    "Every certificate your HMO licence requires — EICR, Gas Safety, FRA, EPC and more. London-wide. Fixed prices. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/hmo-compliance",
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title:
       "HMO Compliance Certificates London | All Inspections from One Provider",
     description:
-      "Every certificate your HMO licence requires — EICR, Gas Safety, Fire Risk Assessment, EPC, Emergency Lights, PAT Testing and more. London-wide coverage. Fixed prices. Book online or call 020 3996 1070.",
+      "Every certificate your HMO licence requires — EICR, Gas Safety, FRA, EPC and more. London-wide. Fixed prices. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/hmo-compliance",
     type: "website",
   },

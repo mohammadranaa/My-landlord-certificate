@@ -21,7 +21,7 @@ const GOOGLE_PROFILE = GOOGLE_BUSINESS_URL;
 export const metadata: Metadata = {
   title: "Domestic EPC Certificate London from £89.99 | Book Online",
   description:
-    "Domestic Energy Performance Certificate from £89.99 for landlords and homeowners. Accredited DEA assessors across all 33 London boroughs. On the national register within 24 hours. Book online or call.",
+    "Domestic EPC from £89.99. Accredited DEA assessors across all 33 London boroughs, on the national register within 24 hours.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/epc/domestic-epc" },
 };
@@ -31,7 +31,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Domestic Energy Performance Certificate (EPC)",
   description:
-    "Legally required for all residential properties before renting or selling. Accredited DEA assessors provide an A to G energy efficiency rating, lodged on the national register within 24 hours.",
+    "Domestic EPC from £89.99, valid 10 years. Accredited DEA assessors across all 33 London boroughs. Book online today.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -338,7 +338,7 @@ export default function DomesticEpcLandingPage() {
       <section className="bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 items-center">
           <Image
-            src="/epc/epc-sample-certificate.png"
+            src="/epc/epc-sample-certificate.webp"
             alt="Example of a domestic Energy Performance Certificate showing the A to G rating"
             width={1200}
             height={1500}

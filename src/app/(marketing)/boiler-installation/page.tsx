@@ -12,7 +12,7 @@ import { ADDITIONAL_CHARGES, BOILER_INSTALLATION_FROM } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Boiler Installation London from £2,499 — Gas Safe Registered",
   description:
-    "Boiler replacement from £2,499. Worcester Bosch and Vaillant A-rated combi and system boilers. Gas Safe Registered engineers across all London boroughs. CP12 and 10-year warranty included.",
+    "Boiler replacement from £2,499. Worcester Bosch and Vaillant A-rated boilers, Gas Safe Registered engineers. Get a quote today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/boiler-installation",
   },

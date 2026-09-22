@@ -30,14 +30,14 @@ import {
 export const metadata: Metadata = {
   title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
   description:
-    "Fire risk assessments for residential and commercial properties in London from £74.99. IFSM certified assessors. HMOs, blocks of flats, offices and commercial premises. Report within 48 hours. Covering all 33 London boroughs and the M25 area.",
+    "Fire risk assessments in London from £74.99. IFSM certified assessors for HMOs, flats and commercial premises. Report within 48 hours. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
   openGraph: {
     title: "Fire Risk Assessment London from £74.99 | IFSM Certified Assessors",
     description:
-      "Fire risk assessments for residential and commercial properties in London from £74.99. IFSM certified assessors. HMOs, blocks of flats, offices and commercial premises. Report within 48 hours.",
+      "Fire risk assessments in London from £74.99. IFSM certified assessors for HMOs, flats and commercial premises. Report within 48 hours.",
     url: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment",
   },
 };

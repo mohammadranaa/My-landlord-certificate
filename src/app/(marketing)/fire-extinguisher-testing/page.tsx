@@ -13,7 +13,7 @@ import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service",
   description:
-    "Annual fire extinguisher inspection and servicing from £79.99 (1–3 extinguishers). All types: CO₂, powder, foam, water mist. BS 5306-3 compliant. Service label within 24 hours. All London boroughs.",
+    "Annual fire extinguisher inspection from £79.99 (1-3 extinguishers). BS 5306-3 compliant, service label within 24 hours. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fire-extinguisher-testing",
   },

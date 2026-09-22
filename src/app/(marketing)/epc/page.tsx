@@ -21,7 +21,7 @@ import {
 export const metadata: Metadata = {
   title: "EPC London from £89.99 | Energy Performance Certificate for Landlords",
   description:
-    "Energy Performance Certificate from £89.99. Required by law before renting or selling. Accredited DEA assessors across all 33 London boroughs. Certificate on national register within 24 hours.",
+    "Energy Performance Certificate from £89.99. Accredited DEA assessors across all 33 London boroughs, valid 10 years. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/epc",
   },
@@ -752,7 +752,7 @@ export default function EPCPage() {
             ))}
           </ul>
             <Image
-              src="/epc/epc-sample-certificate.png"
+              src="/epc/epc-sample-certificate.webp"
               alt="Example of a domestic Energy Performance Certificate showing the A–G energy efficiency rating"
               width={1200}
               height={1500}
@@ -775,7 +775,7 @@ export default function EPCPage() {
         <section className="py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">How it works</h2>
           <Image
-            src="/epc/epc-assessor-at-door.png"
+            src="/epc/epc-assessor-at-door.webp"
             alt="Accredited energy assessor arriving at a London property for an EPC appointment"
             width={1200}
             height={800}

@@ -22,14 +22,14 @@ import {
 export const metadata: Metadata = {
   title: "Landlord Certificate Bundle — Save up to £44.97",
   description:
-    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit and save. Essential Bundle from £130. Full Compliance £230. HMO Complete £450. All certificates emailed within 24 hours.",
+    "Bundle your EICR, Gas Safety, EPC and Fire Risk Assessment in one visit. Essential Bundle from £130. Get a quote today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
   openGraph: {
     title: "Landlord Certificate Bundle — Save up to £44.97",
     description:
-      "Combine your landlord compliance certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. No hidden charges. Certificates emailed within 24 hours.",
+      "Combine your landlord certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
@@ -42,7 +42,7 @@ const serviceSchema = {
   name: "Landlord Certificate Bundle",
   url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   description:
-    "Bundle your landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC and Fire Risk Assessment — into a single engineer visit. Save up to £44.97 versus booking each certificate separately.",
+    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit. From £130. Certificates emailed within 24 hours. Book today.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",

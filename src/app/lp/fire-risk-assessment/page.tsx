@@ -18,7 +18,7 @@ const BOOK = "/book?service=fra-residential";
 export const metadata: Metadata = {
   title: `Fire Risk Assessment London from £${entryPrice} | Book Online`,
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Competent assessors, written report and action plan within 48 hours. Book online or call.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan within 48 hours.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment" },
 };
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Fire Risk Assessment",
   description:
-    "Fire risk assessment for HMOs, blocks of flats and commercial premises, as required by the Regulatory Reform (Fire Safety) Order 2005. Written report and prioritised action plan by a competent assessor.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Competent assessors, written report within 48 hours.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {

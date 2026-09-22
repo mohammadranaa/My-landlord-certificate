@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Letting Agents — Landlord Certificate Partner",
   description:
-    "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, certificates within 24 hours for your landlords.",
+    "Compliance certificates for letting agents and property managers. EICR, Gas Safety, EPC and FRA. Fixed prices. Get a quote today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/letting-agents" },
   openGraph: {
     title: "Letting Agents — Landlord Certificate Partner | My Landlord Certificate",
     description:
-      "Compliance certificates for letting agents and property management companies. EICR, Gas Safety, EPC and Fire Risk Assessment. Fixed prices, accredited engineers, certificates within 24 hours for your landlords.",
+      "Compliance certificates for letting agents and property managers. EICR, Gas Safety, EPC and FRA. Fixed prices. Get a quote today.",
     url: "https://www.mylandlordcertificate.co.uk/letting-agents",
   },
   twitter: {

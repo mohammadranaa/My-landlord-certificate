@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "FAQ — Landlord Certificates Explained",
   description:
-    "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
+    "Answers to common questions about EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing. Legal requirements and pricing explained.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/faq" },
   openGraph: {
     title: "FAQ — Landlord Certificates Explained | My Landlord Certificate",
     description:
-      "Answers to the most common questions about EICR, Gas Safety Certificates, EPC, Fire Risk Assessment and PAT Testing for UK landlords. Legal requirements, pricing, booking and certificates explained.",
+      "Answers to common questions about EICR, Gas Safety, EPC, Fire Risk Assessment and PAT Testing. Legal requirements and pricing explained.",
     url: "https://www.mylandlordcertificate.co.uk/faq",
   },
   twitter: {

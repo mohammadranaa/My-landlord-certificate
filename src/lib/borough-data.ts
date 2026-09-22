@@ -10,6 +10,21 @@ export interface BoroughData {
   nearbyBoroughs: string[];
 }
 
+/** Every service with its own /[service]/[borough] page — used for the
+ * "Other services in [Borough]" cross-link block on each borough page. */
+export interface BoroughService {
+  slug: string;
+  label: string;
+}
+
+export const BOROUGH_SERVICES: BoroughService[] = [
+  { slug: "eicr", label: "EICR Certificate" },
+  { slug: "gas-safety-certificate", label: "Gas Safety Certificate" },
+  { slug: "epc", label: "EPC Certificate" },
+  { slug: "fire-risk-assessment", label: "Fire Risk Assessment" },
+  { slug: "pat-testing", label: "PAT Testing" },
+];
+
 export const BOROUGH_DATA: Record<string, BoroughData> = {
   "barking-dagenham": {
     slug: "barking-dagenham",

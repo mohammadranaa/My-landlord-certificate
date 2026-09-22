@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     absolute: "Landlord Certificates London — EICR, Gas Safety & EPC | MLC",
   },
   description:
-    "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. From £50 — no hidden charges. Next-day appointments available across London.",
+    "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From £50, no hidden charges. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk" },
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates from £50 — no hidden charges. EICR from £67.99. Gas Safety from £50. EPC from £89.99. Next-day appointments across London. Certificate emailed within 24 hours.",
+      "Landlord compliance certificates from £50, no hidden charges. EICR, Gas Safety, EPC — next-day appointments. Book today.",
     url: "https://www.mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates for UK landlords — no hidden charges. NICEIC approved. Gas Safe registered. Next-day appointments. Certificate emailed within 24 hours.",
+      "Landlord compliance certificates for UK landlords, no hidden charges. NICEIC approved, Gas Safe registered engineers. Book today.",
   },
 };
 

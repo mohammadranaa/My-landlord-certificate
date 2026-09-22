@@ -13,7 +13,7 @@ import { ReviewsBlock } from "@/components/marketing/reviews-block";
 export const metadata: Metadata = {
   title: "Asbestos Survey London from £239.99",
   description:
-    "Asbestos management survey from £239.99 including 1 sample. Required before renovation or demolition in pre-2000 properties. UKAS-accredited laboratory analysis. London-wide service.",
+    "Asbestos management survey from £239.99 including 1 sample. Required before renovation in pre-2000 properties. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/asbestos-survey",
   },

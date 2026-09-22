@@ -26,14 +26,14 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate (CP12) from £64.99",
   description:
-    "Book a Gas Safety Certificate (CP12) from £64.99. Annual legal requirement for all landlords in England. Gas Safe Registered engineers, next-day appointments, certificate emailed within 24 hours.",
+    "Book a Gas Safety Certificate (CP12) from £64.99. Annual legal requirement for landlords. Next-day appointments. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
   openGraph: {
     title: "Gas Safety Certificate (CP12) from £64.99 | My Landlord Certificate",
     description:
-      "Annual CP12 landlord gas safety certificate from £64.99. Gas Safe Registered engineers, next-day appointments across London and the M25 area, certificate emailed within 24 hours.",
+      "Annual CP12 landlord gas safety certificate from £64.99. Gas Safe Registered engineers, next-day appointments. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },
 };

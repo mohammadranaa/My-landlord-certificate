@@ -18,7 +18,7 @@ const BOOK = "/book?service=fire-safety-cert";
 export const metadata: Metadata = {
   title: `Fire Safety Certificate London from £${entryPrice} | Smoke Alarm Testing`,
   description:
-    "Smoke and heat alarm testing and certification for landlords across London. Required under the Smoke and Carbon Monoxide Alarm Regulations. Certificate within 24 hours. Book online or call.",
+    "Smoke and heat alarm testing for landlords across London. Compliant with fire alarm regulations. Certificate within 24 hours. Book today.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-safety-certificate" },
 };
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Fire Safety Certificate",
   description:
-    "Smoke, heat and carbon monoxide alarm testing and certification for landlords, as required by the Smoke and Carbon Monoxide Alarm (England) Regulations 2015 (amended 2022). Certificate issued within 24 hours by an accredited engineer.",
+    "Smoke, heat and CO alarm testing for landlords, compliant with the Smoke and Carbon Monoxide Alarm Regulations. Certificate within 24 hours.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {

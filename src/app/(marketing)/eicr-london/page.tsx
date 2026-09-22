@@ -21,12 +21,12 @@ import {
 export const metadata: Metadata = {
   title: "EICR London, from £67.99, All 33 Boroughs",
   description:
-    "EICR London from £67.99. NICEIC approved and NAPIT certified electricians covering all 33 London boroughs. Victorian conversions, ex-council flats, HMOs. Certificate emailed within 24 hours.",
+    "EICR London from £67.99. NICEIC and NAPIT certified electricians covering all 33 boroughs. Certificate within 24 hours. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/eicr-london" },
   openGraph: {
     title: "EICR London, from £67.99, All 33 Boroughs Covered",
     description:
-      "EICR London from £67.99. All 33 London boroughs covered. NICEIC approved and NAPIT certified engineers. Certificate within 24 hours. Book online in under 3 minutes.",
+      "EICR London from £67.99. All 33 boroughs covered. NICEIC and NAPIT certified engineers. Book online today.",
     url: "https://www.mylandlordcertificate.co.uk/eicr-london",
   },
 };

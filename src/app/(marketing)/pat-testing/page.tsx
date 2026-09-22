@@ -22,12 +22,12 @@ import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "PAT Testing from £59.99 | Digital Certificate Within 24 Hours",
   description:
-    "PAT Testing from £59.99 for up to 10 appliances. Portable Appliance Testing for furnished rental properties and HMOs. Pass/fail labels on every appliance, digital asset register, certificate emailed within 24 hours.",
+    "PAT Testing from £59.99 for up to 10 appliances. Pass/fail labels, digital asset register, certificate within 24 hours. Book today.",
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pat-testing" },
   openGraph: {
     title: "PAT Testing from £59.99 | Digital Certificate Within 24 Hours",
     description:
-      "PAT Testing from £59.99 for up to 10 appliances. Pass/fail label on every appliance, full digital asset register, certificate emailed within 24 hours. Book online in under 3 minutes.",
+      "PAT Testing from £59.99 for up to 10 appliances. Pass/fail labels, digital asset register, certificate within 24 hours. Book online today.",
     url: "https://www.mylandlordcertificate.co.uk/pat-testing",
   },
 };

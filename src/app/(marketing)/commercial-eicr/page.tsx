@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Commercial EICR from £149.99 | London | My Landlord Certificate",
     description:
-      "Commercial Electrical Installation Condition Report from £149.99. NICEIC approved electricians. Written report issued within 24 hours. All London boroughs covered.",
+      "Commercial EICR from £149.99. NICEIC approved electricians, written report within 24 hours. Get a quote today.",
     url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   },
 };
@@ -50,7 +50,7 @@ const serviceSchema = {
   name: "Commercial EICR, Electrical Installation Condition Report",
   url: "https://www.mylandlordcertificate.co.uk/commercial-eicr",
   description:
-    "Commercial Electrical Installation Condition Report (EICR) for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued within 24 hours.",
+    "Commercial Electrical Installation Condition Report for commercial premises, HMO blocks, mixed-use buildings and landlords of non-domestic property. NICEIC approved engineers covering all London boroughs. Written report issued within 24 hours.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",

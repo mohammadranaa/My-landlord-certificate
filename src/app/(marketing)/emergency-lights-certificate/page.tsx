@@ -13,7 +13,7 @@ import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved",
   description:
-    "Annual emergency lighting testing and certification from £54.99 (up to 3 lights). BS 5266-1 compliant. NICEIC approved engineers across all 33 London boroughs. Certificate within 24 hours.",
+    "Annual emergency lighting testing from £54.99 (up to 3 lights). BS 5266-1 compliant, NICEIC approved engineers. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/emergency-lights-certificate",
   },

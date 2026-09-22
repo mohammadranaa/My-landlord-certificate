@@ -12,7 +12,7 @@ import { ADDITIONAL_CHARGES, ELECTRICAL_DIAGNOSTIC_HOURLY_RATE } from "@/lib/pri
 export const metadata: Metadata = {
   title: "Electrical Diagnostic London — £99.99/hr, No Call-Out Fee",
   description:
-    "Electrical fault finding from £99.99/hr with no call-out fee. Trace tripping circuits, intermittent faults, RCD failures, and wiring defects. NICEIC approved electricians across all 33 London boroughs. Minor repairs same visit.",
+    "Electrical fault finding from £99.99/hr, no call-out fee. NICEIC approved electricians across all 33 London boroughs. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/electrical-diagnostic",
   },

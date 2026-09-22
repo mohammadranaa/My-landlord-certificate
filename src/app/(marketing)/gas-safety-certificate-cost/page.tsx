@@ -24,14 +24,14 @@ import {
 export const metadata: Metadata = {
   title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
   description:
-    "Gas Safety Certificate (CP12) costs from £64.99 for up to 2 appliances. Full domestic and commercial price breakdown, what affects the cost, and how to get a fixed price with no hidden charges.",
+    "Gas Safety Certificate (CP12) costs from £64.99 for up to 2 appliances. Full price breakdown and what affects the cost. Get a quote today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
   openGraph: {
     title: "Gas Safety Certificate Cost 2025, How Much Does a CP12 Cost?",
     description:
-      "CP12 prices start from £64.99 for up to 2 appliances. Full domestic price breakdown, what affects the cost, and how to book at a fixed price with no hidden charges.",
+      "CP12 prices start from £64.99 for up to 2 appliances. Full price breakdown and how to book at a fixed price. Get a quote today.",
     url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate-cost",
   },
 };

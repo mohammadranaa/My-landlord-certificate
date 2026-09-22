@@ -15,7 +15,7 @@ import { ReviewsBlock } from "@/components/marketing/reviews-block";
 export const metadata: Metadata = {
   title: "Legionella Risk Assessment London — £299.99 | ACoP L8 Compliant",
   description:
-    "Legionella risk assessments in London from £299.99. ACoP L8 and HSG274 compliant. On-site water system inspection, temperature checks, stagnation analysis, and detailed report with action plan. All 33 London boroughs and M25.",
+    "Legionella risk assessments in London from £299.99. ACoP L8 and HSG274 compliant, full report with action plan. Get a quote today.",
   alternates: {
     canonical:
       "https://www.mylandlordcertificate.co.uk/legionella-risk-assessment",
