@@ -11,6 +11,7 @@ import { GoogleReviews } from "@/components/marketing/google-reviews";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import Image from "next/image";
 import { TEL, PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
@@ -878,6 +879,28 @@ export default function EPCPage() {
         <section className="below-fold py-10 border-b border-border">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Frequently Asked Questions</h2>
           <FAQAccordion items={faqs} />
+        </section>
+
+        {/* Areas we cover */}
+        <section aria-labelledby="areas-we-cover-heading" className="py-10 border-b border-border">
+          <h2 id="areas-we-cover-heading" className="text-2xl font-bold text-brand-charcoal mb-2">
+            Areas we cover
+          </h2>
+          <p className="text-brand-grey mb-6">
+            EPC assessments across all 33 London boroughs. Select your borough for local
+            pricing, coverage and booking.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {ALL_BOROUGHS.map((borough) => (
+              <Link
+                key={borough.slug}
+                href={`/epc/${borough.slug}`}
+                className="border border-border rounded-xl px-4 py-3 text-sm font-medium text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
+              >
+                {borough.name}
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Find us / location */}
