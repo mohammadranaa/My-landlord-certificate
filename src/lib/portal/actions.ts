@@ -35,6 +35,14 @@ export async function signUpPortalUser(data: SignupData): Promise<SignupResult> 
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,
+    options: {
+      // Critical: handle_new_user() (the trigger on auth.users) checks this
+      // flag and skips creating a `profiles` row when it's set. Without it,
+      // every portal signup silently became internal staff with full
+      // access to every client's data — this was live in production for
+      // the first two real accounts before this fix. Never remove this.
+      data: { signup_type: "portal" },
+    },
   });
 
   if (authError) {
