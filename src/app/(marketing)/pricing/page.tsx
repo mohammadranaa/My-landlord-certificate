@@ -98,11 +98,59 @@ const summaryServices = [
   { label: "Boiler Installation", from: FROM_PRICES["boiler-installation"], href: "/pricing#gas" },
 ];
 
+// ── Service schema — one Offer per service ─────────────────────────────────────
+// FROM_PRICES holds display strings ("from £67.99") for the hero cards, not
+// clean numbers — Offer.price needs a plain numeric string, so this pulls the
+// entry-tier value straight from each real pricing table/constant instead.
+
+const schemaOffers = [
+  { name: "EICR", price: DOMESTIC_EICR_TABLE[0].price, href: "/eicr" },
+  { name: "Gas Safety (CP12)", price: GAS_SAFETY_CP12_TABLE[0].price, href: "/gas-safety-certificate" },
+  { name: "EPC", price: DOMESTIC_EPC_TABLE[0].price, href: "/epc" },
+  { name: "Fire Risk Assessment", price: FRA_RESIDENTIAL_TABLE[0].price, href: "/fire-risk-assessment" },
+  { name: "PAT Testing", price: PAT_TABLE[0].price, href: "/pat-testing" },
+  { name: "Fire Safety Cert", price: FIRE_SAFETY_CERT_TABLE[0].price, href: "/pricing#fire" },
+  { name: "ELC", price: ELC_TABLE[0].price, href: "/pricing#electrical" },
+  { name: "Asbestos Survey", price: ASBESTOS_SURVEY_TABLE[0].price, href: "/pricing#other" },
+  { name: "Commercial EICR", price: COMMERCIAL_EICR_TABLE[0].price, href: "/commercial-eicr" },
+  { name: "Commercial EPC", price: COMMERCIAL_EPC_TABLE[0].price, href: "/commercial-epc" },
+  { name: "Commercial Gas (CP42)", price: GAS_SAFETY_CP42_TABLE[0].price, href: "/commercial-gas-safety-certificate" },
+  { name: "Boiler Installation", price: BOILER_INSTALLATION_FROM, href: "/pricing#gas" },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Landlord Compliance Certificates",
+  url: "https://www.mylandlordcertificate.co.uk/pricing",
+  description:
+    "Fixed pricing for every landlord compliance certificate — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment, PAT Testing and more, across all 33 London boroughs.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "My Landlord Certificate",
+    url: "https://www.mylandlordcertificate.co.uk",
+  },
+  areaServed: { "@type": "City", name: "London" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Landlord Compliance Certificate Pricing",
+    itemListElement: schemaOffers.map((service) => ({
+      "@type": "Offer",
+      name: service.name,
+      price: String(service.price),
+      priceCurrency: "GBP",
+      availability: "https://schema.org/InStock",
+      url: `https://www.mylandlordcertificate.co.uk${service.href}`,
+    })),
+  },
+};
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ── */}
