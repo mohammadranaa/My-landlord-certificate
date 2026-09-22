@@ -183,6 +183,11 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
     href: "/book?service=fra-residential",
     subtext: "IFSM certified assessors · Report within 48 hours",
   },
+  "landlord-fire-risk-assessment": {
+    label: `Book your Fire Risk Assessment from £${fraPrice}`,
+    href: "/book?service=fra-residential",
+    subtext: "NEBOSH qualified assessors · Report within 48 hours",
+  },
   "legionella-risk-assessment-landlord-guide": {
     label: `Book your Legionella Risk Assessment — £${legionellaPrice}`,
     href: "/book",

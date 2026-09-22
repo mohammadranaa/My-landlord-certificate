@@ -1364,6 +1364,16 @@ export default function FireRiskAssessmentPage() {
             Fire Risk Assessment, frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
+
+          <p className="mt-6 text-sm text-brand-grey text-center">
+            Want the full legal breakdown?{" "}
+            <Link
+              href="/blog/landlord-fire-risk-assessment"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              Read our complete guide →
+            </Link>
+          </p>
         </section>
 
         {/* Fire alarm installation cross-sell */}
