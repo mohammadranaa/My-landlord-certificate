@@ -13,6 +13,7 @@ import { GoogleReviews } from "@/components/marketing/google-reviews";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { GOOGLE_BUSINESS_URL } from "@/lib/constants";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT } from "@/lib/pricing";
 
@@ -889,6 +890,28 @@ export default function PatTestingPage() {
             PAT Testing — frequently asked questions
           </Heading>
           <FAQAccordion items={faqItems} includeSchema={false} />
+        </section>
+
+        {/* ── Areas we cover ── */}
+        <section aria-labelledby="areas-we-cover-heading">
+          <Heading level={2} id="areas-we-cover-heading" className="mb-4">
+            Areas we cover
+          </Heading>
+          <p className="text-brand-grey mb-6">
+            PAT Testing across all 33 London boroughs. Select your borough for local
+            pricing, coverage and booking.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {ALL_BOROUGHS.map((borough) => (
+              <Link
+                key={borough.slug}
+                href={`/pat-testing/${borough.slug}`}
+                className="border border-border rounded-xl px-4 py-3 text-sm font-medium text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
+              >
+                {borough.name}
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* ── CTA ── */}

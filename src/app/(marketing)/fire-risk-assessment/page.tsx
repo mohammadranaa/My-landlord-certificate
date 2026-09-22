@@ -15,6 +15,7 @@ import { InlineCTA } from "@/components/ui/inline-cta";
 import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -1382,6 +1383,28 @@ export default function FireRiskAssessmentPage() {
             >
               View fire alarm installation prices →
             </Link>
+          </div>
+        </section>
+
+        {/* ── Areas we cover ── */}
+        <section aria-labelledby="areas-we-cover-heading">
+          <Heading level={2} id="areas-we-cover-heading" className="mb-4">
+            Areas we cover
+          </Heading>
+          <p className="text-brand-grey mb-6">
+            Fire Risk Assessments across all 33 London boroughs. Select your borough for
+            local pricing, coverage and booking.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {ALL_BOROUGHS.map((borough) => (
+              <Link
+                key={borough.slug}
+                href={`/fire-risk-assessment/${borough.slug}`}
+                className="border border-border rounded-xl px-4 py-3 text-sm font-medium text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
+              >
+                {borough.name}
+              </Link>
+            ))}
           </div>
         </section>
 
