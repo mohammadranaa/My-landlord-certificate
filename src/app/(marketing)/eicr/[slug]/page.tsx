@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
+  EICR_ADDITIONAL_CU_PRICE,
+  COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   getPriceForEICR,
   getPriceForEPC,
   getPriceForGasSafety,
@@ -342,6 +344,11 @@ export default async function EICRBoroughPage({
             for central London properties.
           </p>
 
+          <p className="text-xs text-brand-grey mb-3">
+            Prices are per property with one consumer unit and up to 12
+            circuits. See notes below for additional charges.
+          </p>
+
           <PriceTable
             title={`Domestic EICR — ${borough.name} pricing`}
             rows={DOMESTIC_EICR_TABLE}
@@ -360,6 +367,44 @@ export default async function EICRBoroughPage({
               <li>
                 Properties in the London Congestion Charge Zone:{" "}
                 <strong>£{ADDITIONAL_CHARGES.congestionZone}</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-4 p-4 rounded-xl bg-warm-white border border-border text-sm text-brand-charcoal">
+            <p className="font-semibold mb-1">Pricing notes</p>
+            <ul className="space-y-1.5 text-brand-grey text-sm">
+              <li className="flex gap-2">
+                <span className="text-compliance-blue font-bold flex-shrink-0">·</span>
+                <span>
+                  Prices shown are for properties with{" "}
+                  <strong className="text-brand-charcoal">one consumer unit</strong>{" "}
+                  (one fuse board). Most standard residential properties have one.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-compliance-blue font-bold flex-shrink-0">·</span>
+                <span>
+                  Properties with more than one consumer unit — common in HMOs,
+                  converted flats, and larger houses — are charged an additional{" "}
+                  <strong className="text-brand-charcoal">
+                    £{EICR_ADDITIONAL_CU_PRICE.toFixed(2)} per extra consumer unit
+                  </strong>
+                  . Your engineer confirms the number of consumer units on arrival.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-compliance-blue font-bold flex-shrink-0">·</span>
+                <span>
+                  Each consumer unit covers{" "}
+                  <strong className="text-brand-charcoal">up to 12 circuits</strong>.
+                  Installations with more than 12 circuits per consumer unit are
+                  charged an additional{" "}
+                  <strong className="text-brand-charcoal">
+                    £{COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} per circuit
+                  </strong>{" "}
+                  above 12.
+                </span>
               </li>
             </ul>
           </div>

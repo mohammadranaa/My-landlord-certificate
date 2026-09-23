@@ -11,6 +11,7 @@ import {
   DOMESTIC_EICR_TABLE,
   DOMESTIC_EPC_TABLE,
   EICR_ADDITIONAL_CU_PRICE,
+  COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   ELC_INSTALLATION_PER_LIGHT,
   ELC_TABLE,
   ELECTRICAL_DIAGNOSTIC_HOURLY_RATE,
@@ -71,6 +72,7 @@ const SERVICES: ServiceConfig[] = [
     label: "EICR Certificate",
     category: "electrical",
     description: "Legally required every 5 years",
+    note: `Price covers 1 consumer unit with up to 12 circuits. Additional circuits above 12: £${COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} per circuit, confirmed by engineer on arrival.`,
     options: [...DOMESTIC_EICR_TABLE],
   },
   {
