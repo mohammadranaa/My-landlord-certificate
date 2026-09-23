@@ -14,7 +14,7 @@ export const STATUS_CONFIG: Record<CertStatus, StatusConfig> = {
   expiring: { bg: "rgba(245,158,11,0.16)", text: "#96620a", dot: "#F59E0B", ring: "#d98806", label: "Expiring", shortLabel: "30d" },
   expired: { bg: "rgba(209,67,67,0.12)", text: "#a52222", dot: "#D14343", ring: "#b02f2f", label: "Expired", shortLabel: "Exp." },
   booked: { bg: "rgba(0,147,219,0.12)", text: "#0078b8", dot: "#0093DB", ring: "#0078b8", label: "Booked in", shortLabel: "Bkd" },
-  missing: { bg: "rgba(75,85,99,0.09)", text: "#4B5563", dot: "#9CA3AF", ring: "#6B7280", label: "Missing", shortLabel: "—" },
+  missing: { bg: "rgba(75,85,99,0.09)", text: "#4B5563", dot: "#9CA3AF", ring: "#6B7280", label: "Not available", shortLabel: "—" },
   na: { bg: "rgba(75,85,99,0.07)", text: "#6B7280", dot: "#E5E7EB", ring: "#CBD1D8", label: "N/A", shortLabel: "n/a" },
 };
 

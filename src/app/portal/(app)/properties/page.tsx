@@ -29,7 +29,7 @@ const LEGEND: { status: CertStatus; label: string }[] = [
   { status: "expiring", label: "Expiring" },
   { status: "expired", label: "Expired" },
   { status: "booked", label: "Booked in" },
-  { status: "na", label: "N/A" },
+  { status: "missing", label: "Not available" },
 ];
 
 export default async function PortalPropertiesPage({
@@ -49,11 +49,16 @@ export default async function PortalPropertiesPage({
       return { code, status: cellStatus(certsOfType, hasOpenJob && certsOfType.length === 0) };
     });
 
-    const breaches = statuses.filter((s) => s.status === "expired" || s.status === "missing").length;
+    // Kept separate on purpose: "breach" means an issued certificate has
+    // actually lapsed. "notAvailable" means one was never supplied at all.
+    // These used to be combined into one "breach" count, which made every
+    // never-attempted property look like an active compliance breach.
+    const breaches = statuses.filter((s) => s.status === "expired").length;
+    const notAvailable = statuses.filter((s) => s.status === "missing").length;
     const expiring = statuses.filter((s) => s.status === "expiring").length;
-    const isActionNeeded = breaches > 0 || expiring > 0;
+    const isActionNeeded = breaches > 0 || notAvailable > 0 || expiring > 0;
 
-    return { group, statuses, breaches, expiring, isActionNeeded };
+    return { group, statuses, breaches, notAvailable, expiring, isActionNeeded };
   });
 
   const filteredRows = rows.filter((r) => {
@@ -128,7 +133,7 @@ export default async function PortalPropertiesPage({
             </tr>
           </thead>
           <tbody>
-            {filteredRows.map(({ group, statuses, breaches, expiring }) => (
+            {filteredRows.map(({ group, statuses, breaches, notAvailable, expiring }) => (
               <tr key={group.property.id} className="border-t border-[#f0eee7] hover:bg-[#FAFAF7]">
                 <td className="px-3 py-3">
                   <Link
@@ -158,6 +163,10 @@ export default async function PortalPropertiesPage({
                   ) : expiring > 0 ? (
                     <span className="inline-block bg-[rgba(245,158,11,.16)] px-2.5 py-1 text-xs font-semibold text-[#96620a]">
                       {expiring} expiring
+                    </span>
+                  ) : notAvailable > 0 ? (
+                    <span className="inline-block bg-[rgba(75,85,99,.09)] px-2.5 py-1 text-xs font-semibold text-[#4B5563]">
+                      {notAvailable} not available
                     </span>
                   ) : (
                     <span className="inline-block bg-[rgba(128,209,0,.14)] px-2.5 py-1 text-xs font-semibold text-[#4f8a00]">

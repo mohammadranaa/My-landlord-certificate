@@ -7,14 +7,10 @@ import type {
   PortalInvoice,
   PortalProperty,
 } from "@/types/database";
+// (no functional change here — see the separate status.tsx update for the
+// "Missing" → "Not available" label wording fix)
 
 // ── Certificate type classification ─────────────────────────────────────────
-// certificate_type is now normalized at write time (see the
-// normalize_certificate_type trigger applied in the property-linkage
-// migration), so this is mostly a safety net for anything that predates the
-// trigger or slips through. Fire Safety Certificate (FSC) and Fire Risk
-// Assessment (FRA) are deliberately separate — confirmed as two different
-// products, not merged.
 
 export type CertCode = "EPC" | "GAS" | "EICR" | "FSC" | "FRA" | "LEG" | "PAT" | "ALM";
 
@@ -63,10 +59,6 @@ export function daysUntil(dateStr: string | null): number | null {
 }
 
 // ── Property grouping — real property_id joins ──────────────────────────────
-// Replaces the earlier address-text matching now that jobs.property_id and
-// certificates.property_id are real foreign keys (see the property-linkage
-// migration). Properties with no linked job/certificate yet still appear —
-// e.g. one just added in the platform with nothing done on it.
 
 export interface InvoiceRow {
   id: string;
@@ -152,18 +144,20 @@ export interface PortfolioData {
   kpis: {
     compliant: number;
     expiring: number;
-    expiredOrBreach: number;
+    /** A certificate was actually issued and has since lapsed. Never
+     * includes properties that simply never had a certificate at all —
+     * see `notAvailable` for that. */
+    expired: number;
+    /** No certificate of this type has ever been supplied, and there's no
+     * open job to produce one. Distinct from `expired` on purpose — this
+     * was previously (wrongly) folded into the same bucket, making
+     * "never had one" look identical to "had one, now lapsed" in the UI. */
+    notAvailable: number;
     awaitingCertificate: number;
   };
   byType: Record<CertCode, { valid: number; expiring: number; expired: number; total: number }>;
 }
 
-/**
- * Single shared fetch for every /portal screen that needs the property
- * matrix. Wrapped in React's cache() so the (app) layout and each page can
- * both call this per request without hitting Supabase twice. Deliberately
- * narrow selects — see database-PATCH-*-instructions.md.
- */
 export const getPortfolioData = cache(async function getPortfolioData(): Promise<PortfolioData> {
   const supabase = await createClient();
 
@@ -202,7 +196,8 @@ export const getPortfolioData = cache(async function getPortfolioData(): Promise
 
   let compliant = 0;
   let expiring = 0;
-  let expiredOrBreach = 0;
+  let expired = 0;
+  let notAvailable = 0;
   let awaitingCertificate = 0;
 
   const byType: PortfolioData["byType"] = CERT_CODES.reduce(
@@ -211,8 +206,9 @@ export const getPortfolioData = cache(async function getPortfolioData(): Promise
   );
 
   for (const group of propertyGroups) {
-    let hasExpiredOrMissing = false;
+    let hasExpired = false;
     let hasExpiring = false;
+    let hasMissing = false;
     let hasBooked = false;
 
     for (const code of CERT_CODES) {
@@ -226,17 +222,22 @@ export const getPortfolioData = cache(async function getPortfolioData(): Promise
         hasExpiring = true;
       } else if (status === "expired") {
         byType[code].expired += 1;
-        hasExpiredOrMissing = true;
+        hasExpired = true;
       } else if (status === "missing") {
-        hasExpiredOrMissing = true;
+        hasMissing = true;
       } else if (status === "booked") {
         hasBooked = true;
       }
       if (status !== "na") byType[code].total += 1;
     }
 
-    if (hasExpiredOrMissing) expiredOrBreach += 1;
+    // Priority order matters: an actual lapsed certificate is more urgent
+    // than "never supplied," which is more urgent than "booked in," which
+    // beats a clean compliant property. Missing and expired are counted in
+    // completely separate buckets — never combined.
+    if (hasExpired) expired += 1;
     else if (hasExpiring) expiring += 1;
+    else if (hasMissing) notAvailable += 1;
     else if (hasBooked) awaitingCertificate += 1;
     else compliant += 1;
   }
@@ -246,7 +247,7 @@ export const getPortfolioData = cache(async function getPortfolioData(): Promise
     certs: safeCerts,
     invoices: safeInvoices,
     properties: propertyGroups,
-    kpis: { compliant, expiring, expiredOrBreach, awaitingCertificate },
+    kpis: { compliant, expiring, expired, notAvailable, awaitingCertificate },
     byType,
   };
 });

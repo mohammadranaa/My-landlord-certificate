@@ -90,13 +90,13 @@ export default async function PortalOverviewPage() {
   const kpiPlates = [
     { label: "Fully compliant", value: kpis.compliant, note: `${compliantPct}% of the portfolio`, dot: "#80D100" },
     { label: "Expiring ≤ 30 days", value: kpis.expiring, note: "Renewal window open", dot: "#F59E0B" },
-    { label: "Expired / breach", value: kpis.expiredOrBreach, note: "Action required today", dot: "#D14343" },
+    { label: "Expired", value: kpis.expired, note: "Was issued, has now lapsed", dot: "#D14343" },
+    { label: "Not available", value: kpis.notAvailable, note: "Never supplied — needs a first certificate", dot: "#9CA3AF" },
     { label: "Awaiting certificate", value: kpis.awaitingCertificate, note: "Visit complete, PDF pending", dot: "#0093DB" },
   ];
 
   const needsAttention = buildNeedsAttention(properties);
 
-  // Recent activity — real job_diary entries, public-facing only.
   const supabase = await createClient();
   const { data: diaryEntries } = await supabase
     .from("job_diary")
@@ -265,6 +265,10 @@ export default async function PortalOverviewPage() {
               );
             })}
           </div>
+          <p className="mt-3 text-[12px] text-[#9CA3AF]">
+            Only counts certificate types that have actually been issued at least once — see Properties for
+            types that have never been supplied at all.
+          </p>
         </div>
 
         <div className="border border-[#dcdfd8] bg-white p-5">

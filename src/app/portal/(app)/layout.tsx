@@ -39,8 +39,8 @@ export default async function PortalAppLayout({
   const compliancePct =
     properties.length > 0 ? Math.round((kpis.compliant / properties.length) * 100) : 0;
 
-  const needsAttentionCount = kpis.expiredOrBreach + kpis.expiring;
-  const alertCount = kpis.expiredOrBreach + kpis.expiring + kpis.awaitingCertificate;
+  const needsAttentionCount = kpis.expired + kpis.notAvailable + kpis.expiring;
+  const alertCount = kpis.expired + kpis.notAvailable + kpis.expiring + kpis.awaitingCertificate;
 
   const navCounts: Record<string, number | null> = {
     "/portal/dashboard": needsAttentionCount,
