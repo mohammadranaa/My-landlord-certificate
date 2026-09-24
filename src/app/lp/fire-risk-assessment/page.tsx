@@ -18,7 +18,7 @@ const BOOK = "/book?service=fra-residential";
 export const metadata: Metadata = {
   title: `Fire Risk Assessment London from £${entryPrice} | Book Online`,
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan within 48 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan within 24-48 hours.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment" },
 };
@@ -28,7 +28,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Fire Risk Assessment",
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Competent assessors, written report within 48 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Competent assessors, written report within 24-48 hours.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -65,7 +65,7 @@ const benefits = [
     body: "Every assessment is carried out by an experienced, qualified fire risk assessor, so your report is accepted by councils, insurers and licensing teams.",
   },
   {
-    title: "Report + action plan in 48h",
+    title: "Report + action plan in 24-48h",
     body: "You receive a clear written report with a prioritised action plan, ready for your records, your council and your HMO licence.",
   },
   {
@@ -77,7 +77,7 @@ const benefits = [
 const steps = [
   { n: "1", title: "Book online or call", body: "Tell us the property type and pick a date. Same-week slots across all 33 London boroughs." },
   { n: "2", title: "Assessor visits", body: "A competent assessor inspects fire doors, alarms, extinguishers, emergency lighting, escape routes and hazards." },
-  { n: "3", title: "Report in 48 hours", body: "We email your written fire risk assessment and prioritised action plan, ready to act on and share." },
+  { n: "3", title: "Report in 24-48 hours", body: "We email your written fire risk assessment and prioritised action plan, ready to act on and share." },
 ];
 
 const stepIcons = [
@@ -104,7 +104,7 @@ const faqs = [
   },
   {
     q: "How quickly do I get the report?",
-    a: "We email your written fire risk assessment and prioritised action plan within 48 hours of the visit, ready for your records, your council and any HMO licence application.",
+    a: "We email your written fire risk assessment and prioritised action plan within 24-48 hours of the visit, ready for your records, your council and any HMO licence application.",
   },
   {
     q: "Do you cover HMOs and blocks of flats?",
@@ -144,7 +144,7 @@ export default function FireRiskAssessmentLandingPage() {
             <div key={i} className="flex items-center gap-5 shrink-0 px-4" aria-hidden={i === 1 || undefined}>
               <span>&#9989; <strong className="text-white">Fixed price from £{entryPrice}</strong></span>
               <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
-              <span>&#9889; <strong className="text-white">Report in 48 hrs</strong></span>
+              <span>&#9889; <strong className="text-white">Report in 24-48 hrs</strong></span>
               <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
               <span>&#11088; <span className="text-action-green">5.0 on Google</span></span>
               <span className="w-1 h-1 rounded-full bg-gray-600 shrink-0" />
@@ -176,7 +176,7 @@ export default function FireRiskAssessmentLandingPage() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <div>
               <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-                Competent Assessors · All 33 London Boroughs · 48-Hour Report
+                Competent Assessors · All 33 London Boroughs · 24-48-Hour Report
               </p>
               <h1 className="text-3xl lg:text-5xl font-bold leading-tight mb-4">
                 Fire Risk Assessment in London from £{entryPrice}
@@ -187,7 +187,7 @@ export default function FireRiskAssessmentLandingPage() {
               </a>
               <p className="text-blue-100 text-lg leading-relaxed mb-6 max-w-xl">
                 The fire risk assessment landlords, HMOs and blocks of flats need under the Fire
-                Safety Order. Written report and action plan within 48 hours. Fixed price, no hidden fees.
+                Safety Order. Written report and action plan within 24-48 hours. Fixed price, no hidden fees.
               </p>
               <div className="flex flex-wrap gap-3 mb-3">
                 <Link href={BOOK} className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-6 py-3 rounded-xl transition-colors">
@@ -221,7 +221,7 @@ export default function FireRiskAssessmentLandingPage() {
       <div className="bg-spec-bar text-white border-t-2 border-action-green">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
           <div><span className="font-bold">From £{entryPrice}</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Fixed price</span></div>
-          <div><span className="font-bold">48 hours</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Written report</span></div>
+          <div><span className="font-bold">24-48 hours</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">Written report</span></div>
           <div><span className="font-bold">All 33 boroughs</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">+ M25 area</span></div>
           <div><span className="font-bold">HMO &amp; blocks</span><br /><span className="text-white/60 text-[11px] uppercase tracking-wider">council-accepted</span></div>
         </div>
@@ -478,7 +478,7 @@ export default function FireRiskAssessmentLandingPage() {
           <h2 className="text-2xl lg:text-3xl font-bold mb-3">Book your fire risk assessment today, from £{entryPrice}</h2>
           <p className="text-blue-100 mb-7 max-w-lg mx-auto">
             Competent assessors across all 33 London boroughs. Written report and action plan
-            within 48 hours. Fixed price, no hidden fees.
+            within 24-48 hours. Fixed price, no hidden fees.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href={BOOK} className="inline-flex items-center bg-action-green hover:bg-green-500 text-brand-charcoal font-semibold px-8 py-3 rounded-xl transition-colors">
