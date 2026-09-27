@@ -11,25 +11,30 @@ import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import {
+  DOMESTIC_EICR_PRICES,
   DOMESTIC_EICR_TABLE,
+  DOMESTIC_EPC_PRICES,
   DOMESTIC_EPC_TABLE,
   FRA_RESIDENTIAL_TABLE,
+  FROM_PRICES,
+  GAS_SAFETY_CP12_PRICES,
   GAS_SAFETY_CP12_TABLE,
+  getPriceForFRA,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Landlord Certificate Bundle — Save up to £44.97",
+  title: "Landlord Certificate Bundle — Save up to £49.96",
   description:
-    "Bundle your EICR, Gas Safety, EPC and Fire Risk Assessment in one visit. Essential Bundle from £130. Get a quote today.",
+    "Bundle your EICR, Gas Safety, EPC and Fire Risk Assessment in one visit. Essential Bundle from £160. Full Compliance from £260. HMO Complete from £470.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
   openGraph: {
-    title: "Landlord Certificate Bundle — Save up to £44.97",
+    title: "Landlord Certificate Bundle — Save up to £49.96",
     description:
-      "Combine your landlord certificates in one engineer visit. Essential Bundle £130, Full Compliance £230, HMO Complete £450. Book today.",
+      "Combine your landlord certificates in one engineer visit. Essential Bundle £160, Full Compliance £260, HMO Complete £470. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
@@ -42,7 +47,7 @@ const serviceSchema = {
   name: "Landlord Certificate Bundle",
   url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   description:
-    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit. From £130. Certificates emailed within 24 hours. Book today.",
+    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit. From £160. Certificates emailed within 24 hours. Book today.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -64,21 +69,21 @@ const serviceSchema = {
       {
         "@type": "Offer",
         name: "Essential Bundle (EICR + Gas Safety)",
-        price: "130",
+        price: "160",
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "Full Compliance Bundle (EICR + Gas Safety + EPC)",
-        price: "230",
+        price: "260",
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "HMO Complete Bundle (EICR + Gas Safety + EPC + FRA)",
-        price: "450",
+        price: "470",
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
@@ -86,7 +91,7 @@ const serviceSchema = {
   },
   offers: {
     "@type": "Offer",
-    price: "130",
+    price: "160",
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
@@ -105,8 +110,8 @@ const productSchema = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "130",
-    highPrice: "450",
+    lowPrice: "160",
+    highPrice: "470",
     priceCurrency: "GBP",
     offerCount: "3",
     availability: "https://schema.org/InStock",
@@ -141,7 +146,7 @@ const faqSchema = {
       name: "How much does the landlord certificate bundle cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Essential Bundle (EICR + Gas Safety Certificate) costs £130, saving £14.99 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £230, saving £24.98. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £450, saving £44.97.",
+        text: "The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs £160, saving £19.98 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £260, saving £29.97. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £470, saving £49.96.",
       },
     },
     {
@@ -194,30 +199,40 @@ const bundles: {
 }[] = [
   {
     name: "Essential Bundle",
-    tagline: "The two annual must-haves, sorted in one visit.",
+    tagline:
+      "EICR plus a full gas safety inspection with boiler service — the two must-haves, sorted in one visit.",
     services: [
-      { label: "EICR (1–3 bed)", price: 94.99, href: "/eicr" },
-      { label: "Gas Safety Certificate — 1 appliance", price: 50, href: "/gas-safety-certificate" },
+      { label: "EICR (1–3 bed)", price: DOMESTIC_EICR_PRICES["1-3bed"], href: "/eicr" },
+      {
+        label: "Gas Safety — Boiler check + service (CP12)",
+        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
+        href: "/gas-safety-certificate",
+      },
     ],
-    subtotal: 144.99,
-    bundlePrice: 130,
-    saving: 14.99,
+    subtotal: 179.98,
+    bundlePrice: 160,
+    saving: 19.98,
     href: "/book?bundle=essential",
     badge: null,
     bestFor:
-      "Single lets with one gas boiler. Covers the two annual legal requirements for most landlords.",
+      "Single lets with a gas boiler. Covers EICR and a full gas safety inspection including boiler service.",
   },
   {
     name: "Full Compliance Bundle",
-    tagline: "Everything most landlords need — sorted in one day.",
+    tagline:
+      "Everything most landlords need — EICR, gas safety with boiler service, and EPC, sorted in one day.",
     services: [
-      { label: "EICR (1–3 bed)", price: 94.99, href: "/eicr" },
-      { label: "Gas Safety Certificate — 1 appliance", price: 50, href: "/gas-safety-certificate" },
-      { label: "EPC (1–3 bed)", price: 109.99, href: "/epc" },
+      { label: "EICR (1–3 bed)", price: DOMESTIC_EICR_PRICES["1-3bed"], href: "/eicr" },
+      {
+        label: "Gas Safety — Boiler check + service (CP12)",
+        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
+        href: "/gas-safety-certificate",
+      },
+      { label: "EPC (1–3 bed)", price: DOMESTIC_EPC_PRICES["1-3bed"], href: "/epc" },
     ],
-    subtotal: 254.98,
-    bundlePrice: 230,
-    saving: 24.98,
+    subtotal: 289.97,
+    bundlePrice: 260,
+    saving: 29.97,
     href: "/book?bundle=full-compliance",
     badge: "Most popular",
     bestFor:
@@ -225,16 +240,21 @@ const bundles: {
   },
   {
     name: "HMO Complete Bundle",
-    tagline: "Full compliance for HMOs and larger properties.",
+    tagline:
+      "Full compliance for HMOs and larger properties — all four certificates required for your HMO licence.",
     services: [
-      { label: "EICR (4 bed)", price: 104.99, href: "/eicr" },
-      { label: "Gas Safety Certificate — 2 appliances", price: 60, href: "/gas-safety-certificate" },
-      { label: "EPC (5 bed)", price: 149.99, href: "/epc" },
-      { label: "Fire Risk Assessment (4 bed)", price: 179.99, href: "/fire-risk-assessment" },
+      { label: "EICR (4 bed)", price: DOMESTIC_EICR_PRICES["4bed"], href: "/eicr" },
+      {
+        label: "Gas Safety — Boiler check + service (CP12)",
+        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
+        href: "/gas-safety-certificate",
+      },
+      { label: "EPC (5 bed)", price: DOMESTIC_EPC_PRICES["5bed"], href: "/epc" },
+      { label: "Fire Risk Assessment (4 bed)", price: getPriceForFRA("4bed"), href: "/fire-risk-assessment" },
     ],
-    subtotal: 494.97,
-    bundlePrice: 450,
-    saving: 44.97,
+    subtotal: 519.96,
+    bundlePrice: 470,
+    saving: 49.96,
     href: "/book?bundle=hmo-complete",
     badge: null,
     bestFor:
@@ -248,7 +268,7 @@ const faqItems = [
   {
     question: "How much does the landlord certificate bundle cost?",
     answer:
-      "The Essential Bundle (EICR + Gas Safety Certificate) costs £130, saving £14.99 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £230, saving £24.98. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £450, saving £44.97 on four certificates.",
+      "The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs £160, saving £19.98 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £260, saving £29.97. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £470, saving £49.96 on four certificates.",
   },
   {
     question: "Will all certificates be completed in one visit?",
@@ -306,7 +326,7 @@ export default function BundlePage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            One Visit · All Certificates · Save up to £44.97
+            One Visit · All Certificates · Save up to £49.96
           </p>
 
           <Heading level={1} id="bundle-heading" inverted className="mb-4 max-w-2xl">
@@ -325,7 +345,7 @@ export default function BundlePage() {
               href="/book?bundle=full-compliance"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book a bundle — from £130
+              Book a bundle — from £160
             </Link>
             <a
               href="#bundles"
@@ -348,11 +368,11 @@ export default function BundlePage() {
           <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Bundles from</dt>
-              <dd className="text-sm font-bold text-white">£130</dd>
+              <dd className="text-sm font-bold text-white">£160</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Save up to</dt>
-              <dd className="text-sm font-bold text-white">£44.97</dd>
+              <dd className="text-sm font-bold text-white">£49.96</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Certificates</dt>
@@ -378,7 +398,7 @@ export default function BundlePage() {
               {
                 abbr: "£",
                 title: "Save money",
-                body: "Bundled visits cost less than individual bookings. Save up to £44.97 on an HMO Complete bundle compared to booking each certificate separately at individual prices.",
+                body: "Bundled visits cost less than individual bookings. Save up to £49.96 on an HMO Complete bundle compared to booking each certificate separately at individual prices.",
               },
               {
                 abbr: "1",
@@ -629,11 +649,11 @@ export default function BundlePage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
               { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
             ].map(({ label, href, price }) => (
               <Link
@@ -673,7 +693,7 @@ export default function BundlePage() {
               href="/book?bundle=full-compliance"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Full Compliance Bundle — £230
+              Full Compliance Bundle — £260
             </Link>
             <Link
               href="/book?bundle=essential"
@@ -682,7 +702,7 @@ export default function BundlePage() {
                 "bg-white/10 border border-white/30 text-white hover:bg-white/20",
               )}
             >
-              Essential Bundle — £130
+              Essential Bundle — £160
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-100">
@@ -696,7 +716,7 @@ export default function BundlePage() {
       <StickyMobileCTA
         href="/book?bundle=essential"
         label="Book Bundle"
-        price={130}
+        price={160}
         serviceName="Bundle from"
       />
     </>
