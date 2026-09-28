@@ -295,7 +295,7 @@ export default function ElectricalDiagnosticPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/eicr", label: "Domestic EICR", desc: "Full 5-yearly inspection of the entire installation. From £67.99." },
-              { href: "/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace an old consumer unit with modern RCD protection. From £599.99." },
+              { href: "/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace an old consumer unit with modern RCD protection. From £649.99." },
               { href: "/commercial-eicr", label: "Commercial EICR", desc: "For offices, HMOs, and multi-unit premises. From £149.99." },
             ].map((s) => (
               <Link

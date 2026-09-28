@@ -10,9 +10,9 @@ import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Fuse Box Installation London from £599.99 — NICEIC Approved",
+  title: "Fuse Box Installation London from £649.99 — NICEIC Approved",
   description:
-    "Consumer unit replacement from £599.99. NICEIC approved electricians, Part P self-certified, EICR included on completion. Book today.",
+    "Consumer unit replacement from £649.99. NICEIC approved electricians, Part P self-certified, EICR included on completion. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/fuse-box-installation",
   },

@@ -104,10 +104,10 @@ export const ELECTRICAL_DIAGNOSTIC_HOURLY_RATE = 99.99;
 // ─── Fuse Box Installation ───────────────────────────────────────────────────
 
 export const FUSE_BOX_TABLE: readonly PriceRow[] = [
-  { label: "6 Way Consumer Unit", price: 599.99 },
-  { label: "6–10 Way Consumer Unit", price: 699.99 },
-  { label: "10–15 Way Consumer Unit", price: 859.99 },
-  { label: "15–20 Way Consumer Unit", price: 1079.99 },
+  { label: "6-Way Consumer Unit", price: 649.99 },
+  { label: "6–10 Way Consumer Unit", price: 799.99 },
+  { label: "10–15 Way Consumer Unit", price: 949.99 },
+  { label: "15–20 Way Consumer Unit", price: 1149.99 },
   { label: "Double Decker Consumer Unit", price: 1149.99 },
   { label: "Skeleton Board", price: 979.99 },
 ];
@@ -345,7 +345,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   eicr: "from £67.99",
   "commercial-eicr": "from £149.99",
   "electrical-diagnostic": "from £99.99/hr",
-  "fuse-box": "from £599.99",
+  "fuse-box": "from £649.99",
   elc: "from £54.99",
   pat: "from £59.99",
   "gas-safety-cp12": "from £64.99",
