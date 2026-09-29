@@ -802,7 +802,7 @@ export default function AsbestosSurveyPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="asbestos" />
 
       <StickyMobileCTA
         href="/book?service=asbestos-survey"

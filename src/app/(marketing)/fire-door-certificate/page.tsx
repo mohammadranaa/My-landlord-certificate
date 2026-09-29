@@ -533,7 +533,7 @@ export default function FireDoorCertificatePage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="fire-safety-certificate" />
 
       <StickyMobileCTA
         href="/book?service=fire-door"

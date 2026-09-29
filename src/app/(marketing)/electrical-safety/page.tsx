@@ -200,7 +200,7 @@ export default function ElectricalSafetyPage() {
         </div>
       </section>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="eicr" />
 
       {/* ── CTA ── */}
       <section className="py-14 bg-warm-white">

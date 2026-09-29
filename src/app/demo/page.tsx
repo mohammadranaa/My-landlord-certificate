@@ -214,22 +214,22 @@ export default function DemoPage() {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <TestimonialCard
-                content="Booked online at 9pm, engineer arrived next morning at 8am. Certificate in my inbox by noon. Couldn't be simpler."
-                author="James T."
-                location="Islington, London"
+                content="Example review text goes here — this is placeholder content for the component demo, not a real customer quote."
+                author="Example Reviewer"
+                location="Demo, London"
                 service="EICR Certificate"
                 showTrustpilot
               />
               <TestimonialCard
-                content="Have 12 properties and use My Landlord Certificate for all of them. The reminder system means I've never missed a renewal."
-                author="Sandra K."
-                location="Manchester"
+                content="Example review text goes here — this is placeholder content for the component demo, not a real customer quote."
+                author="Example Reviewer"
+                location="Demo, London"
                 service="Gas Safety Certificate"
               />
               <TestimonialCard
-                content="Extremely professional. The engineer explained everything clearly and the price was exactly as quoted online."
-                author="David M."
-                location="Bristol"
+                content="Example review text goes here — this is placeholder content for the component demo, not a real customer quote."
+                author="Example Reviewer"
+                location="Demo, London"
                 service="EPC Certificate"
                 showTrustpilot
               />

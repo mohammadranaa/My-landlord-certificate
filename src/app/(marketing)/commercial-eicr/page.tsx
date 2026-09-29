@@ -12,7 +12,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -54,14 +54,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "94",
-      reviewCount: "94",
-    },
   },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -727,7 +719,7 @@ export default function CommercialEicrPage() {
         </section>
 
         {/* ── Reviews ── */}
-        {REVIEWS.length > 0 && <ReviewsSection heading="What our commercial clients say" limit={3} />}
+        <ReviewsSection reviews={reviewsForService("eicr", 3)} heading="What our commercial clients say" />
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

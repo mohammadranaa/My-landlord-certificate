@@ -5,7 +5,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
-import { REVIEWS } from "@/data/reviews";
+import { RatingBadge } from "@/components/ui/rating-badge";
+import { allReviewsNewestFirst } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -30,20 +31,6 @@ export const metadata: Metadata = {
 
 // ── Schema ────────────────────────────────────────────────────────────────────
 
-const aggregateRatingSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "My Landlord Certificate",
-  url: "https://www.mylandlordcertificate.co.uk",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    reviewCount: "312",
-    bestRating: "5",
-    worstRating: "1",
-  },
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -56,9 +43,10 @@ const breadcrumbSchema = {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ReviewsPage() {
+  const allReviews = allReviewsNewestFirst();
+
   return (
     <>
-      <JsonLd data={aggregateRatingSchema} />
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ── */}
@@ -71,35 +59,10 @@ export default function ReviewsPage() {
             My Landlord Certificate Reviews
           </p>
           <Heading level={1} id="reviews-heading" inverted className="mb-6 max-w-2xl mx-auto">
-            Rated 5.0 out of 5 by London landlords
+            Real reviews from London landlords
           </Heading>
 
-          {/* Prominent rating block */}
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-white/10 border border-white/20 rounded-2xl px-8 py-6 mb-8">
-            <div className="text-center sm:text-left">
-              <p className="text-6xl font-bold text-white leading-none mb-1">5.0</p>
-              <div className="flex gap-1 justify-center sm:justify-start mb-1" role="img" aria-label="5.0 out of 5 stars">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg
-                    key={i}
-                    className="w-5 h-5 text-[#00B67A]"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-blue-200 text-xs">out of 5 stars</p>
-            </div>
-            <div className="w-px h-14 bg-white/20 hidden sm:block" aria-hidden="true" />
-            <div className="text-center sm:text-left">
-              <p className="text-4xl font-bold text-white leading-none mb-1">312</p>
-              <p className="text-blue-200 text-sm">verified reviews</p>
-              <p className="text-blue-100 text-xs mt-0.5">verified reviews from London landlords</p>
-            </div>
-          </div>
+          <RatingBadge theme="dark" className="justify-center mb-8" />
 
           <p className="text-blue-100 text-base leading-relaxed max-w-md mx-auto">
             Real reviews from landlords who have booked EICR, Gas Safety, EPC
@@ -109,10 +72,10 @@ export default function ReviewsPage() {
       </section>
 
       {/* ── Reviews ── */}
-      {REVIEWS.length > 0 && (
+      {allReviews.length > 0 && (
         <section className="py-16 bg-warm-white">
           <Container>
-            <ReviewsSection />
+            <ReviewsSection reviews={allReviews} />
           </Container>
         </section>
       )}

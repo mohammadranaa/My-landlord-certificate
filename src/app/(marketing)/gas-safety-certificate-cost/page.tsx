@@ -681,7 +681,7 @@ export default function GasSafetyCertificateCostPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="gas-safety" />
 
       <StickyMobileCTA
         href="/book?service=gas-safety-cp12"

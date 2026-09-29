@@ -8,7 +8,7 @@ import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { FIRE_SAFETY_CERT_TABLE, getPriceForFireSafetyCert } from "@/lib/pricing";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 
 const entryPrice = getPriceForFireSafetyCert(1);
 const BOOK = "/book?service=fire-safety-cert";
@@ -106,6 +106,8 @@ function PhoneIcon({ className }: { className?: string }) {
 }
 
 export default function FireSafetyCertificateLandingPage() {
+  const fireSafetyReviews = reviewsForService("fire-safety-certificate", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -376,10 +378,10 @@ export default function FireSafetyCertificateLandingPage() {
       </section>
 
       {/* Reviews */}
-      {REVIEWS.length > 0 && (
+      {fireSafetyReviews.length > 0 && (
         <section className="bg-warm-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
-            <ReviewsSection limit={3} />
+            <ReviewsSection reviews={fireSafetyReviews} />
           </div>
         </section>
       )}

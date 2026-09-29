@@ -10,7 +10,7 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import Image from "next/image";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
 import {
   ADDITIONAL_CHARGES,
@@ -148,6 +148,8 @@ const improvements = [
 ];
 
 export default function EPCPage() {
+  const epcReviews = reviewsForService("epc", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -776,7 +778,7 @@ export default function EPCPage() {
         </section>
 
         {/* Testimonials */}
-        {REVIEWS.length > 0 && (
+        {epcReviews.length > 0 && (
           <section className="py-10 border-b border-border">
             <div className="grid md:grid-cols-[auto_1fr] gap-6 items-center mb-8">
               <Image
@@ -787,7 +789,7 @@ export default function EPCPage() {
                 sizes="(max-width: 768px) 100%, 300px"
                 className="rounded-2xl border border-border shadow-sm w-full md:w-[300px] h-auto"
               />
-              <ReviewsSection limit={3} />
+              <ReviewsSection reviews={epcReviews} />
             </div>
             <p className="mt-6 text-sm text-brand-grey text-center">
               Read more reviews from London landlords on our{" "}

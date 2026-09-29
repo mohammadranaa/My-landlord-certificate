@@ -52,14 +52,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "76",
-      reviewCount: "76",
-    },
   },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -647,7 +639,7 @@ export default function CommercialGasSafetyCertificatePage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="gas-safety" />
 
       <StickyMobileCTA
         href="/book?service=gas-safety-cp42&type=commercial"

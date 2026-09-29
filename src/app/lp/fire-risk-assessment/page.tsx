@@ -8,7 +8,7 @@ import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { FRA_RESIDENTIAL_TABLE, getPriceForFRA } from "@/lib/pricing";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 
 const entryPrice = getPriceForFRA("studio");
 const BOOK = "/book?service=fra-residential";
@@ -106,6 +106,8 @@ function PhoneIcon({ className }: { className?: string }) {
 }
 
 export default function FireRiskAssessmentLandingPage() {
+  const fraReviews = reviewsForService("fire-risk-assessment", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -371,10 +373,10 @@ export default function FireRiskAssessmentLandingPage() {
       </section>
 
       {/* Reviews */}
-      {REVIEWS.length > 0 && (
+      {fraReviews.length > 0 && (
         <section className="bg-warm-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
-            <ReviewsSection limit={3} />
+            <ReviewsSection reviews={fraReviews} />
           </div>
         </section>
       )}

@@ -10,7 +10,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
@@ -56,14 +56,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "312",
-      reviewCount: "312",
-    },
   },
   areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
@@ -246,6 +238,8 @@ const highestPrice = getPriceForEICR("8bed");
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function EicrPage() {
+  const eicrReviews = reviewsForService("eicr", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -1085,9 +1079,9 @@ export default function EicrPage() {
         </section>
 
         {/* ── 11b. Testimonials ───────────────────────────────────────────── */}
-        {REVIEWS.length > 0 && (
+        {eicrReviews.length > 0 && (
           <>
-            <ReviewsSection limit={3} />
+            <ReviewsSection reviews={eicrReviews} />
             <p className="mt-6 text-sm text-brand-grey text-center">
               Read more reviews from London landlords on our{" "}
               <Link

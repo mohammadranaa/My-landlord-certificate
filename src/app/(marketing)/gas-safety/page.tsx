@@ -185,7 +185,7 @@ export default function GasSafetyPage() {
         </div>
       </section>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="gas-safety" />
 
       {/* ── CTA ── */}
       <section className="py-14 bg-warm-white">

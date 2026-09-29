@@ -769,7 +769,7 @@ export default function EpcCostPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="epc" />
 
       <StickyMobileCTA
         href="/book?service=epc"

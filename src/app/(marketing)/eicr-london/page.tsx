@@ -11,7 +11,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { cn } from "@/lib/utils";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
@@ -188,6 +188,8 @@ const popularPrice = getPriceForEICR("1-3bed");
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function EicrLondonPage() {
+  const eicrReviews = reviewsForService("eicr", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -467,9 +469,9 @@ export default function EicrLondonPage() {
         </section>
 
         {/* ── Testimonials ── */}
-        {REVIEWS.length > 0 && (
+        {eicrReviews.length > 0 && (
           <section>
-            <ReviewsSection limit={3} />
+            <ReviewsSection reviews={eicrReviews} />
             <p className="mt-5 text-sm text-center text-brand-grey">
               <Link href="/reviews" className="text-compliance-blue hover:underline font-medium">
                 Read more reviews →

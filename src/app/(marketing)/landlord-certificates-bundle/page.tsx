@@ -8,7 +8,8 @@ import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
-import { ReviewsBlock } from "@/components/marketing/reviews-block";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
+import { featuredReviews } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   DOMESTIC_EICR_PRICES,
@@ -52,14 +53,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "203",
-      reviewCount: "203",
-    },
   },
   areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
@@ -300,6 +293,8 @@ const faqItems = [
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function BundlePage() {
+  const bundleReviews = featuredReviews().slice(0, 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -711,7 +706,13 @@ export default function BundlePage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      {bundleReviews.length > 0 && (
+        <section aria-label="Customer reviews" className="bg-warm-white border-y border-border">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+            <ReviewsSection reviews={bundleReviews} />
+          </div>
+        </section>
+      )}
 
       <StickyMobileCTA
         href="/book?bundle=essential"

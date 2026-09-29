@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { PHONE_DISPLAY } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -56,14 +56,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "147",
-      reviewCount: "147",
-    },
   },
   areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
@@ -255,6 +247,8 @@ const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function FireRiskAssessmentPage() {
+  const fraReviews = reviewsForService("fire-risk-assessment", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -994,8 +988,8 @@ export default function FireRiskAssessmentPage() {
               <p className="text-xs text-brand-grey">Professional indemnity cover on every assessment</p>
             </div>
             <div className="rounded-xl border border-border bg-warm-white p-4 text-center">
-              <p className="text-2xl font-bold text-compliance-blue mb-1">5.0 ★</p>
-              <p className="text-xs text-brand-grey">Average rating from 147 verified reviews</p>
+              <p className="text-2xl font-bold text-compliance-blue mb-1">IFSM</p>
+              <p className="text-xs text-brand-grey">Institute of Fire Safety Managers certified assessors</p>
             </div>
           </div>
           <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-3">
@@ -1283,7 +1277,7 @@ export default function FireRiskAssessmentPage() {
         </section>
 
         {/* ── Reviews ── */}
-        {REVIEWS.length > 0 && <ReviewsSection limit={3} />}
+        <ReviewsSection reviews={fraReviews} />
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

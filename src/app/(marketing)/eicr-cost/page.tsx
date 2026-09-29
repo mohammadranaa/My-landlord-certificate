@@ -667,7 +667,7 @@ export default function EicrCostPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="eicr" />
 
       <StickyMobileCTA
         href="/book?service=eicr"

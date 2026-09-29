@@ -10,7 +10,7 @@ import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { DOMESTIC_EPC_TABLE, getPriceForEPC } from "@/lib/pricing";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 
 const entryPrice = getPriceForEPC("studio");
 
@@ -115,6 +115,8 @@ function PhoneIcon({ className }: { className?: string }) {
 }
 
 export default function EpcLandingPage() {
+  const epcReviews = reviewsForService("epc", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -394,9 +396,9 @@ export default function EpcLandingPage() {
       </section>
 
       {/* ── Reviews ── */}
-      {REVIEWS.length > 0 && (
+      {epcReviews.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-          <ReviewsSection limit={3} />
+          <ReviewsSection reviews={epcReviews} />
         </section>
       )}
 

@@ -9,7 +9,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -139,6 +139,8 @@ const benefitIcons = [
 
 
 export default function FireSafetyCertificatePage() {
+  const fireSafetyReviews = reviewsForService("fire-safety-certificate", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -648,9 +650,9 @@ export default function FireSafetyCertificatePage() {
         </section>
 
         {/* Reviews */}
-        {REVIEWS.length > 0 && (
+        {fireSafetyReviews.length > 0 && (
           <section className="py-10 border-b border-border">
-            <ReviewsSection limit={3} />
+            <ReviewsSection reviews={fireSafetyReviews} />
           </section>
         )}
 

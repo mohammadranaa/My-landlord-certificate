@@ -623,7 +623,7 @@ export default function FireAlarmInstallationPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="fire-safety-certificate" />
 
       <StickyMobileCTA
         href="/book?service=fire-alarm-installation"

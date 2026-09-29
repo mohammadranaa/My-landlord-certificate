@@ -397,7 +397,7 @@ export default function ElectricalDiagnosticPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="eicr" />
 
       <StickyMobileCTA
         href="/book?service=electrical-diagnostic"

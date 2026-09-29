@@ -11,7 +11,9 @@ import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { CountUp } from "@/components/ui/count-up";
-import { ReviewsBlock } from "@/components/marketing/reviews-block";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
+import { RatingBadge } from "@/components/ui/rating-badge";
+import { featuredReviews } from "@/data/reviews";
 import { MapSection } from "@/components/ui/map-section";
 import { cn } from "@/lib/utils";
 import {
@@ -118,28 +120,6 @@ const localBusinessSchema = {
     "https://www.instagram.com/mylandlordcertificate",
     "https://www.linkedin.com/company/my-landlord-certificate/",
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "847",
-  },
-};
-
-const aggregateRatingSchema = {
-  "@context": "https://schema.org",
-  "@type": "AggregateRating",
-  itemReviewed: {
-    "@type": "LocalBusiness",
-    name: "My Landlord Certificate",
-    url: "https://www.mylandlordcertificate.co.uk",
-  },
-  ratingValue: "5.0",
-  bestRating: "5",
-  worstRating: "1",
-  ratingCount: "847",
-  reviewCount: "847",
 };
 
 const breadcrumbSchema = {
@@ -190,11 +170,12 @@ const faqItems = [
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
+  const homepageReviews = featuredReviews();
+
   return (
     <>
       <JsonLd data={organizationSchema} />
       <JsonLd data={localBusinessSchema} />
-      <JsonLd data={aggregateRatingSchema} />
       <JsonLd data={breadcrumbSchema} />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
@@ -302,15 +283,7 @@ export default function HomePage() {
                 </span>
               </div>
               <div className="mt-4 border-t border-border pt-4">
-                <div className="mb-1.5 flex gap-0.5" role="img" aria-label="Rated 5 out of 5">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <svg key={i} className="h-5 w-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-lg font-bold leading-tight text-brand-charcoal">Rated 5.0/5</p>
-                <p className="text-xs text-brand-grey">by London landlords</p>
+                <RatingBadge theme="light" />
               </div>
             </div>
 
@@ -796,7 +769,13 @@ export default function HomePage() {
       </section>
 
       {/* ── Reviews ──────────────────────────────────────────────────────── */}
-      <ReviewsBlock />
+      {homepageReviews.length > 0 && (
+        <section aria-label="Customer reviews" className="bg-warm-white border-y border-border">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+            <ReviewsSection reviews={homepageReviews} />
+          </div>
+        </section>
+      )}
 
       {/* ── 6. Letting agents teaser ─────────────────────────────────────── */}
       <Section spacing="lg" className="below-fold bg-blue-rich relative overflow-hidden">

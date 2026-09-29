@@ -399,7 +399,7 @@ export default function FuseBoxInstallationPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="eicr" />
 
       <StickyMobileCTA
         href="/book?service=fuse-box"

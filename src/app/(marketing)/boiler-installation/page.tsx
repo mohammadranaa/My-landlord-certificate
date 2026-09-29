@@ -357,7 +357,7 @@ export default function BoilerInstallationPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="gas-safety" />
 
       <StickyMobileCTA
         href="mailto:info@mylandlordcertificate.co.uk"

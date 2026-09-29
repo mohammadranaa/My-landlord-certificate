@@ -10,7 +10,7 @@ import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { COMMERCIAL_EICR_TABLE } from "@/lib/pricing";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 
 const entryPrice = 149.99;
 
@@ -109,6 +109,8 @@ function PhoneIcon({ className }: { className?: string }) {
 }
 
 export default function CommercialEicrLandingPage() {
+  const eicrReviews = reviewsForService("eicr", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -436,9 +438,9 @@ export default function CommercialEicrLandingPage() {
       </section>
 
       {/* ── Reviews ── */}
-      {REVIEWS.length > 0 && (
+      {eicrReviews.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-          <ReviewsSection heading="What our commercial clients say" limit={3} />
+          <ReviewsSection reviews={eicrReviews} heading="What our commercial clients say" />
         </section>
       )}
 

@@ -6,7 +6,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { HeroRating } from "@/components/ui/hero-rating";
-import { ReviewsBlock } from "@/components/marketing/reviews-block";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
+import { featuredReviews } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import {
@@ -355,6 +356,8 @@ const faqItems = [
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function HMOCompliancePage() {
+  const hmoReviews = featuredReviews().slice(0, 3);
+
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
@@ -841,7 +844,13 @@ export default function HMOCompliancePage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      {hmoReviews.length > 0 && (
+        <section aria-label="Customer reviews" className="bg-warm-white border-y border-border">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+            <ReviewsSection reviews={hmoReviews} />
+          </div>
+        </section>
+      )}
 
       <StickyMobileCTA
         href="/book?bundle=hmo"

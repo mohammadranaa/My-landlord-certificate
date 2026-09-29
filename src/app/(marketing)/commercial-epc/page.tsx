@@ -627,7 +627,7 @@ export default function CommercialEPCPage() {
         </section>
       </div>
 
-      <ReviewsBlock />
+      <ReviewsBlock tag="epc" />
 
       <StickyMobileCTA
         href="/book?service=commercial-epc&type=commercial"

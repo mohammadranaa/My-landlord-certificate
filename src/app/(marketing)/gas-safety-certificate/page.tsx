@@ -13,7 +13,7 @@ import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
-import { REVIEWS } from "@/data/reviews";
+import { reviewsForService } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -52,14 +52,6 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
     url: "https://www.mylandlordcertificate.co.uk",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "284",
-      reviewCount: "284",
-    },
   },
   areaServed: ["London", "the M25 area"],
   hasOfferCatalog: {
@@ -278,6 +270,8 @@ const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function GasSafetyPage() {
+  const gasSafetyReviews = reviewsForService("gas-safety", 3);
+
   return (
     <>
       <JsonLd data={serviceSchema} />
@@ -965,7 +959,7 @@ export default function GasSafetyPage() {
         </section>
 
         {/* ── Reviews ─────────────────────────────────────────────────────── */}
-        {REVIEWS.length > 0 && <ReviewsSection limit={3} />}
+        <ReviewsSection reviews={gasSafetyReviews} />
 
         {/* ── 13. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
