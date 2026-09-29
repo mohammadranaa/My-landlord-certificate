@@ -315,7 +315,7 @@ export default function CommercialEICRPage() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { href: "/commercial-gas-safety-certificate", label: "Commercial Gas (CP42)", desc: "Annual gas safety inspection for commercial premises. From £159.99." },
-              { href: "/commercial-epc", label: "Commercial EPC", desc: "Required before selling or letting commercial property. From £249.99." },
+              { href: "/commercial-epc", label: "Commercial EPC", desc: "Required before selling or letting commercial property. From £349.99." },
               { href: "/fire-risk-assessment", label: "Fire Risk Assessment", desc: "Legally required for HMOs and commercial buildings. From £74.99." },
             ].map((s) => (
               <Link

@@ -80,6 +80,18 @@ const cookieRows: [string, string, string, string][] = [
     "90 days",
   ],
   [
+    "_gcl_au",
+    "Advertising (Google Ads)",
+    "Google Ads — used to link ad clicks to conversions on our site. Delivered via Google Tag Manager and Consent Mode; only stores identifying data once you accept non-essential cookies, otherwise Google receives cookieless, modelled conversion signals only.",
+    "90 days",
+  ],
+  [
+    "OpenAI Pixel cookies",
+    "Advertising (OpenAI/ChatGPT Ads)",
+    "OpenAI advertising pixel — used to measure the performance of our ChatGPT Ads campaigns. Only set after you accept non-essential cookies. Exact cookie name(s) and retention are set by OpenAI and not fully documented publicly — see OpenAI's privacy policy for details.",
+    "See OpenAI's privacy policy",
+  ],
+  [
     "__stripe_mid",
     "Payment processing",
     "Set by Stripe to prevent fraud and process payments securely. Only set when you proceed to the payment step of the booking form.",
@@ -142,6 +154,13 @@ export default function CookiesPage() {
               <p className="mb-3">
                 My Landlord Certificate (mylandlordcertificate.co.uk) uses cookies
                 for the following purposes:
+              </p>
+              <p className="mb-3 text-sm">
+                We use Google Tag Manager (GTM) to load and manage the analytics and
+                advertising tags described below. GTM itself does not set cookies —
+                it is a delivery mechanism for the tags in the table below, each of
+                which is only permitted to store identifying cookies once you accept
+                non-essential cookies via our cookie banner.
               </p>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm border-collapse">
@@ -214,12 +233,13 @@ export default function CookiesPage() {
               <p className="text-sm mb-4">
                 We use the Meta (Facebook) Pixel to measure the performance of our
                 Facebook and Instagram advertising and to build advertising
-                audiences for future campaigns. We also use Google Ads conversion
-                tracking, which relies on Google&apos;s Consent Mode and only stores
-                identifying cookies once you accept non-essential cookies —
-                otherwise it sends cookieless, aggregated conversion signals only.
-                Advertising cookies are only set after you have given your consent
-                via our cookie banner.
+                audiences for future campaigns. We use the OpenAI advertising pixel
+                to measure the performance of our ChatGPT Ads campaigns. We also use
+                Google Ads conversion tracking, which relies on Google&apos;s Consent
+                Mode and only stores identifying cookies once you accept
+                non-essential cookies — otherwise it sends cookieless, aggregated
+                conversion signals only. Advertising cookies are only set after you
+                have given your consent via our cookie banner.
               </p>
 
               <Heading level={3} className="mb-2 text-base">
@@ -263,8 +283,9 @@ export default function CookiesPage() {
                 When you first visit our website, a cookie banner appears at the
                 bottom of the screen. You can choose to accept or decline
                 non-essential cookies — declining prevents analytics and
-                advertising cookies (Google Analytics, Microsoft Clarity, Meta
-                Pixel) from loading at all. Your preference is saved for 12 months.
+                advertising cookies (Google Analytics, Microsoft Clarity, Google
+                Ads, Meta Pixel, OpenAI/ChatGPT Ads Pixel) from storing identifying
+                data. Your preference is saved for 12 months.
               </p>
               <p className="text-sm mb-4">
                 To change your preference at any time, clear your browser cookies
@@ -361,6 +382,26 @@ export default function CookiesPage() {
                   Privacy policy:{" "}
                   <a href="https://www.facebook.com/privacy/policy" className="text-compliance-blue hover:underline" target="_blank" rel="noopener noreferrer">
                     facebook.com/privacy/policy
+                  </a>
+                </li>
+                <li>
+                  <strong className="text-brand-charcoal">Google Ads &amp; Google Tag Manager</strong>
+                  <br />
+                  Purpose: Ad conversion tracking, and delivery/management of the tags on this page
+                  <br />
+                  Privacy policy:{" "}
+                  <a href="https://policies.google.com/privacy" className="text-compliance-blue hover:underline" target="_blank" rel="noopener noreferrer">
+                    policies.google.com/privacy
+                  </a>
+                </li>
+                <li>
+                  <strong className="text-brand-charcoal">OpenAI (ChatGPT Ads Pixel)</strong>
+                  <br />
+                  Purpose: Advertising measurement for our ChatGPT Ads campaigns
+                  <br />
+                  Privacy policy:{" "}
+                  <a href="https://openai.com/privacy" className="text-compliance-blue hover:underline" target="_blank" rel="noopener noreferrer">
+                    openai.com/privacy
                   </a>
                 </li>
                 <li>

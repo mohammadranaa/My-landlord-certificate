@@ -20,9 +20,10 @@ export function ConsentBanner() {
             We use cookies to improve your experience
           </p>
           <p className="text-xs text-brand-grey leading-relaxed">
-            We use analytics cookies (Google Analytics) to understand how visitors use our
-            site, and ad cookies (Meta Pixel) to measure our marketing. You can accept or decline
-            non-essential cookies. See our{" "}
+            We use analytics cookies (Google Analytics, Microsoft Clarity) to understand how
+            visitors use our site, and ad cookies (Google Ads, Meta Pixel, OpenAI/ChatGPT Ads
+            Pixel) to measure our marketing — delivered via Google Tag Manager. You can accept
+            or decline non-essential cookies. See our{" "}
             <a href="/cookies" className="text-compliance-blue underline hover:no-underline">
               Cookie Policy
             </a>{" "}

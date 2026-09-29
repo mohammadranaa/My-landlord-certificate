@@ -18,6 +18,7 @@ import {
   FIRE_SAFETY_CERT_TABLE,
   FUSE_BOX_TABLE,
   GAS_SAFETY_CP42_TABLE,
+  LEGIONELLA_PRICES,
   getPriceForAsbestosSurvey,
   getPriceForEICR,
   getPriceForEPC,
@@ -160,6 +161,14 @@ function BoilerIcon() {
       <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1.5" />
       <circle cx="15" cy="9" r="2" stroke="currentColor" strokeWidth="1.5" />
       <path d="M7 15h10M7 18h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function DropletIcon() {
+  return (
+    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2s7 8.5 7 13a7 7 0 1 1-14 0c0-4.5 7-13 7-13z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -308,6 +317,16 @@ const RESIDENTIAL: ServiceDef[] = [
       "Management asbestos survey for properties built before 2000. Required before renovation work or re-letting older properties.",
     price: getPriceForAsbestosSurvey(1),
     turnaroundDays: 2,
+  },
+  {
+    href: "/legionella-risk-assessment",
+    icon: <DropletIcon />,
+    name: "Legionella Risk Assessment",
+    description:
+      "ACoP L8 water system risk assessment for rental properties and HMOs. Written report with action plan.",
+    price: LEGIONELLA_PRICES.standard,
+    turnaroundDays: 2,
+    turnaroundLabel: "Within 48 hours",
   },
   {
     href: "/boiler-installation",

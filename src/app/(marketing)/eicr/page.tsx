@@ -8,8 +8,9 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
-import { TestimonialCard } from "@/components/ui/testimonial-card";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { TrustBadges } from "@/components/ui/trust-badges";
+import { REVIEWS } from "@/data/reviews";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
@@ -18,27 +19,6 @@ import { ALL_BOROUGHS } from "@/lib/borough-data";
 const PHONE_DISPLAY = "020 3996 1070";
 const PHONE_HREF = "tel:+442039961070";
 
-// ── EICR reviews (from real London landlords, see /reviews) ──────────────────
-const eicrReviews = [
-  {
-    content:
-      "Booked Sunday night, engineer was at the Hackney property by 9am Tuesday. Victorian conversion with old wiring, he knew exactly what to look for and explained every observation without making it feel like a sales pitch. Certificate arrived at 2pm.",
-    author: "Sarah M.",
-    location: "Hackney",
-  },
-  {
-    content:
-      "Ex-council flat in Tower Hamlets, I was worried about the electrics being old. The electrician was thorough and explained every C3 observation. Certificate within 24 hours, no hidden extras.",
-    author: "Priya K.",
-    location: "Tower Hamlets",
-  },
-  {
-    content:
-      "Needed an EICR quickly for a new tenancy. Booked Monday, done Wednesday. The report was clear and my letting agent accepted it straight away. Will book again when it's due.",
-    author: "Daniel F.",
-    location: "Islington",
-  },
-];
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
@@ -848,7 +828,7 @@ export default function EicrPage() {
               {
                 step: "03",
                 title: "Certificate emailed within 24 hours",
-                body: "Your signed EICR certificate and report are emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant, upload it to your letting agent portal. It arrives fast.",
+                body: "Your signed EICR certificate and report are emailed to you within 24 hours of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant, upload it to your letting agent portal. It arrives fast.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex flex-col gap-3">
@@ -1105,54 +1085,20 @@ export default function EicrPage() {
         </section>
 
         {/* ── 11b. Testimonials ───────────────────────────────────────────── */}
-        <section aria-labelledby="reviews-heading">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-6">
-            <Heading level={2} id="reviews-heading">
-              What London landlords say
-            </Heading>
-            <div className="flex items-center gap-2">
-              <div className="flex gap-0.5" role="img" aria-label="Rated 4.8 out of 5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg
-                    key={i}
-                    className="w-5 h-5 text-[#00B67A]"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-sm text-brand-grey">
-                <strong className="text-brand-charcoal">4.8</strong>/5 · 312 reviews
-              </span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {eicrReviews.map((review) => (
-              <TestimonialCard
-                key={review.author}
-                content={review.content}
-                author={review.author}
-                location={review.location}
-                service="EICR"
-                showTrustpilot
-              />
-            ))}
-          </div>
-
-          <p className="mt-6 text-sm text-brand-grey text-center">
-            Read more verified reviews from London landlords on our{" "}
-            <Link
-              href="/reviews"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              reviews page →
-            </Link>
-          </p>
-        </section>
+        {REVIEWS.length > 0 && (
+          <>
+            <ReviewsSection limit={3} />
+            <p className="mt-6 text-sm text-brand-grey text-center">
+              Read more reviews from London landlords on our{" "}
+              <Link
+                href="/reviews"
+                className="text-compliance-blue hover:underline font-medium"
+              >
+                reviews page →
+              </Link>
+            </p>
+          </>
+        )}
 
         {/* ── 12. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">

@@ -488,7 +488,7 @@ export default function PricingPage() {
                 highlightCheapest
               />
               <p className="mt-3 text-sm text-brand-grey">
-                Commercial EPC for properties over 750m²?{" "}
+                Commercial EPC for properties over 850m²?{" "}
                 <a href="mailto:info@mylandlordcertificate.co.uk" className="text-compliance-blue hover:underline font-medium">
                   Email us
                 </a>{" "}

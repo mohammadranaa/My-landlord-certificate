@@ -52,7 +52,7 @@ const benefits = [
   },
   {
     title: "Certificate within 24 hours.",
-    body: "Every certificate is emailed on the day of the inspection. You can forward it to your landlord client the same afternoon — no chasing, no delays to tenancy start dates, no awkward calls explaining why it hasn't arrived yet.",
+    body: "Every certificate is emailed within 24 hours of the inspection. You can forward it to your landlord client promptly — no chasing, no delays to tenancy start dates, no awkward calls explaining why it hasn't arrived yet.",
   },
   {
     title: "Fixed prices. No surprises.",
@@ -269,7 +269,7 @@ export default function LettingAgentsPage() {
               {
                 step: "3",
                 title: "Certificate emailed within 24 hours",
-                body: "The certificate is emailed to the booking email address on the day of the inspection. If your agency email is used for the booking, you receive it directly and can forward to the landlord immediately — ahead of any new tenancy start date.",
+                body: "The certificate is emailed to the booking email address within 24 hours of the inspection. If your agency email is used for the booking, you receive it directly and can forward to the landlord immediately — ahead of any new tenancy start date.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">

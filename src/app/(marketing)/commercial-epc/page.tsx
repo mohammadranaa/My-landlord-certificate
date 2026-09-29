@@ -17,16 +17,16 @@ import { TEL, PHONE_DISPLAY, MAILTO, EMAIL } from "@/lib/constants";
 const entryPrice = COMMERCIAL_EPC_TABLE[0].price;
 
 export const metadata: Metadata = {
-  title: "Commercial EPC from £249.99 | London",
+  title: "Commercial EPC from £349.99 | London",
   description:
-    "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs, MEES compliance advice included. Book today.",
+    "Commercial EPC from £349.99. Accredited DEA assessors covering all London boroughs, MEES compliance advice included. Book today.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
   openGraph: {
-    title: "Commercial EPC from £249.99 | London | My Landlord Certificate",
+    title: "Commercial EPC from £349.99 | London | My Landlord Certificate",
     description:
-      "Commercial EPC from £249.99. Accredited DEA assessors covering all London boroughs, MEES compliance advice included. Book today.",
+      "Commercial EPC from £349.99. Accredited DEA assessors covering all London boroughs, MEES compliance advice included. Book today.",
     url: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
 };
@@ -37,7 +37,7 @@ const serviceSchema = {
   name: "Commercial Energy Performance Certificate (EPC)",
   url: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   description:
-    "Commercial Energy Performance Certificate from £249.99. Required before selling or letting any commercial property. Accredited DEA assessors using SBEM methodology. MEES compliance advice included. All 33 London boroughs covered.",
+    "Commercial Energy Performance Certificate from £349.99. Required before selling or letting any commercial property. Accredited DEA assessors using SBEM methodology. MEES compliance advice included. All 33 London boroughs covered.",
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",

@@ -8,9 +8,9 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Commercial EPC London from £249.99 — Accredited DEA Assessors",
+  title: "Commercial EPC London from £349.99 — Accredited DEA Assessors",
   description:
-    "Commercial Energy Performance Certificate from £249.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 33 London boroughs. Registered on national database.",
+    "Commercial Energy Performance Certificate from £349.99 (up to 50m²). SBEM methodology. Required before selling or letting any commercial property. All 33 London boroughs. Registered on national database.",
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/commercial-epc",
   },
@@ -251,7 +251,7 @@ export default function CommercialEPCPage() {
           </p>
           <PriceTable
             title="Commercial EPC"
-            rows={COMMERCIAL_EPC_TABLE}
+            rows={[...COMMERCIAL_EPC_TABLE, { label: "Properties over 850m²", callForQuote: true }]}
             highlightCheapest
           />
           <p className="text-sm text-brand-grey mt-4">

@@ -1,16 +1,35 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { BOROUGH_PATHS } from "@/data/london-borough-paths"
 import { BOROUGH_SLUG_MAP, BOROUGH_DISPLAY_NAME } from "@/data/borough-slug-map"
+import { FROM_PRICES } from "@/lib/pricing"
+
+/**
+ * Single source of truth for which services appear in the borough tooltip —
+ * add a new service here and it shows up on every borough automatically.
+ */
+export const BOROUGH_SERVICES: { label: string; hrefBase: string; fromPrice: string }[] = [
+  { label: "EICR", hrefBase: "/eicr", fromPrice: FROM_PRICES.eicr },
+  { label: "Gas Safety Certificate", hrefBase: "/gas-safety-certificate", fromPrice: FROM_PRICES["gas-safety-cp12"] },
+  { label: "EPC", hrefBase: "/epc", fromPrice: FROM_PRICES.epc },
+  { label: "Fire Risk Assessment", hrefBase: "/fire-risk-assessment", fromPrice: FROM_PRICES["fire-risk-assessment"] },
+  { label: "PAT Testing", hrefBase: "/pat-testing", fromPrice: FROM_PRICES.pat },
+]
 
 interface TooltipState {
   visible: boolean
+  pinned: boolean
   x: number
   y: number
+  geoName: string
+  slug: string
   name: string
+}
+
+const EMPTY_TOOLTIP: TooltipState = {
+  visible: false, pinned: false, x: 0, y: 0, geoName: "", slug: "", name: "",
 }
 
 function getPathCentroid(pathData: string): [number, number] {
@@ -54,12 +73,61 @@ const entries = Object.entries(BOROUGH_PATHS)
   }))
   .filter((e) => e.slug)
 
+/** The per-service link list + "Book in [Borough]" CTA shared by the desktop tooltip and mobile panel. */
+function BoroughServiceList({ slug, name, onNavigate }: { slug: string; name: string; onNavigate?: () => void }) {
+  return (
+    <div>
+      <p className="font-semibold leading-tight text-white">{name}</p>
+      <ul className="mt-1.5 space-y-1">
+        {BOROUGH_SERVICES.map((service) => (
+          <li key={service.hrefBase}>
+            <Link
+              href={`${service.hrefBase}/${slug}`}
+              onClick={onNavigate}
+              className="block text-blue-100 hover:text-white hover:underline"
+            >
+              {service.label} — {service.fromPrice}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Link
+        href="/book"
+        onClick={onNavigate}
+        className="mt-2 block font-semibold text-action-green hover:underline"
+      >
+        Book in {name} →
+      </Link>
+    </div>
+  )
+}
+
 export function LondonCoverageMap({ interactive = true }: { interactive?: boolean } = {}) {
-  const router = useRouter()
+  const containerRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState<string | null>(null)
-  const [tooltip, setTooltip] = useState<TooltipState>({
-    visible: false, x: 0, y: 0, name: "",
-  })
+  const [tooltip, setTooltip] = useState<TooltipState>(EMPTY_TOOLTIP)
+  const [openMobileSlug, setOpenMobileSlug] = useState<string | null>(null)
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearHideTimer = () => {
+    if (hideTimer.current) {
+      clearTimeout(hideTimer.current)
+      hideTimer.current = null
+    }
+  }
+
+  // Tap/click outside the map closes any pinned tooltip or open mobile panel.
+  useEffect(() => {
+    if (!tooltip.pinned && !openMobileSlug) return
+    const handleOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setTooltip(EMPTY_TOOLTIP)
+        setOpenMobileSlug(null)
+      }
+    }
+    document.addEventListener("mousedown", handleOutside)
+    return () => document.removeEventListener("mousedown", handleOutside)
+  }, [tooltip.pinned, openMobileSlug])
 
   const getSVGCoords = (e: React.MouseEvent<SVGElement>): { x: number; y: number } => {
     const svg = e.currentTarget.closest("svg") as SVGSVGElement
@@ -73,25 +141,50 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
   const handleEnter = useCallback((
     geoName: string, slug: string, e: React.MouseEvent<SVGPathElement>
   ) => {
-    const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
+    clearHideTimer()
     setHovered(geoName)
-    setTooltip({ visible: true, ...coords, name: BOROUGH_DISPLAY_NAME[slug] ?? geoName })
+    setTooltip((prev) => {
+      if (prev.pinned) return prev
+      const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
+      return { visible: true, pinned: false, ...coords, geoName, slug, name: BOROUGH_DISPLAY_NAME[slug] ?? geoName }
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleMove = useCallback((e: React.MouseEvent<SVGPathElement>) => {
-    const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
-    setTooltip((prev) => ({ ...prev, ...coords }))
+    setTooltip((prev) => {
+      if (prev.pinned) return prev
+      const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
+      return { ...prev, ...coords }
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleLeave = useCallback(() => {
     setHovered(null)
-    setTooltip((prev) => ({ ...prev, visible: false }))
+    // Small delay so the cursor can travel from the path onto the tooltip
+    // (which sits just outside the path) without the tooltip vanishing first.
+    clearHideTimer()
+    hideTimer.current = setTimeout(() => {
+      setTooltip((prev) => (prev.pinned ? prev : EMPTY_TOOLTIP))
+    }, 200)
   }, [])
 
+  const handleClick = useCallback((geoName: string, slug: string, e: React.MouseEvent<SVGPathElement>) => {
+    if (!interactive) return
+    clearHideTimer()
+    const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
+    setTooltip((prev) => {
+      if (prev.pinned && prev.geoName === geoName) return EMPTY_TOOLTIP
+      return { visible: true, pinned: true, ...coords, geoName, slug, name: BOROUGH_DISPLAY_NAME[slug] ?? geoName }
+    })
+  }, [interactive])
+
+  const tooltipWidth = interactive ? 210 : 150
+  const tooltipHeight = interactive ? 190 : 54
+
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
       {/* SVG map — tablet and up */}
       <div className="hidden sm:block relative w-full max-w-4xl mx-auto select-none">
         <svg
@@ -102,7 +195,7 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
           <rect width="800" height="600" fill="#f0f7ff" rx="12" />
 
           {entries.map(({ geoName, slug, pathData }, i) => {
-            const isHovered = hovered === geoName
+            const isHovered = hovered === geoName || tooltip.geoName === geoName
             return (
               <path
                 key={geoName}
@@ -116,7 +209,7 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
                 onMouseEnter={(e) => handleEnter(geoName, slug, e)}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
-                onClick={interactive ? () => router.push(`/eicr/${slug}`) : undefined}
+                onClick={(e) => handleClick(geoName, slug, e)}
               />
             )
           })}
@@ -126,7 +219,7 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
             const [cx, cy] = getPathCentroid(pathData)
             const display = BOROUGH_DISPLAY_NAME[slug] ?? geoName
             const label = abbreviate(display)
-            const isHovered = hovered === geoName
+            const isHovered = hovered === geoName || tooltip.geoName === geoName
             const words = label.split(" ")
             const mid = Math.ceil(words.length / 2)
             return (
@@ -155,20 +248,31 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
             )
           })}
 
-          {/* Hover tooltip */}
+          {/* Tooltip */}
           {tooltip.visible && (
             <foreignObject
-              x={Math.min(tooltip.x + 10, 655)}
-              y={Math.max(tooltip.y - 58, 4)}
-              width="135"
-              height="54"
-              className="pointer-events-none overflow-visible"
+              x={Math.min(tooltip.x + 10, 800 - tooltipWidth - 5)}
+              y={Math.min(Math.max(tooltip.y - tooltipHeight / 2, 4), 600 - tooltipHeight - 4)}
+              width={tooltipWidth}
+              height={tooltipHeight}
+              className="overflow-visible"
+              style={{ pointerEvents: tooltip.pinned || interactive ? "auto" : "none" }}
+              onMouseEnter={clearHideTimer}
+              onMouseLeave={handleLeave}
             >
-              <div className="bg-brand-charcoal text-white rounded-xl px-3 py-2 text-xs shadow-lg">
-                <p className="font-semibold leading-tight">{tooltip.name}</p>
-                <p className="text-blue-200 text-xs mt-0.5">
-                  {interactive ? "Book EICR from £67.99 →" : "In our coverage area"}
-                </p>
+              <div className="rounded-xl bg-brand-charcoal px-3 py-2.5 text-xs shadow-lg">
+                {interactive ? (
+                  <BoroughServiceList
+                    slug={tooltip.slug}
+                    name={tooltip.name}
+                    onNavigate={() => setTooltip(EMPTY_TOOLTIP)}
+                  />
+                ) : (
+                  <>
+                    <p className="font-semibold leading-tight text-white">{tooltip.name}</p>
+                    <p className="mt-0.5 text-xs text-blue-200">In our coverage area</p>
+                  </>
+                )}
               </div>
             </foreignObject>
           )}
@@ -180,14 +284,19 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
         <div className="grid grid-cols-2 gap-2">
           {Object.entries(BOROUGH_DISPLAY_NAME).map(([slug, name]) =>
             interactive ? (
-              <Link
+              <button
                 key={slug}
-                href={`/eicr/${slug}`}
-                className="text-xs text-center py-2 px-2 rounded-lg border border-border
-                  bg-white text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors"
+                type="button"
+                onClick={() => setOpenMobileSlug((prev) => (prev === slug ? null : slug))}
+                aria-expanded={openMobileSlug === slug}
+                className={`text-xs text-center py-2 px-2 rounded-lg border transition-colors ${
+                  openMobileSlug === slug
+                    ? "border-compliance-blue bg-compliance-blue/10 text-compliance-blue"
+                    : "border-border bg-white text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue"
+                }`}
               >
                 {name}
-              </Link>
+              </button>
             ) : (
               <span
                 key={slug}
@@ -198,6 +307,16 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
             ),
           )}
         </div>
+
+        {interactive && openMobileSlug && (
+          <div className="mt-3 rounded-xl bg-brand-charcoal px-4 py-3 text-xs shadow-lg">
+            <BoroughServiceList
+              slug={openMobileSlug}
+              name={BOROUGH_DISPLAY_NAME[openMobileSlug] ?? openMobileSlug}
+              onNavigate={() => setOpenMobileSlug(null)}
+            />
+          </div>
+        )}
       </div>
     </div>
   )

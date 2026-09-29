@@ -177,10 +177,10 @@ export default function CoverageAreasPage() {
       <section aria-labelledby="coverage-map-heading" className="py-16 bg-white">
         <Container>
           <Heading level={2} id="coverage-map-heading" className="mb-3 text-center">
-            All 33 London boroughs
+            All 33 London boroughs — every certificate, one provider
           </Heading>
           <p className="text-brand-grey text-center mb-8 max-w-2xl mx-auto">
-            Our accredited engineers cover every London borough — same-week appointments available.
+            Hover or tap any borough to see every service we offer there.
           </p>
           <MapSection />
           <p className="mt-6 text-center text-sm text-brand-grey">

@@ -9,13 +9,13 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { TestimonialCard } from "@/components/ui/testimonial-card";
-import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
-import { PHONE_DISPLAY, GOOGLE_BUSINESS_URL } from "@/lib/constants";
+import { PHONE_DISPLAY } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
+import { REVIEWS } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -251,32 +251,6 @@ const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
   i === 3 ? { ...row, badge: "most-popular" as const } : row,
 );
 
-const reviews = [
-  {
-    content:
-      "Detailed FRA for my 5-bed HMO. The assessor flagged issues with the fire door seals but was clear about which were urgent and which could wait. The written report was professional and accepted by the council first time.",
-    author: "Mohammed A.",
-    location: "Newham",
-  },
-  {
-    content:
-      "Needed a Fire Risk Assessment for my HMO licence renewal. The assessor was NEBOSH qualified and the report covered everything the council required. No follow-up queries from the licensing team.",
-    author: "Emma C.",
-    location: "Brent",
-  },
-];
-
-function GoogleStars() {
-  return (
-    <div className="flex gap-0.5" role="img" aria-label="Rated 5 out of 5 on Google">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <svg key={i} className="w-5 h-5 text-[#FFCB45]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -315,18 +289,6 @@ export default function FireRiskAssessmentPage() {
               <Heading level={1} id="fra-heading" inverted className="mb-3">
                 Fire Risk Assessment from £{lowestPrice}
               </Heading>
-
-              <a
-                href={GOOGLE_BUSINESS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mb-5 hover:underline"
-              >
-                <GoogleStars />
-                <span className="text-sm text-blue-100">
-                  Rated <strong className="text-white">5.0</strong> on Google
-                </span>
-              </a>
 
               <p className="text-blue-100 text-lg leading-relaxed mb-6">
                 Compulsory for all HMOs under the Regulatory Reform (Fire Safety)
@@ -1321,42 +1283,7 @@ export default function FireRiskAssessmentPage() {
         </section>
 
         {/* ── Reviews ── */}
-        <section aria-labelledby="reviews-heading">
-          <div className="flex flex-col items-center text-center mb-8">
-            <Heading level={2} id="reviews-heading" className="mb-2">
-              What London landlords say
-            </Heading>
-            <a
-              href={GOOGLE_BUSINESS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
-                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
-                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
-                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
-                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
-              </svg>
-              Read our reviews on Google
-            </a>
-          </div>
-          <GoogleReviews
-            fallback={
-              <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
-                {reviews.map((r) => (
-                  <TestimonialCard
-                    key={r.author}
-                    content={r.content}
-                    author={r.author}
-                    location={r.location}
-                    service="Fire Risk Assessment"
-                  />
-                ))}
-              </div>
-            }
-          />
-        </section>
+        {REVIEWS.length > 0 && <ReviewsSection limit={3} />}
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

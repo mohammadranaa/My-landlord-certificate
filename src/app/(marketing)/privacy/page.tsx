@@ -189,7 +189,7 @@ export default function PrivacyPage() {
               </Heading>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li>To process and manage your booking and dispatch an accredited engineer to your property.</li>
-                <li>To deliver your certificate by email on the day of the inspection.</li>
+                <li>To deliver your certificate by email within 24 hours of the inspection.</li>
                 <li>To send booking confirmations, appointment reminders and post-inspection follow-up emails.</li>
                 <li>To respond to enquiries submitted via our contact form, email, phone or WhatsApp.</li>
                 <li>To process and reconcile payments and issue VAT invoices.</li>

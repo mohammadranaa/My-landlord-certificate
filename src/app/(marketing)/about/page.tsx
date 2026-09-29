@@ -97,7 +97,7 @@ const values = [
   },
   {
     title: "Certificates emailed within 24 hours",
-    body: "Every certificate is issued digitally on the day of the inspection — not posted days later, not delayed pending admin review. You receive it by email and can forward it immediately.",
+    body: "Every certificate is issued digitally within 24 hours of the inspection — not posted days later, not delayed pending admin review. You receive it by email and can forward it immediately.",
   },
   {
     title: "You don't need to be present",
@@ -265,7 +265,7 @@ export default function AboutPage() {
               {
                 step: "3",
                 title: "Certificate emailed within 24 hours",
-                body: "Your certificate is issued digitally and emailed to you on the day of the inspection. It is fully compliant and accepted by all local authorities, letting agents and mortgage lenders. EPC certificates are lodged on the national register automatically.",
+                body: "Your certificate is issued digitally and emailed to you within 24 hours of the inspection. It is fully compliant and accepted by all local authorities, letting agents and mortgage lenders. EPC certificates are lodged on the national register automatically.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex gap-5">

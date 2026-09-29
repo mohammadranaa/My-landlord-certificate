@@ -8,12 +8,12 @@ import { Heading } from "@/components/ui/heading";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { TestimonialCard } from "@/components/ui/testimonial-card";
-import { GoogleReviews } from "@/components/marketing/google-reviews";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
-import { GOOGLE_BUSINESS_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
+import { REVIEWS } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -274,27 +274,6 @@ const highestAppliancePrice = getPriceForGasSafety(3);
 const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
   i === 0 ? { ...row, badge: "most-popular" as const } : row,
 );
-
-const reviews = [
-  {
-    content:
-      "My tenant let the engineer in while I was at work — worked perfectly. The CP12 arrived by email within 24 hours, and I forwarded it to the tenant and letting agent the same evening. Exactly how it should work.",
-    author: "Laura P.",
-    location: "Wandsworth",
-  },
-  {
-    content:
-      "Two appliances, completed in under an hour. The engineer noticed a small issue with the boiler flue and explained it clearly before leaving. Sorted the same week. No drama.",
-    author: "David L.",
-    location: "Ealing",
-  },
-  {
-    content:
-      "Third year running I've used them for the Croydon HMO. Always on time, always professional. The Gas Safety Certificate is in my inbox before I've even had a chance to follow up. No surprises on the bill ever.",
-    author: "James T.",
-    location: "Croydon",
-  },
-];
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -740,7 +719,7 @@ export default function GasSafetyPage() {
               {
                 step: "03",
                 title: "Certificate emailed within 24 hours",
-                body: "Your signed CP12 gas safety certificate is emailed to you on the day of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant straight away to meet your 28-day obligation.",
+                body: "Your signed CP12 gas safety certificate is emailed to you within 24 hours of the inspection, usually within a few hours of the engineer completing. Forward it to your tenant straight away to meet your 28-day obligation.",
               },
             ].map(({ step, title, body }) => (
               <li key={step} className="flex flex-col gap-3">
@@ -986,42 +965,7 @@ export default function GasSafetyPage() {
         </section>
 
         {/* ── Reviews ─────────────────────────────────────────────────────── */}
-        <section aria-labelledby="reviews-heading">
-          <div className="flex flex-col items-center text-center mb-8">
-            <Heading level={2} id="reviews-heading" className="mb-2">
-              What London landlords say
-            </Heading>
-            <a
-              href={GOOGLE_BUSINESS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-compliance-blue hover:underline"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 48 48" aria-hidden="true">
-                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
-                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
-                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34A21.99 21.99 0 0 0 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z" />
-                <path fill="#EA4335" d="M24 9.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 3.18 29.93 1 24 1 15.4 1 7.96 5.93 4.34 13.12l7.35 5.7C13.42 13.62 18.27 9.75 24 9.75z" />
-              </svg>
-              Read our reviews on Google
-            </a>
-          </div>
-          <GoogleReviews
-            fallback={
-              <div className="grid md:grid-cols-3 gap-5">
-                {reviews.map((r) => (
-                  <TestimonialCard
-                    key={r.author}
-                    content={r.content}
-                    author={r.author}
-                    location={r.location}
-                    service="Gas Safety"
-                  />
-                ))}
-              </div>
-            }
-          />
-        </section>
+        {REVIEWS.length > 0 && <ReviewsSection limit={3} />}
 
         {/* ── 13. FAQs ────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">

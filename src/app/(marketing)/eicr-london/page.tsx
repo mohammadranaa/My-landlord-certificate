@@ -9,7 +9,9 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { cn } from "@/lib/utils";
+import { REVIEWS } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
@@ -41,31 +43,6 @@ const boroughs = [
   "Kingston upon Thames", "Lambeth", "Lewisham", "Merton", "Newham",
   "Redbridge", "Richmond upon Thames", "Southwark", "Sutton",
   "Tower Hamlets", "Waltham Forest", "Wandsworth", "Westminster",
-];
-
-// Placeholder testimonials, replace with real reviews when collected
-const testimonials = [
-  {
-    quote:
-      "Booked online Monday evening, engineer arrived Tuesday morning. Victorian conversion in Hackney, he knew exactly what to look for with the old wiring. Certificate in my inbox by 2pm.",
-    author: "Sarah M.",
-    location: "Hackney",
-    rating: 5,
-  },
-  {
-    quote:
-      "Third year running I've used them for my Croydon HMO. Always on time, always clear about what the certificate means and what any codes actually require. No upselling.",
-    author: "James T.",
-    location: "Croydon",
-    rating: 5,
-  },
-  {
-    quote:
-      "Ex-council flat in Tower Hamlets, I was worried about the electrics being old. The engineer was thorough and explained every C3 observation. No nasty surprises on the bill.",
-    author: "Priya K.",
-    location: "Tower Hamlets",
-    rating: 5,
-  },
 ];
 
 // ── Schema ────────────────────────────────────────────────────────────────────
@@ -490,46 +467,16 @@ export default function EicrLondonPage() {
         </section>
 
         {/* ── Testimonials ── */}
-        <section aria-labelledby="reviews-heading">
-          <Heading level={2} id="reviews-heading" className="mb-6">
-            What London landlords say
-          </Heading>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {testimonials.map(({ quote, author, location, rating }) => (
-              <figure
-                key={author}
-                className="rounded-xl border border-border bg-white p-5 flex flex-col"
-              >
-                <div className="flex gap-0.5 mb-3" role="img" aria-label={`${rating} out of 5 stars`}>
-                  {Array.from({ length: rating }).map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 h-4 text-yellow-400"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M8 1l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 10.8l-3.8 2 .7-4.3-3.1-3 4.3-.6z" />
-                    </svg>
-                  ))}
-                </div>
-                <blockquote className="text-sm text-brand-charcoal/80 leading-relaxed flex-1">
-                  &ldquo;{quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-4 text-xs text-brand-grey">
-                  <span className="font-medium text-brand-charcoal">{author}</span>
-                  {" · "}
-                  {location}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="mt-5 text-sm text-center text-brand-grey">
-            <Link href="/reviews" className="text-compliance-blue hover:underline font-medium">
-              Read all verified reviews →
-            </Link>
-          </p>
-        </section>
+        {REVIEWS.length > 0 && (
+          <section>
+            <ReviewsSection limit={3} />
+            <p className="mt-5 text-sm text-center text-brand-grey">
+              <Link href="/reviews" className="text-compliance-blue hover:underline font-medium">
+                Read more reviews →
+              </Link>
+            </p>
+          </section>
+        )}
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

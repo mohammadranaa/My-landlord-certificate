@@ -345,7 +345,7 @@ export default function EicrCostPage() {
               "Live testing, insulation resistance and RCD (residual current device) testing with power on",
               "Identification of any C1, C2, C3 or FI coded observations",
               "Written EICR report with every circuit recorded and a pass or unsatisfactory outcome",
-              "Certificate emailed on the day of the inspection",
+              "Certificate emailed within 24 hours of the inspection",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-action-green/15 flex items-center justify-center">

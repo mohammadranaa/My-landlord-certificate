@@ -48,7 +48,7 @@ const categories = [
       {
         question: "Do I need to be present during the inspection?",
         answer:
-          "No. Your tenant or any keyholder can provide access to the property. The engineer will carry out the inspection, complete all paperwork and explain any findings without you needing to be there. Your certificate is emailed directly to you on the day of the inspection. This is particularly convenient for landlords who live or work away from their rental property.",
+          "No. Your tenant or any keyholder can provide access to the property. The engineer will carry out the inspection, complete all paperwork and explain any findings without you needing to be there. Your certificate is emailed directly to you within 24 hours of the inspection. This is particularly convenient for landlords who live or work away from their rental property.",
       },
       {
         question: "Can I book multiple certificates in one visit?",
@@ -155,7 +155,7 @@ const categories = [
       {
         question: "Do I need to give my tenant a copy of the Gas Safety Certificate?",
         answer:
-          "Yes. You must provide a copy of the current Gas Safety Certificate to all existing tenants within 28 days of the annual inspection and to new tenants before their tenancy begins. You must also retain records of the two most recent Gas Safety Certificates and make them available to the Local Authority on request. We email the certificate directly to you on the day of the inspection so you can forward it immediately.",
+          "Yes. You must provide a copy of the current Gas Safety Certificate to all existing tenants within 28 days of the annual inspection and to new tenants before their tenancy begins. You must also retain records of the two most recent Gas Safety Certificates and make them available to the Local Authority on request. We email the certificate directly to you within 24 hours of the inspection so you can forward it immediately.",
       },
     ],
   },

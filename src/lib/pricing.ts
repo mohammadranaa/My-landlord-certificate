@@ -299,15 +299,15 @@ export const DOMESTIC_EPC_TABLE: readonly PriceRow[] = [
 // ─── Commercial EPC ───────────────────────────────────────────────────────────
 
 export const COMMERCIAL_EPC_TABLE: readonly PriceRow[] = [
-  { label: "Up to 50m²", price: 249.99 },
-  { label: "50m² – 100m²", price: 320 },
-  { label: "100m² – 250m²", price: 399 },
-  { label: "250m² – 350m²", price: 499 },
-  { label: "350m² – 450m²", price: 599 },
-  { label: "450m² – 550m²", price: 699 },
-  { label: "550m² – 650m²", price: 799 },
-  { label: "650m² – 750m²", price: 899 },
-  { label: "750m² – 850m²", price: 999 },
+  { label: "Up to 50m²", price: 349.99 },
+  { label: "50m² – 100m²", price: 409.99 },
+  { label: "100m² – 250m²", price: 469.99 },
+  { label: "250m² – 350m²", price: 519.99 },
+  { label: "350m² – 450m²", price: 579.99 },
+  { label: "450m² – 550m²", price: 639.99 },
+  { label: "550m² – 650m²", price: 669.99 },
+  { label: "650m² – 750m²", price: 699.99 },
+  { label: "750m² – 850m²", price: 729.99 },
 ];
 
 // ─── Additional Charges ───────────────────────────────────────────────────────
@@ -361,7 +361,7 @@ export const FROM_PRICES: Record<ServiceType, string> = {
   "fire-extinguisher": "from £79.99",
   "asbestos-survey": "from £239.99",
   epc: "from £89.99",
-  "commercial-epc": "from £249.99",
+  "commercial-epc": "from £349.99",
   "legionella-risk-assessment": "from £299.99",
 };
 

@@ -168,7 +168,7 @@ const faqItems = [
   {
     question: "How quickly can I get my landlord certificate?",
     answer:
-      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Priority slots are available in many areas — email us to check availability.",
+      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Need an urgent appointment? Call 020 3996 1070.",
   },
   {
     question: "Do I need to be at the property during the inspection?",
@@ -243,7 +243,7 @@ export default function HomePage() {
                 Book your EICR, Gas Safety Certificate (CP12), Gas Safety
                 Certificate (CP42), EPC, Fire Risk Assessment, Fire Safety
                 Certificate, PAT Testing, Emergency Lights Certificate, Asbestos
-                Survey and more. Online in minutes.
+                Survey, Legionella Risk Assessment and more. Online in minutes.
               </p>
               <p className="mb-7 text-lg leading-relaxed text-brand-charcoal/80">
                 Next-day appointments across London.
@@ -488,7 +488,7 @@ export default function HomePage() {
             className="mb-10"
           >
             Fixed prices, no hidden charges, next-day appointments — digital certificate
-            emailed on the day of the inspection.
+            emailed within 24 hours.
           </SectionHeading>
 
           <Reveal delay={80}>
@@ -558,9 +558,9 @@ export default function HomePage() {
                 {
                   step: "03",
                   title: "Certificate emailed within 24 hours",
-                  body: "Your certificate arrives by email on the day of the inspection — fully compliant, ready to forward to your tenant, letting agent or local authority.",
+                  body: "Your certificate arrives by email within 24 hours — fully compliant, ready to forward to your tenant, letting agent or local authority.",
                   bullets: [
-                    "PDF certificate emailed within 24 hours as the visit",
+                    "PDF certificate emailed within 24 hours of the visit",
                     "Accepted by all local authorities and letting agents",
                     "Forward to tenant within 28 days as required by law",
                     "EPC lodged on the national register automatically",
@@ -629,11 +629,10 @@ export default function HomePage() {
         <Container>
           <SectionHeading
             eyebrow="London & the M25"
-            title="Covering all 33 London boroughs"
+            title="All 33 London boroughs — every certificate, one provider"
             className="mb-10"
           >
-            Click any borough to see local EICR pricing and availability. Our accredited
-            engineers cover every London borough and the wider M25 area.
+            Hover or tap any borough to see every service we offer there.
           </SectionHeading>
           <Reveal delay={80} className="mx-auto max-w-4xl">
             <MapSection />
@@ -701,7 +700,15 @@ export default function HomePage() {
                 },
                 {
                   title: "Next-day appointments across London",
-                  body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week. Priority slots available in many areas — email us.",
+                  body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week.",
+                  cta: (
+                    <a
+                      href="tel:+442039961070"
+                      className="mt-2 inline-block font-medium text-compliance-blue hover:underline"
+                    >
+                      Need an urgent appointment? Call 020 3996 1070
+                    </a>
+                  ),
                   icon: (
                     <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <path d="M13 2L3 14h8l-1 8 11-13h-8l0-7z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
@@ -710,7 +717,7 @@ export default function HomePage() {
                 },
                 {
                   title: "Certificate emailed within 24 hours",
-                  body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed on the day of the inspection. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
+                  body: "No waiting weeks for paperwork through the post. Your landlord compliance certificate is processed and emailed within 24 hours. Store it, forward it to your tenant, or share it with your local council — it arrives fast.",
                   icon: (
                     <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                       <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.75" />
@@ -718,7 +725,7 @@ export default function HomePage() {
                     </svg>
                   ),
                 },
-              ].map(({ icon, title, body }, i) => (
+              ].map(({ icon, title, body, cta }, i) => (
                 <Reveal
                   as="li"
                   key={title}
@@ -737,6 +744,7 @@ export default function HomePage() {
                         {title}
                       </p>
                       <p className="text-sm leading-relaxed text-brand-grey">{body}</p>
+                      {cta && <p className="text-sm leading-relaxed">{cta}</p>}
                     </div>
                   </div>
                 </Reveal>

@@ -408,7 +408,7 @@ export default function BundlePage() {
               {
                 abbr: "All",
                 title: "All certificates within 24 hours",
-                body: "Every certificate from the bundle is emailed on the day of the visit. EICR, CP12, EPC and FRA arrive together as one complete digital compliance pack.",
+                body: "Every certificate from the bundle is emailed within 24 hours of the visit. EICR, CP12, EPC and FRA arrive together as one complete digital compliance pack.",
               },
             ].map(({ abbr, title, body }) => (
               <div
