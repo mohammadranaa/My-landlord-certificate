@@ -114,7 +114,7 @@ export default function FireRiskAssessmentLandingPage() {
 
       {/* Announcement bar — marquee ticker */}
       <div className="bg-brand-charcoal text-gray-200 text-[13px] font-medium overflow-hidden">
-        <div className="py-2.5 flex whitespace-nowrap animate-[marquee-scroll_20s_linear_infinite] hover:[animation-play-state:paused]">
+        <div className="py-2.5 flex w-max whitespace-nowrap animate-[marquee-scroll_20s_linear_infinite] hover:[animation-play-state:paused]">
           {[0, 1].map((i) => (
             <div key={i} className="flex items-center gap-5 shrink-0 px-4" aria-hidden={i === 1 || undefined}>
               <span>&#9989; <strong className="text-white">Fixed price from £{entryPrice}</strong></span>
@@ -128,7 +128,7 @@ export default function FireRiskAssessmentLandingPage() {
       </div>
 
       {/* Header: logo + phone + CTA, NO navigation */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-border">
+      <header className="sticky top-0 z-40 bg-white border-b border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
           <Image src="/header-logo.svg" alt="My Landlord Certificate" width={180} height={36} className="h-8 w-auto" priority />
           <div className="flex items-center gap-2 sm:gap-3">

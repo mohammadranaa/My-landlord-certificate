@@ -189,7 +189,7 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
       <div className="hidden sm:block relative w-full max-w-4xl mx-auto select-none">
         <svg
           viewBox="0 0 800 600"
-          className="w-full h-auto max-h-[600px] drop-shadow-sm"
+          className="w-full h-auto max-h-[600px]"
           aria-label="Map of London boroughs covered by My Landlord Certificate"
         >
           <rect width="800" height="600" fill="#f0f7ff" rx="12" />
