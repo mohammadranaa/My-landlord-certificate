@@ -560,7 +560,7 @@ export default function FireRiskAssessmentLandingPage() {
       </footer>
 
       {/* Sticky mobile CTA */}
-      <div className={`min-[861px]:hidden fixed bottom-0 inset-x-0 z-40 flex gap-2.5 bg-white border-t ${line} px-3.5 py-2.5 shadow-[0_-6px_20px_rgba(0,0,0,.08)]`}>
+      <div className={`min-[861px]:hidden fixed bottom-0 inset-x-0 z-40 flex gap-2.5 bg-white border-t ${line} pl-3.5 pr-[88px] py-2.5 shadow-[0_-6px_20px_rgba(0,0,0,.08)]`}>
         <a href={TEL} className={`${btnBlue} flex-1 p-[13px]!`}>Call</a>
         <Link href={BOOK} className={`${btnGreen} flex-1 p-[13px]!`}>Book from £{entryPrice}</Link>
       </div>
