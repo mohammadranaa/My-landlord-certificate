@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { JsonLd } from "@/components/shared/json-ld";
 import { ReviewCard } from "@/components/marketing/review-card";
-import { TEL, PHONE_DISPLAY, EMAIL, MAILTO, WHATSAPP_URL, GOOGLE_BUSINESS_URL } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, EMAIL, MAILTO, WHATSAPP_URL, GOOGLE_MAPS_REVIEWS_URL } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   FRA_COMMERCIAL_TABLE,
@@ -24,6 +25,7 @@ const J = "font-[family-name:var(--font-jakarta)]";
 
 const entryPrice = getPriceForFRA("studio");
 const popularPrice = getPriceForFRA("1-3bed");
+const communalFrom = getPriceForFRA("communal-1-3floors");
 const commercialFrom = FRA_COMMERCIAL_TABLE[0].price;
 const rating = GOOGLE_RATING.rating.toFixed(1);
 const BOOK = "/book?service=fra-residential";
@@ -34,7 +36,7 @@ const BOOK_COMMERCIAL = "/book?service=fra-commercial&type=commercial";
 export const metadata: Metadata = {
   title: `Fire Risk Assessment London from £${entryPrice} | Book Online`,
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and prioritised action plan emailed within 24 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and prioritised action plan emailed within 24-48 hours.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment" },
 };
@@ -44,7 +46,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Fire Risk Assessment",
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan emailed within 24 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan emailed within 24-48 hours.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -65,22 +67,87 @@ const nav = [
   { href: "#faq", label: "FAQs" },
 ];
 
+function Icon({ d, className }: { d: ReactNode; className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {d}
+    </svg>
+  );
+}
+
 const why = [
-  { icon: "💷", tint: "bg-[#eafce7]", title: `Fixed price from £${entryPrice}`, body: "Transparent pricing by property size. No call-out charges, no surprise fees — the price you see is what you pay." },
-  { icon: "🎓", tint: "bg-[#e3f4fc]", title: "IFSM & NEBOSH certified", body: "Assessments by genuinely competent assessors — the standard councils, insurers and courts recognise." },
-  { icon: "⚡", tint: "bg-[#eafce7]", title: "Report within 24 hours", body: "A formal written report with a risk-rated, prioritised action plan — accepted by every London borough." },
-  { icon: "🛠️", tint: "bg-[#e3f4fc]", title: "We fix it too", body: "Fire doors, alarms, emergency lighting, extinguishers — the same team can carry out any remedial works." },
+  {
+    icon: <><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" /><circle cx="7.5" cy="7.5" r="1.5" /></>,
+    big: `£${entryPrice}`,
+    title: "Fixed price, by property size",
+    body: "Transparent pricing. No call-out charges and no surprise fees. The price you see is what you pay.",
+  },
+  {
+    icon: <><circle cx="12" cy="8" r="6" /><path d="M8.2 13.2 7 22l5-3 5 3-1.2-8.8" /></>,
+    big: "IFSM",
+    title: "IFSM & NEBOSH certified",
+    body: "Assessments by genuinely competent assessors, the standard councils, insurers and courts recognise.",
+  },
+  {
+    icon: <><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>,
+    big: "24-48h",
+    title: "Report in 24-48 hours",
+    body: "A formal written report with a risk-rated, prioritised action plan, accepted by every London borough.",
+  },
+  {
+    icon: <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z" />,
+    big: "1 team",
+    title: "We fix it too",
+    body: "Fire doors, alarms, emergency lighting and extinguishers. The same team can carry out any remedial works.",
+  },
 ];
 
-const checks = [
-  { title: "Escape routes", body: "Corridors, stairwells and final exits — clear, unlocked and signed." },
-  { title: "Fire doors", body: "Self-closers, gaps, intumescent & smoke seals inspected and measured." },
-  { title: "Detection & alarms", body: "Smoke/heat alarms — correct type, interlinked, tested and in-service." },
-  { title: "Emergency lighting", body: "Coverage, duration and discharge-test records on escape routes." },
-  { title: "Extinguishers & signage", body: "Correct types, locations, servicing and fire-action notices." },
-  { title: "Ignition sources", body: "Overloaded sockets, damaged cables and unsafe electrics flagged." },
-  { title: "Combustible materials", body: "Rubbish, stored furniture and flammables near heat sources." },
-  { title: "Compartmentation", body: "Fire-separating walls/floors and unsealed service penetrations." },
+const checkGroups = [
+  {
+    label: "Building & escape",
+    tone: "bg-[#e3f4fc] text-[#0077b3]",
+    items: [
+      { icon: <><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5" /><path d="M15 17l5-5-5-5" /><path d="M20 12H9" /></>, title: "Escape routes", body: "Corridors, stairwells and final exits: clear, unlocked and signed." },
+      { icon: <><rect x="5" y="2" width="14" height="20" rx="1" /><circle cx="15" cy="12" r="1" /></>, title: "Fire doors", body: "Self-closers, gaps, intumescent & smoke seals inspected and measured." },
+      { icon: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 12h18M12 3v18" /></>, title: "Compartmentation", body: "Fire-separating walls/floors and unsealed service penetrations." },
+      { icon: <><path d="M9 18h6" /><path d="M10 22h4" /><path d="M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2z" /></>, title: "Emergency lighting", body: "Coverage, duration and discharge-test records on escape routes." },
+    ],
+  },
+  {
+    label: "Hazards & equipment",
+    tone: "bg-[#eefbdc] text-[#4a7a00]",
+    items: [
+      { icon: <><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0" /></>, title: "Detection & alarms", body: "Smoke/heat alarms: correct type, interlinked, tested and in-service." },
+      { icon: <><path d="M15 6.5V3a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3.5" /><path d="M18 3h-3" /><path d="M11 3a6 6 0 0 0-6 6v5" /><path d="M17 10a4 4 0 0 0-8 0v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2z" /></>, title: "Extinguishers & signage", body: "Correct types, locations, servicing and fire-action notices." },
+      { icon: <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />, title: "Ignition sources", body: "Overloaded sockets, damaged cables and unsafe electrics flagged." },
+      { icon: <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.3.3 1.6 1.4 2.8 2.5 2.8z" />, title: "Combustible materials", body: "Rubbish, stored furniture and flammables near heat sources." },
+    ],
+  },
+];
+
+const types = [
+  {
+    title: "HMO Fire Risk Assessment",
+    body: "A written FRA is legally required for HMOs under the Fire Safety Order 2005, and most London councils make it an HMO licence condition.",
+    points: [
+      <>Communal areas, rooms and fire separation between units</>,
+      <>Council-ready report for your licence application or renewal</>,
+      <>Priced by bedrooms, from <b>£{popularPrice}</b></>,
+    ],
+    cta: "See HMO prices →",
+    green: true,
+  },
+  {
+    title: "Fire Risk Assessment for Flats & Communal Areas",
+    body: "Any building with shared hallways, staircases or landings falls under the Fire Safety Order, including converted houses split into flats.",
+    points: [
+      <>Stairwells, landings and final exits</>,
+      <>Flat entrance doors and communal fire doors</>,
+      <>Communal areas from <b>£{communalFrom}</b> (1-3 floors)</>,
+    ],
+    cta: "See flat & communal prices →",
+    green: false,
+  },
 ];
 
 const gallery = [
@@ -99,11 +166,11 @@ const getList = [
 const steps = [
   { n: "1", title: "Book online", body: "Choose your property type, pick a date and pay securely. Under 3 minutes, instant confirmation." },
   { n: "2", title: "Assessor visits", body: "A NEBOSH-qualified assessor inspects methodically. You don't need to be present — tenant access is fine." },
-  { n: "3", title: "Report in 24 hrs", body: "Your written report lands by email within 24 hours — findings, action plan and review date included." },
+  { n: "3", title: "Report in 24-48 hrs", body: "Your written report lands by email within 24-48 hours — findings, action plan and review date included." },
 ];
 
 const after = [
-  { title: "Report emailed in 24 hrs", body: "Formal written document referencing the applicable legislation for every finding." },
+  { title: "Report emailed in 24-48 hrs", body: "Formal written document referencing the applicable legislation for every finding." },
   { title: "Critical items first", body: "Every finding risk-rated and ordered so you know exactly what to fix first." },
   { title: "Recommended timescales", body: "Each action carries a realistic completion date based on the severity of the risk." },
   { title: "Responsible person named", body: "Landlord, agent, resident or contractor — no ambiguity over who acts." },
@@ -121,7 +188,7 @@ const legal = [
 const faqs = [
   { q: "How much does a Fire Risk Assessment cost?", a: `Fixed prices from £${entryPrice} for a studio, £${popularPrice} for a 1–3 bed. Commercial from £${commercialFrom}. No call-out charges or hidden fees — see the pricing tables above.` },
   { q: "What qualifications should my assessor hold?", a: "Our assessors are IFSM certified, IFE registered and hold NEBOSH Fire Safety & Risk Management certificates — the competence standard councils, insurers and courts recognise." },
-  { q: "How quickly do I get the report?", a: "A full written report with a prioritised action plan is emailed within 24 hours of the inspection." },
+  { q: "How quickly do I get the report?", a: "A full written report with a prioritised action plan is emailed within 24-48 hours of the inspection." },
   { q: "How often should an FRA be reviewed?", a: "Typically every 12 months for HMOs and blocks of flats, or sooner after significant building changes. We set a review date and remind you." },
   { q: "Do I need a separate assessment for communal areas?", a: "Yes — any building with shared hallways, staircases or landings needs a communal-area assessment in addition to individual flat assessments." },
   { q: "What happens if the assessment finds problems?", a: "Every issue is risk-rated with a recommended timescale. Where works are needed, our team can carry them out directly — from fire doors to alarms and emergency lighting." },
@@ -157,6 +224,7 @@ function PriceCard({
   green,
   popularLabel,
   href,
+  bookLabel,
 }: {
   title: string;
   sub: string;
@@ -164,6 +232,7 @@ function PriceCard({
   green?: boolean;
   popularLabel?: string;
   href: string;
+  bookLabel: string;
 }) {
   return (
     <div className={`bg-white border ${line} rounded-2xl overflow-hidden ${shadowSm} flex flex-col`}>
@@ -196,7 +265,7 @@ function PriceCard({
       </table>
       <div className="mt-auto px-6 pb-5 pt-2">
         <Link href={href} className="text-sm font-semibold text-compliance-blue hover:underline">
-          Book {title.toLowerCase()} →
+          {bookLabel}
         </Link>
       </div>
     </div>
@@ -215,9 +284,9 @@ export default function FireRiskAssessmentLandingPage() {
         <div className="max-w-[1160px] mx-auto flex flex-nowrap items-center justify-start sm:justify-center gap-x-[14px] sm:gap-x-5 px-[22px] py-2.5 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
           <span className="shrink-0">✅ <b className="text-white">Fixed price from £{entryPrice}</b></span>
           <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
-          <span className="shrink-0">⚡ <b className="text-white">Report in 24 hrs</b></span>
+          <span className="shrink-0">⚡ <b className="text-white">Report in 24-48 hrs</b></span>
           <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
-          <span className="shrink-0">⭐ <span className="text-action-green">{rating} on Google</span></span>
+          <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="shrink-0 hover:underline">⭐ <span className="text-action-green">{rating} on Google</span></a>
           <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
           <span className="shrink-0">📍 33 boroughs + M25</span>
         </div>
@@ -253,11 +322,11 @@ export default function FireRiskAssessmentLandingPage() {
               Fire Risk Assessment London <span className="text-[#eaffc2]">from £{entryPrice}</span>
             </h1>
             <p className="text-[17.5px] text-white/[.92] max-w-[520px] mb-3.5">
-              Compulsory for all HMOs and strongly recommended for every rental. A written report with a prioritised action plan, emailed within 24 hours.
+              Compulsory for all HMOs and strongly recommended for every rental. A written report with a prioritised action plan, emailed within 24-48 hours.
             </p>
-            <div className="flex items-center gap-2.5 mb-6 text-sm font-semibold">
+            <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-2.5 mb-6 text-sm font-semibold hover:underline">
               <span className={`${gold} text-lg tracking-[1px]`}>★★★★★</span> Rated <b>{rating}</b> on Google
-            </div>
+            </a>
             <div className="flex flex-wrap gap-3 mb-3.5">
               <Link href={BOOK} className={btnGreen}>Book my FRA, from £{entryPrice}</Link>
               <a href="#pricing" className={`${btn} border-[1.5px] border-white/55 text-white hover:bg-white/[.12]`}>See full pricing</a>
@@ -287,7 +356,7 @@ export default function FireRiskAssessmentLandingPage() {
           <div className="max-w-[1160px] mx-auto px-[22px] grid grid-cols-2 min-[701px]:grid-cols-4 gap-0.5">
             {[
               { lab: "From", val: <>£{entryPrice} <small className="text-[13px] font-semibold text-[#eaffc2]">residential</small></> },
-              { lab: "Report", val: "Within 24 hrs" },
+              { lab: "Report", val: "24-48 hrs" },
               { lab: "Assessors", val: "IFSM · NEBOSH" },
               { lab: "Coverage", val: <>33 Boroughs <small className="text-[13px] font-semibold text-[#eaffc2]">+ M25</small></> },
             ].map((c) => (
@@ -303,9 +372,9 @@ export default function FireRiskAssessmentLandingPage() {
       {/* Trust / accreditations */}
       <div className={`bg-warm-white border-b ${line} pt-12 pb-[52px]`}>
         <div className={wrap}>
-          <div className={`flex items-center justify-center gap-[9px] font-bold ${J} text-[15px] mb-2`}>
+          <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className={`flex w-fit mx-auto items-center justify-center gap-[9px] font-bold ${J} text-[15px] mb-2 hover:underline`}>
             <span className={`${gold} text-[19px] tracking-[1px]`}>★★★★★</span> Rated {rating} on Google
-          </div>
+          </a>
           <div className="text-center font-bold text-[13px] tracking-[.16em] uppercase text-compliance-blue mb-[26px]">
             Our engineers are fire-safety accredited
           </div>
@@ -326,12 +395,15 @@ export default function FireRiskAssessmentLandingPage() {
       {/* Why us */}
       <section className={sec} id="why">
         <div className={wrap}>
-          <SecHead eyebrowText="Why My Landlord Certificate" title="Fixed prices, real qualifications, no runaround" sub="Everything a London landlord needs to prove fire-safety compliance — booked online, done properly." />
+          <SecHead eyebrowText="Why My Landlord Certificate" title="Fire Risk Assessment for Landlords, done properly" sub="Fixed prices, real qualifications and no runaround. Everything a London landlord needs to prove fire-safety compliance, booked online." />
           <div className="grid grid-cols-1 min-[521px]:grid-cols-2 min-[901px]:grid-cols-4 gap-5">
             {why.map((w) => (
-              <div key={w.title} className={`bg-white border ${line} rounded-2xl px-[22px] py-[26px] ${shadowSm} transition hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(16,42,67,.08)]`}>
-                <div className={`w-[52px] h-[52px] rounded-[13px] flex items-center justify-center text-2xl mb-4 ${w.tint}`} aria-hidden="true">{w.icon}</div>
-                <h3 className={`${J} text-[17.5px] font-bold mb-2 leading-[1.15]`}>{w.title}</h3>
+              <div key={w.title} className={`bg-white border ${line} rounded-2xl px-[22px] py-[26px] ${shadowSm} transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(16,42,67,.08)]`}>
+                <div className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center mb-[18px] text-white bg-[linear-gradient(135deg,#0093DB_0%,#2bb3c9_55%,#80D100_100%)] shadow-[0_8px_18px_rgba(0,147,219,.25)]">
+                  <Icon d={w.icon} className="w-[26px] h-[26px]" />
+                </div>
+                <div className={`${J} font-extrabold text-[30px] leading-none text-[#00567f] tracking-[-.02em] mb-2.5`}>{w.big}</div>
+                <h3 className={`${J} text-[16.5px] font-bold mb-2 leading-[1.15]`}>{w.title}</h3>
                 <p className={`text-[14.5px] ${muted}`}>{w.body}</p>
               </div>
             ))}
@@ -342,13 +414,47 @@ export default function FireRiskAssessmentLandingPage() {
       {/* What we check */}
       <section className={`${sec} bg-white`} id="checks">
         <div className={wrap}>
-          <SecHead eyebrowText="A proper inspection" title="Every fire-safety measure, checked" sub="Your IFSM assessor works methodically through the property and communal areas, risk-rating each hazard." />
-          <div className="grid grid-cols-1 min-[521px]:grid-cols-2 min-[901px]:grid-cols-4 gap-4">
-            {checks.map((c) => (
-              <div key={c.title} className={`border ${line} rounded-[14px] px-[18px] py-5 bg-warm-white`}>
-                <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-action-green text-[#14320a] font-extrabold text-[15px] mb-3">✓</span>
-                <h4 className={`${J} text-[15.5px] font-bold mb-[5px]`}>{c.title}</h4>
-                <p className={`text-[13.5px] ${muted}`}>{c.body}</p>
+          <SecHead eyebrowText="A proper inspection" title="What your fire risk assessor checks" sub="Your IFSM assessor works methodically through HMOs, flats and communal areas, risk-rating every hazard." />
+          {checkGroups.map((g, gi) => (
+            <div key={g.label} className={gi > 0 ? "mt-[30px]" : undefined}>
+              <div className="flex items-center gap-3.5 mb-3.5">
+                <span className={`${J} font-bold text-[13px] tracking-[.12em] uppercase whitespace-nowrap`}>{g.label}</span>
+                <i className="flex-1 h-px bg-[#E6EAEF]" />
+              </div>
+              <div className="grid grid-cols-1 min-[521px]:grid-cols-2 min-[901px]:grid-cols-4 gap-4">
+                {g.items.map((c) => (
+                  <div key={c.title} className={`relative overflow-hidden border ${line} rounded-[14px] px-[18px] pt-6 pb-5 bg-warm-white transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:bg-white hover:shadow-[0_4px_14px_rgba(16,42,67,.06)] before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-[linear-gradient(90deg,#0093DB,#80D100)]`}>
+                    <span className={`inline-flex items-center justify-center w-10 h-10 rounded-[11px] mb-3 ${g.tone}`}>
+                      <Icon d={c.icon} className="w-[21px] h-[21px]" />
+                    </span>
+                    <h4 className={`${J} text-[15.5px] font-bold mb-[5px]`}>{c.title}</h4>
+                    <p className={`text-[13.5px] ${muted}`}>{c.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Who it's for */}
+      <section className={`${sec} bg-[#f2f9fd]`}>
+        <div className={wrap}>
+          <SecHead eyebrowText="Who it's for" title="HMO and flat fire risk assessments in London" sub="The Fire Safety Order applies wherever tenants share a building. These are the two jobs we do most." />
+          <div className="grid grid-cols-1 min-[821px]:grid-cols-2 gap-[22px]">
+            {types.map((t) => (
+              <div key={t.title} className={`bg-white border ${line} rounded-2xl px-[26px] py-7 ${shadowSm} flex flex-col gap-3`}>
+                <h3 className={`${J} text-[21px] font-extrabold leading-[1.15] tracking-[-.02em]`}>{t.title}</h3>
+                <p className={`${muted} text-[15px]`}>{t.body}</p>
+                <ul className="grid gap-2 mb-1.5">
+                  {t.points.map((p, i) => (
+                    <li key={i} className="flex gap-2.5 items-start text-[14.5px]">
+                      <Icon d={<path d="M20 6 9 17l-5-5" />} className="w-[18px] h-[18px] shrink-0 mt-[3px] text-[#6cb400]" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#pricing" className={`${t.green ? btnGreen : btnBlue} self-start mt-auto`}>{t.cta}</a>
               </div>
             ))}
           </div>
@@ -360,8 +466,8 @@ export default function FireRiskAssessmentLandingPage() {
         <div className={wrap}>
           <SecHead eyebrowText="Fixed pricing" title="Fire Risk Assessment pricing" sub="No call-out charges, no hidden fees. The price you see is the price you pay." />
           <div className="grid grid-cols-1 min-[821px]:grid-cols-2 gap-6">
-            <PriceCard title="Residential FRA" sub="Flats, HMOs & communal areas · report in 24 hrs" rows={FRA_RESIDENTIAL_TABLE} green popularLabel="1–3 Bedrooms" href={BOOK} />
-            <PriceCard title="Commercial FRA" sub="Blocks of flats, offices & larger buildings" rows={FRA_COMMERCIAL_TABLE} href={BOOK_COMMERCIAL} />
+            <PriceCard title="Residential & HMO Fire Risk Assessment" sub="Flats, HMOs & communal areas · report in 24-48 hrs" rows={FRA_RESIDENTIAL_TABLE} green popularLabel="1–3 Bedrooms" href={BOOK} bookLabel="Book a residential or HMO FRA →" />
+            <PriceCard title="Commercial Fire Risk Assessment London" sub="Blocks of flats, offices & larger buildings" rows={FRA_COMMERCIAL_TABLE} href={BOOK_COMMERCIAL} bookLabel="Book a commercial FRA →" />
           </div>
           <p className={`text-center mt-[22px] ${muted} text-sm`}>
             Extras where applicable: <b className="text-brand-charcoal">£{ADDITIONAL_CHARGES.parking}</b> parking (if none free on-site) · <b className="text-brand-charcoal">£{ADDITIONAL_CHARGES.congestionZone}</b> Congestion Charge Zone. Bigger or complex premises? Call <a href={TEL} className="font-bold text-brand-charcoal">{PHONE_DISPLAY}</a> for a bespoke quote.
@@ -404,7 +510,8 @@ export default function FireRiskAssessmentLandingPage() {
           />
           <div>
             <span className={eyebrow}>What you get</span>
-            <h2 className={`${J} text-[30px] font-extrabold leading-[1.15] tracking-[-.02em] mb-1.5`}>A clear, council-ready report</h2>
+            <h2 className={`${J} text-[30px] font-extrabold leading-[1.15] tracking-[-.02em] mb-1.5`}>Your Fire Risk Assessment Certificate &amp; Report</h2>
+            <p className={`${muted} mb-1.5`}>Often called an FRA certificate: a formal, council-ready written report.</p>
             <div className="grid gap-3 mt-2">
               {getList.map((g) => (
                 <div key={g.title} className={`flex gap-3 items-start bg-white border ${line} rounded-xl px-4 py-3.5`}>
@@ -475,7 +582,13 @@ export default function FireRiskAssessmentLandingPage() {
         <section className={`${sec} bg-[linear-gradient(135deg,#f2f9fd,#eafce7)]`} id="reviews">
           <div className={wrap}>
             <SecHead eyebrowText="Reviews" title="What London landlords say" sub={`Rated ${rating} by landlords and letting agents across the capital.`} />
-            <div className={`bg-white border ${line} rounded-[18px] ${shadow} max-w-[560px] mx-auto mb-[34px] p-[22px] min-[521px]:px-[30px] min-[521px]:py-[26px] flex items-center gap-3.5 min-[521px]:gap-[26px] flex-wrap justify-center text-center`}>
+            <a
+              href={GOOGLE_MAPS_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Rated ${rating} on Google. Read our Google reviews`}
+              className={`bg-white border ${line} rounded-[18px] ${shadow} max-w-[560px] mx-auto mb-[34px] p-[22px] min-[521px]:px-[30px] min-[521px]:py-[26px] flex items-center gap-3.5 min-[521px]:gap-[26px] flex-wrap justify-center text-center transition-transform hover:-translate-y-0.5`}
+            >
               <div className={`${J} font-extrabold text-[42px] min-[521px]:text-[52px] leading-none`}>{rating}</div>
               <div>
                 <div className={`font-bold ${J} text-base mb-1`}>
@@ -484,13 +597,18 @@ export default function FireRiskAssessmentLandingPage() {
                 <div className={`${gold} text-[22px] tracking-[2px]`}>★★★★★</div>
                 <div className={`text-[13px] ${muted} mt-1`}>Verified Google reviews</div>
               </div>
-              <a href={GOOGLE_BUSINESS_URL} target="_blank" rel="noopener" className={`${btnBlue} px-[22px]! py-3! text-sm!`}>Read reviews →</a>
-            </div>
+              <span className={`${btnBlue} px-[22px]! py-3! text-sm!`}>Read reviews →</span>
+            </a>
             <div className="grid grid-cols-1 min-[701px]:grid-cols-2 gap-5 mt-2">
               {fraReviews.map((r) => (
                 <ReviewCard key={r.id} review={r} />
               ))}
             </div>
+            <p className="text-center mt-6">
+              <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-compliance-blue hover:underline">
+                See all our reviews on Google →
+              </a>
+            </p>
           </div>
         </section>
       )}
@@ -525,7 +643,7 @@ export default function FireRiskAssessmentLandingPage() {
             <Link href={BOOK} className={btnGreen}>Book my FRA, from £{entryPrice}</Link>
             <a href={TEL} className={`${btn} bg-white text-[#0077b3] border-[1.5px] border-white/60`}>Call {PHONE_DISPLAY}</a>
           </div>
-          <p className="mt-[18px] text-[13px] text-white/[.72]">No hidden charges · IFSM &amp; NEBOSH qualified assessors · Report emailed within 24 hours</p>
+          <p className="mt-[18px] text-[13px] text-white/[.72]">No hidden charges · IFSM &amp; NEBOSH qualified assessors · Report emailed within 24-48 hours</p>
         </div>
       </section>
 
