@@ -186,7 +186,9 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
   return (
     <div ref={containerRef} className="w-full">
       {/* SVG map — tablet and up */}
-      <div className="hidden sm:block relative w-full max-w-4xl mx-auto select-none">
+      {/* Display-only maps take no pointer input: hover tooltips re-rendering
+          the SVG while the page scrolls under the cursor froze Chrome on /lp pages. */}
+      <div className={`hidden sm:block relative w-full max-w-4xl mx-auto select-none ${interactive ? "" : "pointer-events-none"}`}>
         <svg
           viewBox="0 0 800 600"
           className="w-full h-auto max-h-[600px]"
