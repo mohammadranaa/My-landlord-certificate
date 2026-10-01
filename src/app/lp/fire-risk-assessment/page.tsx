@@ -36,7 +36,7 @@ const BOOK_COMMERCIAL = "/book?service=fra-commercial&type=commercial";
 export const metadata: Metadata = {
   title: `Fire Risk Assessment London from £${entryPrice} | Book Online`,
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and prioritised action plan emailed within 24-48 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and prioritised action plan emailed within 24 hours.",
   robots: { index: false, follow: false },
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/fire-risk-assessment" },
 };
@@ -46,7 +46,7 @@ const serviceSchema = {
   "@type": "Service",
   name: "Fire Risk Assessment",
   description:
-    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan emailed within 24-48 hours.",
+    "Fire Risk Assessment for landlords, HMOs and blocks of flats across London. Written report and action plan emailed within 24 hours.",
   provider: { "@type": "LocalBusiness", name: "My Landlord Certificate" },
   areaServed: ["London", "the M25 area"],
   offers: {
@@ -90,8 +90,8 @@ const why = [
   },
   {
     icon: <><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>,
-    big: "24-48h",
-    title: "Report in 24-48 hours",
+    big: "24h",
+    title: "Report in 24 hours",
     body: "A formal written report with a risk-rated, prioritised action plan, accepted by every London borough.",
   },
   {
@@ -166,11 +166,11 @@ const getList = [
 const steps = [
   { n: "1", title: "Book online", body: "Choose your property type, pick a date and pay securely. Under 3 minutes, instant confirmation." },
   { n: "2", title: "Assessor visits", body: "A NEBOSH-qualified assessor inspects methodically. You don't need to be present — tenant access is fine." },
-  { n: "3", title: "Report in 24-48 hrs", body: "Your written report lands by email within 24-48 hours — findings, action plan and review date included." },
+  { n: "3", title: "Report in 24 hrs", body: "Your written report lands by email within 24 hours — findings, action plan and review date included." },
 ];
 
 const after = [
-  { title: "Report emailed in 24-48 hrs", body: "Formal written document referencing the applicable legislation for every finding." },
+  { title: "Report emailed in 24 hrs", body: "Formal written document referencing the applicable legislation for every finding." },
   { title: "Critical items first", body: "Every finding risk-rated and ordered so you know exactly what to fix first." },
   { title: "Recommended timescales", body: "Each action carries a realistic completion date based on the severity of the risk." },
   { title: "Responsible person named", body: "Landlord, agent, resident or contractor — no ambiguity over who acts." },
@@ -188,7 +188,7 @@ const legal = [
 const faqs = [
   { q: "How much does a Fire Risk Assessment cost?", a: `Fixed prices from £${entryPrice} for a studio, £${popularPrice} for a 1–3 bed. Commercial from £${commercialFrom}. No call-out charges or hidden fees — see the pricing tables above.` },
   { q: "What qualifications should my assessor hold?", a: "Our assessors are IFSM certified, IFE registered and hold NEBOSH Fire Safety & Risk Management certificates — the competence standard councils, insurers and courts recognise." },
-  { q: "How quickly do I get the report?", a: "A full written report with a prioritised action plan is emailed within 24-48 hours of the inspection." },
+  { q: "How quickly do I get the report?", a: "A full written report with a prioritised action plan is emailed within 24 hours of the inspection." },
   { q: "How often should an FRA be reviewed?", a: "Typically every 12 months for HMOs and blocks of flats, or sooner after significant building changes. We set a review date and remind you." },
   { q: "Do I need a separate assessment for communal areas?", a: "Yes — any building with shared hallways, staircases or landings needs a communal-area assessment in addition to individual flat assessments." },
   { q: "What happens if the assessment finds problems?", a: "Every issue is risk-rated with a recommended timescale. Where works are needed, our team can carry them out directly — from fire doors to alarms and emergency lighting." },
@@ -281,14 +281,21 @@ export default function FireRiskAssessmentLandingPage() {
 
       {/* Announcement bar */}
       <div className="bg-brand-charcoal text-[#e9edf2] text-xs sm:text-[13px] font-medium">
-        <div className="max-w-[1160px] mx-auto flex flex-nowrap items-center justify-start sm:justify-center gap-x-[14px] sm:gap-x-5 px-[22px] py-2.5 whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
-          <span className="shrink-0">✅ <b className="text-white">Fixed price from £{entryPrice}</b></span>
-          <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
-          <span className="shrink-0">⚡ <b className="text-white">Report in 24-48 hrs</b></span>
-          <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
-          <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="shrink-0 hover:underline">⭐ <span className="text-action-green">{rating} on Google</span></a>
-          <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
-          <span className="shrink-0">📍 33 boroughs + M25</span>
+        <div className="overflow-hidden">
+          <div className="flex w-max whitespace-nowrap py-2.5 animate-[marquee-scroll_45s_linear_infinite] hover:[animation-play-state:paused] motion-reduce:animate-none">
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="flex shrink-0 items-center gap-x-[14px] sm:gap-x-5 pr-[14px] sm:pr-5" aria-hidden={i > 0 || undefined}>
+                <span className="shrink-0">✅ <b className="text-white">Fixed price from £{entryPrice}</b></span>
+                <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
+                <span className="shrink-0">⚡ <b className="text-white">Report in 24 hrs</b></span>
+                <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
+                <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" tabIndex={i > 0 ? -1 : undefined} className="shrink-0 hover:underline">⭐ <span className="text-action-green">{rating} on Google</span></a>
+                <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
+                <span className="shrink-0">📍 33 boroughs + M25</span>
+                <span className="w-[5px] h-[5px] rounded-full bg-gray-600 shrink-0" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -322,7 +329,7 @@ export default function FireRiskAssessmentLandingPage() {
               Fire Risk Assessment London <span className="text-[#eaffc2]">from £{entryPrice}</span>
             </h1>
             <p className="text-[17.5px] text-white/[.92] max-w-[520px] mb-3.5">
-              Compulsory for all HMOs and strongly recommended for every rental. A written report with a prioritised action plan, emailed within 24-48 hours.
+              Compulsory for all HMOs and strongly recommended for every rental. A written report with a prioritised action plan, emailed within 24 hours.
             </p>
             <a href={GOOGLE_MAPS_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="flex w-fit items-center gap-2.5 mb-6 text-sm font-semibold hover:underline">
               <span className={`${gold} text-lg tracking-[1px]`}>★★★★★</span> Rated <b>{rating}</b> on Google
@@ -356,7 +363,7 @@ export default function FireRiskAssessmentLandingPage() {
           <div className="max-w-[1160px] mx-auto px-[22px] grid grid-cols-2 min-[701px]:grid-cols-4 gap-0.5">
             {[
               { lab: "From", val: <>£{entryPrice} <small className="text-[13px] font-semibold text-[#eaffc2]">residential</small></> },
-              { lab: "Report", val: "24-48 hrs" },
+              { lab: "Report", val: "24 hrs" },
               { lab: "Assessors", val: "IFSM · NEBOSH" },
               { lab: "Coverage", val: <>33 Boroughs <small className="text-[13px] font-semibold text-[#eaffc2]">+ M25</small></> },
             ].map((c) => (
@@ -466,7 +473,7 @@ export default function FireRiskAssessmentLandingPage() {
         <div className={wrap}>
           <SecHead eyebrowText="Fixed pricing" title="Fire Risk Assessment pricing" sub="No call-out charges, no hidden fees. The price you see is the price you pay." />
           <div className="grid grid-cols-1 min-[821px]:grid-cols-2 gap-6">
-            <PriceCard title="Residential & HMO Fire Risk Assessment" sub="Flats, HMOs & communal areas · report in 24-48 hrs" rows={FRA_RESIDENTIAL_TABLE} green popularLabel="1–3 Bedrooms" href={BOOK} bookLabel="Book a residential or HMO FRA →" />
+            <PriceCard title="Residential & HMO Fire Risk Assessment" sub="Flats, HMOs & communal areas · report in 24 hrs" rows={FRA_RESIDENTIAL_TABLE} green popularLabel="1–3 Bedrooms" href={BOOK} bookLabel="Book a residential or HMO FRA →" />
             <PriceCard title="Commercial Fire Risk Assessment London" sub="Blocks of flats, offices & larger buildings" rows={FRA_COMMERCIAL_TABLE} href={BOOK_COMMERCIAL} bookLabel="Book a commercial FRA →" />
           </div>
           <p className={`text-center mt-[22px] ${muted} text-sm`}>
@@ -643,7 +650,7 @@ export default function FireRiskAssessmentLandingPage() {
             <Link href={BOOK} className={btnGreen}>Book my FRA, from £{entryPrice}</Link>
             <a href={TEL} className={`${btn} bg-white text-[#0077b3] border-[1.5px] border-white/60`}>Call {PHONE_DISPLAY}</a>
           </div>
-          <p className="mt-[18px] text-[13px] text-white/[.72]">No hidden charges · IFSM &amp; NEBOSH qualified assessors · Report emailed within 24-48 hours</p>
+          <p className="mt-[18px] text-[13px] text-white/[.72]">No hidden charges · IFSM &amp; NEBOSH qualified assessors · Report emailed within 24 hours</p>
         </div>
       </section>
 
