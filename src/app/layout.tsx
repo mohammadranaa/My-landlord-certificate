@@ -73,10 +73,7 @@ export const metadata: Metadata = {
     google: "TVjZfQIOjAFUGDn9HnpH_bsIePXdUXM6BTOG0KL2470",
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     apple: "/favicon.svg",
     shortcut: "/favicon.svg",
   },

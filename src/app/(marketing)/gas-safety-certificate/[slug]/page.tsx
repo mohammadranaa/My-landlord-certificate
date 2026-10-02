@@ -13,10 +13,7 @@ import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
   GAS_SAFETY_CP12_TABLE,
-  getPriceForEICR,
-  getPriceForEPC,
   getPriceForGasSafety,
-  getPriceForPAT,
 } from "@/lib/pricing";
 import { ALL_BOROUGHS, BOROUGH_SERVICES, getBoroughData } from "@/lib/borough-data";
 import { SITE_URL } from "@/lib/constants";
@@ -422,56 +419,10 @@ export default async function GasSafetyBoroughPage({
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
 
-        {/* ── Cross-sell ───────────────────────────────────────────────────── */}
-        <section aria-labelledby="related-heading">
-          <Heading level={2} id="related-heading" className="mb-6">
-            Other landlord certificates in {borough.name}
-          </Heading>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              {
-                name: "EICR Certificate",
-                href: "/eicr",
-                desc: `Electrical Installation Condition Report from £${getPriceForEICR("studio")}. Legally required every 5 years.`,
-              },
-              {
-                name: "EPC Certificate",
-                href: "/epc",
-                desc: `Energy Performance Certificate from £${getPriceForEPC("studio")}. Required before any new tenancy or sale. Valid 10 years.`,
-              },
-              {
-                name: "PAT Testing",
-                href: "/pat-testing",
-                desc: `Portable Appliance Testing from £${getPriceForPAT(1)}. Recommended annually for furnished lets.`,
-              },
-            ].map(({ name, href, desc }) => (
-              <Link
-                key={href}
-                href={href}
-                className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
-              >
-                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors mb-1">
-                  {name}
-                </p>
-                <p className="text-sm text-brand-grey">{desc}</p>
-              </Link>
-            ))}
-          </div>
-          <p className="mt-6 text-sm text-brand-grey">
-            Managing an HMO in {borough.name}?{" "}
-            <Link
-              href="/hmo-compliance"
-              className="text-compliance-blue hover:underline font-medium"
-            >
-              See all HMO compliance certificates →
-            </Link>
-          </p>
-        </section>
-
-        {/* ── Other services in this borough ────────────────────────────────── */}
+        {/* ── Other landlord certificates in this borough ─────────────────────── */}
         <section aria-labelledby="other-services-heading">
           <Heading level={2} id="other-services-heading" className="mb-4">
-            Other services in {borough.name}
+            Other landlord certificates in {borough.name}
           </Heading>
           <p className="text-brand-grey mb-6">
             We also cover these landlord certificates in {borough.name}:
@@ -490,6 +441,15 @@ export default async function GasSafetyBoroughPage({
               </Link>
             ))}
           </div>
+          <p className="mt-6 text-sm text-brand-grey">
+            Managing an HMO in {borough.name}?{" "}
+            <Link
+              href="/hmo-compliance"
+              className="text-compliance-blue hover:underline font-medium"
+            >
+              See all HMO compliance certificates →
+            </Link>
+          </p>
         </section>
 
         {/* ── Nearby borough pages ─────────────────────────────────────────── */}
