@@ -17,7 +17,8 @@ import {
   COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   getPriceForEICR,
 } from "@/lib/pricing";
-import { ALL_BOROUGHS, BOROUGH_SERVICES, getBoroughData } from "@/lib/borough-data";
+import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
+import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 
 const entryPrice = getPriceForEICR("studio");
@@ -477,14 +478,14 @@ export default async function EICRBoroughPage({
             We also cover these landlord certificates in {borough.name}:
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {BOROUGH_SERVICES.filter((s) => s.slug !== "eicr").map((service) => (
+            {LOCATION_SERVICES.filter((s) => s.key !== "eicr").map((service) => (
               <Link
-                key={service.slug}
-                href={`/${service.slug}/${slug}`}
+                key={service.key}
+                href={`${service.urlPrefix}/${slug}`}
                 className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
               >
                 <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm">
-                  {service.label}
+                  {service.shortName}
                 </p>
                 <p className="text-xs text-brand-grey mt-1">in {borough.name}</p>
               </Link>
