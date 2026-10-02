@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
@@ -362,6 +363,9 @@ export default function ElectricalDiagnosticPage() {
             deterioration, in which case the engineer will advise on a full EICR and remediation options.
           </p>
         </section>
+
+        {/* ── electrical-diagnostic in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="electrical-diagnostic" />
 
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import Image from "next/image";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
@@ -720,6 +721,9 @@ export default function CommercialEicrPage() {
 
         {/* ── Reviews ── */}
         <ReviewsSection reviews={reviewsForService("eicr", 3)} heading="What our commercial clients say" />
+
+        {/* ── commercial-eicr in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="commercial-eicr" />
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

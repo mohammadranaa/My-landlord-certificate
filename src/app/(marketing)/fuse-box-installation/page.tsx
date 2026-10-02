@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -335,6 +336,9 @@ export default function FuseBoxInstallationPage() {
             with your local authority.
           </p>
         </section>
+
+        {/* ── fuse-box-installation in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="fuse-box-installation" />
 
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">

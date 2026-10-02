@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import Image from "next/image";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
@@ -655,6 +656,9 @@ export default function FireSafetyCertificatePage() {
             <ReviewsSection reviews={fireSafetyReviews} />
           </section>
         )}
+
+        {/* ── fire-safety-certificate in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="fire-safety-certificate" />
 
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">

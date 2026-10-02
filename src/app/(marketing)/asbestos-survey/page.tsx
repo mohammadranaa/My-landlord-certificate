@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -767,6 +768,9 @@ export default function AsbestosSurveyPage() {
             </p>
           </div>
         </section>
+
+        {/* ── asbestos-survey in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="asbestos-survey" />
 
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">

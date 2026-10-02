@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
@@ -285,6 +286,9 @@ export default function BoilerInstallationPage() {
             ))}
           </ul>
         </section>
+
+        {/* ── boiler-installation in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="boiler-installation" />
 
         {/* FAQs */}
         <section className="below-fold py-10 border-b border-border">
