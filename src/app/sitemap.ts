@@ -18,21 +18,10 @@
  */
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
+import { LOCATION_SERVICES } from "@/lib/location-services";
 
 const BASE = "https://www.mylandlordcertificate.co.uk";
-
-// All 33 London borough slugs — must match keys in borough-data.ts, used by
-// eicr/[slug], gas-safety-certificate/[slug], epc/[slug], pat-testing/[slug]
-// and fire-risk-assessment/[slug]
-const boroughSlugs = [
-  "barking-dagenham", "barnet", "bexley", "brent", "bromley",
-  "camden", "city-of-london", "croydon", "ealing", "enfield",
-  "greenwich", "hackney", "hammersmith-fulham", "haringey", "harrow",
-  "havering", "hillingdon", "hounslow", "islington", "kensington-chelsea",
-  "kingston-upon-thames", "lambeth", "lewisham", "merton", "newham",
-  "redbridge", "richmond-upon-thames", "southwark", "sutton",
-  "tower-hamlets", "waltham-forest", "wandsworth", "westminster",
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -98,34 +87,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // ── Location hub and borough pages ────────────────────────────────────────────
+  // Registry-driven: every indexable service in LOCATION_SERVICES × every
+  // borough in ALL_BOROUGHS, plus the 33 /coverage-areas/[slug] hub pages.
+  // Adding a service or a borough to its registry needs no change here.
   const locationPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/eicr-london`,    priority: 0.80, changeFrequency: "monthly" },
     { url: `${BASE}/coverage-areas`, priority: 0.70, changeFrequency: "monthly" },
-    ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/eicr/${slug}`,
-      priority: 0.72 as number,
+    ...ALL_BOROUGHS.map((b) => ({
+      url: `${BASE}/coverage-areas/${b.slug}`,
+      priority: 0.75 as number,
       changeFrequency: "monthly" as const,
     })),
-    ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/gas-safety-certificate/${slug}`,
-      priority: 0.70 as number,
-      changeFrequency: "monthly" as const,
-    })),
-    ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/epc/${slug}`,
-      priority: 0.70 as number,
-      changeFrequency: "monthly" as const,
-    })),
-    ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/pat-testing/${slug}`,
-      priority: 0.70 as number,
-      changeFrequency: "monthly" as const,
-    })),
-    ...boroughSlugs.map((slug) => ({
-      url: `${BASE}/fire-risk-assessment/${slug}`,
-      priority: 0.70 as number,
-      changeFrequency: "monthly" as const,
-    })),
+    ...LOCATION_SERVICES.filter((s) => s.indexable).flatMap((service) =>
+      ALL_BOROUGHS.map((b) => ({
+        url: `${BASE}${service.urlPrefix}/${b.slug}`,
+        priority: 0.70 as number,
+        changeFrequency: "monthly" as const,
+      })),
+    ),
   ];
 
   // ── Marketing / info pages ────────────────────────────────────────────────────
