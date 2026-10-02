@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getPriceForEICR, getPriceForGasSafety, getPriceForEPC, getPriceForFRA } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const helpLinks = [
-  { label: "EICR Certificate", href: "/eicr", sub: "From £67.99" },
-  { label: "Gas Safety Certificate", href: "/gas-safety-certificate", sub: "From £49.99" },
-  { label: "EPC Certificate", href: "/epc", sub: "From £89.99" },
-  { label: "Fire Risk Assessment", href: "/fire-risk-assessment", sub: "From £74" },
+  { label: "EICR Certificate", href: "/eicr", sub: `From £${getPriceForEICR("studio")}` },
+  { label: "Gas Safety Certificate", href: "/gas-safety-certificate", sub: `From £${getPriceForGasSafety(1)}` },
+  { label: "EPC Certificate", href: "/epc", sub: `From £${getPriceForEPC("studio")}` },
+  { label: "Fire Risk Assessment", href: "/fire-risk-assessment", sub: `From £${getPriceForFRA("studio")}` },
   { label: "Pricing", href: "/pricing", sub: "All services & prices" },
   { label: "How It Works", href: "/#how-it-works", sub: "3-step process" },
 ];

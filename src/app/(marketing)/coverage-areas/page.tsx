@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
-import { M25_CORRIDOR_CHARGE_FROM } from "@/lib/pricing";
+import { M25_CORRIDOR_CHARGE_FROM, getPriceForEICR, getPriceForGasSafety, getPriceForEPC, getPriceForFRA, getPriceForPAT } from "@/lib/pricing";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -9,9 +9,16 @@ import { Heading } from "@/components/ui/heading";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
+import { ALL_BOROUGHS } from "@/lib/borough-data";
 
 import { MapSection } from "@/components/ui/map-section";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
+
+const eicrFrom = getPriceForEICR("studio");
+const gasSafetyFrom = getPriceForGasSafety(1);
+const epcFrom = getPriceForEPC("studio");
+const fraFrom = getPriceForFRA("studio");
+const patFrom = getPriceForPAT(1);
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -68,42 +75,6 @@ const breadcrumbSchema = {
 };
 
 // ── Borough data ──────────────────────────────────────────────────────────────
-
-const boroughs: { name: string; slug: string }[] = [
-  { name: "Barking & Dagenham",    slug: "barking-dagenham" },
-  { name: "Barnet",                slug: "barnet" },
-  { name: "Bexley",                slug: "bexley" },
-  { name: "Brent",                 slug: "brent" },
-  { name: "Bromley",               slug: "bromley" },
-  { name: "Camden",                slug: "camden" },
-  { name: "City of London",        slug: "city-of-london" },
-  { name: "Croydon",               slug: "croydon" },
-  { name: "Ealing",                slug: "ealing" },
-  { name: "Enfield",               slug: "enfield" },
-  { name: "Greenwich",             slug: "greenwich" },
-  { name: "Hackney",               slug: "hackney" },
-  { name: "Hammersmith & Fulham",  slug: "hammersmith-fulham" },
-  { name: "Haringey",              slug: "haringey" },
-  { name: "Harrow",                slug: "harrow" },
-  { name: "Havering",              slug: "havering" },
-  { name: "Hillingdon",            slug: "hillingdon" },
-  { name: "Hounslow",              slug: "hounslow" },
-  { name: "Islington",             slug: "islington" },
-  { name: "Kensington & Chelsea",  slug: "kensington-chelsea" },
-  { name: "Kingston upon Thames",  slug: "kingston-upon-thames" },
-  { name: "Lambeth",               slug: "lambeth" },
-  { name: "Lewisham",              slug: "lewisham" },
-  { name: "Merton",                slug: "merton" },
-  { name: "Newham",                slug: "newham" },
-  { name: "Redbridge",             slug: "redbridge" },
-  { name: "Richmond upon Thames",  slug: "richmond-upon-thames" },
-  { name: "Southwark",             slug: "southwark" },
-  { name: "Sutton",                slug: "sutton" },
-  { name: "Tower Hamlets",         slug: "tower-hamlets" },
-  { name: "Waltham Forest",        slug: "waltham-forest" },
-  { name: "Wandsworth",            slug: "wandsworth" },
-  { name: "Westminster",           slug: "westminster" },
-];
 
 const southEastAreas: { county: string; towns: string[] }[] = [
   {
@@ -202,8 +173,7 @@ export default function CoverageAreasPage() {
           <p className="text-brand-grey text-center mb-10 max-w-2xl mx-auto">
             We cover every London borough — from Zone 1 central London properties to
             outer borough commuter belt homes. Each borough link takes you to a
-            dedicated EICR page for that area; Gas Safety, EPC and Fire Risk
-            Assessment are available in every borough too.
+            dedicated hub page listing every certificate we offer there.
           </p>
 
           <ul
@@ -211,10 +181,10 @@ export default function CoverageAreasPage() {
             role="list"
             aria-label="London boroughs served"
           >
-            {boroughs.map(({ name, slug }) => (
+            {ALL_BOROUGHS.map(({ name, slug }) => (
               <li key={slug}>
                 <Link
-                  href={`/eicr/${slug}`}
+                  href={`/coverage-areas/${slug}`}
                   className="flex items-center justify-between gap-2 rounded-xl border border-border bg-white px-4 py-3 text-sm font-medium text-brand-charcoal hover:border-compliance-blue hover:text-compliance-blue transition-colors group"
                 >
                   <span>{name}</span>
@@ -377,44 +347,44 @@ export default function CoverageAreasPage() {
               {
                 label: "EICR Certificate",
                 detail: "NICEIC approved or NAPIT certified electricians",
-                price: "from £67.99",
+                price: `from £${eicrFrom}`,
                 href: "/eicr",
                 validity: "Valid 5 years",
               },
               {
                 label: "Gas Safety Certificate",
                 detail: "Gas Safe Registered engineers",
-                price: "from £50",
+                price: `from £${gasSafetyFrom}`,
                 href: "/gas-safety-certificate",
                 validity: "Valid 12 months",
               },
               {
                 label: "EPC Certificate",
                 detail: "Accredited Domestic Energy Assessors",
-                price: "from £89.99",
+                price: `from £${epcFrom}`,
                 href: "/epc",
                 validity: "Valid 10 years",
               },
               {
                 label: "Fire Risk Assessment",
                 detail: "NEBOSH qualified assessors",
-                price: "from £74",
+                price: `from £${fraFrom}`,
                 href: "/fire-risk-assessment",
                 validity: "Review annually",
               },
               {
                 label: "PAT Testing",
                 detail: "City & Guilds 2377 qualified testers",
-                price: "from £59.99",
+                price: `from £${patFrom}`,
                 href: "/pat-testing",
                 validity: "Review annually",
               },
               {
                 label: "Certificate Bundles",
                 detail: "Multiple certificates, single engineer visit",
-                price: "from £130",
+                price: "from £160",
                 href: "/landlord-certificates-bundle",
-                validity: "Save up to £44.97",
+                validity: "Save up to £49.96",
               },
             ].map(({ label, detail, price, href, validity }) => (
               <Link
@@ -487,11 +457,11 @@ export default function CoverageAreasPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "EICR Certificate", href: "/eicr", price: `from £${eicrFrom}` },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: `from £${gasSafetyFrom}` },
+              { label: "EPC Certificate", href: "/epc", price: `from £${epcFrom}` },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: `from £${fraFrom}` },
+              { label: "PAT Testing", href: "/pat-testing", price: `from £${patFrom}` },
               { label: "EICR in London", href: "/eicr-london", price: "All London boroughs" },
             ].map(({ label, href, price }) => (
               <Link
