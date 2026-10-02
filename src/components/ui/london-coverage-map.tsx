@@ -4,19 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { BOROUGH_PATHS } from "@/data/london-borough-paths"
 import { BOROUGH_SLUG_MAP, BOROUGH_DISPLAY_NAME } from "@/data/borough-slug-map"
-import { FROM_PRICES } from "@/lib/pricing"
+import { LOCATION_SERVICES } from "@/lib/location-services"
 
-/**
- * Single source of truth for which services appear in the borough tooltip —
- * add a new service here and it shows up on every borough automatically.
- */
-export const BOROUGH_SERVICES: { label: string; hrefBase: string; fromPrice: string }[] = [
-  { label: "EICR", hrefBase: "/eicr", fromPrice: FROM_PRICES.eicr },
-  { label: "Gas Safety Certificate", hrefBase: "/gas-safety-certificate", fromPrice: FROM_PRICES["gas-safety-cp12"] },
-  { label: "EPC", hrefBase: "/epc", fromPrice: FROM_PRICES.epc },
-  { label: "Fire Risk Assessment", hrefBase: "/fire-risk-assessment", fromPrice: FROM_PRICES["fire-risk-assessment"] },
-  { label: "PAT Testing", hrefBase: "/pat-testing", fromPrice: FROM_PRICES.pat },
-]
+/** Top 5 registry services shown in the borough tooltip, in registry order. */
+const TOP_TOOLTIP_SERVICES = LOCATION_SERVICES.slice(0, 5)
 
 interface TooltipState {
   visible: boolean
@@ -74,23 +65,34 @@ const entries = Object.entries(BOROUGH_PATHS)
   .filter((e) => e.slug)
 
 /** The per-service link list + "Book in [Borough]" CTA shared by the desktop tooltip and mobile panel. */
+function formatTooltipPrice(price: number): string {
+  return price % 1 === 0 ? `£${price}` : `£${price.toFixed(2)}`
+}
+
 function BoroughServiceList({ slug, name, onNavigate }: { slug: string; name: string; onNavigate?: () => void }) {
   return (
     <div>
       <p className="font-semibold leading-tight text-white">{name}</p>
       <ul className="mt-1.5 space-y-1">
-        {BOROUGH_SERVICES.map((service) => (
-          <li key={service.hrefBase}>
+        {TOP_TOOLTIP_SERVICES.map((service) => (
+          <li key={service.key}>
             <Link
-              href={`${service.hrefBase}/${slug}`}
+              href={`${service.urlPrefix}/${slug}`}
               onClick={onNavigate}
               className="block text-blue-100 hover:text-white hover:underline"
             >
-              {service.label} — {service.fromPrice}
+              {service.shortName} — {formatTooltipPrice(service.priceFrom)}
             </Link>
           </li>
         ))}
       </ul>
+      <Link
+        href={`/coverage-areas/${slug}`}
+        onClick={onNavigate}
+        className="mt-1.5 block text-blue-100 hover:text-white hover:underline"
+      >
+        All services in {name} →
+      </Link>
       <Link
         href="/book"
         onClick={onNavigate}
@@ -181,7 +183,7 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
   }, [interactive])
 
   const tooltipWidth = interactive ? 210 : 150
-  const tooltipHeight = interactive ? 190 : 54
+  const tooltipHeight = interactive ? 212 : 54
 
   return (
     <div ref={containerRef} className="w-full">
