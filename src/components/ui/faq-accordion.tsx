@@ -18,6 +18,8 @@ interface FAQAccordionProps {
    * Set to `true` on pages where this is the primary FAQ.
    */
   includeSchema?: boolean;
+  /** Index of an item to expand by default, or "all" to expand every item. Defaults to none open. */
+  defaultOpenIndex?: number | "all";
   className?: string;
 }
 
@@ -36,6 +38,7 @@ export function FAQAccordion({
   items,
   multiple = false,
   includeSchema = false,
+  defaultOpenIndex,
   className,
 }: FAQAccordionProps) {
   const schema = {
@@ -54,7 +57,13 @@ export function FAQAccordion({
 
       <Accordion.Root
         multiple={multiple}
-        defaultValue={[]}
+        defaultValue={
+          defaultOpenIndex === "all"
+            ? items.map((_, i) => `item-${i}`)
+            : defaultOpenIndex !== undefined
+              ? [`item-${defaultOpenIndex}`]
+              : []
+        }
         className={cn(
           "divide-y divide-border rounded-2xl border border-border bg-white overflow-hidden",
           className,

@@ -28,6 +28,58 @@ function formatPrice(price: number): string {
   return price % 1 === 0 ? `${price}` : price.toFixed(2);
 }
 
+/**
+ * Localizes a service's static FAQ list for a specific borough. Appends
+ * "in {borough}" to each question, and appends one real, borough-specific
+ * clause (built from registry data — postcodes, nearby boroughs, congestion
+ * zone — never invented) to each vetted answer, cycling through a few
+ * distinct facts so the clauses aren't all identical to each other. Also
+ * adds one fully dynamic coverage FAQ. Together this keeps the FAQ block
+ * from being byte-identical across all 33 borough pages for a service.
+ */
+function localizeFaqs(
+  service: LocationService,
+  borough: BoroughData,
+  postcodeStr: string,
+): { question: string; answer: string }[] {
+  const nearbyNames = borough.nearbyBoroughs
+    .map((s) => getBoroughData(s)?.name)
+    .filter((n): n is string => Boolean(n));
+
+  const localClauses = [
+    `Our engineers regularly carry out ${service.name.toLowerCase()} work for landlords across ${borough.name}, including the ${postcodeStr} postcode areas.`,
+    nearbyNames.length > 0
+      ? `This applies equally to landlords in ${borough.name} and in neighbouring boroughs such as ${nearbyNames.join(", ")}.`
+      : `This applies equally to landlords across ${borough.name}.`,
+    borough.congestionZone
+      ? `Properties in ${borough.name} fall within the London Congestion Charge Zone, which carries a £${ADDITIONAL_CHARGES.congestionZone} surcharge on top of the price above.`
+      : `${borough.name} sits outside the London Congestion Charge Zone, so no congestion surcharge applies here.`,
+    `We book ${service.shortName} appointments across every part of ${borough.name} — enter your postcode when booking to confirm availability.`,
+  ];
+
+  const localized = service.faqs.map((faq, i) => ({
+    question: faq.question.endsWith("?")
+      ? `${faq.question.slice(0, -1)} in ${borough.name}?`
+      : faq.question,
+    answer: `${faq.answer} ${localClauses[i % localClauses.length]}`,
+  }));
+
+  localized.push({
+    question: `Do you cover ${service.shortName.toLowerCase()} in ${borough.name}?`,
+    answer: [
+      `Yes, we cover the whole of ${borough.name}, including the ${postcodeStr} postcode areas.`,
+      nearbyNames.length > 0
+        ? `We also cover neighbouring boroughs including ${nearbyNames.join(", ")}.`
+        : null,
+      borough.congestionZone
+        ? `As ${borough.name} is within the London Congestion Charge Zone, a £${ADDITIONAL_CHARGES.congestionZone} surcharge applies.`
+        : `${borough.name} is outside the London Congestion Charge Zone, so no congestion surcharge applies.`,
+    ].filter(Boolean).join(" "),
+  });
+
+  return localized;
+}
+
 /** Shared across every /[service]/[borough] route — pass to generateStaticParams. */
 export function generateLocationStaticParams() {
   return ALL_BOROUGHS.map((b) => ({ slug: b.slug }));
@@ -80,6 +132,7 @@ export function LocationServicePage({
   const otherServices = LOCATION_SERVICES.filter((s) => s.key !== service.key);
   const reviews = reviewsForService(service.reviewTag, 3);
   const reviewsHeading = reviewsHeadingForService(service);
+  const localizedFaqs = localizeFaqs(service, borough, postcodeStr);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -111,7 +164,7 @@ export function LocationServicePage({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: service.faqs.map((faq) => ({
+    mainEntity: localizedFaqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -239,6 +292,22 @@ export function LocationServicePage({
             private landlords, letting agents and HMO operators, and are
             familiar with the {postcodeStr} postcode areas.
           </p>
+          <p className="text-brand-charcoal/80 leading-relaxed mb-6">
+            {borough.congestionZone
+              ? `${borough.name} falls within the London Congestion Charge Zone, so a £${ADDITIONAL_CHARGES.congestionZone} surcharge applies on top of the price above.`
+              : `${borough.name} is outside the London Congestion Charge Zone, so no congestion surcharge applies here.`}
+            {borough.nearbyBoroughs.length > 0 && (
+              <>
+                {" "}We also regularly book {service.shortName} appointments in
+                neighbouring {borough.nearbyBoroughs.length === 1 ? "borough" : "boroughs"} such
+                as {borough.nearbyBoroughs
+                  .map((s) => getBoroughData(s)?.name)
+                  .filter((n): n is string => Boolean(n))
+                  .join(", ")}, so if your portfolio spans more than one area
+                we can usually coordinate visits on the same day.
+              </>
+            )}
+          </p>
           <div className="rounded-xl bg-warm-white border border-border p-5">
             <p className="font-semibold text-brand-charcoal mb-1">
               Postcodes covered in {borough.name}
@@ -347,7 +416,11 @@ export function LocationServicePage({
           <Heading level={2} id="faq-heading" className="mb-6">
             {service.shortName} {borough.name} — frequently asked questions
           </Heading>
-          <FAQAccordion items={service.faqs} includeSchema={false} />
+          <FAQAccordion
+            items={localizedFaqs}
+            includeSchema={false}
+            defaultOpenIndex={localizedFaqs.length - 1}
+          />
         </section>
 
         {/* ── 10. Other services in this borough ───────────────────────── */}
