@@ -190,12 +190,12 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
   "fire-risk-assessment-hmo-guide": {
     label: `Book your Fire Risk Assessment from £${fraPrice}`,
     href: "/book?service=fra-residential",
-    subtext: "IFSM certified assessors · Report within 48 hours",
+    subtext: "IFSM certified assessors · Report within 24 hours",
   },
   "landlord-fire-risk-assessment": {
     label: `Book your Fire Risk Assessment from £${fraPrice}`,
     href: "/book?service=fra-residential",
-    subtext: "NEBOSH qualified assessors · Report within 48 hours",
+    subtext: "NEBOSH qualified assessors · Report within 24 hours",
   },
   "fire-door-checks-blocks-of-flats-hmos-london": {
     label: `Book your Fire Door Certificate from £${fireDoorPrice}`,

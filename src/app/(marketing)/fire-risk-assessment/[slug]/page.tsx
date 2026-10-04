@@ -35,13 +35,13 @@ export async function generateMetadata({
   if (!borough) return {};
   return {
     title: `Fire Risk Assessment ${borough.name} from £${entryPrice}`,
-    description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 48 hours. Book online.`,
+    description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 24 hours. Book online.`,
     alternates: {
       canonical: `${SITE_URL}/fire-risk-assessment/${slug}`,
     },
     openGraph: {
       title: `Fire Risk Assessment ${borough.name} from £${entryPrice} | My Landlord Certificate`,
-      description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 48 hours. Book online.`,
+      description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 24 hours. Book online.`,
       url: `${SITE_URL}/fire-risk-assessment/${slug}`,
     },
   };
@@ -72,7 +72,7 @@ export default async function FireRiskAssessmentBoroughPage({
     "@type": "Service",
     name: `Fire Risk Assessment ${borough.name}`,
     url: `${SITE_URL}/fire-risk-assessment/${slug}`,
-    description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 48 hours.`,
+    description: `NEBOSH qualified fire risk assessors in ${borough.name}. Fire Risk Assessment from £${entryPrice}. Report emailed within 24 hours.`,
     provider: {
       "@type": "LocalBusiness",
       name: "My Landlord Certificate",
@@ -124,7 +124,7 @@ export default async function FireRiskAssessmentBoroughPage({
     },
     {
       question: `What does a Fire Risk Assessment cover in ${borough.name}?`,
-      answer: `Our NEBOSH qualified assessor identifies fire hazards, evaluates who is at risk, and checks means of escape, fire doors, fire alarms, emergency lighting and escape route signage. Every finding is recorded with a priority rating, and you receive a written report with a clear, prioritised action plan emailed within 48 hours of the visit.`,
+      answer: `Our NEBOSH qualified assessor identifies fire hazards, evaluates who is at risk, and checks means of escape, fire doors, fire alarms, emergency lighting and escape route signage. Every finding is recorded with a priority rating, and you receive a written report with a clear, prioritised action plan emailed within 24 hours of the visit.`,
     },
     {
       question: `How often does a Fire Risk Assessment need to be reviewed in ${borough.name}?`,
@@ -184,7 +184,7 @@ export default async function FireRiskAssessmentBoroughPage({
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            NEBOSH Qualified · Report Within 48 Hours · {borough.name}
+            NEBOSH Qualified · Report Within 24 Hours · {borough.name}
           </p>
 
           <Heading
@@ -199,7 +199,7 @@ export default async function FireRiskAssessmentBoroughPage({
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             Fire Risk Assessments for landlords and HMO operators in{" "}
             {borough.name}. NEBOSH qualified assessors, fixed pricing, no
-            hidden charges — written report emailed within 48 hours.
+            hidden charges — written report emailed within 24 hours.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -250,7 +250,7 @@ export default async function FireRiskAssessmentBoroughPage({
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Report</dt>
-              <dd className="text-sm font-bold text-white">within 48 hours</dd>
+              <dd className="text-sm font-bold text-white">within 24 hours</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Accreditation</dt>
@@ -386,7 +386,7 @@ export default async function FireRiskAssessmentBoroughPage({
               "Check of fire alarm and detection system coverage",
               "Emergency lighting and escape route signage check",
               "NEBOSH qualified assessor — fully qualified and insured",
-              "Written report with prioritised action plan emailed within 48 hours",
+              "Written report with prioritised action plan emailed within 24 hours",
               "Clear timescales for any remedial action identified",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -497,7 +497,7 @@ export default async function FireRiskAssessmentBoroughPage({
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Book online in under 3 minutes. A NEBOSH qualified assessor
-            confirms your appointment. Written report emailed within 48
+            confirms your appointment. Written report emailed within 24
             hours.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
@@ -511,7 +511,7 @@ export default async function FireRiskAssessmentBoroughPage({
             Book Fire Risk Assessment in {borough.name} — from £{entryPrice}
           </Link>
           <p className="mt-4 text-xs text-blue-100">
-            Fixed pricing. No hidden charges. NEBOSH qualified. Report emailed within 48 hours.
+            Fixed pricing. No hidden charges. NEBOSH qualified. Report emailed within 24 hours.
           </p>
         </section>
       </div>

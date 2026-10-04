@@ -180,7 +180,7 @@ export const LOCATION_SERVICES: LocationService[] = [
     bookingParam: "fire-risk-assessment",
     priceFrom: getPriceForFRA("studio"),
     priceTable: FRA_RESIDENTIAL_TABLE,
-    deliveryText: "within 48 hours",
+    deliveryText: "within 24 hours",
     legalBasis:
       "Regulatory Reform (Fire Safety) Order 2005 — a suitable and sufficient fire risk assessment is compulsory for HMOs and the common parts of blocks of flats.",
     whoNeedsIt: "Landlords of HMOs and the common parts of blocks of flats, reviewed at least annually.",

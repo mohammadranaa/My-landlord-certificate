@@ -11,7 +11,7 @@ interface ServiceCardProps {
   description: string;
   price: number;
   turnaroundDays?: number;
-  /** Overrides the computed turnaround badge text (e.g. "Within 48 hours" for Fire Risk Assessment). */
+  /** Overrides the computed turnaround badge text (e.g. "Within 48 hours" for Legionella Risk Assessment). */
   turnaroundLabel?: string;
   className?: string;
 }
