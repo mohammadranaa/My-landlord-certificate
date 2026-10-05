@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -443,6 +444,9 @@ export default function FireDoorCertificatePage() {
             ))}
           </div>
         </section>
+
+        {/* ── fire-door-certificate in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="fire-door-certificate" />
 
         {/* FAQs */}
         <section className="py-10 border-b border-border">

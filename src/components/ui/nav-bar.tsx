@@ -17,8 +17,8 @@ const categories = [
     label: "Electrical Safety",
     href: "/electrical-safety",
     services: [
-      { href: "/electrical-safety/domestic-eicr", label: "Domestic EICR", price: FROM_PRICES.eicr },
-      { href: "/electrical-safety/commercial-eicr", label: "Commercial EICR", price: FROM_PRICES["commercial-eicr"] },
+      { href: "/eicr", label: "Domestic EICR", price: FROM_PRICES.eicr },
+      { href: "/commercial-eicr", label: "Commercial EICR", price: FROM_PRICES["commercial-eicr"] },
       { href: "/electrical-diagnostic", label: "Electrical Diagnostic", price: FROM_PRICES["electrical-diagnostic"] },
       { href: "/fuse-box-installation", label: "Fuse Box Installation", price: FROM_PRICES["fuse-box"] },
       { href: "/emergency-lights-certificate", label: "Emergency Lights Cert", price: FROM_PRICES.elc },
@@ -30,8 +30,8 @@ const categories = [
     label: "Gas Safety",
     href: "/gas-safety",
     services: [
-      { href: "/gas-safety/cp12", label: "Gas Safety (CP12)", price: FROM_PRICES["gas-safety-cp12"] },
-      { href: "/gas-safety/cp42", label: "Commercial Gas (CP42)", price: FROM_PRICES["gas-safety-cp42"] },
+      { href: "/gas-safety-certificate", label: "Gas Safety (CP12)", price: FROM_PRICES["gas-safety-cp12"] },
+      { href: "/commercial-gas-safety-certificate", label: "Commercial Gas (CP42)", price: FROM_PRICES["gas-safety-cp42"] },
       { href: "/boiler-installation", label: "Boiler Installation", price: FROM_PRICES["boiler-installation"] },
     ],
   },
@@ -52,8 +52,8 @@ const categories = [
     label: "EPC",
     href: "/epc",
     services: [
-      { href: "/epc/domestic-epc", label: "Domestic EPC", price: FROM_PRICES.epc },
-      { href: "/epc/commercial-epc", label: "Commercial EPC", price: FROM_PRICES["commercial-epc"] },
+      { href: "/epc", label: "Domestic EPC", price: FROM_PRICES.epc },
+      { href: "/commercial-epc", label: "Commercial EPC", price: FROM_PRICES["commercial-epc"] },
     ],
   },
 ] as const;

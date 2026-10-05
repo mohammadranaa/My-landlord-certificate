@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -545,6 +546,9 @@ export default function CommercialGasSafetyCertificatePage() {
             ))}
           </ol>
         </section>
+
+        {/* ── commercial-gas-safety-certificate in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="commercial-gas-safety-certificate" />
 
         {/* ── FAQs ── */}
         <section aria-labelledby="faq-heading" className="below-fold">

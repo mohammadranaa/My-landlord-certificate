@@ -16,11 +16,9 @@ import {
   EICR_ADDITIONAL_CU_PRICE,
   COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   getPriceForEICR,
-  getPriceForEPC,
-  getPriceForGasSafety,
-  getPriceForPAT,
 } from "@/lib/pricing";
-import { ALL_BOROUGHS, BOROUGH_SERVICES, getBoroughData } from "@/lib/borough-data";
+import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
+import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 
 const entryPrice = getPriceForEICR("studio");
@@ -471,60 +469,23 @@ export default async function EICRBoroughPage({
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
 
-        {/* ── Cross-sell ───────────────────────────────────────────────────── */}
-        <section aria-labelledby="related-heading">
-          <Heading level={2} id="related-heading" className="mb-6">
-            Other landlord certificates in {borough.name}
-          </Heading>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              {
-                name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety-certificate",
-                desc: `Annual Gas Safe inspection from £${getPriceForGasSafety(1)}. Required for all gas appliances in your ${borough.name} rental.`,
-              },
-              {
-                name: "EPC Certificate",
-                href: "/epc",
-                desc: `Energy Performance Certificate from £${getPriceForEPC("studio")}. Required before any new tenancy or sale. Valid 10 years.`,
-              },
-              {
-                name: "PAT Testing",
-                href: "/pat-testing",
-                desc: `Portable Appliance Testing from £${getPriceForPAT(1)}. Recommended annually for furnished lets.`,
-              },
-            ].map(({ name, href, desc }) => (
-              <Link
-                key={href}
-                href={href}
-                className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
-              >
-                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors mb-1">
-                  {name}
-                </p>
-                <p className="text-sm text-brand-grey">{desc}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Other services in this borough ────────────────────────────────── */}
+        {/* ── Other landlord certificates in this borough ─────────────────────── */}
         <section aria-labelledby="other-services-heading">
           <Heading level={2} id="other-services-heading" className="mb-4">
-            Other services in {borough.name}
+            Other landlord certificates in {borough.name}
           </Heading>
           <p className="text-brand-grey mb-6">
             We also cover these landlord certificates in {borough.name}:
           </p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {BOROUGH_SERVICES.filter((s) => s.slug !== "eicr").map((service) => (
+            {LOCATION_SERVICES.filter((s) => s.key !== "eicr").map((service) => (
               <Link
-                key={service.slug}
-                href={`/${service.slug}/${slug}`}
+                key={service.key}
+                href={`${service.urlPrefix}/${slug}`}
                 className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
               >
                 <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm">
-                  {service.label}
+                  {service.shortName}
                 </p>
                 <p className="text-xs text-brand-grey mt-1">in {borough.name}</p>
               </Link>

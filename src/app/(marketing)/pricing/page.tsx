@@ -531,7 +531,7 @@ export default function PricingPage() {
                 <h3 className="text-base font-semibold text-brand-charcoal">
                   Fire Risk Assessment — Commercial
                 </h3>
-                <Link href="/commercial-fire-risk-assessment" className="text-sm text-compliance-blue hover:underline">
+                <Link href="/fire-risk-assessment" className="text-sm text-compliance-blue hover:underline">
                   Service page →
                 </Link>
               </div>

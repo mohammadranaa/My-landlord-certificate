@@ -7,7 +7,9 @@ import {
   getPriceForEPC,
   getPriceForFRA,
   getPriceForPAT,
+  getPriceForAsbestosSurvey,
   LEGIONELLA_PRICES,
+  FIRE_DOOR_CERT_PRICE,
 } from "@/lib/pricing";
 
 const POSTS_DIR = path.join(process.cwd(), "src/content/blog");
@@ -131,6 +133,8 @@ const epcPrice = getPriceForEPC("studio");
 const fraPrice = getPriceForFRA("studio");
 const patPrice = getPriceForPAT(1);
 const legionellaPrice = LEGIONELLA_PRICES.standard;
+const asbestosPrice = getPriceForAsbestosSurvey(1);
+const fireDoorPrice = FIRE_DOOR_CERT_PRICE;
 
 export const BLOG_CTAS: Record<string, BlogCTA> = {
   "what-is-an-eicr": {
@@ -147,6 +151,11 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
     label: `Book your EICR from £${eicrPrice}`,
     href: "/book?service=eicr",
     subtext: "Fixed price · No hidden charges",
+  },
+  "eicr-rule-changes-2025-landlords-missed": {
+    label: `Book your EICR from £${eicrPrice}`,
+    href: "/book?service=eicr",
+    subtext: "NICEIC approved · Certificate within 24 hours",
   },
   "what-happens-if-eicr-fails": {
     label: `Book your EICR from £${eicrPrice}`,
@@ -181,17 +190,32 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
   "fire-risk-assessment-hmo-guide": {
     label: `Book your Fire Risk Assessment from £${fraPrice}`,
     href: "/book?service=fra-residential",
-    subtext: "IFSM certified assessors · Report within 48 hours",
+    subtext: "IFSM certified assessors · Report within 24 hours",
   },
   "landlord-fire-risk-assessment": {
     label: `Book your Fire Risk Assessment from £${fraPrice}`,
     href: "/book?service=fra-residential",
-    subtext: "NEBOSH qualified assessors · Report within 48 hours",
+    subtext: "NEBOSH qualified assessors · Report within 24 hours",
+  },
+  "fire-door-checks-blocks-of-flats-hmos-london": {
+    label: `Book your Fire Door Certificate from £${fireDoorPrice}`,
+    href: "/book?service=fire-door",
+    subtext: "Fixed price by door count · Dated evidence for your licence",
   },
   "legionella-risk-assessment-landlord-guide": {
     label: `Book your Legionella Risk Assessment — £${legionellaPrice}`,
     href: "/book",
     subtext: "ACoP L8 compliant · Report within 48 hours",
+  },
+  "asbestos-london-rental-properties-landlord-guide": {
+    label: `Book your Asbestos Survey from £${asbestosPrice}`,
+    href: "/book?service=asbestos-survey",
+    subtext: "Management survey · Accredited laboratory analysis",
+  },
+  "cost-of-compliance-london-rental-property-2026": {
+    label: "Book your landlord certificates",
+    href: "/book",
+    subtext: "Bundle discount available · Fixed prices, no surprises",
   },
   "first-time-landlord-compliance-checklist": {
     label: "Book all your landlord certificates",
@@ -207,6 +231,11 @@ export const BLOG_CTAS: Record<string, BlogCTA> = {
     label: "Check your compliance certificates",
     href: "/book",
     subtext: "Stay compliant under the new rules",
+  },
+  "decent-homes-standard-private-landlords-2035": {
+    label: "Get your compliance baseline in order",
+    href: "/book",
+    subtext: "EICR, Gas Safety and EPC from one provider",
   },
   "section-21-compliance-landlords": {
     label: "Book your compliance certificates",

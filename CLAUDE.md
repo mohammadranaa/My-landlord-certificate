@@ -24,9 +24,10 @@ Project context and conventions for Claude Code. Read this before making any cha
 
 - **NEVER use:** "same day certificate", "same-day delivery", "emailed same day", "issued same day", "certificates same day", or any "same day" / "same-day" variant anywhere on the site
 - **Standard services** (EICR, Gas Safety, EPC, PAT Testing, Emergency Lights, Fire Safety Certificate, Asbestos, Commercial EICR, Commercial Gas, Commercial EPC): use **"certificate within 24 hours"** or **"emailed within 24 hours"**
-- **Fire Risk Assessment ONLY** (`/fire-risk-assessment`): use **"report within 48 hours"** — FRAs take longer to write
-- **Stats bars and eyebrow text:** short form `Within 24 hours` (standard) or `Within 48 hours` (FRA only)
-- **Metadata descriptions:** `certificate emailed within 24 hours` (standard) or `report emailed within 48 hours` (FRA)
+- **Fire Risk Assessment** (`/fire-risk-assessment`, its borough pages and `/lp/fire-risk-assessment`): use **"report within 24 hours"** (owner decision, October 2026 — previously 48 hours)
+- **Legionella Risk Assessment ONLY**: use **"report within 48 hours"**
+- **Stats bars and eyebrow text:** short form `Within 24 hours` (standard and FRA) or `Within 48 hours` (Legionella only)
+- **Metadata descriptions:** `certificate emailed within 24 hours` (standard), `report emailed within 24 hours` (FRA) or `report emailed within 48 hours` (Legionella)
 - **Do NOT use:** "same day", "same-day", "emailed same day", "certificates same day", "issued same day"
 
 ---

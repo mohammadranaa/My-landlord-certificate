@@ -13,12 +13,10 @@ import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
-  getPriceForEICR,
   getPriceForEPC,
-  getPriceForGasSafety,
-  getPriceForPAT,
 } from "@/lib/pricing";
-import { ALL_BOROUGHS, BOROUGH_SERVICES, getBoroughData } from "@/lib/borough-data";
+import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
+import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
 
 const entryPrice = getPriceForEPC("studio");
@@ -422,38 +420,25 @@ export default async function EPCBoroughPage({
           <FAQAccordion items={faqItems} includeSchema={false} />
         </section>
 
-        {/* ── Cross-sell ───────────────────────────────────────────────────── */}
-        <section aria-labelledby="related-heading">
-          <Heading level={2} id="related-heading" className="mb-6">
+        {/* ── Other landlord certificates in this borough ─────────────────────── */}
+        <section aria-labelledby="other-services-heading">
+          <Heading level={2} id="other-services-heading" className="mb-4">
             Other landlord certificates in {borough.name}
           </Heading>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              {
-                name: "EICR Certificate",
-                href: "/eicr",
-                desc: `Electrical Installation Condition Report from £${getPriceForEICR("studio")}. Legally required every 5 years.`,
-              },
-              {
-                name: "Gas Safety Certificate (CP12)",
-                href: "/gas-safety-certificate",
-                desc: `Annual Gas Safe inspection from £${getPriceForGasSafety(1)}. Required for all gas appliances in your ${borough.name} rental.`,
-              },
-              {
-                name: "PAT Testing",
-                href: "/pat-testing",
-                desc: `Portable Appliance Testing from £${getPriceForPAT(1)}. Recommended annually for furnished lets.`,
-              },
-            ].map(({ name, href, desc }) => (
+          <p className="text-brand-grey mb-6">
+            We also cover these landlord certificates in {borough.name}:
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+            {LOCATION_SERVICES.filter((s) => s.key !== "epc").map((service) => (
               <Link
-                key={href}
-                href={href}
+                key={service.key}
+                href={`${service.urlPrefix}/${slug}`}
                 className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
               >
-                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors mb-1">
-                  {name}
+                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm">
+                  {service.shortName}
                 </p>
-                <p className="text-sm text-brand-grey">{desc}</p>
+                <p className="text-xs text-brand-grey mt-1">in {borough.name}</p>
               </Link>
             ))}
           </div>
@@ -466,30 +451,6 @@ export default async function EPCBoroughPage({
               See all HMO compliance certificates →
             </Link>
           </p>
-        </section>
-
-        {/* ── Other services in this borough ────────────────────────────────── */}
-        <section aria-labelledby="other-services-heading">
-          <Heading level={2} id="other-services-heading" className="mb-4">
-            Other services in {borough.name}
-          </Heading>
-          <p className="text-brand-grey mb-6">
-            We also cover these landlord certificates in {borough.name}:
-          </p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-            {BOROUGH_SERVICES.filter((s) => s.slug !== "epc").map((service) => (
-              <Link
-                key={service.slug}
-                href={`/${service.slug}/${slug}`}
-                className="border border-border rounded-xl p-4 hover:border-compliance-blue transition-colors group"
-              >
-                <p className="font-semibold text-brand-charcoal group-hover:text-compliance-blue transition-colors text-sm">
-                  {service.label}
-                </p>
-                <p className="text-xs text-brand-grey mt-1">in {borough.name}</p>
-              </Link>
-            ))}
-          </div>
         </section>
 
         {/* ── Nearby borough pages ─────────────────────────────────────────── */}

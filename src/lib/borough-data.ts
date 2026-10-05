@@ -8,6 +8,15 @@ export interface BoroughData {
   propertyContext: string;
   landlordContext: string;
   nearbyBoroughs: string[];
+  /** All 33 entries below are "borough" — reserved for future towns outside London. */
+  type: "borough" | "town";
+  /** True only where the borough sits almost entirely inside the TfL Congestion
+   *  Charge Zone (City of London, Westminster). The zone boundary cuts through
+   *  several other boroughs without aligning to their borders, so this is
+   *  deliberately conservative — the sitewide "+£20 if your property is in the
+   *  zone" pricing note applies regardless of this flag. */
+  congestionZone: boolean;
+  insideM25: true;
 }
 
 /** Every service with its own /[service]/[borough] page — used for the
@@ -36,6 +45,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "The borough has one of the highest concentrations of private landlords in outer East London, with strong demand from working families and NHS staff.",
     nearbyBoroughs: ["havering", "redbridge", "newham"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "barnet": {
     slug: "barnet",
@@ -47,6 +59,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A large private rented sector driven by proximity to the Northern line and good schools, with strong demand from young professionals and families.",
     nearbyBoroughs: ["enfield", "haringey", "brent"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "bexley": {
     slug: "bexley",
@@ -58,6 +73,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Bexley attracts landlords targeting families and working professionals commuting into central London via the Elizabeth line from Abbey Wood.",
     nearbyBoroughs: ["greenwich", "bromley", "havering"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "brent": {
     slug: "brent",
@@ -69,6 +87,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of the highest HMO densities in London. Strong demand from students, NHS workers, and professionals working at Wembley and along the Jubilee line.",
     nearbyBoroughs: ["barnet", "camden", "ealing"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "bromley": {
     slug: "bromley",
@@ -80,6 +101,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A strong commuter market serving City workers via Thameslink and Southeastern services, with good demand for family homes.",
     nearbyBoroughs: ["lewisham", "croydon", "greenwich"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "camden": {
     slug: "camden",
@@ -91,6 +115,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A premium rental market with high rents and demand from professionals, academics, and international tenants near UCL and the Royal Free Hospital.",
     nearbyBoroughs: ["islington", "barnet", "brent"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "city-of-london": {
     slug: "city-of-london",
@@ -102,6 +129,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Primarily a commercial compliance market. Residential landlords are few but high-value, with premium rents reflecting central location.",
     nearbyBoroughs: ["islington", "hackney", "tower-hamlets"],
+    type: "borough",
+    congestionZone: true,
+    insideM25: true,
   },
   "croydon": {
     slug: "croydon",
@@ -113,6 +143,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of the most active buy-to-let markets in South London, with strong yields and high tenant demand driven by Thameslink, Overground, and Tramlink connections.",
     nearbyBoroughs: ["bromley", "sutton", "lambeth"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "ealing": {
     slug: "ealing",
@@ -124,6 +157,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Strong and growing rental market driven by Elizabeth line connections into the City and Heathrow. High demand from professionals and international tenants.",
     nearbyBoroughs: ["brent", "hounslow", "hillingdon"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "enfield": {
     slug: "enfield",
@@ -135,6 +171,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A growing rental market with improving transport links. Good yields compared to inner London boroughs.",
     nearbyBoroughs: ["barnet", "haringey", "waltham-forest"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "greenwich": {
     slug: "greenwich",
@@ -146,6 +185,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Strong demand driven by Elizabeth line at Woolwich and Canary Wharf proximity. Increasing interest from buy-to-let investors following the Crossrail effect.",
     nearbyBoroughs: ["lewisham", "bexley", "newham"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "hackney": {
     slug: "hackney",
@@ -157,6 +199,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of London's most active rental markets with very high tenant demand from young professionals, creatives, and tech workers.",
     nearbyBoroughs: ["islington", "tower-hamlets", "waltham-forest"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "hammersmith-fulham": {
     slug: "hammersmith-fulham",
@@ -168,6 +213,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A premium rental market with high rents and strong demand from professionals and media workers near the BBC and White City.",
     nearbyBoroughs: ["kensington-chelsea", "ealing", "wandsworth"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "haringey": {
     slug: "haringey",
@@ -179,6 +227,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A high-volume rental market with strong yields driven by good transport links on the Victoria and Piccadilly lines.",
     nearbyBoroughs: ["barnet", "enfield", "hackney"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "harrow": {
     slug: "harrow",
@@ -190,6 +241,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A stable outer London rental market with good demand from families and professionals commuting via the Metropolitan line.",
     nearbyBoroughs: ["brent", "hillingdon", "barnet"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "havering": {
     slug: "havering",
@@ -201,6 +255,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A growing rental market boosted by Elizabeth line connectivity from Romford and Harold Wood, attracting commuters seeking better value than inner London.",
     nearbyBoroughs: ["redbridge", "barking-dagenham", "bexley"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "hillingdon": {
     slug: "hillingdon",
@@ -212,6 +269,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A strong rental market driven by Heathrow employment and good Tube connections. High demand from airport and logistics workers.",
     nearbyBoroughs: ["ealing", "harrow", "hounslow"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "hounslow": {
     slug: "hounslow",
@@ -223,6 +283,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Strong rental demand from Heathrow, Sky, and logistics employers. Good Elizabeth line and District line connections.",
     nearbyBoroughs: ["ealing", "hillingdon", "richmond-upon-thames"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "islington": {
     slug: "islington",
@@ -234,6 +297,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A premium rental market with very high demand from professionals, media workers, and City commuters. One of London's most active buy-to-let markets.",
     nearbyBoroughs: ["camden", "hackney", "haringey"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "kensington-chelsea": {
     slug: "kensington-chelsea",
@@ -245,6 +311,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "London's most premium rental market. Landlords typically have high-value, well-maintained portfolios serving international and high-net-worth tenants.",
     nearbyBoroughs: ["westminster", "hammersmith-fulham", "wandsworth"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "kingston-upon-thames": {
     slug: "kingston-upon-thames",
@@ -256,6 +325,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A stable South West London market with strong family and student demand. Good National Rail connections to Waterloo.",
     nearbyBoroughs: ["merton", "richmond-upon-thames", "sutton"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "lambeth": {
     slug: "lambeth",
@@ -267,6 +339,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of the highest rental yields in inner South London. Very high tenant demand driven by Northern line and Victoria line access.",
     nearbyBoroughs: ["southwark", "wandsworth", "croydon"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "lewisham": {
     slug: "lewisham",
@@ -278,6 +353,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "Strong rental demand from South East London professionals using Overground and DLR connections. Growing Airbnb and short-term market.",
     nearbyBoroughs: ["greenwich", "bromley", "southwark"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "merton": {
     slug: "merton",
@@ -289,6 +367,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A stable family rental market with good schools and Northern line access from Wimbledon. Lower HMO density than inner boroughs.",
     nearbyBoroughs: ["sutton", "kingston-upon-thames", "wandsworth"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "newham": {
     slug: "newham",
@@ -300,6 +381,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of London's fastest-growing rental markets with strong yields and high demand driven by Stratford's connectivity and Queen Elizabeth Olympic Park.",
     nearbyBoroughs: ["hackney", "tower-hamlets", "barking-dagenham"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "redbridge": {
     slug: "redbridge",
@@ -311,6 +395,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A strong East London market boosted by Elizabeth line access from Ilford and Manor Park. High demand from City workers and families.",
     nearbyBoroughs: ["waltham-forest", "barking-dagenham", "havering"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "richmond-upon-thames": {
     slug: "richmond-upon-thames",
@@ -322,6 +409,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A premium and family-focused rental market. High rents and relatively affluent tenant base. Strong demand from professionals in the media and tech sectors.",
     nearbyBoroughs: ["hounslow", "merton", "kingston-upon-thames"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "southwark": {
     slug: "southwark",
@@ -333,6 +423,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A premium inner South London market with some of the highest rental demand in the capital, driven by Jubilee line and Overground connectivity.",
     nearbyBoroughs: ["lambeth", "lewisham", "tower-hamlets"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "sutton": {
     slug: "sutton",
@@ -344,6 +437,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "A stable family rental market with good schools and Thameslink connections. Lower yields than inner London but reliable long-term tenancies.",
     nearbyBoroughs: ["merton", "croydon", "kingston-upon-thames"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "tower-hamlets": {
     slug: "tower-hamlets",
@@ -355,6 +451,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of London's most active rental markets driven by Canary Wharf employment and strong student demand from Queen Mary University.",
     nearbyBoroughs: ["hackney", "newham", "southwark"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "waltham-forest": {
     slug: "waltham-forest",
@@ -366,6 +465,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of London's fastest-growing rental markets following the Walthamstow 'hipster effect'. Strong demand from young professionals priced out of Hackney and Islington.",
     nearbyBoroughs: ["hackney", "redbridge", "enfield"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "wandsworth": {
     slug: "wandsworth",
@@ -377,6 +479,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "One of London's most competitive and desirable rental markets. Very high tenant demand from young professionals using Northern and District lines.",
     nearbyBoroughs: ["lambeth", "merton", "hammersmith-fulham"],
+    type: "borough",
+    congestionZone: false,
+    insideM25: true,
   },
   "westminster": {
     slug: "westminster",
@@ -388,6 +493,9 @@ export const BOROUGH_DATA: Record<string, BoroughData> = {
     landlordContext:
       "London's most central and premium residential borough. Rents are among the highest in the capital, with a sophisticated and international tenant base.",
     nearbyBoroughs: ["camden", "kensington-chelsea", "islington"],
+    type: "borough",
+    congestionZone: true,
+    insideM25: true,
   },
 };
 

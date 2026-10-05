@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
 import { JsonLd } from "@/components/shared/json-ld";
@@ -544,6 +545,9 @@ export default function CommercialEPCPage() {
             ))}
           </ul>
         </section>
+
+        {/* ── commercial-epc in every London borough ──────────────────────────────── */}
+        <ServiceBoroughGrid serviceKey="commercial-epc" />
 
         {/* ── FAQs ─────────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
