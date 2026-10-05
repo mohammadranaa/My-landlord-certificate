@@ -145,18 +145,18 @@ export function LondonCoverageMap({ interactive = true }: { interactive?: boolea
   ) => {
     clearHideTimer()
     setHovered(geoName)
+    const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
     setTooltip((prev) => {
       if (prev.pinned) return prev
-      const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
       return { visible: true, pinned: false, ...coords, geoName, slug, name: BOROUGH_DISPLAY_NAME[slug] ?? geoName }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleMove = useCallback((e: React.MouseEvent<SVGPathElement>) => {
+    const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
     setTooltip((prev) => {
       if (prev.pinned) return prev
-      const coords = getSVGCoords(e as React.MouseEvent<SVGElement>)
       return { ...prev, ...coords }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
