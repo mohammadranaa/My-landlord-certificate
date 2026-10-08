@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { requireApprovedPortalUser } from "@/lib/portal/session";
+import { untyped } from "@/lib/portal/untyped";
 import {
   getPortfolioData,
-  cellStatus,
-  daysUntil,
+  buildAttentionItems,
   CERT_CODES,
   CERT_TYPE_LABELS,
   type CertCode,
   type CertStatus,
+  type PropertyHealth,
 } from "@/lib/portal/properties";
+import { formatDateTime, formatGbp } from "@/lib/portal/format";
 import { RegistrationMarks } from "@/components/portal/registration-marks";
-import { StatusBadge } from "@/components/portal/status";
+import { StatusBadge, STATUS_CONFIG } from "@/components/portal/status";
 import { RequestRenewalDialog } from "@/components/portal/request-renewal-dialog";
-import { ToastStubButton } from "@/components/portal/toast-stub-button";
-import type { PortalDiaryEntry } from "@/types/database";
+import { PortalActionButton } from "@/components/portal/portal-action-button";
 
 export const metadata: Metadata = {
   title: "Overview — Agent Portal — My Landlord Certificate",
@@ -22,91 +24,49 @@ export const metadata: Metadata = {
 };
 
 const condensed: React.CSSProperties = { fontFamily: "var(--font-barlow-condensed)" };
+const ATTENTION_LIMIT = 10;
 
-interface NeedsAttentionRow {
-  code: CertCode;
-  address: string;
-  postcode: string | null;
-  status: "expired" | "expiring" | "missing";
-  urgencyText: string;
-  publicUrl: string | null;
-  sortKey: number;
-}
-
-function buildNeedsAttention(properties: Awaited<ReturnType<typeof getPortfolioData>>["properties"]) {
-  const rows: NeedsAttentionRow[] = [];
-
-  for (const group of properties) {
-    for (const code of CERT_CODES) {
-      const certsOfType = group.certsByCode[code];
-      const hasOpenJob = group.jobs.some((j) => j.status?.toLowerCase() !== "completed");
-      const status = cellStatus(certsOfType, hasOpenJob && certsOfType.length === 0);
-      if (status !== "expired" && status !== "expiring" && status !== "missing") continue;
-
-      const latestCert =
-        certsOfType.length > 0
-          ? certsOfType.reduce((a, b) => ((a.issue_date ?? "") > (b.issue_date ?? "") ? a : b))
-          : null;
-
-      let urgencyText: string;
-      let sortKey: number;
-
-      if (status === "missing") {
-        urgencyText = "Never supplied";
-        sortKey = -100000;
-      } else {
-        const days = daysUntil(latestCert!.expiry_date) ?? 0;
-        sortKey = days;
-        urgencyText = status === "expired" ? `Expired ${Math.abs(days)} days ago` : `Expires in ${days} days`;
-      }
-
-      rows.push({
-        code,
-        address: group.property.address,
-        postcode: group.property.postcode,
-        status,
-        urgencyText,
-        publicUrl: latestCert?.public_url ?? null,
-        sortKey,
-      });
-    }
-  }
-
-  return rows.sort((a, b) => a.sortKey - b.sortKey).slice(0, 8);
-}
-
-const STATUS_TYPE_MAP: Record<"expired" | "expiring" | "missing", CertStatus> = {
-  expired: "expired",
-  expiring: "expiring",
-  missing: "missing",
-};
+const KPI_PLATES: { key: PropertyHealth; label: string; note: string; dot: string; filter: string }[] = [
+  { key: "compliant", label: "Fully compliant", note: "", dot: "#80D100", filter: "compliant" },
+  { key: "expiring", label: "Expiring ≤ 30 days", note: "Renewal window open", dot: "#F59E0B", filter: "expiring" },
+  { key: "expired", label: "Expired", note: "Issued, now lapsed", dot: "#D14343", filter: "expired" },
+  { key: "notAvailable", label: "Not available", note: "Never supplied", dot: "#9CA3AF", filter: "notAvailable" },
+  { key: "awaiting", label: "Awaiting PDF", note: "Visit done, certificate pending", dot: "#8b7be0", filter: "awaiting" },
+  { key: "booked", label: "Booked in", note: "Visit scheduled", dot: "#0093DB", filter: "booked" },
+];
 
 export default async function PortalOverviewPage() {
-  const { properties, kpis, byType: byTypeCounts } = await getPortfolioData();
+  const portalUser = await requireApprovedPortalUser();
+  const { groups, kpis, byType, jobs, payment } = await getPortfolioData(portalUser.client_id);
 
-  const totalProperties = properties.length;
-  const compliantPct = totalProperties > 0 ? Math.round((kpis.compliant / totalProperties) * 100) : 0;
+  const total = groups.length;
+  const compliantPct = total > 0 ? Math.round((kpis.compliant / total) * 100) : 0;
+  const attention = buildAttentionItems(groups);
+  const urgentCount = attention.filter((a) => a.status !== "missing").length;
 
-  const kpiPlates = [
-    { label: "Fully compliant", value: kpis.compliant, note: `${compliantPct}% of the portfolio`, dot: "#80D100" },
-    { label: "Expiring ≤ 30 days", value: kpis.expiring, note: "Renewal window open", dot: "#F59E0B" },
-    { label: "Expired", value: kpis.expired, note: "Was issued, has now lapsed", dot: "#D14343" },
-    { label: "Not available", value: kpis.notAvailable, note: "Never supplied — needs a first certificate", dot: "#9CA3AF" },
-    { label: "Awaiting certificate", value: kpis.awaitingCertificate, note: "Visit complete, PDF pending", dot: "#0093DB" },
-  ];
+  // Recent public updates, explicitly scoped to this agency's jobs.
+  const jobIds = jobs.slice(0, 300).map((j) => j.id);
+  const jobById = new Map(jobs.map((j) => [j.id, j]));
+  const { data: diary } = jobIds.length
+    ? await untyped(await createClient())
+        .from("job_diary")
+        .select("id, job_id, content, author_name, created_at")
+        .in("job_id", jobIds)
+        .eq("is_internal", false)
+        .order("created_at", { ascending: false })
+        .limit(6)
+    : { data: [] };
+  const diaryEntries = (diary ?? []) as { id: string; job_id: string; content: string | null; author_name: string | null; created_at: string }[];
 
-  const needsAttention = buildNeedsAttention(properties);
-
-  const supabase = await createClient();
-  const { data: diaryEntries } = await supabase
-    .from("job_diary")
-    .select("id, job_id, entry_type, content, author_name, is_internal, created_at")
-    .eq("is_internal", false)
-    .order("created_at", { ascending: false })
-    .limit(5)
-    .returns<PortalDiaryEntry[]>();
-
-  const jobById = new Map(properties.flatMap((g) => g.jobs.map((j) => [j.id, j])));
+  // Unpaid invoices for the payments panel.
+  const unpaid = groups
+    .flatMap((g) =>
+      g.jobs
+        .map((j) => ({ job: j, inv: g.invoicesByJob.get(j.id), property: g.property }))
+        .filter((x) => x.inv && (x.inv.balance_due ?? 0) > 0),
+    )
+    .sort((a, b) => (a.inv!.date ?? "").localeCompare(b.inv!.date ?? ""))
+    .slice(0, 5);
 
   return (
     <div>
@@ -115,192 +75,211 @@ export default async function PortalOverviewPage() {
           <p className="text-[13px] font-semibold uppercase tracking-[.2em] text-[#0078b8]" style={condensed}>
             Overview
           </p>
-          <h1 className="mt-1 text-[40px] font-semibold leading-[1.08] text-[#1F2937]" style={condensed}>
+          <h1 className="mt-1 text-[34px] font-semibold leading-[1.08] text-[#1F2937] sm:text-[40px]" style={condensed}>
             Portfolio compliance
           </h1>
           <p className="mt-2 max-w-[60ch] text-[15px] text-[#4B5563]">
-            {totalProperties} managed properties across {CERT_CODES.length} certificate types. Everything
-            below is live from your job and certificate records.
+            {total} managed propert{total === 1 ? "y" : "ies"} across {CERT_CODES.length} certificate types, live from your job and
+            certificate records.
           </p>
         </div>
-        <div className="flex gap-2">
-          <ToastStubButton
-            label="Download pack"
-            message="Compliance pack generating — we'll email the ZIP shortly."
-          />
-          <ToastStubButton
-            label="Request renewals"
-            message="Renewal requests sent for every property needing action."
-            variant="primary"
-          />
+        <div className="flex flex-wrap gap-2">
+          <PortalActionButton type="download_pack" label="Download pack" />
+          <PortalActionButton type="bulk_renewal" label="Request renewals" variant="primary" />
         </div>
       </div>
 
-      {/* KPI row */}
-      <div
-        className="mt-[26px] grid gap-[18px]"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}
-      >
-        {kpiPlates.map((kpi) => (
-          <div key={kpi.label} className="relative border border-[#dcdfd8] bg-white p-5">
+      {/* KPI plates */}
+      <div className="mt-[26px] grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))" }}>
+        {KPI_PLATES.map((kpi) => (
+          <Link
+            key={kpi.key}
+            href={`/portal/properties?filter=${kpi.filter}`}
+            className="relative border border-[#dcdfd8] bg-white p-5 transition-colors hover:border-[#0093DB]"
+          >
             <RegistrationMarks />
             <div className="flex items-center gap-2">
-              <span className="h-[9px] w-[9px]" style={{ background: kpi.dot }} />
-              <span
-                className="text-[13px] font-semibold uppercase tracking-[.16em] text-[#4B5563]"
-                style={condensed}
-              >
+              <span className="h-[9px] w-[9px] shrink-0" style={{ background: kpi.dot }} />
+              <span className="text-[12.5px] font-semibold uppercase tracking-[.14em] text-[#4B5563]" style={condensed}>
                 {kpi.label}
               </span>
             </div>
-            <p className="mt-2 text-[52px] font-semibold leading-none text-[#1F2937]" style={condensed}>
-              {kpi.value}
+            <p className="mt-2 text-[46px] font-semibold leading-none text-[#1F2937]" style={condensed}>
+              {kpis[kpi.key]}
             </p>
-            <p className="mt-1 text-[13px] text-[#6B7280]">{kpi.note}</p>
-          </div>
+            <p className="mt-1 text-[12.5px] text-[#6B7280]">
+              {kpi.key === "compliant" ? `${compliantPct}% of the portfolio` : kpi.note}
+            </p>
+          </Link>
         ))}
       </div>
 
       {/* Needs attention */}
-      <div className="mt-[26px] border border-[#dcdfd8] bg-white">
-        <div className="flex items-center justify-between border-b border-[#e7e4dc] px-5 py-4">
-          <h2 className="text-[23px] font-semibold text-[#1F2937]" style={condensed}>
-            Needs attention
-          </h2>
-          <span className="text-[13px] text-[#6B7280]">Sorted by urgency</span>
+      <section className="mt-[26px] border border-[#dcdfd8] bg-white">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e7e4dc] px-5 py-4">
+          <div>
+            <h2 className="text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+              Needs attention
+            </h2>
+            <p className="text-[13px] text-[#6B7280]">
+              {urgentCount} expired or expiring · {attention.length - urgentCount} not available
+            </p>
+          </div>
+          {attention.length > ATTENTION_LIMIT && (
+            <Link href="/portal/properties?filter=action" className="text-[13px] font-semibold text-[#0078b8] hover:underline">
+              View all {attention.length} →
+            </Link>
+          )}
         </div>
 
-        {needsAttention.length === 0 ? (
+        {attention.length === 0 ? (
           <p className="px-5 py-6 text-sm text-[#6B7280]">Nothing needs attention right now.</p>
         ) : (
           <div>
-            {needsAttention.map((row, i) => (
+            {attention.slice(0, ATTENTION_LIMIT).map((row) => (
               <div
-                key={`${row.address}-${row.code}-${i}`}
-                className="grid items-center gap-4 border-b border-[#f0eee7] px-5 py-4 last:border-b-0"
-                style={{ gridTemplateColumns: "minmax(0,1.6fr) minmax(0,.9fr) minmax(0,.7fr) auto" }}
+                key={`${row.propertyId}-${row.code}`}
+                className="border-b border-[#f0eee7] px-5 py-4 last:border-b-0"
               >
-                <div className="flex items-center gap-3">
-                  <StatusCode code={row.code} status={STATUS_TYPE_MAP[row.status]} />
-                  <div className="min-w-0">
-                    <Link
-                      href="/portal/properties"
-                      className="block truncate text-[15px] font-semibold text-[#1F2937] hover:text-[#0078b8]"
-                    >
-                      {row.address}
-                    </Link>
-                    <p className="truncate text-[12.5px] text-[#6B7280]">
-                      {CERT_TYPE_LABELS[row.code]} · {row.postcode ?? "—"}
-                    </p>
+                <div className="grid items-center gap-3 md:grid-cols-[minmax(0,1.6fr)_minmax(0,.9fr)_minmax(0,.6fr)_auto] md:gap-4">
+                  <div className="flex min-w-0 items-center gap-3">
+                    <StatusCode code={row.code} status={row.status} />
+                    <div className="min-w-0">
+                      <Link
+                        href={`/portal/properties/${row.propertyId}`}
+                        className="block truncate text-[15px] font-semibold text-[#1F2937] hover:text-[#0078b8]"
+                      >
+                        {row.address}
+                      </Link>
+                      <p className="truncate text-[12.5px] text-[#6B7280]">
+                        {CERT_TYPE_LABELS[row.code]} · {row.postcode ?? "—"}
+                      </p>
+                    </div>
                   </div>
-                </div>
-
-                <p className="text-[13.5px] text-[#4B5563]">{row.urgencyText}</p>
-
-                <div>
-                  <StatusBadge status={STATUS_TYPE_MAP[row.status]} />
-                </div>
-
-                <div className="flex items-center gap-2 justify-self-end">
-                  {row.publicUrl ? (
-                    <a
-                      href={row.publicUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border border-[#cfd6de] bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8]"
-                    >
-                      PDF
-                    </a>
-                  ) : (
-                    <span className="px-3 py-1.5 text-[12.5px] text-[#9CA3AF]">No PDF</span>
-                  )}
-                  <RequestRenewalDialog
-                    title={CERT_TYPE_LABELS[row.code]}
-                    subtitle={`${row.address}, ${row.postcode ?? ""}`}
-                    trigger={
-                      <button className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-1.5 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7]">
-                        Request renewal
-                      </button>
-                    }
-                  />
+                  <p className="text-[13.5px] text-[#4B5563]">{row.urgencyText}</p>
+                  <div>
+                    <StatusBadge status={row.status} />
+                  </div>
+                  <div className="flex items-center gap-2 md:justify-self-end">
+                    {row.certId ? (
+                      <a
+                        href={`/api/portal/certificates/${row.certId}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border border-[#cfd6de] bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8]"
+                      >
+                        PDF
+                      </a>
+                    ) : (
+                      <span className="px-3 py-1.5 text-[12.5px] text-[#9CA3AF]">No PDF</span>
+                    )}
+                    <RequestRenewalDialog
+                      title={CERT_TYPE_LABELS[row.code]}
+                      subtitle={`${row.address}${row.postcode ? `, ${row.postcode}` : ""}`}
+                      propertyId={row.propertyId}
+                      certificateCode={row.code}
+                      trigger={
+                        <button className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-1.5 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7]">
+                          {row.status === "missing" ? "Book" : "Request renewal"}
+                        </button>
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </section>
 
-      {/* Two-up: by-type + recent activity */}
-      <div
-        className="mt-[26px] grid gap-[18px]"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}
-      >
-        <div className="border border-[#dcdfd8] bg-white p-5">
+      <div className="mt-[26px] grid gap-[18px]" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))" }}>
+        {/* By type */}
+        <section className="border border-[#dcdfd8] bg-white p-5">
           <h2 className="mb-4 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
             By certificate type
           </h2>
           <div className="space-y-3">
             {CERT_CODES.map((code) => {
-              const c = byTypeCounts[code];
-              const total = c.total || 1;
-              const validPct = (c.valid / total) * 100;
-              const expiringPct = (c.expiring / total) * 100;
-              const expiredPct = (c.expired / total) * 100;
+              const c = byType[code];
+              const t = c.total || 1;
               return (
-                <div
-                  key={code}
-                  className="grid items-center gap-3"
-                  style={{ gridTemplateColumns: "118px minmax(0,1fr) 64px" }}
-                >
-                  <span className="text-[13px] font-medium text-[#4B5563]">{CERT_TYPE_LABELS[code]}</span>
+                <div key={code} className="grid items-center gap-3" style={{ gridTemplateColumns: "132px minmax(0,1fr) 56px" }}>
+                  <span className="truncate text-[13px] font-medium text-[#4B5563]" title={CERT_TYPE_LABELS[code]}>
+                    {CERT_TYPE_LABELS[code]}
+                  </span>
                   <div className="flex h-[10px] w-full overflow-hidden bg-[#f0eee7]">
-                    <div style={{ width: `${validPct}%`, background: "#80D100" }} />
-                    <div style={{ width: `${expiringPct}%`, background: "#F59E0B" }} />
-                    <div style={{ width: `${expiredPct}%`, background: "#D14343" }} />
+                    <div style={{ width: `${(c.valid / t) * 100}%`, background: "#80D100" }} />
+                    <div style={{ width: `${(c.expiring / t) * 100}%`, background: "#F59E0B" }} />
+                    <div style={{ width: `${(c.expired / t) * 100}%`, background: "#D14343" }} />
                   </div>
                   <span className="text-right text-[13px] text-[#6B7280]">
-                    {c.expiring + c.expired} / {c.total}
+                    {c.total === 0 ? "—" : `${c.valid}/${c.total}`}
                   </span>
                 </div>
               );
             })}
           </div>
-          <p className="mt-3 text-[12px] text-[#9CA3AF]">
-            Only counts certificate types that have actually been issued at least once — see Properties for
-            types that have never been supplied at all.
-          </p>
-        </div>
+          <p className="mt-3 text-[12px] text-[#9CA3AF]">Valid out of issued. Types never supplied show “—”.</p>
+        </section>
 
-        <div className="border border-[#dcdfd8] bg-white p-5">
+        {/* Payments */}
+        <section className="border border-[#dcdfd8] bg-white p-5">
+          <h2 className="mb-1 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+            Payments
+          </h2>
+          <p className="text-[13px] text-[#6B7280]">
+            {payment.unpaidCount === 0
+              ? "All issued invoices are paid."
+              : `${payment.unpaidCount} unpaid invoice${payment.unpaidCount === 1 ? "" : "s"}`}
+          </p>
+          <p
+            className="mt-3 text-[40px] font-semibold leading-none"
+            style={{ ...condensed, color: payment.overdue ? "#a52222" : "#1F2937" }}
+          >
+            {formatGbp(payment.outstanding)}
+          </p>
+          <p className="mt-1 text-[12.5px] text-[#6B7280]">Outstanding balance{payment.overdue ? " · includes overdue" : ""}</p>
+
+          {unpaid.length > 0 && (
+            <div className="mt-4 divide-y divide-[#f0eee7] border-t border-[#f0eee7]">
+              {unpaid.map(({ job, inv, property }) => (
+                <Link
+                  key={inv!.id}
+                  href={`/portal/jobs/${job.id}`}
+                  className="flex items-center justify-between gap-3 py-2.5 hover:text-[#0078b8]"
+                >
+                  <div className="min-w-0">
+                    <p className="truncate text-[13.5px] font-medium text-[#1F2937]">{property.address}</p>
+                    <p className="text-[12px] text-[#9CA3AF]">
+                      {inv!.invoice_number ? `Invoice ${inv!.invoice_number}` : `Job #${job.job_number}`} · {inv!.status}
+                    </p>
+                  </div>
+                  <span className="shrink-0 text-[13.5px] font-semibold text-[#1F2937]">{formatGbp(inv!.balance_due)}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Activity */}
+        <section className="border border-[#dcdfd8] bg-white p-5">
           <h2 className="mb-4 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
             Recent activity
           </h2>
-          {!diaryEntries || diaryEntries.length === 0 ? (
+          {diaryEntries.length === 0 ? (
             <p className="text-sm text-[#9CA3AF]">No recent activity.</p>
           ) : (
             <div className="space-y-3">
               {diaryEntries.map((entry) => {
-                const job = jobById.get(entry.job_id ?? "");
+                const job = jobById.get(entry.job_id);
                 return (
-                  <div
-                    key={entry.id}
-                    className="grid items-start gap-3"
-                    style={{ gridTemplateColumns: "14px minmax(0,1fr)" }}
-                  >
-                    <span className="mt-1 h-[9px] w-[9px] shrink-0" style={{ background: "#0093DB" }} />
-                    <div>
-                      <p className="text-[14px] text-[#1F2937]">
-                        {entry.content}
-                        {job?.site_address ? ` — ${job.site_address}` : ""}
-                      </p>
-                      <p className="mt-0.5 text-[12px] text-[#9CA3AF]">
-                        {new Date(entry.created_at).toLocaleString("en-GB", {
-                          day: "numeric",
-                          month: "short",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                        {entry.author_name ? ` · ${entry.author_name}` : ""}
+                  <div key={entry.id} className="grid items-start gap-3" style={{ gridTemplateColumns: "14px minmax(0,1fr)" }}>
+                    <span className="mt-1.5 h-[9px] w-[9px] shrink-0" style={{ background: "#0093DB" }} />
+                    <div className="min-w-0">
+                      <p className="text-[14px] text-[#1F2937]">{entry.content}</p>
+                      <p className="mt-0.5 truncate text-[12px] text-[#9CA3AF]">
+                        {formatDateTime(entry.created_at)}
+                        {job?.site_address ? ` · ${job.site_address}` : ""}
                       </p>
                     </div>
                   </div>
@@ -308,26 +287,18 @@ export default async function PortalOverviewPage() {
               })}
             </div>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );
 }
 
 function StatusCode({ code, status }: { code: CertCode; status: CertStatus }) {
-  const colors: Record<CertStatus, { text: string; border: string }> = {
-    valid: { text: "#4f8a00", border: "#80D100" },
-    expiring: { text: "#96620a", border: "#F59E0B" },
-    expired: { text: "#a52222", border: "#D14343" },
-    booked: { text: "#0078b8", border: "#0093DB" },
-    missing: { text: "#4B5563", border: "#9CA3AF" },
-    na: { text: "#6B7280", border: "#E5E7EB" },
-  };
-  const c = colors[status];
+  const c = STATUS_CONFIG[status];
   return (
     <span
       className="flex h-[30px] w-[46px] shrink-0 items-center justify-center border text-[13px] font-semibold uppercase tracking-[.08em]"
-      style={{ color: c.text, borderColor: c.border, ...condensed }}
+      style={{ color: c.text, borderColor: c.ring, ...condensed }}
     >
       {code}
     </span>

@@ -1,36 +1,36 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { requireApprovedPortalUser } from "@/lib/portal/session";
 import { createClient } from "@/lib/supabase/server";
-import { PortalRealtimeRefresher } from "@/components/portal/realtime-refresher";
-import type {
-  PortalJobDetail,
-  PortalCertificate,
-  PortalDiaryEntry,
-  PortalInvoice,
-} from "@/types/database";
+import { requireApprovedPortalUser } from "@/lib/portal/session";
+import { untyped } from "@/lib/portal/untyped";
+import { certExpiryStatus, classifyCertType, CERT_TYPE_LABELS } from "@/lib/portal/properties";
+import { formatDate, formatDateTime, formatGbp } from "@/lib/portal/format";
+import { StatusBadge } from "@/components/portal/status";
+import { DocumentActionButtons } from "@/components/portal/document-action-buttons";
 
 export const metadata: Metadata = {
-  title: "Job details — Agent Portal — My Landlord Certificate",
+  title: "Job — Agent Portal — My Landlord Certificate",
   robots: { index: false, follow: false },
 };
 
-function renewalBadge(expiryDate: string | null) {
-  if (!expiryDate) return null;
-  const days = Math.ceil(
-    (new Date(expiryDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24),
-  );
-  if (days < 0) {
-    return { label: "Expired", className: "bg-red-100 text-red-700" };
-  }
-  if (days <= 60) {
-    return {
-      label: `Renewal due in ${days}d`,
-      className: "bg-brand-amber/15 text-brand-amber",
-    };
-  }
-  return { label: "Valid", className: "bg-action-green/15 text-action-green" };
+const condensed: React.CSSProperties = { fontFamily: "var(--font-barlow-condensed)" };
+
+interface Job {
+  id: string;
+  job_number: string;
+  title: string;
+  description: string | null;
+  status: string;
+  site_address: string | null;
+  site_postcode: string | null;
+  tenant_name: string | null;
+  tenant_phone: string | null;
+  scheduled_date: string | null;
+  scheduled_slot: string | null;
+  completed_date: string | null;
+  service_types: string[] | null;
+  property_id: string | null;
 }
 
 interface LineItem {
@@ -39,269 +39,205 @@ interface LineItem {
   description?: string;
 }
 
-function formatGbp(amount: number | null) {
-  if (amount === null) return "—";
-  return `£${amount.toFixed(2)}`;
-}
-
-const PAYMENT_STYLES: Record<string, string> = {
-  paid: "bg-action-green/15 text-action-green",
-  overdue: "bg-red-100 text-red-700",
-  unpaid: "bg-brand-amber/15 text-brand-amber",
-};
-const DEFAULT_PAYMENT_STYLE = "bg-brand-grey/10 text-brand-grey";
-
-export default async function PortalJobDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  await requireApprovedPortalUser();
+export default async function PortalJobDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const portalUser = await requireApprovedPortalUser();
+  if (!portalUser.client_id) notFound();
 
-  const supabase = await createClient();
+  const supabase = untyped(await createClient());
 
-  // Explicit column list only — never select("*") on jobs. See
-  // database-PATCH-2-instructions.md.
-  const { data: job, error: jobError } = await supabase
+  // Curated columns only — never select("*") on jobs (internal financials).
+  const { data: jobData } = await supabase
     .from("jobs")
     .select(
-      "id, job_number, title, description, service_types, job_type, status, site_address, site_postcode, tenant_name, tenant_phone, scheduled_date, scheduled_slot, completed_date, certificate_status, certificate_delivery_date, client_id, created_at",
+      "id, job_number, title, description, status, site_address, site_postcode, tenant_name, tenant_phone, scheduled_date, scheduled_slot, completed_date, service_types, property_id",
     )
     .eq("id", id)
-    .maybeSingle()
-    .returns<PortalJobDetail>();
+    .eq("client_id", portalUser.client_id)
+    .maybeSingle();
+  if (!jobData) notFound();
+  const job = jobData as Job;
 
-  // If the job doesn't exist, or belongs to a different agent's client,
-  // RLS already filtered it out at the database — either way this 404s.
-  if (jobError || !job) {
-    notFound();
-  }
+  const [certsRes, diaryRes, invoicesRes] = await Promise.all([
+    supabase
+      .from("certificates")
+      .select("id, certificate_type, issue_date, expiry_date, result")
+      .eq("job_id", id)
+      .eq("client_id", portalUser.client_id)
+      .order("issue_date", { ascending: false }),
+    supabase
+      .from("job_diary")
+      .select("id, content, author_name, created_at")
+      .eq("job_id", id)
+      .eq("is_internal", false)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("invoices")
+      .select("id, invoice_number, status, line_items, subtotal, discount, total, amount_paid, balance_due, date, sent_at")
+      .eq("job_id", id)
+      .eq("client_id", portalUser.client_id)
+      .order("date", { ascending: false }),
+  ]);
 
-  const [{ data: certificates }, { data: diaryEntries }, { data: invoices }] =
-    await Promise.all([
-      supabase
-        .from("certificates")
-        .select(
-          "id, job_id, certificate_type, site_address, issue_date, expiry_date, result, public_url, notes, created_at",
-        )
-        .eq("job_id", id)
-        .order("created_at", { ascending: false })
-        .returns<PortalCertificate[]>(),
-      supabase
-        .from("job_diary")
-        .select("id, job_id, entry_type, content, author_name, is_internal, created_at")
-        .eq("job_id", id)
-        .eq("is_internal", false)
-        .order("created_at", { ascending: false })
-        .returns<PortalDiaryEntry[]>(),
-      // Curated columns only — excludes company/client_*/created_by/notes/
-      // payment_notes. See database-PATCH-3-instructions.md.
-      supabase
-        .from("invoices")
-        .select(
-          "id, job_id, invoice_number, doc_type, line_items, subtotal, discount, total, amount_paid, balance_due, status, date, sent_at",
-        )
-        .eq("job_id", id)
-        .order("date", { ascending: false })
-        .returns<PortalInvoice[]>(),
-    ]);
+  const certs = (certsRes.data ?? []) as { id: string; certificate_type: string | null; issue_date: string | null; expiry_date: string | null; result: string | null }[];
+  const diary = (diaryRes.data ?? []) as { id: string; content: string | null; author_name: string | null; created_at: string }[];
+  const invoices = ((invoicesRes.data ?? []) as {
+    id: string;
+    invoice_number: string | null;
+    status: string | null;
+    line_items: unknown;
+    subtotal: number | null;
+    discount: number | null;
+    total: number | null;
+    amount_paid: number | null;
+    balance_due: number | null;
+    date: string | null;
+    sent_at: string | null;
+  }[]).filter((i) => !["draft", "void", "voided", "cancelled"].includes((i.status ?? "").toLowerCase()));
+
+  const address = [job.site_address, job.site_postcode].filter(Boolean).join(", ");
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
-      <PortalRealtimeRefresher
-        channelName={`portal-job-${id}`}
-        subscriptions={[
-          { table: "jobs", filter: `id=eq.${id}` },
-          { table: "certificates", filter: `job_id=eq.${id}` },
-          { table: "job_diary", filter: `job_id=eq.${id}` },
-        ]}
-      />
-
+    <div>
       <Link
-        href="/portal/dashboard"
-        className="mb-6 inline-block text-sm text-compliance-blue hover:underline"
+        href={job.property_id ? `/portal/properties/${job.property_id}` : "/portal/properties"}
+        className="mb-4 inline-block text-[14px] font-semibold uppercase tracking-[.14em] text-[#0078b8]"
+        style={condensed}
       >
-        ← Back to jobs
+        ← Back to property
       </Link>
 
-      <h1 className="mb-1 text-2xl font-bold text-brand-charcoal">{job.title}</h1>
-      <p className="mb-6 text-sm text-brand-grey">
-        Job #{job.job_number} · {job.site_address}
-        {job.site_postcode ? `, ${job.site_postcode}` : ""}
+      <p className="text-[13px] font-semibold uppercase tracking-[.2em] text-[#0078b8]" style={condensed}>
+        Job #{job.job_number}
       </p>
+      <h1 className="mt-1 text-[30px] font-semibold leading-[1.08] text-[#1F2937] sm:text-[36px]" style={condensed}>
+        {job.title}
+      </h1>
+      <p className="mt-2 text-[15px] text-[#4B5563]">{address || "—"}</p>
 
-      {/* ── Job details ──────────────────────────────────────────────── */}
-      <div className="mb-8 grid grid-cols-2 gap-4 rounded-xl border border-border bg-white p-4 text-sm sm:grid-cols-3">
-        <div>
-          <p className="text-brand-grey">Status</p>
-          <p className="font-medium text-brand-charcoal">{job.status}</p>
-        </div>
-        {job.scheduled_date && (
-          <div>
-            <p className="text-brand-grey">Scheduled</p>
-            <p className="font-medium text-brand-charcoal">
-              {job.scheduled_date}
-              {job.scheduled_slot ? ` · ${job.scheduled_slot}` : ""}
-            </p>
+      <div className="mt-6 grid gap-4 border border-[#dcdfd8] bg-white p-5 sm:grid-cols-4">
+        {[
+          ["Status", job.status],
+          ["Scheduled", job.scheduled_date ? `${formatDate(job.scheduled_date)}${job.scheduled_slot ? ` · ${job.scheduled_slot}` : ""}` : "—"],
+          ["Completed", formatDate(job.completed_date)],
+          ["Tenant", job.tenant_name ? `${job.tenant_name}${job.tenant_phone ? ` · ${job.tenant_phone}` : ""}` : "—"],
+        ].map(([k, v]) => (
+          <div key={k}>
+            <p className="text-[11.5px] uppercase tracking-[.12em] text-[#9CA3AF]">{k}</p>
+            <p className="mt-0.5 text-[14px] font-semibold text-[#1F2937]">{v}</p>
+          </div>
+        ))}
+        {job.service_types && job.service_types.length > 0 && (
+          <div className="sm:col-span-4">
+            <p className="text-[11.5px] uppercase tracking-[.12em] text-[#9CA3AF]">Services</p>
+            <p className="mt-0.5 text-[14px] text-[#1F2937]">{job.service_types.join(" · ")}</p>
           </div>
         )}
-        {job.completed_date && (
-          <div>
-            <p className="text-brand-grey">Completed</p>
-            <p className="font-medium text-brand-charcoal">{job.completed_date}</p>
-          </div>
-        )}
-        {job.tenant_name && (
-          <div>
-            <p className="text-brand-grey">Tenant</p>
-            <p className="font-medium text-brand-charcoal">
-              {job.tenant_name}
-              {job.tenant_phone ? ` · ${job.tenant_phone}` : ""}
-            </p>
+        {job.description && (
+          <div className="sm:col-span-4">
+            <p className="text-[11.5px] uppercase tracking-[.12em] text-[#9CA3AF]">Description</p>
+            <p className="mt-0.5 text-[14px] text-[#4B5563]">{job.description}</p>
           </div>
         )}
       </div>
 
-      {job.description && (
-        <div className="mb-8">
-          <h2 className="mb-2 text-sm font-semibold text-brand-charcoal">
-            Description
-          </h2>
-          <p className="text-sm text-brand-grey">{job.description}</p>
-        </div>
-      )}
-
-      {/* ── Certificates + renewal ───────────────────────────────────── */}
-      <div className="mb-8">
-        <h2 className="mb-3 text-sm font-semibold text-brand-charcoal">
+      <section className="mt-[22px] border border-[#dcdfd8] bg-white p-5">
+        <h2 className="mb-3 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
           Certificates
         </h2>
-        {!certificates || certificates.length === 0 ? (
-          <p className="text-sm text-brand-grey">
-            No certificates issued for this job yet.
-          </p>
+        {certs.length === 0 ? (
+          <p className="text-sm text-[#6B7280]">No certificates issued for this job yet.</p>
         ) : (
-          <div className="space-y-2">
-            {certificates.map((cert) => {
-              const badge = renewalBadge(cert.expiry_date);
+          <div className="divide-y divide-[#f0eee7]">
+            {certs.map((c) => {
+              const code = classifyCertType(c.certificate_type);
+              const label = code ? CERT_TYPE_LABELS[code] : c.certificate_type ?? "Document";
               return (
-                <div
-                  key={cert.id}
-                  className="flex items-center justify-between rounded-xl border border-border bg-white p-3"
-                >
+                <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
                   <div>
-                    <p className="text-sm font-medium text-brand-charcoal">
-                      {cert.certificate_type}
-                    </p>
-                    <p className="text-xs text-brand-grey">
-                      Issued {cert.issue_date ?? "—"}
-                      {cert.expiry_date ? ` · Expires ${cert.expiry_date}` : ""}
-                      {cert.result ? ` · ${cert.result}` : ""}
+                    <p className="text-[14px] font-semibold text-[#1F2937]">{label}</p>
+                    <p className="text-[12.5px] text-[#6B7280]">
+                      Issued {formatDate(c.issue_date)}
+                      {c.expiry_date ? ` · Expires ${formatDate(c.expiry_date)}` : ""}
+                      {c.result ? ` · ${c.result}` : ""}
                     </p>
                   </div>
-                  <div className="flex shrink-0 items-center gap-3">
-                    {badge && (
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${badge.className}`}
-                      >
-                        {badge.label}
-                      </span>
-                    )}
-                    {cert.public_url && (
-                      <a
-                        href={cert.public_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-medium text-compliance-blue hover:underline"
-                      >
-                        View PDF
-                      </a>
-                    )}
+                  <div className="flex items-center gap-2">
+                    {c.expiry_date && <StatusBadge status={certExpiryStatus(c.expiry_date)} />}
+                    <DocumentActionButtons certId={c.id} label={label} />
                   </div>
                 </div>
               );
             })}
           </div>
         )}
-      </div>
+      </section>
 
-      {/* ── Invoice & payment status ─────────────────────────────────── */}
-      <div className="mb-8">
-        <h2 className="mb-3 text-sm font-semibold text-brand-charcoal">
+      <section className="mt-[22px] border border-[#dcdfd8] bg-white p-5">
+        <h2 className="mb-3 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
           Invoice &amp; payment
         </h2>
-        {!invoices || invoices.length === 0 ? (
-          <p className="text-sm text-brand-grey">No invoice raised for this job yet.</p>
+        {invoices.length === 0 ? (
+          <p className="text-sm text-[#6B7280]">No invoice issued for this job yet.</p>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {invoices.map((inv) => {
-              const items = Array.isArray(inv.line_items)
-                ? (inv.line_items as LineItem[])
-                : [];
+              const items = Array.isArray(inv.line_items) ? (inv.line_items as LineItem[]) : [];
+              const paid = (inv.balance_due ?? 0) <= 0;
               return (
-                <div key={inv.id} className="rounded-xl border border-border bg-white p-4">
-                  <div className="mb-3 flex items-start justify-between">
+                <div key={inv.id} className="border border-[#f0eee7] p-4">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <p className="text-sm font-medium text-brand-charcoal">
+                      <p className="text-[14px] font-semibold text-[#1F2937]">
                         {inv.invoice_number ? `Invoice ${inv.invoice_number}` : "Invoice"}
                       </p>
-                      <p className="text-xs text-brand-grey">
-                        {inv.date ?? "—"}
-                        {inv.sent_at ? ` · Sent ${new Date(inv.sent_at).toLocaleDateString("en-GB")}` : ""}
+                      <p className="text-[12.5px] text-[#6B7280]">
+                        {formatDate(inv.date)}
+                        {inv.sent_at ? ` · Sent ${formatDate(inv.sent_at)}` : ""}
                       </p>
                     </div>
-                    {inv.status && (
-                      <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
-                          PAYMENT_STYLES[inv.status.toLowerCase()] ?? DEFAULT_PAYMENT_STYLE
-                        }`}
-                      >
-                        {inv.status}
-                      </span>
-                    )}
+                    <span
+                      className="px-2 py-0.5 text-xs font-semibold"
+                      style={paid ? { background: "rgba(128,209,0,.14)", color: "#4f8a00" } : { background: "rgba(245,158,11,.16)", color: "#96620a" }}
+                    >
+                      {paid ? "Paid" : inv.status ?? "Unpaid"}
+                    </span>
                   </div>
-
                   {items.length > 0 && (
-                    <table className="mb-3 w-full text-sm">
+                    <table className="mt-3 w-full text-[13.5px]">
                       <tbody>
                         {items.map((item, i) => (
-                          <tr key={i} className="border-t border-border first:border-t-0">
-                            <td className="py-1.5 text-brand-charcoal">
+                          <tr key={i} className="border-t border-[#f0eee7]">
+                            <td className="py-1.5 text-[#1F2937]">
                               {item.description ?? "—"}
                               {item.qty && item.qty !== 1 ? ` × ${item.qty}` : ""}
                             </td>
-                            <td className="py-1.5 text-right text-brand-charcoal">
-                              {item.unit_price !== undefined ? formatGbp(item.unit_price) : "—"}
-                            </td>
+                            <td className="py-1.5 text-right text-[#1F2937]">{item.unit_price !== undefined ? formatGbp(item.unit_price) : "—"}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
                   )}
-
-                  <div className="grid grid-cols-2 gap-2 border-t border-border pt-3 text-sm sm:grid-cols-4">
+                  <div className="mt-3 grid grid-cols-2 gap-2 border-t border-[#f0eee7] pt-3 text-[13px] sm:grid-cols-4">
                     <div>
-                      <p className="text-brand-grey">Subtotal</p>
-                      <p className="font-medium text-brand-charcoal">{formatGbp(inv.subtotal)}</p>
+                      <p className="text-[#9CA3AF]">Total</p>
+                      <p className="font-semibold text-[#1F2937]">{formatGbp(inv.total)}</p>
                     </div>
-                    {inv.discount !== null && inv.discount !== 0 && (
+                    {inv.discount ? (
                       <div>
-                        <p className="text-brand-grey">Discount</p>
-                        <p className="font-medium text-brand-charcoal">{formatGbp(inv.discount)}</p>
+                        <p className="text-[#9CA3AF]">Discount</p>
+                        <p className="font-semibold text-[#1F2937]">{formatGbp(inv.discount)}</p>
                       </div>
-                    )}
+                    ) : null}
                     <div>
-                      <p className="text-brand-grey">Total</p>
-                      <p className="font-medium text-brand-charcoal">{formatGbp(inv.total)}</p>
+                      <p className="text-[#9CA3AF]">Paid</p>
+                      <p className="font-semibold text-[#1F2937]">{formatGbp(inv.amount_paid)}</p>
                     </div>
                     <div>
-                      <p className="text-brand-grey">Paid</p>
-                      <p className="font-medium text-brand-charcoal">{formatGbp(inv.amount_paid)}</p>
-                    </div>
-                    <div>
-                      <p className="text-brand-grey">Balance due</p>
-                      <p className="font-medium text-brand-charcoal">{formatGbp(inv.balance_due)}</p>
+                      <p className="text-[#9CA3AF]">Balance due</p>
+                      <p className="font-semibold" style={{ color: paid ? "#4f8a00" : "#96620a" }}>
+                        {formatGbp(inv.balance_due)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -309,30 +245,26 @@ export default async function PortalJobDetailPage({
             })}
           </div>
         )}
-      </div>
+      </section>
 
-      {/* ── Updates ──────────────────────────────────────────────────── */}
-      <div>
-        <h2 className="mb-3 text-sm font-semibold text-brand-charcoal">Updates</h2>
-        {!diaryEntries || diaryEntries.length === 0 ? (
-          <p className="text-sm text-brand-grey">No updates yet.</p>
+      <section className="mt-[22px] border border-[#dcdfd8] bg-white p-5">
+        <h2 className="mb-3 text-[23px] font-semibold text-[#1F2937]" style={condensed}>
+          Updates
+        </h2>
+        {diary.length === 0 ? (
+          <p className="text-sm text-[#6B7280]">No updates yet.</p>
         ) : (
           <div className="space-y-3">
-            {diaryEntries.map((entry) => (
-              <div
-                key={entry.id}
-                className="rounded-xl border border-border bg-white p-3"
-              >
-                <p className="text-sm text-brand-charcoal">{entry.content}</p>
-                <p className="mt-1 text-xs text-brand-grey">
-                  {entry.author_name ?? "MLC"} ·{" "}
-                  {new Date(entry.created_at).toLocaleDateString("en-GB")}
-                </p>
+            {diary.map((d) => (
+              <div key={d.id} className="grid items-start gap-3" style={{ gridTemplateColumns: "110px 14px minmax(0,1fr)" }}>
+                <span className="text-[12.5px] text-[#9CA3AF]">{formatDateTime(d.created_at)}</span>
+                <span className="mt-1.5 h-[9px] w-[9px] shrink-0" style={{ background: "#0093DB" }} />
+                <p className="text-[14px] text-[#1F2937]">{d.content}</p>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }
