@@ -226,20 +226,19 @@ const EICR_ADDITIONAL_CU_ENTRY_TYPE = "eicr-additional-cu";
 
 type SelectionState = { selected: boolean; optionIndex: number };
 
-function resolvePreselectedId(id?: string): string | undefined {
-  if (!id) return undefined;
+function resolvePreselectedId(id: string): string {
   return LEGACY_SERVICE_ID_ALIASES[id] ?? id;
 }
 
 function buildInitialState(
   existing: ServiceEntry[],
-  preselectedServiceId?: string,
+  preselectedServiceIds: readonly string[] = [],
 ): Record<string, SelectionState> {
-  const resolvedPreselect = resolvePreselectedId(preselectedServiceId);
+  const resolvedPreselect = new Set(preselectedServiceIds.map(resolvePreselectedId));
   const state: Record<string, SelectionState> = {};
   for (const config of SERVICES) {
     const match = existing.find((s) => s.serviceType === config.id);
-    const preselected = !match && config.id === resolvedPreselect;
+    const preselected = !match && resolvedPreselect.has(config.id);
     state[config.id] = {
       selected: !!match || preselected,
       optionIndex: match
@@ -258,7 +257,7 @@ function buildInitialAdditionalCUs(existing: ServiceEntry[]): number {
 
 interface Step3Props {
   defaultServices: ServiceEntry[];
-  preselectedServiceId?: string;
+  preselectedServiceIds?: readonly string[];
   isHmoBundle?: boolean;
   onBack: () => void;
   onComplete: (services: ServiceEntry[]) => void;
@@ -266,13 +265,13 @@ interface Step3Props {
 
 export function Step3Services({
   defaultServices,
-  preselectedServiceId,
+  preselectedServiceIds,
   isHmoBundle = false,
   onBack,
   onComplete,
 }: Step3Props) {
   const [states, setStates] = useState<Record<string, SelectionState>>(() =>
-    buildInitialState(defaultServices, preselectedServiceId),
+    buildInitialState(defaultServices, preselectedServiceIds),
   );
   const [additionalCUs, setAdditionalCUs] = useState(() =>
     buildInitialAdditionalCUs(defaultServices),

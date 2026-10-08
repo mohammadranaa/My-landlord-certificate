@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   calculateBundlePrice,
@@ -29,6 +30,7 @@ import { Step3Services } from "./step-3-services";
 import { Step4DateTime } from "./step-4-datetime";
 import { Step5Review } from "./step-5-review";
 import { SaveQuotePrompt } from "./save-quote-prompt";
+import type { BookingPrefill } from "@/lib/portal/booking-attribution";
 
 /**
  * Default pre-fill for /book?bundle=hmo — the 4 HMO_REQUIRED_SERVICES from
@@ -65,9 +67,14 @@ const HMO_BUNDLE_SERVICES: ServiceEntry[] = [
   },
 ];
 
-export function BookingForm() {
+export function BookingForm({ prefill }: { prefill?: BookingPrefill } = {}) {
   const searchParams = useSearchParams();
-  const preselectedService = searchParams.get("service") ?? undefined;
+  const preselectedServices = [
+    ...(searchParams.get("services") ?? "").split(","),
+    searchParams.get("service") ?? "",
+  ]
+    .map((id) => id.trim())
+    .filter(Boolean);
   const preselectedType = (searchParams.get("type") as "residential" | "commercial") ?? undefined;
   const isHmoBundle = searchParams.get("bundle") === "hmo";
 
@@ -79,8 +86,21 @@ export function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [data, setData] = useState<PartialBookingData>({
-    propertyCategory: preselectedType ?? undefined,
+    propertyCategory: preselectedType ?? prefill?.propertyCategory,
+    ...(prefill && {
+      propertySize: prefill.propertySize,
+      name: prefill.name || undefined,
+      email: prefill.email || undefined,
+      phone: prefill.phone || undefined,
+      addressLine1: prefill.addressLine1 || undefined,
+      addressLine2: prefill.addressLine2 || undefined,
+      city: prefill.city || undefined,
+      postcode: prefill.postcode || undefined,
+    }),
   });
+  // Only the property id is sent; the server re-checks it against the
+  // signed-in portal user before attributing the booking to their agency.
+  const portal = prefill ? { fromPortal: true, propertyId: prefill.portalPropertyId } : undefined;
 
   function merge(partial: Partial<PartialBookingData>) {
     setData((prev) => ({ ...prev, ...partial }));
@@ -145,6 +165,7 @@ export function BookingForm() {
           discountAmount,
           discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
           sessionId,
+          portal,
         }),
       });
     } catch {
@@ -250,6 +271,7 @@ export function BookingForm() {
       discountAmount,
       discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
       sessionId,
+      portal,
     };
 
     try {
@@ -338,6 +360,22 @@ export function BookingForm() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      {prefill && (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl border border-compliance-blue/30 bg-compliance-blue/5 px-4 py-3 text-sm text-brand-charcoal">
+          <p>
+            {prefill.propertyLabel ? (
+              <>
+                Booking for <strong>{prefill.propertyLabel}</strong> from your portal
+              </>
+            ) : (
+              "Booking from your agent portal"
+            )}
+          </p>
+          <Link href="/portal/dashboard" className="font-semibold text-compliance-blue hover:underline">
+            Back to portal
+          </Link>
+        </div>
+      )}
       <ProgressBar currentStep={step} />
 
       <OrderSummary data={data} mobile />
@@ -379,7 +417,7 @@ export function BookingForm() {
                       ? HMO_BUNDLE_SERVICES
                       : []
                 }
-                preselectedServiceId={data.services?.length ? undefined : preselectedService}
+                preselectedServiceIds={data.services?.length ? undefined : preselectedServices}
                 isHmoBundle={isHmoBundle}
                 onBack={() => setStep(2)}
                 onComplete={handleStep3Complete}

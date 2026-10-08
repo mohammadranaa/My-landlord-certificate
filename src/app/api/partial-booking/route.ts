@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getEarliestBookingDate } from "@/lib/booking-datetime";
+import { resolvePortalBooking, toAttribution } from "@/lib/portal/booking-attribution";
 
 interface PartialService {
   type: string;
@@ -24,6 +25,7 @@ export async function POST(request: NextRequest) {
       discountAmount?: number;
       discountLabel?: string | null;
       sessionId?: string;
+      portal?: { fromPortal?: boolean; propertyId?: string | null };
     };
 
     const {
@@ -41,6 +43,7 @@ export async function POST(request: NextRequest) {
       discountAmount,
       discountLabel,
       sessionId,
+      portal,
     } = data;
 
     if (!email) {
@@ -64,6 +67,7 @@ export async function POST(request: NextRequest) {
 
     const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
     if (googleSheetUrl) {
+      const portalCtx = portal?.fromPortal ? await resolvePortalBooking(portal.propertyId) : null;
       const servicesReadable = (services ?? [])
         .map(
           (s) =>
@@ -90,6 +94,7 @@ export async function POST(request: NextRequest) {
           sessionId,
           source: "partial_form",
           servicesReadable,
+          ...(portalCtx ? toAttribution(portalCtx) : {}),
         }),
       }).catch((err) => console.error("Partial booking sheet error:", err));
     }

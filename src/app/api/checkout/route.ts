@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
 import { createServiceRoleClient } from "@/lib/supabase/server";
 import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution";
+import { resolvePortalBooking, toAttribution } from "@/lib/portal/booking-attribution";
 
 interface BookingService {
   type: string;
@@ -25,6 +26,7 @@ interface BookingPayload {
   discountAmount?: number;
   discountLabel?: string | null;
   sessionId?: string;
+  portal?: { fromPortal?: boolean; propertyId?: string | null };
 }
 
 type CreateParams = NonNullable<Parameters<ReturnType<typeof getStripe>["checkout"]["sessions"]["create"]>[0]>;
@@ -32,7 +34,11 @@ type LineItem = NonNullable<CreateParams["line_items"]>[number];
 
 export async function POST(request: NextRequest) {
   try {
-    const booking = (await request.json()) as BookingPayload;
+    const { portal: portalRequest, ...booking } = (await request.json()) as BookingPayload;
+    // Portal attribution comes from the server-side session, not the payload:
+    // the browser only says "this came from the portal" and which property.
+    const portalCtx = portalRequest?.fromPortal ? await resolvePortalBooking(portalRequest.propertyId) : null;
+    const portalAttribution = portalCtx ? toAttribution(portalCtx) : null;
 
     const lineItems: LineItem[] = [];
 
@@ -88,6 +94,7 @@ export async function POST(request: NextRequest) {
       hmo_discount: booking.hmoDiscount ? "true" : "false",
       discount_amount: (booking.discountAmount ?? 0).toFixed(2),
       discount_label: booking.discountLabel ?? "",
+      ...portalAttribution,
     };
 
     // The HMO bundle discount is applied at the Stripe session level (not baked
@@ -179,6 +186,7 @@ export async function POST(request: NextRequest) {
           status: "Pending Payment",
           paymentStatus: "Unpaid",
           stripeSessionId: session.id,
+          ...portalAttribution,
         }),
       }).catch((err) => console.error("Sheet pre-payment log:", err));
     }

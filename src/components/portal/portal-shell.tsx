@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Search } from "lucide-react";
 import { LogoutButton } from "./logout-button";
+import { BookLink } from "./book-link";
 
 const condensed: React.CSSProperties = { fontFamily: "var(--font-barlow-condensed)" };
 
@@ -95,6 +96,14 @@ export function PortalShell({ children, agencyName, fullName, compliancePct, ale
       </div>
 
       <div className="mt-auto pt-8">
+        <BookLink
+          href="/book?from=portal"
+          label="Book a certificate"
+          location="sidebar"
+          variant="green"
+          size="md"
+          className="mb-4 w-full"
+        />
         <div className="border p-3" style={{ borderColor: "rgba(255,255,255,.14)" }}>
           <p className="text-[13px] font-semibold uppercase" style={{ ...condensed, letterSpacing: ".16em", color: "rgba(250,250,247,.7)" }}>
             Portfolio compliance

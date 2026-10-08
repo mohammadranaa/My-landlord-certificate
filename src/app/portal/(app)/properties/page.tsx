@@ -12,6 +12,8 @@ import {
 } from "@/lib/portal/properties";
 import { formatGbp } from "@/lib/portal/format";
 import { StatusCell } from "@/components/portal/status";
+import { BookLink } from "@/components/portal/book-link";
+import { bookingHref, isCommercialProperty } from "@/lib/portal/booking-links";
 
 export const metadata: Metadata = {
   title: "Properties — Agent Portal — My Landlord Certificate",
@@ -187,7 +189,7 @@ export default async function PortalPropertiesPage({
       </div>
 
       <div className="mt-3 overflow-x-auto border border-[#dcdfd8] bg-white">
-        <table className="w-full text-left" style={{ minWidth: 1180 }}>
+        <table className="w-full text-left" style={{ minWidth: 1320 }}>
           <thead>
             <tr className="bg-[#FAFAF7]">
               <th className="sticky left-0 z-10 bg-[#FAFAF7] px-3 py-3 text-[12.5px] font-semibold uppercase tracking-[.14em] text-[#6B7280]" style={condensed}>
@@ -209,18 +211,22 @@ export default async function PortalPropertiesPage({
               <th className="px-3 py-3 text-right text-[12.5px] font-semibold uppercase tracking-[.14em] text-[#6B7280]" style={condensed}>
                 Summary
               </th>
+              <th className="px-3 py-3 text-right text-[12.5px] font-semibold uppercase tracking-[.14em] text-[#6B7280]" style={condensed}>
+                <span className="sr-only">Book</span>
+              </th>
             </tr>
           </thead>
           <tbody>
             {rows.length === 0 && (
               <tr>
-                <td colSpan={CERT_CODES.length + 3} className="px-3 py-10 text-center text-sm text-[#6B7280]">
+                <td colSpan={CERT_CODES.length + 4} className="px-3 py-10 text-center text-sm text-[#6B7280]">
                   No properties match{q ? ` “${q}”` : " this filter"}.
                 </td>
               </tr>
             )}
             {rows.map((g) => {
               const summary = SUMMARY[g.health];
+              const dueCodes = CERT_CODES.filter((c) => g.statuses[c] === "expired" || g.statuses[c] === "expiring");
               return (
                 <tr key={g.property.id} className="group border-t border-[#f0eee7] hover:bg-[#FAFAF7]">
                   <td className="sticky left-0 z-10 bg-white px-3 py-3 group-hover:bg-[#FAFAF7]">
@@ -257,6 +263,29 @@ export default async function PortalPropertiesPage({
                     >
                       {summary.label(g)}
                     </span>
+                  </td>
+                  <td className="px-3 py-3 text-right">
+                    {dueCodes.length > 0 ? (
+                      <BookLink
+                        href={bookingHref({
+                          codes: dueCodes,
+                          propertyId: g.property.id,
+                          isCommercial: isCommercialProperty(g.property.property_type),
+                        })}
+                        label="Book renewal"
+                        location="properties_list"
+                        certCode={dueCodes.join(",")}
+                        className="max-md:w-auto"
+                      />
+                    ) : (
+                      <BookLink
+                        href={bookingHref({ propertyId: g.property.id })}
+                        label="Book"
+                        location="properties_list"
+                        variant="secondary"
+                        className="max-md:w-auto"
+                      />
+                    )}
                   </td>
                 </tr>
               );

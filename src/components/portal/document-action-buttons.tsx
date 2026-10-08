@@ -3,13 +3,23 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Download, Share2 } from "lucide-react";
+import { BookLink } from "./book-link";
 
 /**
  * Downloads and share links go through /api/portal/certificates/[id], which
  * checks the certificate belongs to this agency before issuing a signed URL.
  * Share links expire after 7 days.
  */
-export function DocumentActionButtons({ certId, label }: { certId: string; label: string }) {
+export function DocumentActionButtons({
+  certId,
+  label,
+  book,
+}: {
+  certId: string;
+  label: string;
+  /** Optional "Book renewal" link shown beside Download (Documents page). */
+  book?: { href: string; certCode: string };
+}) {
   const [sharing, setSharing] = useState(false);
 
   async function handleShare() {
@@ -32,6 +42,16 @@ export function DocumentActionButtons({ certId, label }: { certId: string; label
 
   return (
     <div className="flex items-center gap-1.5">
+      {book && (
+        <BookLink
+          href={book.href}
+          label="Book renewal"
+          location="documents"
+          certCode={book.certCode}
+          variant="secondary"
+          className="max-md:w-auto"
+        />
+      )}
       <a
         href={`/api/portal/certificates/${certId}`}
         target="_blank"

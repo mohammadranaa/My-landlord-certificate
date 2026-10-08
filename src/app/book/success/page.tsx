@@ -34,6 +34,7 @@ export default async function BookSuccessPage({
   const appointmentDate = session?.metadata?.appointment_date ?? "";
   const appointmentSlot = session?.metadata?.appointment_slot ?? "";
   const propertyAddress = session?.metadata?.property_address ?? "";
+  const fromPortal = Boolean(session?.metadata?.portal_user_id);
   const totalPaid = session?.amount_total
     ? `£${(session.amount_total / 100).toFixed(2)}`
     : "";
@@ -204,7 +205,12 @@ export default async function BookSuccessPage({
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/" className={cn(buttonVariants({ variant: "primary" }))}>
+          {fromPortal && (
+            <Link href="/portal/dashboard" className={cn(buttonVariants({ variant: "primary" }))}>
+              Back to your portal
+            </Link>
+          )}
+          <Link href="/" className={cn(buttonVariants({ variant: fromPortal ? "secondary" : "primary" }))}>
             Back to homepage
           </Link>
           <Link

@@ -17,6 +17,8 @@ import { RegistrationMarks } from "@/components/portal/registration-marks";
 import { StatusBadge, STATUS_CONFIG } from "@/components/portal/status";
 import { RequestRenewalDialog } from "@/components/portal/request-renewal-dialog";
 import { PortalActionButton } from "@/components/portal/portal-action-button";
+import { BookLink } from "@/components/portal/book-link";
+import { bookingHref, isCommercialProperty } from "@/lib/portal/booking-links";
 
 export const metadata: Metadata = {
   title: "Overview — Agent Portal — My Landlord Certificate",
@@ -43,6 +45,7 @@ export default async function PortalOverviewPage() {
   const compliantPct = total > 0 ? Math.round((kpis.compliant / total) * 100) : 0;
   const attention = buildAttentionItems(groups);
   const urgentCount = attention.filter((a) => a.status !== "missing").length;
+  const commercialById = new Map(groups.map((g) => [g.property.id, isCommercialProperty(g.property.property_type)]));
 
   // Recent public updates, explicitly scoped to this agency's jobs.
   const jobIds = jobs.slice(0, 300).map((j) => j.id);
@@ -85,7 +88,14 @@ export default async function PortalOverviewPage() {
         </div>
         <div className="flex flex-wrap gap-2">
           <PortalActionButton type="download_pack" label="Download pack" />
-          <PortalActionButton type="bulk_renewal" label="Request renewals" variant="primary" />
+          {attention.length > 0 && (
+            <BookLink
+              href="#needs-attention"
+              label={`Book renewals (${attention.length})`}
+              location="header"
+              size="md"
+            />
+          )}
         </div>
       </div>
 
@@ -115,7 +125,7 @@ export default async function PortalOverviewPage() {
       </div>
 
       {/* Needs attention */}
-      <section className="mt-[26px] border border-[#dcdfd8] bg-white">
+      <section id="needs-attention" className="mt-[26px] scroll-mt-6 border border-[#dcdfd8] bg-white">
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e7e4dc] px-5 py-4">
           <div>
             <h2 className="text-[23px] font-semibold text-[#1F2937]" style={condensed}>
@@ -160,18 +170,28 @@ export default async function PortalOverviewPage() {
                   <div>
                     <StatusBadge status={row.status} />
                   </div>
-                  <div className="flex items-center gap-2 md:justify-self-end">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-self-end">
+                    <BookLink
+                      href={bookingHref({
+                        codes: [row.code],
+                        propertyId: row.propertyId,
+                        isCommercial: commercialById.get(row.propertyId),
+                      })}
+                      label="Book renewal"
+                      location="needs_attention"
+                      certCode={row.code}
+                    />
                     {row.certId ? (
                       <a
                         href={`/api/portal/certificates/${row.certId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border border-[#cfd6de] bg-white px-3 py-1.5 text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8]"
+                        className="border border-[#cfd6de] bg-white px-3 py-1.5 text-center text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8] max-md:flex max-md:min-h-[44px] max-md:items-center max-md:justify-center"
                       >
                         PDF
                       </a>
                     ) : (
-                      <span className="px-3 py-1.5 text-[12.5px] text-[#9CA3AF]">No PDF</span>
+                      <span className="px-3 py-1.5 text-[12.5px] text-[#9CA3AF] max-md:text-center">No PDF</span>
                     )}
                     <RequestRenewalDialog
                       title={CERT_TYPE_LABELS[row.code]}
@@ -179,8 +199,8 @@ export default async function PortalOverviewPage() {
                       propertyId={row.propertyId}
                       certificateCode={row.code}
                       trigger={
-                        <button className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-1.5 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7]">
-                          {row.status === "missing" ? "Book" : "Request renewal"}
+                        <button className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-1.5 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7] max-md:min-h-[44px]">
+                          Request renewal
                         </button>
                       }
                     />

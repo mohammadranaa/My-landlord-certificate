@@ -10,6 +10,8 @@ import { StatusBadge, STATUS_CONFIG } from "@/components/portal/status";
 import { RequestRenewalDialog } from "@/components/portal/request-renewal-dialog";
 import { PortalActionButton } from "@/components/portal/portal-action-button";
 import { DocumentActionButtons } from "@/components/portal/document-action-buttons";
+import { BookLink } from "@/components/portal/book-link";
+import { bookingHref, isCommercialProperty } from "@/lib/portal/booking-links";
 
 export const metadata: Metadata = {
   title: "Property — Agent Portal — My Landlord Certificate",
@@ -47,6 +49,8 @@ export default async function PortalPropertyDetailPage({ params }: { params: Pro
   const diaryEntries = (diary ?? []) as { id: string; job_id: string; content: string | null; created_at: string }[];
 
   const subtitle = `${property.address}${property.postcode ? `, ${property.postcode}` : ""}`;
+  const isCommercial = isCommercialProperty(property.property_type);
+  const dueCodes = CERT_CODES.filter((c) => ["expired", "expiring", "missing"].includes(statuses[c]));
 
   return (
     <div>
@@ -77,6 +81,22 @@ export default async function PortalPropertyDetailPage({ params }: { params: Pro
         </div>
 
         <div className="flex flex-wrap gap-2">
+          {dueCodes.length > 0 && (
+            <BookLink
+              href={bookingHref({ codes: dueCodes, propertyId: property.id, isCommercial })}
+              label={`Book all due (${dueCodes.length})`}
+              location="header"
+              certCode={dueCodes.join(",")}
+              size="md"
+            />
+          )}
+          <BookLink
+            href={bookingHref({ propertyId: property.id })}
+            label="Book for this property"
+            location="header"
+            variant="secondary"
+            size="md"
+          />
           <PortalActionButton type="download_pack" label="Download pack" propertyId={property.id} />
           <RequestRenewalDialog
             title="Renewal request"
@@ -84,7 +104,7 @@ export default async function PortalPropertyDetailPage({ params }: { params: Pro
             propertyId={property.id}
             trigger={
               <button
-                className="bg-[#0093DB] px-[18px] py-[11px] text-[16px] font-semibold uppercase tracking-[.06em] text-[#FAFAF7] hover:bg-[#0078b8]"
+                className="border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-[18px] py-[11px] text-[16px] font-semibold uppercase tracking-[.06em] text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7] max-md:min-h-[44px] max-md:w-full"
                 style={condensed}
               >
                 Request renewal
@@ -144,30 +164,42 @@ export default async function PortalPropertyDetailPage({ params }: { params: Pro
                 </div>
               </dl>
 
-              <div className="mt-4 flex gap-2 pt-1" style={{ marginTop: "auto" }}>
-                {latest ? (
-                  <a
-                    href={`/api/portal/certificates/${latest.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 border border-[#cfd6de] bg-white px-3 py-2 text-center text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8]"
-                  >
-                    View PDF
-                  </a>
-                ) : (
-                  <span className="flex-1 border border-[#e7e4dc] bg-[#FAFAF7] px-3 py-2 text-center text-[12.5px] text-[#9CA3AF]">No PDF</span>
+              <div className="mt-auto pt-4">
+                {status !== "na" && (
+                  <BookLink
+                    href={bookingHref({ codes: [code], propertyId: property.id, isCommercial })}
+                    label="Book renewal"
+                    location="property"
+                    certCode={code}
+                    variant={status === "expired" || status === "expiring" ? "primary" : "secondary"}
+                    className="mb-2 w-full"
+                  />
                 )}
-                <RequestRenewalDialog
-                  title={CERT_TYPE_LABELS[code]}
-                  subtitle={subtitle}
-                  propertyId={property.id}
-                  certificateCode={code}
-                  trigger={
-                    <button className="flex-1 border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-2 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7]">
-                      {latest ? "Renew" : "Book"}
-                    </button>
-                  }
-                />
+                <div className="flex gap-2 max-md:flex-col">
+                  {latest ? (
+                    <a
+                      href={`/api/portal/certificates/${latest.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 border border-[#cfd6de] bg-white px-3 py-2 text-center text-[12.5px] font-semibold text-[#4B5563] hover:border-[#0093DB] hover:text-[#0078b8] max-md:flex max-md:min-h-[44px] max-md:items-center max-md:justify-center"
+                    >
+                      View PDF
+                    </a>
+                  ) : (
+                    <span className="flex-1 border border-[#e7e4dc] bg-[#FAFAF7] px-3 py-2 text-center text-[12.5px] text-[#9CA3AF]">No PDF</span>
+                  )}
+                  <RequestRenewalDialog
+                    title={CERT_TYPE_LABELS[code]}
+                    subtitle={subtitle}
+                    propertyId={property.id}
+                    certificateCode={code}
+                    trigger={
+                      <button className="flex-1 border border-[#0093DB] bg-[rgba(0,147,219,.08)] px-3 py-2 text-[12.5px] font-semibold text-[#0078b8] hover:bg-[#0093DB] hover:text-[#FAFAF7] max-md:min-h-[44px]">
+                        Request renewal
+                      </button>
+                    }
+                  />
+                </div>
               </div>
             </div>
           );

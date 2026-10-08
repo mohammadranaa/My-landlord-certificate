@@ -11,6 +11,7 @@ import {
 import { formatDate } from "@/lib/portal/format";
 import { StatusBadge } from "@/components/portal/status";
 import { DocumentActionButtons } from "@/components/portal/document-action-buttons";
+import { bookingHref, isCommercialProperty } from "@/lib/portal/booking-links";
 
 export const metadata: Metadata = {
   title: "Documents — Agent Portal — My Landlord Certificate",
@@ -188,7 +189,22 @@ export default async function PortalDocumentsPage({
                 <td className="px-3 py-3">
                   <div className="flex items-center justify-end gap-2">
                     {d.status && <StatusBadge status={d.status} />}
-                    <DocumentActionButtons certId={d.cert.id} label={`${d.label} — ${d.property.address}`} />
+                    <DocumentActionButtons
+                      certId={d.cert.id}
+                      label={`${d.label} — ${d.property.address}`}
+                      book={
+                        d.code === "OTHER"
+                          ? undefined
+                          : {
+                              href: bookingHref({
+                                codes: [d.code],
+                                propertyId: d.property.id,
+                                isCommercial: isCommercialProperty(d.property.property_type),
+                              }),
+                              certCode: d.code,
+                            }
+                      }
+                    />
                   </div>
                 </td>
               </tr>

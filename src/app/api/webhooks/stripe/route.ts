@@ -28,8 +28,30 @@ export async function POST(request: NextRequest) {
     const session = event.data.object as Stripe.Checkout.Session;
 
     try {
-      const bookingData = session.metadata?.booking_data
-        ? (JSON.parse(session.metadata.booking_data) as Record<string, unknown>)
+      // booking_data is cut to Stripe's 500-character metadata limit, so it is
+      // not valid JSON for larger bookings. Don't let that stop the paid
+      // update and the Sheet log.
+      let bookingData: Record<string, unknown> = {};
+      try {
+        bookingData = session.metadata?.booking_data
+          ? (JSON.parse(session.metadata.booking_data) as Record<string, unknown>)
+          : {};
+      } catch {
+        bookingData = {
+          customer: {
+            name: session.metadata?.customer_name ?? "",
+            email: session.customer_email ?? "",
+            phone: session.metadata?.customer_phone ?? "",
+          },
+          servicesReadable: session.metadata?.services_readable ?? "",
+        };
+      }
+      const portalAttribution = session.metadata?.portal_user_id
+        ? {
+            portal_user_id: session.metadata.portal_user_id,
+            client_id: session.metadata.client_id ?? "",
+            portal_property_id: session.metadata.portal_property_id ?? "",
+          }
         : {};
 
       const customerName = session.metadata?.customer_name ?? "";
@@ -67,6 +89,7 @@ export async function POST(request: NextRequest) {
             paymentStatus: "paid",
             totalPrice: totalPaid,
             source: "stripe_webhook",
+            ...portalAttribution,
           }),
         }).catch((err) => console.error("Google Sheet log failed:", err));
       }

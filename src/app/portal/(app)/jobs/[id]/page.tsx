@@ -8,6 +8,8 @@ import { certExpiryStatus, classifyCertType, CERT_TYPE_LABELS } from "@/lib/port
 import { formatDate, formatDateTime, formatGbp } from "@/lib/portal/format";
 import { StatusBadge } from "@/components/portal/status";
 import { DocumentActionButtons } from "@/components/portal/document-action-buttons";
+import { BookLink } from "@/components/portal/book-link";
+import { bookingHref } from "@/lib/portal/booking-links";
 
 export const metadata: Metadata = {
   title: "Job — Agent Portal — My Landlord Certificate",
@@ -152,6 +154,10 @@ export default async function PortalJobDetailPage({ params }: { params: Promise<
             {certs.map((c) => {
               const code = classifyCertType(c.certificate_type);
               const label = code ? CERT_TYPE_LABELS[code] : c.certificate_type ?? "Document";
+              const nextDue =
+                code && c.expiry_date && job.status.toLowerCase() === "completed"
+                  ? new Date(c.expiry_date).toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "Europe/London" })
+                  : null;
               return (
                 <div key={c.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
                   <div>
@@ -162,9 +168,21 @@ export default async function PortalJobDetailPage({ params }: { params: Promise<
                       {c.result ? ` · ${c.result}` : ""}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2 max-md:w-full">
                     {c.expiry_date && <StatusBadge status={certExpiryStatus(c.expiry_date)} />}
                     <DocumentActionButtons certId={c.id} label={label} />
+                    {nextDue && code && (
+                      <>
+                        <span className="text-[12.5px] text-[#6B7280]">Next due {nextDue}</span>
+                        <BookLink
+                          href={bookingHref({ codes: [code], propertyId: job.property_id })}
+                          label="Book next one"
+                          location="job"
+                          certCode={code}
+                          variant="secondary"
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
               );
