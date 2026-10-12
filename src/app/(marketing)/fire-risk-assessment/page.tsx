@@ -24,6 +24,9 @@ import {
   FRA_RESIDENTIAL_TABLE,
   FRA_COMMERCIAL_TABLE,
   getPriceForFRA,
+  FROM_PRICES,
+  BUNDLES,
+  formatPounds,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -151,7 +154,7 @@ const faqSchema = {
       name: "How much does a Fire Risk Assessment cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A Fire Risk Assessment starts from £74 for a studio apartment. A 1–3 bedroom property costs £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99.",
+        text: `A Fire Risk Assessment starts from ${formatPounds(getPriceForFRA("studio"))} for a studio apartment. A 1–3 bedroom property costs £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99.`,
       },
     },
     {
@@ -192,7 +195,7 @@ const faqItems = [
   {
     question: "How much does a Fire Risk Assessment cost?",
     answer:
-      "Prices start from £74 for a studio apartment. A 1–3 bedroom property is £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99. See the full pricing table above.",
+      `Prices start from ${formatPounds(getPriceForFRA("studio"))} for a studio apartment. A 1–3 bedroom property is £139.99, up to 4 bedrooms is £179.99, and prices scale to £349.99 for up to 8 bedrooms. Communal area assessments start from £129.99. See the full pricing table above.`,
   },
   {
     question: "What qualifications should my fire risk assessor hold?",
@@ -1259,11 +1262,11 @@ export default function FireRiskAssessmentPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
-              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: "from £130" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
+              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}` },
             ].map(({ label, href, price }) => (
               <Link
                 key={href}

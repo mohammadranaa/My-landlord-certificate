@@ -1,3 +1,5 @@
+import { BUNDLE_MAX_SAVING, BUNDLES, formatPounds } from "@/lib/pricing";
+
 export interface ServiceData {
   slug: string;
   name: string;
@@ -198,7 +200,7 @@ export const services: ServiceData[] = [
       },
       {
         q: "How much do I save versus booking separately?",
-        a: "Typically £40–£60 depending on the combination chosen.",
+        a: `From ${formatPounds(BUNDLES.essential.saving)} to ${formatPounds(BUNDLE_MAX_SAVING)}, depending on the bundle.`,
       },
     ],
   },

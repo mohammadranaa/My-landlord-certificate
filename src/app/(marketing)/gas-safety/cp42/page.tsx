@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, GAS_SAFETY_CP42_TABLE, formatPounds, getPriceForGasSafety } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Commercial Gas Safety Certificate (CP42) London from £159.99",
@@ -306,7 +306,7 @@ export default function CP42Page() {
               {
                 name: "Gas Safety Certificate (CP12)",
                 href: "/gas-safety-certificate",
-                desc: "Domestic gas safety inspection from £49.99. Required annually for residential landlords.",
+                desc: `Domestic gas safety inspection from ${formatPounds(getPriceForGasSafety(1))}. Required annually for residential landlords.`,
               },
               {
                 name: "Commercial EICR",

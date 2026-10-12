@@ -15,6 +15,10 @@ import {
   COMMERCIAL_EICR_TABLE,
   DOMESTIC_EICR_TABLE,
   getPriceForEICR,
+  FROM_PRICES,
+  DOMESTIC_EICR_PRICES,
+  BUNDLES,
+  formatPounds,
 } from "@/lib/pricing";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
@@ -106,7 +110,7 @@ const faqSchema = {
       name: "How much does a commercial EICR cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A commercial EICR starts from £149.99 for a single consumer unit of up to 10 circuits. Additional consumer units add to the price up to £1,155.99 for 8 units. Extra circuits above 10 per unit are charged at £25 each.",
+        text: `A commercial EICR starts from ${formatPounds(COMMERCIAL_EICR_TABLE[0].price)} for a single consumer unit of up to 12 circuits. Additional consumer units add to the price, up to ${formatPounds(COMMERCIAL_EICR_TABLE[COMMERCIAL_EICR_TABLE.length - 1].price)} for 8 units. Extra circuits above 12 per unit are charged at £${COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} each.`,
       },
     },
     {
@@ -130,7 +134,7 @@ const faqSchema = {
       name: "Can I save money by bundling my EICR with other certificates?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98.",
+        text: `Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs ${formatPounds(BUNDLES.essential.bundlePrice)} versus ${formatPounds(BUNDLES.essential.subtotal)} if booked separately, saving ${formatPounds(BUNDLES.essential.saving)}. The Full Compliance Bundle (EICR + Gas Safety + EPC) is ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)}.`,
       },
     },
   ],
@@ -157,7 +161,7 @@ const faqItems = [
   {
     question: "How much does a commercial EICR cost?",
     answer:
-      "A commercial EICR starts from £149.99 for a single consumer unit of up to 10 circuits. Each additional consumer unit adds to the price up to £1,155.99 for 8 units. Extra circuits above 10 per unit are charged at £25 each. See the full commercial table above.",
+      `A commercial EICR starts from ${formatPounds(COMMERCIAL_EICR_TABLE[0].price)} for a single consumer unit of up to 12 circuits. Each additional consumer unit adds to the price, up to ${formatPounds(COMMERCIAL_EICR_TABLE[COMMERCIAL_EICR_TABLE.length - 1].price)} for 8 units. Extra circuits above 12 per unit are charged at £${COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} each. See the full commercial table above.`,
   },
   {
     question: "Are there any extra charges on top of the EICR price?",
@@ -167,7 +171,7 @@ const faqItems = [
   {
     question: "Can I save money by bundling my EICR with other certificates?",
     answer:
-      "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
+      `Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs ${formatPounds(BUNDLES.essential.bundlePrice)} versus ${formatPounds(BUNDLES.essential.subtotal)} if booked separately, saving ${formatPounds(BUNDLES.essential.saving)}. The Full Compliance Bundle (EICR + Gas Safety + EPC) is ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)} on three certificates in one visit.`,
   },
   {
     question: "What happens if the EICR finds a problem?",
@@ -402,8 +406,8 @@ export default function EicrCostPage() {
                 {[
                   { property: "Studio / 1 bed", market: "£80–£200", ours: `£${lowestDomesticPrice}` },
                   { property: "1–3 bedrooms", market: "£150–£300", ours: `£${popularDomesticPrice}` },
-                  { property: "4 bedrooms", market: "£200–£350", ours: "£104.99" },
-                  { property: "5 bedrooms", market: "£250–£400", ours: "£139.99" },
+                  { property: "4 bedrooms", market: "£200–£350", ours: formatPounds(DOMESTIC_EICR_PRICES["4bed"]) },
+                  { property: "5 bedrooms", market: "£250–£400", ours: formatPounds(DOMESTIC_EICR_PRICES["5bed"]) },
                 ].map(({ property, market, ours }, i) => (
                   <tr
                     key={property}
@@ -506,7 +510,7 @@ export default function EicrCostPage() {
           <ul className="space-y-3" role="list">
             {[
               "Select the correct property size tier, check your bedroom count carefully before booking to avoid paying for a larger band.",
-              "Bundle with Gas Safety and EPC, our Essential Bundle (EICR + CP12) saves £14.99; the Full Compliance Bundle saves £24.98 on three certificates.",
+              `Bundle with Gas Safety and EPC, our Essential Bundle (EICR + CP12) saves ${formatPounds(BUNDLES.essential.saving)}; the Full Compliance Bundle saves ${formatPounds(BUNDLES["full-compliance"].saving)} on three certificates.`,
               "Ensure full access before the engineer arrives, consumer unit accessibility, loft hatches and outbuilding keys all need to be ready. Delays add risk to the schedule.",
               "Fix known faults beforehand, a broken socket or a circuit that trips repeatedly will produce a C2 code and may require a re-inspection visit, which adds cost.",
               "Choose a fixed-price provider, avoid quotes on an hourly basis, which are unpredictable. Our prices are listed in full and do not change on the day.",
@@ -551,17 +555,17 @@ export default function EicrCostPage() {
               {
                 name: "Essential Bundle",
                 description: "EICR (1–3 bed) + Gas Safety Certificate",
-                individually: "£144.99",
-                bundle: "£130",
-                saving: "£14.99",
+                individually: formatPounds(BUNDLES.essential.subtotal),
+                bundle: formatPounds(BUNDLES.essential.bundlePrice),
+                saving: formatPounds(BUNDLES.essential.saving),
                 href: "/book?bundle=essential",
               },
               {
                 name: "Full Compliance Bundle",
                 description: "EICR + Gas Safety Certificate + EPC",
-                individually: "£254.98",
-                bundle: "£230",
-                saving: "£24.98",
+                individually: formatPounds(BUNDLES["full-compliance"].subtotal),
+                bundle: formatPounds(BUNDLES["full-compliance"].bundlePrice),
+                saving: formatPounds(BUNDLES["full-compliance"].saving),
                 href: "/book?bundle=full-compliance",
               },
             ].map(({ name, description, individually, bundle, saving, href }) => (
@@ -608,8 +612,8 @@ export default function EicrCostPage() {
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { label: "Gas Safety Certificate Cost", href: "/gas-safety-certificate-cost", price: "from £50" },
-              { label: "EPC Certificate Cost", href: "/epc-cost", price: "from £89.99" },
+              { label: "Gas Safety Certificate Cost", href: "/gas-safety-certificate-cost", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate Cost", href: "/epc-cost", price: FROM_PRICES.epc },
               { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
             ].map(({ label, href, price }) => (
               <Link

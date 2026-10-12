@@ -7,6 +7,7 @@ import { Heading } from "@/components/ui/heading";
 import { LettingAgentForm } from "@/components/ui/letting-agent-form";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
+import { FROM_PRICES, BUNDLES, formatPounds, BUNDLE_MAX_SAVING } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -69,12 +70,12 @@ const benefits = [
 ];
 
 const services = [
-  { label: "EICR Certificate", price: "from £67.99", href: "/eicr", validity: "Valid 5 years" },
-  { label: "Gas Safety Certificate", price: "from £50", href: "/gas-safety-certificate", validity: "Annual" },
-  { label: "EPC Certificate", price: "from £89.99", href: "/epc", validity: "Valid 10 years" },
-  { label: "Fire Risk Assessment", price: "from £74", href: "/fire-risk-assessment", validity: "Review annually" },
-  { label: "PAT Testing", price: "from £59.99", href: "/pat-testing", validity: "Review annually" },
-  { label: "Certificate Bundles", price: "from £130", href: "/landlord-certificates-bundle", validity: "Save up to £44.97" },
+  { label: "EICR Certificate", price: FROM_PRICES.eicr, href: "/eicr", validity: "Valid 5 years" },
+  { label: "Gas Safety Certificate", price: FROM_PRICES["gas-safety-cp12"], href: "/gas-safety-certificate", validity: "Annual" },
+  { label: "EPC Certificate", price: FROM_PRICES.epc, href: "/epc", validity: "Valid 10 years" },
+  { label: "Fire Risk Assessment", price: FROM_PRICES["fire-risk-assessment"], href: "/fire-risk-assessment", validity: "Review annually" },
+  { label: "PAT Testing", price: FROM_PRICES.pat, href: "/pat-testing", validity: "Review annually" },
+  { label: "Certificate Bundles", price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}`, href: "/landlord-certificates-bundle", validity: `Save up to ${formatPounds(BUNDLE_MAX_SAVING)}` },
 ];
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -239,7 +240,7 @@ export default function LettingAgentsPage() {
             ))}
           </div>
           <p className="mt-6 text-center text-sm text-brand-grey">
-            Bundle pricing saves landlords up to £44.97 per visit — a straightforward
+            Bundle pricing saves landlords up to {formatPounds(BUNDLE_MAX_SAVING)} per visit — a straightforward
             talking point when discussing compliance costs.{" "}
             <Link href="/pricing" className="text-compliance-blue font-medium hover:underline">
               View full pricing →
@@ -354,12 +355,12 @@ export default function LettingAgentsPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
-              { label: "Bundle & Save", href: "/landlord-certificates-bundle", price: "from £130" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
+              { label: "Bundle & Save", href: "/landlord-certificates-bundle", price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}` },
             ].map(({ label, href, price }) => (
               <Link
                 key={href}

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
   GAS_SAFETY_CP42_TABLE,
+  FROM_PRICES,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -583,22 +584,22 @@ export default function CommercialGasSafetyCertificatePage() {
               {
                 label: "Gas Safety Certificate (CP12)",
                 href: "/gas-safety-certificate",
-                price: "from £49.99",
+                price: FROM_PRICES["gas-safety-cp12"],
               },
               {
                 label: "Commercial EICR",
                 href: "/commercial-eicr",
-                price: "from £149.99",
+                price: FROM_PRICES["commercial-eicr"],
               },
               {
                 label: "Fire Risk Assessment",
                 href: "/fire-risk-assessment",
-                price: "from £74.99",
+                price: FROM_PRICES["fire-risk-assessment"],
               },
               {
                 label: "Domestic EICR",
                 href: "/eicr",
-                price: "from £67.99",
+                price: FROM_PRICES.eicr,
               },
               {
                 label: "Book now",

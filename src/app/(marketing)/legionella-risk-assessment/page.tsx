@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { cn } from "@/lib/utils";
-import { ADDITIONAL_CHARGES, LEGIONELLA_PRICES } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, LEGIONELLA_PRICES, FROM_PRICES } from "@/lib/pricing";
 import { TEL, PHONE_DISPLAY } from "@/lib/constants";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
@@ -639,12 +639,12 @@ export default function LegionellaRiskAssessmentPage() {
           </Heading>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £49.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "Asbestos Survey", href: "/asbestos-survey", price: "from £239.99" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "Asbestos Survey", href: "/asbestos-survey", price: FROM_PRICES["asbestos-survey"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
             ].map(({ label, href, price: p }) => (
               <Link
                 key={href}

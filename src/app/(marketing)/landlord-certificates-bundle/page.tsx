@@ -12,30 +12,29 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { featuredReviews } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
-  DOMESTIC_EICR_PRICES,
+  BUNDLE_MAX_SAVING,
   DOMESTIC_EICR_TABLE,
-  DOMESTIC_EPC_PRICES,
   DOMESTIC_EPC_TABLE,
   FRA_RESIDENTIAL_TABLE,
   FROM_PRICES,
-  GAS_SAFETY_CP12_PRICES,
   GAS_SAFETY_CP12_TABLE,
-  getPriceForFRA,
+  BUNDLES,
+  formatPounds,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Landlord Certificate Bundle — Save up to £49.96",
+  title: `Landlord Certificate Bundle — Save up to ${formatPounds(BUNDLE_MAX_SAVING)}`,
   description:
-    "Bundle your EICR, Gas Safety, EPC and Fire Risk Assessment in one visit. Essential Bundle from £160. Full Compliance from £260. HMO Complete from £470.",
+    `Bundle your EICR, Gas Safety, EPC and Fire Risk Assessment in one visit. Essential Bundle from ${formatPounds(BUNDLES.essential.bundlePrice)}. Full Compliance from ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}. HMO Complete from ${formatPounds(BUNDLES["hmo-complete"].bundlePrice)}.`,
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
   openGraph: {
-    title: "Landlord Certificate Bundle — Save up to £49.96",
+    title: `Landlord Certificate Bundle — Save up to ${formatPounds(BUNDLE_MAX_SAVING)}`,
     description:
-      "Combine your landlord certificates in one engineer visit. Essential Bundle £160, Full Compliance £260, HMO Complete £470. Book today.",
+      `Combine your landlord certificates in one engineer visit. Essential Bundle ${formatPounds(BUNDLES.essential.bundlePrice)}, Full Compliance ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, HMO Complete ${formatPounds(BUNDLES["hmo-complete"].bundlePrice)}. Book today.`,
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   },
 };
@@ -48,7 +47,7 @@ const serviceSchema = {
   name: "Landlord Certificate Bundle",
   url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
   description:
-    "Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit. From £160. Certificates emailed within 24 hours. Book today.",
+    `Bundle your EICR, Gas Safety Certificate, EPC and Fire Risk Assessment in one visit. From ${formatPounds(BUNDLES.essential.bundlePrice)}. Certificates emailed within 24 hours. Book today.`,
   provider: {
     "@type": "LocalBusiness",
     name: "My Landlord Certificate",
@@ -62,21 +61,21 @@ const serviceSchema = {
       {
         "@type": "Offer",
         name: "Essential Bundle (EICR + Gas Safety)",
-        price: "160",
+        price: String(BUNDLES.essential.bundlePrice),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "Full Compliance Bundle (EICR + Gas Safety + EPC)",
-        price: "260",
+        price: String(BUNDLES["full-compliance"].bundlePrice),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
         name: "HMO Complete Bundle (EICR + Gas Safety + EPC + FRA)",
-        price: "470",
+        price: String(BUNDLES["hmo-complete"].bundlePrice),
         priceCurrency: "GBP",
         availability: "https://schema.org/InStock",
       },
@@ -84,7 +83,7 @@ const serviceSchema = {
   },
   offers: {
     "@type": "Offer",
-    price: "160",
+    price: String(BUNDLES.essential.bundlePrice),
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
     url: "https://www.mylandlordcertificate.co.uk/landlord-certificates-bundle",
@@ -103,8 +102,8 @@ const productSchema = {
   },
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "160",
-    highPrice: "470",
+    lowPrice: String(BUNDLES.essential.bundlePrice),
+    highPrice: String(BUNDLES["hmo-complete"].bundlePrice),
     priceCurrency: "GBP",
     offerCount: "3",
     availability: "https://schema.org/InStock",
@@ -139,7 +138,7 @@ const faqSchema = {
       name: "How much does the landlord certificate bundle cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs £160, saving £19.98 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £260, saving £29.97. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £470, saving £49.96.",
+        text: `The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs ${formatPounds(BUNDLES.essential.bundlePrice)}, saving ${formatPounds(BUNDLES.essential.saving)} versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)}. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs ${formatPounds(BUNDLES["hmo-complete"].bundlePrice)}, saving ${formatPounds(BUNDLES["hmo-complete"].saving)}.`,
       },
     },
     {
@@ -182,7 +181,7 @@ const faqSchema = {
 const bundles: {
   name: string;
   tagline: string;
-  services: { label: string; price: number; href: string }[];
+  services: readonly { label: string; price: number; href: string }[];
   subtotal: number;
   bundlePrice: number;
   saving: number;
@@ -194,17 +193,10 @@ const bundles: {
     name: "Essential Bundle",
     tagline:
       "EICR plus a full gas safety inspection with boiler service — the two must-haves, sorted in one visit.",
-    services: [
-      { label: "EICR (1–3 bed)", price: DOMESTIC_EICR_PRICES["1-3bed"], href: "/eicr" },
-      {
-        label: "Gas Safety — Boiler check + service (CP12)",
-        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
-        href: "/gas-safety-certificate",
-      },
-    ],
-    subtotal: 179.98,
-    bundlePrice: 160,
-    saving: 19.98,
+    services: BUNDLES.essential.services,
+    subtotal: BUNDLES.essential.subtotal,
+    bundlePrice: BUNDLES.essential.bundlePrice,
+    saving: BUNDLES.essential.saving,
     href: "/book?bundle=essential",
     badge: null,
     bestFor:
@@ -214,18 +206,10 @@ const bundles: {
     name: "Full Compliance Bundle",
     tagline:
       "Everything most landlords need — EICR, gas safety with boiler service, and EPC, sorted in one day.",
-    services: [
-      { label: "EICR (1–3 bed)", price: DOMESTIC_EICR_PRICES["1-3bed"], href: "/eicr" },
-      {
-        label: "Gas Safety — Boiler check + service (CP12)",
-        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
-        href: "/gas-safety-certificate",
-      },
-      { label: "EPC (1–3 bed)", price: DOMESTIC_EPC_PRICES["1-3bed"], href: "/epc" },
-    ],
-    subtotal: 289.97,
-    bundlePrice: 260,
-    saving: 29.97,
+    services: BUNDLES["full-compliance"].services,
+    subtotal: BUNDLES["full-compliance"].subtotal,
+    bundlePrice: BUNDLES["full-compliance"].bundlePrice,
+    saving: BUNDLES["full-compliance"].saving,
     href: "/book?bundle=full-compliance",
     badge: "Most popular",
     bestFor:
@@ -235,19 +219,10 @@ const bundles: {
     name: "HMO Complete Bundle",
     tagline:
       "Full compliance for HMOs and larger properties — all four certificates required for your HMO licence.",
-    services: [
-      { label: "EICR (4 bed)", price: DOMESTIC_EICR_PRICES["4bed"], href: "/eicr" },
-      {
-        label: "Gas Safety — Boiler check + service (CP12)",
-        price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
-        href: "/gas-safety-certificate",
-      },
-      { label: "EPC (5 bed)", price: DOMESTIC_EPC_PRICES["5bed"], href: "/epc" },
-      { label: "Fire Risk Assessment (4 bed)", price: getPriceForFRA("4bed"), href: "/fire-risk-assessment" },
-    ],
-    subtotal: 519.96,
-    bundlePrice: 470,
-    saving: 49.96,
+    services: BUNDLES["hmo-complete"].services,
+    subtotal: BUNDLES["hmo-complete"].subtotal,
+    bundlePrice: BUNDLES["hmo-complete"].bundlePrice,
+    saving: BUNDLES["hmo-complete"].saving,
     href: "/book?bundle=hmo-complete",
     badge: null,
     bestFor:
@@ -261,7 +236,7 @@ const faqItems = [
   {
     question: "How much does the landlord certificate bundle cost?",
     answer:
-      "The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs £160, saving £19.98 versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs £260, saving £29.97. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs £470, saving £49.96 on four certificates.",
+      `The Essential Bundle (EICR + Gas Safety Certificate with boiler check and service) costs ${formatPounds(BUNDLES.essential.bundlePrice)}, saving ${formatPounds(BUNDLES.essential.saving)} versus booking separately. The Full Compliance Bundle (EICR + Gas Safety + EPC) costs ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)}. The HMO Complete Bundle (EICR + Gas Safety + EPC + Fire Risk Assessment) costs ${formatPounds(BUNDLES["hmo-complete"].bundlePrice)}, saving ${formatPounds(BUNDLES["hmo-complete"].saving)} on four certificates.`,
   },
   {
     question: "Will all certificates be completed in one visit?",
@@ -321,7 +296,7 @@ export default function BundlePage() {
           </nav>
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4">
-            One Visit · All Certificates · Save up to £49.96
+            One Visit · All Certificates · Save up to {formatPounds(BUNDLE_MAX_SAVING)}
           </p>
 
           <Heading level={1} id="bundle-heading" inverted className="mb-4 max-w-2xl">
@@ -340,7 +315,7 @@ export default function BundlePage() {
               href="/book?bundle=full-compliance"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Book a bundle — from £160
+              Book a bundle — from {formatPounds(BUNDLES.essential.bundlePrice)}
             </Link>
             <a
               href="#bundles"
@@ -363,11 +338,11 @@ export default function BundlePage() {
           <dl className="grid grid-cols-2 gap-x-4 gap-y-5 text-center [&>*:last-child:nth-child(odd)]:col-span-2 md:flex md:flex-wrap md:items-center md:justify-center md:gap-y-3 md:text-left text-white/70">
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Bundles from</dt>
-              <dd className="text-sm font-bold text-white">£160</dd>
+              <dd className="text-sm font-bold text-white">{formatPounds(BUNDLES.essential.bundlePrice)}</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Save up to</dt>
-              <dd className="text-sm font-bold text-white">£49.96</dd>
+              <dd className="text-sm font-bold text-white">{formatPounds(BUNDLE_MAX_SAVING)}</dd>
             </div>
             <div className="flex flex-col gap-1 md:border-l md:border-white/15 md:px-6 md:first:border-l-0 md:first:pl-0">
               <dt className="text-[11px] font-medium uppercase tracking-wider text-white/50">Certificates</dt>
@@ -393,7 +368,7 @@ export default function BundlePage() {
               {
                 abbr: "£",
                 title: "Save money",
-                body: "Bundled visits cost less than individual bookings. Save up to £49.96 on an HMO Complete bundle compared to booking each certificate separately at individual prices.",
+                body: `Bundled visits cost less than individual bookings. Save up to ${formatPounds(BUNDLE_MAX_SAVING)} on an HMO Complete bundle compared to booking each certificate separately at individual prices.`,
               },
               {
                 abbr: "1",
@@ -688,7 +663,7 @@ export default function BundlePage() {
               href="/book?bundle=full-compliance"
               className={cn(buttonVariants({ variant: "cta", size: "lg" }))}
             >
-              Full Compliance Bundle — £260
+              Full Compliance Bundle — {formatPounds(BUNDLES["full-compliance"].bundlePrice)}
             </Link>
             <Link
               href="/book?bundle=essential"
@@ -697,7 +672,7 @@ export default function BundlePage() {
                 "bg-white/10 border border-white/30 text-white hover:bg-white/20",
               )}
             >
-              Essential Bundle — £160
+              Essential Bundle — {formatPounds(BUNDLES.essential.bundlePrice)}
             </Link>
           </div>
           <p className="mt-4 text-xs text-blue-100">

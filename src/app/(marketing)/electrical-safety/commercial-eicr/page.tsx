@@ -67,7 +67,7 @@ const faqs = [
   {
     question: "What is a consumer unit and how does pricing work?",
     answer:
-      "A consumer unit (also called a distribution board or fuse board) is the main electrical panel that controls the circuits in a building. Our commercial EICR is priced per consumer unit, with each unit covering up to 10 circuits. Additional circuits beyond 10 per unit are charged at £25 each. We confirm the number of units and circuits before booking so there are no surprises.",
+      `A consumer unit (also called a distribution board or fuse board) is the main electrical panel that controls the circuits in a building. Our commercial EICR is priced per consumer unit, with each unit covering up to 12 circuits. Additional circuits beyond 12 per unit are charged at £${COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE} each. We confirm the number of units and circuits before booking so there are no surprises.`,
   },
   {
     question: "How long does a commercial EICR take?",

@@ -19,6 +19,7 @@ import {
   ADDITIONAL_CHARGES,
   COMMERCIAL_EICR_TABLE,
   COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
+  FROM_PRICES,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -755,21 +756,21 @@ export default function CommercialEicrPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "Domestic EICR", href: "/eicr", price: "from £67.99" },
+              { label: "Domestic EICR", href: "/eicr", price: FROM_PRICES.eicr },
               {
                 label: "Commercial Gas Safety (CP42)",
                 href: "/commercial-gas-safety-certificate",
-                price: "from £159.99",
+                price: FROM_PRICES["gas-safety-cp42"],
               },
               {
                 label: "Fire Risk Assessment",
                 href: "/fire-risk-assessment",
-                price: "from £74.99",
+                price: FROM_PRICES["fire-risk-assessment"],
               },
               {
                 label: "Gas Safety (CP12)",
                 href: "/gas-safety-certificate",
-                price: "from £49.99",
+                price: FROM_PRICES["gas-safety-cp12"],
               },
               { label: "Book now", href: "/book", price: "All services" },
             ].map(({ label, href, price }) => (

@@ -9,12 +9,13 @@ import {
   ADDITIONAL_CHARGES,
   GAS_SAFETY_CP12_TABLE,
   getPriceForGasSafety,
+  formatPounds,
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
-  title: "Gas Safety Certificate (CP12) London from £49.99",
+  title: `Gas Safety Certificate (CP12) London from ${formatPounds(getPriceForGasSafety(1))}`,
   description:
-    "Annual landlord gas safety certificate (CP12) from £49.99. Gas Safe Registered engineers across all 33 London boroughs. Book today.",
+    `Annual landlord gas safety certificate (CP12) from ${formatPounds(getPriceForGasSafety(1))}. Gas Safe Registered engineers across all 33 London boroughs. Book today.`,
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
   },

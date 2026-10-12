@@ -31,6 +31,9 @@ import {
   GAS_SAFETY_CP12_TABLE,
   GAS_SAFETY_CP42_TABLE,
   PAT_TABLE,
+  BUNDLES,
+  LOWEST_SERVICE_PRICE,
+  formatPounds,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -38,12 +41,12 @@ import {
 export const metadata: Metadata = {
   title: "Pricing — All Landlord Compliance Certificates",
   description:
-    "Full pricing for EICR, Gas Safety Certificate, EPC, Fire Risk Assessment, PAT Testing, ELC, Asbestos Survey and more. Fixed prices, no hidden fees. From £50.",
+    `Full pricing for EICR, Gas Safety Certificate, EPC, Fire Risk Assessment, PAT Testing, ELC, Asbestos Survey and more. Fixed prices, no hidden fees. From ${formatPounds(LOWEST_SERVICE_PRICE)}.`,
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/pricing" },
   openGraph: {
     title: "Pricing — All Landlord Compliance Certificates",
     description:
-      "Transparent, fixed pricing for every landlord compliance certificate. EICR from £67.99, Gas Safety from £50, EPC from £89.99 and more. No hidden fees.",
+      `Transparent, fixed pricing for every landlord compliance certificate. EICR ${FROM_PRICES.eicr}, Gas Safety ${FROM_PRICES["gas-safety-cp12"]}, EPC ${FROM_PRICES.epc} and more. No hidden fees.`,
     url: "https://www.mylandlordcertificate.co.uk/pricing",
   },
 };
@@ -671,26 +674,16 @@ export default function PricingPage() {
               </thead>
               <tbody>
                 {[
-                  {
-                    name: "Essential Bundle",
-                    includes: "EICR (1–3 bed) + Gas Safety CP12 (1 appliance)",
-                    saving: "£14.99",
-                    price: "£130",
-                  },
-                  {
-                    name: "Full Compliance Bundle",
-                    includes: "EICR (1–3 bed) + Gas Safety CP12 + EPC (1–3 bed)",
-                    saving: "£24.98",
-                    price: "£230",
-                    popular: true,
-                  },
-                  {
-                    name: "HMO Complete Bundle",
-                    includes: "EICR (4 bed) + Gas Safety CP12 (2 apps) + EPC (5 bed) + FRA (4 bed)",
-                    saving: "£44.97",
-                    price: "£450",
-                  },
-                ].map((b, i) => (
+                  { bundle: BUNDLES.essential },
+                  { bundle: BUNDLES["full-compliance"], popular: true },
+                  { bundle: BUNDLES["hmo-complete"] },
+                ].map(({ bundle, popular }) => ({
+                  name: bundle.name,
+                  includes: bundle.services.map((s) => s.label).join(" + "),
+                  saving: formatPounds(bundle.saving),
+                  price: formatPounds(bundle.bundlePrice),
+                  popular,
+                })).map((b, i) => (
                   <tr key={b.name} className={`block border-b border-border last:border-0 md:table-row ${i % 2 === 0 ? "bg-warm-white" : "bg-white"}`}>
                     <td className="block px-5 pt-4 pb-1 md:table-cell md:py-4">
                       <span className="flex flex-wrap items-center gap-2 text-sm font-semibold text-brand-charcoal">

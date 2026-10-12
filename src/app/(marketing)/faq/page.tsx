@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { FROM_PRICES, BUNDLES, formatPounds } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -53,7 +54,7 @@ const categories = [
       {
         question: "Can I book multiple certificates in one visit?",
         answer:
-          "Yes. Our bundle options combine two or more certificates in a single engineer visit, saving you money and eliminating multiple access appointments. The Essential Bundle (EICR + Gas Safety) starts from £130, saving £14.99. The Full Compliance Bundle adds an EPC for £230. The HMO Complete Bundle includes EICR, Gas Safety, EPC and Fire Risk Assessment for £450, saving up to £44.97. See the bundle page for full details.",
+          `Yes. Our bundle options combine two or more certificates in a single engineer visit, saving you money and eliminating multiple access appointments. The Essential Bundle (EICR + Gas Safety) starts from ${formatPounds(BUNDLES.essential.bundlePrice)}, saving ${formatPounds(BUNDLES.essential.saving)}. The Full Compliance Bundle adds an EPC for ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}. The HMO Complete Bundle includes EICR, Gas Safety, EPC and Fire Risk Assessment for ${formatPounds(BUNDLES["hmo-complete"].bundlePrice)}, saving up to ${formatPounds(BUNDLES["hmo-complete"].saving)}. See the bundle page for full details.`,
       },
       {
         question: "How do I pay?",
@@ -284,7 +285,7 @@ const categories = [
       {
         question: "How much does a landlord certificate cost?",
         answer:
-          "Prices are fixed and depend on the service and property size. An EICR starts from £67.99, a Gas Safety Certificate (CP12) from £50, an EPC from £89.99, a Fire Risk Assessment from £74 and PAT Testing from £59.99. Booking two or more certificates in a single visit saves money — the Essential Bundle (EICR + Gas Safety) starts from £130. Every price is shown in full before you pay, with no charges added afterwards. See our pricing page for the complete list.",
+          `Prices are fixed and depend on the service and property size. An EICR starts ${FROM_PRICES.eicr}, a Gas Safety Certificate (CP12) ${FROM_PRICES["gas-safety-cp12"]}, an EPC ${FROM_PRICES.epc}, a Fire Risk Assessment ${FROM_PRICES["fire-risk-assessment"]} and PAT Testing ${FROM_PRICES.pat}. Booking two or more certificates in a single visit saves money — the Essential Bundle (EICR + Gas Safety) starts from ${formatPounds(BUNDLES.essential.bundlePrice)}. Every price is shown in full before you pay, with no charges added afterwards. See our pricing page for the complete list.`,
       },
       {
         question: "If remedial work is found, am I obliged to use you for it?",
@@ -408,12 +409,12 @@ export default function FAQPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
-              { label: "Bundle & Save", href: "/landlord-certificates-bundle", price: "from £130" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
+              { label: "Bundle & Save", href: "/landlord-certificates-bundle", price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}` },
             ].map(({ label, href, price }) => (
               <Link
                 key={href}

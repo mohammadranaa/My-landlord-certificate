@@ -15,7 +15,7 @@ import { HeroRating } from "@/components/ui/hero-rating";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
 import { reviewsForService } from "@/data/reviews";
 import { cn } from "@/lib/utils";
-import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT, FROM_PRICES, BUNDLES, formatPounds } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -549,11 +549,11 @@ export default function PatTestingPage() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: "from £130" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety (CP12)", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "Certificate Bundle", href: "/landlord-certificates-bundle", price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}` },
             ].map(({ label, href, price }) => (
               <Link
                 key={href}

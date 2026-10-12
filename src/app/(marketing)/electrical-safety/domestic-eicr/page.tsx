@@ -9,6 +9,8 @@ import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EICR_TABLE,
   getPriceForEICR,
+  formatPounds,
+  getPriceForGasSafety,
 } from "@/lib/pricing";
 
 export const metadata: Metadata = {
@@ -329,7 +331,7 @@ export default function DomesticEICRPage() {
           <p className="text-brand-grey mb-5 text-sm">Most landlords book these alongside their EICR.</p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { href: "/gas-safety-certificate", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From £49.99." },
+              { href: `/gas-safety-certificate", label: "Gas Safety (CP12)", desc: "Annual legal requirement for gas properties. From ${formatPounds(getPriceForGasSafety(1))}.` },
               { href: "/fuse-box-installation", label: "Fuse Box Installation", desc: "Replace old fuse wire boards with modern RCD protection. From £649.99." },
               { href: "/pat-testing", label: "PAT Testing", desc: "Test portable appliances in furnished lets. From £59.99." },
             ].map((s) => (

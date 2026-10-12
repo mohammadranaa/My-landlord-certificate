@@ -14,6 +14,10 @@ import {
   COMMERCIAL_EPC_TABLE,
   DOMESTIC_EPC_TABLE,
   getPriceForEPC,
+  FROM_PRICES,
+  DOMESTIC_EPC_PRICES,
+  BUNDLES,
+  formatPounds,
 } from "@/lib/pricing";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
@@ -89,7 +93,7 @@ const faqSchema = {
       name: "How much does an EPC cost in the UK?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A domestic EPC costs from £89.99 for a studio apartment to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited DEA assessors in London typically charge £80–£150. Commercial EPCs start from £250 for properties up to 50m².",
+        text: `A domestic EPC costs from £89.99 for a studio apartment to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited DEA assessors in London typically charge £80–£150. Commercial EPCs start from ${formatPounds(COMMERCIAL_EPC_TABLE[0].price)} for properties up to 50m².`,
       },
     },
     {
@@ -121,7 +125,7 @@ const faqSchema = {
       name: "How much does a commercial EPC cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A commercial EPC starts from £250 for properties up to 50m², rising to £999 for properties up to 850m². Commercial EPCs are more complex than domestic assessments and are priced by floor area.",
+        text: `A commercial EPC starts from ${formatPounds(COMMERCIAL_EPC_TABLE[0].price)} for properties up to 50m², rising to ${formatPounds(COMMERCIAL_EPC_TABLE[COMMERCIAL_EPC_TABLE.length - 1].price)} for properties up to 850m². Commercial EPCs are more complex than domestic assessments and are priced by floor area.`,
       },
     },
     {
@@ -141,7 +145,7 @@ const faqItems = [
   {
     question: "How much does an EPC cost in the UK?",
     answer:
-      "A domestic EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited assessors in London typically charge more. Our studio EPC at £89.99 is competitive for a next-day lodgement by an accredited DEA. Commercial EPCs start from £250 for properties up to 50m².",
+      `A domestic EPC costs from £89.99 for a studio to £149.99 for a 5-bedroom property. The national average quoted by comparison sites is £60–£120, though accredited assessors in London typically charge more. Our studio EPC at £89.99 is competitive for a next-day lodgement by an accredited DEA. Commercial EPCs start from ${formatPounds(COMMERCIAL_EPC_TABLE[0].price)} for properties up to 50m².`,
   },
   {
     question: "How long does an EPC last?",
@@ -171,12 +175,12 @@ const faqItems = [
   {
     question: "How much does a commercial EPC cost?",
     answer:
-      "A commercial EPC starts from £250 for properties up to 50m², rising to £999 for properties up to 850m². Commercial EPCs are significantly more complex than domestic assessments, they require a different methodology (SBEM rather than RdSAP) and are priced by floor area.",
+      `A commercial EPC starts from ${formatPounds(COMMERCIAL_EPC_TABLE[0].price)} for properties up to 50m², rising to ${formatPounds(COMMERCIAL_EPC_TABLE[COMMERCIAL_EPC_TABLE.length - 1].price)} for properties up to 850m². Commercial EPCs are significantly more complex than domestic assessments, they require a different methodology (SBEM rather than RdSAP) and are priced by floor area.`,
   },
   {
     question: "Can I save money by bundling an EPC with other certificates?",
     answer:
-      "Yes, our Full Compliance Bundle (EICR + Gas Safety Certificate + EPC) costs £230 versus £254.98 if booked separately, saving £24.98. All three certificates are completed in one visit.",
+      `Yes, our Full Compliance Bundle (EICR + Gas Safety Certificate + EPC) costs ${formatPounds(BUNDLES["full-compliance"].bundlePrice)} versus ${formatPounds(BUNDLES["full-compliance"].subtotal)} if booked separately, saving ${formatPounds(BUNDLES["full-compliance"].saving)}. All three certificates are completed in one visit.`,
   },
 ];
 
@@ -419,7 +423,7 @@ export default function EpcCostPage() {
                 {[
                   { size: "Studio / 1 bed", market: "£60–£100", ours: `£${lowestPrice}` },
                   { size: "1–3 bedrooms", market: "£80–£130", ours: `£${popularPrice}` },
-                  { size: "4 bedrooms", market: "£100–£150", ours: "£129.99" },
+                  { size: "4 bedrooms", market: "£100–£150", ours: formatPounds(DOMESTIC_EPC_PRICES["4bed"]) },
                   { size: "5 bedrooms", market: "£120–£180", ours: `£${largestPrice}` },
                 ].map(({ size, market, ours }, i) => (
                   <tr key={size} className={i % 2 === 0 ? "bg-white" : "bg-warm-white"}>
@@ -586,7 +590,7 @@ export default function EpcCostPage() {
               "Select the correct property size, a studio and a 1-bed are often different tiers. Check your bedroom count before booking.",
               "Have documentation ready, installation certificates for insulation, FENSA certificates for windows, and boiler commissioning records all allow the assessor to award credit without making conservative assumptions.",
               "Make improvements before the assessment, fitting LED lighting and a boiler programmer costs very little but can nudge a D rating towards a C, which matters for MEES compliance.",
-              "Bundle with EICR and Gas Safety, our Full Compliance Bundle (all three) costs £230 versus £254.98 separately, saving £24.98 in one visit.",
+              `Bundle with EICR and Gas Safety, our Full Compliance Bundle (all three) costs ${formatPounds(BUNDLES["full-compliance"].bundlePrice)} versus ${formatPounds(BUNDLES["full-compliance"].subtotal)} separately, saving ${formatPounds(BUNDLES["full-compliance"].saving)} in one visit.`,
               "Don't wait until the 10-year expiry, if your property is F or G, renewing the EPC after improvements demonstrates compliance immediately. Commission a new EPC as soon as improvements are made.",
               "Choose a fixed-price provider, variable-rate EPC quotes can be difficult to compare. Our prices are fixed by property size and shown in full before you book.",
             ].map((item) => (
@@ -638,18 +642,18 @@ export default function EpcCostPage() {
               {
                 name: "Full Compliance Bundle",
                 description: "EICR + Gas Safety Certificate + EPC (1–3 bed)",
-                individually: "£254.98",
-                bundle: "£230",
-                saving: "£24.98",
+                individually: formatPounds(BUNDLES["full-compliance"].subtotal),
+                bundle: formatPounds(BUNDLES["full-compliance"].bundlePrice),
+                saving: formatPounds(BUNDLES["full-compliance"].saving),
                 href: "/book?bundle=full-compliance",
                 highlight: true,
               },
               {
                 name: "HMO Complete Bundle",
                 description: "EICR + Gas Safety + EPC + Fire Risk Assessment",
-                individually: "£494.97",
-                bundle: "£450",
-                saving: "£44.97",
+                individually: formatPounds(BUNDLES["hmo-complete"].subtotal),
+                bundle: formatPounds(BUNDLES["hmo-complete"].bundlePrice),
+                saving: formatPounds(BUNDLES["hmo-complete"].saving),
                 href: "/book?bundle=hmo-complete",
                 highlight: false,
               },
@@ -710,8 +714,8 @@ export default function EpcCostPage() {
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate Cost", href: "/eicr-cost", price: "from £67.99" },
-              { label: "Gas Safety Certificate Cost", href: "/gas-safety-certificate-cost", price: "from £50" },
+              { label: "EICR Certificate Cost", href: "/eicr-cost", price: FROM_PRICES.eicr },
+              { label: "Gas Safety Certificate Cost", href: "/gas-safety-certificate-cost", price: FROM_PRICES["gas-safety-cp12"] },
               { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
             ].map(({ label, href, price }) => (
               <Link

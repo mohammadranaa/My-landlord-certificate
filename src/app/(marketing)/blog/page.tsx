@@ -13,6 +13,7 @@ import {
   type BlogCategory,
 } from "@/lib/blog";
 import { JsonLd } from "@/components/shared/json-ld";
+import { FROM_PRICES } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Landlord Compliance Blog — Guides, Tips & Updates",
@@ -278,11 +279,11 @@ export default async function BlogPage({
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate", href: "/eicr", price: "from £67.99" },
-              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: "from £50" },
-              { label: "EPC Certificate", href: "/epc", price: "from £89.99" },
-              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: "from £74" },
-              { label: "PAT Testing", href: "/pat-testing", price: "from £59.99" },
+              { label: "EICR Certificate", href: "/eicr", price: FROM_PRICES.eicr },
+              { label: "Gas Safety Certificate", href: "/gas-safety-certificate", price: FROM_PRICES["gas-safety-cp12"] },
+              { label: "EPC Certificate", href: "/epc", price: FROM_PRICES.epc },
+              { label: "Fire Risk Assessment", href: "/fire-risk-assessment", price: FROM_PRICES["fire-risk-assessment"] },
+              { label: "PAT Testing", href: "/pat-testing", price: FROM_PRICES.pat },
               { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
             ].map(({ label, href, price }) => (
               <Link

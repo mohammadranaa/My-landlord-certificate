@@ -465,3 +465,70 @@ export function calculateHmoDiscount(
 function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }
+
+// ─── Landlord certificate bundles (/landlord-certificates-bundle) ─────────────
+
+export interface LandlordBundleService {
+  label: string;
+  price: number;
+  href: string;
+}
+
+export interface LandlordBundle {
+  key: "essential" | "full-compliance" | "hmo-complete";
+  name: string;
+  services: readonly LandlordBundleService[];
+  /** Fixed marketing price for the bundle. */
+  bundlePrice: number;
+  /** Sum of the individual service prices. */
+  subtotal: number;
+  saving: number;
+}
+
+function bundle(key: LandlordBundle["key"], name: string, bundlePrice: number, services: LandlordBundleService[]): LandlordBundle {
+  const subtotal = round2(services.reduce((sum, s) => sum + s.price, 0));
+  return { key, name, services, bundlePrice, subtotal, saving: round2(subtotal - bundlePrice) };
+}
+
+const BUNDLE_EICR_13 = { label: "EICR (1–3 bed)", price: DOMESTIC_EICR_PRICES["1-3bed"], href: "/eicr" };
+const BUNDLE_GAS_BOILER = {
+  label: "Gas Safety — Boiler check + service (CP12)",
+  price: GAS_SAFETY_CP12_PRICES["Boiler Check + Service"],
+  href: "/gas-safety-certificate",
+};
+
+export const BUNDLES = {
+  essential: bundle("essential", "Essential Bundle", 160, [BUNDLE_EICR_13, BUNDLE_GAS_BOILER]),
+  "full-compliance": bundle("full-compliance", "Full Compliance Bundle", 260, [
+    BUNDLE_EICR_13,
+    BUNDLE_GAS_BOILER,
+    { label: "EPC (1–3 bed)", price: DOMESTIC_EPC_PRICES["1-3bed"], href: "/epc" },
+  ]),
+  "hmo-complete": bundle("hmo-complete", "HMO Complete Bundle", 470, [
+    { label: "EICR (4 bed)", price: DOMESTIC_EICR_PRICES["4bed"], href: "/eicr" },
+    BUNDLE_GAS_BOILER,
+    { label: "EPC (5 bed)", price: DOMESTIC_EPC_PRICES["5bed"], href: "/epc" },
+    { label: "Fire Risk Assessment (4 bed)", price: getPriceForFRA("4bed"), href: "/fire-risk-assessment" },
+  ]),
+} as const;
+
+export const BUNDLE_MAX_SAVING = Math.max(...Object.values(BUNDLES).map((b) => b.saving));
+
+/** "£160" for whole pounds, "£19.98" otherwise — for prices built into copy. */
+export function formatPounds(amount: number): string {
+  return Number.isInteger(amount) ? `£${amount.toLocaleString("en-GB")}` : `£${amount.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+/** Cheapest entry price across EICR, Gas Safety, EPC, FRA and PAT (homepage copy). */
+export const CORE_SERVICES_FROM = Math.min(
+  getPriceForEICR("studio"),
+  getPriceForGasSafety(1),
+  getPriceForEPC("studio"),
+  getPriceForFRA("studio"),
+  getPriceForPAT(1),
+);
+
+/** Cheapest "from" price across every service (pricing page copy). */
+export const LOWEST_SERVICE_PRICE = Math.min(
+  ...Object.values(FROM_PRICES).map((p) => Number(p.replace(/[^\d.]/g, ""))),
+);

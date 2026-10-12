@@ -8,7 +8,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
-import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, formatPounds } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Fire Alarm Installation London — £209.99/alarm, Mains-Wired",
@@ -92,7 +92,7 @@ const faqs = [
   {
     question: "How much does fire alarm installation cost in London?",
     answer:
-      "We charge £209.99 per alarm, which includes supply, installation, interconnection wiring, and commissioning. A typical 3-bedroom HMO requiring 5–6 alarms would cost £1,049.95–£1,259.94 in total. The BS 5839-6 commissioning certificate is included at no extra charge. We provide a free pre-installation survey and a fixed-price quotation before any work begins. Additional charges apply for properties in the London Congestion Charge Zone (£20) or where parking restrictions require a permit (£10).",
+      `We charge ${formatPounds(FIRE_ALARM_INSTALLATION_PER_ALARM)} per alarm, which includes supply, installation, interconnection wiring, and commissioning. A typical 3-bedroom HMO requiring 5–6 alarms would cost ${formatPounds(5 * FIRE_ALARM_INSTALLATION_PER_ALARM)}–${formatPounds(6 * FIRE_ALARM_INSTALLATION_PER_ALARM)} in total. The BS 5839-6 commissioning certificate is included at no extra charge. We provide a free pre-installation survey and a fixed-price quotation before any work begins. Additional charges apply for properties in the London Congestion Charge Zone (£${ADDITIONAL_CHARGES.congestionZone}) or where parking restrictions require a permit (£${ADDITIONAL_CHARGES.parking}).`,
   },
   {
     question: "What type of fire alarm does my HMO need?",

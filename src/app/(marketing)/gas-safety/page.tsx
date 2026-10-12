@@ -10,7 +10,7 @@ import { FROM_PRICES } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Gas Safety Certificates | CP12, CP42 & Boiler Installation",
   description:
-    "Gas Safe Registered engineers for domestic CP12 from £49.99 and commercial CP42 from £159.99, across all London boroughs. Book today.",
+    `Gas Safe Registered engineers for domestic CP12 ${FROM_PRICES["gas-safety-cp12"]} and commercial CP42 ${FROM_PRICES["gas-safety-cp42"]}, across all London boroughs. Book today.`,
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk/gas-safety" },
 };
 

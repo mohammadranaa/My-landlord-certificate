@@ -37,6 +37,9 @@ const PRICES = {
   legionella: LEGIONELLA_PRICES.standard,
 } as const;
 
+/** Sum of the nine entry prices, rounded to the nearest pound for copy. */
+const BASE_HMO_TOTAL = Math.round(Object.values(PRICES).reduce((sum, p) => sum + p, 0));
+
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
@@ -116,7 +119,7 @@ const faqSchema = {
       name: "How much does HMO compliance cost in London?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Base HMO compliance for a studio or small HMO costs approximately £883 when you add up the entry-level prices for all nine required certificates: EICR £67.99, Gas Safety £49.99, Fire Risk Assessment £74.99, Fire Safety Certificate £54.99, Emergency Lights £54.99, EPC £89.99, PAT Testing £59.99, Fire Door Certificate £129.99, and Legionella Risk Assessment £299.99. Larger HMOs — typically 4+ bedrooms — will cost more as prices for EICR, FRA, and EPC scale with property size. This is a first-year figure; ongoing annual renewal costs are lower because EPC (10 years), EICR (5 years), and Legionella (2 years) do not need renewing annually.",
+        text: `Base HMO compliance for a studio or small HMO costs approximately £${BASE_HMO_TOTAL.toLocaleString("en-GB")} when you add up the entry-level prices for all nine required certificates: EICR £${PRICES.eicr}, Gas Safety £${PRICES.gas}, Fire Risk Assessment £${PRICES.fra}, Fire Safety Certificate £${PRICES.fireSafety}, Emergency Lights £${PRICES.elc}, EPC £${PRICES.epc}, PAT Testing £${PRICES.pat}, Fire Door Certificate £${PRICES.fireDoor}, and Legionella Risk Assessment £${PRICES.legionella}. Larger HMOs — typically 4+ bedrooms — will cost more as prices for EICR, FRA, and EPC scale with property size. This is a first-year figure; ongoing annual renewal costs are lower because EPC (10 years), EICR (5 years), and Legionella (2 years) do not need renewing annually.`,
       },
     },
     {
@@ -319,7 +322,7 @@ const faqItems = [
   },
   {
     question: "How much does HMO compliance cost in London?",
-    answer: `Base HMO compliance for a studio or small HMO costs approximately £883 when you add up the entry-level prices for all nine required certificates: EICR £${PRICES.eicr}, Gas Safety £${PRICES.gas}, Fire Risk Assessment £${PRICES.fra}, Fire Safety Certificate £${PRICES.fireSafety}, Emergency Lights £${PRICES.elc}, EPC £${PRICES.epc}, PAT Testing £${PRICES.pat}, Fire Door Certificate £${PRICES.fireDoor}, and Legionella Risk Assessment £${PRICES.legionella}. Larger HMOs will cost more as prices for EICR, FRA, and EPC scale with property size. This is a first-year figure — ongoing renewal costs are lower because EPC (10 years), EICR (5 years), and Legionella (2 years) do not renew annually.`,
+    answer: `Base HMO compliance for a studio or small HMO costs approximately £${BASE_HMO_TOTAL.toLocaleString("en-GB")} when you add up the entry-level prices for all nine required certificates: EICR £${PRICES.eicr}, Gas Safety £${PRICES.gas}, Fire Risk Assessment £${PRICES.fra}, Fire Safety Certificate £${PRICES.fireSafety}, Emergency Lights £${PRICES.elc}, EPC £${PRICES.epc}, PAT Testing £${PRICES.pat}, Fire Door Certificate £${PRICES.fireDoor}, and Legionella Risk Assessment £${PRICES.legionella}. Larger HMOs will cost more as prices for EICR, FRA, and EPC scale with property size. This is a first-year figure — ongoing renewal costs are lower because EPC (10 years), EICR (5 years), and Legionella (2 years) do not renew annually.`,
   },
   {
     question: "How often do I need a Fire Risk Assessment for an HMO?",

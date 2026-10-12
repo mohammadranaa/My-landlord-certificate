@@ -8,7 +8,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
-import { ADDITIONAL_CHARGES, BOILER_INSTALLATION_FROM } from "@/lib/pricing";
+import { ADDITIONAL_CHARGES, BOILER_INSTALLATION_FROM, formatPounds, getPriceForGasSafety } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Boiler Installation London from £2,499 — Gas Safe Registered",
@@ -306,7 +306,7 @@ export default function BoilerInstallationPage() {
               {
                 name: "Gas Safety Certificate (CP12)",
                 href: "/gas-safety-certificate",
-                desc: "Annual domestic gas safety inspection from £49.99. Required by law for all rental properties.",
+                desc: `Annual domestic gas safety inspection from ${formatPounds(getPriceForGasSafety(1))}. Required by law for all rental properties.`,
               },
               {
                 name: "Commercial Gas Safety (CP42)",

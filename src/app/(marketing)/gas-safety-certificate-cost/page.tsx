@@ -17,6 +17,9 @@ import {
   GAS_SAFETY_CP12_TABLE,
   GAS_SAFETY_CP42_TABLE,
   getPriceForGasSafety,
+  FROM_PRICES,
+  BUNDLES,
+  formatPounds,
 } from "@/lib/pricing";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
@@ -124,7 +127,7 @@ const faqSchema = {
       name: "How much does a commercial gas safety certificate cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A commercial Gas Safety Certificate (CP42) starts from £159.99 for 1 appliance, rising to £499.99 for 8 appliances. Commercial inspections are carried out to the CP42 standard under the Gas Safety (Installation and Use) Regulations 1998.",
+        text: `A commercial Gas Safety Certificate (CP42) starts from ${formatPounds(GAS_SAFETY_CP42_TABLE[0].price)} for 1 appliance, rising to ${formatPounds(GAS_SAFETY_CP42_TABLE[GAS_SAFETY_CP42_TABLE.length - 1].price)} for 8 appliances. Commercial inspections are carried out to the CP42 standard under the Gas Safety (Installation and Use) Regulations 1998.`,
       },
     },
     {
@@ -132,7 +135,7 @@ const faqSchema = {
       name: "Can I save money by bundling the gas safety certificate with other certificates?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98 on three certificates in one visit.",
+        text: `Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs ${formatPounds(BUNDLES.essential.bundlePrice)} versus ${formatPounds(BUNDLES.essential.subtotal)} if booked separately, saving ${formatPounds(BUNDLES.essential.saving)}. The Full Compliance Bundle (EICR + Gas Safety + EPC) is ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)} on three certificates in one visit.`,
       },
     },
   ],
@@ -169,12 +172,12 @@ const faqItems = [
   {
     question: "How much does a commercial gas safety certificate cost?",
     answer:
-      "A commercial Gas Safety Certificate (CP42) starts from £159.99 for 1 appliance, rising to £499.99 for 8 appliances. Commercial inspections are carried out to the CP42 standard. See the commercial pricing table above.",
+      `A commercial Gas Safety Certificate (CP42) starts from ${formatPounds(GAS_SAFETY_CP42_TABLE[0].price)} for 1 appliance, rising to ${formatPounds(GAS_SAFETY_CP42_TABLE[GAS_SAFETY_CP42_TABLE.length - 1].price)} for 8 appliances. Commercial inspections are carried out to the CP42 standard. See the commercial pricing table above.`,
   },
   {
     question: "Can I save money by bundling with other certificates?",
     answer:
-      "Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs £130 versus £144.99 if booked separately, saving £14.99. The Full Compliance Bundle (EICR + Gas Safety + EPC) is £230, saving £24.98. All certificates are completed in one visit.",
+      `Yes, our Essential Bundle (EICR + Gas Safety Certificate) costs ${formatPounds(BUNDLES.essential.bundlePrice)} versus ${formatPounds(BUNDLES.essential.subtotal)} if booked separately, saving ${formatPounds(BUNDLES.essential.saving)}. The Full Compliance Bundle (EICR + Gas Safety + EPC) is ${formatPounds(BUNDLES["full-compliance"].bundlePrice)}, saving ${formatPounds(BUNDLES["full-compliance"].saving)}. All certificates are completed in one visit.`,
   },
   {
     question: "How do I know if a gas engineer is legally qualified to issue a CP12?",
@@ -517,7 +520,7 @@ export default function GasSafetyCertificateCostPage() {
             {[
               "Count your appliances correctly before booking, only appliances supplied as part of the tenancy need testing. A tenant's own gas cooker is their responsibility.",
               "Book the boiler service at the same visit, the combined Gas Safety + Boiler Service at £84.99 saves money over booking separately and keeps both records aligned.",
-              "Bundle with your EICR, our Essential Bundle (EICR + Gas Safety) costs £130 versus £144.99 separately, saving £14.99 in a single visit.",
+              `Bundle with your EICR, our Essential Bundle (EICR + Gas Safety) costs ${formatPounds(BUNDLES.essential.bundlePrice)} versus ${formatPounds(BUNDLES.essential.subtotal)} separately, saving ${formatPounds(BUNDLES.essential.saving)} in a single visit.`,
               "Don't let it lapse, a missed annual renewal creates urgency and some providers charge a premium. Book one to two months before expiry.",
               "Ensure the engineer has clear access, all appliances, the gas meter, and the boiler flue terminal (if external) should be accessible before the appointment.",
               "Choose fixed pricing, an hourly rate quote is unpredictable. Fixed-price providers show the full cost before you book.",
@@ -563,17 +566,17 @@ export default function GasSafetyCertificateCostPage() {
               {
                 name: "Essential Bundle",
                 description: "EICR (1–3 bed) + Gas Safety Certificate",
-                individually: "£144.99",
-                bundle: "£130",
-                saving: "£14.99",
+                individually: formatPounds(BUNDLES.essential.subtotal),
+                bundle: formatPounds(BUNDLES.essential.bundlePrice),
+                saving: formatPounds(BUNDLES.essential.saving),
                 href: "/book?bundle=essential",
               },
               {
                 name: "Full Compliance Bundle",
                 description: "EICR + Gas Safety Certificate + EPC",
-                individually: "£254.98",
-                bundle: "£230",
-                saving: "£24.98",
+                individually: formatPounds(BUNDLES["full-compliance"].subtotal),
+                bundle: formatPounds(BUNDLES["full-compliance"].bundlePrice),
+                saving: formatPounds(BUNDLES["full-compliance"].saving),
                 href: "/book?bundle=full-compliance",
               },
             ].map(({ name, description, individually, bundle, saving, href }) => (
@@ -622,8 +625,8 @@ export default function GasSafetyCertificateCostPage() {
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { label: "EICR Certificate Cost", href: "/eicr-cost", price: "from £67.99" },
-              { label: "EPC Certificate Cost", href: "/epc-cost", price: "from £89.99" },
+              { label: "EICR Certificate Cost", href: "/eicr-cost", price: FROM_PRICES.eicr },
+              { label: "EPC Certificate Cost", href: "/epc-cost", price: FROM_PRICES.epc },
               { label: "All Services & Prices", href: "/pricing", price: "Full price list" },
             ].map(({ label, href, price }) => (
               <Link

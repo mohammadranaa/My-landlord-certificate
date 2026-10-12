@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
-import { M25_CORRIDOR_CHARGE_FROM, getPriceForEICR, getPriceForGasSafety, getPriceForEPC, getPriceForFRA, getPriceForPAT } from "@/lib/pricing";
+import { M25_CORRIDOR_CHARGE_FROM, getPriceForEICR, getPriceForGasSafety, getPriceForEPC, getPriceForFRA, getPriceForPAT, BUNDLE_MAX_SAVING, BUNDLES, formatPounds } from "@/lib/pricing";
 import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -382,9 +382,9 @@ export default function CoverageAreasPage() {
               {
                 label: "Certificate Bundles",
                 detail: "Multiple certificates, single engineer visit",
-                price: "from £160",
+                price: `from ${formatPounds(BUNDLES.essential.bundlePrice)}`,
                 href: "/landlord-certificates-bundle",
-                validity: "Save up to £49.96",
+                validity: `Save up to ${formatPounds(BUNDLE_MAX_SAVING)}`,
               },
             ].map(({ label, detail, price, href, validity }) => (
               <Link

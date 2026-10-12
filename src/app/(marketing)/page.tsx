@@ -20,7 +20,7 @@ import {
   LazyFAQAccordion as FAQAccordion,
   LazyStickyMobileCTA as StickyMobileCTA,
 } from "@/components/lazy";
-import { getPriceForGasSafety } from "@/lib/pricing";
+import { getPriceForGasSafety, CORE_SERVICES_FROM, formatPounds } from "@/lib/pricing";
 import { PHONE_NUMBER, EMAIL, CERTIFICATES_ISSUED } from "@/lib/constants";
 
 const ServicesSection = dynamic(
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
     absolute: "Landlord Certificates London — EICR, Gas Safety & EPC | MLC",
   },
   description:
-    "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From £50, no hidden charges. Book today.",
+    `Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From ${formatPounds(CORE_SERVICES_FROM)}, no hidden charges. Book today.`,
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk" },
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates from £50, no hidden charges. EICR, Gas Safety, EPC — next-day appointments. Book today.",
+      `Landlord compliance certificates from ${formatPounds(CORE_SERVICES_FROM)}, no hidden charges. EICR, Gas Safety, EPC — next-day appointments. Book today.`,
     url: "https://www.mylandlordcertificate.co.uk",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
   },
@@ -217,7 +217,7 @@ export default function HomePage() {
             <div className="max-w-xl lg:max-w-[54%]">
               <Heading level={1} id="hero-heading" className="mb-5">
                 Landlord Certificates in London. EICR, Gas Safety &amp; EPC from{" "}
-                <span className="text-action-green">£49.99</span>
+                <span className="text-action-green">{formatPounds(getPriceForGasSafety(1))}</span>
               </Heading>
 
               <p className="mb-2 text-lg leading-relaxed text-brand-charcoal/80">
