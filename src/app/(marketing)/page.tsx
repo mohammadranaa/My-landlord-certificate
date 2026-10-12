@@ -21,7 +21,7 @@ import {
   LazyStickyMobileCTA as StickyMobileCTA,
 } from "@/components/lazy";
 import { getPriceForGasSafety } from "@/lib/pricing";
-import { PHONE_NUMBER, EMAIL } from "@/lib/constants";
+import { PHONE_NUMBER, EMAIL, CERTIFICATES_ISSUED } from "@/lib/constants";
 
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
@@ -746,7 +746,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
             {([
-              { numeric: 500, suffix: "+", label: "Certificates issued" },
+              { numeric: CERTIFICATES_ISSUED, suffix: "+", label: "Certificates issued" },
               { text: "24 hrs", label: "Certificate delivery" },
               { text: "Fixed", label: "No hidden charges" },
               { numeric: 33, suffix: "", label: "London boroughs covered" },

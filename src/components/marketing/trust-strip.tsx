@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { CERTIFICATES_ISSUED } from "@/lib/constants";
 
 interface TrustStripProps {
   variant?: "dark" | "light";
@@ -64,7 +65,7 @@ export function TrustStrip({ variant = "dark", className }: TrustStripProps) {
             isDark ? "text-brand-grey" : "text-brand-grey"
           )}
         >
-          1,000+ certificates issued
+          {CERTIFICATES_ISSUED.toLocaleString("en-GB")}+ certificates issued
         </span>
       </div>
     </div>

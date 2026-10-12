@@ -28,6 +28,14 @@ export const GOOGLE_ADS_CONVERSION_DETAILS = "AW-18223043841/VoTkCKjr8escEIGqtvF
 
 export const HMO_COMPLIANCE_URL = "/hmo-compliance";
 
+// Owner-confirmed figures and wording — use these, never a retyped string.
+// .mdx posts can't import them, so they use exactly the same text.
+export const CERTIFICATES_ISSUED = 1000; // owner-confirmed Oct 2026; shown as "1,000+"
+export const APPOINTMENT_SHORT = "Next-day appointments";
+export const APPOINTMENT_LINE = "Next-day appointments across London and the M25 — book by 5pm.";
+export const APPOINTMENT_FAQ =
+  "Book by 5pm and we'll visit the next day, 7 days a week. Booked after 5pm? Your visit is the following day — or call 020 3996 1070 for anything urgent.";
+
 // ChatGPT Ads (OpenAI) measurement pixel — see components/analytics/analytics-scripts.tsx
 export const OPENAI_PIXEL_ID = "L68ZZ34f67c7b9b2NF25Rf";
 
