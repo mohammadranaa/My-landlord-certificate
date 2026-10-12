@@ -4,6 +4,15 @@ Project context and conventions for Claude Code. Read this before making any cha
 
 ---
 
+## 0. Owner decisions (source of truth — October 2026)
+
+1. **Prices:** `src/lib/pricing.ts` is the only source. Every price on every page, FAQ, JSON-LD schema, meta description and blog post must match it. Build prices from the module (`FROM_PRICES`, the `getPriceFor…` helpers, the tables, `LANDLORD_BUNDLES`, `formatPounds`) — never retype a number. `.mdx` posts can't import, so they must use exactly the current values.
+2. **Appointments: always next day.** Use `APPOINTMENT_SHORT`, `APPOINTMENT_LINE` or `APPOINTMENT_FAQ` from `src/lib/constants.ts`. The booking form allows tomorrow if booked before 5pm UK time, otherwise the day after, 7 days a week — so the site says "Book by 5pm for a next-day appointment". Never "same-week", "1–3 days" or "within the week". (Booking *confirmation* time — "we'll call you within 2 hours" — is a different thing and stays.)
+3. **Certificates issued: 1,000+.** Use `CERTIFICATES_ISSUED` from `src/lib/constants.ts`.
+4. **Reviews: only real ones**, from `src/data/reviews.ts`, shown with `ReviewsSection` on every service page. Rating shows "★★★★★ Rated 5.0 on Google" with no count until `SHOW_REVIEW_COUNT_FROM`. Never add `AggregateRating` or `Review` schema, and never invent a testimonial (DMCC Act 2024).
+
+---
+
 ## 1. Project overview
 
 **My Landlord Certificate** is a UK landlord compliance certificate booking platform. Landlords book EICR, Gas Safety (CP12), EPC, Fire Risk Assessment, PAT Testing and other compliance services online. Engineers are dispatched and certificates are emailed within 24 hours.
@@ -66,7 +75,7 @@ Project context and conventions for Claude Code. Read this before making any cha
 | Alert Amber | `#F59E0B` | `text-brand-amber` | Legal notices, warnings |
 
 ### Typography
-- Font: Inter (variable, loaded via `next/font`)
+- Font: Inter (variable, loaded via `next/font` in `src/app/layout.tsx`); the agent portal also uses Barlow Condensed (`--font-barlow-condensed`)
 - Headings: use `<Heading level={1|2|3|4}>` component — never raw `<h1>–<h4>` on page content
 - Body: `text-brand-charcoal/80` for readable body copy, `text-brand-grey` for secondary text
 
@@ -155,12 +164,12 @@ src/
 
 ### PAGE: Homepage (/)
 
-- **H1:** "Landlord Certificates in London — EICR, Gas Safety & EPC from £X" — price is the Gas Safety 1-appliance price (`getPriceForGasSafety(1)`), never hardcoded
+- **H1:** "Landlord Certificates in London — EICR, Gas Safety & EPC from £X" — price is the Gas Safety entry price (`getPriceForGasSafety(1)` → £64.99, up to 2 appliances), never hardcoded
 - **Meta title:** "Landlord Certificates — EICR, Gas Safety & EPC | My Landlord Certificate"
-- **Meta description:** "Book your EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment or PAT testing online. NICEIC approved and Gas Safe registered engineers. Fixed prices from £50. Same-week appointments across London."
+- **Meta description:** "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From £X, no hidden charges." — £X is `CORE_SERVICES_FROM` (cheapest of those five, currently £59.99)
 - **Word count target:** 800–1,200 words (visible body text)
 - **Sections (in order):** Hero → Services grid → How it works → Why us → Reviews → Letting agents teaser → FAQ preview → Final CTA
-- **Schema:** Organization, LocalBusiness, AggregateRating, BreadcrumbList
+- **Schema:** Organization, LocalBusiness, BreadcrumbList (no AggregateRating or Review schema)
 - **Target keywords** (use naturally, not stuffed):
   - Primary: `landlord certificates`, `property certificates`, `landlord compliance`
   - Service: `EICR certificate`, `gas safety certificate`, `CP12`, `EPC certificate`, `fire risk assessment`, `PAT testing`, `HMO certificates`
@@ -168,11 +177,11 @@ src/
   - Transactional: `fixed price`, `certificate within 24 hours`, `book online`
 - **Service card prices:** Import from `src/lib/pricing.ts`:
   - EICR: `getPriceForEICR('studio')` → £67.99
-  - Gas Safety: `getPriceForGasSafety(1)` → £50
+  - Gas Safety: `getPriceForGasSafety(1)` → £64.99
   - EPC: `getPriceForEPC('studio')` → £89.99
-  - Fire Risk Assessment: `getPriceForFRA('studio')` → £74
+  - Fire Risk Assessment: `getPriceForFRA('studio')` → £74.99
   - PAT Testing: `getPriceForPAT(1)` → £59.99
-  - Bundle: £130 (fixed marketing price)
+  - Bundle: `LANDLORD_BUNDLES.essential.bundlePrice` → £160
 - **Hero:** Compliance Blue gradient background. No real photo yet — gradient + tagline only.
 - **Do not hardcode any prices in body copy** — reference the pricing page or use `from £X` pulled from the module.
 
@@ -185,7 +194,7 @@ Every service page must include:
 2. **Hero** — H1 with "from £X" price, accreditation badge line, `PriceDisplay`, two CTAs (Book + anchor to pricing), `TrustBadges`
 3. **Stats bar** — dark charcoal bar with 4 quick facts (price, validity/frequency, certificate delivery, accreditation)
 4. **What is it?** — 2–3 paragraphs + amber legal notice box
-5. **Pricing section** — `PriceTable` using the relevant table constant from `src/lib/pricing.ts` + additional charges note (parking £5, congestion £18) + link to commercial page if applicable
+5. **Pricing section** — `PriceTable` using the relevant table constant from `src/lib/pricing.ts` + additional charges note (`ADDITIONAL_CHARGES`: parking £10, congestion £20) + link to commercial page if applicable
 6. **What's included for £X** — checklist using the entry price
 7. **FAQs** — `FAQAccordion` (no schema — schema is in the page-level `JsonLd`)
 8. **CTA block** — blue rounded section, book button, fixed pricing reassurance
@@ -203,20 +212,20 @@ Every service page must include:
 - **Schema offer price:** 67.99 GBP
 - **Validity:** 5 years
 - **Accreditation:** NICEIC approved
-- **Additional note:** Link to future `/commercial-eicr` page
+- **Additional note:** Link to `/commercial-eicr`
 
 ---
 
 ### (b) `/gas-safety-certificate` — Gas Safety Certificate (CP12)
 
-- **H1:** "Gas Safety Certificate (CP12) from £50"
-- **Meta title:** "Gas Safety Certificate (CP12) from £50 | My Landlord Certificate"
-- **Entry price:** `getPriceForGasSafety(1)` → £50
-- **Price table:** `GAS_SAFETY_CP12_TABLE` with "Most popular" badge on 1-appliance row
-- **Schema offer price:** 50 GBP
+- **H1:** "Gas Safety Certificate (CP12) from £64.99"
+- **Meta title:** "Gas Safety Certificate (CP12) from £64.99 | My Landlord Certificate"
+- **Entry price:** `getPriceForGasSafety(1)` → £64.99 (up to 2 appliances, excl. boiler)
+- **Price table:** `GAS_SAFETY_CP12_TABLE` with "Most popular" badge on the first row
+- **Schema offer price:** 64.99 GBP
 - **Validity:** 12 months (annual)
 - **Accreditation:** Gas Safe Registered
-- **Additional note:** Link to future `/commercial-gas-safety-certificate` page
+- **Additional note:** Link to `/commercial-gas-safety-certificate`
 
 ---
 
@@ -229,20 +238,20 @@ Every service page must include:
 - **Schema offer price:** 89.99 GBP
 - **Validity:** 10 years
 - **Accreditation:** Accredited DEA assessors
-- **Additional note:** Link to future `/commercial-epc` page
+- **Additional note:** Link to `/commercial-epc`
 
 ---
 
 ### (d) `/fire-risk-assessment` — Fire Risk Assessment
 
-- **H1:** "Fire Risk Assessment from £74"
-- **Meta title:** "Fire Risk Assessment from £74 | My Landlord Certificate"
-- **Entry price:** `getPriceForFRA('studio')` → £74
+- **H1:** "Fire Risk Assessment from £74.99"
+- **Meta title:** "Fire Risk Assessment from £74.99 | My Landlord Certificate"
+- **Entry price:** `getPriceForFRA('studio')` → £74.99
 - **Price table:** `FRA_RESIDENTIAL_TABLE` with "Most popular" badge on 1–3 bed row
-- **Schema offer price:** 74 GBP
+- **Schema offer price:** 74.99 GBP
 - **Review frequency:** Annually
 - **Legal basis:** Regulatory Reform (Fire Safety) Order 2005
-- **Additional note:** Link to future `/commercial-fire-risk-assessment` page
+- **Additional note:** Link to commercial FRA pricing (`FRA_COMMERCIAL_TABLE`)
 
 ---
 
@@ -260,11 +269,12 @@ Every service page must include:
 ### (f) `/landlord-certificates-bundle` — Bundle
 
 - **H1:** "All the certificates you need. One visit. One price."
-- **Bundle prices (fixed marketing prices — do not recalculate):**
-  - Essential Bundle: EICR 1–3 bed (£94.99) + Gas Safety 1 app (£50) = £144.99 → **£130** (save £14.99)
-  - Full Compliance: EICR 1–3 bed + Gas Safety 1 app + EPC 1–3 bed (£109.99) = £254.98 → **£230** (save £24.98)
-  - HMO Complete: EICR 4 bed (£104.99) + Gas Safety 2 apps (£60) + EPC 5 bed (£149.99) + FRA 4 bed (£179.99) = £494.97 → **£450** (save £44.97)
-- **Schema offer price:** 130 GBP (lowest bundle)
+- **Bundle prices:** defined once in `LANDLORD_BUNDLES` (`src/lib/pricing.ts`). The bundle price is a fixed marketing price; subtotal and saving are computed from the service prices, so they update automatically:
+  - Essential Bundle: EICR 1–3 bed (£94.99) + Gas Safety boiler check + service (£84.99) = £179.98 → **£160** (save £19.98)
+  - Full Compliance: Essential + EPC 1–3 bed (£109.99) = £289.97 → **£260** (save £29.97)
+  - HMO Complete: EICR 4 bed (£104.99) + Gas boiler check + service (£84.99) + EPC 5 bed (£149.99) + FRA 4 bed (£179.99) = £519.96 → **£470** (save £49.96)
+  - Biggest saving: `BUNDLE_MAX_SAVING` (£49.96)
+- **Schema offer price:** `LANDLORD_BUNDLES.essential.bundlePrice` (lowest bundle)
 
 ---
 
@@ -281,8 +291,8 @@ Every service page must include:
 
 - **H1:** "Transparent, fixed pricing"
 - **Content:** Every service category with `PriceTable`, organised into sections: Electrical, Gas, EPC, Fire Safety, Other, Bundles, Additional Charges
-- **CTA:** "Commercial work over £500? Call 0330 133 0066" — appears after commercial tables
-- **Bundle summary table:** Essential £130, Full Compliance £230, HMO Complete £450
+- **CTA:** "Commercial work over £500?" with `PHONE_DISPLAY` (020 3996 1070) — appears after commercial tables
+- **Bundle summary table:** built from `LANDLORD_BUNDLES` (Essential £160, Full Compliance £260, HMO Complete £470)
 
 ---
 
@@ -309,43 +319,19 @@ The `Offer.price` must always match the lowest price from `src/lib/pricing.ts` f
 
 ---
 
-## 8. Planned pages (Phase 1.5 — not yet built)
-
-The following services have pricing in `Docs/pricing.md` and `src/lib/pricing.ts` but no dedicated page yet:
-
-| Service | Suggested slug | Entry price |
-|---|---|---|
-| Electrical Diagnostic | `/electrical-diagnostic` | £89.99/hr |
-| Fuse Box Installation | `/fuse-box-installation` | from £600 |
-| Emergency Lights Certificate | `/emergency-lights-certificate` | from £55 |
-| Fire Alarm Panels | `/fire-alarm-panels` | from £75 |
-| Fire Alarm Installation | `/fire-alarm-installation` | from £209.99/alarm |
-| Fire Door Certificate | `/fire-door-certificate` | from £120 |
-| Fire Extinguisher Testing | `/fire-extinguisher-testing` | from £80 |
-| Asbestos Survey | `/asbestos-survey` | from £239.99 |
-| Boiler Installation | `/boiler-installation` | from £2,499 |
-| Commercial EICR | `/commercial-eicr` | from £149.99 |
-| Commercial EPC | `/commercial-epc` | from £250 |
-| Commercial Gas Safety (CP42) | `/commercial-gas-safety-certificate` | from £159.99 |
-| Commercial FRA | `/commercial-fire-risk-assessment` | from £149.99 |
-
-When building any of these pages, follow the standard service page structure in §6, import pricing from `src/lib/pricing.ts`, and add the relevant table constant.
-
----
-
-## 9. Additional charges
+## 8. Additional charges
 
 Always display these on service pages and the pricing page. Import from `src/lib/pricing.ts`:
 
 ```ts
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
-// ADDITIONAL_CHARGES.parking       → 5
-// ADDITIONAL_CHARGES.congestionZone → 18
+// ADDITIONAL_CHARGES.parking       → 10
+// ADDITIONAL_CHARGES.congestionZone → 20
 ```
 
 ---
 
-## 10. General rules
+## 9. General rules
 
 - **Never hardcode a price** — always import from `src/lib/pricing.ts`
 - **No placeholder content** — if a price is unknown, check `Docs/pricing.md` first
