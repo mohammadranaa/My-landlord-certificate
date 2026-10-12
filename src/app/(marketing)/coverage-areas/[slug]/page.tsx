@@ -10,7 +10,7 @@ import { SERVICE_ICONS } from "@/components/ui/service-icons";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { featuredReviews } from "@/data/reviews";
-import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { SITE_URL, PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 function formatPrice(price: number): string {
@@ -109,7 +109,7 @@ export default async function BoroughHubPage({
           </p>
 
           <p className="text-blue-200 text-base mb-8 max-w-xl">
-            Postcodes covered: {postcodeStr}. Same-week appointments
+            Postcodes covered: {postcodeStr}. {APPOINTMENT_SHORT}
             available — book online in under 3 minutes.
           </p>
 
@@ -227,7 +227,7 @@ export default async function BoroughHubPage({
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book online in under 3 minutes, or call{" "}
             <a href={TEL} className="text-white font-semibold hover:underline">{PHONE_DISPLAY}</a>.
-            Same-week appointments across {borough.name}.
+            {APPOINTMENT_SHORT} across {borough.name}.
           </p>
           <Link href="/book" className={cn(buttonVariants({ variant: "cta", size: "lg" }))}>
             Book now

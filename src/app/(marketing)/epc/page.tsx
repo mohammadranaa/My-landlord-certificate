@@ -10,7 +10,7 @@ import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import Image from "next/image";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_LINE } from "@/lib/constants";
 import { reviewsForService } from "@/data/reviews";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
 import {
@@ -110,7 +110,7 @@ const steps = [
     step: "1",
     title: "Book online or call us",
     description:
-      "Select your property size, pick a date, and confirm your booking. We cover all 33 London boroughs with same-week appointments available.",
+      `Select your property size, pick a date, and confirm your booking. ${APPOINTMENT_LINE}`,
   },
   {
     step: "2",

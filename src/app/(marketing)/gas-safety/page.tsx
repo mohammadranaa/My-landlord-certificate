@@ -6,6 +6,7 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Gas Safety Certificates | CP12, CP42 & Boiler Installation",
@@ -192,7 +193,7 @@ export default function GasSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your gas safety inspection today"
-            subheading="Same-week appointments across London. Gas Safe Registered engineers, fixed prices, no call-out fees."
+            subheading={`${APPOINTMENT_SHORT} across London. Gas Safe Registered engineers, fixed prices, no call-out fees.`}
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

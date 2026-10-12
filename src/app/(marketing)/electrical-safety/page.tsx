@@ -6,6 +6,7 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Electrical Safety Certificates | EICR, PAT Testing & More",
@@ -207,7 +208,7 @@ export default function ElectricalSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your electrical inspection today"
-            subheading="Same-week appointments available across all 33 London boroughs. NICEIC & NAPIT approved engineers, fixed prices."
+            subheading={`${APPOINTMENT_SHORT} across all 33 London boroughs. NICEIC & NAPIT approved engineers, fixed prices.`}
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

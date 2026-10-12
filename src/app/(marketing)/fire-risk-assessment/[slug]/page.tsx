@@ -17,7 +17,7 @@ import {
 } from "@/lib/pricing";
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, APPOINTMENT_SHORT } from "@/lib/constants";
 
 const entryPrice = getPriceForFRA("studio");
 
@@ -203,7 +203,7 @@ export default async function FireRiskAssessmentBoroughPage({
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Postcodes covered: {postcodeStr}. Same-week appointments
+            Postcodes covered: {postcodeStr}. {APPOINTMENT_SHORT}
             available — book online in under 3 minutes.
           </p>
 
@@ -501,7 +501,7 @@ export default async function FireRiskAssessmentBoroughPage({
             hours.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
-            Same-week appointments across {borough.name} and all 33 London
+            {APPOINTMENT_SHORT} across {borough.name} and all 33 London
             boroughs.
           </p>
           <Link

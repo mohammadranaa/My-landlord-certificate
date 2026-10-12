@@ -10,6 +10,7 @@ import {
   COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   COMMERCIAL_EICR_TABLE,
 } from "@/lib/pricing";
+import { APPOINTMENT_LINE, APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Commercial EICR London from £149.99 — NICEIC Approved",
@@ -92,7 +93,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs for commercial EICR inspections. Same-week appointments are available throughout Greater London. For large premises or portfolio work, email us to discuss scheduling.",
+      `We cover all 33 London boroughs for commercial EICR inspections. ${APPOINTMENT_LINE} For large premises or portfolio work, email us to discuss scheduling.`,
   },
 ];
 
@@ -111,7 +112,7 @@ const steps = [
     step: "1",
     title: "Book or call for a quote",
     description:
-      "Tell us the property type, number of consumer units, and approximate circuit count. We'll confirm the fixed price before you commit. Same-week slots across London.",
+      `Tell us the property type, number of consumer units, and approximate circuit count. We'll confirm the fixed price before you commit. ${APPOINTMENT_SHORT} across London.`,
   },
   {
     step: "2",
@@ -346,7 +347,7 @@ export default function CommercialEICRPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice} per consumer unit. NICEIC approved. Full
-              written report within 24 hours. Same-week appointments across London.
+              written report within 24 hours. {APPOINTMENT_SHORT} across London.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

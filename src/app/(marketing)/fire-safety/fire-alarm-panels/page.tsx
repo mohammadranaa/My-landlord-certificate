@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
@@ -346,7 +346,7 @@ export default function FireAlarmPanelsPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Written BS 5839-1 certificate within 24 hours.
-              Same-week appointments across all 33 London boroughs.
+              {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

@@ -9,7 +9,7 @@ import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { featuredReviews } from "@/data/reviews";
 import { cn } from "@/lib/utils";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, APPOINTMENT_FAQ, APPOINTMENT_SHORT } from "@/lib/constants";
 import {
   getPriceForEICR,
   getPriceForGasSafety,
@@ -307,8 +307,8 @@ const benefits = [
     body: `Every price on our site is the price you pay. No call-out charges, no hidden extras beyond the Congestion Zone (£${ADDITIONAL_CHARGES.congestionZone}) and no free parking surcharge (£${ADDITIONAL_CHARGES.parking}).`,
   },
   {
-    title: "Same-week appointments",
-    body: `Most certificates can be arranged within 48 hours. For urgent HMO licence deadlines, call ${PHONE_DISPLAY} and we will do our best to prioritise your booking.`,
+    title: APPOINTMENT_SHORT,
+    body: `${APPOINTMENT_FAQ} For urgent HMO licence deadlines, call ${PHONE_DISPLAY} and we will do our best to prioritise your booking.`,
   },
 ] as const;
 

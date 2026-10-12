@@ -9,7 +9,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, ELC_INSTALLATION_PER_LIGHT, ELC_TABLE } from "@/lib/pricing";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Emergency Lights Certificate London from £54.99 — NICEIC Approved",
@@ -421,7 +421,7 @@ export default function EmergencyLightsCertificatePage() {
               Book your emergency lights certificate
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}. Same-week appointments across all 33 London boroughs.
+              Fixed price from £{entryPrice}. {APPOINTMENT_SHORT} across all 33 London boroughs.
               Certificate issued within 24 hours.
             </p>
             <Link

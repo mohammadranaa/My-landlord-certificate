@@ -13,7 +13,7 @@ import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
-import { TEL, PHONE_DISPLAY, MAILTO, EMAIL } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, MAILTO, EMAIL, APPOINTMENT_SHORT } from "@/lib/constants";
 
 const entryPrice = COMMERCIAL_EPC_TABLE[0].price;
 
@@ -170,7 +170,7 @@ export default function CommercialEPCPage() {
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Same-week appointments across all 33 London boroughs. Fixed pricing
+            {APPOINTMENT_SHORT} across all 33 London boroughs. Fixed pricing
             by gross internal floor area, no hidden charges.
           </p>
 
@@ -582,7 +582,7 @@ export default function CommercialEPCPage() {
               {
                 name: "Book online",
                 href: "/book",
-                desc: "Book any certificate online in under 3 minutes. Fixed price. Same-week appointments.",
+                desc: `Book any certificate online in under 3 minutes. Fixed price. ${APPOINTMENT_SHORT}.`,
               },
             ].map(({ name, href, desc }) => (
               <Link
@@ -610,7 +610,7 @@ export default function CommercialEPCPage() {
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Fixed price from £{entryPrice}. Accredited DEA assessors, MEES
             compliance advice included, certificate lodged on the national
-            register. Same-week appointments across all 33 London boroughs.
+            register. {APPOINTMENT_SHORT} across all 33 London boroughs.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
             Book online or call{" "}

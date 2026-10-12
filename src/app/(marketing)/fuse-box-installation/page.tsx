@@ -9,6 +9,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FUSE_BOX_TABLE } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Fuse Box Installation London from £649.99 — NICEIC Approved",
@@ -390,7 +391,7 @@ export default function FuseBoxInstallationPage() {
               Book your fuse box installation
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
-              Fixed price from £{entryPrice}, EICR and Part P included. Same-week appointments
+              Fixed price from £{entryPrice}, EICR and Part P included. {APPOINTMENT_SHORT}
               across all 33 London boroughs.
             </p>
             <Link

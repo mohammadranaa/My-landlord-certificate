@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/shared/json-ld";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, APPOINTMENT_FAQ } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { FROM_PRICES, BUNDLES, formatPounds } from "@/lib/pricing";
 
@@ -44,7 +44,7 @@ const categories = [
       {
         question: "How quickly can I get an appointment?",
         answer:
-          "Next-day appointments are available across London and the M25 area, subject to engineer availability in your area. Book before 5pm on a working day and we will aim to schedule your visit for the following working day. For urgent priority bookings, email us and we will do our best to accommodate you.",
+          APPOINTMENT_FAQ,
       },
       {
         question: "Do I need to be present during the inspection?",

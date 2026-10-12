@@ -7,7 +7,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, ASBESTOS_SURVEY_TABLE } from "@/lib/pricing";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_SHORT } from "@/lib/constants";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 
@@ -786,7 +786,7 @@ export default function AsbestosSurveyPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. UKAS-accredited laboratory analysis.
-              Written report within 5–7 working days. Same-week appointments across London.
+              Written report within 5–7 working days. {APPOINTMENT_SHORT} across London.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

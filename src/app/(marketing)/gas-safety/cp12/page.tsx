@@ -11,6 +11,7 @@ import {
   getPriceForGasSafety,
   formatPounds,
 } from "@/lib/pricing";
+import { APPOINTMENT_LINE, APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Gas Safety Certificate (CP12) London from ${formatPounds(getPriceForGasSafety(1))}`,
@@ -99,7 +100,7 @@ const faqs = [
   {
     question: "Which London boroughs do you cover?",
     answer:
-      "We cover all 33 London boroughs, including Central London, East London, North London, South London, and West London. Same-week appointments are available throughout Greater London. Book online.",
+      `We cover all 33 London boroughs, including Central London, East London, North London, South London, and West London. ${APPOINTMENT_LINE} Book online.`,
   },
 ];
 
@@ -118,7 +119,7 @@ const steps = [
     step: "1",
     title: "Book online — takes 60 seconds",
     description:
-      "Select the number of gas appliances in your property, choose a date, and confirm. Same-week appointments across all 33 London boroughs.",
+      `Select the number of gas appliances in your property, choose a date, and confirm. ${APPOINTMENT_SHORT} across all 33 London boroughs.`,
   },
   {
     step: "2",
@@ -353,7 +354,7 @@ export default function CP12Page() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Gas Safe Registered engineers. Certificate
-              emailed within 24 hours. Same-week appointments across all 33 London boroughs.
+              emailed within 24 hours. {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

@@ -19,7 +19,7 @@ import {
 } from "@/lib/pricing";
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
-import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { SITE_URL, PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 
 const entryPrice = getPriceForEICR("studio");
 
@@ -37,13 +37,13 @@ export async function generateMetadata({
   if (!borough) return {};
   return {
     title: `EICR ${borough.name} from £${entryPrice}`,
-    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours. Book online.`,
+    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. ${APPOINTMENT_SHORT}. Certificate emailed within 24 hours. Book online.`,
     alternates: {
       canonical: `${SITE_URL}/eicr/${slug}`,
     },
     openGraph: {
       title: `EICR ${borough.name} from £${entryPrice} | My Landlord Certificate`,
-      description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours. Book online.`,
+      description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. ${APPOINTMENT_SHORT}. Certificate emailed within 24 hours. Book online.`,
       url: `${SITE_URL}/eicr/${slug}`,
     },
   };
@@ -74,7 +74,7 @@ export default async function EICRBoroughPage({
     "@type": "Service",
     name: `EICR ${borough.name} — Electrical Installation Condition Report`,
     url: `${SITE_URL}/eicr/${slug}`,
-    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. Same-week appointments. Certificate emailed within 24 hours.`,
+    description: `EICR certificate in ${borough.name} from £${entryPrice}. NICEIC approved electricians. ${APPOINTMENT_SHORT}. Certificate emailed within 24 hours.`,
     provider: {
       "@type": "LocalBusiness",
       name: "My Landlord Certificate",
@@ -206,7 +206,7 @@ export default async function EICRBoroughPage({
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Postcodes covered: {postcodeStr}. Same-week appointments
+            Postcodes covered: {postcodeStr}. {APPOINTMENT_SHORT}
             available — book online in under 3 minutes.
           </p>
 
@@ -540,7 +540,7 @@ export default async function EICRBoroughPage({
             confirms your appointment. Certificate emailed within 24 hours.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
-            Same-week appointments across {borough.name} and all 33 London
+            {APPOINTMENT_SHORT} across {borough.name} and all 33 London
             boroughs — or call{" "}
             <a
               href={TEL}

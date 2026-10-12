@@ -6,6 +6,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ADDITIONAL_CHARGES, COMMERCIAL_EPC_TABLE } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Commercial EPC London from £349.99 — Accredited DEA Assessors",
@@ -347,7 +348,7 @@ export default function CommercialEPCPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Accredited DEA assessors, certificate
-              lodged on the national register. Same-week appointments across all 33 London boroughs.
+              lodged on the national register. {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

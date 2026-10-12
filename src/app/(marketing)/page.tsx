@@ -21,7 +21,7 @@ import {
   LazyStickyMobileCTA as StickyMobileCTA,
 } from "@/components/lazy";
 import { getPriceForGasSafety, CORE_SERVICES_FROM, formatPounds } from "@/lib/pricing";
-import { PHONE_NUMBER, EMAIL, CERTIFICATES_ISSUED } from "@/lib/constants";
+import { PHONE_NUMBER, EMAIL, CERTIFICATES_ISSUED, APPOINTMENT_FAQ, APPOINTMENT_LINE } from "@/lib/constants";
 
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
@@ -148,7 +148,7 @@ const faqItems = [
   {
     question: "How quickly can I get my landlord certificate?",
     answer:
-      "Most appointments are available the next day across London and the M25 area, with nearly all confirmed within 1–3 days. Need an urgent appointment? Call 020 3996 1070.",
+      APPOINTMENT_FAQ,
   },
   {
     question: "Do I need to be at the property during the inspection?",
@@ -673,7 +673,7 @@ export default function HomePage() {
                 },
                 {
                   title: "Next-day appointments across London",
-                  body: "Book today and your inspection is typically confirmed for the next day. Nearly all appointments are scheduled within 1–3 days across all 33 London boroughs and the M25 area, seven days a week.",
+                  body: `${APPOINTMENT_LINE} 7 days a week, across all 33 London boroughs.`,
                   cta: (
                     <a
                       href="tel:+442039961070"

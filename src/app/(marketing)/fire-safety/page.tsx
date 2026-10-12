@@ -6,6 +6,7 @@ import { CTABanner } from "@/components/ui/cta-banner";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { FROM_PRICES } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Fire Safety Certificates & Assessments",
@@ -210,7 +211,7 @@ export default function FireSafetyPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <CTABanner
             heading="Book your fire safety inspection today"
-            subheading="Same-week appointments across London. Accredited fire safety engineers, written reports within 24 hours."
+            subheading={`${APPOINTMENT_SHORT} across London. Accredited fire safety engineers, written reports within 24 hours.`}
             primaryHref="/book"
             primaryLabel="Book Online"
             secondaryHref="/pricing"

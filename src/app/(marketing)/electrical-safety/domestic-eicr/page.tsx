@@ -12,11 +12,12 @@ import {
   formatPounds,
   getPriceForGasSafety,
 } from "@/lib/pricing";
+import { APPOINTMENT_LINE, APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "EICR Certificate London from £67.99 — NICEIC Approved",
   description:
-    "Landlord EICR from £67.99. Legally required for all rentals in England. NICEIC approved electricians, same-week appointments. Book today.",
+    `Landlord EICR from £67.99. Legally required for all rentals in England. NICEIC approved electricians, ${APPOINTMENT_SHORT.toLowerCase()}. Book today.`,
   alternates: {
     canonical: "https://www.mylandlordcertificate.co.uk/eicr",
   },
@@ -105,7 +106,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs, including Central London, East London, South London, North London, and West London. Same-week appointments are available across the whole of Greater London. Email us or book online.",
+      `We cover all 33 London boroughs, including Central London, East London, South London, North London, and West London. ${APPOINTMENT_LINE} Email us or book online.`,
   },
 ];
 
@@ -124,7 +125,7 @@ const steps = [
     step: "1",
     title: "Book online in 60 seconds",
     description:
-      "Select your property size, pick a date that works for you, and confirm. We cover all 33 London boroughs with same-week slots available.",
+      `Select your property size, pick a date that works for you, and confirm. ${APPOINTMENT_LINE}`,
   },
   {
     step: "2",
@@ -169,7 +170,7 @@ export default function DomesticEICRPage() {
           </h1>
           <PriceDisplay price={entryPrice} from size="lg" className="mb-4" />
           <p className="text-brand-grey mb-4">
-            NICEIC approved · Same-week appointments · Certificate emailed within 24 hours · All 33 London boroughs
+            NICEIC approved · {APPOINTMENT_SHORT} · Certificate emailed within 24 hours · All 33 London boroughs
           </p>
           <TrustBadges serviceKey="eicr" variant="light" className="mb-6" />
           <div className="flex flex-wrap gap-3">
@@ -366,7 +367,7 @@ export default function DomesticEICRPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. No call-out fees. NICEIC approved electricians.
-              Certificate emailed within 24 hours. Same-week appointments across all 33 London boroughs.
+              Certificate emailed within 24 hours. {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

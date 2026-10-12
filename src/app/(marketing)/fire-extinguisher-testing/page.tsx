@@ -9,7 +9,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ReviewsBlock } from "@/components/marketing/reviews-block";
 import { ADDITIONAL_CHARGES, FIRE_ALARM_INSTALLATION_FULL_SYSTEM, FIRE_ALARM_INSTALLATION_PER_ALARM, FIRE_EXTINGUISHER_SUPPLY_PRICES, FIRE_EXTINGUISHER_TABLE } from "@/lib/pricing";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Fire Extinguisher Testing London from £79.99 — BS 5306-3 Service",
@@ -671,7 +671,7 @@ export default function FireExtinguisherTestingPage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. All extinguisher types. Service label
-              issued within 24 hours. Same-week appointments across all 33 London boroughs.
+              issued within 24 hours. {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link

@@ -27,6 +27,7 @@ import {
   COMMERCIAL_EICR_EXTRA_CIRCUIT_CHARGE,
   getPriceForEICR,
 } from "@/lib/pricing";
+import { APPOINTMENT_LINE } from "@/lib/constants";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -286,8 +287,7 @@ export default function EicrPage() {
               </p>
 
               <p className="text-blue-200 text-base mb-6 max-w-xl">
-                Next-day appointments available across London and the M25 area.
-                Most inspections confirmed within 1–3 days.
+                {APPOINTMENT_LINE}
               </p>
 
               <PriceDisplay

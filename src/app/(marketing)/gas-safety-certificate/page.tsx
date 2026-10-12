@@ -12,7 +12,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, APPOINTMENT_LINE } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
 import { reviewsForService } from "@/data/reviews";
 import { cn } from "@/lib/utils";
@@ -315,8 +315,7 @@ export default function GasSafetyPage() {
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Next-day appointments available across London and the M25 area.
-            Most inspections confirmed within 1–3 days.
+            {APPOINTMENT_LINE}
           </p>
 
           <PriceDisplay

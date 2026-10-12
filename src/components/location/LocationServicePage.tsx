@@ -20,7 +20,7 @@ import {
 import { ALL_BOROUGHS, getBoroughData, type BoroughData } from "@/lib/borough-data";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
 import { reviewsForService } from "@/data/reviews";
-import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { SITE_URL, PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -211,7 +211,7 @@ export function LocationServicePage({
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
-            Postcodes covered: {postcodeStr}. Same-week appointments available
+            Postcodes covered: {postcodeStr}. {APPOINTMENT_SHORT}
             — book online in under 3 minutes.
           </p>
 
@@ -504,7 +504,7 @@ export function LocationServicePage({
             your appointment. Certificate emailed {service.deliveryText}.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
-            Same-week appointments across {borough.name} and all 33 London
+            {APPOINTMENT_SHORT} across {borough.name} and all 33 London
             boroughs — or call{" "}
             <a href={TEL} className="text-white font-semibold hover:underline">{PHONE_DISPLAY}</a>.
           </p>

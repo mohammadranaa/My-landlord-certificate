@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { PriceTable } from "@/components/ui/price-table";
 import { cn } from "@/lib/utils";
-import { EMAIL, MAILTO, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { EMAIL, MAILTO, PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 import {
   ADDITIONAL_CHARGES,
   ASBESTOS_SURVEY_TABLE,
@@ -794,7 +794,7 @@ export default function PricingPage() {
           </Heading>
           <p className="text-blue-200 mb-6 max-w-md mx-auto">
             Book any certificate online in under 3 minutes. Fixed pricing.
-            Same-week appointments. Certificates emailed within 24 hours.
+            {APPOINTMENT_SHORT}. Certificates emailed within 24 hours.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

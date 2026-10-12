@@ -18,6 +18,7 @@ import {
   FIRE_SAFETY_CERT_TABLE,
   getPriceForFireSafetyCert,
 } from "@/lib/pricing";
+import { APPOINTMENT_SHORT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Fire Safety Certificate London from £54.99, Smoke Alarm Testing",
@@ -127,7 +128,7 @@ const benefits = [
   },
   {
     title: "Fixed price, all boroughs",
-    body: "The price you see is the price you pay. No call-out charges. Same-week appointments across all 33 London boroughs.",
+    body: `The price you see is the price you pay. No call-out charges. ${APPOINTMENT_SHORT} across all 33 London boroughs.`,
   },
 ];
 
@@ -729,7 +730,7 @@ export default function FireSafetyCertificatePage() {
             </h2>
             <p className="text-white/80 mb-6 max-w-lg mx-auto">
               Fixed price from £{entryPrice}. Accredited engineers, certificate within 24 hours.
-              Same-week appointments across all 33 London boroughs.
+              {APPOINTMENT_SHORT} across all 33 London boroughs.
             </p>
             <Link
               href="/book?service=fire-safety-cert"

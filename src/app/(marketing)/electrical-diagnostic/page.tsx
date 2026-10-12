@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ServiceBoroughGrid } from "@/components/location/ServiceBoroughGrid";
 import { LazyFAQAccordion as FAQAccordion, LazyStickyMobileCTA as StickyMobileCTA } from "@/components/lazy";
 import Link from "next/link";
-import { PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { PHONE_DISPLAY, TEL, APPOINTMENT_LINE } from "@/lib/constants";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PriceDisplay } from "@/components/ui/price-display";
 import { TrustBadges } from "@/components/ui/trust-badges";
@@ -89,7 +89,7 @@ const faqs = [
   {
     question: "Which areas of London do you cover?",
     answer:
-      "We cover all 33 London boroughs for electrical diagnostic work. Same-week appointments available across Greater London. Book online.",
+      `We cover all 33 London boroughs for electrical diagnostic work. ${APPOINTMENT_LINE} Book online.`,
   },
 ];
 
