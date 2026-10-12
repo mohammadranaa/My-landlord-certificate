@@ -14,7 +14,7 @@ import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { PHONE_DISPLAY, TEL, APPOINTMENT_LINE } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -271,7 +271,7 @@ const cp12TableWithBadge = GAS_SAFETY_CP12_TABLE.map((row, i) =>
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function GasSafetyPage() {
-  const gasSafetyReviews = reviewsForService("gas-safety", 3);
+  const gasSafetyReviews = reviewsForPage("gas-safety", 3);
 
   return (
     <>

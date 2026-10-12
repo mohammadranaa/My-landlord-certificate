@@ -8,7 +8,7 @@ import { PriceTable } from "@/components/ui/price-table";
 import { TrustBadges } from "@/components/ui/trust-badges";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   DOMESTIC_EPC_TABLE,
@@ -135,7 +135,7 @@ const steps = [
 
 
 export default function DomesticEPCPage() {
-  const epcReviews = reviewsForService("epc", 3);
+  const epcReviews = reviewsForPage("epc", 3);
 
   return (
     <>

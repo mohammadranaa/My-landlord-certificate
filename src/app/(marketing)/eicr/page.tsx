@@ -11,7 +11,7 @@ import { PriceDisplay } from "@/components/ui/price-display";
 import { PriceTable } from "@/components/ui/price-table";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
@@ -240,7 +240,7 @@ const highestPrice = getPriceForEICR("8bed");
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function EicrPage() {
-  const eicrReviews = reviewsForService("eicr", 3);
+  const eicrReviews = reviewsForPage("eicr", 3);
 
   return (
     <>

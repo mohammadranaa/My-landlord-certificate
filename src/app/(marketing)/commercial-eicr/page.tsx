@@ -13,7 +13,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import {
   ADDITIONAL_CHARGES,
@@ -721,7 +721,7 @@ export default function CommercialEicrPage() {
         </section>
 
         {/* ── Reviews ── */}
-        <ReviewsSection reviews={reviewsForService("eicr", 3)} heading="What our commercial clients say" />
+        <ReviewsSection reviews={reviewsForPage("eicr", 3)} heading="What our commercial clients say" />
 
         {/* ── commercial-eicr in every London borough ──────────────────────────────── */}
         <ServiceBoroughGrid serviceKey="commercial-eicr" />

@@ -11,7 +11,7 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import Image from "next/image";
 import { TEL, PHONE_DISPLAY, APPOINTMENT_LINE } from "@/lib/constants";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
 import {
   ADDITIONAL_CHARGES,
@@ -149,7 +149,7 @@ const improvements = [
 ];
 
 export default function EPCPage() {
-  const epcReviews = reviewsForService("epc", 3);
+  const epcReviews = reviewsForPage("epc", 3);
 
   return (
     <>

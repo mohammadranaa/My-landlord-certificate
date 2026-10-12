@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { PHONE_DISPLAY } from "@/lib/constants";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -251,7 +251,7 @@ const fraTableWithBadge = FRA_RESIDENTIAL_TABLE.map((row, i) =>
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function FireRiskAssessmentPage() {
-  const fraReviews = reviewsForService("fire-risk-assessment", 3);
+  const fraReviews = reviewsForPage("fire-risk-assessment", 3);
 
   return (
     <>

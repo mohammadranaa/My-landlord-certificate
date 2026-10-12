@@ -27,7 +27,7 @@ export function ReviewCard({ review }: { review: Review }) {
         {[1, 2, 3, 4, 5].map((i) => (
           <svg
             key={i}
-            className={`w-5 h-5 ${i <= review.rating ? "text-[#00B67A]" : "text-gray-200"}`}
+            className={`w-5 h-5 ${i <= review.rating ? "text-[#FFCB45]" : "text-gray-200"}`}
             viewBox="0 0 24 24"
             fill="currentColor"
             aria-hidden="true"

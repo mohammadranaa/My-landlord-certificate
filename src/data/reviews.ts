@@ -315,5 +315,19 @@ export const reviewsForService = (tag: ServiceTag, limit = 3) =>
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, limit)
 
+/** Up to `limit` reviews tagged for a service, topped up with featured
+ * reviews when a service has fewer tagged ones. */
+export const reviewsForPage = (tag: ServiceTag, limit = 3) => {
+  const tagged = reviewsForService(tag, limit)
+  const extra = featuredReviews().filter((r) => !tagged.some((t) => t.id === r.id))
+  return [...tagged, ...extra].slice(0, limit)
+}
+
+/** Reviews for /letting-agents: the agency review first, then featured ones. */
+export const lettingAgentReviews = (limit = 3) => {
+  const agency = REVIEWS.filter((r) => r.id === "jessica-hall")
+  return [...agency, ...featuredReviews().filter((r) => r.id !== "jessica-hall")].slice(0, limit)
+}
+
 export const allReviewsNewestFirst = () =>
   [...REVIEWS].sort((a, b) => b.date.localeCompare(a.date))

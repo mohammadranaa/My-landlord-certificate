@@ -52,7 +52,7 @@ export function TestimonialCard({
             key={i}
             className={cn(
               "w-5 h-5",
-              i <= rating ? "text-[#00B67A]" : "text-gray-200",
+              i <= rating ? "text-[#FFCB45]" : "text-gray-200",
             )}
             viewBox="0 0 24 24"
             fill="currentColor"

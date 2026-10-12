@@ -10,7 +10,7 @@ import { TrustBadges } from "@/components/ui/trust-badges";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import {
   ADDITIONAL_CHARGES,
   FIRE_ALARM_INSTALLATION_FULL_SYSTEM,
@@ -141,7 +141,7 @@ const benefitIcons = [
 
 
 export default function FireSafetyCertificatePage() {
-  const fireSafetyReviews = reviewsForService("fire-safety-certificate", 3);
+  const fireSafetyReviews = reviewsForPage("fire-safety-certificate", 3);
 
   return (
     <>

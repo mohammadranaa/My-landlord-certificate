@@ -8,6 +8,8 @@ import { LettingAgentForm } from "@/components/ui/letting-agent-form";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { cn } from "@/lib/utils";
 import { FROM_PRICES, BUNDLES, formatPounds, BUNDLE_MAX_SAVING } from "@/lib/pricing";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
+import { lettingAgentReviews } from "@/data/reviews";
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -287,30 +289,10 @@ export default function LettingAgentsPage() {
         </Container>
       </section>
 
-      {/* ── Testimonial placeholder ── */}
-      <section aria-label="Agency testimonial" className="py-12 bg-warm-white">
-        <Container className="max-w-2xl">
-          <figure className="rounded-2xl border border-border bg-white p-8">
-            <div className="flex gap-1 mb-4" role="img" aria-label="5 out of 5 stars">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <svg key={i} className="w-5 h-5 text-[#00B67A]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
-            </div>
-            <blockquote className="text-brand-charcoal/80 leading-relaxed mb-5">
-              &ldquo;We manage 140 properties across South London. Before switching, we were
-              juggling four different contractors and certificates were sometimes arriving
-              a week after the inspection. With My Landlord Certificate, everything
-              arrives within 24 hours and the prices are the same every time. Our landlords
-              stopped asking questions about compliance costs because there&apos;s nothing
-              to question.&rdquo;
-            </blockquote>
-            <figcaption>
-              <p className="font-semibold text-brand-charcoal text-sm">Marcus D.</p>
-              <p className="text-xs text-brand-grey">Director, property management company — South London</p>
-            </figcaption>
-          </figure>
+      {/* ── Reviews ── */}
+      <section className="py-12 bg-warm-white">
+        <Container>
+          <ReviewsSection reviews={lettingAgentReviews()} heading="What agents and landlords say" />
         </Container>
       </section>
 

@@ -13,7 +13,7 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { InlineCTA } from "@/components/ui/inline-cta";
 import { HeroRating } from "@/components/ui/hero-rating";
 import { ALL_BOROUGHS } from "@/lib/borough-data";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { cn } from "@/lib/utils";
 import { ADDITIONAL_CHARGES, PAT_TABLE, getPriceForPAT, FROM_PRICES, BUNDLES, formatPounds } from "@/lib/pricing";
 
@@ -224,7 +224,7 @@ const lowestPrice = getPriceForPAT(1);
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function PatTestingPage() {
-  const patReviews = reviewsForService("general", 3);
+  const patReviews = reviewsForPage("general", 3);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { reviewsForService, type ServiceTag } from "@/data/reviews";
+import { reviewsForPage, type ServiceTag } from "@/data/reviews";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 
 interface ReviewsBlockProps {
@@ -13,7 +13,7 @@ interface ReviewsBlockProps {
  * `tag`. Renders nothing while there are none.
  */
 export function ReviewsBlock({ tag = "general", heading }: ReviewsBlockProps) {
-  const reviews = reviewsForService(tag, 3);
+  const reviews = reviewsForPage(tag, 3);
   if (reviews.length === 0) return null;
 
   return (

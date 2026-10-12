@@ -19,7 +19,7 @@ import {
 } from "@/lib/location-services";
 import { ALL_BOROUGHS, getBoroughData, type BoroughData } from "@/lib/borough-data";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
-import { reviewsForService } from "@/data/reviews";
+import { reviewsForPage } from "@/data/reviews";
 import { SITE_URL, PHONE_DISPLAY, TEL, APPOINTMENT_SHORT } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -130,7 +130,7 @@ export function LocationServicePage({
   const bookHref = `/book?service=${service.bookingParam}`;
   const Icon = SERVICE_ICONS[service.icon];
   const otherServices = LOCATION_SERVICES.filter((s) => s.key !== service.key);
-  const reviews = reviewsForService(service.reviewTag, 3);
+  const reviews = reviewsForPage(service.reviewTag, 3);
   const reviewsHeading = reviewsHeadingForService(service);
   const localizedFaqs = localizeFaqs(service, borough, postcodeStr);
 

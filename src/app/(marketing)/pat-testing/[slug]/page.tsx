@@ -18,6 +18,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
+import { ReviewsSection } from "@/components/marketing/reviews-section";
+import { reviewsForPage } from "@/data/reviews";
 
 const entryPrice = getPriceForPAT(1);
 
@@ -409,6 +411,11 @@ export default async function PATTestingBoroughPage({
             ))}
           </ul>
         </section>
+
+        {/* ── Reviews ── */}
+
+        <ReviewsSection reviews={reviewsForPage("general")} />
+
 
         {/* ── FAQs ─────────────────────────────────────────────────────────── */}
         <section aria-labelledby="faq-heading" className="below-fold">
