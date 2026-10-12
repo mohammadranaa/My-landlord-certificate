@@ -6,7 +6,7 @@ import { PriceTable } from "@/components/ui/price-table";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_SHORT, APPOINTMENT_LINE } from "@/lib/constants";
 import { FIRE_SAFETY_CERT_TABLE, getPriceForFireSafetyCert } from "@/lib/pricing";
 import { reviewsForService } from "@/data/reviews";
 
@@ -55,12 +55,12 @@ const benefits = [
   },
   {
     title: "Fixed price, all boroughs",
-    body: "The price you see is the price you pay. No call-out charges. Same-week appointments across all 33 London boroughs.",
+    body: `The price you see is the price you pay. No call-out charges. ${APPOINTMENT_SHORT} across all 33 London boroughs.`,
   },
 ];
 
 const steps = [
-  { n: "1", title: "Book online or call", body: "Tell us the property and how many alarms, then pick a date. Same-week slots across all 33 London boroughs." },
+  { n: `1", title: "Book online or call", body: "Tell us the property and how many alarms, then pick a date. ${APPOINTMENT_SHORT} across all 33 London boroughs.` },
   { n: "2", title: "Engineer tests your alarms", body: "An accredited engineer tests every smoke, heat and CO alarm, checks placement and interlinking, and replaces any that have expired." },
   { n: "3", title: "Certificate in 24 hours", body: "We email your fire safety certificate, confirming your alarms are present and working, ready to share with tenants." },
 ];
@@ -370,8 +370,8 @@ export default function FireSafetyCertificateLandingPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">We cover every London borough</h2>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            Accredited engineers across all 33 London boroughs and the surrounding M25 area,
-            with same-week appointments available.
+            Accredited engineers across all 33 London boroughs and the surrounding M25 area.
+            {APPOINTMENT_LINE}
           </p>
           <MapSection interactive={false} />
         </div>

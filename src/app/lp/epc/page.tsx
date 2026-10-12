@@ -8,7 +8,7 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_SHORT, APPOINTMENT_FAQ, APPOINTMENT_LINE } from "@/lib/constants";
 import { DOMESTIC_EPC_TABLE, getPriceForEPC } from "@/lib/pricing";
 import { reviewsForService } from "@/data/reviews";
 
@@ -62,7 +62,7 @@ const benefits = [
 ];
 
 const steps = [
-  { n: "1", title: "Book online or call", body: "Pick your property size and a date, or call us. Same-week slots across all 33 London boroughs." },
+  { n: `1", title: "Book online or call", body: "Pick your property size and a date, or call us. ${APPOINTMENT_SHORT} across all 33 London boroughs.` },
   { n: "2", title: "Assessor visits", body: "An accredited DEA carries out a 30 to 60 minute survey of construction, heating, insulation and windows." },
   { n: "3", title: "Certificate in 24 hours", body: "We lodge your EPC on the national register and email you the certificate and recommendations report." },
 ];
@@ -98,7 +98,7 @@ const faqs = [
   },
   {
     q: "Do you cover my area?",
-    a: "We cover all 33 London boroughs and the surrounding M25 area, with same-week appointments available across the whole region.",
+    a: `We cover all 33 London boroughs and the surrounding M25 area. ${APPOINTMENT_FAQ}`,
   },
   {
     q: "Is the assessor accredited?",
@@ -388,8 +388,8 @@ export default function EpcLandingPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">We cover every London borough</h2>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            Accredited assessors across all 33 London boroughs and the surrounding M25 area,
-            with same-week appointments available.
+            Accredited assessors across all 33 London boroughs and the surrounding M25 area.
+            {APPOINTMENT_LINE}
           </p>
           <MapSection interactive={false} />
         </div>

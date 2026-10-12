@@ -8,7 +8,7 @@ import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { MapSection } from "@/components/ui/map-section";
 import { ImageSlider } from "@/components/ui/image-slider";
 import { cn } from "@/lib/utils";
-import { TEL, PHONE_DISPLAY } from "@/lib/constants";
+import { TEL, PHONE_DISPLAY, APPOINTMENT_LINE, APPOINTMENT_FAQ } from "@/lib/constants";
 import { COMMERCIAL_EICR_TABLE } from "@/lib/pricing";
 import { reviewsForService } from "@/data/reviews";
 
@@ -32,8 +32,8 @@ const serviceSchema = {
   areaServed: ["London", "the M25 area"],
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "149.99",
-    highPrice: "1155.99",
+    lowPrice: String(COMMERCIAL_EICR_TABLE[0].price),
+    highPrice: String(COMMERCIAL_EICR_TABLE[COMMERCIAL_EICR_TABLE.length - 1].price),
     priceCurrency: "GBP",
     availability: "https://schema.org/InStock",
   },
@@ -59,7 +59,7 @@ const benefits = [
 ];
 
 const steps = [
-  { n: "1", title: "Book online or call", body: "Tell us how many consumer units your premises has and pick a date. Same-week slots across London and the M25." },
+  { n: `1", title: "Book online or call", body: "Tell us how many consumer units your premises has and pick a date. ${APPOINTMENT_LINE}` },
   { n: "2", title: "NICEIC engineer visits", body: "An approved contractor inspects every circuit, consumer unit, distribution board and fixed wiring installation." },
   { n: "3", title: "Certificate in 24 hours", body: "Your EICR certificate and schedule of observations are emailed within 24 hours, with any remedial recommendations." },
 ];
@@ -92,7 +92,7 @@ const faqs = [
   },
   {
     q: "Do you cover my area?",
-    a: "We cover all 33 London boroughs and the surrounding M25 area, with same-week appointments available across the whole region.",
+    a: `We cover all 33 London boroughs and the surrounding M25 area. ${APPOINTMENT_FAQ}`,
   },
   {
     q: "Will the inspection disrupt my business?",
@@ -430,8 +430,8 @@ export default function CommercialEicrLandingPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14">
           <h2 className="text-2xl font-bold text-brand-charcoal mb-2 text-center">We cover every London borough</h2>
           <p className="text-brand-grey text-center mb-8 max-w-xl mx-auto">
-            NICEIC approved contractors across all 33 London boroughs and the surrounding M25 area,
-            with same-week appointments available.
+            NICEIC approved contractors across all 33 London boroughs and the surrounding M25 area.
+            {APPOINTMENT_LINE}
           </p>
           <MapSection interactive={false} />
         </div>
