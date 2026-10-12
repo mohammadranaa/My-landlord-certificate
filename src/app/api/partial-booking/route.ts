@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getEarliestBookingDate } from "@/lib/booking-datetime";
+import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution";
+import { resolveReferral } from "@/lib/partners";
 
 interface PartialService {
   type: string;
@@ -24,6 +26,8 @@ export async function POST(request: NextRequest) {
       discountAmount?: number;
       discountLabel?: string | null;
       sessionId?: string;
+      referralCode?: string;
+      referralMethod?: string;
     };
 
     const {
@@ -41,6 +45,8 @@ export async function POST(request: NextRequest) {
       discountAmount,
       discountLabel,
       sessionId,
+      referralCode,
+      referralMethod,
     } = data;
 
     if (!email) {
@@ -64,6 +70,11 @@ export async function POST(request: NextRequest) {
 
     const googleSheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
     if (googleSheetUrl) {
+      const referral = resolveReferral(
+        referralCode,
+        referralMethod,
+        parseAttribution(request.cookies.get(ATTRIBUTION_COOKIE)?.value).utm_source,
+      );
       const servicesReadable = (services ?? [])
         .map(
           (s) =>
@@ -90,6 +101,8 @@ export async function POST(request: NextRequest) {
           sessionId,
           source: "partial_form",
           servicesReadable,
+          referralCode: referral?.code ?? "",
+          referralMethod: referral?.method ?? "",
         }),
       }).catch((err) => console.error("Partial booking sheet error:", err));
     }

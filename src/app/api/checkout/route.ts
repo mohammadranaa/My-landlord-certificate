@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/constants";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
 import { createServiceRoleClient } from "@/lib/supabase/server";
 import { ATTRIBUTION_COOKIE, parseAttribution } from "@/lib/attribution";
+import { resolveReferral } from "@/lib/partners";
 
 interface BookingService {
   type: string;
@@ -25,6 +26,8 @@ interface BookingPayload {
   discountAmount?: number;
   discountLabel?: string | null;
   sessionId?: string;
+  referralCode?: string;
+  referralMethod?: string;
 }
 
 type CreateParams = NonNullable<Parameters<ReturnType<typeof getStripe>["checkout"]["sessions"]["create"]>[0]>;
@@ -33,6 +36,10 @@ type LineItem = NonNullable<CreateParams["line_items"]>[number];
 export async function POST(request: NextRequest) {
   try {
     const booking = (await request.json()) as BookingPayload;
+    const attribution = parseAttribution(request.cookies.get(ATTRIBUTION_COOKIE)?.value);
+    const referral = resolveReferral(booking.referralCode, booking.referralMethod, attribution.utm_source);
+    booking.referralCode = referral?.code ?? "";
+    booking.referralMethod = referral?.method ?? "";
 
     const lineItems: LineItem[] = [];
 
@@ -88,6 +95,9 @@ export async function POST(request: NextRequest) {
       hmo_discount: booking.hmoDiscount ? "true" : "false",
       discount_amount: (booking.discountAmount ?? 0).toFixed(2),
       discount_label: booking.discountLabel ?? "",
+      // Separate keys: booking_data is truncated at 499 chars.
+      referral_code: referral?.code ?? "",
+      referral_method: referral?.method ?? "",
     };
 
     // The HMO bundle discount is applied at the Stripe session level (not baked
@@ -129,9 +139,6 @@ export async function POST(request: NextRequest) {
     // Persist the booking attempt + ad attribution to the database.
     // Non-blocking: a DB failure must never stop the customer reaching checkout.
     try {
-      const attribution = parseAttribution(
-        request.cookies.get(ATTRIBUTION_COOKIE)?.value,
-      );
       const supabase = createServiceRoleClient();
       await supabase.from("bookings").insert({
         stripe_session_id: session.id,

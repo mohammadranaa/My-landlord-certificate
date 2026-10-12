@@ -29,6 +29,8 @@ import { Step3Services } from "./step-3-services";
 import { Step4DateTime } from "./step-4-datetime";
 import { Step5Review } from "./step-5-review";
 import { SaveQuotePrompt } from "./save-quote-prompt";
+import { PartnerCodeField } from "./partner-code-field";
+import { getPartnerByCode, type ReferralMethod } from "@/lib/partners";
 
 /**
  * Default pre-fill for /book?bundle=hmo — the 4 HMO_REQUIRED_SERVICES from
@@ -65,6 +67,24 @@ const HMO_BUNDLE_SERVICES: ServiceEntry[] = [
   },
 ];
 
+type Referral = { code: string; method: ReferralMethod };
+
+const REFERRAL_STORAGE_KEY = "mlc_ref";
+
+/** ?ref= wins; otherwise a code saved earlier in this tab's session. */
+function initialReferral(refParam: string | null): Referral | null {
+  const fromLink = getPartnerByCode(refParam);
+  if (fromLink) return { code: fromLink.code, method: "link" };
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(REFERRAL_STORAGE_KEY) ?? "null") as Referral | null;
+    const partner = getPartnerByCode(saved?.code);
+    if (partner && saved) return { code: partner.code, method: saved.method };
+  } catch {
+    // sessionStorage unavailable or corrupt: no referral.
+  }
+  return null;
+}
+
 export function BookingForm() {
   const searchParams = useSearchParams();
   const preselectedService = searchParams.get("service") ?? undefined;
@@ -74,6 +94,28 @@ export function BookingForm() {
   const sessionId = useRef(
     `form_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
   ).current;
+
+  const [referral, setReferral] = useState<Referral | null>(() => initialReferral(searchParams.get("ref")));
+  const [referralInput, setReferralInput] = useState(() => referral?.code ?? "");
+
+  useEffect(() => {
+    try {
+      if (referral) sessionStorage.setItem(REFERRAL_STORAGE_KEY, JSON.stringify(referral));
+      else sessionStorage.removeItem(REFERRAL_STORAGE_KEY);
+    } catch {
+      // Storage blocked: the code still travels with this booking.
+    }
+  }, [referral]);
+
+  function handleReferralInput(value: string) {
+    setReferralInput(value);
+    const partner = getPartnerByCode(value);
+    if (!partner) {
+      setReferral(null);
+      return;
+    }
+    setReferral((prev) => (prev?.code === partner.code ? prev : { code: partner.code, method: "code_entered" }));
+  }
 
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -145,6 +187,8 @@ export function BookingForm() {
           discountAmount,
           discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
           sessionId,
+          referralCode: referral?.code ?? "",
+          referralMethod: referral?.method ?? "",
         }),
       });
     } catch {
@@ -250,6 +294,8 @@ export function BookingForm() {
       discountAmount,
       discountLabel: hmoDiscount ? "HMO Bundle 10%" : null,
       sessionId,
+      referralCode: referral?.code ?? "",
+      referralMethod: referral?.method ?? "",
     };
 
     try {
@@ -405,6 +451,7 @@ export function BookingForm() {
                   onGoToStep={setStep}
                   onSubmit={handleSubmit}
                   isSubmitting={isSubmitting}
+                  extraFields={<PartnerCodeField value={referralInput} onChange={handleReferralInput} />}
                 />
                 {submitError && (
                   <p className="mt-3 text-sm text-red-600 text-center">{submitError}</p>

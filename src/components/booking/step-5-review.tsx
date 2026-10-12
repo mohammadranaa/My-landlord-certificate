@@ -40,9 +40,11 @@ interface Step5Props {
   onGoToStep: (step: number) => void;
   onSubmit: (termsAccepted: boolean) => Promise<void>;
   isSubmitting?: boolean;
+  /** Extra fields shown above the terms checkbox (e.g. partner code). */
+  extraFields?: React.ReactNode;
 }
 
-export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting = false }: Step5Props) {
+export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting = false, extraFields }: Step5Props) {
   const {
     register,
     handleSubmit,
@@ -223,6 +225,8 @@ export function Step5Review({ data, onBack, onGoToStep, onSubmit, isSubmitting =
           </p>
         </div>
       </div>
+
+      {extraFields}
 
       <label className="flex items-start gap-3 cursor-pointer">
         <input

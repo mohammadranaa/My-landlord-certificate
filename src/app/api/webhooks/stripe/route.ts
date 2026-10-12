@@ -67,6 +67,8 @@ export async function POST(request: NextRequest) {
             paymentStatus: "paid",
             totalPrice: totalPaid,
             source: "stripe_webhook",
+            referralCode: session.metadata?.referral_code ?? "",
+            referralMethod: session.metadata?.referral_method ?? "",
           }),
         }).catch((err) => console.error("Google Sheet log failed:", err));
       }
