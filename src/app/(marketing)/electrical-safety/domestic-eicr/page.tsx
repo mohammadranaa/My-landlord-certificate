@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Is an EICR a legal requirement for landlords?",
     answer:
-      "Yes. Since 1 July 2020, all new private tenancies in England must have a valid EICR. From 1 April 2021, this applies to all existing tenancies too. Landlords who fail to provide an EICR can face fines of up to £30,000 per property. You must provide a copy to your tenant within 28 days of the inspection.",
+      "Yes. Since 1 July 2020, all new private tenancies in England must have a valid EICR. From 1 April 2021, this applies to all existing tenancies too. Landlords who fail to provide an EICR can face a civil penalty of up to £40,000 per breach (since 1 November 2025). You must provide a copy to your tenant within 28 days of the inspection.",
   },
   {
     question: "How often does a landlord EICR need to be renewed?",
@@ -248,7 +248,7 @@ export default function DomesticEICRPage() {
               The Electrical Safety Standards in the Private Rented Sector (England) Regulations
               2020 require all landlords to have a valid EICR carried out before any new tenancy
               begins, and to renew it every 5 years. Fines for non-compliance can reach{" "}
-              <strong>£30,000 per property</strong>.
+              <strong>£40,000 per breach</strong> (since 1 November 2025).
             </p>
           </div>
         </section>

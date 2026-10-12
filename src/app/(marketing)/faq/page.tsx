@@ -95,7 +95,7 @@ const categories = [
       {
         question: "Is an EICR a legal requirement for landlords?",
         answer:
-          "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all private landlords in England to have a valid EICR carried out by a qualified person at least every five years, and to provide a copy to each existing tenant within 28 days of the inspection and to any new tenant before they move in. Local authorities can impose fines of up to £30,000 for non-compliance.",
+          "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all private landlords in England to have a valid EICR carried out by a qualified person at least every five years, and to provide a copy to each existing tenant within 28 days of the inspection and to any new tenant before they move in. Local authorities can impose a civil penalty of up to £40,000 per breach (since 1 November 2025) for non-compliance.",
       },
       {
         question: "How often does a landlord need an EICR?",

@@ -318,7 +318,7 @@ export default function EicrLondonPage() {
             (England) Regulations 2020 require all private landlords to have a
             valid EICR and provide a copy to new tenants before they move in and
             to existing tenants within 28 days of a request. A local authority
-            can impose a fine of up to £30,000 for non-compliance.
+            can impose a civil penalty of up to £40,000 per breach (since 1 November 2025) for non-compliance.
           </div>
         </section>
 

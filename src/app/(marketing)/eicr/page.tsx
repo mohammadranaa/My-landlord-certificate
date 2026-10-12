@@ -127,7 +127,7 @@ const faqSchema = {
       name: "Is an EICR a legal requirement for landlords?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £30,000.",
+        text: "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £40,000 per breach (since 1 November 2025).",
       },
     },
     {
@@ -195,7 +195,7 @@ const faqItems = [
   {
     question: "Is an EICR a legal requirement for landlords?",
     answer:
-      "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £30,000 per property.",
+      "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £40,000 per breach (since 1 November 2025).",
   },
   {
     question: "How often do I need an EICR?",
@@ -427,7 +427,7 @@ export default function EicrPage() {
             a valid certificate on file you are in breach of the Electrical
             Safety Standards in the Private Rented Sector (England) Regulations
             2020, and your local authority can issue a remedial notice and a
-            civil penalty of up to £30,000.
+            civil penalty of up to £40,000 per breach (since 1 November 2025).
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">Legal requirement: </strong>
@@ -436,7 +436,7 @@ export default function EicrPage() {
             EICR, provide a copy to tenants before they move in, and supply a
             copy to their local authority within 7 days of a written request.
             Failure to comply can result in a civil penalty of up to{" "}
-            <strong>£30,000 per property</strong>.
+            <strong>£40,000 per breach</strong> (since 1 November 2025).
           </div>
         </section>
 
@@ -1042,7 +1042,7 @@ export default function EicrPage() {
               compliance failures that makes a Section 21 notice legally invalid. If a tenant
               challenges an invalid Section 21 in court, the landlord cannot regain possession
               until compliance is achieved. Given that court proceedings can take 6–12 months,
-              the cost of not having a valid EICR extends far beyond the £30,000 fine.
+              the cost of not having a valid EICR extends far beyond the £40,000 penalty.
             </p>
             <Image
               src="/eicr/eicr-landlord-reviewing-certificate.png"
