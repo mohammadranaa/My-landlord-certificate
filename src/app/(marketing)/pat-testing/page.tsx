@@ -83,25 +83,6 @@ const serviceSchema = {
   },
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "PAT Testing — Portable Appliance Testing",
-  description:
-    "Portable Appliance Testing for furnished rental properties. Digital asset register and PAT certificate emailed within 24 hours.",
-  brand: {
-    "@type": "Brand",
-    name: "My Landlord Certificate",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "59.99",
-    highPrice: "259.99",
-    priceCurrency: "GBP",
-    offerCount: "9",
-    availability: "https://schema.org/InStock",
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -229,7 +210,6 @@ export default function PatTestingPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={productSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 

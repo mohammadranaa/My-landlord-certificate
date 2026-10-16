@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const DISALLOW = ["/admin/", "/api/", "/engineer/", "/demo/"];
+const DISALLOW = ["/admin", "/admin/", "/api/", "/engineer/", "/demo/"];
 
 // AI assistant / answer-engine crawlers we explicitly welcome (AEO).
 // Listing them keeps the site eligible to appear in AI answers even if the

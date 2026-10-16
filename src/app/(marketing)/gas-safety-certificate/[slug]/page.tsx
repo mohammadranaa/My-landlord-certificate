@@ -18,6 +18,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 
 const entryPrice = getPriceForGasSafety(1);
 
@@ -114,6 +116,7 @@ export default async function GasSafetyBoroughPage({
   };
 
   const faqItems = [
+    ...localFaqsFor(slug, "gas-safety-certificate"),
     {
       question: `Is a Gas Safety Certificate a legal requirement for landlords in ${borough.name}?`,
       answer: `Yes. The Gas Safety (Installation and Use) Regulations 1998 require every landlord — including those letting property in ${borough.name} — to arrange an annual gas safety check by a Gas Safe Registered engineer, provide the signed CP12 to tenants, and keep records for at least 2 years. Failure to comply is a criminal offence carrying an unlimited fine and up to 2 years' imprisonment.`,
@@ -280,9 +283,9 @@ export default async function GasSafetyBoroughPage({
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Every private landlord in England has been legally required to hold
             a valid CP12 and renew it every 12 months since the Gas Safety
-            (Installation and Use) Regulations 1998 came into force. Landlords
-            in {borough.name} are subject to exactly the same obligation as
-            landlords elsewhere in England.
+            (Installation and Use) Regulations 1998 came into force. This
+            national duty applies in {borough.name} as it does across England,
+            and an HMO licence can add its own conditions on top.
           </p>
 
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
@@ -322,6 +325,8 @@ export default async function GasSafetyBoroughPage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey="gas-safety-certificate" boroughName={borough.name} />
 
         {/* ── Pricing ──────────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">

@@ -18,6 +18,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 
 const entryPrice = getPriceForPAT(1);
 
@@ -114,6 +116,7 @@ export default async function PATTestingBoroughPage({
   };
 
   const faqItems = [
+    ...localFaqsFor(slug, "pat-testing"),
     {
       question: `Is PAT Testing a legal requirement for landlords in ${borough.name}?`,
       answer: `PAT Testing is not a named legal requirement, but the Landlord and Tenant Act 1985 and the Electrical Equipment (Safety) Regulations 2016 require landlords in ${borough.name} to ensure all electrical appliances they supply are safe. PAT Testing is the recognised way to demonstrate compliance, and most landlord insurance policies specifically require it for furnished properties.`,
@@ -320,6 +323,8 @@ export default async function PATTestingBoroughPage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey="pat-testing" boroughName={borough.name} />
 
         {/* ── Pricing ──────────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">

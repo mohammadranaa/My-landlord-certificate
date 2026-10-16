@@ -7,11 +7,12 @@ import { Heading } from "@/components/ui/heading";
 import { buttonVariants } from "@/components/ui/button";
 import { ReviewsSection } from "@/components/marketing/reviews-section";
 import { SERVICE_ICONS } from "@/components/ui/service-icons";
-import { LOCATION_SERVICES } from "@/lib/location-services";
+import { LOCATION_SERVICES, deliveryNoun } from "@/lib/location-services";
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { featuredReviews } from "@/data/reviews";
 import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { BoroughLocalOverview } from "@/components/location/borough-local-section";
 
 function formatPrice(price: number): string {
   return price % 1 === 0 ? `${price}` : price.toFixed(2);
@@ -141,6 +142,7 @@ export default async function BoroughHubPage({
               during booking to confirm coverage and availability.
             </p>
           </div>
+          <BoroughLocalOverview slug={slug} boroughName={borough.name} />
         </section>
 
         {/* ── Every service as a card ───────────────────────────────────── */}
@@ -171,7 +173,7 @@ export default async function BoroughHubPage({
                     from £{formatPrice(service.priceFrom)}{service.priceSuffix ?? ""}
                   </p>
                   <p className="text-xs text-brand-grey">
-                    Certificate {service.deliveryText}
+                    {deliveryNoun(service)} {service.deliveryText}
                   </p>
                 </Link>
               );

@@ -77,9 +77,11 @@ const hmoCompliance = {
 } as const;
 
 const topLinks = [
-  { href: "/blog",            label: "Blog"           },
-  { href: "/contact",         label: "Contact"        },
-  { href: "/letting-agents",  label: "Letting Agents" },
+  { href: "/pricing",         label: "Pricing"          },
+  { href: "/coverage-areas",  label: "Areas We Cover"   },
+  { href: "/blog",            label: "Blog"             },
+  { href: "/contact",         label: "Contact"          },
+  { href: "/letting-agents",  label: "Letting Agents"   },
 ] as const;
 
 // ── Icon helpers ───────────────────────────────────────────────────────────────

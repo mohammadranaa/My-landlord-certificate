@@ -181,7 +181,7 @@ const after = [
 const legal = [
   { title: "Fire Safety Order 2005", body: "The \"Responsible Person\" must carry out a suitable & sufficient FRA for all HMOs and properties with communal areas.", penalty: "Unlimited fine or up to 2 years' imprisonment" },
   { title: "Building Safety Act 2022", body: "Higher-risk buildings (18m+ or 7+ storeys) need an up-to-date FRA as part of the Building Safety Case." },
-  { title: "HMO Licence Conditions", body: "Most councils require a current FRA as an explicit licence condition — no FRA can mean a revoked licence.", penalty: "Unlicensed HMO fine up to £30,000" },
+  { title: "HMO Licence Conditions", body: "Most councils require a current FRA as an explicit licence condition — no FRA can mean a revoked licence.", penalty: "Unlicensed HMO penalty up to £40,000" },
   { title: "Smoke & CO Alarm Regs 2022", body: "A smoke alarm on every floor and CO alarms by fixed combustion appliances — checked and flagged in your report." },
 ];
 

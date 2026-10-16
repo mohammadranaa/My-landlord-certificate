@@ -18,6 +18,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 
 const entryPrice = getPriceForEPC("studio");
 
@@ -114,6 +116,7 @@ export default async function EPCBoroughPage({
   };
 
   const faqItems = [
+    ...localFaqsFor(slug, "epc"),
     {
       question: `Is an EPC a legal requirement for landlords in ${borough.name}?`,
       answer: `Yes. The Energy Performance of Buildings (England and Wales) Regulations 2012 require every landlord — including those letting property in ${borough.name} — to provide a valid EPC to prospective tenants before marketing a property to let. Failure to comply can result in a local authority penalty charge of up to £5,000.`,
@@ -281,8 +284,8 @@ export default async function EPCBoroughPage({
             Every landlord in England must provide a valid EPC before
             marketing a property to let, and the property must meet the
             Minimum Energy Efficiency Standard (MEES) of an E rating or
-            above. Landlords in {borough.name} are subject to exactly the
-            same obligation as landlords elsewhere in England.
+            above. This national
+            standard applies in {borough.name} as it does across England.
           </p>
 
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
@@ -322,6 +325,8 @@ export default async function EPCBoroughPage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey="epc" boroughName={borough.name} />
 
         {/* ── Pricing ──────────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">

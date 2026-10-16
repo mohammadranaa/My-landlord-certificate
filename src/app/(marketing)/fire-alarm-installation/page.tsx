@@ -489,7 +489,7 @@ export default function FireAlarmInstallationPage() {
                 LD1 for larger properties. The conditions also specify alarm positions, testing
                 frequencies, and documentation requirements. Non-compliance with licence conditions
                 can lead to revocation of the HMO licence — making the property unlawful to let
-                — and fines of up to £30,000. Always confirm your specific borough&apos;s requirements
+                — and civil penalties of up to £40,000 for offences from 1 May 2026. Always confirm your specific borough&apos;s requirements
                 before installing.
               </p>
             </div>

@@ -628,3 +628,8 @@ export function reviewsHeadingForService(service: LocationService): string {
     ? "What London landlords say about My Landlord Certificate"
     : `What London landlords say about our ${service.shortName}`;
 }
+
+/** FRA and Legionella produce a report, not a certificate (CLAUDE.md delivery rule). */
+export function deliveryNoun(service: Pick<LocationService, "key">): "Report" | "Certificate" {
+  return service.key === "fire-risk-assessment" || service.key === "legionella-risk-assessment" ? "Report" : "Certificate";
+}

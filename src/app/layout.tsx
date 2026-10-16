@@ -12,7 +12,7 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
+  display: "optional",
 });
 
 const defaultTitle = "My Landlord Certificate — UK Property Compliance";
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     description: defaultDescription,
     images: [
       {
-        url: "/og-default.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "My Landlord Certificate — UK Property Compliance",
+        alt: "My Landlord Certificate — EICR, Gas Safety, EPC & More",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/og-default.jpg"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,

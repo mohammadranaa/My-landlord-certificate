@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Book a Certificate",
   description:
     "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT Testing in minutes. Fixed prices, NICEIC approved engineers across London.",
+  robots: { index: false, follow: true },
 };
 
 export default function BookPage() {

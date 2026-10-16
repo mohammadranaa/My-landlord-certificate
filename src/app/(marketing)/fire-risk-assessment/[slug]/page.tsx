@@ -18,6 +18,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL } from "@/lib/constants";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 
 const entryPrice = getPriceForFRA("studio");
 
@@ -114,6 +116,7 @@ export default async function FireRiskAssessmentBoroughPage({
   };
 
   const faqItems = [
+    ...localFaqsFor(slug, "fire-risk-assessment"),
     {
       question: `Is a Fire Risk Assessment a legal requirement for landlords in ${borough.name}?`,
       answer: `A written Fire Risk Assessment is compulsory for every HMO in ${borough.name} under the Regulatory Reform (Fire Safety) Order 2005. For single-let properties it is strongly recommended and is often required by landlord insurance policies. The Building Safety Act 2022 introduced further duties for buildings over 18 metres or 7+ storeys. We recommend all landlords in ${borough.name} have a current assessment on file regardless of property type.`,
@@ -278,9 +281,9 @@ export default async function FireRiskAssessmentBoroughPage({
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             A written Fire Risk Assessment is compulsory for every HMO under
-            the Regulatory Reform (Fire Safety) Order 2005. Landlords in{" "}
-            {borough.name} operating an HMO are subject to exactly the same
-            obligation as landlords elsewhere in England, and single-let
+            the Regulatory Reform (Fire Safety) Order 2005. This
+            national duty applies in {borough.name} as it does across England,
+            an HMO licence can add fire safety conditions on top, and single-let
             landlords are strongly advised to hold one too.
           </p>
 
@@ -322,6 +325,8 @@ export default async function FireRiskAssessmentBoroughPage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey="fire-risk-assessment" boroughName={borough.name} />
 
         {/* ── Pricing ──────────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">

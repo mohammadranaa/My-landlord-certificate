@@ -384,7 +384,7 @@ export default function FireDoorCertificatePage() {
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
                 London HMO licences issued by local councils almost universally include a condition
                 requiring fire doors to be fitted, maintained, and regularly inspected. Failure to
-                comply can result in licence revocation and fines of up to £30,000 per property.
+                comply can result in licence revocation and civil penalties of up to £40,000 per offence (for offences from 1 May 2026).
               </p>
             </div>
           </div>

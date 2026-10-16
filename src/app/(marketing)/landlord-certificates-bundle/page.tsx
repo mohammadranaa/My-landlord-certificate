@@ -91,25 +91,6 @@ const serviceSchema = {
   },
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Landlord Certificate Bundle",
-  description:
-    "Bundled landlord compliance certificates completed in a single engineer visit. EICR, Gas Safety Certificate, EPC and Fire Risk Assessment available as bundles.",
-  brand: {
-    "@type": "Brand",
-    name: "My Landlord Certificate",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "160",
-    highPrice: "470",
-    priceCurrency: "GBP",
-    offerCount: "3",
-    availability: "https://schema.org/InStock",
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -298,7 +279,6 @@ export default function BundlePage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={productSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 

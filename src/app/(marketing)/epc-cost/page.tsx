@@ -156,7 +156,7 @@ const faqItems = [
   {
     question: "What is the minimum EPC rating required to let a property?",
     answer:
-      "The current minimum under MEES (Minimum Energy Efficiency Standards) is an E rating. Landlords cannot legally let a property rated F or G, doing so can result in a fine of up to £30,000. The government has signalled it intends to raise the minimum to a C rating for new tenancies, though no firm date has been legislated as of 2025.",
+      "The current minimum under MEES (Minimum Energy Efficiency Standards) is an E rating. Landlords cannot legally let a property rated F or G, doing so can result in a penalty of up to £5,000 per property. The government has proposed raising this to £30,000, subject to legislation. The government has signalled it intends to raise the minimum to a C rating for new tenancies, though no firm date has been legislated as of 2025.",
   },
   {
     question: "Can I get a new EPC before the 10 years is up?",
@@ -445,7 +445,7 @@ export default function EpcCostPage() {
           <p className="text-brand-charcoal/80 leading-relaxed mb-4">
             Under the Minimum Energy Efficiency Standards (MEES), landlords cannot
             legally let a property with an EPC rating of F or G. The penalty for
-            non-compliance can reach <strong>£30,000</strong>. Knowing your
+            non-compliance can currently reach <strong>£5,000</strong> per property, and the government has proposed raising it to £30,000. Knowing your
             property&apos;s current EPC rating is the first step, you cannot improve
             what you have not measured.
           </p>

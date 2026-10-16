@@ -6,7 +6,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { CTABanner } from "@/components/ui/cta-banner";
 import { Heading } from "@/components/ui/heading";
-import { JsonLd } from "@/components/shared/json-ld";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -21,11 +20,12 @@ import {
   LazyStickyMobileCTA as StickyMobileCTA,
 } from "@/components/lazy";
 import { getPriceForGasSafety } from "@/lib/pricing";
-import { PHONE_NUMBER, EMAIL } from "@/lib/constants";
 
 const ServicesSection = dynamic(
   () => import("@/components/marketing/services-section").then((m) => m.ServicesSection),
 );
+
+const GAS_FROM = getPriceForGasSafety(1);
 
 // ── Metadata ──────────────────────────────────────────────────────────────────
 
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     absolute: "Landlord Certificates London — EICR, Gas Safety & EPC | MLC",
   },
   description:
-    "Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From £50, no hidden charges. Book today.",
+    `Book your EICR, Gas Safety Certificate, EPC, Fire Risk Assessment or PAT testing online. From £${GAS_FROM}, no hidden charges. Book today.`,
   alternates: { canonical: "https://www.mylandlordcertificate.co.uk" },
   openGraph: {
     title: "Your Property Certificates. Sorted. | My Landlord Certificate",
     description:
-      "Landlord compliance certificates from £50, no hidden charges. EICR, Gas Safety, EPC — next-day appointments. Book today.",
+      `Landlord compliance certificates from £${GAS_FROM}, no hidden charges. EICR, Gas Safety, EPC — next-day appointments. Book today.`,
     url: "https://www.mylandlordcertificate.co.uk",
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -51,93 +51,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ── Schema data ───────────────────────────────────────────────────────────────
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "My Landlord Certificate",
-  url: "https://www.mylandlordcertificate.co.uk",
-  logo: "https://www.mylandlordcertificate.co.uk/logo.svg",
-  email: "hello@mylandlordcertificate.co.uk",
-  sameAs: [
-    "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk",
-    "https://share.google/Mv45RjwKpz36PD8Uk",
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "GB",
-    addressRegion: "London",
-  },
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.mylandlordcertificate.co.uk/#business",
-  name: "My Landlord Certificate",
-  url: "https://www.mylandlordcertificate.co.uk",
-  telephone: PHONE_NUMBER,
-  email: EMAIL,
-  image: "https://www.mylandlordcertificate.co.uk/header-logo.png",
-  description:
-    "UK landlord compliance certificates — EICR, Gas Safety Certificate (CP12), EPC, Fire Risk Assessment and PAT testing. NICEIC approved and Gas Safe registered engineers. No hidden charges, next-day appointments across London.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "134 Merton High Street",
-    addressLocality: "London",
-    addressRegion: "Greater London",
-    postalCode: "SW19 1BA",
-    addressCountry: "GB",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 51.415969,
-    longitude: -0.187741,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "19:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Saturday",
-      opens: "09:00",
-      closes: "17:00",
-    },
-  ],
-  areaServed: ["London", "the M25 area"],
-  currenciesAccepted: "GBP",
-  paymentAccepted: "Credit Card, Debit Card",
-  priceRange: "££",
-  sameAs: [
-    "https://share.google/Mv45RjwKpz36PD8Uk",
-    "https://uk.trustpilot.com/review/mylandlordcertificate.co.uk",
-    "https://www.facebook.com/profile.php?id=61589410869490",
-    "https://www.instagram.com/mylandlordcertificate",
-    "https://www.linkedin.com/company/my-landlord-certificate/",
-  ],
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.mylandlordcertificate.co.uk",
-    },
-  ],
-};
-
-// ── Prices from module ────────────────────────────────────────────────────────
-
-const GAS_FROM = getPriceForGasSafety(1);
 
 const faqItems = [
   {
@@ -174,9 +87,6 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={localBusinessSchema} />
-      <JsonLd data={breadcrumbSchema} />
 
       {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
       <section
@@ -217,7 +127,7 @@ export default function HomePage() {
             <div className="max-w-xl lg:max-w-[54%]">
               <Heading level={1} id="hero-heading" className="mb-5">
                 Landlord Certificates in London. EICR, Gas Safety &amp; EPC from{" "}
-                <span className="text-action-green">£49.99</span>
+                <span className="text-action-green">£{GAS_FROM}</span>
               </Heading>
 
               <p className="mb-2 text-lg leading-relaxed text-brand-charcoal/80">

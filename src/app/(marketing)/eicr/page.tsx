@@ -77,26 +77,6 @@ const serviceSchema = {
   },
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "EICR Certificate, Electrical Installation Condition Report",
-  description:
-    "Landlord EICR (Electrical Installation Condition Report) carried out by NICEIC approved and NAPIT certified electricians. Covers all fixed wiring, consumer units, sockets and light fittings. Certificate emailed within 24 hours.",
-  brand: {
-    "@type": "Brand",
-    name: "My Landlord Certificate",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "67.99",
-    highPrice: "199.99",
-    priceCurrency: "GBP",
-    availability: "https://schema.org/InStock",
-    offerCount: 7,
-    url: "https://www.mylandlordcertificate.co.uk/eicr",
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -126,7 +106,7 @@ const faqSchema = {
       name: "Is an EICR a legal requirement for landlords?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £30,000.",
+        text: "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £40,000.",
       },
     },
     {
@@ -194,7 +174,7 @@ const faqItems = [
   {
     question: "Is an EICR a legal requirement for landlords?",
     answer:
-      "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £30,000 per property.",
+      "Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords in England to hold a valid EICR. New tenancies required compliance from July 2020; all existing tenancies from April 2021. Failure to comply carries a civil penalty of up to £40,000 per breach.",
   },
   {
     question: "How often do I need an EICR?",
@@ -244,7 +224,7 @@ export default function EicrPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={productSchema} />
+      <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 
@@ -427,7 +407,7 @@ export default function EicrPage() {
             a valid certificate on file you are in breach of the Electrical
             Safety Standards in the Private Rented Sector (England) Regulations
             2020, and your local authority can issue a remedial notice and a
-            civil penalty of up to £30,000.
+            civil penalty of up to £40,000.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">
             <strong className="text-brand-amber">Legal requirement: </strong>
@@ -436,7 +416,7 @@ export default function EicrPage() {
             EICR, provide a copy to tenants before they move in, and supply a
             copy to their local authority within 7 days of a written request.
             Failure to comply can result in a civil penalty of up to{" "}
-            <strong>£30,000 per property</strong>.
+            <strong>£40,000 per breach</strong>.
           </div>
         </section>
 
@@ -451,8 +431,7 @@ export default function EicrPage() {
             Installation Condition Report. The requirement was introduced by the
             Electrical Safety Standards in the Private Rented Sector (England)
             Regulations 2020, which apply to all tenancy types, assured
-            shorthold tenancies, periodic tenancies, HMO licences and student
-            lets alike.
+            periodic tenancies, HMO licences and student lets alike.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-5">
             Your EICR must be carried out by a qualified electrician, one who
@@ -1029,20 +1008,21 @@ export default function EicrPage() {
           </div>
         </section>
 
-        {/* ── 11. Section 21 ──────────────────────────────────────────────── */}
+        {/* ── 11. Possession and compliance ───────────────────────────────── */}
         <section aria-labelledby="section21-heading">
           <Heading level={2} id="section21-heading" className="mb-4">
-            Why a missing EICR invalidates your Section 21
+            Why a valid EICR still matters now Section 21 has gone
           </Heading>
           <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center mb-6">
             <p className="text-brand-charcoal/80 leading-relaxed">
-              Section 21 of the Housing Act 1988 allows landlords to regain possession of
-              their property without giving a reason, but only if they have met all their
-              legal obligations to the tenant. A missing or invalid EICR is one of several
-              compliance failures that makes a Section 21 notice legally invalid. If a tenant
-              challenges an invalid Section 21 in court, the landlord cannot regain possession
-              until compliance is achieved. Given that court proceedings can take 6–12 months,
-              the cost of not having a valid EICR extends far beyond the £30,000 fine.
+              Section 21 &ldquo;no-fault&rdquo; evictions ended in England on 1 May 2026, when
+              the Renters&rsquo; Rights Act 2025 abolished assured shorthold tenancies. Landlords
+              can now recover possession only on a Section 8 ground. The EICR duty still
+              applies. Under the Electrical Safety Standards in the Private Rented Sector
+              (England) Regulations 2020 you must have the installation tested at least every
+              five years, give existing tenants a copy of the report within 28 days, give new
+              tenants a copy before they move in and complete any required remedial work within
+              28 days, or sooner if the report says so. Your council can impose a financial penalty of up to £40,000 for a breach.
             </p>
             <Image
               src="/eicr/eicr-landlord-reviewing-certificate.png"
@@ -1055,12 +1035,12 @@ export default function EicrPage() {
           </div>
           <div className="rounded-xl bg-compliance-blue/5 border border-compliance-blue/20 p-5">
             <p className="font-semibold text-brand-charcoal mb-2">
-              Protect your possession rights
+              Stay compliant through every tenancy
             </p>
             <p className="text-sm text-brand-charcoal/80 leading-relaxed mb-4">
               Keep your EICR, Gas Safety Certificate, and EPC on file and up to date at all
-              times. Serve copies on tenants before they move in. These three documents are
-              the minimum required to issue a valid Section 21 notice.
+              times. Serve copies on tenants before they move in. Each is a standalone legal
+              duty with its own penalties, whether or not you ever need to seek possession.
             </p>
             <div className="flex flex-wrap gap-4 text-sm">
               <Link

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
     default: "Admin Dashboard",
     template: "%s — Admin | My Landlord Certificate",
   },
+  robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({

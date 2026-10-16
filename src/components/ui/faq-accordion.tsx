@@ -101,7 +101,7 @@ export function FAQAccordion({
                 </Accordion.Trigger>
               </Accordion.Header>
 
-              <Accordion.Panel className="overflow-hidden px-6 pb-5 text-brand-charcoal/70 leading-relaxed text-sm md:text-base">
+              <Accordion.Panel hiddenUntilFound className="overflow-hidden px-6 pb-5 text-brand-charcoal/70 leading-relaxed text-sm md:text-base">
                 {item.answer}
               </Accordion.Panel>
             </Accordion.Item>

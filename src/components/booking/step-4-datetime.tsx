@@ -258,11 +258,11 @@ export function Step4DateTime({ defaultValues, onBack, onComplete }: Step4Props)
             ) : (
               <>
                 <p className="text-sm font-semibold text-brand-charcoal">
-                  Need a same-day or urgent booking?
+                  Need an urgent booking?
                 </p>
                 <p className="text-xs text-brand-grey mt-0.5 mb-2">
                   Next-day appointments are available online until 5pm. For
-                  same-day bookings, call us directly.
+                  urgent bookings, call us directly.
                 </p>
               </>
             )}

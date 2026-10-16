@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
@@ -14,23 +15,39 @@ import {
 } from "@/lib/blog";
 import { JsonLd } from "@/components/shared/json-ld";
 
-export const metadata: Metadata = {
-  title: "Landlord Compliance Blog — Guides, Tips & Updates",
-  description:
-    "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance. Plain-English advice to help you stay legal and protect your rental property.",
-  alternates: { canonical: "https://www.mylandlordcertificate.co.uk/blog" },
-  openGraph: {
-    title: "Landlord Compliance Blog — Guides, Tips & Updates",
-    description:
-      "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance.",
-    url: "https://www.mylandlordcertificate.co.uk/blog",
-  },
-  twitter: {
-    title: "Landlord Compliance Blog — Guides, Tips & Updates",
-    description:
-      "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance.",
-  },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; page?: string }>;
+}): Promise<Metadata> {
+  const { page: rawPage = "1" } = await searchParams;
+  const pageNum = Math.max(1, parseInt(rawPage, 10) || 1);
+
+  const title = "Landlord Compliance Blog — Guides, Tips & Updates";
+  const description =
+    "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance. Plain-English advice to help you stay legal and protect your rental property.";
+  const canonicalUrl =
+    pageNum === 1
+      ? "https://www.mylandlordcertificate.co.uk/blog"
+      : `https://www.mylandlordcertificate.co.uk/blog?page=${pageNum}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: canonicalUrl },
+    openGraph: {
+      title,
+      description:
+        "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance.",
+      url: canonicalUrl,
+    },
+    twitter: {
+      title,
+      description:
+        "Expert guides on EICR, Gas Safety Certificates, EPCs and UK landlord compliance.",
+    },
+  };
+}
 
 const POSTS_PER_PAGE = 9;
 const BASE = "https://www.mylandlordcertificate.co.uk";
@@ -176,7 +193,10 @@ export default async function BlogPage({
   const filtered =
     category === "All" ? allPosts : allPosts.filter((p) => p.category === category);
   const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
-  const page = Math.min(currentPage, totalPages);
+
+  if (currentPage > totalPages) notFound();
+
+  const page = currentPage;
   const posts = filtered.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
 
   const breadcrumbSchema = {

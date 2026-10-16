@@ -45,3 +45,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# location rewrite change logs (local only)
+/content-research/locations/change-log/

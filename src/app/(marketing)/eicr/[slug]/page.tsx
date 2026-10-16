@@ -20,6 +20,8 @@ import {
 import { ALL_BOROUGHS, getBoroughData } from "@/lib/borough-data";
 import { LOCATION_SERVICES } from "@/lib/location-services";
 import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 
 const entryPrice = getPriceForEICR("studio");
 
@@ -116,9 +118,10 @@ export default async function EICRBoroughPage({
   };
 
   const faqItems = [
+    ...localFaqsFor(slug, "eicr"),
     {
       question: `Is an EICR a legal requirement for landlords in ${borough.name}?`,
-      answer: `Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords — including those renting properties in ${borough.name} — to hold a valid EICR. The requirement has applied to all tenancies in England since April 2021. Landlords must provide a copy to tenants before they move in and to the local authority within 7 days of a written request. Failure to comply can result in a civil penalty of up to £30,000 per property.`,
+      answer: `Yes. The Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020 require all landlords — including those renting properties in ${borough.name} — to hold a valid EICR. The requirement has applied to all tenancies in England since April 2021. Landlords must provide a copy to tenants before they move in and to the local authority within 7 days of a written request. Failure to comply can result in a civil penalty of up to £40,000 per breach.`,
     },
     {
       question: `How much does an EICR cost in ${borough.name}?`,
@@ -126,7 +129,7 @@ export default async function EICRBoroughPage({
     },
     {
       question: `How long does an EICR take in ${borough.name}?`,
-      answer: `Most EICR inspections in ${borough.name} take 2–4 hours depending on the size and age of the property. Older Victorian and Edwardian properties — which are common across many parts of ${borough.name} — may take slightly longer due to the complexity of the installation. You do not need to be present; a tenant or keyholder can provide access and the certificate will be emailed directly to you within 24 hours.`,
+      answer: `Most EICR inspections in ${borough.name} take 2–4 hours depending on the size and age of the property. Older properties and larger installations may take slightly longer. You do not need to be present; a tenant or keyholder can provide access and the certificate will be emailed directly to you within 24 hours.`,
     },
     {
       question: "How often do I need an EICR?",
@@ -284,10 +287,10 @@ export default async function EICRBoroughPage({
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
             Since April 2021, every private landlord in England has been legally
-            required to hold a valid EICR and renew it every five years. Landlords
-            in {borough.name} are subject to exactly the same obligation as
-            landlords elsewhere in England. Failure to comply can result in a civil
-            penalty of up to £30,000 per property and a remedial notice from your
+            required to hold a valid EICR and renew it every five years. This
+            national duty applies in {borough.name} as it does across England,
+            and an HMO licence can add its own conditions on top. Failure to comply can result in a civil
+            penalty of up to £40,000 per breach and a remedial notice from your
             local authority.
           </p>
 
@@ -298,7 +301,7 @@ export default async function EICRBoroughPage({
             Every landlord must hold a valid EICR, provide a copy to tenants
             before they move in, and supply it to their local authority within 7
             days of a written request. Failure carries a civil penalty of up to{" "}
-            <strong>£30,000 per property</strong>.
+            <strong>£40,000 per breach</strong>.
           </div>
         </section>
 
@@ -328,6 +331,8 @@ export default async function EICRBoroughPage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey="eicr" boroughName={borough.name} />
 
         {/* ── Pricing ──────────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">

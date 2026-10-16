@@ -74,26 +74,6 @@ const serviceSchema = {
   },
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Gas Safety Certificate (CP12), Landlord Annual Inspection",
-  description:
-    "Landlord gas safety certificate (CP12) carried out by Gas Safe Registered engineers. Covers all gas appliances, flues, ventilation and gas pipework. Certificate emailed within 24 hours.",
-  brand: {
-    "@type": "Brand",
-    name: "My Landlord Certificate",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: "64.99",
-    highPrice: "84.99",
-    priceCurrency: "GBP",
-    availability: "https://schema.org/InStock",
-    offerCount: 3,
-    url: "https://www.mylandlordcertificate.co.uk/gas-safety-certificate",
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -276,7 +256,6 @@ export default function GasSafetyPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={productSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 
@@ -427,7 +406,7 @@ export default function GasSafetyPage() {
             The Gas Safety (Installation and Use) Regulations 1998 place specific
             obligations on every landlord who provides gas appliances in a rental
             property. The regulations apply to all privately rented properties,
-            assured shorthold tenancies, periodic tenancies, HMO licences, houses
+            assured periodic tenancies, HMO licences, houses
             in multiple occupation and student lets alike. There is no minimum
             tenancy length: even short-term lets require a valid CP12.
           </p>

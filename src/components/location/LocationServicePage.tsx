@@ -15,10 +15,13 @@ import {
   LOCATION_SERVICES,
   getLocationService,
   reviewsHeadingForService,
+  deliveryNoun,
   type LocationService,
 } from "@/lib/location-services";
 import { ALL_BOROUGHS, getBoroughData, type BoroughData } from "@/lib/borough-data";
 import { ADDITIONAL_CHARGES } from "@/lib/pricing";
+import { BoroughLocalSection } from "@/components/location/borough-local-section";
+import { localFaqsFor } from "@/data/borough-local";
 import { reviewsForService } from "@/data/reviews";
 import { SITE_URL, PHONE_DISPLAY, TEL } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/button";
@@ -26,6 +29,17 @@ import { cn } from "@/lib/utils";
 
 function formatPrice(price: number): string {
   return price % 1 === 0 ? `${price}` : price.toFixed(2);
+}
+
+function congestionSentence(borough: BoroughData): string {
+  const fee = `£${ADDITIONAL_CHARGES.congestionZone}`;
+  if (borough.congestionZone === "all") {
+    return `${borough.name} is inside the London Congestion Charge Zone, so a ${fee} surcharge applies on top of the price above.`;
+  }
+  if (borough.congestionZone === "part") {
+    return `Part of ${borough.name} is inside the London Congestion Charge Zone (${borough.congestionArea}). A ${fee} surcharge applies to addresses inside the zone and not to the rest of ${borough.name}. If you are not sure, check your address on TfL's congestion charge map before booking.`;
+  }
+  return `${borough.name} is outside the London Congestion Charge Zone, so no congestion surcharge applies here.`;
 }
 
 /**
@@ -51,9 +65,7 @@ function localizeFaqs(
     nearbyNames.length > 0
       ? `This applies equally to landlords in ${borough.name} and in neighbouring boroughs such as ${nearbyNames.join(", ")}.`
       : `This applies equally to landlords across ${borough.name}.`,
-    borough.congestionZone
-      ? `Properties in ${borough.name} fall within the London Congestion Charge Zone, which carries a £${ADDITIONAL_CHARGES.congestionZone} surcharge on top of the price above.`
-      : `${borough.name} sits outside the London Congestion Charge Zone, so no congestion surcharge applies here.`,
+    congestionSentence(borough),
     `We book ${service.shortName} appointments across every part of ${borough.name} — enter your postcode when booking to confirm availability.`,
   ];
 
@@ -71,9 +83,7 @@ function localizeFaqs(
       nearbyNames.length > 0
         ? `We also cover neighbouring boroughs including ${nearbyNames.join(", ")}.`
         : null,
-      borough.congestionZone
-        ? `As ${borough.name} is within the London Congestion Charge Zone, a £${ADDITIONAL_CHARGES.congestionZone} surcharge applies.`
-        : `${borough.name} is outside the London Congestion Charge Zone, so no congestion surcharge applies.`,
+      congestionSentence(borough),
     ].filter(Boolean).join(" "),
   });
 
@@ -97,7 +107,7 @@ export async function generateLocationMetadata(
   const price = formatPrice(service.priceFrom);
   const title = `${service.shortName} ${borough.name} from £${price}`;
   const postcodeStr = borough.postcodes.slice(0, 3).join(", ");
-  const description = `${service.name} in ${borough.name} (${postcodeStr}) from £${price}. Certificate emailed ${service.deliveryText}. Fixed pricing, no hidden charges. Book online.`;
+  const description = `${service.name} in ${borough.name} (${postcodeStr}) from £${price}. ${deliveryNoun(service)} emailed ${service.deliveryText}. Fixed pricing, no hidden charges. Book online.`;
   const url = `${SITE_URL}${service.urlPrefix}/${slug}`;
 
   return {
@@ -132,14 +142,14 @@ export function LocationServicePage({
   const otherServices = LOCATION_SERVICES.filter((s) => s.key !== service.key);
   const reviews = reviewsForService(service.reviewTag, 3);
   const reviewsHeading = reviewsHeadingForService(service);
-  const localizedFaqs = localizeFaqs(service, borough, postcodeStr);
+  const localizedFaqs = [...localFaqsFor(slug, service.key), ...localizeFaqs(service, borough, postcodeStr)];
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: `${service.name} — ${borough.name}`,
     url,
-    description: `${service.name} in ${borough.name} from £${price}. Certificate emailed ${service.deliveryText}.`,
+    description: `${service.name} in ${borough.name} from £${price}. ${deliveryNoun(service)} emailed ${service.deliveryText}.`,
     provider: { "@id": `${SITE_URL}/#business` },
     areaServed: { "@type": "City", name: borough.name },
     offers: {
@@ -198,7 +208,7 @@ export function LocationServicePage({
 
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-4 flex items-center gap-2">
             <Icon />
-            Certificate Emailed {service.deliveryText} · {borough.name}
+            {deliveryNoun(service)} Emailed {service.deliveryText} · {borough.name}
           </p>
 
           <Heading level={1} id="location-service-heading" inverted className="mb-4 max-w-2xl">
@@ -207,7 +217,7 @@ export function LocationServicePage({
 
           <p className="text-blue-100 text-lg leading-relaxed max-w-2xl mb-3">
             {service.name} for landlords in {borough.name}. Fixed pricing, no
-            hidden charges — certificate emailed {service.deliveryText}.
+            hidden charges — {deliveryNoun(service).toLowerCase()} emailed {service.deliveryText}.
           </p>
 
           <p className="text-blue-200 text-base mb-6 max-w-xl">
@@ -293,9 +303,7 @@ export function LocationServicePage({
             familiar with the {postcodeStr} postcode areas.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            {borough.congestionZone
-              ? `${borough.name} falls within the London Congestion Charge Zone, so a £${ADDITIONAL_CHARGES.congestionZone} surcharge applies on top of the price above.`
-              : `${borough.name} is outside the London Congestion Charge Zone, so no congestion surcharge applies here.`}
+            {congestionSentence(borough)}
             {borough.nearbyBoroughs.length > 0 && (
               <>
                 {" "}We also regularly book {service.shortName} appointments in
@@ -304,7 +312,7 @@ export function LocationServicePage({
                   .map((s) => getBoroughData(s)?.name)
                   .filter((n): n is string => Boolean(n))
                   .join(", ")}, so if your portfolio spans more than one area
-                we can usually coordinate visits on the same day.
+                we can usually coordinate visits in a single trip.
               </>
             )}
           </p>
@@ -318,6 +326,8 @@ export function LocationServicePage({
             </p>
           </div>
         </section>
+
+        <BoroughLocalSection slug={slug} serviceKey={service.key} boroughName={borough.name} />
 
         {/* ── 6. Pricing ────────────────────────────────────────────────── */}
         <section id="pricing" aria-labelledby="pricing-heading">
@@ -366,9 +376,8 @@ export function LocationServicePage({
                   <li>
                     Properties in the London Congestion Charge Zone:{" "}
                     <strong>£{ADDITIONAL_CHARGES.congestionZone}</strong>
-                    {borough.congestionZone && (
-                      <> — most of {borough.name} falls inside the zone</>
-                    )}
+                    {borough.congestionZone === "all" && <> — all of {borough.name} is inside the zone</>}
+                    {borough.congestionZone === "part" && <> — applies only to the part of {borough.name} inside the zone</>}
                   </li>
                 </ul>
               </div>
@@ -501,7 +510,7 @@ export function LocationServicePage({
           </Heading>
           <p className="text-blue-200 mb-2 max-w-md mx-auto">
             Book online in under 3 minutes. An accredited engineer confirms
-            your appointment. Certificate emailed {service.deliveryText}.
+            your appointment. {deliveryNoun(service)} emailed {service.deliveryText}.
           </p>
           <p className="text-blue-100 text-sm mb-6 max-w-md mx-auto">
             Same-week appointments across {borough.name} and all 33 London
@@ -512,7 +521,7 @@ export function LocationServicePage({
             Book {service.shortName} in {borough.name} — from £{price}
           </Link>
           <p className="mt-4 text-xs text-blue-100">
-            Fixed pricing. No hidden charges. Certificate emailed {service.deliveryText}.
+            Fixed pricing. No hidden charges. {deliveryNoun(service)} emailed {service.deliveryText}.
           </p>
         </section>
       </div>

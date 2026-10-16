@@ -71,7 +71,7 @@ const faqs = [
   {
     question: "What is the minimum EPC rating required to let a property?",
     answer:
-      "Under the Minimum Energy Efficiency Standards (MEES) introduced by the Energy Efficiency (Private Rented Property) (England and Wales) Regulations 2015, landlords must not let a property on a new tenancy if it has an EPC rating below E. Letting a property rated F or G on a new or renewed tenancy is unlawful and can result in a fine of up to £5,000. The government has proposed raising the minimum to C for all new tenancies by 2028. If your property is currently rated D or E, planning improvements now is strongly recommended.",
+      "Under the Minimum Energy Efficiency Standards (MEES) introduced by the Energy Efficiency (Private Rented Property) (England and Wales) Regulations 2015, landlords must not let a property on a new tenancy if it has an EPC rating below E. Letting a property rated F or G on a new or renewed tenancy is unlawful and can result in a fine of up to £5,000. The government has confirmed plans to raise the minimum to C for all private rented tenancies, new and existing, from 1 October 2030, subject to legislation. If your property is currently rated D or E, planning improvements now is strongly recommended.",
   },
   {
     question: "What does the EPC assessment involve?",
@@ -129,7 +129,7 @@ const steps = [
 const ratingBands = [
   { rating: "A", range: "92–100 SAP", colour: "bg-green-600", text: "text-white", desc: "Exceptional, very low bills" },
   { rating: "B", range: "81–91 SAP", colour: "bg-green-500", text: "text-white", desc: "Very good, low running costs" },
-  { rating: "C", range: "69–80 SAP", colour: "bg-lime-500", text: "text-white", desc: "Good, 2028 proposed minimum" },
+  { rating: "C", range: "69–80 SAP", colour: "bg-lime-500", text: "text-white", desc: "Good, proposed minimum from 2030" },
   { rating: "D", range: "55–68 SAP", colour: "bg-yellow-400", text: "text-brand-charcoal", desc: "Average, most UK homes" },
   { rating: "E", range: "39–54 SAP", colour: "bg-orange-400", text: "text-white", desc: "Below average, legal minimum" },
   { rating: "F", range: "21–38 SAP", colour: "bg-orange-600", text: "text-white", desc: "Poor, cannot legally let" },
@@ -347,9 +347,9 @@ export default function EPCPage() {
 
           <div className="bg-compliance-blue/5 border border-compliance-blue/20 rounded-xl p-4">
             <p className="text-sm text-brand-charcoal">
-              <span className="font-semibold text-compliance-blue">Coming 2028:</span>{" "}
-              The government has proposed raising the minimum EPC rating for all new private
-              rented tenancies to C by 2028. If your property is currently rated D or E,
+              <span className="font-semibold text-compliance-blue">Coming 2030:</span>{" "}
+              The government plans to raise the minimum EPC rating for all private rented
+              tenancies, new and existing, to C from 1 October 2030, subject to legislation. If your property is currently rated D or E,
               commissioning an EPC assessment and Recommendations Report now gives you time
               to plan and budget for the required improvements.
             </p>
@@ -396,7 +396,7 @@ export default function EPCPage() {
           </div>
           <p className="text-sm text-brand-grey">
             Properties rated F or G cannot legally be let on a new tenancy in England.
-            The current legal minimum is E. The proposed minimum from 2028 for new tenancies is C.
+            The current legal minimum is E. The proposed minimum from 1 October 2030 for all tenancies is C, subject to legislation.
           </p>
         </section>
 
@@ -442,7 +442,7 @@ export default function EPCPage() {
                 new tenancy from April 2018, and on any continuing tenancy from April 2020.
                 Fines for non-compliance are up to £5,000 per property. Properties with an EPC
                 rating of E are currently permitted, but landlords should plan for the proposed
-                increase to C by 2028.
+                increase to C from 1 October 2030, subject to legislation.
               </p>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
                 Limited exemptions exist, for example, where all cost-effective improvements
@@ -455,16 +455,18 @@ export default function EPCPage() {
 
             <div className="bg-warm-white border border-border rounded-xl p-5">
               <h3 className="font-bold text-brand-charcoal mb-2">
-                3. Section 21 &amp; retaliatory eviction protection
+                3. Giving tenants the EPC after Section 21
               </h3>
               <p className="text-sm text-brand-charcoal/80 leading-relaxed">
-                Under the Deregulation Act 2015, a landlord cannot serve a valid Section 21
-                notice (no-fault eviction) if they have not provided the tenant with a copy of
-                the EPC at the start of the tenancy. This link between EPC compliance and
-                eviction rights means that many landlords who discover a missing EPC are
-                unable to regain possession of their property until the EPC is obtained and
-                properly served. It is therefore essential to commission an EPC before a
-                tenancy begins, not as an afterthought.
+                The old rule that a missing EPC blocked a Section 21 notice no longer applies:
+                the Renters&rsquo; Rights Act 2025 ended Section 21 &ldquo;no-fault&rdquo;
+                evictions in England on 1 May 2026, and possession now needs a Section 8
+                ground. The EPC duty itself remains. Under the Energy Performance of Buildings
+                (England and Wales) Regulations 2012, you must make a valid EPC available free
+                of charge to prospective tenants at the earliest opportunity, and ensure the
+                person who becomes the tenant is given a copy. A breach for a dwelling carries a
+                £200 penalty charge. Commission your EPC before you market
+                the property, not as an afterthought.
               </p>
             </div>
           </div>
@@ -483,7 +485,7 @@ export default function EPCPage() {
             measures will have a larger effect than any single one.
           </p>
           <p className="text-brand-charcoal/80 leading-relaxed mb-6">
-            For London landlords targeting the proposed 2028 minimum of C, the most practical
+            For London landlords targeting the proposed 2030 minimum of C, the most practical
             path for typical Victorian terraces and purpose-built flats is usually a combination
             of boiler replacement, loft insulation, and thermostat controls, which can move a
             D-rated property into band C without the expense of solid wall insulation or
@@ -569,7 +571,7 @@ export default function EPCPage() {
                 type: "Converted flats (Victorian/Edwardian)",
                 rating: "Typically E–F",
                 detail:
-                  "Flats carved from period houses often lack roof and wall insulation, and may share a heating system or have electric-only heating. These typically rate E or F and often require the most improvement work ahead of 2028 changes.",
+                  "Flats carved from period houses often lack roof and wall insulation, and may share a heating system or have electric-only heating. These typically rate E or F and often require the most improvement work ahead of the 2030 changes.",
               },
               {
                 type: "Maisonettes",

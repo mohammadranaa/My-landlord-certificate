@@ -164,7 +164,7 @@ const faqSchema = {
       name: "Can you provide all HMO compliance certificates from one booking?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. My Landlord Certificate provides every certificate an HMO licence requires — EICR, Gas Safety CP12, Fire Risk Assessment, Fire Safety Certificate, Emergency Lights Certificate, EPC, PAT Testing, Fire Door Certificate, and Legionella Risk Assessment — from a single provider. Where possible we coordinate multiple inspections to minimise disruption, and in some cases can arrange same-day visits for two or more services. All certificates come from one team with one point of contact, which simplifies the licence application process significantly. To discuss coordinating your full HMO compliance package, call us on 020 3996 1070 and we will arrange inspections in as few visits as possible.",
+        text: "Yes. My Landlord Certificate provides every certificate an HMO licence requires — EICR, Gas Safety CP12, Fire Risk Assessment, Fire Safety Certificate, Emergency Lights Certificate, EPC, PAT Testing, Fire Door Certificate, and Legionella Risk Assessment — from a single provider. Where possible we coordinate multiple inspections to minimise disruption, and in some cases can arrange back-to-back visits for two or more services. All certificates come from one team with one point of contact, which simplifies the licence application process significantly. To discuss coordinating your full HMO compliance package, call us on 020 3996 1070 and we will arrange inspections in as few visits as possible.",
       },
     },
   ],
@@ -235,7 +235,7 @@ const certificates = [
     legalBasis: "Energy Performance of Buildings Regulations 2012 / MEES Regulations 2018",
     price: PRICES.epc,
     link: "/epc",
-    note: "An EPC below E means the property cannot legally be let. New proposals may raise the minimum to C by 2028.",
+    note: "An EPC below E means the property cannot legally be let. The government plans to raise the minimum to C from 1 October 2030, subject to legislation.",
     badge: "LEGALLY REQUIRED",
     badgeColor: "bg-red-100 text-red-700",
   },
@@ -349,7 +349,7 @@ const faqItems = [
   {
     question: "Can you provide all HMO compliance certificates from one booking?",
     answer:
-      "Yes. My Landlord Certificate provides every certificate an HMO licence requires — EICR, Gas Safety CP12, Fire Risk Assessment, Fire Safety Certificate, Emergency Lights Certificate, EPC, PAT Testing, Fire Door Certificate, and Legionella Risk Assessment — from a single provider. Where possible we coordinate multiple inspections to minimise disruption, and in some cases can arrange same-day visits for two or more services. All certificates come from one team with one point of contact, simplifying the licence application significantly. To discuss coordinating your full HMO compliance package, call us on 020 3996 1070.",
+      "Yes. My Landlord Certificate provides every certificate an HMO licence requires — EICR, Gas Safety CP12, Fire Risk Assessment, Fire Safety Certificate, Emergency Lights Certificate, EPC, PAT Testing, Fire Door Certificate, and Legionella Risk Assessment — from a single provider. Where possible we coordinate multiple inspections to minimise disruption, and in some cases can arrange back-to-back visits for two or more services. All certificates come from one team with one point of contact, simplifying the licence application significantly. To discuss coordinating your full HMO compliance package, call us on 020 3996 1070.",
   },
 ];
 
@@ -495,7 +495,7 @@ export default function HMOCompliancePage() {
             Operating an unlicensed HMO is a criminal offence under section 72 of the
             Housing Act 2004. Penalties include an unlimited fine, a Rent Repayment Order
             of up to 12 months&apos; rent, and potential disqualification as a landlord.
-            Councils can also issue civil penalty notices of up to £30,000 per offence as
+            Councils can also issue civil penalty notices of up to £40,000 per offence (for offences from 1 May 2026) as
             an alternative to prosecution.
           </p>
           <div className="rounded-xl bg-amber-50 border border-brand-amber/30 p-5 text-sm text-brand-charcoal/80">

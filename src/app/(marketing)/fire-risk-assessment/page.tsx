@@ -95,25 +95,6 @@ const serviceSchema = {
   },
 };
 
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: "Fire Risk Assessment",
-  description:
-    "Residential and HMO Fire Risk Assessment by NEBOSH qualified assessors. Written report with prioritised action plan emailed within 24 hours.",
-  brand: {
-    "@type": "Brand",
-    name: "My Landlord Certificate",
-  },
-  offers: {
-    "@type": "AggregateOffer",
-    lowPrice: String(getPriceForFRA("studio")),
-    highPrice: "539.99",
-    priceCurrency: "GBP",
-    offerCount: "16",
-    availability: "https://schema.org/InStock",
-  },
-};
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -253,7 +234,6 @@ export default function FireRiskAssessmentPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
-      <JsonLd data={productSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
 
@@ -727,7 +707,7 @@ export default function FireRiskAssessmentPage() {
                 Most local authorities include a current Fire Risk Assessment as
                 an explicit condition of the HMO licence. Your licence can be
                 revoked if you cannot produce an up-to-date FRA on inspection.
-                Unlicensed HMO operation carries a fine of up to £30,000.
+                Operating an unlicensed HMO can lead to a civil penalty of up to £40,000 (offences from 1 May 2026) or an unlimited fine on prosecution.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-warm-white p-5">
